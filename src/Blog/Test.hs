@@ -19,10 +19,10 @@ import Prelude hiding (readFile)
 main :: IO ()
 main = do
   --
-  putStrLn "listFilePaths_post ==>"
-  listFilePaths_post >>= traverse_ (putStrLn . ("  - " ++))
+  putStrLn "listPostFilePaths ==>"
+  listPostFilePaths >>= traverse_ (putStrLn . ("  - " ++))
   --
-  listFilePaths_post >>= traverse_ \fp -> do
+  listPostFilePaths >>= traverse_ \fp -> do
     txt <- readFile fp
     pandoc <- parsePost txt & runExceptT >>= either (throwError . userError . show) return
     putStrLn . render $ prettyPandoc pandoc

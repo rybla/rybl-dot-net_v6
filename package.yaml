@@ -23,7 +23,12 @@ dependencies:
   - transformers
   - mtl
   - lens
+  - aeson
+  - conduit
   - pandoc
+  - network-uri
+  - http-client
+  - http-client-tls
 
 ghc-options:
   - -Wall

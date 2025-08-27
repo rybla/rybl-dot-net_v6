@@ -1,22 +1,35 @@
+{-# LANGUAGE OverloadedStrings #-}
+
 module Blog.Paths
-  ( dirPath_input,
-    dirPath_post,
-    listFilePaths_post,
+  ( inputDirPath,
+    postDirPath,
+    listPostFilePaths,
+    baseUri,
+    faviconUri,
   )
 where
 
+import Data.Function ((&))
 import Data.Functor ((<&>))
 import Data.List (isSuffixOf)
+import Data.Maybe (fromJust)
+import Network.URI (URI, parseURI, relativeTo, parseRelativeReference)
 import System.Directory (listDirectory)
 import System.FilePath ((</>))
 
-dirPath_input :: FilePath
-dirPath_input = "input"
+inputDirPath :: FilePath
+inputDirPath = "input"
 
-dirPath_post :: FilePath
-dirPath_post = dirPath_input </> "post"
+postDirPath :: FilePath
+postDirPath = inputDirPath </> "post"
 
-listFilePaths_post :: IO [FilePath]
-listFilePaths_post =
-  listDirectory dirPath_post
-    <&> (((dirPath_post </>) <$>) . filter (".md" `isSuffixOf`))
+listPostFilePaths :: IO [FilePath]
+listPostFilePaths =
+  listDirectory postDirPath
+    <&> (((postDirPath </>) <$>) . filter (".md" `isSuffixOf`))
+
+baseUri :: URI
+baseUri = "https://rybl.net" & parseURI & fromJust
+
+faviconUri :: URI
+faviconUri = ("/favicon" & parseRelativeReference & fromJust) `relativeTo` baseUri
