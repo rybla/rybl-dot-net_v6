@@ -1,0 +1,1 @@
+module Blog.Config () where

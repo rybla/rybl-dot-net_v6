@@ -1,2 +1,6 @@
+module Main (main) where
+
+import qualified Blog.Test as Blog.Test
+
 main :: IO ()
-main = putStrLn "Test suite not yet implemented"
+main = Blog.Test.main
