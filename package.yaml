@@ -14,11 +14,13 @@ description: Please see the README on GitHub at <https://github.com/rybla/rybl-d
 
 dependencies:
   - base >= 4.7 && < 5
-  - containers
+  - template-haskell
+  - bytestring
   - filepath
   - directory
   - text
   - pretty
+  - containers
   - list-t
   - transformers
   - mtl
@@ -29,6 +31,8 @@ dependencies:
   - network-uri
   - http-client
   - http-client-tls
+  - http-conduit
+  - uri-encode
 
 ghc-options:
   - -Wall
@@ -40,6 +44,18 @@ ghc-options:
   - -Wmissing-home-modules
   - -Wpartial-fields
   - -Wredundant-constraints
+
+default-extensions:
+  - BlockArguments
+  - FlexibleContexts
+  - NamedFieldPuns
+  - OverloadedRecordDot
+  - OverloadedStrings
+  - LambdaCase
+  - DeriveAnyClass
+  - DeriveGeneric
+  - StandaloneDeriving
+  - TypeApplications
 
 library:
   source-dirs: src

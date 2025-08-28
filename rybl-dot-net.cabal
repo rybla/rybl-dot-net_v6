@@ -25,38 +25,55 @@ source-repository head
 
 library
   exposed-modules:
+      Blog.Bug
       Blog.Build
       Blog.Config
-      Blog.Favicon
       Blog.Parse
       Blog.Paths
+      Blog.PathsTh
       Blog.Test
       Blog.Utility
-      Service.Favicone
+      Service.Favicon
+      Service.Favicon.Favicone
   other-modules:
       Paths_rybl_dot_net
   autogen-modules:
       Paths_rybl_dot_net
   hs-source-dirs:
       src
+  default-extensions:
+      BlockArguments
+      FlexibleContexts
+      NamedFieldPuns
+      OverloadedRecordDot
+      OverloadedStrings
+      LambdaCase
+      DeriveAnyClass
+      DeriveGeneric
+      StandaloneDeriving
+      TypeApplications
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
       aeson
     , base >=4.7 && <5
+    , bytestring
     , conduit
     , containers
     , directory
     , filepath
     , http-client
     , http-client-tls
+    , http-conduit
     , lens
     , list-t
     , mtl
     , network-uri
     , pandoc
     , pretty
+    , template-haskell
     , text
     , transformers
+    , uri-encode
   default-language: Haskell2010
 
 executable rybl-dot-net-exe
@@ -67,16 +84,29 @@ executable rybl-dot-net-exe
       Paths_rybl_dot_net
   hs-source-dirs:
       app
+  default-extensions:
+      BlockArguments
+      FlexibleContexts
+      NamedFieldPuns
+      OverloadedRecordDot
+      OverloadedStrings
+      LambdaCase
+      DeriveAnyClass
+      DeriveGeneric
+      StandaloneDeriving
+      TypeApplications
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       aeson
     , base >=4.7 && <5
+    , bytestring
     , conduit
     , containers
     , directory
     , filepath
     , http-client
     , http-client-tls
+    , http-conduit
     , lens
     , list-t
     , mtl
@@ -84,8 +114,10 @@ executable rybl-dot-net-exe
     , pandoc
     , pretty
     , rybl-dot-net
+    , template-haskell
     , text
     , transformers
+    , uri-encode
   default-language: Haskell2010
 
 test-suite rybl-dot-net-test
@@ -97,16 +129,29 @@ test-suite rybl-dot-net-test
       Paths_rybl_dot_net
   hs-source-dirs:
       test
+  default-extensions:
+      BlockArguments
+      FlexibleContexts
+      NamedFieldPuns
+      OverloadedRecordDot
+      OverloadedStrings
+      LambdaCase
+      DeriveAnyClass
+      DeriveGeneric
+      StandaloneDeriving
+      TypeApplications
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       aeson
     , base >=4.7 && <5
+    , bytestring
     , conduit
     , containers
     , directory
     , filepath
     , http-client
     , http-client-tls
+    , http-conduit
     , lens
     , list-t
     , mtl
@@ -114,6 +159,8 @@ test-suite rybl-dot-net-test
     , pandoc
     , pretty
     , rybl-dot-net
+    , template-haskell
     , text
     , transformers
+    , uri-encode
   default-language: Haskell2010

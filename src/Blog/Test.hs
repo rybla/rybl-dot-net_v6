@@ -1,6 +1,4 @@
-{-# LANGUAGE BlockArguments #-}
-{-# LANGUAGE LambdaCase #-}
-{-# LANGUAGE OverloadedStrings #-}
+{-# OPTIONS_GHC -Wno-unused-imports #-}
 
 module Blog.Test (main) where
 
@@ -30,8 +28,8 @@ main = do
       ( "links:"
           $+$ ( nest 4 . vcat . fmap (text . show) $
                   pandoc & queryWith \case
-                    e@(Link _attr kids (url, _target)) -> [(kids, url)]
-                    e@(Image _attr kids (url, _target)) -> [(kids, url)]
+                    _e@(Link _attr kids (url, _target)) -> [(kids, url)]
+                    _e@(Image _attr kids (url, _target)) -> [(kids, url)]
                     _ -> []
               )
       )
