@@ -27,7 +27,7 @@ makeRoot
   [ MakeRootParams
       { valName = "offline",
         nodeType = [t|String|],
-        toNode = [|("work" </>)|]
+        toNode = [|("asset" </>)|]
       },
     MakeRootParams
       { valName = "online",
