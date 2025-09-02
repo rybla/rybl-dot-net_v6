@@ -3,14 +3,11 @@ module Blog.Parse
   )
 where
 
-import Control.Monad.Error.Class (MonadError)
-import Control.Monad.Except (runExceptT, throwError)
-import Control.Monad.State.Strict (evalState, evalStateT)
-import Data.Function ((&))
 import Data.Text (Text)
 import Text.Pandoc
 
-parsePost :: (MonadError PandocError m) => Text -> m Pandoc
+-- parsePost :: (MonadError PandocError m) => Text -> m Pandoc
+parsePost :: (PandocMonad m) => Text -> m Pandoc
 parsePost txt =
   readMarkdown
     def
@@ -18,11 +15,6 @@ parsePost txt =
         readerExtensions
       }
     txt
-    & unPandocPure
-    & runExceptT
-    & (`evalStateT` def)
-    & (`evalState` def)
-    & either throwError return
   where
     readerExtensions =
       extensionsFromList

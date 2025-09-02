@@ -3,6 +3,8 @@ title: Example Post
 pubDate: 2025-08-26
 tags:
   - example
+  - markdown
+  - post
 ---
 
 # h1 Heading 8-)

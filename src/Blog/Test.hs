@@ -2,29 +2,32 @@
 
 module Blog.Test (main) where
 
+import Blog.Pandoc (runPandocM)
 import Blog.Parse (parsePost)
 import Blog.Paths
-import Blog.Utility (prettyPandoc)
+import Blog.Utility (fromEither, prettyPandoc)
+import Control.Monad ((>=>))
 import Control.Monad.Error.Class (throwError)
-import Control.Monad.Except (runExceptT)
+import Control.Monad.Except (ExceptT, runExceptT)
+import Control.Monad.Trans (lift)
 import Data.Foldable (traverse_)
 import Data.Function ((&))
 import Data.Text.IO (readFile)
 import Text.Pandoc (Inline (..), queryWith)
-import Text.PrettyPrint.HughesPJClass (hang, nest, render, text, vcat, ($+$), (<+>))
+import Text.PrettyPrint.HughesPJClass (Doc, hang, nest, render, text, vcat, ($+$), (<+>))
 import Prelude hiding (readFile)
 
 main :: IO ()
-main = do
+main = (runExceptT >=> either (throwError . userError . render . text . show) return) do
   --
-  putStrLn "listPostFilePaths ==>"
-  listPostFilePaths >>= traverse_ (putStrLn . ("  - " ++))
+  lift $ putStrLn "listPostFilePaths ==>"
+  listPostFilePaths >>= traverse_ (lift . putStrLn . ("  - " ++))
   --
   listPostFilePaths >>= traverse_ \fp -> do
-    txt <- readFile fp
-    pandoc <- parsePost txt & runExceptT >>= either (throwError . userError . show) return
-    putStrLn . render $ prettyPandoc pandoc
-    putStrLn . render $
+    txt <- lift $ readFile fp
+    pandoc <- parsePost txt & runPandocM
+    lift . putStrLn . render $ prettyPandoc pandoc
+    lift . putStrLn . render $
       ( "links:"
           $+$ ( nest 4 . vcat . fmap (text . show) $
                   pandoc & queryWith \case

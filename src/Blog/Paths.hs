@@ -5,6 +5,7 @@
 module Blog.Paths where
 
 import Blog.PathsTh (MakeRootParams (..), makeRoot)
+import Control.Monad.IO.Class (MonadIO, liftIO)
 import Data.Function ((&))
 import Data.Functor ((<&>))
 import Data.List (isSuffixOf)
@@ -40,13 +41,14 @@ makeRoot
             |]
       }
   ]
-  [ Node "favicon" [],
-    Node "input" $
-      [ Node "post" []
-      ]
+  [ Node "post_markdown" [],
+    Node "post_html" [],
+    Node "favicon" [],
+    Node "template" []
   ]
 
-listPostFilePaths :: IO [FilePath]
+listPostFilePaths :: (MonadIO m) => m [FilePath]
 listPostFilePaths =
-  listDirectory offline.input.post.here
-    <&> (((offline.input.post.here </>) <$>) . filter (".md" `isSuffixOf`))
+  listDirectory offline.post_markdown.here
+    & liftIO
+    <&> (((offline.post_markdown.here </>) <$>) . filter (".md" `isSuffixOf`))

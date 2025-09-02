@@ -28,6 +28,7 @@ dependencies:
   - aeson
   - conduit
   - pandoc
+  - pandoc-types
   - network-uri
   - http-client
   - http-client-tls

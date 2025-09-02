@@ -28,6 +28,7 @@ library
       Blog.Bug
       Blog.Build
       Blog.Config
+      Blog.Pandoc
       Blog.Parse
       Blog.Paths
       Blog.PathsTh
@@ -69,6 +70,7 @@ library
     , mtl
     , network-uri
     , pandoc
+    , pandoc-types
     , pretty
     , template-haskell
     , text
@@ -112,6 +114,7 @@ executable rybl-dot-net-exe
     , mtl
     , network-uri
     , pandoc
+    , pandoc-types
     , pretty
     , rybl-dot-net
     , template-haskell
@@ -157,6 +160,7 @@ test-suite rybl-dot-net-test
     , mtl
     , network-uri
     , pandoc
+    , pandoc-types
     , pretty
     , rybl-dot-net
     , template-haskell

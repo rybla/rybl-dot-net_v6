@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  <head>
+    <title>${title}</title>
+    <link rel="stylesheet" href="${stylesheetHref}" />
+  </head>
+  <body>
+    <header>
+      <div class="title">${title}</div>
+      <div class="tags">
+        ${for(tags)}
+        <div class="tag">${it}</div>
+        ${endfor}
+      </div>
+    </header>
+    <content>${content}</content>
+    <footer>This is the footer</footer>
+  </body>
+</html>
