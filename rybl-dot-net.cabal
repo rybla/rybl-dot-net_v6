@@ -1,6 +1,6 @@
 cabal-version: 2.2
 
--- This file has been generated from package.yaml by hpack version 0.37.0.
+-- This file has been generated from package.yaml by hpack version 0.38.0.
 --
 -- see: https://github.com/sol/hpack
 
@@ -60,6 +60,7 @@ library
     , bytestring
     , conduit
     , containers
+    , data-default
     , directory
     , filepath
     , http-client
@@ -104,6 +105,7 @@ executable rybl-dot-net-exe
     , bytestring
     , conduit
     , containers
+    , data-default
     , directory
     , filepath
     , http-client
@@ -150,6 +152,7 @@ test-suite rybl-dot-net-test
     , bytestring
     , conduit
     , containers
+    , data-default
     , directory
     , filepath
     , http-client

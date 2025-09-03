@@ -41,13 +41,8 @@ main' = do
       templateText <- Text.readFile (offline.template.here </> "post.html") & lift
       result <- Pandoc.runPandocM do
         doc <- parsePost postText
-        title <- doc & Pandoc.getMetaValue "title" <&> Aeson.String . Pandoc.stringify
-        tags <-
-          doc & Pandoc.getMetaValue "tags" >>= \case
-            Pandoc.MetaList ms -> return . Aeson.Array . fromList . ((Aeson.String . Pandoc.stringify) <$>) $ ms
-            m -> throwError . Pandoc.PandocTemplateError . Text.pack $ "Error when parsing template variables: \"tags\" should be a list instead of: " <> show m
-
-        putStrLn ("tags = " ++ show tags) & liftIO
+        title <- doc & Pandoc.getMetaValue "title" <&> Pandoc.stringify
+        tags <- doc & Pandoc.getMetaValueList "tags" <&> (<&> Pandoc.stringify)
 
         postHtml <- Pandoc.writeHtml5String Pandoc.def doc
 
@@ -55,8 +50,8 @@ main' = do
             varsJson =
               Aeson.object
                 [ ("stylesheetHref", "styles.css"),
-                  ("title", title),
-                  ("tags", tags),
+                  ("title", title & Aeson.toJSON),
+                  ("tags", tags & Aeson.toJSON),
                   ("content", postHtml & Aeson.toJSON)
                 ]
         vars <- case Aeson.parseEither Aeson.parseJSON varsJson of

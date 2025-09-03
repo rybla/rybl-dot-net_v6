@@ -35,3 +35,13 @@ getMetaValue key =
   pandocMeta
     >>> lookupMeta (Text.pack key)
     >>> maybe (throwError . PandocCouldNotFindMetadataFileError . Text.pack $ "Error when extracting metadata from parsed document: missing key: \"" ++ key ++ "\"") return
+
+getMetaValueList :: (PandocMonad m) => String -> Pandoc -> m [MetaValue]
+getMetaValueList key =
+  pandocMeta
+    >>> lookupMeta (Text.pack key)
+    >>> maybe
+      (throwError . PandocCouldNotFindMetadataFileError . Text.pack $ "Error when extracting metadata from parsed document: missing key: \"" ++ key ++ "\"")
+      \case
+        MetaList vs -> return vs
+        v -> throwError . PandocCouldNotFindMetadataFileError . Text.pack $ "Error when extracting metadata from parsed document: expected value of key \"" ++ show v ++ "\" to be a list but it was actually: " ++ show v
