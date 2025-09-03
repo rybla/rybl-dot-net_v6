@@ -10,7 +10,7 @@ import Control.Monad (when)
 import Control.Monad.Error.Class (throwError)
 import Control.Monad.Except (runExceptT)
 import Control.Monad.Identity (runIdentity)
-import Control.Monad.Trans (lift, liftIO)
+import Control.Monad.Trans (lift)
 import Control.Monad.Trans.Except (ExceptT)
 import qualified Data.Aeson as Aeson
 import qualified Data.Aeson.Types as Aeson
@@ -20,7 +20,6 @@ import Data.Functor ((<&>))
 import Data.List (isSuffixOf)
 import qualified Data.Text as Text
 import qualified Data.Text.IO as Text
-import GHC.Exts (fromList)
 import System.Directory (listDirectory)
 import System.FilePath (replaceExtension, (</>))
 import qualified Text.Pandoc as Pandoc
@@ -44,7 +43,7 @@ main' = do
         title <- doc & Pandoc.getMetaValue "title" <&> Pandoc.stringify
         tags <- doc & Pandoc.getMetaValueList "tags" <&> (<&> Pandoc.stringify)
 
-        postHtml <- Pandoc.writeHtml5String Pandoc.def doc
+        contentHtml <- Pandoc.writeHtml5String Pandoc.def doc
 
         let varsJson :: Aeson.Value
             varsJson =
@@ -52,26 +51,21 @@ main' = do
                 [ ("stylesheetHref", "styles.css"),
                   ("title", title & Aeson.toJSON),
                   ("tags", tags & Aeson.toJSON),
-                  ("content", postHtml & Aeson.toJSON)
+                  ("content", contentHtml & Aeson.toJSON)
                 ]
-        vars <- case Aeson.parseEither Aeson.parseJSON varsJson of
-          Left err -> throwError . Pandoc.PandocTemplateError . Text.pack . ("Error when parsing template variables JSON: " <>) $ err
-          Right a -> return a
 
-        template <-
-          Pandoc.compileTemplate offline.template.here templateText
-            & runIdentity
-            & either (throwError . Pandoc.PandocTemplateError . Text.pack . ("Error when parsing template: " <>)) return
-
-        html <-
+        postTemplate <- Pandoc.compileTemplate offline.template.here templateText & runIdentity & either (throwError . Pandoc.PandocTemplateError . Text.pack . ("Error when parsing template: " <>)) return
+        postHtml <- do
+          vars <- Aeson.parseEither Aeson.parseJSON varsJson & either (\err -> throwError . Pandoc.PandocTemplateError . Text.pack . ("Error when parsing template variables JSON: " <>) $ err) return
           Pandoc.writeHtml5String
             Pandoc.def
               { Pandoc.writerHTMLMathMethod = Pandoc.PlainMath,
-                Pandoc.writerTemplate = Just template,
+                Pandoc.writerTemplate = Just postTemplate,
                 Pandoc.writerVariables = vars
               }
             doc
-        return html
+        return postHtml
+
       Text.writeFile
         (offline.post_html.here </> (postFileName `replaceExtension` ".html"))
         result
