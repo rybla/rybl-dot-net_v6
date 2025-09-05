@@ -20,17 +20,17 @@ import Data.Functor ((<&>))
 import Data.List (isSuffixOf)
 import qualified Data.Text as Text
 import qualified Data.Text.IO as Text
+import Service.Favicon.Favicone (FaviconeService)
 import System.Directory (listDirectory)
 import System.FilePath (replaceExtension, (</>))
 import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Shared as Pandoc
-import qualified Text.Pandoc.Walk as Pandoc
-import Text.PrettyPrint.HughesPJClass 
+import Text.PrettyPrint.HughesPJClass
 
 main :: IO ()
 main =
   runExceptT main' >>= \case
-    Left err -> throwError . userError . render $ "Error:" <+> text (show err)
+    Left err -> error . render $ "Error:" <+> text (show err)
     Right it -> return it
 
 main' :: ExceptT Doc IO ()
@@ -41,7 +41,7 @@ main' = do
       templateText <- Text.readFile (offline.template.here </> "post.html") & lift
 
       result <- Pandoc.runPandocM do
-        postDoc <- parsePost postText
+        postDoc <- parsePost @FaviconeService postText
         postTitle <- postDoc & Pandoc.getMetaValue "title" <&> Pandoc.stringify
         postTags <- postDoc & Pandoc.getMetaValueList "tags" <&> (<&> Pandoc.stringify)
 
@@ -56,9 +56,9 @@ main' = do
                   ("content", contentHtml & Aeson.toJSON)
                 ]
 
-        postTemplate <- Pandoc.compileTemplate offline.template.here templateText & runIdentity & either (throwError . Pandoc.PandocTemplateError . Text.pack . ("Error when parsing template: " <>)) return
+        postTemplate <- Pandoc.compileTemplate offline.template.here templateText & runIdentity & either (throwError . Pandoc.PandocTemplateError . Text.pack . ("Error when parsing template: " ++)) return
         postHtml <- do
-          vars <- Aeson.parseEither Aeson.parseJSON varsJson & either (\err -> throwError . Pandoc.PandocTemplateError . Text.pack . ("Error when parsing template variables JSON: " <>) $ err) return
+          vars <- Aeson.parseEither Aeson.parseJSON varsJson & either (\err -> throwError . Pandoc.PandocTemplateError . Text.pack . ("Error when parsing template variables JSON: " ++) $ err) return
           Pandoc.writeHtml5String
             Pandoc.def
               { Pandoc.writerHTMLMathMethod = Pandoc.PlainMath,

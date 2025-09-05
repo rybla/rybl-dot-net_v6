@@ -17,12 +17,24 @@ import System.Directory (listDirectory)
 import System.FilePath ((</>))
 
 baseUri :: URI
-baseUri = "https://rybl.net" & Maybe.fromJust . URI.parseURI
+-- baseUri = "https://rybl.net" & Maybe.fromJust . URI.parseURI
+baseUri = "http://127.0.0.1:8080" & Maybe.fromJust . URI.parseURI
 
 baseFaviconUri :: URI
-baseFaviconUri =
-  ("favicon.ico" & Maybe.fromJust . URI.parseRelativeReference)
-    `URI.relativeTo` baseUri
+baseFaviconUri = relUri `URI.relativeTo` baseUri
+  where
+    relUri = "favicon.ico" & URI.parseRelativeReference & Maybe.fromJust
+
+baseFaviconFormat :: String
+baseFaviconFormat = "ico"
+
+missingFaviconUri :: URI
+missingFaviconUri = relUri `URI.relativeTo` baseUri
+  where
+    relUri = "missing.ico" & URI.parseRelativeReference & Maybe.fromJust
+
+missingFaviconFormat :: String
+missingFaviconFormat = "ico"
 
 makeRoot
   [ MakeRootParams
@@ -36,8 +48,8 @@ makeRoot
         toNode =
           [|
             \s ->
-              (s & Maybe.fromJust . URI.parseRelativeReference)
-                `URI.relativeTo` baseUri
+              let relUri = s & URI.parseRelativeReference & Maybe.fromJust
+               in relUri `URI.relativeTo` baseUri
             |]
       }
   ]

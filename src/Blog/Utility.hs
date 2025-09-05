@@ -51,3 +51,8 @@ markdownLink label url = "[" ++ label ++ "](" ++ url ++ ")"
 
 markdownImage :: String -> String -> String
 markdownImage label url = "![" ++ label ++ "](" ++ url ++ ")"
+
+parseUriM :: (MonadError Doc m) => String -> m URI
+parseUriM str = case URI.parseURI str of
+  Nothing -> throwError $ text "Invalid URI:" <+> doubleQuotes (text str)
+  Just uri -> return uri

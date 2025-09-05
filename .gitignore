@@ -1,2 +1,4 @@
 .stack-work/
 *~
+asset/favicon
+.DS_Store

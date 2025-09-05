@@ -6,25 +6,24 @@ module Blog.Parse
   )
 where
 
-import Blog.Utility (markdownImage, markdownLink)
+import Blog.Pandoc (fromDocError)
+import Blog.Utility (parseUriM)
+import Control.Lens (to, (^.))
 import Control.Monad ((>=>))
-import Control.Monad.Except (runExceptT, throwError)
 import Control.Monad.IO.Class (liftIO)
 import Control.Monad.Writer (MonadIO, execWriterT, tell)
 import Data.Function ((&))
 import Data.Functor ((<&>))
-import Data.Proxy (Proxy (Proxy))
 import Data.Text (Text)
 import qualified Data.Text as Text
 import qualified Network.HTTP.Client as Network
 import qualified Network.HTTP.Client.TLS as Network
-import qualified Network.URI as URI
-import Service.Favicon (FaviconService (fetchFaviconInfo))
-import Text.Pandoc (Pandoc (..), PandocError (..), PandocMonad)
+import Service.Favicon (FaviconService)
+import qualified Service.Favicon as Favicon
+import Text.Pandoc (Pandoc (..), PandocMonad)
 import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Shared as Pandoc
 import Text.Pandoc.Walk
-import Text.PrettyPrint.HughesPJClass
 
 parsePost :: forall s m. (FaviconService s, PandocMonad m, MonadIO m) => Text -> m Pandoc
 parsePost txt = do
@@ -70,13 +69,11 @@ addReferencesSection doc = do
     doc
       & ( walkM \(x :: Pandoc.Inline) -> case x of
             Pandoc.Link _attr kids (urlText, _target) -> do
-              let labelText = Pandoc.stringify kids
-              _url <- urlText & show & URI.parseURI & maybe (throwPandocError $ "invalid URL" <+> (doubleQuotes . text . Text.unpack $ urlText) <+> "in link" <+> text (markdownLink (Text.unpack labelText) (Text.unpack urlText))) return
+              _url <- urlText & Text.unpack & parseUriM & fromDocError
               tell [(x, urlText)]
               return x
             Pandoc.Image _attr kids target@(urlText, _target) -> do
-              let labelText = Pandoc.stringify kids
-              _url <- urlText & show & URI.parseURI & maybe (throwPandocError $ "invalid URL" <+> (doubleQuotes . text . Text.unpack $ urlText) <+> "in image" <+> text (markdownImage (Text.unpack labelText) (Text.unpack urlText))) return
+              _url <- urlText & Text.unpack & parseUriM & fromDocError
               tell [(Pandoc.Link mempty kids target, urlText)]
               return x
             _ -> return x
@@ -93,19 +90,15 @@ addReferencesSection doc = do
 addLinkFavicons :: forall s m. (FaviconService s, PandocMonad m, MonadIO m) => Network.Manager -> Pandoc -> m Pandoc
 addLinkFavicons manager = walkM \(x :: Pandoc.Inline) -> case x of
   Pandoc.Link attr kids target@(urlText, _target) -> do
-    let labelText = Pandoc.stringify kids
-    url <- urlText & show & URI.parseURI & maybe (throwPandocError $ "invalid URL" <+> (doubleQuotes . text . Text.unpack $ urlText) <+> "in link" <+> text (markdownLink (Text.unpack labelText) (Text.unpack urlText))) return
-    
+    url <- urlText & Text.unpack & parseUriM & fromDocError
     faviconInfo <-
-      fetchFaviconInfo (Proxy @s) url manager
-        & runExceptT
-        >>= \case
-          Left err -> throwPandocError $ "Failed to fetch favicon info:" <+> err
-          Right Nothing -> return undefined
-          Right (Just faviconInfo) -> return faviconInfo
-    let iconKid = undefined
+      manager & Favicon.cache @s url & fromDocError >>= \case
+        Just faviconInfo -> return faviconInfo
+        Nothing -> return Favicon.missingFaviconInfo
+    let iconKid =
+          Pandoc.Image
+            mempty
+            [Pandoc.Str $ faviconInfo ^. Favicon.iconUri . to (Text.pack . show)]
+            (faviconInfo ^. Favicon.internalIconUri . to (Text.pack . show), "")
     return $ Pandoc.Link attr ([iconKid] ++ kids) target
   _ -> return x
-
-throwPandocError :: (PandocMonad m) => Doc -> m a
-throwPandocError = throwError . PandocAppError . Text.pack . render

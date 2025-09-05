@@ -4,10 +4,9 @@ module Blog.Pandoc where
 
 import Control.Category ((>>>))
 import Control.Monad ((>=>))
-import Control.Monad.Except (MonadError, throwError)
+import Control.Monad.Except (ExceptT, MonadError, throwError)
 import Control.Monad.IO.Class (MonadIO, liftIO)
 import qualified Control.Monad.State.Lazy as StateLazy
-import qualified Control.Monad.State.Strict as StateStrict
 import Control.Monad.Trans.Except (runExceptT)
 import qualified Data.Text as Text
 import Text.Pandoc
@@ -17,13 +16,10 @@ runPandocM :: (MonadError Doc m2, MonadIO m2) => PandocIO a -> m2 a
 runPandocM =
   unPandocIO
     >>> runExceptT
-    -- >>> (`evalStateT` def)
-    -- >>> (`evalState` def)
-    -- >>> either (throwError . text . show) return
-    -- >>> liftIO
     >>> (`StateLazy.evalStateT` def)
     >>> liftIO
     >=> \case
+      Left (PandocAppError msg) -> throwError . text . ("PandocAppError: " ++) . Text.unpack $ msg
       Left err -> throwError . text . show $ err
       Right a -> return a
 
@@ -45,3 +41,9 @@ getMetaValueList key =
       \case
         MetaList vs -> return vs
         v -> throwError . PandocCouldNotFindMetadataFileError . Text.pack $ "Error when extracting metadata from parsed document: expected value of key \"" ++ show v ++ "\" to be a list but it was actually: " ++ show v
+
+throwPandocError :: (PandocMonad m) => Doc -> m a
+throwPandocError = throwError . PandocAppError . Text.pack . render
+
+fromDocError :: (PandocMonad m) => ExceptT Doc m a -> m a
+fromDocError = runExceptT >=> either throwPandocError return

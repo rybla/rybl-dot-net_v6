@@ -4,23 +4,31 @@
 {-# LANGUAGE TemplateHaskell #-}
 {-# OPTIONS_GHC -Wno-missing-export-lists #-}
 
-module Service.Favicon (FaviconService (..)) where
+module Service.Favicon where
 
-import Blog.Bug (MonadBug, throwBug)
 import Blog.Paths
 import Blog.Utility
-import Control.Lens (makeLenses, (&), (^.))
-import Control.Monad.Except (MonadError)
+import Control.Lens (Getter, makeLenses, to, (&), (^.))
+import Control.Monad.Except (MonadError, throwError)
 import Control.Monad.IO.Class (MonadIO, liftIO)
+import Data.Aeson (FromJSON (..), ToJSON (..), decode, encode)
 import qualified Data.ByteString.Lazy as ByteString
 import Data.Data (Proxy (..))
+import Data.Functor ((<&>))
+import Data.Maybe (fromJust)
+import GHC.Generics (Generic)
 import qualified Network.HTTP.Client as HTTP
 import Network.URI (URI)
 import qualified Network.URI as URI
+import System.Directory (doesFileExist)
 import System.FilePath ((<.>), (</>))
-import Text.Pandoc (fileExists)
-import Text.Pandoc.Class (PandocMonad)
 import Text.PrettyPrint.HughesPJClass
+
+fromUriToFilePathOfFaviconInfo :: URI -> FilePath
+fromUriToFilePathOfFaviconInfo uri = offline.favicon.here </> makeValidIdent (show uri) <.> "json"
+
+identOfUri :: URI -> String
+identOfUri = makeValidIdent . show
 
 class FaviconService s where
   fetchFaviconInfo ::
@@ -31,56 +39,59 @@ data FaviconInfo = FaviconInfo
   { _iconUri :: URI,
     _format :: String
   }
-  deriving (Show)
+  deriving (Show, Generic, ToJSON, FromJSON)
 
 makeLenses ''FaviconInfo
 
-faviconIdent :: FaviconInfo -> String
-faviconIdent info =
-  info
-    & (^. iconUri)
-    & show
-    & makeValidIdent
+ident :: Getter FaviconInfo String
+ident = iconUri . to \uri -> makeValidIdent (show uri)
 
-faviconFileName :: FaviconInfo -> String
-faviconFileName info = faviconIdent info <.> info ^. format
+filename :: Getter FaviconInfo FilePath
+filename = ident
 
-faviconOfflineFilePath :: FaviconInfo -> FilePath
-faviconOfflineFilePath info = offline.favicon.here </> faviconFileName info
+filepath :: Getter FaviconInfo FilePath
+filepath = filename . to (offline.favicon.here </>)
 
-faviconFileNameOfflineFilePath :: FilePath -> FilePath
-faviconFileNameOfflineFilePath fn = offline.favicon.here </> fn
+internalIconUri :: Getter FaviconInfo URI
+internalIconUri = to \info ->
+  let relativeUri = URI.parseRelativeReference (info ^. filename) & fromJust
+   in relativeUri `URI.relativeTo` online.favicon.here
 
-faviconOnlineUri ::
-  (MonadBug m) =>
-  FaviconInfo -> m URI
-faviconOnlineUri info = do
-  identRelUri <-
-    URI.parseRelativeReference (faviconFileName info)
-      & maybe
-        ( throwBug . vcat $
-            [ "[faviconOnlineUri] Failed to parse favicon file name as a relative URI reference",
-              "info =" <+> text (show info)
-            ]
-        )
-        return
-  return $ identRelUri `URI.relativeTo` online.favicon.here
-
-cacheFavicon ::
+cache ::
   forall s m.
-  (FaviconService s, MonadIO m, PandocMonad m) =>
-  FilePath -> HTTP.Manager -> m ()
-cacheFavicon fn manager = do
-  -- check if already exists in cache
-  let fp = faviconFileNameOfflineFilePath fn
-  fileExists fp >>= \case
+  (FaviconService s, MonadIO m, MonadError Doc m) =>
+  URI -> HTTP.Manager -> m (Maybe FaviconInfo)
+cache uri manager = do
+  let fpFaviconInfo = fromUriToFilePathOfFaviconInfo uri
+  doesFileExist fpFaviconInfo & liftIO >>= \case
     True -> do
-      -- if it does, then do nothing
-      return ()
+      mb_info <- do
+        putStrLn ("reading file: " ++ fpFaviconInfo) & liftIO
+        ByteString.readFile fpFaviconInfo & liftIO <&> decode @(Maybe FaviconInfo) >>= \case
+          Nothing -> throwError @Doc $ "Failed to decode favicon info data file at" <+> text fpFaviconInfo
+          Just mb_info -> return mb_info
+      return mb_info
     False -> do
-      info <- fetchFaviconInfo (Proxy @s) _ _
-      -- if doesn't, then download to cache
-      let requestUrl = info ^. iconUri & show
-      request <- HTTP.parseRequest requestUrl & liftIO
-      response <- manager & HTTP.httpLbs request & liftIO
-      ByteString.writeFile (faviconOfflineFilePath info) (HTTP.responseBody response) & liftIO
+      mb_info <- fetchFaviconInfo (Proxy @s) uri manager
+      case mb_info of
+        Nothing -> return ()
+        Just info -> do
+          request <- HTTP.parseRequest (info ^. iconUri . to show) & liftIO
+          response <- manager & HTTP.httpLbs request & liftIO
+          ByteString.writeFile (info ^. filepath) (HTTP.responseBody response) & liftIO
+      ByteString.writeFile fpFaviconInfo (encode mb_info) & liftIO
+      return mb_info
+
+baseFaviconInfo :: FaviconInfo
+baseFaviconInfo =
+  FaviconInfo
+    { _iconUri = baseFaviconUri,
+      _format = baseFaviconFormat
+    }
+
+missingFaviconInfo :: FaviconInfo
+missingFaviconInfo =
+  FaviconInfo
+    { _iconUri = baseFaviconUri,
+      _format = baseFaviconFormat
+    }
