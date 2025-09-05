@@ -1,4 +1,4 @@
-module Service.Favicon.Favicone () where
+module Service.Favicon.Favicone (FaviconeService) where
 
 import Blog.Paths
 import Blog.Utility
@@ -11,7 +11,7 @@ import qualified Network.HTTP.Client as HTTP
 import Network.URI (URI)
 import qualified Network.URI as URI
 import qualified Service.Favicon as Favicon
-import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
+import Text.PrettyPrint.HughesPJClass
 
 data FaviconeResponse = FaviconResponse
   { hasIcon :: Bool,

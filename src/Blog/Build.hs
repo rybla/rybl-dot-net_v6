@@ -24,7 +24,8 @@ import System.Directory (listDirectory)
 import System.FilePath (replaceExtension, (</>))
 import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Shared as Pandoc
-import Text.PrettyPrint.HughesPJClass (Doc, render, text, (<+>))
+import qualified Text.Pandoc.Walk as Pandoc
+import Text.PrettyPrint.HughesPJClass 
 
 main :: IO ()
 main =
@@ -38,19 +39,20 @@ main' = do
     when (".md" `isSuffixOf` postFileName) do
       postText <- Text.readFile (offline.post_markdown.here </> postFileName) & lift
       templateText <- Text.readFile (offline.template.here </> "post.html") & lift
-      result <- Pandoc.runPandocM do
-        doc <- parsePost postText
-        title <- doc & Pandoc.getMetaValue "title" <&> Pandoc.stringify
-        tags <- doc & Pandoc.getMetaValueList "tags" <&> (<&> Pandoc.stringify)
 
-        contentHtml <- Pandoc.writeHtml5String Pandoc.def doc
+      result <- Pandoc.runPandocM do
+        postDoc <- parsePost postText
+        postTitle <- postDoc & Pandoc.getMetaValue "title" <&> Pandoc.stringify
+        postTags <- postDoc & Pandoc.getMetaValueList "tags" <&> (<&> Pandoc.stringify)
+
+        contentHtml <- Pandoc.writeHtml5String Pandoc.def postDoc
 
         let varsJson :: Aeson.Value
             varsJson =
               Aeson.object
                 [ ("stylesheetHref", "styles.css"),
-                  ("title", title & Aeson.toJSON),
-                  ("tags", tags & Aeson.toJSON),
+                  ("title", postTitle & Aeson.toJSON),
+                  ("tags", postTags & Aeson.toJSON),
                   ("content", contentHtml & Aeson.toJSON)
                 ]
 
@@ -63,7 +65,7 @@ main' = do
                 Pandoc.writerTemplate = Just postTemplate,
                 Pandoc.writerVariables = vars
               }
-            doc
+            postDoc
         return postHtml
 
       Text.writeFile

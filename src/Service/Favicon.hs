@@ -1,7 +1,10 @@
+{-# LANGUAGE AllowAmbiguousTypes #-}
+{-# LANGUAGE RankNTypes #-}
+{-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE TemplateHaskell #-}
 {-# OPTIONS_GHC -Wno-missing-export-lists #-}
 
-module Service.Favicon where
+module Service.Favicon (FaviconService (..)) where
 
 import Blog.Bug (MonadBug, throwBug)
 import Blog.Paths
@@ -10,7 +13,7 @@ import Control.Lens (makeLenses, (&), (^.))
 import Control.Monad.Except (MonadError)
 import Control.Monad.IO.Class (MonadIO, liftIO)
 import qualified Data.ByteString.Lazy as ByteString
-import Data.Data (Proxy)
+import Data.Data (Proxy (..))
 import qualified Network.HTTP.Client as HTTP
 import Network.URI (URI)
 import qualified Network.URI as URI
@@ -45,6 +48,9 @@ faviconFileName info = faviconIdent info <.> info ^. format
 faviconOfflineFilePath :: FaviconInfo -> FilePath
 faviconOfflineFilePath info = offline.favicon.here </> faviconFileName info
 
+faviconFileNameOfflineFilePath :: FilePath -> FilePath
+faviconFileNameOfflineFilePath fn = offline.favicon.here </> fn
+
 faviconOnlineUri ::
   (MonadBug m) =>
   FaviconInfo -> m URI
@@ -61,16 +67,18 @@ faviconOnlineUri info = do
   return $ identRelUri `URI.relativeTo` online.favicon.here
 
 cacheFavicon ::
-  (MonadIO m, PandocMonad m) =>
-  FaviconInfo -> HTTP.Manager -> m ()
-cacheFavicon info manager = do
+  forall s m.
+  (FaviconService s, MonadIO m, PandocMonad m) =>
+  FilePath -> HTTP.Manager -> m ()
+cacheFavicon fn manager = do
   -- check if already exists in cache
-  let fp = faviconOfflineFilePath info
+  let fp = faviconFileNameOfflineFilePath fn
   fileExists fp >>= \case
     True -> do
       -- if it does, then do nothing
       return ()
     False -> do
+      info <- fetchFaviconInfo (Proxy @s) _ _
       -- if doesn't, then download to cache
       let requestUrl = info ^. iconUri & show
       request <- HTTP.parseRequest requestUrl & liftIO

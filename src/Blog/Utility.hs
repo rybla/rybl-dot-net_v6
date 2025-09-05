@@ -45,3 +45,9 @@ fromEither mkMsg = either (throwError . mkMsg) return
 
 makeValidIdent :: String -> String
 makeValidIdent = FilePath.makeValid . URI.encode
+
+markdownLink :: String -> String -> String
+markdownLink label url = "[" ++ label ++ "](" ++ url ++ ")"
+
+markdownImage :: String -> String -> String
+markdownImage label url = "![" ++ label ++ "](" ++ url ++ ")"
