@@ -4,6 +4,7 @@
 
 module Blog.Paths where
 
+import qualified Blog.Config as Config
 import Blog.PathsTh (MakeRootParams (..), makeRoot)
 import Control.Monad.IO.Class (MonadIO, liftIO)
 import Data.Function ((&))
@@ -17,8 +18,9 @@ import System.Directory (listDirectory)
 import System.FilePath ((</>))
 
 baseUri :: URI
--- baseUri = "https://rybl.net" & Maybe.fromJust . URI.parseURI
-baseUri = "http://127.0.0.1:8080" & Maybe.fromJust . URI.parseURI
+baseUri = case Config.mode of
+  Config.Production -> "https://rybl.net" & Maybe.fromJust . URI.parseURI
+  Config.Development -> "http://localhost:8080" & Maybe.fromJust . URI.parseURI
 
 baseFaviconUri :: URI
 baseFaviconUri = relUri `URI.relativeTo` baseUri

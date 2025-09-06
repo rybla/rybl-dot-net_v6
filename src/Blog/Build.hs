@@ -50,7 +50,7 @@ main' = do
         let varsJson :: Aeson.Value
             varsJson =
               Aeson.object
-                [ ("stylesheetHref", "styles.css"),
+                [ ("stylesheetHref", "post.css"),
                   ("title", postTitle & Aeson.toJSON),
                   ("tags", postTags & Aeson.toJSON),
                   ("content", contentHtml & Aeson.toJSON)

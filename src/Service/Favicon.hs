@@ -53,9 +53,7 @@ filepath :: Getter FaviconInfo FilePath
 filepath = filename . to (offline.favicon.here </>)
 
 internalIconUri :: Getter FaviconInfo URI
-internalIconUri = to \info ->
-  let relativeUri = URI.parseRelativeReference (info ^. filename) & fromJust
-   in relativeUri `URI.relativeTo` online.favicon.here
+internalIconUri = to \info -> URI.parseURI (show online.favicon.here </> info ^. filename) & fromJust
 
 cache ::
   forall s m.
@@ -66,7 +64,7 @@ cache uri manager = do
   doesFileExist fpFaviconInfo & liftIO >>= \case
     True -> do
       mb_info <- do
-        putStrLn ("reading file: " ++ fpFaviconInfo) & liftIO
+        putStrLn ("reading favicone data file: " ++ fpFaviconInfo) & liftIO
         ByteString.readFile fpFaviconInfo & liftIO <&> decode @(Maybe FaviconInfo) >>= \case
           Nothing -> throwError @Doc $ "Failed to decode favicon info data file at" <+> text fpFaviconInfo
           Just mb_info -> return mb_info

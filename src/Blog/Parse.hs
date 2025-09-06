@@ -18,11 +18,11 @@ import Data.Text (Text)
 import qualified Data.Text as Text
 import qualified Network.HTTP.Client as Network
 import qualified Network.HTTP.Client.TLS as Network
+import qualified Network.URI as URI
 import Service.Favicon (FaviconService)
 import qualified Service.Favicon as Favicon
 import Text.Pandoc (Pandoc (..), PandocMonad)
 import qualified Text.Pandoc as Pandoc
-import qualified Text.Pandoc.Shared as Pandoc
 import Text.Pandoc.Walk
 
 parsePost :: forall s m. (FaviconService s, PandocMonad m, MonadIO m) => Text -> m Pandoc
@@ -68,7 +68,7 @@ addReferencesSection doc = do
   refs :: [(Pandoc.Inline, Text)] <-
     doc
       & ( walkM \(x :: Pandoc.Inline) -> case x of
-            Pandoc.Link _attr kids (urlText, _target) -> do
+            Pandoc.Link _attr _kids (urlText, _target) -> do
               _url <- urlText & Text.unpack & parseUriM & fromDocError
               tell [(x, urlText)]
               return x
@@ -95,10 +95,13 @@ addLinkFavicons manager = walkM \(x :: Pandoc.Inline) -> case x of
       manager & Favicon.cache @s url & fromDocError >>= \case
         Just faviconInfo -> return faviconInfo
         Nothing -> return Favicon.missingFaviconInfo
+
+    putStrLn ("favicon url = " ++ (faviconInfo ^. Favicon.internalIconUri . to (URI.escapeURIString URI.isUnescapedInURI . show))) & liftIO
+
     let iconKid =
           Pandoc.Image
-            mempty
+            ("", ["favicon"], [])
             [Pandoc.Str $ faviconInfo ^. Favicon.iconUri . to (Text.pack . show)]
-            (faviconInfo ^. Favicon.internalIconUri . to (Text.pack . show), "")
+            (faviconInfo ^. Favicon.internalIconUri . to (Text.pack . URI.escapeURIString URI.isUnescapedInURI . show), "")
     return $ Pandoc.Link attr ([iconKid] ++ kids) target
   _ -> return x
