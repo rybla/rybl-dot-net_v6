@@ -17,13 +17,11 @@ import Control.Monad.State (MonadState)
 import Control.Monad.Writer (MonadIO)
 import Data.Map (Map)
 import qualified Data.Map as Map
-import Data.Text (Text)
 import qualified Data.Text as Text
 import Network.URI (URI)
 import System.FilePath ((</>))
 import Text.Pandoc (Pandoc (..))
 import qualified Text.Pandoc as Pandoc
-import qualified Text.Pandoc.Shared as Pandoc
 import qualified Text.Pandoc.Walk as Pandoc
 import Text.PrettyPrint.HughesPJClass (Doc, pPrint, (<+>))
 
