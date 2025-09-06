@@ -59,8 +59,21 @@ default-extensions:
   - StandaloneDeriving
   - TypeApplications
 
+flags:
+  dev:
+    manual: true
+    default: false
+
 library:
   source-dirs: src
+  when:
+    - condition: flag(dev)
+      then:
+        cpp-options:
+          - -DDEVELOPMENT
+      else:
+        cpp-options:
+          - -DPRODUCTION
 
 executables:
   rybl-dot-net-exe:
@@ -72,6 +85,14 @@ executables:
       - -with-rtsopts=-N
     dependencies:
       - rybl-dot-net
+    when:
+      - condition: flag(dev)
+        then:
+          cpp-options:
+            - -DDEVELOPMENT
+        else:
+          cpp-options:
+            - -DPRODUCTION
 
 tests:
   rybl-dot-net-test:

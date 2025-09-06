@@ -1,6 +1,6 @@
 cabal-version: 2.2
 
--- This file has been generated from package.yaml by hpack version 0.38.0.
+-- This file has been generated from package.yaml by hpack version 0.38.1.
 --
 -- see: https://github.com/sol/hpack
 
@@ -22,6 +22,10 @@ extra-source-files:
 source-repository head
   type: git
   location: https://github.com/rybla/rybl-dot-net
+
+flag dev
+  manual: True
+  default: False
 
 library
   exposed-modules:
@@ -77,6 +81,10 @@ library
     , transformers
     , uri-encode
   default-language: Haskell2010
+  if flag(dev)
+    cpp-options: -DDEVELOPMENT
+  else
+    cpp-options: -DPRODUCTION
 
 executable rybl-dot-net-exe
   main-is: Main.hs
@@ -123,6 +131,10 @@ executable rybl-dot-net-exe
     , transformers
     , uri-encode
   default-language: Haskell2010
+  if flag(dev)
+    cpp-options: -DDEVELOPMENT
+  else
+    cpp-options: -DPRODUCTION
 
 test-suite rybl-dot-net-test
   type: exitcode-stdio-1.0
