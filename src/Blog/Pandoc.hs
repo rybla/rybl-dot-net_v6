@@ -47,3 +47,6 @@ throwPandocError = throwError . PandocAppError . Text.pack . render
 
 fromDocError :: (PandocMonad m) => ExceptT Doc m a -> m a
 fromDocError = runExceptT >=> either throwPandocError return
+
+pandocBlocks :: Pandoc -> [Block]
+pandocBlocks (Pandoc _ blocks) = blocks

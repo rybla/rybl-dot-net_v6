@@ -36,6 +36,7 @@ library
       Blog.Paths
       Blog.PathsTh
       Blog.Test
+      Blog.Tree
       Blog.Utility
       Service.Favicon
       Service.Favicon.Favicone
