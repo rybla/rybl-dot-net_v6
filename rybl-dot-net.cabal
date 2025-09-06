@@ -37,6 +37,9 @@ library
       Blog.Parse.Post
       Blog.Paths
       Blog.PathsTh
+      Blog.Print.Post
+      Blog.Process.Common
+      Blog.Process.Post
       Blog.Test
       Blog.Tree
       Blog.Utility

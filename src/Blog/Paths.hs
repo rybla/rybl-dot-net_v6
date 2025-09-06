@@ -6,16 +6,21 @@ module Blog.Paths where
 
 import qualified Blog.Config as Config
 import Blog.PathsTh (MakeRootParams (..), makeRoot)
+import Blog.Utility (fromMaybe, logM)
+import Control.Monad.Except (MonadError)
 import Control.Monad.IO.Class (MonadIO, liftIO)
+import qualified Data.Aeson as Aeson
+import qualified Data.ByteString.Lazy as ByteString
 import Data.Function ((&))
-import Data.Functor ((<&>))
-import Data.List (isSuffixOf)
 import qualified Data.Maybe as Maybe
+import Data.Text (Text)
+import qualified Data.Text.IO as Text
 import Data.Tree (Tree (..))
 import Network.URI (URI)
 import qualified Network.URI as URI
-import System.Directory (listDirectory)
-import System.FilePath ((</>))
+import System.FilePath ((<.>), (</>))
+import Text.Pandoc (Pandoc)
+import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
 
 baseUri :: URI
 baseUri = case Config.mode of
@@ -56,13 +61,55 @@ makeRoot
       }
   ]
   [ Node "post_markdown" [],
+    Node "post_data" [],
     Node "post" [],
     Node "favicon" [],
     Node "template" []
   ]
 
-listPostFilePaths :: (MonadIO m) => m [FilePath]
-listPostFilePaths =
-  listDirectory offline.post_markdown.here
+readPostMarkdown :: (MonadIO m) => FilePath -> m Text
+readPostMarkdown postId = do
+  logM $ "readPostMarkdown:" <+> text fp
+  Text.readFile fp & liftIO
+  where
+    fp = offline.post_markdown.here </> postId & toMarkdownFileName
+
+writePostData :: (MonadIO m) => FilePath -> Pandoc -> m ()
+writePostData postId doc = liftIO do
+  logM $ "writePostData:" <+> text fp
+  ByteString.writeFile fp (Aeson.encode doc)
+  where
+    fp = offline.post_data.here </> postId & toDataFileName
+
+readPostData :: (MonadIO m, MonadError Doc m) => FilePath -> m Pandoc
+readPostData postId = do
+  logM $ "readPostData:" <+> text fp
+  ByteString.readFile fp
     & liftIO
-    <&> (((offline.post_markdown.here </>) <$>) . filter (".md" `isSuffixOf`))
+    >>= return . Aeson.decode
+    >>= fromMaybe ("Failed to parse post data from file:" <+> text fp)
+  where
+    fp = offline.post_data.here </> postId & toDataFileName
+
+readTemplateHtml :: (MonadIO m) => FilePath -> m Text
+readTemplateHtml templateId = do
+  logM $ "readTemplateHtml:" <+> text fp
+  Text.readFile fp & liftIO
+  where
+    fp = offline.template.here </> templateId & toHtmlFileName
+
+writePostHtml :: (MonadIO m) => FilePath -> Text -> m ()
+writePostHtml postId htmlText = do
+  logM $ "writePostHtml:" <+> text fp
+  Text.writeFile fp htmlText & liftIO
+  where
+    fp = offline.post.here </> postId & toHtmlFileName
+
+toMarkdownFileName :: FilePath -> FilePath
+toMarkdownFileName = (<.> ".md")
+
+toDataFileName :: FilePath -> FilePath
+toDataFileName = (<.> ".json")
+
+toHtmlFileName :: FilePath -> FilePath
+toHtmlFileName = (<.> ".html")

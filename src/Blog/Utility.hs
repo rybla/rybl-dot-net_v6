@@ -3,6 +3,7 @@
 module Blog.Utility where
 
 import Control.Monad.Except (MonadError, throwError)
+import Control.Monad.IO.Class
 import Data.Function ((&))
 import qualified Data.List as List
 import qualified Data.Map as Map
@@ -56,3 +57,6 @@ parseUriM :: (MonadError Doc m) => String -> m URI
 parseUriM str = case URI.parseURI str of
   Nothing -> throwError $ text "Invalid URI:" <+> doubleQuotes (text str)
   Just uri -> return uri
+
+logM :: (MonadIO m) => Doc -> m ()
+logM doc = putStrLn (render doc) & liftIO

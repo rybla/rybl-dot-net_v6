@@ -1,4 +1,5 @@
 .stack-work/
 *~
 asset/favicon
+asset/post_data
 .DS_Store

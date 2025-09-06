@@ -7,55 +7,44 @@
 module Blog.Parse.Post where
 
 import Blog.Pandoc (runPandocM)
-import Blog.Parse.Common (addLinkFavicons, addReferencesSection, addTableOfContents)
+import qualified Blog.Paths as Paths
+import Blog.Utility (logM)
 import Control.Lens
 import Control.Monad.Except (MonadError)
-import Control.Monad.IO.Class (liftIO)
-import Control.Monad.State (MonadState, gets)
 import Control.Monad.Writer (MonadIO)
 import Data.Map (Map)
 import qualified Data.Map as Map
-import Data.Text (Text)
-import qualified Network.HTTP.Client as Network
-import qualified Network.HTTP.Client.TLS as Network
 import Network.URI (URI)
-import Service.Favicon (FaviconService)
 import Text.Pandoc (Pandoc (..))
 import qualified Text.Pandoc as Pandoc
-import Text.PrettyPrint.HughesPJClass (Doc)
+import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
 
 data Link
   = InternalLink String
   | ExternalLink URI
 
-data ParsePostEnv = ParsePostEnv
-  { manager :: Network.Manager,
-    _outLinks :: Map String [Link],
+data Env = Env
+  { _outLinks :: Map String [Link],
     _inLinks :: Map String [Link]
   }
 
-newParsePostEnv :: Network.Manager -> ParsePostEnv
-newParsePostEnv manager = do
-  ParsePostEnv
-    { manager,
-      _outLinks = Map.empty,
+newEnv :: Env
+newEnv = do
+  Env
+    { _outLinks = Map.empty,
       _inLinks = Map.empty
     }
 
-newParsePostEnvM :: (MonadIO m) => m ParsePostEnv
-newParsePostEnvM = do
-  manager <- Network.newManager Network.tlsManagerSettings & liftIO
-  return $ newParsePostEnv manager
-
-makeLenses ''ParsePostEnv
+makeLenses ''Env
 
 parsePost ::
-  forall s m.
-  (FaviconService s, MonadIO m, MonadError Doc m, MonadState ParsePostEnv m) =>
-  Text -> m Pandoc
-parsePost txt = do
-  manager <- gets manager
-  doc0 <-
+  forall m.
+  (MonadIO m, MonadError Doc m) =>
+  FilePath -> m Pandoc
+parsePost postId = do
+  logM ("parsePost: " <+> text postId)
+  txt <- Paths.readPostMarkdown postId
+  doc <-
     txt
       & Pandoc.readMarkdown
         Pandoc.def
@@ -63,10 +52,7 @@ parsePost txt = do
             Pandoc.readerExtensions
           }
       & runPandocM
-  doc1 <- doc0 & addReferencesSection
-  doc2 <- doc1 & addLinkFavicons @s manager
-  doc3 <- doc2 & addTableOfContents
-  return doc3
+  return doc
   where
     readerExtensions =
       Pandoc.extensionsFromList
