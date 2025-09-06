@@ -5,3 +5,86 @@
   height: 1em;
   width: 1em;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0.5em 0;
+  padding: 0;
+}
+
+p {
+  margin: 0.5em 0;
+}
+
+.warning {
+  padding: 1em;
+  border: 1px solid red;
+  background-color: color-mix(in hsl, white, black 5%);
+}
+
+content {
+  p > img {
+    width: 100%;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.title-box {
+  padding: 1em;
+  background-color: color-mix(in hsl, white, black 10%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+
+  .title {
+    font-size: 1.5em;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+
+    .tag {
+      padding: 0.1em 0.2em;
+      border: 1px solid black;
+    }
+
+    .tag::before {
+      content: "#";
+    }
+  }
+}
+
+content {
+  padding: 1em;
+
+  max-width: 600px;
+  margin: auto;
+}
+
+header,
+footer {
+  padding: 1em;
+  background-color: color-mix(in hsl, white, black 10%);
+}

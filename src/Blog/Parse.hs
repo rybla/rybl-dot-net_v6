@@ -47,7 +47,7 @@ parsePost txt = do
           Pandoc.Ext_strikeout,
           Pandoc.Ext_subscript,
           Pandoc.Ext_superscript,
-          Pandoc.Ext_footnotes,
+          -- Pandoc.Ext_footnotes,
           -- groupings
           Pandoc.Ext_tex_math_dollars,
           Pandoc.Ext_backtick_code_blocks,
@@ -83,7 +83,7 @@ addReferencesSection doc = do
     Pandoc meta blocks -> do
       return . Pandoc meta $
         blocks
-          ++ [ Pandoc.Header 2 mempty [Pandoc.Str "References"],
+          ++ [ Pandoc.Header 1 mempty [Pandoc.Str "References"],
                Pandoc.BulletList $ refs <&> \(x, _url) -> [Pandoc.Plain [x]]
              ]
 

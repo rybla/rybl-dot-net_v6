@@ -5,238 +5,175 @@
     <link rel="stylesheet" href="post.css" />
   </head>
   <body>
-    <header>
-      <div class="title">Example Post</div>
-      <div class="tags">
-                <div class="tag">example</div>
-                <div class="tag">markdown</div>
-                <div class="tag">post</div>
-              </div>
-    </header>
-    <content><h1>h1 Heading 8-)</h1>
-<h2>h2 Heading</h2>
-<h3>h3 Heading</h3>
-<h4>h4 Heading</h4>
-<h5>h5 Heading</h5>
-<h6>h6 Heading</h6>
-<h2>Horizontal Rules</h2>
-<hr />
-<hr />
-<hr />
-<h2>Typographic replacements</h2>
-<p>Enable typographer option to see result.</p>
-<p>(c) (C) (r) (R) (tm) (TM) (p) (P) +-</p>
-<p>test.. test... test..... test?..... test!....</p>
-<p>!!!!!! ???? ,, -- ---</p>
-<p>"Smartypants, double quotes" and 'single quotes'</p>
-<h2>Emphasis</h2>
-<p><strong>This is bold text</strong></p>
-<p><strong>This is bold text</strong></p>
-<p><em>This is italic text</em></p>
-<p><em>This is italic text</em></p>
-<p><del>Strikethrough</del></p>
-<h2>Blockquotes</h2>
-<blockquote>
-<p>Blockquotes can also be nested...</p>
-<blockquote>
-<p>...by using additional greater-than signs right next to each
-other...</p>
-<blockquote>
-<p>...or with spaces between arrows.</p>
-</blockquote>
-</blockquote>
-</blockquote>
-<h2>Lists</h2>
-<p>Unordered</p>
-<ul>
-<li>Create a list by starting a line with <code>+</code>,
-<code>-</code>, or <code>*</code></li>
-<li>Sub-lists are made by indenting 2 spaces:
-<ul>
-<li>Marker character change forces new list start:
-<ul>
-<li>Ac tristique libero volutpat at</li>
-<li>Facilisis in pretium nisl aliquet</li>
-<li>Nulla volutpat aliquam velit</li>
-</ul></li>
-</ul></li>
-<li>Very easy!</li>
-</ul>
-<p>Ordered</p>
-<ol>
-<li><p>Lorem ipsum dolor sit amet</p></li>
-<li><p>Consectetur adipiscing elit</p></li>
-<li><p>Integer molestie lorem at massa</p></li>
-<li><p>You can use sequential numbers...</p></li>
-<li><p>...or keep all the numbers as <code>1.</code></p></li>
-</ol>
-<p>Start numbering with offset:</p>
-<ol>
-<li>foo</li>
-<li>bar</li>
-</ol>
-<h2>Code</h2>
-<p>Inline <code>code</code></p>
-<p>Indented code</p>
-<pre><code>// Some comments
-line 1 of code
-line 2 of code
-line 3 of code</code></pre>
-<p>Block code "fences"</p>
-<pre><code>Sample text here...</code></pre>
-<p>Syntax highlighting</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> foo <span class="op">=</span> <span class="kw">function</span> (bar) {</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> bar<span class="op">++;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="fu">foo</span>(<span class="dv">5</span>))<span class="op">;</span></span></code></pre></div>
-<h2>Tables</h2>
-<p>| Option | Description | | ------ |
--------------------------------------------------------------------------
-| | data | path to data files to supply the data that will be passed
-into templates. | | engine | engine to be used for processing templates.
-Handlebars is the default. | | ext | extension to be used for dest
-files. |</p>
-<p>Right aligned columns</p>
-<p>| Option | Description | | -----: |
-------------------------------------------------------------------------:
-| | data | path to data files to supply the data that will be passed
-into templates. | | engine | engine to be used for processing templates.
-Handlebars is the default. | | ext | extension to be used for dest
-files. |</p>
-<h2>Links</h2>
-<p><a href="https://google.com"><img
-src="http://localhost:8080/favicon/https%253A%252F%252Ficons.favicone.com%252Fi%252Fwww.google.com%252Ffavicon.ico"
-class="favicon"
-alt="https://icons.favicone.com/i/www.google.com/favicon.ico" />link
-text</a></p>
-<p><a href="https://google.com"><img
-src="http://localhost:8080/favicon/https%253A%252F%252Ficons.favicone.com%252Fi%252Fwww.google.com%252Ffavicon.ico"
-class="favicon"
-alt="https://icons.favicone.com/i/www.google.com/favicon.ico" />link
-with title</a></p>
-<p>Autoconverted link https://github.com/nodeca/pica (enable linkify to
-see)</p>
-<h2>Images</h2>
-<p><img src="https://octodex.github.com/images/minion.png"
-alt="Minion" /> <img
-src="https://octodex.github.com/images/stormtroopocat.jpg"
-title="The Stormtroopocat" alt="Stormtroopocat" /></p>
-<p>Like links, Images also have a footnote style syntax</p>
-<p><img src="https://octodex.github.com/images/dojocat.jpg"
-title="The Dojocat" alt="Alt text" /></p>
-<p>With a reference later in the document defining the URL location:</p>
-<h2>Plugins</h2>
-<p>The killer feature of <code>markdown-it</code> is very effective
-support of <a
-href="https://www.npmjs.org/browse/keyword/markdown-it-plugin"><img
-src="http://localhost:8080/favicon/https%253A%252F%252Ficons.favicone.com%252Fi%252Fstatic-production.npmjs.com%252Fda3ab40fb0861d15c83854c29f5f2962.png"
-class="favicon"
-alt="https://icons.favicone.com/i/static-production.npmjs.com/da3ab40fb0861d15c83854c29f5f2962.png" />syntax
-plugins</a>.</p>
-<h3>Emojies</h3>
-<blockquote>
-<p>Classic markup: :wink: :cry: :laughing: :yum:</p>
-<p>Shortcuts (emoticons): :-) :-( 8-) ;)</p>
-</blockquote>
-<p>see <a
-href="https://github.com/markdown-it/markdown-it-emoji#change-output"><img
-src="http://localhost:8080/favicon/https%253A%252F%252Ficons.favicone.com%252Fi%252Fgithub.githubassets.com%252Ffavicons%252Ffavicon.svg"
-class="favicon"
-alt="https://icons.favicone.com/i/github.githubassets.com/favicons/favicon.svg" />how
-to change output</a> with twemoji.</p>
-<h3>Subscript / Superscript</h3>
-<ul>
-<li>19<sup>th</sup></li>
-<li>H<sub>2</sub>O</li>
-</ul>
-<h3>&lt;ins&gt;</h3>
-<p>++Inserted text++</p>
-<h3>&lt;mark&gt;</h3>
-<p><mark>Marked text</mark></p>
-<h3>Footnotes</h3>
-<p>Footnote 1 link<a href="#fn1" class="footnote-ref" id="fnref1"
-role="doc-noteref"><sup>1</sup></a>.</p>
-<p>Footnote 2 link<a href="#fn2" class="footnote-ref" id="fnref2"
-role="doc-noteref"><sup>2</sup></a>.</p>
-<p>Inline footnote^[Text of inline footnote] definition.</p>
-<p>Duplicated footnote reference<a href="#fn3" class="footnote-ref"
-id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
-<h3>Abbreviations</h3>
-<p>This is HTML abbreviation example.</p>
-<p>It converts "HTML", but keep intact partial entries like "xxxHTMLyyy"
-and so on.</p>
-<p>*[HTML]: Hyper Text Markup Language</p>
-<h3>Custom containers</h3>
-<div class="warning">
-<p><em>here be dragons</em></p>
-</div>
-<h3>Custom code blocks</h3>
-<pre class="my-dsl"><code>this
-  is
-  my
-  custom
-    dsl</code></pre>
-<h3>Math</h3>
-<p>Inline math: <span class="math inline">$\int_{x=0}^\infty \frac{1}{x
-- 1}$</span>.</p>
-<p>Display math:</p>
-<p><span class="math display">$$
-\int_{x=0}^\infty \frac{1}{x - 1}
-$$</span></p>
-<h2>References</h2>
-<ul>
-<li><a href="https://google.com"><img
-src="http://localhost:8080/favicon/https%253A%252F%252Ficons.favicone.com%252Fi%252Fwww.google.com%252Ffavicon.ico"
-class="favicon"
-alt="https://icons.favicone.com/i/www.google.com/favicon.ico" />link
-text</a></li>
-<li><a href="https://google.com"><img
-src="http://localhost:8080/favicon/https%253A%252F%252Ficons.favicone.com%252Fi%252Fwww.google.com%252Ffavicon.ico"
-class="favicon"
-alt="https://icons.favicone.com/i/www.google.com/favicon.ico" />link
-with title</a></li>
-<li><a href="https://octodex.github.com/images/minion.png"><img
-src="http://localhost:8080/favicon/https%253A%252F%252Ficons.favicone.com%252Fi%252Foctodex.github.com%252Ffavicon.ico"
-class="favicon"
-alt="https://icons.favicone.com/i/octodex.github.com/favicon.ico" />Minion</a></li>
-<li><a href="https://octodex.github.com/images/stormtroopocat.jpg"
-title="The Stormtroopocat"><img
-src="http://localhost:8080/favicon/https%253A%252F%252Ficons.favicone.com%252Fi%252Foctodex.github.com%252Ffavicon.ico"
-class="favicon"
-alt="https://icons.favicone.com/i/octodex.github.com/favicon.ico" />Stormtroopocat</a></li>
-<li><a href="https://octodex.github.com/images/dojocat.jpg"
-title="The Dojocat"><img
-src="http://localhost:8080/favicon/https%253A%252F%252Ficons.favicone.com%252Fi%252Foctodex.github.com%252Ffavicon.ico"
-class="favicon"
-alt="https://icons.favicone.com/i/octodex.github.com/favicon.ico" />Alt
-text</a></li>
-<li><a
-href="https://www.npmjs.org/browse/keyword/markdown-it-plugin"><img
-src="http://localhost:8080/favicon/https%253A%252F%252Ficons.favicone.com%252Fi%252Fstatic-production.npmjs.com%252Fda3ab40fb0861d15c83854c29f5f2962.png"
-class="favicon"
-alt="https://icons.favicone.com/i/static-production.npmjs.com/da3ab40fb0861d15c83854c29f5f2962.png" />syntax
-plugins</a></li>
-<li><a
-href="https://github.com/markdown-it/markdown-it-emoji#change-output"><img
-src="http://localhost:8080/favicon/https%253A%252F%252Ficons.favicone.com%252Fi%252Fgithub.githubassets.com%252Ffavicons%252Ffavicon.svg"
-class="favicon"
-alt="https://icons.favicone.com/i/github.githubassets.com/favicons/favicon.svg" />how
-to change output</a></li>
-</ul>
-<section id="footnotes" class="footnotes footnotes-end-of-document"
-role="doc-endnotes">
-<hr />
-<ol>
-<li id="fn1"><p>Footnote <strong>can have markup</strong></p>
-<p>and multiple paragraphs.<a href="#fnref1" class="footnote-back"
-role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Footnote text.<a href="#fnref2" class="footnote-back"
-role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Footnote text.<a href="#fnref3" class="footnote-back"
-role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></content>
+    <header>This is the header</header>
+    <content>
+      <div class="title-box">
+        <div class="title">Example Post</div>
+        <div class="tags">
+                    <div class="tag">example</div>
+                    <div class="tag">markdown</div>
+                    <div class="tag">post</div>
+                  </div>
+      </div>
+      <h1>h1 Heading 8-)</h1>
+      <p>Sample content.</p>
+      <h2>h2 Heading</h2>
+      <p>Sample content.</p>
+      <h3>h3 Heading</h3>
+      <p>Sample content.</p>
+      <h4>h4 Heading</h4>
+      <p>Sample content.</p>
+      <h5>h5 Heading</h5>
+      <p>Sample content.</p>
+      <h6>h6 Heading</h6>
+      <p>Sample content.</p>
+      <h2>Horizontal Rules</h2>
+      <p>Sample content.</p>
+      <hr />
+      <hr />
+      <hr />
+      <p>Sample content.</p>
+      <h2>Emphasis</h2>
+      <p><strong>This is bold text</strong></p>
+      <p><strong>This is bold text</strong></p>
+      <p><em>This is italic text</em></p>
+      <p><em>This is italic text</em></p>
+      <p><del>Strikethrough</del></p>
+      <h2>Blockquotes</h2>
+      <blockquote>
+      <p>Blockquotes can also be nested...</p>
+      <blockquote>
+      <p>...by using additional greater-than signs right next to each
+      other...</p>
+      <blockquote>
+      <p>...or with spaces between arrows.</p>
+      </blockquote>
+      </blockquote>
+      </blockquote>
+      <h2>Lists</h2>
+      <p>Unordered</p>
+      <ul>
+      <li>Create a list by starting a line with <code>+</code>,
+      <code>-</code>, or <code>*</code></li>
+      <li>Sub-lists are made by indenting 2 spaces:
+      <ul>
+      <li>Marker character change forces new list start:
+      <ul>
+      <li>Ac tristique libero volutpat at</li>
+      <li>Facilisis in pretium nisl aliquet</li>
+      <li>Nulla volutpat aliquam velit</li>
+      </ul></li>
+      </ul></li>
+      <li>Very easy!</li>
+      </ul>
+      <p>Ordered</p>
+      <ol>
+      <li><p>Lorem ipsum dolor sit amet</p></li>
+      <li><p>Consectetur adipiscing elit</p></li>
+      <li><p>Integer molestie lorem at massa</p></li>
+      <li><p>You can use sequential numbers...</p></li>
+      <li><p>...or keep all the numbers as <code>1.</code></p></li>
+      </ol>
+      <p>Start numbering with offset:</p>
+      <ol>
+      <li>foo</li>
+      <li>bar</li>
+      </ol>
+      <h2>Code</h2>
+      <p>Inline <code>code</code></p>
+      <p>Indented code</p>
+      <pre><code>// Some comments
+      line 1 of code
+      line 2 of code
+      line 3 of code</code></pre>
+      <p>Block code "fences"</p>
+      <pre><code>Sample text here...</code></pre>
+      <p>Syntax highlighting</p>
+      <div class="sourceCode" id="cb3"><pre class="sourceCode ts"><code class="sourceCode typescript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>functin <span class="fu">f</span>() {</span>
+      <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></span>
+      <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+      <div class="sourceCode" id="cb4"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">var</span> foo <span class="op">=</span> <span class="kw">function</span> (bar) {</span>
+      <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> bar<span class="op">++;</span></span>
+      <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+      <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+      <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="fu">foo</span>(<span class="dv">5</span>))<span class="op">;</span></span></code></pre></div>
+      <h2>Links</h2>
+      <p><a href="https://google.com"><img
+      src="http://localhost:8080/favicon/https%253A%252F%252Ficons.favicone.com%252Fi%252Fwww.google.com%252Ffavicon.ico"
+      class="favicon"
+      alt="https://icons.favicone.com/i/www.google.com/favicon.ico" />link
+      text</a></p>
+      <p><a href="https://google.com"><img
+      src="http://localhost:8080/favicon/https%253A%252F%252Ficons.favicone.com%252Fi%252Fwww.google.com%252Ffavicon.ico"
+      class="favicon"
+      alt="https://icons.favicone.com/i/www.google.com/favicon.ico" />link
+      with title</a></p>
+      <p>Autoconverted link https://github.com/nodeca/pica (enable linkify to
+      see)</p>
+      <h2>Images</h2>
+      <p><img src="https://octodex.github.com/images/minion.png"
+      alt="Minion" /> <img
+      src="https://octodex.github.com/images/stormtroopocat.jpg"
+      title="The Stormtroopocat" alt="Stormtroopocat" /></p>
+      <p>Like links, Images also have a footnote style syntax</p>
+      <p><img src="https://octodex.github.com/images/dojocat.jpg"
+      title="The Dojocat" alt="Alt text" /></p>
+      <p>With a reference later in the document defining the URL location:</p>
+      <h3>Subscript / Superscript</h3>
+      <ul>
+      <li>19<sup>th</sup></li>
+      <li>H<sub>2</sub>O</li>
+      </ul>
+      <h3>&lt;ins&gt;</h3>
+      <p>++Inserted text++</p>
+      <h3>&lt;mark&gt;</h3>
+      <p><mark>Marked text</mark></p>
+      <h3>Custom containers</h3>
+      <div class="warning">
+      <p><em>here be dragons</em></p>
+      </div>
+      <h3>Custom code blocks</h3>
+      <pre class="my-dsl"><code>this
+        is
+        my
+        custom
+          dsl</code></pre>
+      <h3>Math</h3>
+      <p>Inline math: <span class="math inline">$\int_{x=0}^\infty \frac{1}{x
+      - 1}$</span>.</p>
+      <p>Display math:</p>
+      <p><span class="math display">$$
+      \int_{x=0}^\infty \frac{1}{x - 1}
+      $$</span></p>
+      <h1>References</h1>
+      <ul>
+      <li><a href="https://google.com"><img
+      src="http://localhost:8080/favicon/https%253A%252F%252Ficons.favicone.com%252Fi%252Fwww.google.com%252Ffavicon.ico"
+      class="favicon"
+      alt="https://icons.favicone.com/i/www.google.com/favicon.ico" />link
+      text</a></li>
+      <li><a href="https://google.com"><img
+      src="http://localhost:8080/favicon/https%253A%252F%252Ficons.favicone.com%252Fi%252Fwww.google.com%252Ffavicon.ico"
+      class="favicon"
+      alt="https://icons.favicone.com/i/www.google.com/favicon.ico" />link
+      with title</a></li>
+      <li><a href="https://octodex.github.com/images/minion.png"><img
+      src="http://localhost:8080/favicon/https%253A%252F%252Ficons.favicone.com%252Fi%252Foctodex.github.com%252Ffavicon.ico"
+      class="favicon"
+      alt="https://icons.favicone.com/i/octodex.github.com/favicon.ico" />Minion</a></li>
+      <li><a href="https://octodex.github.com/images/stormtroopocat.jpg"
+      title="The Stormtroopocat"><img
+      src="http://localhost:8080/favicon/https%253A%252F%252Ficons.favicone.com%252Fi%252Foctodex.github.com%252Ffavicon.ico"
+      class="favicon"
+      alt="https://icons.favicone.com/i/octodex.github.com/favicon.ico" />Stormtroopocat</a></li>
+      <li><a href="https://octodex.github.com/images/dojocat.jpg"
+      title="The Dojocat"><img
+      src="http://localhost:8080/favicon/https%253A%252F%252Ficons.favicone.com%252Fi%252Foctodex.github.com%252Ffavicon.ico"
+      class="favicon"
+      alt="https://icons.favicone.com/i/octodex.github.com/favicon.ico" />Alt
+      text</a></li>
+      </ul>
+    </content>
     <footer>This is the footer</footer>
   </body>
 </html>

@@ -5,15 +5,18 @@
     <link rel="stylesheet" href="${stylesheetHref}" />
   </head>
   <body>
-    <header>
-      <div class="title">${title}</div>
-      <div class="tags">
-        ${for(tags)}
-        <div class="tag">${it}</div>
-        ${endfor}
+    <header>This is the header</header>
+    <content>
+      <div class="title-box">
+        <div class="title">${title}</div>
+        <div class="tags">
+          ${for(tags)}
+          <div class="tag">${it}</div>
+          ${endfor}
+        </div>
       </div>
-    </header>
-    <content>${content}</content>
+      ${content}
+    </content>
     <footer>This is the footer</footer>
   </body>
 </html>

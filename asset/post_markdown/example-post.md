@@ -9,35 +9,39 @@ tags:
 
 # h1 Heading 8-)
 
+Sample content.
+
 ## h2 Heading
+
+Sample content.
 
 ### h3 Heading
 
+Sample content.
+
 #### h4 Heading
+
+Sample content.
 
 ##### h5 Heading
 
+Sample content.
+
 ###### h6 Heading
+
+Sample content.
 
 ## Horizontal Rules
 
----
+Sample content.
 
 ---
 
 ---
 
-## Typographic replacements
+---
 
-Enable typographer option to see result.
-
-(c) (C) (r) (R) (tm) (TM) (p) (P) +-
-
-test.. test... test..... test?..... test!....
-
-!!!!!! ???? ,, -- ---
-
-"Smartypants, double quotes" and 'single quotes'
+Sample content.
 
 ## Emphasis
 
@@ -104,6 +108,12 @@ Sample text here...
 
 Syntax highlighting
 
+```ts
+functin f() {
+  return 1;
+}
+```
+
 ```js
 var foo = function (bar) {
   return bar++;
@@ -111,22 +121,6 @@ var foo = function (bar) {
 
 console.log(foo(5));
 ```
-
-## Tables
-
-| Option | Description                                                               |
-| ------ | ------------------------------------------------------------------------- |
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default.    |
-| ext    | extension to be used for dest files.                                      |
-
-Right aligned columns
-
-| Option |                                                               Description |
-| -----: | ------------------------------------------------------------------------: |
-|   data | path to data files to supply the data that will be passed into templates. |
-| engine |    engine to be used for processing templates. Handlebars is the default. |
-|    ext |                                      extension to be used for dest files. |
 
 ## Links
 
@@ -149,19 +143,6 @@ With a reference later in the document defining the URL location:
 
 [id]: https://octodex.github.com/images/dojocat.jpg "The Dojocat"
 
-## Plugins
-
-The killer feature of `markdown-it` is very effective support of
-[syntax plugins](https://www.npmjs.org/browse/keyword/markdown-it-plugin).
-
-### Emojies
-
-> Classic markup: :wink: :cry: :laughing: :yum:
->
-> Shortcuts (emoticons): :-) :-( 8-) ;)
-
-see [how to change output](https://github.com/markdown-it/markdown-it-emoji#change-output) with twemoji.
-
 ### Subscript / Superscript
 
 - 19^th^
@@ -174,30 +155,6 @@ see [how to change output](https://github.com/markdown-it/markdown-it-emoji#chan
 ### <mark>
 
 ==Marked text==
-
-### Footnotes
-
-Footnote 1 link[^first].
-
-Footnote 2 link[^second].
-
-Inline footnote^[Text of inline footnote] definition.
-
-Duplicated footnote reference[^second].
-
-[^first]: Footnote **can have markup**
-
-    and multiple paragraphs.
-
-[^second]: Footnote text.
-
-### Abbreviations
-
-This is HTML abbreviation example.
-
-It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
-
-\*[HTML]: Hyper Text Markup Language
 
 ### Custom containers
 
