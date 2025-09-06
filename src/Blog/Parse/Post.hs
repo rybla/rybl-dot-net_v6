@@ -10,6 +10,7 @@ import Blog.Pandoc (runPandocM)
 import qualified Blog.Paths as Paths
 import Blog.Utility (logM)
 import Control.Lens
+import Control.Monad (void)
 import Control.Monad.Except (MonadError)
 import Control.Monad.Writer (MonadIO)
 import Data.Map (Map)
@@ -17,7 +18,9 @@ import qualified Data.Map as Map
 import Network.URI (URI)
 import Text.Pandoc (Pandoc (..))
 import qualified Text.Pandoc as Pandoc
-import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
+import qualified Text.Pandoc.Walk as Pandoc
+import Text.PrettyPrint.HughesPJClass (Doc, (<+>), pPrint)
+import Blog.Common
 
 data Link
   = InternalLink String
@@ -40,9 +43,9 @@ makeLenses ''Env
 parsePost ::
   forall m.
   (MonadIO m, MonadError Doc m) =>
-  FilePath -> m Pandoc
+  PostId -> m Pandoc
 parsePost postId = do
-  logM ("parsePost: " <+> text postId)
+  logM $ "parsePost: " <+> pPrint postId
   txt <- Paths.readPostMarkdown postId
   doc <-
     txt
@@ -52,6 +55,13 @@ parsePost postId = do
             Pandoc.readerExtensions
           }
       & runPandocM
+
+  void $
+    doc & Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
+      Pandoc.Link _attr kids (target, _) -> do
+        return x
+      _ -> return x
+
   return doc
   where
     readerExtensions =

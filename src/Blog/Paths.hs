@@ -4,6 +4,7 @@
 
 module Blog.Paths where
 
+import Blog.Common
 import qualified Blog.Config as Config
 import Blog.PathsTh (MakeRootParams (..), makeRoot)
 import Blog.Utility (fromMaybe, logM)
@@ -67,21 +68,21 @@ makeRoot
     Node "template" []
   ]
 
-readPostMarkdown :: (MonadIO m) => FilePath -> m Text
+readPostMarkdown :: (MonadIO m) => PostId -> m Text
 readPostMarkdown postId = do
   logM $ "readPostMarkdown:" <+> text fp
   Text.readFile fp & liftIO
   where
-    fp = offline.post_markdown.here </> postId & toMarkdownFileName
+    fp = offline.post_markdown.here </> (postId & unPostId & toMarkdownFileName)
 
-writePostData :: (MonadIO m) => FilePath -> Pandoc -> m ()
+writePostData :: (MonadIO m) => PostId -> Pandoc -> m ()
 writePostData postId doc = liftIO do
   logM $ "writePostData:" <+> text fp
   ByteString.writeFile fp (Aeson.encode doc)
   where
-    fp = offline.post_data.here </> postId & toDataFileName
+    fp = offline.post_data.here </> (postId & unPostId & toDataFileName)
 
-readPostData :: (MonadIO m, MonadError Doc m) => FilePath -> m Pandoc
+readPostData :: (MonadIO m, MonadError Doc m) => PostId -> m Pandoc
 readPostData postId = do
   logM $ "readPostData:" <+> text fp
   ByteString.readFile fp
@@ -89,21 +90,21 @@ readPostData postId = do
     >>= return . Aeson.decode
     >>= fromMaybe ("Failed to parse post data from file:" <+> text fp)
   where
-    fp = offline.post_data.here </> postId & toDataFileName
+    fp = offline.post_data.here </> (postId & unPostId & toDataFileName)
 
 readTemplateHtml :: (MonadIO m) => FilePath -> m Text
 readTemplateHtml templateId = do
   logM $ "readTemplateHtml:" <+> text fp
   Text.readFile fp & liftIO
   where
-    fp = offline.template.here </> templateId & toHtmlFileName
+    fp = offline.template.here </> (templateId & toHtmlFileName)
 
-writePostHtml :: (MonadIO m) => FilePath -> Text -> m ()
+writePostHtml :: (MonadIO m) => PostId -> Text -> m ()
 writePostHtml postId htmlText = do
   logM $ "writePostHtml:" <+> text fp
   Text.writeFile fp htmlText & liftIO
   where
-    fp = offline.post.here </> postId & toHtmlFileName
+    fp = offline.post.here </> (postId & unPostId & toHtmlFileName)
 
 toMarkdownFileName :: FilePath -> FilePath
 toMarkdownFileName = (<.> ".md")

@@ -4,6 +4,7 @@
 
 module Blog.Build (main) where
 
+import Blog.Common
 import qualified Blog.Parse.Post as Parse.Post
 import qualified Blog.Paths as Paths
 import qualified Blog.Print.Post as Print.Post
@@ -35,7 +36,7 @@ main' = do
     (`execStateT` Parse.Post.newEnv) $
       listDirectory Paths.offline.post_markdown.here
         & liftIO
-        <&> foldMap ((^? suffixed ".md") >>> maybe [] return)
+        <&> foldMap ((^? suffixed ".md") >>> maybe [] (return . PostId))
         >>= traverse_ \postId ->
           Parse.Post.parsePost postId
             >>= Paths.writePostData postId
@@ -45,7 +46,7 @@ main' = do
     (`execStateT` Process.Post.newEnv parsePostEnv manager) $
       listDirectory Paths.offline.post_data.here
         & liftIO
-        <&> foldMap ((^? suffixed ".json") >>> maybe [] return)
+        <&> foldMap ((^? suffixed ".json") >>> maybe [] (return . PostId))
         >>= traverse_ \postId ->
           Process.Post.processPost postId
             >>= Paths.writePostData postId
@@ -53,6 +54,6 @@ main' = do
   -- print posts
   listDirectory Paths.offline.post_data.here
     & liftIO
-    <&> foldMap ((^? suffixed ".json") >>> maybe [] return)
+    <&> foldMap ((^? suffixed ".json") >>> maybe [] (return . PostId))
     >>= traverse_ \postId -> do
       Print.Post.printPost postId

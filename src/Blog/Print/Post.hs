@@ -2,6 +2,7 @@
 
 module Blog.Print.Post where
 
+import Blog.Common
 import Blog.Pandoc (fromDocError)
 import qualified Blog.Pandoc as Pandoc
 import qualified Blog.Paths as Paths
@@ -15,7 +16,7 @@ import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Shared as Pandoc
 import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
 
-printPost :: (MonadIO m, MonadError Doc m) => FilePath -> m ()
+printPost :: (MonadIO m, MonadError Doc m) => PostId -> m ()
 printPost postId = do
   postDoc <- Paths.readPostData postId
   templateText <- Paths.readTemplateHtml "post" -- Text.readFile (offline.template.here </> "post.html") & liftIO
