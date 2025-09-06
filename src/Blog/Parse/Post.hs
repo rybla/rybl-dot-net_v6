@@ -6,29 +6,35 @@
 
 module Blog.Parse.Post where
 
+import Blog.Common
 import Blog.Pandoc (runPandocM)
 import qualified Blog.Paths as Paths
-import Blog.Utility (logM)
+import Blog.Utility (logM, parseUriReferenceM)
 import Control.Lens
 import Control.Monad (void)
 import Control.Monad.Except (MonadError)
+import Control.Monad.State (MonadState)
 import Control.Monad.Writer (MonadIO)
 import Data.Map (Map)
 import qualified Data.Map as Map
+import Data.Text (Text)
+import qualified Data.Text as Text
 import Network.URI (URI)
+import System.FilePath ((</>))
 import Text.Pandoc (Pandoc (..))
 import qualified Text.Pandoc as Pandoc
+import qualified Text.Pandoc.Shared as Pandoc
 import qualified Text.Pandoc.Walk as Pandoc
-import Text.PrettyPrint.HughesPJClass (Doc, (<+>), pPrint)
-import Blog.Common
+import Text.PrettyPrint.HughesPJClass (Doc, pPrint, (<+>))
 
-data Link
-  = InternalLink String
-  | ExternalLink URI
+data Link = Link
+  { _linkLabel :: Pandoc.Inline,
+    _linkUri :: URI
+  }
 
 data Env = Env
-  { _outLinks :: Map String [Link],
-    _inLinks :: Map String [Link]
+  { _outLinks :: Map URI [Link],
+    _inLinks :: Map URI [Link]
   }
 
 newEnv :: Env
@@ -39,13 +45,15 @@ newEnv = do
     }
 
 makeLenses ''Env
+makeLenses ''Link
 
 parsePost ::
   forall m.
-  (MonadIO m, MonadError Doc m) =>
+  (MonadIO m, MonadError Doc m, MonadState Env m) =>
   PostId -> m Pandoc
 parsePost postId = do
   logM $ "parsePost: " <+> pPrint postId
+  postUri <- parseUriReferenceM ("" </> (postId & unPostId & Paths.toHtmlFileName))
   txt <- Paths.readPostMarkdown postId
   doc <-
     txt
@@ -58,7 +66,15 @@ parsePost postId = do
 
   void $
     doc & Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
-      Pandoc.Link _attr kids (target, _) -> do
+      Pandoc.Link _attr _kids (refText, _) -> do
+        ref <- refText & Text.unpack & parseUriReferenceM
+        let link = Link x ref
+        outLinks . at postUri %= maybe (Just [link]) (Just . (link :))
+        return x
+      Pandoc.Image _attr kids (refText, _) -> do
+        ref <- refText & Text.unpack & parseUriReferenceM
+        let link = Link (Pandoc.Link mempty kids (refText, "")) ref
+        outLinks . at postUri %= maybe (Just [link]) (Just . (link :))
         return x
       _ -> return x
 

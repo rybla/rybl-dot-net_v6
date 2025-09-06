@@ -5,6 +5,7 @@
 module Blog.Process.Common where
 
 import qualified Blog.Pandoc as Pandoc
+import Blog.Parse.Post (Link, linkLabel)
 import Blog.Tree
 import Blog.Utility (parseUriM)
 import Control.Lens (to, (.~), (^.), _1)
@@ -26,36 +27,24 @@ import qualified Text.Pandoc.Shared as Pandoc
 import qualified Text.Pandoc.Walk as Pandoc
 import Text.PrettyPrint.HughesPJClass (Doc)
 
-addReferencesSection :: (MonadError Doc m) => Pandoc -> m Pandoc
-addReferencesSection doc = do
-  refs :: [(Pandoc.Inline, Text)] <-
-    doc
-      & ( Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
-            Pandoc.Link _attr _kids (urlText, _target) -> do
-              _url <- urlText & Text.unpack & parseUriM
-              tell [(x, urlText)]
-              return x
-            Pandoc.Image _attr kids target@(urlText, _target) -> do
-              _url <- urlText & Text.unpack & parseUriM
-              tell [(Pandoc.Link mempty kids target, urlText)]
-              return x
-            _ -> return x
-        )
-      & execWriterT
+addReferencesSection :: (MonadError Doc m) => [Link] -> Pandoc -> m Pandoc
+addReferencesSection outLinks doc = do
   case doc of
     Pandoc meta blocks -> do
       return . Pandoc meta $
         blocks
           ++ [ Pandoc.Header 1 mempty [Pandoc.Str "References"],
-               Pandoc.BulletList $ refs <&> \(x, _url) -> [Pandoc.Plain [x]]
+               Pandoc.BulletList $
+                 outLinks <&> \link ->
+                   [Pandoc.Plain [link ^. linkLabel]]
              ]
 
-addLinkFavicons :: forall s m. (FaviconService s, MonadError Doc m, MonadIO m) => Network.Manager -> Pandoc -> m Pandoc
+addLinkFavicons :: forall fs m. (FaviconService fs, MonadError Doc m, MonadIO m) => Network.Manager -> Pandoc -> m Pandoc
 addLinkFavicons manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
   Pandoc.Link attr kids target@(urlText, _target) -> do
     url <- urlText & Text.unpack & parseUriM
     faviconInfo <-
-      manager & Favicon.cache @s url >>= \case
+      manager & Favicon.cache @fs url >>= \case
         Just faviconInfo -> return faviconInfo
         Nothing -> return Favicon.missingFaviconInfo
 

@@ -1,29 +1,56 @@
+{-# LANGUAGE AllowAmbiguousTypes #-}
 {-# LANGUAGE NamedFieldPuns #-}
+{-# LANGUAGE RankNTypes #-}
+{-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE TypeApplications #-}
 {-# OPTIONS_GHC -Wno-missing-export-lists #-}
+{-# OPTIONS_GHC -Wno-name-shadowing #-}
 
 module Blog.Process.Post where
 
 import Blog.Common
+import Blog.Parse.Post (outLinks)
 import qualified Blog.Parse.Post as Parse.Post
+import qualified Blog.Paths as Paths
+import Blog.Process.Common
+import Blog.Utility (parseUriReferenceM)
 import Control.Lens
-import Control.Monad.State (MonadState)
+import Control.Monad.Error.Class (MonadError)
+import Control.Monad.State (MonadIO, MonadState, gets)
+import qualified Data.Maybe as Maybe
 import qualified Network.HTTP.Client as Network
+import Service.Favicon (FaviconService)
+import System.FilePath ((</>))
 import Text.Pandoc (Pandoc)
+import Text.PrettyPrint.HughesPJClass (Doc)
 
 data Env = Env
-  { parseEnv :: Parse.Post.Env,
-    manager :: Network.Manager
+  { _parseEnv :: Parse.Post.Env,
+    _manager :: Network.Manager
   }
 
 newEnv :: Parse.Post.Env -> Network.Manager -> Env
-newEnv parseEnv manager =
+newEnv _parseEnv _manager =
   Env
-    { parseEnv,
-      manager
+    { _parseEnv,
+      _manager
     }
 
 makeLenses ''Env
 
-processPost :: (MonadState Env m) => PostId -> m Pandoc
-processPost postId = undefined
+processPost :: forall fs m. (FaviconService fs, MonadError Doc m, MonadState Env m, MonadIO m) => PostId -> m Pandoc
+processPost postId = do
+  postUri <- parseUriReferenceM ("" </> (postId & unPostId & Paths.toHtmlFileName))
+
+  post <- Paths.readPostData postId
+
+  ols <- gets (^. parseEnv . outLinks . at postUri . to (Maybe.fromMaybe []))
+  post <- post & addReferencesSection ols
+
+  mngr <- gets (^. manager)
+  post <- post & addLinkFavicons @fs mngr
+
+  post <- post & addTableOfContents
+
+  return post

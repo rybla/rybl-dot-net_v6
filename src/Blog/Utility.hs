@@ -58,5 +58,10 @@ parseUriM str = case URI.parseURI str of
   Nothing -> throwError $ text "Invalid URI:" <+> doubleQuotes (text str)
   Just uri -> return uri
 
+parseUriReferenceM :: (MonadError Doc m) => String -> m URI
+parseUriReferenceM str = case URI.parseURIReference str of
+  Nothing -> throwError $ text "Invalid URI Reference:" <+> doubleQuotes (text str)
+  Just uri -> return uri
+
 logM :: (MonadIO m) => Doc -> m ()
 logM doc = putStrLn (render doc) & liftIO

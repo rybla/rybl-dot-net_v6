@@ -1,5 +1,7 @@
 {-# LANGUAGE DuplicateRecordFields #-}
+{-# LANGUAGE QuasiQuotes #-}
 {-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE TemplateHaskellQuotes #-}
 {-# OPTIONS_GHC -Wno-missing-export-lists #-}
 
 module Blog.Paths where
@@ -19,14 +21,15 @@ import qualified Data.Text.IO as Text
 import Data.Tree (Tree (..))
 import Network.URI (URI)
 import qualified Network.URI as URI
+import Network.URI.Static (uri)
 import System.FilePath ((<.>), (</>))
 import Text.Pandoc (Pandoc)
 import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
 
 baseUri :: URI
 baseUri = case Config.mode of
-  Config.Production -> "https://rybl.net" & Maybe.fromJust . URI.parseURI
-  Config.Development -> "http://localhost:8080" & Maybe.fromJust . URI.parseURI
+  Config.Production -> [uri|https://rybl.net|]
+  Config.Development -> [uri|http://localhost:8080|]
 
 baseFaviconUri :: URI
 baseFaviconUri = relUri `URI.relativeTo` baseUri
