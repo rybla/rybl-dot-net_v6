@@ -1,16 +1,18 @@
+{-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 
 module Blog.Build (main) where
 
+import Blog.Pandoc (fromDocError)
 import qualified Blog.Pandoc as Pandoc
-import Blog.Parse (parsePost)
+import qualified Blog.Parse.Post as Parse.Post
 import Blog.Paths as Paths
+import Blog.Utility (fromEither)
 import Control.Monad (when)
-import Control.Monad.Error.Class (throwError)
 import Control.Monad.Except (runExceptT)
-import Control.Monad.Identity (runIdentity)
-import Control.Monad.Trans (lift)
+import Control.Monad.IO.Class (liftIO)
+import Control.Monad.State (execStateT)
 import Control.Monad.Trans.Except (ExceptT)
 import qualified Data.Aeson as Aeson
 import qualified Data.Aeson.Types as Aeson
@@ -18,8 +20,9 @@ import Data.Foldable (traverse_)
 import Data.Function ((&))
 import Data.Functor ((<&>))
 import Data.List (isSuffixOf)
-import qualified Data.Text as Text
 import qualified Data.Text.IO as Text
+import qualified Network.HTTP.Client as Network
+import qualified Network.HTTP.Client.TLS as Network
 import Service.Favicon.Favicone (FaviconeService)
 import System.Directory (listDirectory)
 import System.FilePath (replaceExtension, (</>))
@@ -35,42 +38,54 @@ main =
 
 main' :: ExceptT Doc IO ()
 main' = do
-  listDirectory offline.post_markdown.here & lift >>= traverse_ \postFileName ->
-    when (".md" `isSuffixOf` postFileName) do
-      postText <- Text.readFile (offline.post_markdown.here </> postFileName) & lift
-      templateText <- Text.readFile (offline.template.here </> "post.html") & lift
+  manager <- Network.newManager Network.tlsManagerSettings & liftIO
 
-      result <- Pandoc.runPandocM do
-        postDoc <- parsePost @FaviconeService postText
-        postTitle <- postDoc & Pandoc.getMetaValue "title" <&> Pandoc.stringify
-        postTags <- postDoc & Pandoc.getMetaValueList "tags" <&> (<&> Pandoc.stringify)
+  parsePostEnv <- do
+    let parsePostEnv = Parse.Post.newParsePostEnv manager
+    (`execStateT` parsePostEnv) $
+      listDirectory offline.post_markdown.here & liftIO >>= traverse_ \postFileName ->
+        when (".md" `isSuffixOf` postFileName) do
+          postText <- Text.readFile (offline.post_markdown.here </> postFileName) & liftIO
+          templateText <- Text.readFile (offline.template.here </> "post.html") & liftIO
 
-        contentHtml <- Pandoc.writeHtml5String Pandoc.def postDoc
+          postDoc <- Parse.Post.parsePost @FaviconeService postText
 
-        let varsJson :: Aeson.Value
-            varsJson =
-              Aeson.object
-                [ ("stylesheetHref", "post.css"),
-                  ("title", postTitle & Aeson.toJSON),
-                  ("tags", postTags & Aeson.toJSON),
-                  ("content", contentHtml & Aeson.toJSON)
-                ]
+          postTitle <- postDoc & Pandoc.getMetaValue "title" <&> Pandoc.stringify
+          postTags <- postDoc & Pandoc.getMetaValueList "tags" <&> (<&> Pandoc.stringify)
 
-        postTemplate <- Pandoc.compileTemplate offline.template.here templateText & runIdentity & either (throwError . Pandoc.PandocTemplateError . Text.pack . ("Error when parsing template: " ++)) return
-        postHtml <- do
-          vars <- Aeson.parseEither Aeson.parseJSON varsJson & either (\err -> throwError . Pandoc.PandocTemplateError . Text.pack . ("Error when parsing template variables JSON: " ++) $ err) return
-          Pandoc.writeHtml5String
-            Pandoc.def
-              { Pandoc.writerHTMLMathMethod = Pandoc.PlainMath,
-                Pandoc.writerTemplate = Just postTemplate,
-                Pandoc.writerVariables = vars
-              }
-            postDoc
-        return postHtml
+          postHtml <- Pandoc.runPandocM do
+            contentHtml <- Pandoc.writeHtml5String Pandoc.def postDoc
 
-      Text.writeFile
-        (offline.post_html.here </> (postFileName `replaceExtension` ".html"))
-        result
-        & lift
-      return ()
+            let varsJson :: Aeson.Value
+                varsJson =
+                  Aeson.object
+                    [ ("stylesheetHref", "post.css"),
+                      ("title", postTitle & Aeson.toJSON),
+                      ("tags", postTags & Aeson.toJSON),
+                      ("content", contentHtml & Aeson.toJSON)
+                    ]
+
+            postTemplate <- Pandoc.compileTemplate offline.template.here templateText & liftIO >>= fromEither (("Error when parsing template:" <+>) . text) & fromDocError
+
+            postHtml <- do
+              vars <- Aeson.parseEither Aeson.parseJSON varsJson & fromEither (("Error when parsing template variables JSON:" <+>) . text) & fromDocError
+              Pandoc.writeHtml5String
+                Pandoc.def
+                  { Pandoc.writerHTMLMathMethod = Pandoc.PlainMath,
+                    Pandoc.writerTemplate = Just postTemplate,
+                    Pandoc.writerVariables = vars
+                  }
+                postDoc
+
+            return postHtml
+
+          Text.writeFile
+            (offline.post.here </> (postFileName `replaceExtension` ".html"))
+            postHtml
+            & liftIO
+
+          return ()
+
+  let _ = undefined parsePostEnv -- TODO: use parsePostEnv to build graph
+  --
   return ()

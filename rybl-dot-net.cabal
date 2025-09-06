@@ -33,6 +33,8 @@ library
       Blog.Config
       Blog.Pandoc
       Blog.Parse
+      Blog.Parse.Common
+      Blog.Parse.Post
       Blog.Paths
       Blog.PathsTh
       Blog.Test

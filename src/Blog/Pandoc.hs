@@ -19,28 +19,27 @@ runPandocM =
     >>> (`StateLazy.evalStateT` def)
     >>> liftIO
     >=> \case
-      Left (PandocAppError msg) -> throwError . text . ("PandocAppError: " ++) . Text.unpack $ msg
       Left err -> throwError . text . show $ err
       Right a -> return a
 
 pandocMeta :: Pandoc -> Meta
 pandocMeta (Pandoc m _) = m
 
-getMetaValue :: (PandocMonad m) => String -> Pandoc -> m MetaValue
+getMetaValue :: (MonadError Doc m) => String -> Pandoc -> m MetaValue
 getMetaValue key =
   pandocMeta
     >>> lookupMeta (Text.pack key)
-    >>> maybe (throwError . PandocCouldNotFindMetadataFileError . Text.pack $ "Error when extracting metadata from parsed document: missing key: \"" ++ key ++ "\"") return
+    >>> maybe (throwError $ "Error when extracting metadata from parsed document: missing key:" <+> doubleQuotes (text key)) return
 
-getMetaValueList :: (PandocMonad m) => String -> Pandoc -> m [MetaValue]
+getMetaValueList :: (MonadError Doc m) => String -> Pandoc -> m [MetaValue]
 getMetaValueList key =
   pandocMeta
     >>> lookupMeta (Text.pack key)
     >>> maybe
-      (throwError . PandocCouldNotFindMetadataFileError . Text.pack $ "Error when extracting metadata from parsed document: missing key: \"" ++ key ++ "\"")
+      (throwError $ "Error when extracting metadata from parsed document: missing key:" <+> doubleQuotes (text key))
       \case
         MetaList vs -> return vs
-        v -> throwError . PandocCouldNotFindMetadataFileError . Text.pack $ "Error when extracting metadata from parsed document: expected value of key \"" ++ show v ++ "\" to be a list but it was actually: " ++ show v
+        val -> throwError $ "Error when extracting metadata from parsed document: expected value of key" <+> doubleQuotes (text (show key)) <+> "to be a list but it was actually:" <+> text (show val)
 
 throwPandocError :: (PandocMonad m) => Doc -> m a
 throwPandocError = throwError . PandocAppError . Text.pack . render
