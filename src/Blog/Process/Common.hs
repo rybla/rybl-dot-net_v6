@@ -7,7 +7,7 @@ module Blog.Process.Common where
 import qualified Blog.Pandoc as Pandoc
 import Blog.Parse.Post (Link, linkLabel)
 import Blog.Tree
-import Blog.Utility (parseUriM)
+import Blog.Utility (parseUriReferenceM, showText)
 import Control.Lens (to, (.~), (^.), _1)
 import Control.Monad.Except (MonadError)
 import Control.Monad.IO.Class (liftIO)
@@ -39,22 +39,29 @@ addReferencesSection outLinks doc = do
                    [Pandoc.Plain [link ^. linkLabel]]
              ]
 
+addCitationsSection :: (MonadError Doc m) => [Link] -> Pandoc -> m Pandoc
+addCitationsSection inLinks doc = do
+  case doc of
+    Pandoc meta blocks -> do
+      return . Pandoc meta $
+        blocks
+          ++ [ Pandoc.Header 1 mempty [Pandoc.Str "Citations"],
+               Pandoc.BulletList $
+                 inLinks <&> \link ->
+                   [Pandoc.Plain [link ^. linkLabel]]
+             ]
+
 addLinkFavicons :: forall fs m. (FaviconService fs, MonadError Doc m, MonadIO m) => Network.Manager -> Pandoc -> m Pandoc
 addLinkFavicons manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
   Pandoc.Link attr kids target@(urlText, _target) -> do
-    url <- urlText & Text.unpack & parseUriM
-    faviconInfo <-
-      manager & Favicon.cache @fs url >>= \case
-        Just faviconInfo -> return faviconInfo
-        Nothing -> return Favicon.missingFaviconInfo
-
-    putStrLn ("favicon url = " ++ (faviconInfo ^. Favicon.internalIconUri . to (URI.escapeURIString URI.isUnescapedInURI . show))) & liftIO
-
+    url <- urlText & Text.unpack & parseUriReferenceM
+    faviconInfo <- manager & Favicon.cache @fs url
+    putStrLn ("favicon.mirrorIconRef = " ++ (faviconInfo ^. Favicon.mirrorIconRef . to show)) & liftIO
     let iconKid =
           Pandoc.Image
             ("", ["favicon"], [])
-            [Pandoc.Str $ faviconInfo ^. Favicon.iconUri . to (Text.pack . show)]
-            (faviconInfo ^. Favicon.internalIconUri . to (Text.pack . URI.escapeURIString URI.isUnescapedInURI . show), "")
+            [Pandoc.Str $ faviconInfo ^. Favicon.mirrorIconRef . to showText]
+            (faviconInfo ^. Favicon.mirrorIconRef . to showText, "")
     return $ Pandoc.Link attr ([iconKid] ++ kids) target
   _ -> return x
 

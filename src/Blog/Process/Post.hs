@@ -10,7 +10,7 @@
 module Blog.Process.Post where
 
 import Blog.Common
-import Blog.Parse.Post (outLinks)
+import Blog.Parse.Post (outLinks, inLinks)
 import qualified Blog.Parse.Post as Parse.Post
 import qualified Blog.Paths as Paths
 import Blog.Process.Common
@@ -45,8 +45,13 @@ processPost postId = do
 
   post <- Paths.readPostData postId
 
-  ols <- gets (^. parseEnv . outLinks . at postUri . to (Maybe.fromMaybe []))
-  post <- post & addReferencesSection ols
+  post <- do
+    ols <- gets (^. parseEnv . outLinks . at postUri . to (Maybe.fromMaybe []))
+    post & addReferencesSection ols
+
+  post <- do
+    ils <- gets (^. parseEnv . inLinks . at postUri . to (Maybe.fromMaybe []))
+    post & addCitationsSection ils
 
   mngr <- gets (^. manager)
   post <- post & addLinkFavicons @fs mngr

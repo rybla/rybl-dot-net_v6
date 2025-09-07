@@ -21,7 +21,7 @@ import qualified Data.Text.IO as Text
 import Data.Tree (Tree (..))
 import Network.URI (URI)
 import qualified Network.URI as URI
-import Network.URI.Static (uri)
+import Network.URI.Static (relativeReference, uri)
 import System.FilePath ((<.>), (</>))
 import Text.Pandoc (Pandoc)
 import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
@@ -32,17 +32,19 @@ baseUri = case Config.mode of
   Config.Development -> [uri|http://localhost:8080|]
 
 baseFaviconUri :: URI
-baseFaviconUri = relUri `URI.relativeTo` baseUri
-  where
-    relUri = "favicon.ico" & URI.parseRelativeReference & Maybe.fromJust
+baseFaviconUri = [relativeReference|/favicon/rybl.ico|]
+
+baseFaviconFilePath :: FilePath
+baseFaviconFilePath = "/favicon/rybl.ico"
 
 baseFaviconFormat :: String
 baseFaviconFormat = "ico"
 
 missingFaviconUri :: URI
-missingFaviconUri = relUri `URI.relativeTo` baseUri
-  where
-    relUri = "missing.ico" & URI.parseRelativeReference & Maybe.fromJust
+missingFaviconUri = [relativeReference|/favicon/missing.ico|]
+
+missingFaviconFilePath :: FilePath
+missingFaviconFilePath = "/favicon/missing.ico"
 
 missingFaviconFormat :: String
 missingFaviconFormat = "ico"

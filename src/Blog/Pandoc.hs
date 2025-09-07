@@ -2,6 +2,7 @@
 
 module Blog.Pandoc where
 
+import Blog.Utility (renderText)
 import Control.Category ((>>>))
 import Control.Monad ((>=>))
 import Control.Monad.Except (ExceptT, MonadError, throwError)
@@ -42,7 +43,7 @@ getMetaValueList key =
         val -> throwError $ "Error when extracting metadata from parsed document: expected value of key" <+> doubleQuotes (text (show key)) <+> "to be a list but it was actually:" <+> text (show val)
 
 throwPandocError :: (PandocMonad m) => Doc -> m a
-throwPandocError = throwError . PandocAppError . Text.pack . render
+throwPandocError = throwError . PandocAppError . renderText
 
 fromDocError :: (PandocMonad m) => ExceptT Doc m a -> m a
 fromDocError = runExceptT >=> either throwPandocError return

@@ -8,6 +8,8 @@ import Data.Function ((&))
 import qualified Data.List as List
 import qualified Data.Map as Map
 import Data.Maybe (fromJust)
+import Data.Text (Text)
+import qualified Data.Text as Text
 import Network.URI (URI)
 import qualified Network.URI as URI
 import qualified Network.URI.Encode as URI
@@ -65,3 +67,12 @@ parseUriReferenceM str = case URI.parseURIReference str of
 
 logM :: (MonadIO m) => Doc -> m ()
 logM doc = putStrLn (render doc) & liftIO
+
+showText :: (Show a) => a -> Text
+showText = Text.pack . show
+
+renderText :: Doc -> Text
+renderText = Text.pack . render
+
+showDoc :: (Show a) => a -> Doc
+showDoc = text . show
