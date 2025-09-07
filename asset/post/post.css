@@ -96,6 +96,8 @@ content {
   margin: auto;
 
   background: #e4c9ab;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 0;
 }
 
 header,
@@ -103,4 +105,5 @@ footer {
   padding: 1em;
   background: #3f3832;
   color: #f6eee3;
+  z-index: 10;
 }
