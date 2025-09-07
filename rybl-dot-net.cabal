@@ -147,6 +147,7 @@ test-suite rybl-dot-net-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      Spec.AesonUri
       Paths_rybl_dot_net
   autogen-modules:
       Paths_rybl_dot_net

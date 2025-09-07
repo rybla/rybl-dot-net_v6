@@ -51,7 +51,7 @@ parsePost ::
   PostId -> m Pandoc
 parsePost postId = do
   logM $ "parsePost: " <+> pPrint postId
-  postUri <- parseUriReferenceM ("" </> (postId & unPostId & Paths.toHtmlFileName))
+  postUri <- parseUriReferenceM ("/" </> (postId ^. unPostId . to Paths.toHtmlFileName))
   txt <- Paths.readPostMarkdown postId
   doc <-
     txt

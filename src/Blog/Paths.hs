@@ -7,44 +7,36 @@
 module Blog.Paths where
 
 import Blog.Common
-import qualified Blog.Config as Config
 import Blog.PathsTh (MakeRootParams (..), makeRoot)
 import Blog.Utility (fromMaybe, logM)
+import Control.Lens hiding ((<.>))
 import Control.Monad.Except (MonadError)
 import Control.Monad.IO.Class (MonadIO, liftIO)
 import qualified Data.Aeson as Aeson
 import qualified Data.ByteString.Lazy as ByteString
-import Data.Function ((&))
-import qualified Data.Maybe as Maybe
 import Data.Text (Text)
 import qualified Data.Text.IO as Text
 import Data.Tree (Tree (..))
 import Network.URI (URI)
-import qualified Network.URI as URI
-import Network.URI.Static (relativeReference, uri)
+import Network.URI.Static (relativeReference)
 import System.FilePath ((<.>), (</>))
 import Text.Pandoc (Pandoc)
 import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
 
-baseUri :: URI
-baseUri = case Config.mode of
-  Config.Production -> [uri|https://rybl.net|]
-  Config.Development -> [uri|http://localhost:8080|]
-
 baseFaviconUri :: URI
-baseFaviconUri = [relativeReference|/favicon/rybl.ico|]
+baseFaviconUri = [relativeReference|/favicon.ico|]
 
 baseFaviconFilePath :: FilePath
-baseFaviconFilePath = "/favicon/rybl.ico"
+baseFaviconFilePath = "/favicon.ico"
 
 baseFaviconFormat :: String
 baseFaviconFormat = "ico"
 
 missingFaviconUri :: URI
-missingFaviconUri = [relativeReference|/favicon/missing.ico|]
+missingFaviconUri = [relativeReference|/missing.ico|]
 
 missingFaviconFilePath :: FilePath
-missingFaviconFilePath = "/favicon/missing.ico"
+missingFaviconFilePath = "/missing.ico"
 
 missingFaviconFormat :: String
 missingFaviconFormat = "ico"
@@ -57,13 +49,8 @@ makeRoot
       },
     MakeRootParams
       { valName = "online",
-        nodeType = [t|URI|],
-        toNode =
-          [|
-            \s ->
-              let relUri = s & URI.parseRelativeReference & Maybe.fromJust
-               in relUri `URI.relativeTo` baseUri
-            |]
+        nodeType = [t|String|],
+        toNode = [|("/" </>)|]
       }
   ]
   [ Node "post_markdown" [],
@@ -78,14 +65,14 @@ readPostMarkdown postId = do
   logM $ "readPostMarkdown:" <+> text fp
   Text.readFile fp & liftIO
   where
-    fp = offline.post_markdown.here </> (postId & unPostId & toMarkdownFileName)
+    fp = offline.post_markdown.here </> (postId ^. unPostId . to toMarkdownFileName)
 
 writePostData :: (MonadIO m) => PostId -> Pandoc -> m ()
 writePostData postId doc = liftIO do
   logM $ "writePostData:" <+> text fp
   ByteString.writeFile fp (Aeson.encode doc)
   where
-    fp = offline.post_data.here </> (postId & unPostId & toDataFileName)
+    fp = offline.post_data.here </> (postId ^. unPostId . to toDataFileName)
 
 readPostData :: (MonadIO m, MonadError Doc m) => PostId -> m Pandoc
 readPostData postId = do
@@ -95,7 +82,7 @@ readPostData postId = do
     >>= return . Aeson.decode
     >>= fromMaybe ("Failed to parse post data from file:" <+> text fp)
   where
-    fp = offline.post_data.here </> (postId & unPostId & toDataFileName)
+    fp = offline.post_data.here </> (postId ^. unPostId . to toDataFileName)
 
 readTemplateHtml :: (MonadIO m) => FilePath -> m Text
 readTemplateHtml templateId = do
@@ -109,7 +96,7 @@ writePostHtml postId htmlText = do
   logM $ "writePostHtml:" <+> text fp
   Text.writeFile fp htmlText & liftIO
   where
-    fp = offline.post.here </> (postId & unPostId & toHtmlFileName)
+    fp = offline.post.here </> (postId ^. unPostId . to toHtmlFileName)
 
 toMarkdownFileName :: FilePath -> FilePath
 toMarkdownFileName = (<.> ".md")

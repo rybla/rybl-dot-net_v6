@@ -7,10 +7,9 @@ module Blog.Process.Common where
 import qualified Blog.Pandoc as Pandoc
 import Blog.Parse.Post (Link, linkLabel)
 import Blog.Tree
-import Blog.Utility (parseUriReferenceM, showText)
+import Blog.Utility (logM, parseUriReferenceM, showDoc, showText)
 import Control.Lens (to, (.~), (^.), _1)
 import Control.Monad.Except (MonadError)
-import Control.Monad.IO.Class (liftIO)
 import Control.Monad.State (modify, runStateT)
 import Control.Monad.Writer (MonadIO)
 import Data.Function ((&))
@@ -18,14 +17,13 @@ import Data.Functor ((<&>))
 import Data.Text (Text)
 import qualified Data.Text as Text
 import qualified Network.HTTP.Client as Network
-import qualified Network.URI as URI
 import Service.Favicon (FaviconService)
 import qualified Service.Favicon as Favicon
 import Text.Pandoc (Pandoc (..))
 import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Shared as Pandoc
 import qualified Text.Pandoc.Walk as Pandoc
-import Text.PrettyPrint.HughesPJClass (Doc)
+import Text.PrettyPrint.HughesPJClass (Doc, (<+>))
 
 addReferencesSection :: (MonadError Doc m) => [Link] -> Pandoc -> m Pandoc
 addReferencesSection outLinks doc = do
@@ -56,7 +54,7 @@ addLinkFavicons manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
   Pandoc.Link attr kids target@(urlText, _target) -> do
     url <- urlText & Text.unpack & parseUriReferenceM
     faviconInfo <- manager & Favicon.cache @fs url
-    putStrLn ("favicon.mirrorIconRef = " ++ (faviconInfo ^. Favicon.mirrorIconRef . to show)) & liftIO
+    logM $ showDoc url <+> "~~>" <+> showDoc faviconInfo
     let iconKid =
           Pandoc.Image
             ("", ["favicon"], [])

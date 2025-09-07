@@ -41,7 +41,7 @@ makeLenses ''Env
 
 processPost :: forall fs m. (FaviconService fs, MonadError Doc m, MonadState Env m, MonadIO m) => PostId -> m Pandoc
 processPost postId = do
-  postUri <- parseUriReferenceM ("" </> (postId & unPostId & Paths.toHtmlFileName))
+  postUri <- parseUriReferenceM ("/" </> (postId ^. unPostId . to Paths.toHtmlFileName))
 
   post <- Paths.readPostData postId
 
