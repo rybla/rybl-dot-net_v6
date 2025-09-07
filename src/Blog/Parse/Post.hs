@@ -8,6 +8,7 @@ module Blog.Parse.Post where
 
 import Blog.Common
 import Blog.Pandoc (runPandocM)
+import Blog.Parse.Common
 import qualified Blog.Paths as Paths
 import Blog.Utility (logM, parseUriReferenceM)
 import Control.Lens
@@ -25,15 +26,11 @@ import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Walk as Pandoc
 import Text.PrettyPrint.HughesPJClass (Doc, pPrint, (<+>))
 
-data Link = Link
-  { _linkLabel :: Pandoc.Inline,
-    _linkUri :: URI
-  }
-
 data Env = Env
   { _outLinks :: Map URI [Link],
     _inLinks :: Map URI [Link]
   }
+  deriving (Show)
 
 newEnv :: Env
 newEnv = do
@@ -43,7 +40,6 @@ newEnv = do
     }
 
 makeLenses ''Env
-makeLenses ''Link
 
 parsePost ::
   forall m.
@@ -51,7 +47,7 @@ parsePost ::
   PostId -> m Pandoc
 parsePost postId = do
   logM $ "parsePost: " <+> pPrint postId
-  postUri <- parseUriReferenceM ("/" </> (postId ^. unPostId . to Paths.toHtmlFileName))
+  postUri <- parseUriReferenceM (Paths.online.post.here </> (postId ^. unPostId . to Paths.toHtmlFileName))
   txt <- Paths.readPostMarkdown postId
   doc <-
     txt
@@ -64,15 +60,19 @@ parsePost postId = do
 
   void $
     doc & Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
-      Pandoc.Link _attr _kids (refText, _) -> do
+      Pandoc.Link _attr kids (refText, _) -> do
         ref <- refText & Text.unpack & parseUriReferenceM
-        let link = Link x ref
-        outLinks . at postUri %= maybe (Just [link]) (Just . (link :))
+        let outLink = Link kids ref
+        outLinks . at postUri %= maybe (Just [outLink]) (Just . (outLink :))
+        let inLink = Link kids postUri
+        inLinks . at ref %= maybe (Just [inLink]) (Just . (inLink :))
         return x
       Pandoc.Image _attr kids (refText, _) -> do
         ref <- refText & Text.unpack & parseUriReferenceM
-        let link = Link (Pandoc.Link mempty kids (refText, "")) ref
-        outLinks . at postUri %= maybe (Just [link]) (Just . (link :))
+        let outLink = Link kids ref
+        outLinks . at postUri %= maybe (Just [outLink]) (Just . (outLink :))
+        let inLink = Link kids postUri
+        inLinks . at ref %= maybe (Just [inLink]) (Just . (inLink :))
         return x
       _ -> return x
 

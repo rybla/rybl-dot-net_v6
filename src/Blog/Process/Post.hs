@@ -10,7 +10,7 @@
 module Blog.Process.Post where
 
 import Blog.Common
-import Blog.Parse.Post (outLinks, inLinks)
+import Blog.Parse.Post (inLinks, outLinks)
 import qualified Blog.Parse.Post as Parse.Post
 import qualified Blog.Paths as Paths
 import Blog.Process.Common
@@ -41,7 +41,7 @@ makeLenses ''Env
 
 processPost :: forall fs m. (FaviconService fs, MonadError Doc m, MonadState Env m, MonadIO m) => PostId -> m Pandoc
 processPost postId = do
-  postUri <- parseUriReferenceM ("/" </> (postId ^. unPostId . to Paths.toHtmlFileName))
+  postUri <- parseUriReferenceM (Paths.online.post.here </> (postId ^. unPostId . to Paths.toHtmlFileName))
 
   post <- Paths.readPostData postId
 

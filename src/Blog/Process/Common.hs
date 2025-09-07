@@ -6,7 +6,7 @@ module Blog.Process.Common where
 
 import Blog.Common
 import qualified Blog.Pandoc as Pandoc
-import Blog.Parse.Post (Link, linkLabel)
+import Blog.Parse.Common
 import Blog.Tree
 import Blog.Utility (logM, parseUriReferenceM, showDoc, showText)
 import Control.Lens (to, (.~), (^.), _1)
@@ -36,7 +36,7 @@ addReferencesSection outLinks doc = do
           ++ [ Pandoc.Header 1 mempty [Pandoc.Str "References"],
                Pandoc.BulletList $
                  outLinks <&> \link ->
-                   [Pandoc.Plain [link ^. linkLabel]]
+                   [Pandoc.Plain [Pandoc.Link mempty (link ^. linkLabel) (link ^. linkUri . to showText, "")]]
              ]
 
 addCitationsSection :: (MonadError Doc m) => [Link] -> Pandoc -> m Pandoc
@@ -48,7 +48,7 @@ addCitationsSection inLinks doc = do
           ++ [ Pandoc.Header 1 mempty [Pandoc.Str "Citations"],
                Pandoc.BulletList $
                  inLinks <&> \link ->
-                   [Pandoc.Plain [link ^. linkLabel]]
+                   [Pandoc.Plain [Pandoc.Link mempty (link ^. linkLabel) (link ^. linkUri . to showText, "")]]
              ]
 
 addLinkFavicons :: forall fs m. (FaviconService fs, MonadError Doc m, MonadIO m) => Network.Manager -> Pandoc -> m Pandoc

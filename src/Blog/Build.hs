@@ -9,6 +9,7 @@ import qualified Blog.Parse.Post as Parse.Post
 import qualified Blog.Paths as Paths
 import qualified Blog.Print.Post as Print.Post
 import qualified Blog.Process.Post as Process.Post
+import Blog.Utility (logM, showDoc)
 import Control.Category ((>>>))
 import Control.Lens hiding ((<.>))
 import Control.Monad.Except (runExceptT)
@@ -41,6 +42,8 @@ main' = do
         >>= traverse_ \postId ->
           Parse.Post.parsePost postId
             >>= Paths.writePostData postId
+
+  logM $ "parsePostEnv =" <+> showDoc parsePostEnv
 
   -- process posts
   _processPostEnv <-
