@@ -7,7 +7,7 @@ tags:
   - post
 ---
 
-# h1 Heading 8-)
+# h1 Heading
 
 Sample content.
 

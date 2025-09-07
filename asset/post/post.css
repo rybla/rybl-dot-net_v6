@@ -41,6 +41,12 @@ content {
 html {
   margin: 0;
   padding: 0;
+
+  /*background: #3f3832;*/
+  /*background: #747d7c;*/
+  background: #c2baaf;
+  /*background: #e4c9ab;*/
+  /*background: #f6eee3;*/
 }
 
 body {
@@ -53,7 +59,9 @@ body {
 
 .title-box {
   padding: 1em;
-  background-color: color-mix(in hsl, white, black 10%);
+
+  color: #f6eee3;
+  background: #3f3832;
 
   display: flex;
   flex-direction: column;
@@ -71,7 +79,8 @@ body {
 
     .tag {
       padding: 0.1em 0.2em;
-      border: 1px solid black;
+      background: #e4c9ab;
+      color: black;
     }
 
     .tag::before {
@@ -85,10 +94,13 @@ content {
 
   max-width: 600px;
   margin: auto;
+
+  background: #e4c9ab;
 }
 
 header,
 footer {
   padding: 1em;
-  background-color: color-mix(in hsl, white, black 10%);
+  background: #3f3832;
+  color: #f6eee3;
 }
