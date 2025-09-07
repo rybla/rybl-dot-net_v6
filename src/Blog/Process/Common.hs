@@ -4,6 +4,7 @@
 
 module Blog.Process.Common where
 
+import Blog.Common
 import qualified Blog.Pandoc as Pandoc
 import Blog.Parse.Post (Link, linkLabel)
 import Blog.Tree
@@ -17,6 +18,7 @@ import Data.Functor ((<&>))
 import Data.Text (Text)
 import qualified Data.Text as Text
 import qualified Network.HTTP.Client as Network
+import qualified Network.URI as URI
 import Service.Favicon (FaviconService)
 import qualified Service.Favicon as Favicon
 import Text.Pandoc (Pandoc (..))
@@ -58,8 +60,8 @@ addLinkFavicons manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
     let iconKid =
           Pandoc.Image
             ("", ["favicon"], [])
-            [Pandoc.Str $ faviconInfo ^. Favicon.mirrorIconRef . to showText]
-            (faviconInfo ^. Favicon.mirrorIconRef . to showText, "")
+            [Pandoc.Str $ faviconInfo ^. Favicon.mirrorIconRef . unUriReference . to showText]
+            (faviconInfo ^. Favicon.mirrorIconRef . unUriReference . to show . to (URI.escapeURIString URI.isUnescapedInURI) . to Text.pack, "")
     return $ Pandoc.Link attr ([iconKid] ++ kids) target
   _ -> return x
 

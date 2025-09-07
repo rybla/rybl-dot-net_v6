@@ -68,7 +68,7 @@ cache uri manager = do
         False -> do
           info <- fetchFaviconInfo (Proxy @s) uri manager
           when (not (URI.uriIsRelative (info ^. originalIconRef . unUriReference))) do
-            request <- HTTP.parseRequest (info ^. originalIconRef . to show) & liftIO
+            request <- HTTP.parseRequest (info ^. originalIconRef . unUriReference . to show) & liftIO
             response <- manager & HTTP.httpLbs request & liftIO
             ByteString.writeFile (info ^. mirrorIconFilePath) (HTTP.responseBody response) & liftIO
             ByteString.writeFile infoFilePath (encode info) & liftIO
