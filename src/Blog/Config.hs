@@ -3,6 +3,12 @@
 
 module Blog.Config where
 
+baseTitle :: String
+baseTitle = "rybl.net"
+
+baseDescription :: String
+baseDescription = "TODO: baseDescription"
+
 data Mode = Development | Production
   deriving (Show, Eq)
 

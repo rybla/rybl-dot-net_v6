@@ -26,6 +26,7 @@ import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Shared as Pandoc
 import qualified Text.Pandoc.Walk as Pandoc
 import Text.PrettyPrint.HughesPJClass (Doc, (<+>))
+import Service.Preview (PreviewService)
 
 addReferencesSection :: (MonadError Doc m) => [Link] -> Pandoc -> m Pandoc
 addReferencesSection outLinks doc = do
@@ -51,11 +52,11 @@ addCitationsSection inLinks doc = do
                    [Pandoc.Plain [Pandoc.Link mempty (link ^. linkLabel) (link ^. linkUri . to showText, "")]]
              ]
 
-addLinkFavicons :: forall fs m. (FaviconService fs, MonadError Doc m, MonadIO m) => Network.Manager -> Pandoc -> m Pandoc
+addLinkFavicons :: forall faviconS m. (FaviconService faviconS, MonadError Doc m, MonadIO m) => Network.Manager -> Pandoc -> m Pandoc
 addLinkFavicons manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
   Pandoc.Link attr kids target@(urlText, _target) -> do
     url <- urlText & Text.unpack & parseUriReferenceM
-    faviconInfo <- manager & Favicon.cache @fs url
+    faviconInfo <- manager & Favicon.cache @faviconS url
     logM "addLinkFavicons" $ showDoc url <+> "~~>" <+> showDoc faviconInfo
     let iconKid =
           Pandoc.Image
@@ -64,6 +65,9 @@ addLinkFavicons manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
             (faviconInfo ^. Favicon.mirrorIconRef . unUriReference . to show . to (URI.escapeURIString URI.isUnescapedInURI) . to Text.pack, "")
     return $ Pandoc.Link attr ([iconKid] ++ kids) target
   _ -> return x
+
+addLinkPreviews :: forall previewS m. (PreviewService previewS, MonadError Doc m, MonadIO m) => Network.Manager -> Pandoc -> m Pandoc
+addLinkPreviews = undefined
 
 type TocNode = (Int, Text, [Pandoc.Inline])
 

@@ -57,7 +57,8 @@ makeRoot
     Node "post_data" [],
     Node "post" [],
     Node "favicon" [],
-    Node "template" []
+    Node "template" [],
+    Node "preview" []
   ]
 
 readPostMarkdown :: (MonadIO m) => PostId -> m Text

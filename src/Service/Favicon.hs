@@ -8,7 +8,6 @@
 module Service.Favicon where
 
 import Blog.Common
-import Blog.Paths
 import qualified Blog.Paths as Paths
 import Blog.Utility
 import Control.Lens (makeLenses, to, (&), (^.))
@@ -24,11 +23,8 @@ import qualified Network.HTTP.Client as HTTP
 import Network.URI (URI)
 import qualified Network.URI as URI
 import System.Directory (doesFileExist)
-import System.FilePath ((<.>), (</>))
+import System.FilePath ((</>))
 import Text.PrettyPrint.HughesPJClass
-
-fromUriToFilePathOfFaviconInfo :: URI -> FilePath
-fromUriToFilePathOfFaviconInfo uri = offline.favicon.here </> makeValidIdent (show uri) <.> "json"
 
 class FaviconService s where
   fetchFaviconInfo ::
@@ -50,15 +46,14 @@ cache ::
   (FaviconService s, MonadIO m, MonadError Doc m) =>
   URI -> HTTP.Manager -> m FaviconInfo
 cache uri manager = do
-  logM "Favicone.cache" $ "URI.uriIsRelative" <+> pPrint (show uri) <+> "=" <+> pPrint (URI.uriIsRelative uri)
+  logM "Favicone.cache" $ "uri =" <+> text (show uri)
   if URI.uriIsRelative uri
     then do
       return baseFaviconInfo
     else do
-      let infoFilePath = offline.favicon.here </> (uri & show & makeValidIdent & Paths.toDataFileName)
+      let infoFilePath = Paths.offline.favicon.here </> (uri & show & makeValidIdent & Paths.toDataFileName)
       doesFileExist infoFilePath & liftIO >>= \case
         True -> do
-          logM "Favicon.cache" $ "reading favicon data file:" <+> showDoc infoFilePath
           ByteString.readFile infoFilePath
             & liftIO
             <&> decode @FaviconInfo
@@ -77,17 +72,17 @@ cache uri manager = do
 baseFaviconInfo :: FaviconInfo
 baseFaviconInfo =
   FaviconInfo
-    { _originalIconRef = baseFaviconUri & UriReference,
-      _mirrorIconRef = baseFaviconUri & UriReference,
-      _mirrorIconFilePath = baseFaviconFilePath,
-      _format = baseFaviconFormat
+    { _originalIconRef = Paths.baseFaviconUri & UriReference,
+      _mirrorIconRef = Paths.baseFaviconUri & UriReference,
+      _mirrorIconFilePath = Paths.baseFaviconFilePath,
+      _format = Paths.baseFaviconFormat
     }
 
 missingFaviconInfo :: FaviconInfo
 missingFaviconInfo =
   FaviconInfo
-    { _originalIconRef = missingFaviconUri & UriReference,
-      _mirrorIconRef = missingFaviconUri & UriReference,
-      _mirrorIconFilePath = missingFaviconFilePath,
-      _format = missingFaviconFormat
+    { _originalIconRef = Paths.missingFaviconUri & UriReference,
+      _mirrorIconRef = Paths.missingFaviconUri & UriReference,
+      _mirrorIconFilePath = Paths.missingFaviconFilePath,
+      _format = Paths.missingFaviconFormat
     }
