@@ -26,14 +26,14 @@ data FaviconeResponse = FaviconResponse
 favicone :: (MonadIO m, MonadError Doc m) => URI -> HTTP.Manager -> m FaviconeResponse
 favicone uri manager = do
   let host = extractUriHost uri
-  let requestUrl = "https://favicone.com/" ++ host ++ "?json"
-  logM "defining request for favicone"
+  let requestUrl = "https://favicone.com/" ++ host ++ "?json=true"
+  logM "favicone" $ "defining request for favicone; requestUrl =" <+> text requestUrl
   request <- HTTP.parseRequest requestUrl & liftIO
-  logM "sending request to favicone"
+  logM "favicone" "sending request to favicone"
   response <- manager & HTTP.httpLbs request & liftIO
-  logM "got back response from favicone"
+  logM "favicone" "got back response from favicone"
   response' <- decode (HTTP.responseBody response) & fromMaybe ("Failed to decode response:" <+> (text . show . HTTP.responseBody $ response))
-  logM $ "decoded response from favicone:" <+> showDoc response'
+  logM "favicone" $ "decoded response from favicone:" <+> showDoc response'
   return response'
 
 data FaviconeService

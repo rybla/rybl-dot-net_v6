@@ -65,8 +65,8 @@ parseUriReferenceM str = case URI.parseURIReference str of
   Nothing -> throwError $ text "Invalid URI Reference:" <+> doubleQuotes (text str)
   Just uri -> return uri
 
-logM :: (MonadIO m) => Doc -> m ()
-logM doc = putStrLn (render doc) & liftIO
+logM :: (MonadIO m) => Doc -> Doc -> m ()
+logM label body = putStrLn (render (brackets label <+> nest 4 body)) & liftIO
 
 showText :: (Show a) => a -> Text
 showText = Text.pack . show

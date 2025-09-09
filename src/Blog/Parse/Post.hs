@@ -46,7 +46,7 @@ parsePost ::
   (MonadIO m, MonadError Doc m, MonadState Env m) =>
   PostId -> m Pandoc
 parsePost postId = do
-  logM $ "parsePost: " <+> pPrint postId
+  logM "parsePost" $ "postId =" <+> pPrint postId
   postUri <- parseUriReferenceM (Paths.online.post.here </> (postId ^. unPostId . to Paths.toHtmlFileName))
   txt <- Paths.readPostMarkdown postId
   doc <-

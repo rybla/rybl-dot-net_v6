@@ -50,7 +50,7 @@ cache ::
   (FaviconService s, MonadIO m, MonadError Doc m) =>
   URI -> HTTP.Manager -> m FaviconInfo
 cache uri manager = do
-  logM $ "URI.uriIsRelative" <+> pPrint (show uri) <+> "=" <+> pPrint (URI.uriIsRelative uri)
+  logM "Favicone.cache" $ "URI.uriIsRelative" <+> pPrint (show uri) <+> "=" <+> pPrint (URI.uriIsRelative uri)
   if URI.uriIsRelative uri
     then do
       return baseFaviconInfo
@@ -58,7 +58,7 @@ cache uri manager = do
       let infoFilePath = offline.favicon.here </> (uri & show & makeValidIdent & Paths.toDataFileName)
       doesFileExist infoFilePath & liftIO >>= \case
         True -> do
-          logM $ "reading favicon data file:" <+> showDoc infoFilePath
+          logM "Favicon.cache" $ "reading favicon data file:" <+> showDoc infoFilePath
           ByteString.readFile infoFilePath
             & liftIO
             <&> decode @FaviconInfo

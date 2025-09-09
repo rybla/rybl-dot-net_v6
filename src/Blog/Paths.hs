@@ -62,21 +62,21 @@ makeRoot
 
 readPostMarkdown :: (MonadIO m) => PostId -> m Text
 readPostMarkdown postId = do
-  logM $ "readPostMarkdown:" <+> text fp
+  logM "readPostMarkdown" $ "fp =" <+> text fp
   Text.readFile fp & liftIO
   where
     fp = offline.post_markdown.here </> (postId ^. unPostId . to toMarkdownFileName)
 
 writePostData :: (MonadIO m) => PostId -> Pandoc -> m ()
 writePostData postId doc = liftIO do
-  logM $ "writePostData:" <+> text fp
+  logM "writePostData" $ "fp =" <+> text fp
   ByteString.writeFile fp (Aeson.encode doc)
   where
     fp = offline.post_data.here </> (postId ^. unPostId . to toDataFileName)
 
 readPostData :: (MonadIO m, MonadError Doc m) => PostId -> m Pandoc
 readPostData postId = do
-  logM $ "readPostData:" <+> text fp
+  logM "readPostData" $ "fp =" <+> text fp
   ByteString.readFile fp
     & liftIO
     >>= return . Aeson.decode
@@ -86,14 +86,14 @@ readPostData postId = do
 
 readTemplateHtml :: (MonadIO m) => FilePath -> m Text
 readTemplateHtml templateId = do
-  logM $ "readTemplateHtml:" <+> text fp
+  logM "readTemplateHtml" $ "fp =" <+> text fp
   Text.readFile fp & liftIO
   where
     fp = offline.template.here </> (templateId & toHtmlFileName)
 
 writePostHtml :: (MonadIO m) => PostId -> Text -> m ()
 writePostHtml postId htmlText = do
-  logM $ "writePostHtml:" <+> text fp
+  logM "writePostHtml" $ "fp =" <+> text fp
   Text.writeFile fp htmlText & liftIO
   where
     fp = offline.post.here </> (postId ^. unPostId . to toHtmlFileName)

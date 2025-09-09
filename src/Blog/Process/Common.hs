@@ -56,7 +56,7 @@ addLinkFavicons manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
   Pandoc.Link attr kids target@(urlText, _target) -> do
     url <- urlText & Text.unpack & parseUriReferenceM
     faviconInfo <- manager & Favicon.cache @fs url
-    logM $ showDoc url <+> "~~>" <+> showDoc faviconInfo
+    logM "addLinkFavicons" $ showDoc url <+> "~~>" <+> showDoc faviconInfo
     let iconKid =
           Pandoc.Image
             ("", ["favicon"], [])

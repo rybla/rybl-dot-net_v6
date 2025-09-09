@@ -43,7 +43,7 @@ main' = do
           Parse.Post.parsePost postId
             >>= Paths.writePostData postId
 
-  logM $ "parsePostEnv =" <+> showDoc parsePostEnv
+  logM "main" $ "parsePostEnv =" <+> showDoc parsePostEnv
 
   -- process posts
   _processPostEnv <-
