@@ -28,17 +28,27 @@ prettyPandoc (Pandoc meta blocks) =
           blocks
     ]
 
+-- | Extract the root URI from a URI. Example:
+--
+-- > uriRoot "https://test.example.com/seg1#id?query=string" == "https://test.example.com"
+uriRoot :: URI -> String
+uriRoot uri =
+  URI.uriScheme uri ++ uriHost uri
+
+-- | Extract the root URI and path from a URI. Example:
+--
+-- > uriRoot "https://test.example.com#id?query=string" == "https://test.example.com/seg1"
+uriRootAndPath :: URI -> String
+uriRootAndPath uri = uriRoot uri ++ URI.uriPath uri
+
 -- | Extract the host from a URI. Example:
 --
--- > extractUriHost "https://example.com#id?query=string" == "example.com"
-extractUriHost :: URI -> String
-extractUriHost uri =
+-- > uriHost "https://test.example.com/seg1#id?query=string" == "test.example.com"
+uriHost :: URI -> String
+uriHost uri =
   URI.uriAuthToString mempty (URI.uriAuthority uri) ""
     & List.stripPrefix "//"
     & fromJust
-
-extractUriPath :: URI -> String
-extractUriPath uri = extractUriHost uri ++ URI.uriPath uri ++ URI.uriFragment uri
 
 fromMaybe :: (MonadError Doc m) => Doc -> Maybe a -> m a
 fromMaybe msg = maybe (throwError msg) return

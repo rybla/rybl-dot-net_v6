@@ -27,7 +27,7 @@ data FaviconeResponse = FaviconResponse
 
 favicone :: (MonadIO m, MonadError Doc m) => URI -> HTTP.Manager -> m FaviconeResponse
 favicone uri manager = do
-  let host = extractUriHost uri
+  let host = uriHost uri
   let requestUrl = "https://favicone.com/" ++ host ++ "?json=true"
   logM "favicone" $ "defining request for favicone; requestUrl =" <+> text requestUrl
   request <- HTTP.parseRequest requestUrl & liftIO

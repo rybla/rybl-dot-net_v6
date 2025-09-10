@@ -15,6 +15,8 @@ This is an example post which cite [the original example post](/post/example-pos
 
 [This link](https://www.askdlakdlsdaldld.com) should have the missing icon.
 
+[This link](https://www.askdlakdlsdaldld.com/this/is/a/path) should have the missing icon.
+
 ```js
 function test() {
   console.log("hello world, this is a test");

@@ -9,7 +9,7 @@ module Service.Preview where
 
 import qualified Blog.Config as Config
 import qualified Blog.Paths as Paths
-import Blog.Utility (logM, makeValidIdent)
+import Blog.Utility
 import Control.Lens hiding (preview, (<.>))
 import Control.Monad.Except (MonadError, throwError)
 import Control.Monad.IO.Class (MonadIO, liftIO)
@@ -44,7 +44,7 @@ cache uri manager = do
     then do
       return basePreview
     else do
-      let previewFilePath = Paths.offline.preview.here </> (uri & show & makeValidIdent & Paths.toDataFileName)
+      let previewFilePath = Paths.offline.preview.here </> (uri & uriRootAndPath & makeValidIdent & Paths.toDataFileName)
       doesFileExist previewFilePath & liftIO >>= \case
         True -> do
           ByteString.readFile previewFilePath & liftIO <&> Aeson.decode @Preview >>= \case
