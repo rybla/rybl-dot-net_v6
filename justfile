@@ -1,5 +1,5 @@
 build-prod:
-  stack build --flag rybl-dot-net:dev
+  stack build --flag
 
 build-dev:
   stack build --flag rybl-dot-net:dev

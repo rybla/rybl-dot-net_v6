@@ -2,6 +2,7 @@
 
 module Blog.Pandoc where
 
+import qualified Blog.Paths as Paths
 import Blog.Utility (renderText)
 import Control.Category ((>>>))
 import Control.Monad ((>=>))
@@ -17,7 +18,11 @@ runPandocM :: (MonadError Doc m2, MonadIO m2) => PandocIO a -> m2 a
 runPandocM =
   unPandocIO
     >>> runExceptT
-    >>> (`StateLazy.evalStateT` def)
+    >>> ( `StateLazy.evalStateT`
+            def
+              { stUserDataDir = Just Paths.offline.template.here
+              }
+        )
     >>> liftIO
     >=> \case
       Left err -> throwError . text . show $ err

@@ -16,12 +16,12 @@
         <div class="title">${title}</div>
         <div class="tags">
           ${for(tags)}
-          <div class="tag">${it}</div>
+          ${it:tag.html()}
           ${endfor}
         </div>
       </div>
       <div class="main">${content}</div>
     </main>
-    <footer>This is the footer</footer>
+    ${footer.html()}
   </body>
 </html>

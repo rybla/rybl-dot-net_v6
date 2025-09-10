@@ -29,6 +29,7 @@ dependencies:
   - conduit
   - pandoc
   - pandoc-types
+  - doctemplates
   - network-uri
   - http-client
   - http-client-tls

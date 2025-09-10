@@ -1,3 +1,5 @@
+{-# LANGUAGE DerivingStrategies #-}
+{-# LANGUAGE GeneralisedNewtypeDeriving #-}
 {-# OPTIONS_GHC -Wno-missing-export-lists #-}
 
 module Blog.Print.Post where
@@ -6,14 +8,14 @@ import Blog.Common
 import Blog.Pandoc (fromDocError)
 import qualified Blog.Pandoc as Pandoc
 import qualified Blog.Paths as Paths
+import Blog.Print.Common
 import Blog.Utility (fromEither)
 import Control.Lens
-import Control.Monad.Except (MonadError)
-import Control.Monad.IO.Class (MonadIO, liftIO)
+import Control.Monad.Except (MonadError, throwError)
+import Control.Monad.IO.Class (MonadIO)
 import qualified Data.Aeson as Aeson
 import qualified Data.Aeson.Types as Aeson
 import qualified Data.Text as Text
-import System.FilePath ((</>))
 import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Shared as Pandoc
 import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
@@ -21,7 +23,8 @@ import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
 printPost :: (MonadIO m, MonadError Doc m) => PostId -> m ()
 printPost postId = do
   postDoc <- Paths.readPostData postId
-  templateText <- Paths.readTemplateHtml "post" -- Text.readFile (offline.template.here </> "post.html") & liftIO
+  templateText <- Paths.readTemplateHtml "post"
+
   postTitle <- postDoc & Pandoc.getMetaValue "title" <&> Pandoc.stringify
   postTags <- postDoc & Pandoc.getMetaValueList "tags" <&> (<&> Pandoc.stringify)
 
@@ -42,7 +45,17 @@ printPost postId = do
               ("content", contentHtml & Aeson.toJSON)
             ]
 
-    postTemplate <- Pandoc.compileTemplate Paths.offline.template.here templateText & liftIO >>= fromEither (("Error when parsing template:" <+>) . text) & fromDocError
+    -- postTemplate <- Pandoc.compileTemplate Paths.offline.template.here templateText & liftIO >>= fromEither (("Error when parsing template:" <+>) . text) & fromDocError
+    -- let _ = Pandoc.compileTemplate Paths.offline.template.here templateText
+    --           & Pandoc.runWithParials
+
+    postTemplate <-
+      Pandoc.compileTemplate mempty templateText
+        -- & Pandoc.runWithPartials
+        & unBlogTemplateMonad
+        >>= \case
+          Left err -> throwError $ Pandoc.PandocAppError $ Text.pack err
+          Right t -> return t
 
     postHtml <- do
       vars <- Aeson.parseEither Aeson.parseJSON varsJson & fromEither (("Error when parsing template variables JSON:" <+>) . text) & fromDocError

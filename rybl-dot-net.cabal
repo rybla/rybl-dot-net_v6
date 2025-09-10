@@ -38,6 +38,7 @@ library
       Blog.Parse.Post
       Blog.Paths
       Blog.PathsTh
+      Blog.Print.Common
       Blog.Print.Post
       Blog.Process.Common
       Blog.Process.Post
@@ -74,6 +75,7 @@ library
     , containers
     , data-default
     , directory
+    , doctemplates
     , filepath
     , http-client
     , http-client-tls
@@ -123,6 +125,7 @@ executable rybl-dot-net-exe
     , containers
     , data-default
     , directory
+    , doctemplates
     , filepath
     , http-client
     , http-client-tls
@@ -175,6 +178,7 @@ test-suite rybl-dot-net-test
     , containers
     , data-default
     , directory
+    , doctemplates
     , filepath
     , http-client
     , http-client-tls
