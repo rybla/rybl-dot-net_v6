@@ -46,6 +46,8 @@ library
       Blog.Utility
       Service.Favicon
       Service.Favicon.Favicone
+      Service.Preview
+      Service.Preview.Placeholder
   other-modules:
       Paths_rybl_dot_net
   autogen-modules:

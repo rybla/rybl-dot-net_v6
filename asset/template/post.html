@@ -3,6 +3,11 @@
   <head>
     <title>${title}</title>
     <link rel="stylesheet" href="${stylesheetHref}" />
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+    ></script>
   </head>
   <body>
     <header>This is the header</header>
@@ -15,7 +20,7 @@
           ${endfor}
         </div>
       </div>
-      ${content}
+      <div class="main">${content}</div>
     </content>
     <footer>This is the footer</footer>
   </body>

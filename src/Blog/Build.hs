@@ -19,7 +19,8 @@ import Control.Monad.Trans.Except (ExceptT)
 import Data.Foldable (traverse_)
 import qualified Network.HTTP.Client as Network
 import qualified Network.HTTP.Client.TLS as Network
-import Service.Favicon.Favicone (FaviconeService)
+import Service.Favicon.Favicone ()
+import Service.Preview.Placeholder ()
 import System.Directory (listDirectory)
 import Text.PrettyPrint.HughesPJClass
 
@@ -52,7 +53,7 @@ main' = do
         & liftIO
         <&> foldMap ((^? suffixed ".json") >>> maybe [] (return . PostId))
         >>= traverse_ \postId ->
-          Process.Post.processPost @FaviconeService postId
+          Process.Post.processPost postId
             >>= Paths.writePostData postId
 
   -- print posts

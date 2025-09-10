@@ -76,3 +76,7 @@ renderText = Text.pack . render
 
 showDoc :: (Show a) => a -> Doc
 showDoc = text . show
+
+assocList :: (Eq k) => k -> [(k, v)] -> Maybe v
+assocList _ [] = Nothing
+assocList k ((k', v) : kvs) = if k == k' then Just v else assocList k kvs

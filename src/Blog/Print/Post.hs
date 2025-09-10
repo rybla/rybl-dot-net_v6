@@ -12,6 +12,8 @@ import Control.Monad.Except (MonadError)
 import Control.Monad.IO.Class (MonadIO, liftIO)
 import qualified Data.Aeson as Aeson
 import qualified Data.Aeson.Types as Aeson
+import qualified Data.Text as Text
+import System.FilePath ((</>))
 import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Shared as Pandoc
 import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
@@ -24,7 +26,12 @@ printPost postId = do
   postTags <- postDoc & Pandoc.getMetaValueList "tags" <&> (<&> Pandoc.stringify)
 
   postHtml <- Pandoc.runPandocM do
-    contentHtml <- Pandoc.writeHtml5String Pandoc.def postDoc
+    contentHtml <-
+      Pandoc.writeHtml5String
+        Pandoc.def
+          { Pandoc.writerHTMLMathMethod = Pandoc.MathJax ""
+          }
+        postDoc
 
     let varsJson :: Aeson.Value
         varsJson =
@@ -41,9 +48,9 @@ printPost postId = do
       vars <- Aeson.parseEither Aeson.parseJSON varsJson & fromEither (("Error when parsing template variables JSON:" <+>) . text) & fromDocError
       Pandoc.writeHtml5String
         Pandoc.def
-          { Pandoc.writerHTMLMathMethod = Pandoc.PlainMath,
-            Pandoc.writerTemplate = Just postTemplate,
-            Pandoc.writerVariables = vars
+          { Pandoc.writerTemplate = Just postTemplate,
+            Pandoc.writerVariables = vars,
+            Pandoc.writerHTMLMathMethod = Pandoc.MathJax ""
           }
         postDoc
 

@@ -58,7 +58,8 @@ makeRoot
     Node "post" [],
     Node "favicon" [],
     Node "template" [],
-    Node "preview" []
+    Node "preview" [],
+    Node "script" []
   ]
 
 readPostMarkdown :: (MonadIO m) => PostId -> m Text
@@ -66,14 +67,14 @@ readPostMarkdown postId = do
   logM "readPostMarkdown" $ "fp =" <+> text fp
   Text.readFile fp & liftIO
   where
-    fp = offline.post_markdown.here </> (postId ^. unPostId . to toMarkdownFileName)
+    fp = offline.post_markdown.here </> (postId & unPostId & toMarkdownFileName)
 
 writePostData :: (MonadIO m) => PostId -> Pandoc -> m ()
 writePostData postId doc = liftIO do
   logM "writePostData" $ "fp =" <+> text fp
   ByteString.writeFile fp (Aeson.encode doc)
   where
-    fp = offline.post_data.here </> (postId ^. unPostId . to toDataFileName)
+    fp = offline.post_data.here </> (postId & unPostId & toDataFileName)
 
 readPostData :: (MonadIO m, MonadError Doc m) => PostId -> m Pandoc
 readPostData postId = do
@@ -83,7 +84,7 @@ readPostData postId = do
     >>= return . Aeson.decode
     >>= fromMaybe ("Failed to parse post data from file:" <+> text fp)
   where
-    fp = offline.post_data.here </> (postId ^. unPostId . to toDataFileName)
+    fp = offline.post_data.here </> (postId & unPostId & toDataFileName)
 
 readTemplateHtml :: (MonadIO m) => FilePath -> m Text
 readTemplateHtml templateId = do
@@ -97,7 +98,7 @@ writePostHtml postId htmlText = do
   logM "writePostHtml" $ "fp =" <+> text fp
   Text.writeFile fp htmlText & liftIO
   where
-    fp = offline.post.here </> (postId ^. unPostId . to toHtmlFileName)
+    fp = offline.post.here </> (postId & unPostId & toHtmlFileName)
 
 toMarkdownFileName :: FilePath -> FilePath
 toMarkdownFileName = (<.> ".md")

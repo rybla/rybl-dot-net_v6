@@ -1,7 +1,9 @@
 {-# LANGUAGE AllowAmbiguousTypes #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE TypeApplications #-}
+{-# OPTIONS_GHC -Wno-missing-export-lists #-}
 
 module Service.Preview where
 
@@ -13,7 +15,6 @@ import Control.Monad.Except (MonadError, throwError)
 import Control.Monad.IO.Class (MonadIO, liftIO)
 import qualified Data.Aeson as Aeson
 import qualified Data.ByteString.Lazy as ByteString
-import Data.Proxy (Proxy (..))
 import GHC.Generics (Generic)
 import qualified Network.HTTP.Client as HTTP
 import Network.URI (URI)
@@ -22,20 +23,20 @@ import System.Directory (doesFileExist)
 import System.FilePath ((</>))
 import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
 
-class PreviewService s where
+class PreviewService where
   previewUri ::
     (MonadIO m, MonadError Doc m) =>
-    Proxy s -> URI -> HTTP.Manager -> m Preview
+    URI -> HTTP.Manager -> m Preview
 
 data Preview = Preview
-  { _title :: String,
-    _description :: String
+  { title :: String,
+    description :: String
   }
   deriving (Show, Generic, Aeson.ToJSON, Aeson.FromJSON)
 
 cache ::
-  forall s m.
-  (PreviewService s, MonadIO m, MonadError Doc m) =>
+  forall m.
+  (PreviewService, MonadIO m, MonadError Doc m) =>
   URI -> HTTP.Manager -> m Preview
 cache uri manager = do
   logM "Preview.cache" $ "uri =" <+> text (show uri)
@@ -50,13 +51,13 @@ cache uri manager = do
             Nothing -> throwError @Doc $ "Failed to decode preview data file at" <+> text previewFilePath
             Just preview -> return preview
         False -> do
-          preview <- previewUri (Proxy @s) uri manager
+          preview <- previewUri uri manager
           ByteString.writeFile previewFilePath (preview & Aeson.encode) & liftIO
           return preview
 
 basePreview :: Preview
 basePreview =
   Preview
-    { _title = Config.baseTitle,
-      _description = Config.baseDescription
+    { title = Config.baseTitle,
+      description = Config.baseDescription
     }

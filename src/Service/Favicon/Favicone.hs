@@ -1,6 +1,8 @@
 {-# LANGUAGE BangPatterns #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# OPTIONS_GHC -Wno-orphans #-}
 
-module Service.Favicon.Favicone (FaviconeService) where
+module Service.Favicon.Favicone () where
 
 import Blog.Common (UriReference (..))
 import qualified Blog.Paths as Paths
@@ -36,10 +38,8 @@ favicone uri manager = do
   logM "favicone" $ "decoded response from favicone:" <+> showDoc response'
   return response'
 
-data FaviconeService
-
-instance Favicon.FaviconService FaviconeService where
-  fetchFaviconInfo _ uri manager = do
+instance Favicon.FaviconService where
+  fetchFaviconInfo uri manager = do
     response <- manager & favicone uri
     case response.hasIcon of
       False -> return Favicon.missingFaviconInfo
@@ -51,8 +51,8 @@ instance Favicon.FaviconService FaviconeService where
         let mirrorIconFilePath = Paths.offline.favicon.here </> faviconFileName
         return
           Favicon.FaviconInfo
-            { Favicon._originalIconRef = iconUri & UriReference,
-              Favicon._mirrorIconRef = mirrorIconRef & UriReference,
-              Favicon._mirrorIconFilePath = mirrorIconFilePath,
-              Favicon._format = response.format
+            { Favicon.originalIconRef = iconUri & UriReference,
+              Favicon.mirrorIconRef = mirrorIconRef & UriReference,
+              Favicon.mirrorIconFilePath = mirrorIconFilePath,
+              Favicon.format = response.format
             }

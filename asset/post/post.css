@@ -1,3 +1,15 @@
+:root {
+  --content-width: 800px;
+  --content-main-width: 500px;
+  --spacing-between-main-and-sidenotes: 1em;
+  --sidenote-width: calc(var(--content-width) - var(--content-main-width));
+
+  --dark-color: #3f3832;
+  --light-color: #f6eee3;
+  --medium-color: #c2baaf;
+  --accent-light-color: #e4c9ab;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -36,17 +48,28 @@ content {
   }
 }
 
+pre {
+  padding: 1em;
+  background: var(--dark-color);
+  color: var(--light-color);
+}
+
+blockquote {
+  padding: 1em;
+  background: var(--dark-color);
+  color: var(--light-color);
+  border-left: 4px solid var(--accent-light-color);
+
+  & > p {
+    margin: 0;
+  }
+}
+
 /* -------------------------------------------------------------------------- */
 
 html {
   margin: 0;
   padding: 0;
-
-  /*background: #3f3832;*/
-  /*background: #747d7c;*/
-  background: #c2baaf;
-  /*background: #e4c9ab;*/
-  /*background: #f6eee3;*/
 }
 
 body {
@@ -60,8 +83,8 @@ body {
 .title-box {
   padding: 1em;
 
-  color: #f6eee3;
-  background: #3f3832;
+  color: var(--light-color);
+  background: var(--dark-color);
 
   display: flex;
   flex-direction: column;
@@ -79,8 +102,8 @@ body {
 
     .tag {
       padding: 0.1em 0.2em;
-      background: #e4c9ab;
-      color: black;
+      background: var(--accent-light-color);
+      color: var(--dark-color);
     }
 
     .tag::before {
@@ -90,20 +113,59 @@ body {
 }
 
 content {
-  padding: 1em;
+  width: var(--content-width);
+  margin: 1em auto;
 
-  max-width: 600px;
-  margin: auto;
-
-  background: #e4c9ab;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  background: var(--medium-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   z-index: 0;
+
+  & > .main {
+    width: var(--content-main-width);
+    padding: 1em;
+  }
 }
 
 header,
 footer {
   padding: 1em;
-  background: #3f3832;
-  color: #f6eee3;
+  background: var(--dark-color);
+  color: var(--light-color);
   z-index: 10;
+}
+
+.sidenote {
+  position: relative;
+  display: block;
+  float: right;
+  clear: right;
+  width: calc(
+    var(--sidenote-width) - var(--spacing-between-main-and-sidenotes)
+  );
+  margin-right: calc(-1 * var(--sidenote-width));
+
+  margin-top: -0.5em;
+  margin-bottom: 2em;
+  padding: 1em;
+
+  color: var(--light-color);
+  background: var(--dark-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+
+  & > .preview-title {
+    display: block;
+    word-break: break-all;
+    font-weight: bold;
+  }
+
+  & > .preview-description {
+    display: block;
+    word-break: break-all;
+  }
 }

@@ -21,6 +21,7 @@ import Control.Monad.State (MonadIO, MonadState, gets)
 import qualified Data.Maybe as Maybe
 import qualified Network.HTTP.Client as Network
 import Service.Favicon (FaviconService)
+import Service.Preview (PreviewService)
 import System.FilePath ((</>))
 import Text.Pandoc (Pandoc)
 import Text.PrettyPrint.HughesPJClass (Doc)
@@ -39,11 +40,18 @@ newEnv _parseEnv _manager =
 
 makeLenses ''Env
 
-processPost :: forall fs m. (FaviconService fs, MonadError Doc m, MonadState Env m, MonadIO m) => PostId -> m Pandoc
+processPost ::
+  forall m.
+  (FaviconService, PreviewService, MonadError Doc m, MonadState Env m, MonadIO m) =>
+  PostId -> m Pandoc
 processPost postId = do
-  postUri <- parseUriReferenceM (Paths.online.post.here </> (postId ^. unPostId . to Paths.toHtmlFileName))
+  manager <- gets (^. manager)
+
+  postUri <- parseUriReferenceM (Paths.online.post.here </> (postId & unPostId & Paths.toHtmlFileName))
 
   post <- Paths.readPostData postId
+
+  post <- post & addLinkPreviews manager
 
   post <- do
     ols <- gets (^. parseEnv . outLinks . at postUri . to (Maybe.fromMaybe []))
@@ -53,8 +61,7 @@ processPost postId = do
     ils <- gets (^. parseEnv . inLinks . at postUri . to (Maybe.fromMaybe []))
     post & addCitationsSection ils
 
-  mngr <- gets (^. manager)
-  post <- post & addLinkFavicons @fs mngr
+  post <- post & addLinkFavicons manager
 
   post <- post & addTableOfContents
 

@@ -8,27 +8,29 @@ import Blog.Common
 import qualified Blog.Pandoc as Pandoc
 import Blog.Parse.Common
 import Blog.Tree
-import Blog.Utility (logM, parseUriReferenceM, showDoc, showText)
-import Control.Lens (to, (.~), (^.), _1)
+import Blog.Utility (assocList, logM, parseUriReferenceM, showDoc, showText)
+import Control.Lens hiding (preview)
 import Control.Monad.Except (MonadError)
 import Control.Monad.State (modify, runStateT)
 import Control.Monad.Writer (MonadIO)
-import Data.Function ((&))
-import Data.Functor ((<&>))
+import qualified Data.Maybe as Maybe
 import Data.Text (Text)
 import qualified Data.Text as Text
 import qualified Network.HTTP.Client as Network
 import qualified Network.URI as URI
 import Service.Favicon (FaviconService)
 import qualified Service.Favicon as Favicon
+import Service.Preview (PreviewService)
+import qualified Service.Preview as Preview
 import Text.Pandoc (Pandoc (..))
 import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Shared as Pandoc
 import qualified Text.Pandoc.Walk as Pandoc
 import Text.PrettyPrint.HughesPJClass (Doc, (<+>))
-import Service.Preview (PreviewService)
 
-addReferencesSection :: (MonadError Doc m) => [Link] -> Pandoc -> m Pandoc
+addReferencesSection ::
+  (MonadError Doc m) =>
+  [Link] -> Pandoc -> m Pandoc
 addReferencesSection outLinks doc = do
   case doc of
     Pandoc meta blocks -> do
@@ -37,10 +39,18 @@ addReferencesSection outLinks doc = do
           ++ [ Pandoc.Header 1 mempty [Pandoc.Str "References"],
                Pandoc.BulletList $
                  outLinks <&> \link ->
-                   [Pandoc.Plain [Pandoc.Link mempty (link ^. linkLabel) (link ^. linkUri . to showText, "")]]
+                   [ Pandoc.Plain
+                       [ Pandoc.Link
+                           (mempty @Pandoc.Attr & _3 %~ (("inReference", "True") :))
+                           (link ^. linkLabel)
+                           (link ^. linkUri . to showText, "")
+                       ]
+                   ]
              ]
 
-addCitationsSection :: (MonadError Doc m) => [Link] -> Pandoc -> m Pandoc
+addCitationsSection ::
+  (MonadError Doc m) =>
+  [Link] -> Pandoc -> m Pandoc
 addCitationsSection inLinks doc = do
   case doc of
     Pandoc meta blocks -> do
@@ -49,29 +59,61 @@ addCitationsSection inLinks doc = do
           ++ [ Pandoc.Header 1 mempty [Pandoc.Str "Citations"],
                Pandoc.BulletList $
                  inLinks <&> \link ->
-                   [Pandoc.Plain [Pandoc.Link mempty (link ^. linkLabel) (link ^. linkUri . to showText, "")]]
+                   [ Pandoc.Plain
+                       [ Pandoc.Link
+                           (mempty @Pandoc.Attr & _3 %~ (("inCitation", "True") :))
+                           (link ^. linkLabel)
+                           (link ^. linkUri . to showText, "")
+                       ]
+                   ]
              ]
 
-addLinkFavicons :: forall faviconS m. (FaviconService faviconS, MonadError Doc m, MonadIO m) => Network.Manager -> Pandoc -> m Pandoc
+addLinkFavicons ::
+  forall m.
+  (FaviconService, MonadError Doc m, MonadIO m) =>
+  Network.Manager -> Pandoc -> m Pandoc
 addLinkFavicons manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
-  Pandoc.Link attr kids target@(urlText, _target) -> do
+  Pandoc.Link attr kids target@(urlText, _) | attr ^. _3 . to (assocList "hasFavicon") . to Maybe.isNothing -> do
     url <- urlText & Text.unpack & parseUriReferenceM
-    faviconInfo <- manager & Favicon.cache @faviconS url
+    faviconInfo <- manager & Favicon.cache url
     logM "addLinkFavicons" $ showDoc url <+> "~~>" <+> showDoc faviconInfo
     let iconKid =
           Pandoc.Image
             ("", ["favicon"], [])
-            [Pandoc.Str $ faviconInfo ^. Favicon.mirrorIconRef . unUriReference . to showText]
-            (faviconInfo ^. Favicon.mirrorIconRef . unUriReference . to show . to (URI.escapeURIString URI.isUnescapedInURI) . to Text.pack, "")
-    return $ Pandoc.Link attr ([iconKid] ++ kids) target
+            [Pandoc.Str $ faviconInfo & Favicon.mirrorIconRef & unUriReference & showText]
+            (faviconInfo & Favicon.mirrorIconRef & unUriReference & show & URI.escapeURIString URI.isUnescapedInURI & Text.pack, "")
+    return $ Pandoc.Link (attr & _3 %~ (("hasFavicon", "True") :)) ([iconKid] ++ kids) target
   _ -> return x
 
-addLinkPreviews :: forall previewS m. (PreviewService previewS, MonadError Doc m, MonadIO m) => Network.Manager -> Pandoc -> m Pandoc
-addLinkPreviews = undefined
+addLinkPreviews ::
+  forall m.
+  (PreviewService, MonadError Doc m, MonadIO m) =>
+  Network.Manager -> Pandoc -> m Pandoc
+addLinkPreviews manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
+  Pandoc.Link _attr _kids _target@(urlText, _) -> do
+    url <- urlText & Text.unpack & parseUriReferenceM
+    preview <- Preview.cache url manager
+    return $
+      Pandoc.Span
+        mempty
+        [ x,
+          Pandoc.Span
+            (mempty @Pandoc.Attr & _2 %~ (["sidenote", "preview"] ++))
+            [ Pandoc.Span
+                (mempty @Pandoc.Attr & _2 %~ (["preview-title"] ++))
+                [Pandoc.Emph [Pandoc.Link mempty [Pandoc.Str (preview.title & Text.pack)] (urlText, "_blank")]],
+              Pandoc.Span
+                (mempty @Pandoc.Attr & _2 %~ (["preview-description"] ++))
+                [Pandoc.Str (preview.description & Text.pack)]
+            ]
+        ]
+  _ -> return x
 
 type TocNode = (Int, Text, [Pandoc.Inline])
 
-addTableOfContents :: (MonadError Doc m) => Pandoc -> m Pandoc
+addTableOfContents ::
+  (MonadError Doc m) =>
+  Pandoc -> m Pandoc
 addTableOfContents doc0 = do
   title <- doc0 & Pandoc.getMetaValue "title" <&> Pandoc.stringify
   (doc1, Tree _ tocKids) <-
