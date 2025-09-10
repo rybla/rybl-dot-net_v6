@@ -1,3 +1,7 @@
+/* -------------------------------------------------------------------------- */
+/* constants */
+/* -------------------------------------------------------------------------- */
+
 :root {
   --content-width: 800px;
   --content-main-width: 500px;
@@ -10,16 +14,12 @@
   --accent-light-color: #e4c9ab;
 }
 
+/* -------------------------------------------------------------------------- */
+/* customize existing styles */
+/* -------------------------------------------------------------------------- */
+
 * {
   box-sizing: border-box;
-}
-
-.favicon {
-  margin-right: 0.2em;
-
-  aspect-ratio: 1;
-  height: 1em;
-  width: 1em;
 }
 
 h1,
@@ -36,13 +36,7 @@ p {
   margin: 0.5em 0;
 }
 
-.warning {
-  padding: 1em;
-  border: 1px solid red;
-  background-color: color-mix(in hsl, white, black 5%);
-}
-
-content {
+main {
   p > img {
     width: 100%;
   }
@@ -70,6 +64,8 @@ blockquote {
 html {
   margin: 0;
   padding: 0;
+
+  overscroll-behavior: none;
 }
 
 body {
@@ -112,7 +108,7 @@ body {
   }
 }
 
-content {
+main {
   width: var(--content-width);
   margin: 1em auto;
 
@@ -126,12 +122,37 @@ content {
   }
 }
 
+/* I wish I could refer to the content_width variable here, but for some reason when I do, this stops working.  */
+@media (max-width: calc(800px - 1px)) {
+  main {
+    width: 100%;
+
+    & > .main {
+      width: 100%;
+    }
+  }
+}
+
 header,
 footer {
   padding: 1em;
   background: var(--dark-color);
   color: var(--light-color);
   z-index: 10;
+}
+
+.warning {
+  padding: 1em;
+  border: 1px solid red;
+  background-color: color-mix(in hsl, white, black 5%);
+}
+
+.favicon {
+  margin-right: 0.2em;
+
+  aspect-ratio: 1;
+  height: 1em;
+  width: 1em;
 }
 
 .sidenote {
@@ -167,5 +188,12 @@ footer {
   & > .preview-description {
     display: block;
     word-break: break-all;
+  }
+}
+
+@media (max-width: calc(800px - 1px)) {
+  .sidenote {
+    display: none;
+    visibility: hidden;
   }
 }
