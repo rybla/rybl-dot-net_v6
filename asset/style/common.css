@@ -95,6 +95,11 @@ blockquote {
 /* customize elements */
 /* -------------------------------------------------------------------------- */
 
+.header-info {
+  margin-block-end: 1em;
+  margin-block-start: 1em;
+}
+
 .warning {
   padding: 1em;
   border: 1px solid red;

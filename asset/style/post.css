@@ -23,6 +23,8 @@
 }
 
 .table-of-contents {
+  margin-block-end: 1em;
+  margin-block-start: 1em;
   padding: 1em;
   background-color: lightgray;
 }

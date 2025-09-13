@@ -16,7 +16,6 @@ import Control.Lens hiding (preview)
 import Control.Monad.Except (MonadError)
 import Control.Monad.State (modify, runStateT)
 import Control.Monad.Writer (MonadIO)
-import qualified Data.Maybe as Maybe
 import Data.Text (Text)
 import qualified Data.Text as Text
 import qualified Data.Time as Time
@@ -73,7 +72,7 @@ addLinkFavicons ::
   (FaviconService, MonadError Doc m, MonadIO m) =>
   Network.Manager -> Pandoc -> m Pandoc
 addLinkFavicons manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
-  Pandoc.Link attr kids target@(urlText, _) | attr ^. Pandoc.attrData . to (assocList "hasFavicon") . to Maybe.isNothing -> do
+  Pandoc.Link attr kids target@(urlText, _) | attr ^. Pandoc.attrData . to (not . ("noLinkFavicon" `elem`) . (fst <$>)) -> do
     url <- urlText & Text.unpack & parseUriReferenceM
     faviconInfo <- manager & Favicon.cache url
     logM "addLinkFavicons" $ showDoc url <+> "~~>" <+> showDoc faviconInfo
@@ -82,7 +81,7 @@ addLinkFavicons manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
             ("", ["favicon"], [])
             [Pandoc.Str $ faviconInfo & Favicon.mirrorIconRef & unUriReference & showText]
             (faviconInfo & Favicon.mirrorIconRef & unUriReference & show & URI.escapeURIString URI.isUnescapedInURI & Text.pack, "")
-    return $ Pandoc.Link (attr & Pandoc.attrData %~ (("hasFavicon", "True") :)) ([iconKid] ++ kids) target
+    return $ Pandoc.Link attr ([iconKid] ++ kids) target
   _ -> return x
 
 addLinkPreviews ::
@@ -90,7 +89,7 @@ addLinkPreviews ::
   (PreviewService, MonadError Doc m, MonadIO m) =>
   Network.Manager -> Pandoc -> m Pandoc
 addLinkPreviews manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
-  Pandoc.Link _attr _kids _target@(urlText, _) -> do
+  Pandoc.Link attr _kids _target@(urlText, _) | attr ^. Pandoc.attrData . to (not . ("noLinkPreview" `elem`) . (fst <$>)) -> do
     url <- urlText & Text.unpack & parseUriReferenceM
     preview <- Preview.cache url manager
     return $
@@ -152,10 +151,10 @@ addTableOfContents doc0 = do
 
     renderToc :: Tree TocNode -> [Pandoc.Block]
     renderToc (Tree (_, ident, xs) []) =
-      [ Pandoc.Plain [Pandoc.Link mempty xs (Text.pack $ "#" ++ Text.unpack ident, "")]
+      [ Pandoc.Plain [Pandoc.Link (mempty & Pandoc.attrData %~ ([("noLinkFavicon", ""), ("noLinkPreview", "")] ++)) xs (Text.pack $ "#" ++ Text.unpack ident, "")]
       ]
     renderToc (Tree (_, ident, xs) kids) =
-      [ Pandoc.Plain [Pandoc.Link mempty xs (Text.pack $ "#" ++ Text.unpack ident, "")],
+      [ Pandoc.Plain [Pandoc.Link (mempty & Pandoc.attrData %~ ([("noLinkFavicon", ""), ("noLinkPreview", "")] ++)) xs (Text.pack $ "#" ++ Text.unpack ident, "")],
         Pandoc.OrderedList orderedListStyle (renderToc <$> kids)
       ]
 
@@ -168,36 +167,45 @@ renderPostHeader post =
           2
           mempty
           [ Pandoc.Link
-              mempty
+              (mempty & Pandoc.attrData %~ ([("noLinkFavicon", ""), ("noLinkPreview", "")] ++))
               [Pandoc.Str post._postTitle]
               (showText post._postHref, mempty)
           ]
       ],
-      [makePubDate post._postPubDate],
-      [renderPubDate post._postTags],
       [ Pandoc.Div
-          (mempty & Pandoc.attrClasses %~ (["abstract"] ++))
-          abstract
-      | abstract <- post._postAbstract & refold
+          (mempty & Pandoc.attrClasses %~ (["header-info"] ++))
+          $ concat
+            [ [makePubDate post._postPubDate],
+              [renderPubDate post._postTags],
+              [renderAbstract abstract | abstract <- post._postAbstract & refold] & concat
+            ]
       ]
     ]
 
-renderAbstract :: [Pandoc.Block] -> Pandoc.Block
+renderAbstract :: [Pandoc.Block] -> [Pandoc.Block]
 renderAbstract blocks =
-  Pandoc.Div
-    (mempty & Pandoc.attrClasses %~ (["abstract"] ++))
-    blocks
+  concat
+    [ [ Pandoc.Para
+          [Pandoc.Underline [Pandoc.Str "Abstract."]]
+      ],
+      blocks
+    ]
+    <&> Pandoc.walk \(x :: Pandoc.Inline) -> case x of
+      Pandoc.Link attr kids target -> Pandoc.Link (attr & Pandoc.attrData %~ ([("noLinkFavicon", "")] ++)) kids target
+      _ -> x
 
 makePubDate :: Time.Day -> Pandoc.Block
 makePubDate pubDate =
   Pandoc.Para
-    [ Pandoc.Str "published: ",
-      Pandoc.Str (pubDate & show & Text.pack)
+    [ Pandoc.Underline [Pandoc.Str "Published:"],
+      Pandoc.Str " ",
+      Pandoc.Str $ pubDate & show & Text.pack
     ]
 
 renderPubDate :: [Text] -> Pandoc.Block
 renderPubDate tags =
   Pandoc.Para
-    [ Pandoc.Str "tags: ",
-      Pandoc.Str (tags & Text.intercalate ", ")
+    [ Pandoc.Underline [Pandoc.Str "Tags:"],
+      Pandoc.Str " ",
+      Pandoc.Str $ tags & Text.intercalate ", "
     ]
