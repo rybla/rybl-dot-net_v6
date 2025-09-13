@@ -1,5 +1,6 @@
 {-# LANGUAGE AllowAmbiguousTypes #-}
 {-# LANGUAGE NamedFieldPuns #-}
+{-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE TemplateHaskell #-}
 {-# OPTIONS_GHC -Wno-missing-export-lists #-}
@@ -8,46 +9,33 @@ module Blog.Parse.Post where
 
 import Blog.Common
 import Blog.Pandoc (runPandocM)
-import Blog.Parse.Common
+import qualified Blog.Pandoc as Pandoc
 import qualified Blog.Paths as Paths
 import Blog.Utility (logM, parseUriReferenceM)
 import Control.Lens
-import Control.Monad (void)
-import Control.Monad.Except (MonadError)
+import Control.Monad (unless, void)
+import Control.Monad.Except (MonadError, throwError)
 import Control.Monad.State (MonadState)
 import Control.Monad.Writer (MonadIO)
+import Data.Foldable (traverse_)
 import Data.Map (Map)
-import qualified Data.Map as Map
+import qualified Data.Maybe as Maybe
 import qualified Data.Text as Text
 import Network.URI (URI)
 import System.FilePath ((</>))
 import Text.Pandoc (Pandoc (..))
 import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Walk as Pandoc
-import Text.PrettyPrint.HughesPJClass (Doc, pPrint, (<+>))
+import Text.PrettyPrint.HughesPJClass (Doc, doubleQuotes, pPrint, text, (<+>))
 
-data Env = Env
-  { _outLinks :: Map URI [Link],
-    _inLinks :: Map URI [Link]
-  }
-  deriving (Show)
-
-newEnv :: Env
-newEnv = do
-  Env
-    { _outLinks = Map.empty,
-      _inLinks = Map.empty
-    }
-
-makeLenses ''Env
-
-parsePost ::
-  forall m.
-  (MonadIO m, MonadError Doc m, MonadState Env m) =>
-  PostId -> m Pandoc
-parsePost postId = do
-  logM "parsePost" $ "postId =" <+> pPrint postId
-  postUri <- parseUriReferenceM (Paths.online.post.here </> (postId & unPostId & Paths.toHtmlFileName))
+parse ::
+  (MonadIO m, MonadError Doc m, MonadState env m) =>
+  Lens' env (Map URI [Link]) ->
+  Lens' env (Map URI [Link]) ->
+  PostId ->
+  m Post
+parse outLinks inLinks postId = do
+  logM "Post.parse" $ "postId =" <+> pPrint postId
   txt <- Paths.readPostMarkdown postId
   doc <-
     txt
@@ -58,25 +46,38 @@ parsePost postId = do
           }
       & runPandocM
 
+  postHref <- parseUriReferenceM (Paths.online.post.here </> (postId & unPostId & Paths.toHtmlFileName))
+  postTitle <- doc & Pandoc.getMetaValueString "title"
+  postPubDate <- doc & Pandoc.getMetaValueString "pubDate"
+  postTags <- doc & Pandoc.getMetaValueListString "tags"
+
   void $
     doc & Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
       Pandoc.Link _attr kids (refText, _) -> do
         ref <- refText & Text.unpack & parseUriReferenceM
         let outLink = Link kids ref
-        outLinks . at postUri %= maybe (Just [outLink]) (Just . (outLink :))
-        let inLink = Link kids postUri
+        outLinks . at postHref %= maybe (Just [outLink]) (Just . (outLink :))
+        let inLink = Link kids postHref
         inLinks . at ref %= maybe (Just [inLink]) (Just . (inLink :))
         return x
       Pandoc.Image _attr kids (refText, _) -> do
         ref <- refText & Text.unpack & parseUriReferenceM
         let outLink = Link kids ref
-        outLinks . at postUri %= maybe (Just [outLink]) (Just . (outLink :))
-        let inLink = Link kids postUri
+        outLinks . at postHref %= maybe (Just [outLink]) (Just . (outLink :))
+        let inLink = Link kids postHref
         inLinks . at ref %= maybe (Just [inLink]) (Just . (inLink :))
         return x
       _ -> return x
 
-  return doc
+  return
+    Post
+      { postId,
+        postHref,
+        postTitle,
+        postPubDate,
+        postTags,
+        _postDoc = doc
+      }
   where
     readerExtensions =
       Pandoc.extensionsFromList

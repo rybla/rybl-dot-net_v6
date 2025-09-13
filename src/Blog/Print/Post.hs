@@ -1,5 +1,6 @@
 {-# LANGUAGE DerivingStrategies #-}
 {-# LANGUAGE GeneralisedNewtypeDeriving #-}
+{-# LANGUAGE ScopedTypeVariables #-}
 {-# OPTIONS_GHC -Wno-missing-export-lists #-}
 
 module Blog.Print.Post where
@@ -12,21 +13,18 @@ import Blog.Print.Common
 import Blog.Utility (fromEither)
 import Control.Lens
 import Control.Monad.Except (MonadError, throwError)
-import Control.Monad.IO.Class (MonadIO)
+import Control.Monad.IO.Class (MonadIO, liftIO)
 import qualified Data.Aeson as Aeson
 import qualified Data.Aeson.Types as Aeson
 import qualified Data.Text as Text
+import qualified Data.Text.IO as TextIO
+import System.FilePath ((</>))
 import qualified Text.Pandoc as Pandoc
-import qualified Text.Pandoc.Shared as Pandoc
 import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
 
-printPost :: (MonadIO m, MonadError Doc m) => PostId -> m ()
-printPost postId = do
-  postDoc <- Paths.readPostData postId
-  templateText <- Paths.readTemplateHtml "post"
-
-  postTitle <- postDoc & Pandoc.getMetaValue "title" <&> Pandoc.stringify
-  postTags <- postDoc & Pandoc.getMetaValueList "tags" <&> (<&> Pandoc.stringify)
+printPost :: (MonadIO m, MonadError Doc m) => Post -> m ()
+printPost post = do
+  templateText <- TextIO.readFile (Paths.offline.template.here </> ("post" & toHtmlFileName)) & liftIO
 
   postHtml <- Pandoc.runPandocM do
     contentHtml <-
@@ -34,20 +32,16 @@ printPost postId = do
         Pandoc.def
           { Pandoc.writerHTMLMathMethod = Pandoc.MathJax ""
           }
-        postDoc
+        (post ^. postDoc)
 
     let varsJson :: Aeson.Value
         varsJson =
           Aeson.object
             [ ("stylesheetHref", "post.css"),
-              ("title", postTitle & Aeson.toJSON),
-              ("tags", postTags & Aeson.toJSON),
+              ("title", post & postTitle & Aeson.toJSON),
+              ("tags", post & postTags & Aeson.toJSON),
               ("content", contentHtml & Aeson.toJSON)
             ]
-
-    -- postTemplate <- Pandoc.compileTemplate Paths.offline.template.here templateText & liftIO >>= fromEither (("Error when parsing template:" <+>) . text) & fromDocError
-    -- let _ = Pandoc.compileTemplate Paths.offline.template.here templateText
-    --           & Pandoc.runWithParials
 
     postTemplate <-
       Pandoc.compileTemplate mempty templateText
@@ -65,8 +59,8 @@ printPost postId = do
             Pandoc.writerVariables = vars,
             Pandoc.writerHTMLMathMethod = Pandoc.MathJax ""
           }
-        postDoc
+        (post ^. postDoc)
 
     return postHtml
 
-  Paths.writePostHtml postId postHtml
+  TextIO.writeFile (post & postId & unPostId & toHtmlFileName) postHtml & liftIO

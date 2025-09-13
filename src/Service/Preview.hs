@@ -7,8 +7,8 @@
 
 module Service.Preview where
 
+import Blog.Common
 import qualified Blog.Config as Config
-import qualified Blog.Paths as Paths
 import Blog.Utility
 import Control.Lens hiding (preview, (<.>))
 import Control.Monad.Except (MonadError, throwError)
@@ -20,7 +20,6 @@ import qualified Network.HTTP.Client as HTTP
 import Network.URI (URI)
 import qualified Network.URI as URI
 import System.Directory (doesFileExist)
-import System.FilePath ((</>))
 import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
 
 class PreviewService where
@@ -44,7 +43,7 @@ cache uri manager = do
     then do
       return basePreview
     else do
-      let previewFilePath = Paths.offline.preview.here </> (uri & uriRootAndPath & makeValidIdent & Paths.toDataFileName)
+      let previewFilePath = uri & toFaviconInfoFilePath
       doesFileExist previewFilePath & liftIO >>= \case
         True -> do
           ByteString.readFile previewFilePath & liftIO <&> Aeson.decode @Preview >>= \case

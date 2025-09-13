@@ -30,10 +30,10 @@ flag dev
 library
   exposed-modules:
       Blog.Build
+      Blog.Env
       Blog.Common
       Blog.Config
       Blog.Pandoc
-      Blog.Parse
       Blog.Parse.Common
       Blog.Parse.Post
       Blog.Paths

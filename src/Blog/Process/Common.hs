@@ -1,12 +1,15 @@
 {-# LANGUAGE AllowAmbiguousTypes #-}
+{-# LANGUAGE NamedFieldPuns #-}
+{-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE TypeApplications #-}
 {-# OPTIONS_GHC -Wno-missing-export-lists #-}
 
 module Blog.Process.Common where
 
 import Blog.Common
 import qualified Blog.Pandoc as Pandoc
-import Blog.Parse.Common
 import Blog.Tree
 import Blog.Utility (assocList, logM, parseUriReferenceM, showDoc, showText)
 import Control.Lens hiding (preview)
@@ -41,9 +44,9 @@ addReferencesSection outLinks doc = do
                  outLinks <&> \link ->
                    [ Pandoc.Plain
                        [ Pandoc.Link
-                           (mempty @Pandoc.Attr & _3 %~ (("inReference", "True") :))
-                           (link ^. linkLabel)
-                           (link ^. linkUri . to showText, "")
+                           (mempty & Pandoc.attrData %~ (("inReference", "True") :))
+                           (link & linkLabel)
+                           (link & linkUri & showText, "")
                        ]
                    ]
              ]
@@ -61,9 +64,9 @@ addCitationsSection inLinks doc = do
                  inLinks <&> \link ->
                    [ Pandoc.Plain
                        [ Pandoc.Link
-                           (mempty @Pandoc.Attr & _3 %~ (("inCitation", "True") :))
-                           (link ^. linkLabel)
-                           (link ^. linkUri . to showText, "")
+                           (mempty & Pandoc.attrData %~ (("inCitation", "True") :))
+                           (link & linkLabel)
+                           (link & linkUri & showText, "")
                        ]
                    ]
              ]
@@ -73,7 +76,7 @@ addLinkFavicons ::
   (FaviconService, MonadError Doc m, MonadIO m) =>
   Network.Manager -> Pandoc -> m Pandoc
 addLinkFavicons manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
-  Pandoc.Link attr kids target@(urlText, _) | attr ^. _3 . to (assocList "hasFavicon") . to Maybe.isNothing -> do
+  Pandoc.Link attr kids target@(urlText, _) | attr ^. Pandoc.attrData . to (assocList "hasFavicon") . to Maybe.isNothing -> do
     url <- urlText & Text.unpack & parseUriReferenceM
     faviconInfo <- manager & Favicon.cache url
     logM "addLinkFavicons" $ showDoc url <+> "~~>" <+> showDoc faviconInfo
@@ -82,7 +85,7 @@ addLinkFavicons manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
             ("", ["favicon"], [])
             [Pandoc.Str $ faviconInfo & Favicon.mirrorIconRef & unUriReference & showText]
             (faviconInfo & Favicon.mirrorIconRef & unUriReference & show & URI.escapeURIString URI.isUnescapedInURI & Text.pack, "")
-    return $ Pandoc.Link (attr & _3 %~ (("hasFavicon", "True") :)) ([iconKid] ++ kids) target
+    return $ Pandoc.Link (attr & Pandoc.attrData %~ (("hasFavicon", "True") :)) ([iconKid] ++ kids) target
   _ -> return x
 
 addLinkPreviews ::
@@ -98,12 +101,12 @@ addLinkPreviews manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
         mempty
         [ x,
           Pandoc.Span
-            (mempty @Pandoc.Attr & _2 %~ (["sidenote", "preview"] ++))
+            (mempty & Pandoc.attrClasses %~ (["sidenote", "preview"] ++))
             [ Pandoc.Span
-                (mempty @Pandoc.Attr & _2 %~ (["preview-title"] ++))
+                (mempty & Pandoc.attrClasses %~ (["preview-title"] ++))
                 [Pandoc.Emph [Pandoc.Link mempty [Pandoc.Str (preview.title & Text.pack)] (urlText, "_blank")]],
               Pandoc.Span
-                (mempty @Pandoc.Attr & _2 %~ (["preview-description"] ++))
+                (mempty & Pandoc.attrClasses %~ (["preview-description"] ++))
                 [Pandoc.Str (preview.description & Text.pack)]
             ]
         ]
@@ -123,7 +126,7 @@ addTableOfContents doc0 = do
             Pandoc.Header level attr kids -> do
               let ident = Pandoc.stringify kids & Pandoc.textToIdentifier mempty
               modify (addHeaderToToc (level, ident, kids))
-              return $ Pandoc.Header level (attr & _1 .~ ident) kids
+              return $ Pandoc.Header level (attr & Pandoc.attrId .~ ident) kids
             _ -> return x
         )
       & (`runStateT` Cursor [] (Tree (0 :: Int, "title", [Pandoc.Str title]) []))

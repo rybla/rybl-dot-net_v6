@@ -6,22 +6,11 @@
 
 module Blog.Paths where
 
-import Blog.Common
 import Blog.PathsTh (MakeRootParams (..), makeRoot)
-import Blog.Utility (fromMaybe, logM)
-import Control.Lens hiding ((<.>))
-import Control.Monad.Except (MonadError)
-import Control.Monad.IO.Class (MonadIO, liftIO)
-import qualified Data.Aeson as Aeson
-import qualified Data.ByteString.Lazy as ByteString
-import Data.Text (Text)
-import qualified Data.Text.IO as Text
 import Data.Tree (Tree (..))
 import Network.URI (URI)
 import Network.URI.Static (relativeReference)
-import System.FilePath ((<.>), (</>))
-import Text.Pandoc (Pandoc)
-import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
+import System.FilePath ((</>))
 
 baseFaviconUri :: URI
 baseFaviconUri = [relativeReference|/favicon.ico|]
@@ -62,49 +51,40 @@ makeRoot
     Node "script" []
   ]
 
-readPostMarkdown :: (MonadIO m) => PostId -> m Text
-readPostMarkdown postId = do
-  logM "readPostMarkdown" $ "fp =" <+> text fp
-  Text.readFile fp & liftIO
-  where
-    fp = offline.post_markdown.here </> (postId & unPostId & toMarkdownFileName)
+-- readPostMarkdown :: (MonadIO m) => PostId -> m Text
+-- readPostMarkdown postId = do
+--   logM "readPostMarkdown" $ "fp =" <+> text fp
+--   Text.readFile fp & liftIO
+--   where
+--     fp = offline.post_markdown.here </> (postId & unPostId & toMarkdownFileName)
 
-writePostData :: (MonadIO m) => PostId -> Pandoc -> m ()
-writePostData postId doc = liftIO do
-  logM "writePostData" $ "fp =" <+> text fp
-  ByteString.writeFile fp (Aeson.encode doc)
-  where
-    fp = offline.post_data.here </> (postId & unPostId & toDataFileName)
+-- writePostData :: (MonadIO m) => PostId -> Pandoc -> m ()
+-- writePostData postId doc = liftIO do
+--   logM "writePostData" $ "fp =" <+> text fp
+--   ByteString.writeFile fp (Aeson.encode doc)
+--   where
+--     fp = offline.post_data.here </> (postId & unPostId & toDataFileName)
 
-readPostData :: (MonadIO m, MonadError Doc m) => PostId -> m Pandoc
-readPostData postId = do
-  logM "readPostData" $ "fp =" <+> text fp
-  ByteString.readFile fp
-    & liftIO
-    >>= return . Aeson.decode
-    >>= fromMaybe ("Failed to parse post data from file:" <+> text fp)
-  where
-    fp = offline.post_data.here </> (postId & unPostId & toDataFileName)
+-- readPostData :: (MonadIO m, MonadError Doc m) => PostId -> m Pandoc
+-- readPostData postId = do
+--   logM "readPostData" $ "fp =" <+> text fp
+--   ByteString.readFile fp
+--     & liftIO
+--     >>= return . Aeson.decode
+--     >>= fromMaybe ("Failed to parse post data from file:" <+> text fp)
+--   where
+--     fp = offline.post_data.here </> (postId & unPostId & toDataFileName)
 
-readTemplateHtml :: (MonadIO m) => FilePath -> m Text
-readTemplateHtml templateId = do
-  logM "readTemplateHtml" $ "fp =" <+> text fp
-  Text.readFile fp & liftIO
-  where
-    fp = offline.template.here </> (templateId & toHtmlFileName)
+-- readTemplateHtml :: (MonadIO m) => FilePath -> m Text
+-- readTemplateHtml templateId = do
+--   logM "readTemplateHtml" $ "fp =" <+> text fp
+--   Text.readFile fp & liftIO
+--   where
+--     fp = offline.template.here </> (templateId & toHtmlFileName)
 
-writePostHtml :: (MonadIO m) => PostId -> Text -> m ()
-writePostHtml postId htmlText = do
-  logM "writePostHtml" $ "fp =" <+> text fp
-  Text.writeFile fp htmlText & liftIO
-  where
-    fp = offline.post.here </> (postId & unPostId & toHtmlFileName)
-
-toMarkdownFileName :: FilePath -> FilePath
-toMarkdownFileName = (<.> ".md")
-
-toDataFileName :: FilePath -> FilePath
-toDataFileName = (<.> ".json")
-
-toHtmlFileName :: FilePath -> FilePath
-toHtmlFileName = (<.> ".html")
+-- writePostHtml :: (MonadIO m) => PostId -> Text -> m ()
+-- writePostHtml postId htmlText = do
+--   logM "writePostHtml" $ "fp =" <+> text fp
+--   Text.writeFile fp htmlText & liftIO
+--   where
+--     fp = offline.post.here </> (postId & unPostId & toHtmlFileName)

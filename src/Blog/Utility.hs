@@ -1,10 +1,12 @@
+{-# LANGUAGE RankNTypes #-}
 {-# OPTIONS_GHC -Wno-missing-export-lists #-}
 
 module Blog.Utility where
 
+import Control.Lens
 import Control.Monad.Except (MonadError, throwError)
 import Control.Monad.IO.Class
-import Data.Function ((&))
+import Control.Monad.State (MonadState, gets)
 import qualified Data.List as List
 import qualified Data.Map as Map
 import Data.Maybe (fromJust)
@@ -90,3 +92,8 @@ showDoc = text . show
 assocList :: (Eq k) => k -> [(k, v)] -> Maybe v
 assocList _ [] = Nothing
 assocList k ((k', v) : kvs) = if k == k' then Just v else assocList k kvs
+
+(.=*) :: (MonadState s m) => Lens' s a -> (a -> m a) -> m ()
+l .=* f = (l .=) =<< f =<< gets (^. l)
+
+infix 4 .=*

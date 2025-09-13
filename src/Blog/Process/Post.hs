@@ -10,59 +10,53 @@
 module Blog.Process.Post where
 
 import Blog.Common
-import Blog.Parse.Post (inLinks, outLinks)
-import qualified Blog.Parse.Post as Parse.Post
 import qualified Blog.Paths as Paths
 import Blog.Process.Common
-import Blog.Utility (parseUriReferenceM)
+import Blog.Utility
 import Control.Lens
 import Control.Monad.Error.Class (MonadError)
 import Control.Monad.State (MonadIO, MonadState, gets)
+import Data.Map (Map)
 import qualified Data.Maybe as Maybe
 import qualified Network.HTTP.Client as Network
+import Network.URI (URI)
 import Service.Favicon (FaviconService)
 import Service.Preview (PreviewService)
 import System.FilePath ((</>))
 import Text.Pandoc (Pandoc)
 import Text.PrettyPrint.HughesPJClass (Doc)
 
-data Env = Env
-  { _parseEnv :: Parse.Post.Env,
-    _manager :: Network.Manager
-  }
+process ::
+  (FaviconService, PreviewService, MonadError Doc m, MonadState env m, MonadIO m) =>
+  Lens' env Network.Manager ->
+  Lens' env (Map URI [Link]) ->
+  Lens' env (Map URI [Link]) ->
+  Lens' env Post ->
+  m ()
+process manager outLinks inLinks post = do
+  mgr <- gets (^. manager)
+  ph <- gets (^. post . to postHref)
 
-newEnv :: Parse.Post.Env -> Network.Manager -> Env
-newEnv _parseEnv _manager =
-  Env
-    { _parseEnv,
-      _manager
-    }
+  -- postUri <- parseUriReferenceM (Paths.online.post.here </> (postId & unPostId & Paths.toHtmlFileName))
 
-makeLenses ''Env
+  -- post <- Paths.readPostData postId
+  -- >>= \post -> ByteString.writeFile (postId & toPostDataFilePath) (post & postDoc & Aeson.encode) & liftIO
 
-processPost ::
-  forall m.
-  (FaviconService, PreviewService, MonadError Doc m, MonadState Env m, MonadIO m) =>
-  PostId -> m Pandoc
-processPost postId = do
-  manager <- gets (^. manager)
+  -- post <- post & addLinkPreviews mgr
 
-  postUri <- parseUriReferenceM (Paths.online.post.here </> (postId & unPostId & Paths.toHtmlFileName))
+  (post . postDoc .=) =<< addLinkPreviews mgr =<< gets (^. post . postDoc)
 
-  post <- Paths.readPostData postId
+  do
+    ph <- gets (^. post . to postHref)
+    ols <- gets (^. outLinks . at ph . to (Maybe.fromMaybe []))
+    post . postDoc .=* addReferencesSection ols
 
-  post <- post & addLinkPreviews manager
+  do
+    ils <- gets (^. inLinks . at ph . to (Maybe.fromMaybe []))
+    post . postDoc .=* addCitationsSection ils
 
-  post <- do
-    ols <- gets (^. parseEnv . outLinks . at postUri . to (Maybe.fromMaybe []))
-    post & addReferencesSection ols
+  post . postDoc .=* addLinkFavicons mgr
 
-  post <- do
-    ils <- gets (^. parseEnv . inLinks . at postUri . to (Maybe.fromMaybe []))
-    post & addCitationsSection ils
+  post . postDoc .=* addTableOfContents
 
-  post <- post & addLinkFavicons manager
-
-  post <- post & addTableOfContents
-
-  return post
+  return ()
