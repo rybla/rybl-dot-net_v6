@@ -27,13 +27,30 @@ body {
   flex-direction: column;
 }
 
+main {
+  flex: 1 1 auto;
+  margin: 1em auto;
+}
+
+@media (min-width: calc(800px)) {
+  main {
+    width: var(--main-width);
+  }
+}
+@media (max-width: calc(800px - 1px)) {
+  main {
+    width: 100%;
+  }
+}
+
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  margin: 0.5em 0;
+  margin: 0;
+  margin-bottom: 0.5em;
   padding: 0;
 }
 

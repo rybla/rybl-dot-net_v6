@@ -31,7 +31,7 @@ printPost post = evalIsoStateT (pairIso def) do
       Pandoc.def
         { Pandoc.writerHTMLMathMethod = Pandoc.MathJax ""
         }
-      (post ^. postDoc)
+      post._postDoc
       & Pandoc.lensPandocM _1
 
   postTemplate <-
@@ -44,8 +44,8 @@ printPost post = evalIsoStateT (pairIso def) do
       Aeson.parseEither
         Aeson.parseJSON
         ( Aeson.object
-            [ ("title", post & postTitle & Aeson.toJSON),
-              ("tags", post & postTags & Aeson.toJSON),
+            [ ("title", post._postTitle & Aeson.toJSON),
+              ("tags", post._postTags & Aeson.toJSON),
               ("content", contentHtml & Aeson.toJSON)
             ]
         )
@@ -59,4 +59,4 @@ printPost post = evalIsoStateT (pairIso def) do
       (post ^. postDoc)
       & Pandoc.lensPandocM _1
 
-  TextIO.writeFile (post & postId & toPostFilePath) postHtml & liftIO
+  TextIO.writeFile (post._postId & toPostFilePath) postHtml & liftIO

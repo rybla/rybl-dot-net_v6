@@ -1,5 +1,6 @@
 {-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE TupleSections #-}
+{-# OPTIONS_GHC -Wno-name-shadowing #-}
 
 module Blog.Print.Index (printIndex) where
 
@@ -7,6 +8,7 @@ import Blog.Common
 import qualified Blog.Pandoc as Pandoc
 import qualified Blog.Paths as Paths
 import Blog.Print.Common
+import Blog.Process.Common
 import Blog.Utility
 import Control.Lens hiding (index)
 import Control.Monad.Except (MonadError)
@@ -16,6 +18,7 @@ import Control.Monad.Writer (MonadIO)
 import qualified Data.Aeson as Aeson
 import qualified Data.Aeson.Types as Aeson
 import Data.Default (def)
+import qualified Data.List as List
 import qualified Data.Text.IO as TextIO
 import System.FilePath ((</>))
 import Text.Pandoc (Pandoc)
@@ -27,6 +30,9 @@ printIndex ::
   [Post] ->
   m ()
 printIndex posts = evalIsoStateT (pairIso def) do
+  -- sort posts by pubDate
+  posts <- pure $ List.sortBy (\p1 p2 -> p2._postPubDate `compare` p1._postPubDate) posts
+
   index <- makeIndex posts
 
   templateText <- TextIO.readFile (Paths.offline.template.here </> ("index" & toHtmlFileName)) & liftIO
@@ -59,7 +65,7 @@ printIndex posts = evalIsoStateT (pairIso def) do
   TextIO.writeFile (Paths.offline.here </> ("index" & toHtmlFileName)) indexHtml & liftIO
 
 makeIndex ::
-  (MonadIO m, MonadError Doc m) =>
+  (MonadIO m) =>
   [Post] ->
   m Pandoc
 makeIndex posts = do
@@ -68,32 +74,15 @@ makeIndex posts = do
     Pandoc.Pandoc
       mempty
       ( concat
-          [ [Pandoc.Header 1 mempty [Pandoc.Str "Index"]],
+          [ [ Pandoc.Header 1 mempty [Pandoc.Str "Index"]
+            ],
             postCards
           ]
       )
 
-makePostCard :: (MonadError Doc m) => Post -> m Pandoc.Block
+makePostCard :: (Monad m) => Post -> m Pandoc.Block
 makePostCard post = do
-  postHref <- post.postId & toPostHref
   return
     $ Pandoc.Div
-      (mempty & Pandoc.attrClasses %~ (["PostCard"] ++))
-      . concat
-    $ [ [ Pandoc.Div
-            (mempty & Pandoc.attrClasses %~ (["title"] ++))
-            [ Pandoc.Plain
-                [ Pandoc.Link
-                    mempty
-                    [Pandoc.Str post.postTitle]
-                    (showText postHref, mempty)
-                ]
-            ]
-        ],
-        [ Pandoc.Div
-            (mempty & Pandoc.attrClasses %~ (["abstract"] ++))
-            [ Pandoc.Plain [Pandoc.Str abstract]
-            ]
-        | abstract <- post.postAbstract & refold
-        ]
-      ]
+      (mempty & Pandoc.attrClasses %~ (["post-card"] ++))
+    $ renderPostHeader post

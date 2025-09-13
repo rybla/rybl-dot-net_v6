@@ -4,6 +4,7 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE TemplateHaskell #-}
 {-# OPTIONS_GHC -Wno-missing-export-lists #-}
+{-# OPTIONS_GHC -Wno-name-shadowing #-}
 
 module Blog.Parse.Post where
 
@@ -12,8 +13,8 @@ import Blog.Pandoc (runPandocM)
 import qualified Blog.Pandoc as Pandoc
 import Blog.Utility
 import Control.Lens
-import Control.Monad (void)
-import Control.Monad.Except (MonadError)
+import Control.Monad (void, (>=>))
+import Control.Monad.Except (MonadError, throwError)
 import Control.Monad.State (MonadState)
 import Control.Monad.Writer (MonadIO)
 import Data.Map (Map)
@@ -44,9 +45,13 @@ parse outLinks inLinks postId postText = do
 
   postHref <- toPostHref postId
   postTitle <- doc & Pandoc.getMetaValueSuchThat Pandoc.fromMetaString "title"
-  postPubDate <- doc & Pandoc.getMetaValueSuchThat Pandoc.fromMetaString "pubDate"
+  postPubDate <-
+    doc
+      & Pandoc.getMetaValueSuchThat
+        (Pandoc.fromMetaString >=> maybe (throwError "expected date") pure . parseDay . Text.unpack)
+        "pubDate"
   postTags <- doc & Pandoc.getMetaValueSuchThat Pandoc.fromMetaListString "tags"
-  postAbstract <- doc & Pandoc.getMetaValueMaybeSuchThat Pandoc.fromMetaString "abstract"
+  postAbstract <- doc & Pandoc.getMetaValueMaybeSuchThat Pandoc.fromMetaBlocks "abstract"
 
   void $
     doc & Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
@@ -68,12 +73,12 @@ parse outLinks inLinks postId postText = do
 
   return
     Post
-      { postId,
-        postHref,
-        postTitle,
-        postPubDate,
-        postAbstract,
-        postTags,
+      { _postId = postId,
+        _postHref = postHref,
+        _postTitle = postTitle,
+        _postPubDate = postPubDate,
+        _postAbstract = postAbstract,
+        _postTags = postTags,
         _postDoc = doc
       }
   where

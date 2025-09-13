@@ -11,7 +11,7 @@ module Blog.Process.Common where
 import Blog.Common
 import qualified Blog.Pandoc as Pandoc
 import Blog.Tree
-import Blog.Utility (assocList, logM, parseUriReferenceM, showDoc, showText)
+import Blog.Utility
 import Control.Lens hiding (preview)
 import Control.Monad.Except (MonadError)
 import Control.Monad.State (modify, runStateT)
@@ -19,6 +19,7 @@ import Control.Monad.Writer (MonadIO)
 import qualified Data.Maybe as Maybe
 import Data.Text (Text)
 import qualified Data.Text as Text
+import qualified Data.Time as Time
 import qualified Network.HTTP.Client as Network
 import qualified Network.URI as URI
 import Service.Favicon (FaviconService)
@@ -34,42 +35,38 @@ import Text.PrettyPrint.HughesPJClass (Doc, (<+>))
 addReferencesSection ::
   (MonadError Doc m) =>
   [Link] -> Pandoc -> m Pandoc
-addReferencesSection outLinks doc = do
-  case doc of
-    Pandoc meta blocks -> do
-      return . Pandoc meta $
-        blocks
-          ++ [ Pandoc.Header 1 mempty [Pandoc.Str "References"],
-               Pandoc.BulletList $
-                 outLinks <&> \link ->
-                   [ Pandoc.Plain
-                       [ Pandoc.Link
-                           (mempty & Pandoc.attrData %~ (("inReference", "True") :))
-                           (link & linkLabel)
-                           (link & linkUri & showText, "")
-                       ]
+addReferencesSection outLinks (Pandoc meta blocks) = do
+  return . Pandoc meta $
+    blocks
+      ++ [ Pandoc.Header 1 mempty [Pandoc.Str "References"],
+           Pandoc.BulletList $
+             outLinks <&> \link ->
+               [ Pandoc.Plain
+                   [ Pandoc.Link
+                       (mempty & Pandoc.attrData %~ (("inReference", "True") :))
+                       (link & linkLabel)
+                       (link & linkUri & showText, "")
                    ]
-             ]
+               ]
+         ]
 
 addCitationsSection ::
   (MonadError Doc m) =>
   [Link] -> Pandoc -> m Pandoc
-addCitationsSection inLinks doc = do
-  case doc of
-    Pandoc meta blocks -> do
-      return . Pandoc meta $
-        blocks
-          ++ [ Pandoc.Header 1 mempty [Pandoc.Str "Citations"],
-               Pandoc.BulletList $
-                 inLinks <&> \link ->
-                   [ Pandoc.Plain
-                       [ Pandoc.Link
-                           (mempty & Pandoc.attrData %~ (("inCitation", "True") :))
-                           (link & linkLabel)
-                           (link & linkUri & showText, "")
-                       ]
+addCitationsSection inLinks (Pandoc meta blocks) = do
+  return . Pandoc meta $
+    blocks
+      ++ [ Pandoc.Header 1 mempty [Pandoc.Str "Citations"],
+           Pandoc.BulletList $
+             inLinks <&> \link ->
+               [ Pandoc.Plain
+                   [ Pandoc.Link
+                       (mempty & Pandoc.attrData %~ (("inCitation", "True") :))
+                       (link & linkLabel)
+                       (link & linkUri & showText, "")
                    ]
-             ]
+               ]
+         ]
 
 addLinkFavicons ::
   forall m.
@@ -163,3 +160,44 @@ addTableOfContents doc0 = do
       ]
 
     orderedListStyle = (1, Pandoc.Decimal, Pandoc.Period)
+
+renderPostHeader :: Post -> [Pandoc.Block]
+renderPostHeader post =
+  concat
+    [ [ Pandoc.Header
+          2
+          mempty
+          [ Pandoc.Link
+              mempty
+              [Pandoc.Str post._postTitle]
+              (showText post._postHref, mempty)
+          ]
+      ],
+      [makePubDate post._postPubDate],
+      [renderPubDate post._postTags],
+      [ Pandoc.Div
+          (mempty & Pandoc.attrClasses %~ (["abstract"] ++))
+          abstract
+      | abstract <- post._postAbstract & refold
+      ]
+    ]
+
+renderAbstract :: [Pandoc.Block] -> Pandoc.Block
+renderAbstract blocks =
+  Pandoc.Div
+    (mempty & Pandoc.attrClasses %~ (["abstract"] ++))
+    blocks
+
+makePubDate :: Time.Day -> Pandoc.Block
+makePubDate pubDate =
+  Pandoc.Para
+    [ Pandoc.Str "published: ",
+      Pandoc.Str (pubDate & show & Text.pack)
+    ]
+
+renderPubDate :: [Text] -> Pandoc.Block
+renderPubDate tags =
+  Pandoc.Para
+    [ Pandoc.Str "tags: ",
+      Pandoc.Str (tags & Text.intercalate ", ")
+    ]

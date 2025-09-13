@@ -1,6 +1,7 @@
 {-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE TemplateHaskellQuotes #-}
 {-# OPTIONS_GHC -Wno-missing-export-lists #-}
+{-# OPTIONS_GHC -Wno-name-shadowing #-}
 
 module Blog.Common where
 
@@ -13,6 +14,7 @@ import Control.Monad.Except (MonadError)
 import Data.Aeson (FromJSON, ToJSON, parseJSON)
 import Data.Aeson.Types (toJSON)
 import Data.Text (Text)
+import Data.Time (Day)
 import Network.URI (URI)
 import qualified Network.URI as URI
 import System.FilePath ((<.>), (</>))
@@ -41,12 +43,12 @@ data Link = Link
   deriving (Show)
 
 data Post = Post
-  { postId :: PostId,
-    postHref :: URI,
-    postTitle :: Text,
-    postPubDate :: Text,
-    postTags :: [Text],
-    postAbstract :: Maybe Text,
+  { _postId :: PostId,
+    _postHref :: URI,
+    _postTitle :: Text,
+    _postPubDate :: Day,
+    _postTags :: [Text],
+    _postAbstract :: Maybe [Pandoc.Block],
     _postDoc :: Pandoc.Pandoc
   }
 

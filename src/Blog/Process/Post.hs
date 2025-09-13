@@ -21,6 +21,7 @@ import qualified Network.HTTP.Client as Network
 import Network.URI (URI)
 import Service.Favicon (FaviconService)
 import Service.Preview (PreviewService)
+import Text.Pandoc (Pandoc (..))
 import Text.PrettyPrint.HughesPJClass (Doc)
 
 process ::
@@ -32,12 +33,12 @@ process ::
   m ()
 process manager outLinks inLinks post = do
   mgr <- gets (^. manager)
-  ph <- gets (^. post . to postHref)
+  ph <- gets (^. post . postHref)
 
   (post . postDoc .=) =<< addLinkPreviews mgr =<< gets (^. post . postDoc)
 
   do
-    ph <- gets (^. post . to postHref)
+    ph <- gets (^. post . postHref)
     ols <- gets (^. outLinks . at ph . to (Maybe.fromMaybe []))
     post . postDoc .=* addReferencesSection ols
 
@@ -45,8 +46,20 @@ process manager outLinks inLinks post = do
     ils <- gets (^. inLinks . at ph . to (Maybe.fromMaybe []))
     post . postDoc .=* addCitationsSection ils
 
-  post . postDoc .=* addLinkFavicons mgr
-
   post . postDoc .=* addTableOfContents
 
+  postSnapshot <- gets (^. post)
+  post . postDoc .=* addPostHeader postSnapshot
+
+  post . postDoc .=* addLinkFavicons mgr
+
   return ()
+
+addPostHeader :: (Monad m) => Post -> Pandoc -> m Pandoc
+addPostHeader post (Pandoc meta blocks) = do
+  return $
+    Pandoc meta $
+      concat
+        [ renderPostHeader post,
+          blocks
+        ]

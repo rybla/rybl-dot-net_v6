@@ -17,7 +17,7 @@ import Data.Text (Text)
 import qualified Data.Text as Text
 import Text.Pandoc
 import qualified Text.Pandoc.Shared as Pandoc
-import Text.PrettyPrint.HughesPJClass
+import Text.PrettyPrint.HughesPJClass hiding (Str)
 
 runPandocM :: (MonadError Doc m2, MonadIO m2) => PandocIO a -> m2 a
 runPandocM =
@@ -52,6 +52,15 @@ lensPandocM l m = do
 pandocMeta :: Pandoc -> Meta
 pandocMeta (Pandoc m _) = m
 
+_pandocMeta :: Lens' Pandoc Meta
+_pandocMeta f (Pandoc meta blocks) = (`Pandoc` blocks) <$> f meta
+
+pandocBlocks :: Pandoc -> [Block]
+pandocBlocks (Pandoc _ blocks) = blocks
+
+_pandocBlocks :: Lens' Pandoc [Block]
+_pandocBlocks f (Pandoc meta blocks) = Pandoc meta <$> f blocks
+
 getMetaValueMaybe :: String -> Pandoc -> Maybe MetaValue
 getMetaValueMaybe key = pandocMeta >>> lookupMeta (Text.pack key)
 
@@ -60,55 +69,67 @@ getMetaValue key =
   getMetaValueMaybe key
     >>> maybe (throwError $ "Error when extracting metadata from parsed document: missing key:" <+> doubleQuotes (text key)) return
 
-getMetaValueSuchThat :: (MonadError Doc m) => (String, MetaValue -> Maybe a) -> String -> Pandoc -> m a
-getMetaValueSuchThat (label, f) key =
+getMetaValueSuchThat :: (MonadError Doc m) => (MetaValue -> Either Doc a) -> String -> Pandoc -> m a
+getMetaValueSuchThat f key =
   getMetaValue key
     >=> \v -> case f v of
-      Nothing -> throwError $ "Error when extracting metadata from parsed document: expected value of key" <+> doubleQuotes (text key) <+> "to be a" <+> text label <+> "but it was actually:" <+> text (show v)
-      Just a -> return a
+      Left err ->
+        throwError $
+          "Error when extracting metadata from parsed document: at key"
+            <+> doubleQuotes (text key)
+            <+> ( nest 4 $
+                    vcat
+                      [ err,
+                        "v =" <+> text (show v)
+                      ]
+                )
+      Right a -> return a
 
-getMetaValueMaybeSuchThat :: (MonadError Doc m) => (String, MetaValue -> Maybe a) -> String -> Pandoc -> m (Maybe a)
-getMetaValueMaybeSuchThat (label, f) key =
+getMetaValueMaybeSuchThat :: (MonadError Doc m) => (MetaValue -> Either Doc a) -> String -> Pandoc -> m (Maybe a)
+getMetaValueMaybeSuchThat f key =
   getMetaValueMaybe key >>> \case
     Nothing -> pure Nothing
     Just v -> case f v of
-      Nothing -> throwError $ "Error when extracting metadata from parsed document: expected value of key" <+> doubleQuotes (text key) <+> "to be a" <+> text label <+> "but it was actually:" <+> text (show v)
-      Just a -> pure (Just a)
+      Left err ->
+        throwError $
+          "Error when extracting metadata from parsed document: at key"
+            <+> doubleQuotes (text key)
+            <+> ( nest 4 $
+                    vcat
+                      [ err,
+                        "v =" <+> text (show v)
+                      ]
+                )
+      Right a -> pure (Just a)
 
-fromMetaListString :: (String, MetaValue -> Maybe [Text])
-fromMetaListString =
-  ( "list of string",
-    \case
-      MetaList vs ->
-        vs & traverse (snd fromMetaString)
-      _ -> Nothing
-  )
+fromMetaListString :: MetaValue -> Either Doc [Text]
+fromMetaListString = \case
+  MetaList vs -> vs & traverse (left' ("in list," <+>) . fromMetaString)
+  _ -> Left "expected list of string"
 
-fromMetaString :: (String, MetaValue -> Maybe Text)
-fromMetaString =
-  ( "string",
-    \case
-      MetaString s -> Just s
-      MetaInlines is -> Just $ Pandoc.stringify is
-      _ -> Nothing
-  )
+fromMetaString :: MetaValue -> Either Doc Text
+fromMetaString = \case
+  MetaString s -> pure s
+  MetaInlines is -> pure $ Pandoc.stringify is
+  _ -> throwError "expected string"
 
-fromMetaInlines :: (String, MetaValue -> Maybe [Inline])
-fromMetaInlines =
-  ( "inlines",
-    \case
-      MetaInlines is -> Just is
-      _ -> Nothing
-  )
+fromMetaInlines :: MetaValue -> Either Doc [Inline]
+fromMetaInlines = \case
+  MetaInlines is -> pure is
+  _ -> throwError "expected inlines"
+
+fromMetaBlocks :: MetaValue -> Either Doc [Block]
+fromMetaBlocks = \case
+  MetaString s -> pure [Para [Str s]]
+  MetaInlines is -> pure [Para is]
+  MetaBlocks bs -> pure bs
+  _ -> throwError "expected blocks"
 
 throwPandocError :: (PandocMonad m) => Doc -> m a
 throwPandocError = throwError . PandocAppError . renderText
 
 fromDocError :: (PandocMonad m) => ExceptT Doc m a -> m a
 fromDocError = runExceptT >=> either throwPandocError return
-
-pandocBlocks :: Pandoc -> [Block]
-pandocBlocks (Pandoc _ blocks) = blocks
 
 attrId :: Lens' Attr Text
 attrId = _1

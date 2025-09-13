@@ -5,6 +5,10 @@ tags:
   - example
   - markdown
   - post
+abstract: |
+  This is an abstract for the second example post.
+
+  It has some linebreaks in it.
 ---
 
 # Introduction

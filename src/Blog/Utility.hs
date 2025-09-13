@@ -14,6 +14,7 @@ import qualified Data.Map as Map
 import Data.Maybe (fromJust)
 import Data.Text (Text)
 import qualified Data.Text as Text
+import qualified Data.Time as Time
 import Network.URI (URI)
 import qualified Network.URI as URI
 import qualified Network.URI.Encode as URI
@@ -117,3 +118,6 @@ evalIsoStateT i m = fmap snd $ runIsoStateT i m
 
 refold :: (MonadPlus f) => Maybe a -> f a
 refold = foldr (mplus . pure) mzero
+
+parseDay :: String -> Maybe Time.Day
+parseDay = Time.parseTimeM @Maybe True Time.defaultTimeLocale "%Y-%-m-%-d"

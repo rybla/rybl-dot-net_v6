@@ -1,10 +1,11 @@
 ---
 title: Example Post
-pubDate: 2025-08-26
+pubDate: 2025-08-25
 tags:
   - example
   - markdown
   - post
+abstract: This is an abstract for this example post.
 ---
 
 # h1 Heading
