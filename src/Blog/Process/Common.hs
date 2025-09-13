@@ -136,7 +136,10 @@ addTableOfContents doc0 = do
     Pandoc
       (Pandoc.pandocMeta doc1)
       ( concat
-          [ [Pandoc.OrderedList orderedListStyle (renderToc <$> tocKids)],
+          [ [ Pandoc.Div
+                (mempty & Pandoc.attrClasses %~ ("table-of-contents" :))
+                [Pandoc.OrderedList orderedListStyle (renderToc <$> tocKids)]
+            ],
             Pandoc.pandocBlocks doc1
           ]
       )

@@ -10,7 +10,6 @@
 module Blog.Process.Post where
 
 import Blog.Common
-import qualified Blog.Paths as Paths
 import Blog.Process.Common
 import Blog.Utility
 import Control.Lens
@@ -22,8 +21,6 @@ import qualified Network.HTTP.Client as Network
 import Network.URI (URI)
 import Service.Favicon (FaviconService)
 import Service.Preview (PreviewService)
-import System.FilePath ((</>))
-import Text.Pandoc (Pandoc)
 import Text.PrettyPrint.HughesPJClass (Doc)
 
 process ::

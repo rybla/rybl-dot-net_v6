@@ -1,4 +1,5 @@
 {-# LANGUAGE RankNTypes #-}
+{-# LANGUAGE TupleSections #-}
 {-# OPTIONS_GHC -Wno-missing-export-lists #-}
 
 module Blog.Utility where
@@ -7,7 +8,7 @@ import Control.Lens
 import Control.Monad (MonadPlus (..))
 import Control.Monad.Except (MonadError, throwError)
 import Control.Monad.IO.Class
-import Control.Monad.State (MonadState, StateT, get, gets, put, runStateT)
+import Control.Monad.State (MonadState, StateT, gets, put, runStateT)
 import qualified Data.List as List
 import qualified Data.Map as Map
 import Data.Maybe (fromJust)
@@ -99,12 +100,20 @@ l .=* f = (l .=) =<< f =<< gets (^. l)
 
 infix 4 .=*
 
-lensStateT :: (MonadState outer m) => Lens' inner outer -> (outer -> inner) -> StateT inner m a -> m (inner, a)
-lensStateT l toInner m = do
-  outer <- get
-  (a, inner) <- runStateT m (toInner outer)
-  put (inner ^. l)
+runIsoStateT :: (MonadState outer m) => Iso' outer inner -> StateT inner m a -> m (inner, a)
+runIsoStateT i m = do
+  (a, inner) <- runStateT m =<< gets (^. i)
+  put (inner ^. from i)
   return (inner, a)
+
+execIsoStateT :: (MonadState outer m) => Iso' outer inner -> StateT inner m a -> m inner
+execIsoStateT i m = fmap fst $ runIsoStateT i m
+
+pairIso :: a -> Iso' b (a, b)
+pairIso a = iso (a,) snd
+
+evalIsoStateT :: (MonadState outer m) => Iso' outer inner -> StateT inner m a -> m a
+evalIsoStateT i m = fmap snd $ runIsoStateT i m
 
 refold :: (MonadPlus f) => Maybe a -> f a
 refold = foldr (mplus . pure) mzero

@@ -2,7 +2,12 @@
 <html>
   <head>
     <title>${title}</title>
-    <link rel="stylesheet" href="${stylesheetHref}" />
+
+    <link rel="stylesheet" href="/style/common.css" />
+    <link rel="stylesheet" href="/style/header.css" />
+    <link rel="stylesheet" href="/style/footer.css" />
+    <link rel="stylesheet" href="/style/post.css" />
+
     <script
       id="MathJax-script"
       async
@@ -14,13 +19,9 @@
     <main>
       <div class="title-box">
         <div class="title">${title}</div>
-        <div class="tags">
-          ${for(tags)}
-          ${it:tag.html()}
-          ${endfor}
-        </div>
+        <div class="tags">${for(tags)} ${it:tag.html()} ${endfor}</div>
       </div>
-      <div class="main">${content}</div>
+      <div class="main-inner">${content}</div>
     </main>
     ${footer.html()}
   </body>

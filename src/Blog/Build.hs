@@ -10,6 +10,7 @@ import Blog.Common
 import Blog.Env
 import qualified Blog.Parse.Post as Parse.Post
 import qualified Blog.Paths as Paths
+import qualified Blog.Print.Index as Print.Index
 import qualified Blog.Print.Post as Print.Post
 import qualified Blog.Process.Post as Process.Post
 import Blog.Utility
@@ -44,13 +45,14 @@ main' = do
         Parse.Post.parse outLinks inLinks postId postText
 
   -- process posts
-  posts <-
-    posts & traverse \post ->
-      (^. _1 . _2)
-        <$> lensStateT _1 ((,post)) do
-          Process.Post.process (_1 . manager) (_1 . outLinks) (_1 . inLinks) _2
+  posts :: [Post] <-
+    posts & traverse \post -> do
+      fmap (^. _1) $ execIsoStateT (pairIso post) do
+        Process.Post.process (_2 . manager) (_2 . outLinks) (_2 . inLinks) _1
 
+  -- print posts
   posts & traverse_ \post -> do
     Print.Post.printPost post
 
-  return ()
+  -- print index
+  Print.Index.printIndex posts

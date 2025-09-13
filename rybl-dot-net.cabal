@@ -35,11 +35,11 @@ library
       Blog.Env
       Blog.Pandoc
       Blog.Parse.Common
-      Blog.Parse.Index
       Blog.Parse.Post
       Blog.Paths
       Blog.PathsTh
       Blog.Print.Common
+      Blog.Print.Index
       Blog.Print.Post
       Blog.Process.Common
       Blog.Process.Post

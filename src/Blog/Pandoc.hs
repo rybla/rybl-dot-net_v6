@@ -1,3 +1,4 @@
+{-# LANGUAGE RankNTypes #-}
 {-# OPTIONS_GHC -Wno-missing-export-lists #-}
 
 module Blog.Pandoc where
@@ -9,6 +10,7 @@ import Control.Lens
 import Control.Monad ((>=>))
 import Control.Monad.Except (ExceptT, MonadError, throwError)
 import Control.Monad.IO.Class (MonadIO, liftIO)
+import Control.Monad.State (MonadState, get)
 import qualified Control.Monad.State.Lazy as StateLazy
 import Control.Monad.Trans.Except (runExceptT)
 import Data.Text (Text)
@@ -30,6 +32,22 @@ runPandocM =
     >=> \case
       Left err -> throwError . text . show $ err
       Right a -> return a
+
+lensPandocM ::
+  (MonadError Doc m2, MonadIO m2, MonadState env m2) =>
+  Lens' env CommonState -> PandocIO a -> m2 a
+lensPandocM l m = do
+  env <- get
+  m
+    & unPandocIO
+    & runExceptT
+    & (`StateLazy.runStateT` (env ^. l))
+    & liftIO
+    >>= \case
+      (Left err, _) -> throwError $ text $ show err
+      (Right a, env') -> do
+        l .= env'
+        return a
 
 pandocMeta :: Pandoc -> Meta
 pandocMeta (Pandoc m _) = m

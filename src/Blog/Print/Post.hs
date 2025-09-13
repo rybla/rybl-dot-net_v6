@@ -6,61 +6,57 @@
 module Blog.Print.Post where
 
 import Blog.Common
-import Blog.Pandoc (fromDocError)
 import qualified Blog.Pandoc as Pandoc
 import qualified Blog.Paths as Paths
 import Blog.Print.Common
-import Blog.Utility (fromEither)
+import Blog.Utility
 import Control.Lens
-import Control.Monad.Except (MonadError, throwError)
+import Control.Monad.Except (MonadError)
 import Control.Monad.IO.Class (MonadIO, liftIO)
+import Control.Monad.State (MonadState)
 import qualified Data.Aeson as Aeson
 import qualified Data.Aeson.Types as Aeson
-import qualified Data.Text as Text
+import Data.Default (def)
 import qualified Data.Text.IO as TextIO
 import System.FilePath ((</>))
 import qualified Text.Pandoc as Pandoc
 import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
 
-printPost :: (MonadIO m, MonadError Doc m) => Post -> m ()
-printPost post = do
+printPost :: (MonadIO m, MonadError Doc m, MonadState env m) => Post -> m ()
+printPost post = evalIsoStateT (pairIso def) do
   templateText <- TextIO.readFile (Paths.offline.template.here </> ("post" & toHtmlFileName)) & liftIO
 
-  postHtml <- Pandoc.runPandocM do
-    contentHtml <-
-      Pandoc.writeHtml5String
-        Pandoc.def
-          { Pandoc.writerHTMLMathMethod = Pandoc.MathJax ""
-          }
-        (post ^. postDoc)
+  contentHtml <-
+    Pandoc.writeHtml5String
+      Pandoc.def
+        { Pandoc.writerHTMLMathMethod = Pandoc.MathJax ""
+        }
+      (post ^. postDoc)
+      & Pandoc.lensPandocM _1
 
-    let varsJson :: Aeson.Value
-        varsJson =
-          Aeson.object
-            [ ("stylesheetHref", "post.css"),
-              ("title", post & postTitle & Aeson.toJSON),
+  postTemplate <-
+    Pandoc.compileTemplate mempty templateText
+      & unBlogTemplateMonad
+      >>= fromEither (("compileTemplate:" <+>) . text)
+
+  postHtml <- do
+    vars <-
+      Aeson.parseEither
+        Aeson.parseJSON
+        ( Aeson.object
+            [ ("title", post & postTitle & Aeson.toJSON),
               ("tags", post & postTags & Aeson.toJSON),
               ("content", contentHtml & Aeson.toJSON)
             ]
-
-    postTemplate <-
-      Pandoc.compileTemplate mempty templateText
-        -- & Pandoc.runWithPartials
-        & unBlogTemplateMonad
-        >>= \case
-          Left err -> throwError $ Pandoc.PandocAppError $ Text.pack err
-          Right t -> return t
-
-    postHtml <- do
-      vars <- Aeson.parseEither Aeson.parseJSON varsJson & fromEither (("Error when parsing template variables JSON:" <+>) . text) & fromDocError
-      Pandoc.writeHtml5String
-        Pandoc.def
-          { Pandoc.writerTemplate = Just postTemplate,
-            Pandoc.writerVariables = vars,
-            Pandoc.writerHTMLMathMethod = Pandoc.MathJax ""
-          }
-        (post ^. postDoc)
-
-    return postHtml
+        )
+        & fromEither (("Error when parsing template variables JSON:" <+>) . text)
+    Pandoc.writeHtml5String
+      Pandoc.def
+        { Pandoc.writerTemplate = Just postTemplate,
+          Pandoc.writerVariables = vars,
+          Pandoc.writerHTMLMathMethod = Pandoc.MathJax ""
+        }
+      (post ^. postDoc)
+      & Pandoc.lensPandocM _1
 
   TextIO.writeFile (post & postId & toPostFilePath) postHtml & liftIO
