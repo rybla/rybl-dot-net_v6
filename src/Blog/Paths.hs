@@ -43,7 +43,6 @@ makeRoot
       }
   ]
   [ Node "post_markdown" [],
-    Node "post_data" [],
     Node "post" [],
     Node "favicon" [],
     Node "template" [],
