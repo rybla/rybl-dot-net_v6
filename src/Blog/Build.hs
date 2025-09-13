@@ -1,6 +1,8 @@
 {-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE TupleSections #-}
+{-# OPTIONS_GHC -Wno-name-shadowing #-}
 
 module Blog.Build (main) where
 
@@ -10,15 +12,14 @@ import qualified Blog.Parse.Post as Parse.Post
 import qualified Blog.Paths as Paths
 import qualified Blog.Print.Post as Print.Post
 import qualified Blog.Process.Post as Process.Post
-import Blog.Utility (logM, showDoc)
+import Blog.Utility
 import Control.Category ((>>>))
 import Control.Lens hiding ((<.>))
 import Control.Monad.Except (MonadError, runExceptT)
 import Control.Monad.IO.Class (MonadIO, liftIO)
 import Control.Monad.State (MonadState, evalStateT)
-import qualified Data.Aeson as Aeson
-import qualified Data.ByteString.Lazy as ByteString
 import Data.Foldable (traverse_)
+import qualified Data.Text.IO as TextIO
 import Service.Favicon.Favicone ()
 import Service.Preview.Placeholder ()
 import System.Directory (listDirectory)
@@ -33,32 +34,23 @@ main = do
 
 main' :: forall m. (MonadIO m, MonadError Doc m, MonadState Env m) => m ()
 main' = do
-  -- TODO: skip saving encoded data; just keep it in memory
   -- parse posts
-  parsePostEnv <-
+  posts <-
     listDirectory Paths.offline.post_markdown.here
       & liftIO
       <&> foldMap ((^? suffixed ".md") >>> maybe [] (return . PostId))
-      >>= traverse_ \postId ->
-        Parse.Post.parse outLinks inLinks postId
-          >>= \post -> ByteString.writeFile (postId & toPostDataFilePath) (post & postDoc & Aeson.encode) & liftIO
-
-  logM "main" $ "parsePostEnv =" <+> showDoc parsePostEnv
+      >>= traverse \postId -> do
+        postText <- TextIO.readFile (postId & toPostMarkdownFilePath) & liftIO
+        Parse.Post.parse outLinks inLinks postId postText
 
   -- process posts
-  _processPostEnv <-
-    listDirectory Paths.offline.post_data.here
-      & liftIO
-      <&> foldMap ((^? suffixed ".json") >>> maybe [] (return . PostId))
-      >>= traverse_ \postId ->
-        Process.Post.process manager outLinks inLinks postId
-          -- >>= Paths.writePostData postId
-          -- >>= \post -> ByteString.writeFile (postId & toPostFilePath) (post & _) & liftIO
-          >>= \post -> ByteString.writeFile (postId & toPostDataFilePath) (post & postDoc & Aeson.encode) & liftIO
+  posts <-
+    posts & traverse \post ->
+      (^. _1 . _2)
+        <$> lensStateT _1 ((,post)) do
+          Process.Post.process (_1 . manager) (_1 . outLinks) (_1 . inLinks) _2
 
-  -- print posts
-  listDirectory Paths.offline.post_data.here
-    & liftIO
-    <&> foldMap ((^? suffixed ".json") >>> maybe [] (return . PostId))
-    >>= traverse_ \postId -> do
-      Print.Post.printPost postId
+  posts & traverse_ \post -> do
+    Print.Post.printPost post
+
+  return ()

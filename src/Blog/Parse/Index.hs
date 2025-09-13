@@ -4,12 +4,14 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE TemplateHaskell #-}
 {-# OPTIONS_GHC -Wno-missing-export-lists #-}
+{-# OPTIONS_GHC -Wno-redundant-constraints #-}
 
 module Blog.Parse.Index where
 
 import Blog.Common
 import qualified Blog.Pandoc as Pandoc
 import qualified Blog.Paths as Paths
+import Blog.Utility
 import Control.Lens
 import Control.Monad.Except (MonadError)
 import Control.Monad.State (MonadState)
@@ -36,17 +38,24 @@ parse posts = do
 
 parsePostCard :: (Monad m) => Post -> m Pandoc.Block
 parsePostCard post = do
-  return $
-    Pandoc.Div
+  return
+    $ Pandoc.Div
       (mempty & Pandoc.attrClasses %~ (["PostCard"] ++))
-      [ Pandoc.Div
-          (mempty & Pandoc.attrClasses %~ (["title"] ++))
-          [ Pandoc.Plain
-              [ Pandoc.Link
-                  mempty
-                  [Pandoc.Str post.postTitle]
-                  (Text.pack (Paths.online.post.here </> undefined post.postId), mempty)
-              ]
-          ],
-        Pandoc.Div _ _
+      . concat
+    $ [ [ Pandoc.Div
+            (mempty & Pandoc.attrClasses %~ (["title"] ++))
+            [ Pandoc.Plain
+                [ Pandoc.Link
+                    mempty
+                    [Pandoc.Str post.postTitle]
+                    (Text.pack (Paths.online.post.here </> undefined post.postId), mempty)
+                ]
+            ]
+        ],
+        [ Pandoc.Div
+            (mempty & Pandoc.attrClasses %~ (["abstract"] ++))
+            [ Pandoc.Plain [Pandoc.Str abstract]
+            ]
+        | abstract <- post.postAbstract & refold
+        ]
       ]

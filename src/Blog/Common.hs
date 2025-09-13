@@ -46,16 +46,29 @@ data Post = Post
     postTitle :: Text,
     postPubDate :: Text,
     postTags :: [Text],
+    postAbstract :: Maybe Text,
     _postDoc :: Pandoc.Pandoc
   }
 
 makeLenses ''Post
 
+-- Post
+
 toPostHref :: (MonadError Doc m) => PostId -> m URI
 toPostHref postId = parseUriReferenceM (Paths.online.post.here </> (postId & unPostId & makeValidIdent & toHtmlFileName))
 
-toPostDataFilePath :: PostId -> FilePath
-toPostDataFilePath postId = Paths.offline.post_data.here </> (postId & unPostId & makeValidIdent & toDataFileName)
+toPostMarkdownFilePath :: PostId -> FilePath
+toPostMarkdownFilePath postId = Paths.offline.post_markdown.here </> (postId & unPostId & makeValidIdent & toMarkdownFileName)
+
+toPostFilePath :: PostId -> FilePath
+toPostFilePath postId = Paths.offline.post.here </> (postId & unPostId & makeValidIdent & toHtmlFileName)
+
+-- Favicon
+
+toFaviconInfoFilePath :: URI -> FilePath
+toFaviconInfoFilePath uri = Paths.offline.preview.here </> (uri & uriRootAndPath & makeValidIdent & toDataFileName)
+
+-- generic
 
 toMarkdownFileName :: FilePath -> FilePath
 toMarkdownFileName = (<.> ".md")
@@ -65,9 +78,3 @@ toDataFileName = (<.> ".json")
 
 toHtmlFileName :: FilePath -> FilePath
 toHtmlFileName = (<.> ".html")
-
-toFaviconInfoFilePath :: URI -> FilePath
-toFaviconInfoFilePath uri = Paths.offline.preview.here </> (uri & uriRootAndPath & makeValidIdent & toDataFileName)
-
-toPostFilePath :: PostId -> FilePath
-toPostFilePath postId = Paths.offline.post.here </> (postId & unPostId & makeValidIdent & toHtmlFileName)

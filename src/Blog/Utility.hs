@@ -4,9 +4,10 @@
 module Blog.Utility where
 
 import Control.Lens
+import Control.Monad (MonadPlus (..))
 import Control.Monad.Except (MonadError, throwError)
 import Control.Monad.IO.Class
-import Control.Monad.State (MonadState, gets)
+import Control.Monad.State (MonadState, StateT, get, gets, put, runStateT)
 import qualified Data.List as List
 import qualified Data.Map as Map
 import Data.Maybe (fromJust)
@@ -97,3 +98,13 @@ assocList k ((k', v) : kvs) = if k == k' then Just v else assocList k kvs
 l .=* f = (l .=) =<< f =<< gets (^. l)
 
 infix 4 .=*
+
+lensStateT :: (MonadState outer m) => Lens' inner outer -> (outer -> inner) -> StateT inner m a -> m (inner, a)
+lensStateT l toInner m = do
+  outer <- get
+  (a, inner) <- runStateT m (toInner outer)
+  put (inner ^. l)
+  return (inner, a)
+
+refold :: (MonadPlus f) => Maybe a -> f a
+refold = foldr (mplus . pure) mzero

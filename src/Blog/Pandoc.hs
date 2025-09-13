@@ -14,6 +14,7 @@ import Control.Monad.Trans.Except (runExceptT)
 import Data.Text (Text)
 import qualified Data.Text as Text
 import Text.Pandoc
+import qualified Text.Pandoc.Shared as Pandoc
 import Text.PrettyPrint.HughesPJClass
 
 runPandocM :: (MonadError Doc m2, MonadIO m2) => PandocIO a -> m2 a
@@ -41,25 +42,46 @@ getMetaValue key =
   getMetaValueMaybe key
     >>> maybe (throwError $ "Error when extracting metadata from parsed document: missing key:" <+> doubleQuotes (text key)) return
 
-getMetaValueSuchThat :: (MonadError Doc m) => String -> (MetaValue -> Maybe a) -> String -> Pandoc -> m a
-getMetaValueSuchThat label f key =
+getMetaValueSuchThat :: (MonadError Doc m) => (String, MetaValue -> Maybe a) -> String -> Pandoc -> m a
+getMetaValueSuchThat (label, f) key =
   getMetaValue key
     >=> \v -> case f v of
-      Nothing -> throwError $ "Error when extracting metadata from parsed document: expected value of key" <+> doubleQuotes (text (show key)) <+> "to be a" <+> text label <+> "but it was actually:" <+> text (show v)
+      Nothing -> throwError $ "Error when extracting metadata from parsed document: expected value of key" <+> doubleQuotes (text key) <+> "to be a" <+> text label <+> "but it was actually:" <+> text (show v)
       Just a -> return a
 
-getMetaValueListString :: (MonadError Doc m) => String -> Pandoc -> m [Text]
-getMetaValueListString = getMetaValueSuchThat "list of strings" \case
-  MetaList vs ->
-    vs & traverse \case
-      MetaString s -> Just s
-      _ -> Nothing
-  _ -> Nothing
+getMetaValueMaybeSuchThat :: (MonadError Doc m) => (String, MetaValue -> Maybe a) -> String -> Pandoc -> m (Maybe a)
+getMetaValueMaybeSuchThat (label, f) key =
+  getMetaValueMaybe key >>> \case
+    Nothing -> pure Nothing
+    Just v -> case f v of
+      Nothing -> throwError $ "Error when extracting metadata from parsed document: expected value of key" <+> doubleQuotes (text key) <+> "to be a" <+> text label <+> "but it was actually:" <+> text (show v)
+      Just a -> pure (Just a)
 
-getMetaValueString :: (MonadError Doc m) => String -> Pandoc -> m Text
-getMetaValueString = getMetaValueSuchThat "string" \case
-  MetaString s -> Just s
-  _ -> Nothing
+fromMetaListString :: (String, MetaValue -> Maybe [Text])
+fromMetaListString =
+  ( "list of string",
+    \case
+      MetaList vs ->
+        vs & traverse (snd fromMetaString)
+      _ -> Nothing
+  )
+
+fromMetaString :: (String, MetaValue -> Maybe Text)
+fromMetaString =
+  ( "string",
+    \case
+      MetaString s -> Just s
+      MetaInlines is -> Just $ Pandoc.stringify is
+      _ -> Nothing
+  )
+
+fromMetaInlines :: (String, MetaValue -> Maybe [Inline])
+fromMetaInlines =
+  ( "inlines",
+    \case
+      MetaInlines is -> Just is
+      _ -> Nothing
+  )
 
 throwPandocError :: (PandocMonad m) => Doc -> m a
 throwPandocError = throwError . PandocAppError . renderText

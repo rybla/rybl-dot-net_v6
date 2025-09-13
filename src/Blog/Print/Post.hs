@@ -63,4 +63,4 @@ printPost post = do
 
     return postHtml
 
-  TextIO.writeFile (post & postId & unPostId & toHtmlFileName) postHtml & liftIO
+  TextIO.writeFile (post & postId & toPostFilePath) postHtml & liftIO

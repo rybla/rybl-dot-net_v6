@@ -37,13 +37,6 @@ process manager outLinks inLinks post = do
   mgr <- gets (^. manager)
   ph <- gets (^. post . to postHref)
 
-  -- postUri <- parseUriReferenceM (Paths.online.post.here </> (postId & unPostId & Paths.toHtmlFileName))
-
-  -- post <- Paths.readPostData postId
-  -- >>= \post -> ByteString.writeFile (postId & toPostDataFilePath) (post & postDoc & Aeson.encode) & liftIO
-
-  -- post <- post & addLinkPreviews mgr
-
   (post . postDoc .=) =<< addLinkPreviews mgr =<< gets (^. post . postDoc)
 
   do

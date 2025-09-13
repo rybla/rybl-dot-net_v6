@@ -10,35 +10,31 @@ module Blog.Parse.Post where
 import Blog.Common
 import Blog.Pandoc (runPandocM)
 import qualified Blog.Pandoc as Pandoc
-import qualified Blog.Paths as Paths
-import Blog.Utility (logM, parseUriReferenceM)
+import Blog.Utility
 import Control.Lens
-import Control.Monad (unless, void)
-import Control.Monad.Except (MonadError, throwError)
+import Control.Monad (void)
+import Control.Monad.Except (MonadError)
 import Control.Monad.State (MonadState)
 import Control.Monad.Writer (MonadIO)
-import Data.Foldable (traverse_)
 import Data.Map (Map)
-import qualified Data.Maybe as Maybe
+import Data.Text (Text)
 import qualified Data.Text as Text
 import Network.URI (URI)
-import System.FilePath ((</>))
-import Text.Pandoc (Pandoc (..))
 import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Walk as Pandoc
-import Text.PrettyPrint.HughesPJClass (Doc, doubleQuotes, pPrint, text, (<+>))
+import Text.PrettyPrint.HughesPJClass (Doc, pPrint, (<+>))
 
 parse ::
   (MonadIO m, MonadError Doc m, MonadState env m) =>
   Lens' env (Map URI [Link]) ->
   Lens' env (Map URI [Link]) ->
   PostId ->
+  Text ->
   m Post
-parse outLinks inLinks postId = do
+parse outLinks inLinks postId postText = do
   logM "Post.parse" $ "postId =" <+> pPrint postId
-  txt <- Paths.readPostMarkdown postId
   doc <-
-    txt
+    postText
       & Pandoc.readMarkdown
         Pandoc.def
           { Pandoc.readerStandalone = True,
@@ -46,10 +42,11 @@ parse outLinks inLinks postId = do
           }
       & runPandocM
 
-  postHref <- parseUriReferenceM (Paths.online.post.here </> (postId & unPostId & Paths.toHtmlFileName))
-  postTitle <- doc & Pandoc.getMetaValueString "title"
-  postPubDate <- doc & Pandoc.getMetaValueString "pubDate"
-  postTags <- doc & Pandoc.getMetaValueListString "tags"
+  postHref <- toPostHref postId
+  postTitle <- doc & Pandoc.getMetaValueSuchThat Pandoc.fromMetaString "title"
+  postPubDate <- doc & Pandoc.getMetaValueSuchThat Pandoc.fromMetaString "pubDate"
+  postTags <- doc & Pandoc.getMetaValueSuchThat Pandoc.fromMetaListString "tags"
+  postAbstract <- doc & Pandoc.getMetaValueMaybeSuchThat Pandoc.fromMetaString "abstract"
 
   void $
     doc & Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
@@ -75,6 +72,7 @@ parse outLinks inLinks postId = do
         postHref,
         postTitle,
         postPubDate,
+        postAbstract,
         postTags,
         _postDoc = doc
       }
