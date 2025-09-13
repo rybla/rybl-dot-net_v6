@@ -7,11 +7,7 @@
   --content-main-width: 500px;
   --spacing-between-main-and-sidenotes: 1em;
   --sidenote-width: calc(var(--content-width) - var(--content-main-width));
-
-  --dark-color: #3f3832;
-  --light-color: #f6eee3;
-  --medium-color: #c2baaf;
-  --accent-light-color: #e4c9ab;
+  --basic-box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* -------------------------------------------------------------------------- */
@@ -44,15 +40,15 @@ main {
 
 pre {
   padding: 1em;
-  background: var(--dark-color);
-  color: var(--light-color);
+  background: black;
+  color: white;
 }
 
 blockquote {
   padding: 1em;
-  background: var(--dark-color);
-  color: var(--light-color);
-  border-left: 4px solid var(--accent-light-color);
+  background: lightgray;
+  color: black;
+  border-left: 4px solid black;
 
   & > p {
     margin: 0;
@@ -80,8 +76,8 @@ body {
 .title-box {
   padding: 1em;
 
-  color: var(--light-color);
-  background: var(--dark-color);
+  color: white;
+  background: black;
 
   display: flex;
   flex-direction: column;
@@ -99,8 +95,8 @@ body {
 
     .tag {
       padding: 0.1em 0.2em;
-      background: var(--accent-light-color);
-      color: var(--dark-color);
+      background: lightgreen;
+      color: black;
     }
 
     .tag::before {
@@ -115,7 +111,7 @@ main {
   margin: 1em auto;
 
   background: var(--medium-color);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  box-shadow: var(--basic-box-shadow);
   z-index: 0;
 
   & > .main {
@@ -140,8 +136,8 @@ footer {
   flex: 0 0 auto;
 
   padding: 1em;
-  background: var(--dark-color);
-  color: var(--light-color);
+  background: black;
+  color: white;
   z-index: 10;
 }
 
@@ -173,9 +169,7 @@ footer {
   margin-bottom: 2em;
   padding: 1em;
 
-  color: var(--light-color);
-  background: var(--dark-color);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  box-shadow: var(--basic-box-shadow);
 }
 
 .preview {
