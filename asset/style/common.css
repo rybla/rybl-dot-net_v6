@@ -1,0 +1,93 @@
+:root {
+  --main-width: 800px;
+  --basic-box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* -------------------------------------------------------------------------- */
+/* existing elements */
+/* -------------------------------------------------------------------------- */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+
+  overscroll-behavior: none;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0.5em 0;
+  padding: 0;
+}
+
+p {
+  margin: 0.5em 0;
+}
+
+main {
+  p > img {
+    width: 100%;
+  }
+}
+
+pre {
+  padding: 1em;
+  background: black;
+  color: white;
+}
+
+blockquote {
+  padding: 1em;
+  background: lightgray;
+  color: black;
+  border-left: 4px solid black;
+
+  & > p {
+    margin: 0;
+  }
+}
+
+ol,
+ul {
+  margin: 0;
+  padding-inline-start: 1em;
+}
+
+blockquote {
+  margin: 0.5em 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/* customize elements */
+/* -------------------------------------------------------------------------- */
+
+.warning {
+  padding: 1em;
+  border: 1px solid red;
+  background-color: color-mix(in hsl, white, black 5%);
+}
+
+.favicon {
+  margin-right: 0.2em;
+
+  aspect-ratio: 1;
+  height: 1em;
+  width: 1em;
+}

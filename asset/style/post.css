@@ -1,0 +1,110 @@
+:root {
+  --main-inner-width: 500px;
+  --spacing-between-main-and-sidenotes: 1em;
+  --sidenote-width: calc(var(--main-width) - var(--main-inner-width));
+}
+
+.title-box {
+  padding: 1em;
+
+  color: white;
+  background: black;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5em;
+
+  .title {
+    font-size: 1.5em;
+  }
+
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+
+    .tag {
+      padding: 0.1em 0.2em;
+      background: lightgreen;
+      color: black;
+    }
+
+    .tag::before {
+      content: "#";
+    }
+  }
+}
+
+main {
+  flex: 1 1 auto;
+  width: var(--main-width);
+  margin: 1em auto;
+
+  background: var(--medium-color);
+  box-shadow: var(--basic-box-shadow);
+  z-index: 0;
+
+  & > .main-inner {
+    width: var(--main-inner-width);
+    padding: 1em;
+  }
+}
+
+/* I wish I could refer to the content_width variable here, but for some reason when I do, this stops working.  */
+@media (max-width: calc(800px - 1px)) {
+  main {
+    width: 100%;
+
+    & > .main-inner {
+      width: 100%;
+    }
+  }
+}
+
+.table-of-contents {
+  padding: 1em;
+  background-color: lightgray;
+}
+
+
+.sidenote {
+  position: relative;
+  display: block;
+  float: right;
+  clear: right;
+  width: calc(
+    var(--sidenote-width) - var(--spacing-between-main-and-sidenotes)
+  );
+  margin-right: calc(-1 * var(--sidenote-width));
+
+  margin-top: -1em;
+  margin-bottom: 2em;
+  padding: 1em;
+
+  box-shadow: var(--basic-box-shadow);
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+
+  & > .preview-title {
+    display: block;
+    word-break: break-all;
+    font-weight: bold;
+  }
+
+  & > .preview-description {
+    display: block;
+    word-break: break-all;
+  }
+}
+
+@media (max-width: calc(800px - 1px)) {
+  .sidenote {
+    display: none;
+    visibility: hidden;
+  }
+}

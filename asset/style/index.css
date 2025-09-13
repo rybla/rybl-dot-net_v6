@@ -1,0 +1,11 @@
+main {
+  flex: 1 1 auto;
+  width: var(--main-width);
+  margin: 1em auto;
+
+  background: var(--medium-color);
+  box-shadow: var(--basic-box-shadow);
+  z-index: 0;
+
+  padding: 1em;
+}
