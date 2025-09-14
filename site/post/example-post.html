@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
   <head>
-    <title>Example Post</title>
+    <title>rybl.net | Example Post</title>
 
     <link rel="stylesheet" href="/style/common.css" />
     <link rel="stylesheet" href="/style/header.css" />
@@ -13,53 +13,21 @@
       async
       src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
     ></script>
+
+    <script src="/script/parallax-body-background-on-scroll.js"></script>
   </head>
   <body>
-    <svg style="display: none; visibility: hidden">
-      <defs>
-        <filter
-          id="body-background-filter"
-          color-interpolation-filters="linearRGB"
-          filterUnits="objectBoundingBox"
-          primitiveUnits="userSpaceOnUse"
-        >
-          <feTurbulence
-            type="fractalNoise"
-            baseFrequency="0.035 0.008"
-            numOctaves="4"
-            seed="2"
-            stitchTiles="stitch"
-            result="turbulence"
-          />
-          <feMerge result="merge">
-            <feMergeNode in="SourceGraphic" result="mergeNode" />
-            <feMergeNode in="turbulence" result="mergeNode1" />
-          </feMerge>
-          <feColorMatrix
-            type="saturate"
-            values="10"
-            in="merge"
-            result="colormatrix"
-          />
-          <feDisplacementMap
-            in="merge"
-            in2="colormatrix"
-            scale="1"
-            xChannelSelector="R"
-            yChannelSelector="R"
-            result="displacementMap"
-          />
-          <feComposite
-            in="displacementMap"
-            in2="SourceAlpha"
-            operator="in"
-            result="composite1"
-          />
-        </filter>
-      </defs>
-    </svg>
+    <div id="background"></div> <header>
+  <div>
+    <a href="/">rybl.net</a>
+  </div>
 
-    <div class="body-background"></div>    <header>This is the header as a template!</header>    <main>
+  <img class="website-icon" src="/image/rybl.png" />
+
+  <div>Example Post</div>
+</header>
+
+    <main>
       <div class="main-inner"><h2><a href="/post/example-post.html" data-noLinkFavicon=""
 data-noLinkPreview="">Example Post</a></h2>
 <div class="header-info">
@@ -339,5 +307,8 @@ data-noLinkPreview=""><img src="/favicon.ico" class="favicon"
 alt="/favicon.ico" />the original example post</a></li>
 </ul></div>
     </main>
-    <footer>This is the footer as a template!</footer>  </body>
+
+    <footer>
+      <img class="website-icon" src="/image/rybl.png" />
+    </footer>  </body>
 </html>

@@ -27,11 +27,32 @@ body {
   flex-direction: column;
 }
 
+#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-size: 100px;
+  z-index: -1;
+
+  background: url("/image/stars.jpeg") repeat;
+
+  /*TODO*/
+  /*@media (prefers-color-scheme: dark) {
+    background: url("/asset/image/stars.jpeg");
+  }
+
+  @media (prefers-color-scheme: light) {
+    background: url("/asset/image/day_clouds.png");
+  }*/
+}
+
 main {
   flex: 1 1 auto;
   margin: 1em auto;
 
-  /*background: color-mix(in srgb, #f6eee3, transparent 20%);*/
   background: color-mix(in srgb, #cccccc, transparent 30%);
 }
 
@@ -97,16 +118,16 @@ blockquote {
 /* customize elements */
 /* -------------------------------------------------------------------------- */
 
-.body-background {
+/*.body-background {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  width: 100svw;
+  height: 100svh;
   background: black;
   filter: url(#body-background-filter);
   z-index: -1000;
-}
+}*/
 
 .header-info {
   margin-block-end: 1em;

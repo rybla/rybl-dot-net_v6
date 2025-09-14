@@ -2,9 +2,18 @@ header,
 footer {
   flex: 0 0 auto;
 
+  height: 6em;
   padding: 1em;
 
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  gap: 1em;
+
+  background: color-mix(in srgb, #cccccc, transparent 30%);
+
+  & > .website-icon {
+    height: 100%;
+  }
 }

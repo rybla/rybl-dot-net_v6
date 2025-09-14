@@ -49,7 +49,9 @@ printIndex posts = evalIsoStateT (pairIso def) do
       Aeson.parseEither
         Aeson.parseJSON
         ( Aeson.object
-            [("content", contentHtml & Aeson.toJSON)]
+            [ ("title", "index"),
+              ("content", contentHtml & Aeson.toJSON)
+            ]
         )
         & fromEither (("Error when parsing template variables JSON:" <+>) . text)
     Pandoc.writeHtml5String
