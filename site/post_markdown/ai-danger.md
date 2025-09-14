@@ -127,7 +127,9 @@ My guess is that he's leaving a lot of credibility "on the table" here; it would
 
 In particular, he could bundle together in whatever way he likes the classes of possible observations that would increase his expectation of imminent AI Doomsday and predict that at least one of these things will happen in some specified timeline. Even if each bundle item is unlikely, he could find some disjunctive bundle that he thinks is somewhat close to 50% likely and that some prominent people that disagree with him on imminent AI Doomsday would put at much less than 50% likelihood. I hope he or another imminent AI Doomsday predictor does something like this.
 
-<!-- I appreciated the [The Lunar Society podcast](https://overcast.fm/+b53M_HRgo) with Yudkowsky more than his appearance on [Lex Friedman podcast](https://overcast.fm/+eZyDo-AY0). I think Friedman let Yudkowsky dwell on some conclusions too long without explaining the details of how he arrived at those conclusions. I was surprised to finish the hours-long podcast and not learn anything (as far as I could tell) about what MIRI (the Machine Intelligence Research Institute that Yudkowsky runs) has accomplished. Patel, on the other hand, presented many more interesting lines thought for Yudkowsky to entertain, but I think he still indulged Yudkowsky's premises a little too much without asking for more details and justification e.g. why he is so much more sure that AI Doomsday is likely to happen shortly (even if he doesn't give any specific timeline) than most AI researchers (accounting for biases of course). Even [Gwern Branwen](https://gwern.net), who Yudkowsky brings up as a good predictor for near-term AI developments, doesn't have Yudkowsky's (and many others that concur with him) confidence in imminent AI Doomsday. -->
+::: comment
+I appreciated the [The Lunar Society podcast](https://overcast.fm/+b53M_HRgo) with Yudkowsky more than his appearance on [Lex Friedman podcast](https://overcast.fm/+eZyDo-AY0). I think Friedman let Yudkowsky dwell on some conclusions too long without explaining the details of how he arrived at those conclusions. I was surprised to finish the hours-long podcast and not learn anything (as far as I could tell) about what MIRI (the Machine Intelligence Research Institute that Yudkowsky runs) has accomplished. Patel, on the other hand, presented many more interesting lines thought for Yudkowsky to entertain, but I think he still indulged Yudkowsky's premises a little too much without asking for more details and justification e.g. why he is so much more sure that AI Doomsday is likely to happen shortly (even if he doesn't give any specific timeline) than most AI researchers (accounting for biases of course). Even [Gwern Branwen](https://gwern.net), who Yudkowsky brings up as a good predictor for near-term AI developments, doesn't have Yudkowsky's (and many others that concur with him) confidence in imminent AI Doomsday.
+:::
 
 ### Most AI Researchers Expect that Superintelligent AI will _not_ be Extremely Bad
 
@@ -169,7 +171,9 @@ Abstracting away from the fast takeoff question, I find the main feature lacking
 
 Aside from this, advances in AI technology could also change my mind.
 
-<!-- But, given that there is still a lot of room left between current systems and superintelligent AI (or even HLMI),  -->
+::: comment
+But, given that there is still a lot of room left between current systems and superintelligent AI (or even HLMI),
+:::
 
 ### What I Would Consider Significant Steps Towards HLMI
 
