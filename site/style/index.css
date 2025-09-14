@@ -16,9 +16,7 @@ main {
 }
 
 .post-card {
-  padding: 1em;
-  border: 0.1em solid black;
-  margin-bottom: 1em;
+  margin-bottom: 2em;
 
   & > .title {
     font-size: 1.5em;

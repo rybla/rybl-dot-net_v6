@@ -1,6 +1,9 @@
 :root {
   --main-width: 800px;
   --basic-box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.5);
+  --basic-box-background: color-mix(in srgb, lightblue, transparent 50%);
+  --dashed-border: 3px dashed black;
+  --indent-border-left: 3px solid black;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -55,7 +58,7 @@ main {
   flex: 1 1 auto;
   margin: 1em auto;
 
-  background: color-mix(in srgb, #cccccc, transparent 20%);
+  background: color-mix(in srgb, #f6eee3, transparent 20%);
 
   @media (min-width: calc(800px)) {
     width: var(--main-width);
@@ -77,6 +80,31 @@ h6 {
   padding: 0;
 }
 
+a {
+  display: inline;
+
+  color: inherit;
+  /*background: color-mix(in hsl, #f28500, transparent 50%);*/
+  background: color-mix(in hsl, black, transparent 90%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  & > .favicon {
+    /*align-self: center;*/
+    margin-right: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  & > .name {
+    align-self: baseline;
+  }
+}
+
 p {
   margin: 0.5em 0;
 }
@@ -89,27 +117,23 @@ pre {
   padding: 1em;
   background: black;
   color: white;
+  font-family: "Fira Code", monospace;
 }
 
 blockquote {
-  padding: 1em;
-  background: lightgray;
-  color: black;
-  border-left: 4px solid black;
-
-  & > p {
-    margin: 0;
-  }
+  margin-block-end: 1em;
+  margin-block-start: 1em;
+  padding: 0.5em 1em;
+  background: var(--basic-box-background);
+  border-left: var(--indent-border-left);
 }
 
 ol,
 ul {
-  margin: 0;
-  padding-inline-start: 1em;
-}
-
-blockquote {
-  margin: 0.5em 0;
+  margin-left: 0.5em;
+  /*margin-block-end: 1em;*/
+  /*margin-block-start: 1em;*/
+  padding-inline-start: 1.3em;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -130,6 +154,75 @@ blockquote {
 .header-info {
   margin-block-end: 1em;
   margin-block-start: 1em;
+  padding: 0.5em 1em;
+  background: var(--basic-box-background);
+  border: var(--dashed-border);
+}
+
+.table-of-contents {
+  margin-block-end: 1em;
+  margin-block-start: 1em;
+  padding: 0.5em 1em;
+  background: var(--basic-box-background);
+  border: var(--dashed-border);
+}
+
+.definition {
+  margin-block-end: 1em;
+  margin-block-start: 1em;
+  padding: 0.5em 1em;
+  background: var(--basic-box-background);
+  border-left: var(--indent-border-left);
+
+  &::before {
+    content: "Definition";
+    text-decoration: underline;
+  }
+}
+
+.sidenote {
+  position: relative;
+  display: block;
+  float: right;
+  clear: right;
+  width: calc(
+    var(--sidenote-width) - var(--spacing-between-main-and-sidenotes)
+  );
+  margin-right: calc(-1 * var(--sidenote-width));
+
+  margin-top: -1em;
+  margin-bottom: 2em;
+  border: var(--dashed-border);
+  /*box-shadow: var(--basic-box-shadow);*/
+  background: var(--basic-box-background);
+  /*padding: 1em;*/
+  padding: 0.5em 1em;
+
+  @media (min-width: calc(800px)) {
+    display: block;
+    visibility: visible;
+  }
+  @media (max-width: calc(800px - 1px)) {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+
+  & > .preview-title {
+    display: block;
+    word-break: break-all;
+    font-weight: bold;
+  }
+
+  & > .preview-description {
+    display: block;
+    word-break: break-all;
+  }
 }
 
 .warning {

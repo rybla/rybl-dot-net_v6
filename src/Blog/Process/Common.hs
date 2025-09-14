@@ -134,7 +134,9 @@ addTableOfContents doc0 = do
       ( concat
           [ [ Pandoc.Div
                 (mempty & Pandoc.attrClasses %~ ("table-of-contents" :))
-                [Pandoc.OrderedList orderedListStyle (renderToc <$> tocKids)]
+                [ Pandoc.Para [Pandoc.Underline [Pandoc.Str "Table of Contents"]],
+                  Pandoc.OrderedList orderedListStyle (renderToc <$> tocKids)
+                ]
             ],
             Pandoc.pandocBlocks doc1
           ]
@@ -186,7 +188,7 @@ renderAbstract :: [Pandoc.Block] -> [Pandoc.Block]
 renderAbstract blocks =
   concat
     [ [ Pandoc.Para
-          [Pandoc.Underline [Pandoc.Str "Abstract."]]
+          [Pandoc.Underline [Pandoc.Str "Abstract"]]
       ],
       blocks
     ]

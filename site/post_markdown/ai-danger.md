@@ -7,7 +7,13 @@ tags:
 abstract: My thoughts on the dangers of AI technology.
 ---
 
+::: comment
 _Definition_. The __AI Doomsday__ scenario is a possible future scenario where an AI system is developed that overcomes all attempts at control and very soon after the system causes the extinction of the human species. This definition abstracts away any particular prediction of _when_ this scenario will happen and _how_ specifically it will play out.
+:::
+
+::: definition
+The __AI Doomsday__ scenario is a possible future scenario where an AI system is developed that overcomes all attempts at control and very soon after the system causes the extinction of the human species. This definition abstracts away any particular prediction of _when_ this scenario will happen and _how_ specifically it will play out.
+:::
 
 ![illustration of "AI danger" by Dalle 2](/image/ai-danger-by-dalle-2.png)
 
@@ -41,7 +47,9 @@ There are surely many other dangers to AI technology, but in this post, I will f
 
 ## How Likely Is AI Doomsday?
 
-_Definition_. __Eventual AI Doomsday__ is the prediction that __AI Doomsday__ will happen at some point in the future.
+::: definition
+__Eventual AI Doomsday__ is the prediction that __AI Doomsday__ will happen at some point in the future.
+:::
 
 In principle, AI Doomsday is very likely to happen. [Nick Bostrom](https://en.wikipedia.org/wiki/Nick_Bostrom) popularized this observation in [Superintelligence](https://en.wikipedia.org/wiki/Superintelligence:_Paths,_Dangers,_Strategies), and [Eliezer Yudkowsky](https://en.wikipedia.org/wiki/Eliezer_Yudkowsky) has spent much of his time rebutting his own and others' suggestions for how to prevent an advanced AI system that _could_ cause AI Doomsday from doing so. I find the most convincing argument for AI Doomsday to be the most abstract version. The argument has two parts:
 
@@ -67,7 +75,9 @@ This argument only makes reference to _intelligence_, which is the ability of a 
 
 ## How Likely Is AI Doomsday, Soon?
 
-_Definition_. __Imminent AI Doomsday__ is the prediction that __AI Doomsday__ will happen within the next couple of decades. Within that timeline, there is a variety of popular probability distributions.
+::: definition
+__Imminent AI Doomsday__ is the prediction that __AI Doomsday__ will happen within the next couple of decades. Within that timeline, there is a variety of popular probability distributions.
+:::
 
 I have seen this survey -- [2022 Expert Survey on Progress in AI](https://aiimpacts.org/2022-expert-survey-on-progress-in-ai/) -- often cited to support the claim that most AI researchers expect artificial general intelligence (AGI) to be developed in the near future. It's also interesting to compare these results to [2016 version of this survey](https://aiimpacts.org/2016-expert-survey-on-progress-in-ai/). Quoting a few main results of the 2022 survey:
 
