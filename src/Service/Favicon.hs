@@ -49,7 +49,7 @@ cache uri manager = do
     then do
       return baseFaviconInfo
     else do
-      let infoFilePath = Paths.offline.favicon.here </> (uri & show & makeValidIdent & toDataFileName)
+      let infoFilePath = Paths.offlineSite.favicon.here </> (uri & show & makeValidIdent & toDataFileName)
       doesFileExist infoFilePath & liftIO >>= \case
         True -> do
           ByteString.readFile infoFilePath

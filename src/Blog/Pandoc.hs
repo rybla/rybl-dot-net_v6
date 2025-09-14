@@ -25,7 +25,7 @@ runPandocM =
     >>> runExceptT
     >>> ( `StateLazy.evalStateT`
             def
-              { stUserDataDir = Just Paths.offline.template.here
+              { stUserDataDir = Just Paths.offlineSite.template.here
               }
         )
     >>> liftIO

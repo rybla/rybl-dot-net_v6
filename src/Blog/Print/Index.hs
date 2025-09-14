@@ -35,7 +35,7 @@ printIndex posts = evalIsoStateT (pairIso def) do
 
   index <- makeIndex posts
 
-  templateText <- TextIO.readFile (Paths.offline.template.here </> ("index" & toHtmlFileName)) & liftIO
+  templateText <- TextIO.readFile (Paths.offlineSite.template.here </> ("index" & toHtmlFileName)) & liftIO
 
   contentHtml <- Pandoc.writeHtml5String Pandoc.def index & Pandoc.lensPandocM _1
 
@@ -62,7 +62,7 @@ printIndex posts = evalIsoStateT (pairIso def) do
       index
       & Pandoc.lensPandocM _1
 
-  TextIO.writeFile (Paths.offline.here </> ("index" & toHtmlFileName)) indexHtml & liftIO
+  TextIO.writeFile (Paths.offlineSite.here </> ("index" & toHtmlFileName)) indexHtml & liftIO
 
 makeIndex ::
   (MonadIO m) =>

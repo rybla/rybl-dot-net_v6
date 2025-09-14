@@ -47,8 +47,8 @@ instance Favicon.FaviconService where
         let ident = uri & show & makeValidIdent
         let faviconFileName = ident <.> response.format
         iconUri <- parseUriM response.icon
-        mirrorIconRef <- Paths.online.favicon.here </> faviconFileName & parseUriReferenceM
-        let mirrorIconFilePath = Paths.offline.favicon.here </> faviconFileName
+        mirrorIconRef <- Paths.onlineSite.favicon.here </> faviconFileName & parseUriReferenceM
+        let mirrorIconFilePath = Paths.offlineSite.favicon.here </> faviconFileName
         return
           Favicon.FaviconInfo
             { Favicon.originalIconRef = iconUri & UriReference,

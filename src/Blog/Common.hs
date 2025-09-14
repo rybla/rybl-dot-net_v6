@@ -72,29 +72,29 @@ makeLenses ''Page
 -- Post
 
 toPostHref :: (MonadError Doc m) => PostId -> m URI
-toPostHref postId = parseUriReferenceM (Paths.online.post.here </> (postId & unPostId & makeValidIdent & toHtmlFileName))
+toPostHref postId = parseUriReferenceM (Paths.onlineSite.post.here </> (postId & unPostId & makeValidIdent & toHtmlFileName))
 
 toPostMarkdownFilePath :: PostId -> FilePath
-toPostMarkdownFilePath postId = Paths.offline.post_markdown.here </> (postId & unPostId & makeValidIdent & toMarkdownFileName)
+toPostMarkdownFilePath postId = Paths.offlineSite.post_markdown.here </> (postId & unPostId & makeValidIdent & toMarkdownFileName)
 
 toPostFilePath :: PostId -> FilePath
-toPostFilePath postId = Paths.offline.post.here </> (postId & unPostId & makeValidIdent & toHtmlFileName)
+toPostFilePath postId = Paths.offlineSite.post.here </> (postId & unPostId & makeValidIdent & toHtmlFileName)
 
 -- Page
 
 toPageHref :: (MonadError Doc m) => PageId -> m URI
-toPageHref postId = parseUriReferenceM (Paths.online.page.here </> (postId & unPageId & makeValidIdent & toHtmlFileName))
+toPageHref postId = parseUriReferenceM (Paths.onlineSite.page.here </> (postId & unPageId & makeValidIdent & toHtmlFileName))
 
 toPageMarkdownFilePath :: PageId -> FilePath
-toPageMarkdownFilePath postId = Paths.offline.page_markdown.here </> (postId & unPageId & makeValidIdent & toMarkdownFileName)
+toPageMarkdownFilePath postId = Paths.offlineSite.page_markdown.here </> (postId & unPageId & makeValidIdent & toMarkdownFileName)
 
 toPageFilePath :: PageId -> FilePath
-toPageFilePath postId = Paths.offline.page.here </> (postId & unPageId & makeValidIdent & toHtmlFileName)
+toPageFilePath postId = Paths.offlineSite.page.here </> (postId & unPageId & makeValidIdent & toHtmlFileName)
 
 -- Favicon
 
 toFaviconInfoFilePath :: URI -> FilePath
-toFaviconInfoFilePath uri = Paths.offline.preview.here </> (uri & uriRootAndPath & makeValidIdent & toDataFileName)
+toFaviconInfoFilePath uri = Paths.offlineSite.preview.here </> (uri & uriRootAndPath & makeValidIdent & toDataFileName)
 
 -- generic
 

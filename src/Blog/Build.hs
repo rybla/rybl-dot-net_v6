@@ -39,7 +39,7 @@ main' :: forall m. (MonadIO m, MonadError Doc m, MonadState Env m) => m ()
 main' = do
   -- parse pages
   pages <-
-    listDirectory Paths.offline.page_markdown.here
+    listDirectory Paths.offlineSite.page_markdown.here
       & liftIO
       <&> foldMap ((^? suffixed ".md") >>> maybe [] (return . PageId))
       >>= traverse \pageId -> do
@@ -48,7 +48,7 @@ main' = do
 
   -- parse posts
   posts <-
-    listDirectory Paths.offline.post_markdown.here
+    listDirectory Paths.offlineSite.post_markdown.here
       & liftIO
       <&> foldMap ((^? suffixed ".md") >>> maybe [] (return . PostId))
       >>= traverse \postId -> do

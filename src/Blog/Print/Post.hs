@@ -24,7 +24,7 @@ import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
 
 printPost :: (MonadIO m, MonadError Doc m, MonadState env m) => Post -> m ()
 printPost post = evalIsoStateT (pairIso def) do
-  templateText <- TextIO.readFile (Paths.offline.template.here </> ("post" & toHtmlFileName)) & liftIO
+  templateText <- TextIO.readFile (Paths.offlineSite.template.here </> ("post" & toHtmlFileName)) & liftIO
 
   contentHtml <-
     Pandoc.writeHtml5String

@@ -32,12 +32,12 @@ missingFaviconFormat = "ico"
 
 makeRoot
   [ MakeRootParams
-      { valName = "offline",
+      { valName = "offlineSite",
         nodeType = [t|String|],
-        toNode = [|("asset" </>)|]
+        toNode = [|("site" </>)|]
       },
     MakeRootParams
-      { valName = "online",
+      { valName = "onlineSite",
         nodeType = [t|String|],
         toNode = [|("/" </>)|]
       }

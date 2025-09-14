@@ -22,4 +22,4 @@ deriving newtype instance (Monad m) => Monad (BlogTemplateMonad m)
 deriving newtype instance (MonadIO m) => MonadIO (BlogTemplateMonad m)
 
 instance (MonadIO m) => TemplateMonad (BlogTemplateMonad m) where
-  getPartial fp = TextIO.readFile (Paths.offline.template.here </> fp) & liftIO
+  getPartial fp = TextIO.readFile (Paths.offlineSite.template.here </> fp) & liftIO

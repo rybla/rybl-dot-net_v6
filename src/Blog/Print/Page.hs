@@ -19,7 +19,7 @@ import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
 
 printPage :: (MonadIO m, MonadError Doc m, MonadState env m) => Page -> m ()
 printPage page = evalIsoStateT (pairIso def) do
-  templateText <- TextIO.readFile (Paths.offline.template.here </> ("page" & toHtmlFileName)) & liftIO
+  templateText <- TextIO.readFile (Paths.offlineSite.template.here </> ("page" & toHtmlFileName)) & liftIO
 
   contentHtml <-
     Pandoc.writeHtml5String
