@@ -35,6 +35,7 @@ library
       Blog.Env
       Blog.Pandoc
       Blog.Parse.Common
+      Blog.Parse.Page
       Blog.Parse.Post
       Blog.Paths
       Blog.PathsTh

@@ -3,8 +3,6 @@ footer {
   flex: 0 0 auto;
 
   padding: 1em;
-  background: black;
-  color: white;
 
   display: flex;
   flex-direction: column;

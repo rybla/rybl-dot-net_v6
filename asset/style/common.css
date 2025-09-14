@@ -30,6 +30,9 @@ body {
 main {
   flex: 1 1 auto;
   margin: 1em auto;
+
+  /*background: color-mix(in srgb, #f6eee3, transparent 20%);*/
+  background: color-mix(in srgb, #cccccc, transparent 30%);
 }
 
 @media (min-width: calc(800px)) {
@@ -50,6 +53,7 @@ h4,
 h5,
 h6 {
   margin: 0;
+  margin-top: 0.5em;
   margin-bottom: 0.5em;
   padding: 0;
 }
@@ -58,10 +62,8 @@ p {
   margin: 0.5em 0;
 }
 
-main {
-  p > img {
-    width: 100%;
-  }
+main p > img {
+  width: 100%;
 }
 
 pre {
@@ -94,6 +96,17 @@ blockquote {
 /* -------------------------------------------------------------------------- */
 /* customize elements */
 /* -------------------------------------------------------------------------- */
+
+.body-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  filter: url(#body-background-filter);
+  z-index: -1000;
+}
 
 .header-info {
   margin-block-end: 1em;

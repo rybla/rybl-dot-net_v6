@@ -6,7 +6,7 @@
 {-# OPTIONS_GHC -Wno-missing-export-lists #-}
 {-# OPTIONS_GHC -Wno-name-shadowing #-}
 
-module Blog.Parse.Post where
+module Blog.Parse.Page where
 
 import Blog.Common
 import Blog.Pandoc (runPandocM)
@@ -25,14 +25,14 @@ import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Walk as Pandoc
 import Text.PrettyPrint.HughesPJClass (Doc, pPrint, (<+>))
 
-parsePost ::
+parse ::
   (MonadIO m, MonadError Doc m, MonadState env m) =>
   Lens' env (Map URI [Link]) ->
   Lens' env (Map URI [Link]) ->
   PostId ->
   Text ->
   m Post
-parsePost outLinks inLinks postId postText = do
+parse outLinks inLinks postId postText = do
   logM "Post.parse" $ "postId =" <+> pPrint postId
   doc <-
     postText
