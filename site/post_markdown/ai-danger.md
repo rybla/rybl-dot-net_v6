@@ -15,7 +15,7 @@ _Definition_. The __AI Doomsday__ scenario is a possible future scenario where a
 The __AI Doomsday__ scenario is a possible future scenario where an AI system is developed that overcomes all attempts at control and very soon after the system causes the extinction of the human species. This definition abstracts away any particular prediction of _when_ this scenario will happen and _how_ specifically it will play out.
 :::
 
-![illustration of "AI danger" by Dalle 2](/image/ai-danger-by-dalle-2.png)
+![illustration of "AI danger" by Dalle 2](/image/ai-danger/ai-danger-by-dalle-2.png)
 
 ## What are the Dangers of AI?
 

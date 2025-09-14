@@ -6,7 +6,7 @@ tags:
   - economics
 ---
 
-<img src="/assets/posts/city-design/header.jpg" class="full-width">
+![](city-design/header.jpg)
 
 # Introduction
 
