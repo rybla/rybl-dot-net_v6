@@ -49,7 +49,7 @@ printIndex posts = evalIsoStateT (pairIso def) do
       Aeson.parseEither
         Aeson.parseJSON
         ( Aeson.object
-            [ ("title", "index"),
+            [ ("title", "Index"),
               ("content", contentHtml & Aeson.toJSON)
             ]
         )

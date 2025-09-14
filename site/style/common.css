@@ -6,10 +6,6 @@
   --indent-border-left: 3px solid black;
 }
 
-/* -------------------------------------------------------------------------- */
-/* existing elements */
-/* -------------------------------------------------------------------------- */
-
 * {
   box-sizing: border-box;
 }
@@ -30,28 +26,6 @@ body {
 
   display: flex;
   flex-direction: column;
-}
-
-#background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  background-size: 100px;
-  z-index: -1;
-
-  background: url("/image/stars.jpeg") repeat;
-
-  /*TODO*/
-  /*@media (prefers-color-scheme: dark) {
-    background: url("/asset/image/stars.jpeg");
-  }
-
-  @media (prefers-color-scheme: light) {
-    background: url("/asset/image/day_clouds.png");
-  }*/
 }
 
 main {
@@ -134,112 +108,4 @@ ul {
   /*margin-block-end: 1em;*/
   /*margin-block-start: 1em;*/
   padding-inline-start: 1.3em;
-}
-
-/* -------------------------------------------------------------------------- */
-/* customize elements */
-/* -------------------------------------------------------------------------- */
-
-/*.body-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100svw;
-  height: 100svh;
-  background: black;
-  filter: url(#body-background-filter);
-  z-index: -1000;
-}*/
-
-.header-info {
-  margin-block-end: 1em;
-  margin-block-start: 1em;
-  padding: 0.5em 1em;
-  background: var(--basic-box-background);
-  border: var(--dashed-border);
-}
-
-.table-of-contents {
-  margin-block-end: 1em;
-  margin-block-start: 1em;
-  padding: 0.5em 1em;
-  background: var(--basic-box-background);
-  border: var(--dashed-border);
-}
-
-.definition {
-  margin-block-end: 1em;
-  margin-block-start: 1em;
-  padding: 0.5em 1em;
-  background: var(--basic-box-background);
-  border-left: var(--indent-border-left);
-
-  &::before {
-    content: "Definition";
-    text-decoration: underline;
-  }
-}
-
-.sidenote {
-  position: relative;
-  display: block;
-  float: right;
-  clear: right;
-  width: calc(
-    var(--sidenote-width) - var(--spacing-between-main-and-sidenotes)
-  );
-  margin-right: calc(-1 * var(--sidenote-width));
-
-  margin-top: -1em;
-  margin-bottom: 2em;
-  border: var(--dashed-border);
-  /*box-shadow: var(--basic-box-shadow);*/
-  background: var(--basic-box-background);
-  /*padding: 1em;*/
-  padding: 0.5em 1em;
-
-  @media (min-width: calc(800px)) {
-    display: block;
-    visibility: visible;
-  }
-  @media (max-width: calc(800px - 1px)) {
-    display: none;
-    visibility: hidden;
-  }
-}
-
-.preview {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-
-  & > .preview-title {
-    display: block;
-    word-break: break-all;
-    font-weight: bold;
-  }
-
-  & > .preview-description {
-    display: block;
-    word-break: break-all;
-  }
-}
-
-.warning {
-  padding: 1em;
-  border: 1px solid red;
-  background-color: color-mix(in hsl, white, black 5%);
-}
-
-.favicon {
-  margin-right: 0.2em;
-
-  aspect-ratio: 1;
-  height: 1em;
-  width: 1em;
-}
-
-.todo {
-  padding: 1em;
-  background-color: color-mix(in hsl, red, transparent 60%);
 }
