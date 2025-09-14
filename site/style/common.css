@@ -1,8 +1,14 @@
 :root {
   --main-width: 800px;
+
   --basic-box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.5);
-  --basic-box-background: color-mix(in srgb, lightblue, transparent 50%);
-  --dashed-border: 3px dashed black;
+
+  /*--basic-box-background: color-mix(in srgb, lightblue, transparent 50%);*/
+  --basic-box-background: color-mix(in srgb, darkblue, transparent 90%);
+
+  /*--popout-border: 3px dashed black;*/
+  --popout-border: none;
+
   --indent-border-left: 3px solid black;
 }
 
@@ -14,6 +20,7 @@ html {
   margin: 0;
   padding: 0;
 
+  overflow-x: hidden;
   overscroll-behavior: none;
   scroll-behavior: smooth;
 
@@ -89,9 +96,22 @@ main p > img {
 }
 
 pre {
-  padding: 1em;
+  max-height: 400px;
+  padding: 0.5rem;
+  border-left: 0.5rem solid var(--container--border--color);
+
   background: black;
   color: white;
+
+  font-size: 1em;
+
+  code {
+    font-size: 0.8em;
+  }
+
+  overflow: auto;
+  scrollbar-width: thin;
+
   font-family: "Fira Code", monospace;
 }
 

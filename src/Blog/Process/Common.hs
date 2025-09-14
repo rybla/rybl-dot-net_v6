@@ -53,19 +53,25 @@ addCitationsSection ::
   (MonadError Doc m) =>
   [Link] -> Pandoc -> m Pandoc
 addCitationsSection inLinks (Pandoc meta blocks) = do
-  return . Pandoc meta $
-    blocks
-      ++ [ Pandoc.Header 1 mempty [Pandoc.Str "Citations"],
-           Pandoc.BulletList $
-             inLinks & reverse <&> \link ->
-               [ Pandoc.Plain
-                   [ Pandoc.Link
-                       (mempty & Pandoc.attrData %~ ([("inCitation", "True"), ("noLinkPreview", "")] ++))
-                       (link & linkLabel)
-                       (link & linkUri & showText, "")
-                   ]
-               ]
-         ]
+  return $
+    Pandoc meta $
+      concat $
+        [ blocks,
+          [Pandoc.Header 1 mempty [Pandoc.Str "Citations"]],
+          if inLinks & null
+            then []
+            else
+              [ Pandoc.BulletList $
+                  inLinks & reverse <&> \link ->
+                    [ Pandoc.Plain
+                        [ Pandoc.Link
+                            (mempty & Pandoc.attrData %~ ([("inCitation", ""), ("noLinkPreview", "")] ++))
+                            (link & linkLabel)
+                            (link & linkUri & showText, "")
+                        ]
+                    ]
+              ]
+        ]
 
 addLinkFavicons ::
   forall m.

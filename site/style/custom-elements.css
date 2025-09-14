@@ -3,7 +3,7 @@
   margin-block-start: 1em;
   padding: 0.5em 1em;
   background: var(--basic-box-background);
-  border: var(--dashed-border);
+  border: var(--popout-border);
 }
 
 .table-of-contents {
@@ -11,7 +11,7 @@
   margin-block-start: 1em;
   padding: 0.5em 1em;
   background: var(--basic-box-background);
-  border: var(--dashed-border);
+  border: var(--popout-border);
 }
 
 .definition {
@@ -39,7 +39,7 @@
 
   margin-top: -1em;
   margin-bottom: 2em;
-  border: var(--dashed-border);
+  border: var(--popout-border);
   /*box-shadow: var(--basic-box-shadow);*/
   background: var(--basic-box-background);
   /*padding: 1em;*/
