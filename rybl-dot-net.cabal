@@ -41,6 +41,7 @@ library
       Blog.PathsTh
       Blog.Print.Common
       Blog.Print.Index
+      Blog.Print.Page
       Blog.Print.Post
       Blog.Process.Common
       Blog.Process.Post

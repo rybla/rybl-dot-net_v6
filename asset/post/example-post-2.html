@@ -17,25 +17,44 @@
   <body>
     <svg style="display: none; visibility: hidden">
       <defs>
-        <filter id="body-background-filter">
+        <filter
+          id="body-background-filter"
+          color-interpolation-filters="linearRGB"
+          filterUnits="objectBoundingBox"
+          primitiveUnits="userSpaceOnUse"
+        >
           <feTurbulence
-            baseFrequency="0.08"
-            numOctaves="1"
-            seed="1"
-            stitchTiles="stitch"
             type="fractalNoise"
-            result="noise"
+            baseFrequency="0.035 0.008"
+            numOctaves="4"
+            seed="2"
+            stitchTiles="stitch"
+            result="turbulence"
           />
+          <feMerge result="merge">
+            <feMergeNode in="SourceGraphic" result="mergeNode" />
+            <feMergeNode in="turbulence" result="mergeNode1" />
+          </feMerge>
           <feColorMatrix
-            in="noise"
-            type="matrix"
-            values="0 0 0 0 0
-                                  0 0 0 0 0
-                                  0 0 0 0 0
-                                  0 0 0 300 -140"
-            result="high-contrast-alpha"
+            type="saturate"
+            values="10"
+            in="merge"
+            result="colormatrix"
           />
-          <feGaussianBlur in="high-contrast-alpha" stdDeviation="0.1" />
+          <feDisplacementMap
+            in="merge"
+            in2="colormatrix"
+            scale="1"
+            xChannelSelector="R"
+            yChannelSelector="R"
+            result="displacementMap"
+          />
+          <feComposite
+            in="displacementMap"
+            in2="SourceAlpha"
+            operator="in"
+            result="composite1"
+          />
         </filter>
       </defs>
     </svg>

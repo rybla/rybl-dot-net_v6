@@ -47,5 +47,7 @@ makeRoot
     Node "favicon" [],
     Node "template" [],
     Node "preview" [],
-    Node "script" []
+    Node "script" [],
+    Node "page_markdown" [],
+    Node "page" []
   ]

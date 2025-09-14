@@ -25,7 +25,13 @@ newtype PostId = PostId {unPostId :: String}
   deriving (Show, Eq, Ord)
 
 instance Pretty PostId where
-  pPrint (PostId pid) = hcat ["Post", brackets (text pid)]
+  pPrint (PostId pid) = hcat ["PostId", brackets (text pid)]
+
+newtype PageId = PageId {unPageId :: String}
+  deriving (Show, Eq, Ord)
+
+instance Pretty PageId where
+  pPrint (PageId pid) = hcat ["PageId", brackets (text pid)]
 
 newtype UriReference = UriReference {unUriReference :: URI}
   deriving (Show)
@@ -54,6 +60,15 @@ data Post = Post
 
 makeLenses ''Post
 
+data Page = Page
+  { _pageId :: PageId,
+    _pageHref :: URI,
+    _pageTitle :: Text,
+    _pageDoc :: Pandoc.Pandoc
+  }
+
+makeLenses ''Page
+
 -- Post
 
 toPostHref :: (MonadError Doc m) => PostId -> m URI
@@ -64,6 +79,17 @@ toPostMarkdownFilePath postId = Paths.offline.post_markdown.here </> (postId & u
 
 toPostFilePath :: PostId -> FilePath
 toPostFilePath postId = Paths.offline.post.here </> (postId & unPostId & makeValidIdent & toHtmlFileName)
+
+-- Page
+
+toPageHref :: (MonadError Doc m) => PageId -> m URI
+toPageHref postId = parseUriReferenceM (Paths.online.page.here </> (postId & unPageId & makeValidIdent & toHtmlFileName))
+
+toPageMarkdownFilePath :: PageId -> FilePath
+toPageMarkdownFilePath postId = Paths.offline.page_markdown.here </> (postId & unPageId & makeValidIdent & toMarkdownFileName)
+
+toPageFilePath :: PageId -> FilePath
+toPageFilePath postId = Paths.offline.page.here </> (postId & unPageId & makeValidIdent & toHtmlFileName)
 
 -- Favicon
 

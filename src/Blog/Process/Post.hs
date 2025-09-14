@@ -24,14 +24,14 @@ import Service.Preview (PreviewService)
 import Text.Pandoc (Pandoc (..))
 import Text.PrettyPrint.HughesPJClass (Doc)
 
-process ::
+processPost ::
   (FaviconService, PreviewService, MonadError Doc m, MonadState env m, MonadIO m) =>
   Lens' env Network.Manager ->
   Lens' env (Map URI [Link]) ->
   Lens' env (Map URI [Link]) ->
   Lens' env Post ->
   m ()
-process manager outLinks inLinks post = do
+processPost manager outLinks inLinks post = do
   mgr <- gets (^. manager)
   ph <- gets (^. post . postHref)
 

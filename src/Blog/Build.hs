@@ -8,9 +8,11 @@ module Blog.Build (main) where
 
 import Blog.Common
 import Blog.Env
+import qualified Blog.Parse.Page as Parse.Page
 import qualified Blog.Parse.Post as Parse.Post
 import qualified Blog.Paths as Paths
 import qualified Blog.Print.Index as Print.Index
+import qualified Blog.Print.Page as Print.Page
 import qualified Blog.Print.Post as Print.Post
 import qualified Blog.Process.Post as Process.Post
 import Blog.Utility
@@ -35,6 +37,15 @@ main = do
 
 main' :: forall m. (MonadIO m, MonadError Doc m, MonadState Env m) => m ()
 main' = do
+  -- parse pages
+  pages <-
+    listDirectory Paths.offline.page_markdown.here
+      & liftIO
+      <&> foldMap ((^? suffixed ".md") >>> maybe [] (return . PageId))
+      >>= traverse \pageId -> do
+        pageText <- TextIO.readFile (pageId & toPageMarkdownFilePath) & liftIO
+        Parse.Page.parsePage pageId pageText
+
   -- parse posts
   posts <-
     listDirectory Paths.offline.post_markdown.here
@@ -42,17 +53,21 @@ main' = do
       <&> foldMap ((^? suffixed ".md") >>> maybe [] (return . PostId))
       >>= traverse \postId -> do
         postText <- TextIO.readFile (postId & toPostMarkdownFilePath) & liftIO
-        Parse.Post.parse outLinks inLinks postId postText
+        Parse.Post.parsePost outLinks inLinks postId postText
 
   -- process posts
   posts :: [Post] <-
     posts & traverse \post -> do
       fmap (^. _1) $ execIsoStateT (pairIso post) do
-        Process.Post.process (_2 . manager) (_2 . outLinks) (_2 . inLinks) _1
+        Process.Post.processPost (_2 . manager) (_2 . outLinks) (_2 . inLinks) _1
+
+  -- print index
+  Print.Index.printIndex posts
+
+  -- print pages
+  pages & traverse_ \page -> do
+    Print.Page.printPage page
 
   -- print posts
   posts & traverse_ \post -> do
     Print.Post.printPost post
-
-  -- print index
-  Print.Index.printIndex posts

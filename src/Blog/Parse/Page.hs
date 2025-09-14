@@ -13,29 +13,21 @@ import Blog.Pandoc (runPandocM)
 import qualified Blog.Pandoc as Pandoc
 import Blog.Utility
 import Control.Lens
-import Control.Monad (void, (>=>))
-import Control.Monad.Except (MonadError, throwError)
-import Control.Monad.State (MonadState)
+import Control.Monad.Except (MonadError)
 import Control.Monad.Writer (MonadIO)
-import Data.Map (Map)
 import Data.Text (Text)
-import qualified Data.Text as Text
-import Network.URI (URI)
 import qualified Text.Pandoc as Pandoc
-import qualified Text.Pandoc.Walk as Pandoc
 import Text.PrettyPrint.HughesPJClass (Doc, pPrint, (<+>))
 
-parse ::
-  (MonadIO m, MonadError Doc m, MonadState env m) =>
-  Lens' env (Map URI [Link]) ->
-  Lens' env (Map URI [Link]) ->
-  PostId ->
+parsePage ::
+  (MonadIO m, MonadError Doc m) =>
+  PageId ->
   Text ->
-  m Post
-parse outLinks inLinks postId postText = do
-  logM "Post.parse" $ "postId =" <+> pPrint postId
+  m Page
+parsePage pageId pageText = do
+  logM "parsePost" $ "pageId =" <+> pPrint pageId
   doc <-
-    postText
+    pageText
       & Pandoc.readMarkdown
         Pandoc.def
           { Pandoc.readerStandalone = True,
@@ -43,43 +35,15 @@ parse outLinks inLinks postId postText = do
           }
       & runPandocM
 
-  postHref <- toPostHref postId
-  postTitle <- doc & Pandoc.getMetaValueSuchThat Pandoc.fromMetaString "title"
-  postPubDate <-
-    doc
-      & Pandoc.getMetaValueSuchThat
-        (Pandoc.fromMetaString >=> maybe (throwError "expected date") pure . parseDay . Text.unpack)
-        "pubDate"
-  postTags <- doc & Pandoc.getMetaValueSuchThat Pandoc.fromMetaListString "tags"
-  postAbstract <- doc & Pandoc.getMetaValueMaybeSuchThat Pandoc.fromMetaBlocks "abstract"
-
-  void $
-    doc & Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
-      Pandoc.Link _attr kids (refText, _) -> do
-        ref <- refText & Text.unpack & parseUriReferenceM
-        let outLink = Link kids ref
-        outLinks . at postHref %= maybe (Just [outLink]) (Just . (outLink :))
-        let inLink = Link kids postHref
-        inLinks . at ref %= maybe (Just [inLink]) (Just . (inLink :))
-        return x
-      Pandoc.Image _attr kids (refText, _) -> do
-        ref <- refText & Text.unpack & parseUriReferenceM
-        let outLink = Link kids ref
-        outLinks . at postHref %= maybe (Just [outLink]) (Just . (outLink :))
-        let inLink = Link kids postHref
-        inLinks . at ref %= maybe (Just [inLink]) (Just . (inLink :))
-        return x
-      _ -> return x
+  pageHref <- toPageHref pageId
+  pageTitle <- doc & Pandoc.getMetaValueSuchThat Pandoc.fromMetaString "title"
 
   return
-    Post
-      { _postId = postId,
-        _postHref = postHref,
-        _postTitle = postTitle,
-        _postPubDate = postPubDate,
-        _postAbstract = postAbstract,
-        _postTags = postTags,
-        _postDoc = doc
+    Page
+      { _pageId = pageId,
+        _pageHref = pageHref,
+        _pageTitle = pageTitle,
+        _pageDoc = doc
       }
   where
     readerExtensions =

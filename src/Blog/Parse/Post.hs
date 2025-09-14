@@ -33,7 +33,7 @@ parsePost ::
   Text ->
   m Post
 parsePost outLinks inLinks postId postText = do
-  logM "Post.parse" $ "postId =" <+> pPrint postId
+  logM "pasePost" $ "postId =" <+> pPrint postId
   doc <-
     postText
       & Pandoc.readMarkdown
