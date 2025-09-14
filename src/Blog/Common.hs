@@ -55,6 +55,7 @@ data Post = Post
     _postPubDate :: Day,
     _postTags :: [Text],
     _postAbstract :: Maybe [Pandoc.Block],
+    _postTableOfContentsEnabled :: Bool,
     _postDoc :: Pandoc.Pandoc
   }
 

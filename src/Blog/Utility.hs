@@ -121,3 +121,6 @@ refold = foldr (mplus . pure) mzero
 
 parseDay :: String -> Maybe Time.Day
 parseDay = Time.parseTimeM @Maybe True Time.defaultTimeLocale "%Y-%-m-%-d"
+
+whenM :: (Monad m) => m Bool -> m () -> m ()
+whenM cond action = cond >>= \b -> if b then action else return ()

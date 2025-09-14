@@ -125,6 +125,11 @@ fromMetaBlocks = \case
   MetaBlocks bs -> pure bs
   _ -> throwError "expected blocks"
 
+fromMetaBool :: MetaValue -> Either Doc Bool
+fromMetaBool = \case
+  MetaBool b -> pure b
+  _ -> throwError "expected bool"
+
 throwPandocError :: (PandocMonad m) => Doc -> m a
 throwPandocError = throwError . PandocAppError . renderText
 

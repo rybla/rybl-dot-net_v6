@@ -18,6 +18,7 @@ import Control.Monad.Except (MonadError, throwError)
 import Control.Monad.State (MonadState)
 import Control.Monad.Writer (MonadIO)
 import Data.Map (Map)
+import qualified Data.Maybe as Maybe
 import Data.Text (Text)
 import qualified Data.Text as Text
 import Network.URI (URI)
@@ -52,6 +53,7 @@ parsePost outLinks inLinks postId postText = do
         "pubDate"
   postTags <- doc & Pandoc.getMetaValueSuchThat Pandoc.fromMetaListString "tags"
   postAbstract <- doc & Pandoc.getMetaValueMaybeSuchThat Pandoc.fromMetaBlocks "abstract"
+  postTableOfContentsEnabled <- doc & Pandoc.getMetaValueMaybeSuchThat Pandoc.fromMetaBool "table_of_contents" <&> Maybe.fromMaybe True
 
   void $
     doc & Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
@@ -79,6 +81,7 @@ parsePost outLinks inLinks postId postText = do
         _postPubDate = postPubDate,
         _postAbstract = postAbstract,
         _postTags = postTags,
+        _postTableOfContentsEnabled = postTableOfContentsEnabled,
         _postDoc = doc
       }
   where

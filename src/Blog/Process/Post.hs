@@ -48,7 +48,8 @@ processPost manager outLinks inLinks post = do
     ils <- gets (^. inLinks . at ph . to (Maybe.fromMaybe []))
     post . postDoc .=* addCitationsSection ils
 
-  post . postDoc .=* addTableOfContents
+  whenM (gets (^. post . postTableOfContentsEnabled)) do
+    post . postDoc .=* addTableOfContents
 
   postSnapshot <- gets (^. post)
   post . postDoc .=* addPostHeader postSnapshot

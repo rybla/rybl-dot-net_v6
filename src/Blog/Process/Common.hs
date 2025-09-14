@@ -34,6 +34,7 @@ import Text.PrettyPrint.HughesPJClass (Doc, (<+>))
 addReferencesSection ::
   (MonadError Doc m) =>
   [Link] -> Pandoc -> m Pandoc
+addReferencesSection outLinks doc | null outLinks = pure doc
 addReferencesSection outLinks (Pandoc meta blocks) = do
   return . Pandoc meta $
     blocks
@@ -52,6 +53,7 @@ addReferencesSection outLinks (Pandoc meta blocks) = do
 addCitationsSection ::
   (MonadError Doc m) =>
   [Link] -> Pandoc -> m Pandoc
+addCitationsSection inLinks doc | null inLinks = pure doc
 addCitationsSection inLinks (Pandoc meta blocks) = do
   return $
     Pandoc meta $

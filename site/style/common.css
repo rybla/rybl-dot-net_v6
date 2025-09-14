@@ -40,7 +40,7 @@ main {
   flex: 1 1 auto;
   margin: 1em auto;
 
-  background: color-mix(in srgb, #f6eee3, transparent 20%);
+  background: color-mix(in srgb, #f6eee3, transparent 10%);
 
   @media (min-width: calc(800px)) {
     width: var(--main-width);
@@ -92,13 +92,16 @@ p {
 }
 
 main p > img {
-  width: 100%;
+  width: calc(100% + 2em);
+  margin-left: -1em;
 }
 
 pre {
   max-height: 400px;
-  padding: 0.5rem;
+  padding: 1em;
   border-left: 0.5rem solid var(--container--border--color);
+  margin-left: -2em;
+  margin-right: -2em;
 
   /*background: color-mix(in hsl, black, transparent 20%);*/
   /*color: white;*/
