@@ -68,10 +68,12 @@
     display: block;
     word-break: break-all;
     font-weight: bold;
+    overflow-wrap: break-word;
   }
 
   & > .preview-description {
     display: block;
     word-break: break-all;
+    overflow-wrap: break-word;
   }
 }

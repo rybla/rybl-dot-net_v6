@@ -35,6 +35,8 @@ processPost manager outLinks inLinks post = do
   mgr <- gets (^. manager)
   ph <- gets (^. post . postHref)
 
+  post . postDoc %= removeCommentBlocks
+
   (post . postDoc .=) =<< addLinkPreviews mgr =<< gets (^. post . postDoc)
 
   do

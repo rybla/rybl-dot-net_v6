@@ -42,7 +42,7 @@ addReferencesSection outLinks (Pandoc meta blocks) = do
              outLinks <&> \link ->
                [ Pandoc.Plain
                    [ Pandoc.Link
-                       (mempty & Pandoc.attrData %~ (("inReference", "True") :))
+                       (mempty & Pandoc.attrData %~ ([("inReference", ""), ("noLinkPreview", "")] ++))
                        (link & linkLabel)
                        (link & linkUri & showText, "")
                    ]
@@ -60,7 +60,7 @@ addCitationsSection inLinks (Pandoc meta blocks) = do
              inLinks <&> \link ->
                [ Pandoc.Plain
                    [ Pandoc.Link
-                       (mempty & Pandoc.attrData %~ (("inCitation", "True") :))
+                       (mempty & Pandoc.attrData %~ ([("inCitation", "True"), ("noLinkPreview", "")] ++))
                        (link & linkLabel)
                        (link & linkUri & showText, "")
                    ]
@@ -209,3 +209,9 @@ renderPubDate tags =
       Pandoc.Str " ",
       Pandoc.Str $ tags & Text.intercalate ", "
     ]
+
+removeCommentBlocks :: Pandoc -> Pandoc
+removeCommentBlocks = Pandoc.walk \(x :: [Pandoc.Block]) ->
+  x & filter \case
+    Pandoc.Div attr _ -> not $ attr ^. Pandoc.attrClasses . to ("comment" `elem`)
+    _ -> True
