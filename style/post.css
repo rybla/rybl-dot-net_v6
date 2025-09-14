@@ -1,0 +1,79 @@
+:root {
+  --main-inner-width: 500px;
+  --spacing-between-main-and-sidenotes: 1em;
+  --sidenote-width: calc(var(--main-width) - var(--main-inner-width));
+
+  --sidenote-display: block;
+  --sidenote-visibility: visible;
+}
+
+.main-inner {
+  padding: 1em;
+}
+
+@media (min-width: calc(800px)) {
+  .main-inner {
+    width: var(--main-inner-width);
+  }
+}
+@media (max-width: calc(800px - 1px)) {
+  .main-inner {
+    width: 100%;
+  }
+}
+
+.table-of-contents {
+  margin-block-end: 1em;
+  margin-block-start: 1em;
+  padding: 1em;
+  background-color: lightgray;
+}
+
+.sidenote {
+  position: relative;
+  display: block;
+  float: right;
+  clear: right;
+  width: calc(
+    var(--sidenote-width) - var(--spacing-between-main-and-sidenotes)
+  );
+  margin-right: calc(-1 * var(--sidenote-width));
+
+  margin-top: -1em;
+  margin-bottom: 2em;
+  padding: 1em;
+
+  box-shadow: var(--basic-box-shadow);
+}
+
+@media (min-width: calc(800px)) {
+  .sidenote {
+    display: block;
+    visibility: visible;
+  }
+}
+@media (max-width: calc(800px - 1px)) {
+  .sidenote {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+
+  & > .preview-title {
+    display: block;
+    word-break: break-all;
+    font-weight: bold;
+    overflow-wrap: break-word;
+  }
+
+  & > .preview-description {
+    display: block;
+    word-break: break-all;
+    overflow-wrap: break-word;
+  }
+}

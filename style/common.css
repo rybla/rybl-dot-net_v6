@@ -1,0 +1,128 @@
+:root {
+  --main-width: 800px;
+  --basic-box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* -------------------------------------------------------------------------- */
+/* existing elements */
+/* -------------------------------------------------------------------------- */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+
+  overscroll-behavior: none;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 1 auto;
+  margin: 1em auto;
+
+  /*background: color-mix(in srgb, #f6eee3, transparent 20%);*/
+  background: color-mix(in srgb, #cccccc, transparent 30%);
+}
+
+@media (min-width: calc(800px)) {
+  main {
+    width: var(--main-width);
+  }
+}
+@media (max-width: calc(800px - 1px)) {
+  main {
+    width: 100%;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding: 0;
+}
+
+p {
+  margin: 0.5em 0;
+}
+
+main p > img {
+  width: 100%;
+}
+
+pre {
+  padding: 1em;
+  background: black;
+  color: white;
+}
+
+blockquote {
+  padding: 1em;
+  background: lightgray;
+  color: black;
+  border-left: 4px solid black;
+
+  & > p {
+    margin: 0;
+  }
+}
+
+ol,
+ul {
+  margin: 0;
+  padding-inline-start: 1em;
+}
+
+blockquote {
+  margin: 0.5em 0;
+}
+
+/* -------------------------------------------------------------------------- */
+/* customize elements */
+/* -------------------------------------------------------------------------- */
+
+.body-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  filter: url(#body-background-filter);
+  z-index: -1000;
+}
+
+.header-info {
+  margin-block-end: 1em;
+  margin-block-start: 1em;
+}
+
+.warning {
+  padding: 1em;
+  border: 1px solid red;
+  background-color: color-mix(in hsl, white, black 5%);
+}
+
+.favicon {
+  margin-right: 0.2em;
+
+  aspect-ratio: 1;
+  height: 1em;
+  width: 1em;
+}

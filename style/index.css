@@ -1,0 +1,23 @@
+main {
+  flex: 1 1 auto;
+  width: var(--main-width);
+  margin: 1em auto;
+
+  /*box-shadow: var(--basic-box-shadow);*/
+  z-index: 0;
+
+  padding: 1em;
+}
+
+/*.title {
+}*/
+
+.post-card {
+  padding: 1em;
+  border: 0.1em solid black;
+  margin-bottom: 1em;
+
+  & > .title {
+    font-size: 1.5em;
+  }
+}
