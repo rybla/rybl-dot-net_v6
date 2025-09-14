@@ -1,5 +1,6 @@
 ---
 title: Profile
+references: false
 ---
 
 # Profile

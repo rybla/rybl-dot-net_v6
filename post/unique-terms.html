@@ -168,22 +168,7 @@ data-noLinkPreview="">Unique Terms</a></h2>
 <p>Some terms are uniquely (up to normalization and α-renaming)
 determined by their types.</p>
 </div>
-<div class="table-of-contents">
-<p><u>Table of Contents</u></p>
-<ol type="1">
-<li><a href="#in-the-polymorphic-λ-calculus-system-f"
-data-noLinkFavicon="" data-noLinkPreview="">In the polymorphic
-λ-calculus (System F)</a></li>
-<li><a href="#in-the-dependently-typed-λ-calculus" data-noLinkFavicon=""
-data-noLinkPreview="">In the dependently-typed λ-calculus</a></li>
-<li><a href="#references" data-noLinkFavicon=""
-data-noLinkPreview="">References</a></li>
-<li><a href="#citations" data-noLinkFavicon=""
-data-noLinkPreview="">Citations</a></li>
-</ol>
-</div>
-<h1 id="in-the-polymorphic-λ-calculus-system-f">In the polymorphic
-λ-calculus (System F)</h1>
+<h1>In the polymorphic λ-calculus (System F)</h1>
 <p>The polymorphic λ-calculus has the following grammar</p>
 <pre><code>&lt;judgment&gt; ::= &lt;term&gt; :: &lt;type&gt;
 
@@ -210,8 +195,7 @@ proj2 = ...
 ( • , • , ... ) = ...
 
 proj&lt;i&gt; = proj2 o ... o proj2 o proj1 :: (... * a * ...) -&gt; a</code></pre>
-<h1 id="in-the-dependently-typed-λ-calculus">In the dependently-typed
-λ-calculus</h1>
+<h1>In the dependently-typed λ-calculus</h1>
 <pre><code>&lt;judgment&gt; ::= &lt;term&gt; :: &lt;term&gt;
 
 &lt;term&gt; ::= U
@@ -225,11 +209,7 @@ and α-renaming).</p>
 
 apply = λ A B f x . f x :: Π (A : U) (B : U) (f : A -&gt; B) (x : A) -&gt; B
 
-const = λ A B x y . x :: Π (A : U) (B : U) (x : A) (y : B) -&gt; A</code></pre>
-<h1 id="references">References</h1>
-<ul class="task-list">
-</ul>
-<h1 id="citations">Citations</h1></div>
+const = λ A B x y . x :: Π (A : U) (B : U) (x : A) (y : B) -&gt; A</code></pre></div>
     </main>
 
     <footer>

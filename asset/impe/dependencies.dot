@@ -1,0 +1,99 @@
+digraph A {
+  node[shape=rect];
+
+  subgraph cluster_LanguageImpe {
+    label = "Language.Impe";
+
+    LanguageImpeGrammar[label="Grammar"];
+    LanguageImpeExcepting[label="Excepting"];
+    LanguageImpeTypechecking[label="Typechecking"];
+    LanguageImpeExecuting[label="Executing"];
+    LanguageImpeInterpreting[label="Interpreting"];
+
+    {rank=same; LanguageImpeGrammar}
+    {rank=same; LanguageImpeLogging LanguageImpeExcepting}
+    {rank=same; LanguageImpePrimitive}
+    {rank=same; LanguageImpeTypechecking LanguageImpeExecuting}
+    {rank=same; LanguageImpeInterpreting}
+
+    // logging
+    // none
+
+    // excepting
+    LanguageImpeGrammar -> LanguageImpeExcepting;
+
+    // primitive
+    LanguageImpeGrammar -> LanguageImpePrimitive;
+
+    // typechecking
+    LanguageImpeGrammar -> LanguageImpeTypechecking;
+    LanguageImpeLogging -> LanguageImpeTypechecking;
+    LanguageImpeExcepting -> LanguageImpeExecuting;
+    LanguageImpePrimitive -> LanguageImpeTypechecking;
+
+    // executing
+    LanguageImpeGrammar -> LanguageImpeExecuting;
+    LanguageImpeExcepting -> LanguageImpeExecuting;
+    LanguageImpeLogging -> LanguageImpeExecuting;
+    LanguageImpePrimitive -> LanguageImpeExecuting;
+
+    // interpreting
+    LanguageImpeGrammar -> LanguageImpeInterpreting;
+    LanguageImpeExcepting -> LanguageImpeInterpreting;
+    LanguageImpeLogging -> LanguageImpeInterpreting;
+    LanguageImpeParsing -> LanguageImpeInterpreting;
+    LanguageImpeTypechecking -> LanguageImpeInterpreting;
+    LanguageImpeExecuting -> LanguageImpeInterpreting;
+  }
+
+  Main[label="main"];
+  LanguageImpeExecuting -> Main;
+  LanguageImpeInterpreting -> Main;
+  LanguageImpeLogging -> Main;
+  LanguageImpeTypechecking -> Main;
+  MainConfigGrammar -> Main;
+  MainConfigParsing -> Main;
+  MainExcepting -> Main;
+  MainInteracting -> Main;
+  MainOutput -> Main;
+
+  subgraph cluster_Main {
+    label="Main";
+
+    MainExcepting[label="Excepting"];
+    LanguageImpeExcepting -> MainExcepting;
+
+    MainInteracting[label="Interacting"];
+    LanguageImpeExcepting -> MainInteracting;
+    LanguageImpeExecuting -> MainInteracting;
+    LanguageImpeInterpreting -> MainInteracting;
+    LanguageImpeLogging -> MainInteracting;
+    LanguageImpeTypechecking -> MainInteracting;
+    MainConfigGrammar -> MainInteracting;
+    MainExcepting -> MainInteracting;
+    MainInteractingGrammar -> MainInteracting;
+    MainInteractingParsing -> MainInteracting;
+    MainOutput -> MainInteracting;
+    
+    MainOutput[label="Output"];
+    MainConfigGrammar -> MainOutput;
+
+    subgraph cluster_MainConfig {
+      label="Main.Config";
+
+      MainConfigGrammar[label="Grammar"];
+      LanguageImpeLogging -> MainConfigGrammar;
+
+      MainConfigParsing[label="Parsing"];
+      MainConfigGrammar -> MainConfigGrammar;
+    }
+
+    subgraph cluster_MainInteracting {
+      label="Main.Interacting";
+
+      MainInteractingExcepting[label="Excepting"];
+      MainInteractingInteracting[label="Interacting"];
+      MainInteractingOutput[label="Output"];
+    }
+  }
+}

@@ -9,7 +9,7 @@ table_of_contents: true
 
 The [Arc](https://arc.net/) browser is a new browser (est. mid 2022) that extends [Chromium](https://www.chromium.org/Home/) in some very novel and unique ways. Overall, after using Arc for about a month on my Apple Macbook Air M2 instead of Safari, I've decided to switch to it going forward as my default because it has so many great features and only a few demerits.
 
-<img src="/assets/posts/arc-review/arc-search.png" class="full-width">
+![arc-search](/asset/arc-browser-review/arc-search.png)
 
 This post was written when Arc V1.33.0 was the latest version.
 
@@ -35,14 +35,14 @@ Arc comes with a new way to organize tabs within spaces. There are three kinds o
 ### Spaces
 Now that you know about the kinds of tabs, we can talk about Spaces. A Space is like a tab group — it contains a column of Pinned and Today tabs. Everything about a Space is shown in the sidebar, and at the bottom is the Space navigator which you can use to instantly switch between spaces. The Arc window is not linked to a Space, so you can switch spaces while staying in the same window.
 
-<img src="/assets/posts/arc-review/spaces.png" class="full-width">
+![spaces](/asset/arc-browser-review/spaces.png)
 
 Overall, spaces with today/pinned tabs are a great improvement over tab groups and bookmarks in Safari (and other browsers, typically). If there's a topic I know I want to keep open for a while: I make a new space, name it appropriately, pin a few tabs that I will always come back, and do less organized exploration with the Today tabs; when I notice a Today tab is something I keep coming back to or I otherwise want to remember it, I'll pin it, and otherwise it'll just disappear over time which leaves the tab group nice and clean. This was a major issue I had with tab groups in Safari — the tab group represents a collection of interesting links, but as I open more and more it gets more and more cluttered and its too annoying to navigate the links in order to prune it to make it less cluttered. So eventually I just have to make the "v2" of the tab group that represents my second attempt at exploring the topic. And I have tons of tab groups I never come back to since its just too annoying to preview a tab group without opening a dozen tabs and going through them one by one to figure out what they actually are.
 
 ### Fast Tab Switching
 Arc keeps track of tabs you've been to recently or opened in a new tab. You can quickly switch between these with `CTRL+Tab`, just like you would switch between applications natively in MacOS with `CMD+Tab`. I use this all the time, almost always instead of actually looking for a tab in sidebar as I'm quickly opening and closing lots of tabs, and I can't believe other browsers don't have it, it just makes so much sense. [[demo](https://youtu.be/GwvHZgF_fWY?t=38)]
 
-<img src="/assets/posts/arc-review/switch-tabs.png" class="full-width">
+![switch-tabs](/asset/arc-browser-review/switch-tabs.png)
 
 ### Syncronized Window Instances
 Not only is each Arc window not linked to a specific Space, but Spaces are synchronized  between all windows. That makes it so that for the most part, I just need one main Arc window open at a time (in fullscreen mode), and I just switch between Spaces within it rather than managing multiple Arc windows or arrangement of Arc windows in desktops. Then for Arc windows I have setup in splitscreen with other apps, when I jump to that screen the Arc window is always up to date with whatever I’ve added to that space.
@@ -50,7 +50,7 @@ Not only is each Arc window not linked to a specific Space, but Spaces are synch
 ### Split View Tabs
 You could use native MacOS splitscreening with multiple windows, but Arc provides an even better feature of splitview tabs. Any tab can be dragged onto another in order to arrange those tabs in a splitview horizontally. Any number of tabs can be split like this. The new combination tab acts like a single tab for the sake of tab navigation and manipulation.
 
-<img src="/assets/posts/arc-review/split-view.png" class="full-width">
+![split-view](/asset/arc-browser-review/split-view.png)
 
 ### Search/Command Bar
 One of the differences between Arc and other browsers that comes up the most is interaction with the URL bar. In Arc, there is no URL/search bar at the top of the window (there is one at the top of the sidebar if you choose to see it). Instead, you bring up the command bar using `CMD+T`. The command bar is basically the URL/search bar but with some extra features. The UI is really great though as it pops up the command bar right in the center of the screen — big and in focus.
@@ -61,13 +61,14 @@ One of the differences between Arc and other browsers that comes up the most is 
 - some site-specific searches (similar to bang patterns in [duckduckgo](https://duckduckgo.com/bangs) or ChatGPT (doesn’t work with other AI assistants (yet?))
 * The command bar opens the result in a new tab, but you can get the "in-place" version of the command bar for the current tab via `CMD+L`, which appears pre-filled with the current URL (this is also how you can get or edit the current tab’s URL).
 
-<img src="/assets/posts/arc-review/command-bar-google-search.png" class="full-width">
-<img src="/assets/posts/arc-review/command-bar-raindrop.png" class="full-width">
+![command-bar-google-search](/asset/arc-browser-review/command-bar-google-search.png)
+
+![command-bar-raindrop](/asset/arc-browser-review/command-bar-raindrop.png)
 
 ### Find or Ask AI
 Like every browser `CMD+F` opens up a search query that highlights results found on the page. Novel to Arc is the native integration of AI — if you type something that isn’t found on the page, `Enter` with start an AI chat that is loaded with the current page in context (or a truncation of it if the page is too long).
 
-<img src="/assets/posts/arc-review/find-ask-with-ai.png" class="full-width">
+![find-ask-with-ai](/asset/arc-browser-review/find-ask-with-ai.png)
 
 A priori it might seem odd that Find and Chat are accessed the same way, but in practice it makes so much sense. For example, if I’m reading software documentation and I want to find something quickly without reading all the context to understand where it is, I first start by `CMD+F` for a keyword I am looking for, and if that’s not found or the results are not helpful I change the query to "how to …" or "what is …" or the appropriately phrasing that usually uses the keyword I originally had.
 
@@ -79,7 +80,7 @@ It looks like Arc is planning to a lot with [Max](https://arc.net/max), Arc's AI
 ### Link Summaries via AI
 If you hover over a link for a second (this used to require holding `Shift`), a little box will appear nearby it with some text generating into it. This is a formatted snippet, generated by AI, that summarizes some key points it gathered from scraping the webpage. The result is cached so if you hover over that link again it reuses the previously-generated summary.
 
-<img src="/assets/posts/arc-review/ai-preview.png" class="full-width">
+![ai-preview](/asset/arc-browser-review/ai-preview.png)
 
 I find this useful all the time for taking a quick peek at links cited in articles that I would have otherwise probably not clicked. However, I don’t think its often made it so I don’t have to actually click a link that I normally would have — the summaries are really just short bullet points so you know what the main topics of the linked webpage are, and don’t give much idea of the specific content.
 
@@ -91,7 +92,7 @@ I find Little Arc to be super useful — much more useful than I expected. For e
 ### Automatic Picture-in-Picture Popout
 This is a feature I didn’t know I wanted. Arc has it's own implementation of picture-in-picture, [MiniPlayer](https://resources.arc.net/hc/en-us/articles/19234766331799-Mini-Player-Watch-or-Listen-as-you-Browse). When you have a picture-in-picture enabled view  active in one Arc tab, then when you leave that tab (by going to another tab or another application) picture-in-picture starts automatically. This works with, for example, youtube videos and google meet calls. So far I’ve found it really nice to be able to, while in a Google Meeting, quickly start using the same browser window as normal without having to open a new window to manage, and have the picture-in-picture automatically take care of keeping the meeting visible.
 
-<img src="/assets/posts/arc-review/pic-in-pic.png" class="full-width">
+![pic-in-pic](/asset/arc-browser-review/pic-in-pic.png)
 
 ### Boosts
 Arc provides a neat interface for defining "lite extensions" i.e. some custom CSS to from the client site into a specific webpage’s html. You can also inject Javascript, but Boosts that don’t support sharing by Arc natively for security (of course you can just share the Javascript directly). There isn’t much available in the [Boost Gallery](https://arc.net/boosts) yet, but I like the idea and look forward to finding useful Boosts, such as the following:
@@ -100,14 +101,14 @@ Arc provides a neat interface for defining "lite extensions" i.e. some custom CS
 
 Additionally, it’s basically an easy way to hack your own dark mode, custom formatting (i.e. change fonts), or ad blocker (you can delete any html elements _permanently_) on any website. I’ve used it ad hoc several times and it’s really amazing how simple they made it to do the most common things which are custom dark mode and ad blocking.
 
-<img src="/assets/posts/arc-review/boosts.png" class="full-width">
+![boosts](/asset/arc-browser-review/boosts.png)
 
 One major limitation is that you can only have one boost per webpage, so I can’t activate a custom Youtube theme at the same time as blocking youtube shorts. So I have to choose the more important of the two, which is fortunately an easy choice.
 
 ### Easels & Notes
 Arc has native support for [Easels](https://resources.arc.net/hc/en-us/articles/19231142050071-Easels-Capture-Create), which are little workspaces taking notes and making sketches in a tab that can be manipulated like any other tab. I actually haven’t used Arc’s built-in version of this for anything, but Arc also integrates with Notion which I use as my main note management tool. As a result there’s a keyboard shortcut to make a new note in Notion and I can access a recent notion page from a dropdown menu triggered by hovering over the Notion Favorite tab.
 
-<img src="/assets/posts/arc-review/easel.png" class="full-width">
+![easel](/asset/arc-browser-review/easel.png)
 
 ### Chromium
 Since Arc is based on Chromium, pretty much all Chrome extensions work on Arc (including all the ones I use e.g. Raindrop, Adblock Plus, uBlock Origin, Video Speed Controller)
@@ -137,7 +138,7 @@ Also, it’s fairly easy to move one tab from one space to another — this acti
 
 And one more thing — I’d like to be able to make a _new_ space to add a tab from Little Arc to rather than having to add it to an existing space. There are several times that I have a link open in Little Arc from an email or message or something and I know it is the start of a Space, but I have to first go to a main instance of Arc in order to create the Space, and _then_ I can come back to the Little Arc tab and add it to the new Space.
 
-<img src="/assets/posts/arc-review/spaces.png" class="full-width">
+![spaces](/asset/arc-browser-review/spaces.png)
 
 ### Weird Interactions with Site-Specific Keyboard Shortcuts
 

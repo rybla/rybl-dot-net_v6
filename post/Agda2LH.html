@@ -178,26 +178,7 @@ Haskell refinements. Such a Liquid Haskell program exposes the
 Agda-originating specifications to client Haskell code that also uses
 Liquid Haskell to variable degree.</p>
 </div>
-<div class="table-of-contents">
-<p><u>Table of Contents</u></p>
-<ol type="1">
-<li><a href="#introduction-to-agda2hs" data-noLinkFavicon=""
-data-noLinkPreview="">Introduction to agda2hs</a></li>
-<li><a href="#problem-agda-is-more-expressive-than-haskell"
-data-noLinkFavicon="" data-noLinkPreview="">Problem: Agda is more
-expressive than Haskell</a></li>
-<li><a href="#solution-target-liquidhaskell-with-agda2lh"
-data-noLinkFavicon="" data-noLinkPreview="">Solution: target
-LiquidHaskell with agda2lh</a></li>
-<li><a href="#references" data-noLinkFavicon=""
-data-noLinkPreview="">References</a></li>
-<li><a href="#references" data-noLinkFavicon=""
-data-noLinkPreview="">References</a></li>
-<li><a href="#citations" data-noLinkFavicon=""
-data-noLinkPreview="">Citations</a></li>
-</ol>
-</div>
-<h2 id="introduction-to-agda2hs">Introduction to agda2hs</h2>
+<h2>Introduction to agda2hs</h2>
 <p>In the paper <em><span><a
 href="https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf"><img
 src="/missing.ico" class="favicon" alt="/missing.ico" />Reasonable Agda
@@ -252,8 +233,7 @@ class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a 
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>mirror (<span class="dt">Branch</span> a tl tr) <span class="ot">=</span> <span class="dt">Branch</span> a (mirror tr) (mirror tl)</span></code></pre></div>
 <p>Behaviorally, these programs are the same. But still something has
 been lost in translation.</p>
-<h2 id="problem-agda-is-more-expressive-than-haskell">Problem: Agda is
-more expressive than Haskell</h2>
+<h2>Problem: Agda is more expressive than Haskell</h2>
 <p>Since Haskell does not support full dependent typing, the Haskell
 program above does not have the same statically-checked properties as
 the Agda program. In particular, the Agda <code>mirror</code> preserves
@@ -272,8 +252,7 @@ not also using fancy GADTs with indexing.</p>
 <p>In summary, what we are lacking is a Haskell target that maintains
 the static checks of the original Agda code and is still easily
 interoperable with normal Haskell code when desired.</p>
-<h2 id="solution-target-liquidhaskell-with-agda2lh">Solution: target
-LiquidHaskell with agda2lh</h2>
+<h2>Solution: target LiquidHaskell with agda2lh</h2>
 <p><em><span><a
 href="https://github.com/ucsd-progsys/liquidhaskell"><img
 src="/favicon/https%253A%252F%252Fgithub.com%252Fucsd-progsys%252Fliquidhaskell.svg"
@@ -403,7 +382,7 @@ class="sourceCode agda"><code class="sourceCode agda"><span id="cb5-1"><a href="
 <span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="co">-- height is derived from the previous annotation that specifies the `height`</span></span>
 <span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="co">-- of a tree to be refinement-relevant index</span></span>
 <span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="pp">{-# COMPILE AGDA2LH mirror #-}</span></span></code></pre></div>
-<h2 id="references">References</h2>
+<h2>References</h2>
 <ul>
 <li><span><a
 href="https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf"><img
@@ -427,7 +406,7 @@ alt="/favicon/https%3A%2F%2Fgithub.com%2Fucsd-progsys%2Fliquidhaskell.svg" />htt
 class="preview-description">Placeholder description for
 https://github.com/ucsd-progsys/liquidhaskell</span></span></span></li>
 </ul>
-<h1 id="references">References</h1>
+<h1>References</h1>
 <ul>
 <li><a
 href="https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf"
@@ -450,8 +429,7 @@ src="/favicon/https%253A%252F%252Fgithub.com%252Fucsd-progsys%252Fliquidhaskell.
 class="favicon"
 alt="/favicon/https%3A%2F%2Fgithub.com%2Fucsd-progsys%2Fliquidhaskell.svg" />Liquid
 Haskell</a></li>
-</ul>
-<h1 id="citations">Citations</h1></div>
+</ul></div>
     </main>
 
     <footer>

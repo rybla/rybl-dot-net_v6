@@ -55,13 +55,13 @@ image.save('barcode_noise={0}.png'.format(noise))
 
 Simple enough. Here is a instance of Bar Code:
 
-![](/assets/posts/no-explanation/barcode_noise=0.0.png)
+![barcode_noise=0.0](/assets/no-explanation/barcode_noise=0.0.png)
 
 Of course, this is a _perfect_ instance of Bar Code. That is, this instance has
 no _noise_ that is not accounted for by the definition of Bar Code. Consider the
 following image:
 
-![](/assets/posts/no-explanation/barcode_noise=0.1.png)
+![barcode_noise=0.1](/assets/no-explanation/barcode_noise=0.1.png)
 
 This image is an instance of Bar Code with 10% random noise. The random noise is
 generated in the following way: each pixel in a perfect instance of Bar Code has
@@ -72,7 +72,7 @@ it can be a meaningful description.
 The following array shows instances of Bar Code ranging in the amount of random
 noise.
 
-![](/assets/posts/no-explanation/barcode-array.png)
+![barcode-array](/assets/no-explanation/barcode-array.png)
 
 A phenomenon becomes clear: as the noise increases, Bar Code becomes a less and
 less useful way to recognize the image. At 50% noise in fact, it is

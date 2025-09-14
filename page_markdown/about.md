@@ -22,7 +22,7 @@ I am a programmer and researcher focused on:
 My research interests have centered around programming languages, simulation, mathematical modeling, and data analysis.
 
 | time | topic | association |
-| --- | --- | --- |
+| - | ---- | ---- |
 | **2022-2024** | [Pantograph](https://pantographeditor.github.io/Pantograph/) ([acm](https://dl.acm.org/doi/10.1145/3704864)) -- a fluid and well-typed structure editor | with [Jacob Prinz](https://github.com/jeprinz); at [University of Maryland](https://www.umd.edu) |
 | **2022-2023** | Liquid Flex -- extension of the [Flex](https://tangramflex.com/flex) language with refinement types | with [Tangram](https://www.tangramflex.com) |
 | **2022** | [Zypr](https://github.com/rybla/zypr) -- a zipper-interfaced structure editor | with [Jacob Prinz](https://github.com/jeprinz); at [University of Maryland](https://www.umd.edu) |
@@ -41,7 +41,7 @@ My education has centered around mathematics, computer science, and philosophy.
 My employment has been in software engineering, theoretical computer science research, and software verification.
 
 | time | event                                                                                                                                           |
-| --- | --- |
+| - | -------- |
 | **2024** | worked as intern at [Oracle Labs](https://labs.oracle.com/pls/apex/r/labs/labs/intro) with [Harold Carr](https://labs.oracle.com/pls/apex/f?p=94065:11:23393226324575:2619) and [Mark Moir](https://labs.oracle.com/pls/apex/f?p=labs:bio:0:86) |
 | **2022-2023** | worked as independent contractor at [Galois](https://galois.com/) with [Tangram](https://www.tangramflex.com) |
 | **2022** | worked as summer intern at [Galois](https://galois.com/), developing the [Cryptol langauge](https://cryptol.net/) and verifying cyber-physical systems using [Coq](https://coq.inria.fr/) |
