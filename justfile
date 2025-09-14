@@ -1,11 +1,11 @@
-build-prod:
-  stack build --flag
+build:
+  stack build
 
-build-dev:
-  stack build --flag rybl-dot-net:dev
+test:
+  stack test
 
-test-dev:
-  stack test --flag rybl-dot-net:dev
-
-run-dev: build-dev
+run: build
   .stack-work/dist/aarch64-osx/ghc-9.10.1/build/rybl-dot-net-exe/rybl-dot-net-exe
+
+deploy: build
+  bun gh-pages --nojekyll -dist site
