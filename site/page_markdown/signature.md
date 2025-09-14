@@ -4,6 +4,9 @@ title: Signature
 
 # Signature
 
-::: todo
-This is the page with my PGP signature.
-:::
+PGP signature:
+```
+-----BEGIN PUBLIC KEY-----
+MCowBQYDK2VwAyEAsGVPYM2mANQPkBuPl5u6v9VOE48CHpBbOMAOiRC7Cmk=
+-----END PUBLIC KEY-----
+```

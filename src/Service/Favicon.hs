@@ -59,6 +59,7 @@ cache uri manager = do
               Nothing -> throwError @Doc $ "Failed to decode favicon info data file at" <+> text infoFilePath
               Just info -> return info
         False -> do
+          logM "Favicon.cache" $ "didn't find cache as" <+> text infoFilePath
           info <- fetchFaviconInfo uri manager
           when (not (URI.uriIsRelative (info & originalIconRef & unUriReference))) do
             request <- HTTP.parseRequest (info & originalIconRef & unUriReference & show) & liftIO

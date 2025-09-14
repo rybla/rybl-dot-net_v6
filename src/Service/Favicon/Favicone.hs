@@ -8,7 +8,6 @@ import Blog.Common (UriReference (..))
 import qualified Blog.Paths as Paths
 import Blog.Utility
 import Control.Lens hiding ((<.>))
-import Control.Monad.Except (MonadError)
 import Control.Monad.IO.Class (MonadIO, liftIO)
 import Data.Aeson
 import GHC.Generics (Generic)
@@ -25,7 +24,7 @@ data FaviconeResponse = FaviconResponse
   }
   deriving (Show, Generic, FromJSON)
 
-favicone :: (MonadIO m, MonadError Doc m) => URI -> HTTP.Manager -> m FaviconeResponse
+favicone :: (MonadIO m) => URI -> HTTP.Manager -> m (Maybe FaviconeResponse)
 favicone uri manager = do
   let host = uriHost uri
   let requestUrl = "https://favicone.com/" ++ host ++ "?json=true"
@@ -34,16 +33,21 @@ favicone uri manager = do
   logM "favicone" "sending request to favicone"
   response <- manager & HTTP.httpLbs request & liftIO
   logM "favicone" "got back response from favicone"
-  response' <- decode (HTTP.responseBody response) & fromMaybe ("Failed to decode response:" <+> (text . show . HTTP.responseBody $ response))
-  logM "favicone" $ "decoded response from favicone:" <+> showDoc response'
-  return response'
+  case decode (HTTP.responseBody response) of
+    Nothing -> do
+      logM "favicone" $ "Failed to decode response:" <+> (text . show . HTTP.responseBody $ response)
+      pure Nothing
+    Just response' -> do
+      logM "favicone" $ "decoded response from favicone:" <+> showDoc response'
+      return response'
 
 instance Favicon.FaviconService where
   fetchFaviconInfo uri manager = do
-    response <- manager & favicone uri
-    case response.hasIcon of
-      False -> return Favicon.missingFaviconInfo
-      True -> do
+    mb_response <- manager & favicone uri
+    case mb_response of
+      Nothing -> return Favicon.missingFaviconInfo
+      Just response | not response.hasIcon -> return Favicon.missingFaviconInfo
+      Just response -> do
         let ident = uri & show & makeValidIdent
         let faviconFileName = ident <.> response.format
         iconUri <- parseUriM response.icon

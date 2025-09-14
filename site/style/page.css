@@ -1,19 +1,16 @@
-:root {
-  --main-inner-width: 500px;
-  --spacing-between-main-and-sidenotes: 1em;
-  --sidenote-width: calc(var(--main-width) - var(--main-inner-width));
-
-  --sidenote-display: block;
-  --sidenote-visibility: visible;
-}
-
-.main-inner {
-  padding: 1em;
+main {
+  flex: 1 1 auto;
 
   @media (min-width: calc(800px)) {
-    width: var(--main-inner-width);
+    width: var(--main-width);
   }
   @media (max-width: calc(800px - 1px)) {
     width: 100%;
   }
+
+  margin: 1em auto;
+
+  z-index: 0;
+
+  padding: 1em;
 }

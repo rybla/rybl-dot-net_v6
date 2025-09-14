@@ -89,4 +89,9 @@
 .todo {
   padding: 1em;
   background-color: color-mix(in hsl, red, transparent 60%);
+
+  &::before {
+    content: "To do";
+    text-decoration: underline;
+  }
 }

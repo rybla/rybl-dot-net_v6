@@ -3,6 +3,7 @@
 {-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# LANGUAGE TemplateHaskell #-}
+{-# LANGUAGE TupleSections #-}
 {-# OPTIONS_GHC -Wno-missing-export-lists #-}
 {-# OPTIONS_GHC -Wno-name-shadowing #-}
 
@@ -13,18 +14,26 @@ import Blog.Pandoc (runPandocM)
 import qualified Blog.Pandoc as Pandoc
 import Blog.Utility
 import Control.Lens
+import Control.Monad (void)
 import Control.Monad.Except (MonadError)
+import Control.Monad.State (MonadState)
 import Control.Monad.Writer (MonadIO)
+import Data.Map (Map)
 import Data.Text (Text)
+import qualified Data.Text as Text
+import Network.URI (URI)
 import qualified Text.Pandoc as Pandoc
+import qualified Text.Pandoc.Walk as Pandoc
 import Text.PrettyPrint.HughesPJClass (Doc, pPrint, (<+>))
 
 parsePage ::
-  (MonadIO m, MonadError Doc m) =>
+  (MonadIO m, MonadError Doc m, MonadState env m) =>
+  Lens' env (Map URI [Link]) ->
+  Lens' env (Map URI [Link]) ->
   PageId ->
   Text ->
   m Page
-parsePage pageId pageText = do
+parsePage outLinks inLinks pageId pageText = do
   logM "parsePost" $ "pageId =" <+> pPrint pageId
   doc <-
     pageText
@@ -37,6 +46,24 @@ parsePage pageId pageText = do
 
   pageHref <- toPageHref pageId
   pageTitle <- doc & Pandoc.getMetaValueSuchThat Pandoc.fromMetaString "title"
+
+  void $
+    doc & Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
+      Pandoc.Link _attr kids (refText, _) -> do
+        ref <- refText & Text.unpack & parseUriReferenceM
+        let outLink = Link kids ref
+        outLinks . at pageHref %= maybe (Just [outLink]) (Just . (outLink :))
+        let inLink = Link kids pageHref
+        inLinks . at ref %= maybe (Just [inLink]) (Just . (inLink :))
+        return x
+      Pandoc.Image _attr kids (refText, _) -> do
+        ref <- refText & Text.unpack & parseUriReferenceM
+        let outLink = Link kids ref
+        outLinks . at pageHref %= maybe (Just [outLink]) (Just . (outLink :))
+        let inLink = Link kids pageHref
+        inLinks . at ref %= maybe (Just [inLink]) (Just . (inLink :))
+        return x
+      _ -> return x
 
   return
     Page
@@ -61,6 +88,7 @@ parsePage pageId pageText = do
           Pandoc.Ext_backtick_code_blocks,
           Pandoc.Ext_bracketed_spans,
           Pandoc.Ext_fenced_divs,
+          Pandoc.Ext_pipe_tables,
           -- attributes
           Pandoc.Ext_attributes,
           Pandoc.Ext_fenced_code_attributes,

@@ -14,6 +14,7 @@ import qualified Blog.Paths as Paths
 import qualified Blog.Print.Index as Print.Index
 import qualified Blog.Print.Page as Print.Page
 import qualified Blog.Print.Post as Print.Post
+import qualified Blog.Process.Page as Process.Page
 import qualified Blog.Process.Post as Process.Post
 import Blog.Utility
 import Control.Category ((>>>))
@@ -44,7 +45,7 @@ main' = do
       <&> foldMap ((^? suffixed ".md") >>> maybe [] (return . PageId))
       >>= traverse \pageId -> do
         pageText <- TextIO.readFile (pageId & toPageMarkdownFilePath) & liftIO
-        Parse.Page.parsePage pageId pageText
+        Parse.Page.parsePage outLinks inLinks pageId pageText
 
   -- parse posts
   posts <-
@@ -60,6 +61,12 @@ main' = do
     posts & traverse \post -> do
       fmap (^. _1) $ execIsoStateT (pairIso post) do
         Process.Post.processPost (_2 . manager) (_2 . outLinks) (_2 . inLinks) _1
+
+  -- process pages
+  pages :: [Page] <-
+    pages & traverse \page -> do
+      fmap (^. _1) $ execIsoStateT (pairIso page) do
+        Process.Page.processPage (_2 . manager) (_2 . outLinks) (_2 . inLinks) _1
 
   -- print index
   Print.Index.printIndex posts

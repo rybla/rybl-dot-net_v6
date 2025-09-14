@@ -40,6 +40,7 @@ library
       Blog.Print.Page
       Blog.Print.Post
       Blog.Process.Common
+      Blog.Process.Page
       Blog.Process.Post
       Blog.Test
       Blog.Tree

@@ -8,4 +8,4 @@ run: build
   .stack-work/dist/aarch64-osx/ghc-9.10.1/build/rybl-dot-net-exe/rybl-dot-net-exe
 
 deploy: build
-  bun gh-pages --nojekyll -dist site
+  bun gh-pages --nojekyll --dist site

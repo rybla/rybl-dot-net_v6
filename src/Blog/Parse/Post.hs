@@ -97,6 +97,7 @@ parsePost outLinks inLinks postId postText = do
           Pandoc.Ext_backtick_code_blocks,
           Pandoc.Ext_bracketed_spans,
           Pandoc.Ext_fenced_divs,
+          Pandoc.Ext_pipe_tables,
           -- attributes
           Pandoc.Ext_attributes,
           Pandoc.Ext_fenced_code_attributes,

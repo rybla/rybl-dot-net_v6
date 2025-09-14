@@ -1,6 +1,6 @@
 ---
 title: Example Post
-pubDate: 2025-08-25
+pubDate: 1000-10-10
 tags:
   - example
   - markdown
