@@ -98,24 +98,31 @@ main p > img {
 
 pre {
   max-height: 400px;
-  padding: 1em;
-  border-left: 0.5rem solid var(--container--border--color);
-  margin-left: -2em;
-  margin-right: -2em;
-
-  /*background: color-mix(in hsl, black, transparent 20%);*/
-  /*color: white;*/
+  padding: 0;
+  margin-left: -1em;
+  margin-right: -1em;
 
   font-size: 1em;
 
-  code {
-    font-size: 0.9em;
-  }
-
-  overflow: auto;
+  overflow-y: auto;
   scrollbar-width: thin;
 
-  font-family: "Fira Code", monospace;
+  & > code {
+    margin: 0;
+    padding: 1em;
+    font-size: 0.9em;
+    width: fit-content;
+    white-space: no-wrap;
+    font-family: "Fira Code", monospace;
+    overflow: visible;
+  }
+}
+
+pre {
+  max-height: 400px;
+  padding: 0;
+
+  font-size: 1em;
 }
 
 blockquote {
