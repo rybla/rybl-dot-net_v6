@@ -16,6 +16,8 @@ html {
   padding: 0;
 
   overscroll-behavior: none;
+
+  font-family: "Spectral", serif;
 }
 
 body {
@@ -53,16 +55,12 @@ main {
   flex: 1 1 auto;
   margin: 1em auto;
 
-  background: color-mix(in srgb, #cccccc, transparent 30%);
-}
+  background: color-mix(in srgb, #cccccc, transparent 20%);
 
-@media (min-width: calc(800px)) {
-  main {
+  @media (min-width: calc(800px)) {
     width: var(--main-width);
   }
-}
-@media (max-width: calc(800px - 1px)) {
-  main {
+  @media (max-width: calc(800px - 1px)) {
     width: 100%;
   }
 }
@@ -146,4 +144,9 @@ blockquote {
   aspect-ratio: 1;
   height: 1em;
   width: 1em;
+}
+
+.todo {
+  padding: 1em;
+  background-color: color-mix(in hsl, red, transparent 60%);
 }

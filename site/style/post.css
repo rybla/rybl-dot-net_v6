@@ -9,15 +9,11 @@
 
 .main-inner {
   padding: 1em;
-}
 
-@media (min-width: calc(800px)) {
-  .main-inner {
+  @media (min-width: calc(800px)) {
     width: var(--main-inner-width);
   }
-}
-@media (max-width: calc(800px - 1px)) {
-  .main-inner {
+  @media (max-width: calc(800px - 1px)) {
     width: 100%;
   }
 }

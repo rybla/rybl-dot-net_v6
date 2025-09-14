@@ -3,18 +3,10 @@
   <head>
     <title>rybl.net | ${title}</title>
 
-    <link rel="stylesheet" href="/style/common.css" />
-    <link rel="stylesheet" href="/style/header.css" />
-    <link rel="stylesheet" href="/style/footer.css" />
+    ${common-styles.html()}
     <link rel="stylesheet" href="/style/page.css" />
 
-    <script
-      id="MathJax-script"
-      async
-      src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
-    ></script>
-
-    <script src="/script/parallax-body-background-on-scroll.js"></script>
+    ${common-fonts.html()} ${common-scripts.html()}
   </head>
   <body>
     ${background.html()} ${title:header.html()}

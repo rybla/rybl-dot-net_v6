@@ -2,7 +2,10 @@ header,
 footer {
   flex: 0 0 auto;
 
-  background: color-mix(in srgb, #cccccc, transparent 30%);
+  color: white;
+  a {
+    color: white;
+  }
 
   padding: 1em;
 
@@ -13,10 +16,11 @@ footer {
   gap: 1em;
 
   & > .title {
-    height: 4em;
+    height: 2em;
 
     & > .website-icon {
       height: 100%;
+      filter: invert(1);
     }
 
     display: flex;
@@ -33,8 +37,4 @@ footer {
     justify-content: center;
     gap: 1em;
   }
-}
-
-footer {
-  flex-direction: column-reverse;
 }

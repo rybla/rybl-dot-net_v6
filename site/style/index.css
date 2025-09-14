@@ -1,16 +1,19 @@
 main {
   flex: 1 1 auto;
-  width: var(--main-width);
+
+  @media (min-width: calc(800px)) {
+    width: var(--main-width);
+  }
+  @media (max-width: calc(800px - 1px)) {
+    width: 100%;
+  }
+
   margin: 1em auto;
 
-  /*box-shadow: var(--basic-box-shadow);*/
   z-index: 0;
 
   padding: 1em;
 }
-
-/*.title {
-}*/
 
 .post-card {
   padding: 1em;
