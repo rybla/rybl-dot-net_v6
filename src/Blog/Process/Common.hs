@@ -39,7 +39,7 @@ addReferencesSection outLinks (Pandoc meta blocks) = do
     blocks
       ++ [ Pandoc.Header 1 mempty [Pandoc.Str "References"],
            Pandoc.BulletList $
-             outLinks <&> \link ->
+             outLinks & reverse <&> \link ->
                [ Pandoc.Plain
                    [ Pandoc.Link
                        (mempty & Pandoc.attrData %~ ([("inReference", ""), ("noLinkPreview", "")] ++))
@@ -57,7 +57,7 @@ addCitationsSection inLinks (Pandoc meta blocks) = do
     blocks
       ++ [ Pandoc.Header 1 mempty [Pandoc.Str "Citations"],
            Pandoc.BulletList $
-             inLinks <&> \link ->
+             inLinks & reverse <&> \link ->
                [ Pandoc.Plain
                    [ Pandoc.Link
                        (mempty & Pandoc.attrData %~ ([("inCitation", "True"), ("noLinkPreview", "")] ++))
