@@ -1,0 +1,820 @@
+<!doctype html>
+<html>
+  <head>
+    <title>rybl.net | Dominant Assurance Contracts</title>
+
+    <link rel="stylesheet" href="/style/common.css" />
+    <link rel="stylesheet" href="/style/background.css" />
+    <link rel="stylesheet" href="/style/custom-elements.css" />
+    <link rel="stylesheet" href="/style/header-and-footer.css" />    <link rel="stylesheet" href="/style/post.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+  rel="stylesheet"
+/>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+  rel="stylesheet"
+/> <script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+></script>
+
+<script src="/script/parallax-body-background-on-scroll.js"></script>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+
+<script>
+  hljs.highlightAll();
+</script>
+  </head>
+  <body>
+    <div id="background"></div> <header><div class="title">
+  <div class="root-title">
+    <a href="/">rybl.net</a>
+  </div>
+
+  <img class="website-icon" src="/image/rybl-small.png" />
+
+  <div class="local-title">Dominant Assurance Contracts</div>
+</div>
+<div class="menu">
+  <div class="item">
+    <a href="/">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon lucide lucide-library-icon lucide-library"
+      >
+        <path d="m16 6 4 14" />
+        <path d="M12 6v14" />
+        <path d="M8 8v12" />
+        <path d="M4 4v16" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/about.html">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon lucide lucide-info-icon lucide-info"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 16v-4" />
+        <path d="M12 8h.01" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/profile.html">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-globe-icon lucide-globe"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+        <path d="M2 12h20" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/graph.html">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-orbit-icon lucide-orbit"
+      >
+        <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+        <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+        <circle cx="12" cy="12" r="3" />
+        <circle cx="19" cy="5" r="2" />
+        <circle cx="5" cy="19" r="2" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/signature.html"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-fingerprint-icon lucide-fingerprint"
+      >
+        <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+        <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+        <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+        <path d="M2 12a10 10 0 0 1 18-6" />
+        <path d="M2 16h.01" />
+        <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+        <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+        <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+        <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+    ></a>
+  </div>
+</div></header>
+
+    <main>
+      <div class="main-inner"><h2><a href="/post/dominant-assurance-contracts.html"
+data-noLinkFavicon="" data-noLinkPreview="">Dominant Assurance
+Contracts</a></h2>
+<div class="header-info">
+<p><u>Published:</u> 2020-11-10</p>
+<p><u>Tags:</u> economics</p>
+<p><u>Abstract</u></p>
+<p>Dominant assurance contracts are an interesting solution to many
+collective action problems. A DAC asks an agent to pledge a donation
+towards a collective action to be paid if any only if enough other
+agents also pledge, and promises to pay the agent if not enough other
+agents pledge. Such a contract can yield opting-in as a dominant
+strategy even when an agent expects other agents not to opt-in;
+free-rider incentives are removed by the assurance that no one benefits
+if any agent opts-out, and payment incentivizes pessimistic agents to
+opt-in anyway.</p>
+</div>
+<div class="table-of-contents">
+<p><u>Table of Contents</u></p>
+<ol type="1">
+<li><a href="#the-problem-of-providing-public-goods"
+data-noLinkFavicon="" data-noLinkPreview="">The Problem of Providing
+Public Goods</a></li>
+<li><a href="#the-two-sides-of-prisoners-dillemas" data-noLinkFavicon=""
+data-noLinkPreview="">The Two Sides of Prisoners' Dillemas</a>
+<ol type="1">
+<li><a href="#proposal-1-simple-donations" data-noLinkFavicon=""
+data-noLinkPreview="">Proposal 1: Simple Donations</a></li>
+<li><a href="#proposal-2-assurance-contracts" data-noLinkFavicon=""
+data-noLinkPreview="">Proposal 2: Assurance Contracts</a></li>
+<li><a href="#proposal-3-dominant-assurance-contracts"
+data-noLinkFavicon="" data-noLinkPreview="">Proposal 3: Dominant
+Assurance Contracts</a></li>
+</ol></li>
+<li><a href="#dominant-assurance-contracts" data-noLinkFavicon=""
+data-noLinkPreview="">Dominant Assurance Contracts</a></li>
+<li><a href="#complications" data-noLinkFavicon=""
+data-noLinkPreview="">Complications</a>
+<ol type="1">
+<li><a href="#buffering" data-noLinkFavicon=""
+data-noLinkPreview="">Buffering</a></li>
+<li><a href="#incomplete-information" data-noLinkFavicon=""
+data-noLinkPreview="">Incomplete Information</a></li>
+<li><a href="#differentiated-evaluations" data-noLinkFavicon=""
+data-noLinkPreview="">Differentiated Evaluations</a></li>
+<li><a href="#privatization" data-noLinkFavicon=""
+data-noLinkPreview="">Privatization</a></li>
+</ol></li>
+<li><a href="#glossary" data-noLinkFavicon=""
+data-noLinkPreview="">Glossary</a>
+<ol type="1">
+<li><a href="#goods" data-noLinkFavicon=""
+data-noLinkPreview="">Goods</a></li>
+<li><a href="#collective-action-problems" data-noLinkFavicon=""
+data-noLinkPreview="">Collective Action Problems</a></li>
+<li><a href="#assurance-contracts" data-noLinkFavicon=""
+data-noLinkPreview="">Assurance Contracts</a></li>
+</ol></li>
+<li><a href="#bibliography" data-noLinkFavicon=""
+data-noLinkPreview="">Bibliography</a></li>
+<li><a href="#references" data-noLinkFavicon=""
+data-noLinkPreview="">References</a></li>
+<li><a href="#citations" data-noLinkFavicon=""
+data-noLinkPreview="">Citations</a></li>
+</ol>
+</div>
+<h1 id="the-problem-of-providing-public-goods">The Problem of Providing
+Public Goods</h1>
+<p>TODO</p>
+<h1 id="the-two-sides-of-prisoners-dillemas">The Two Sides of Prisoners'
+Dillemas</h1>
+<p>Let's consider the town of Perindale. There is a proposal to
+construct a public garden in downtown Perindale, and the mayor is
+planning on how to faciliate this. The mayor has two important
+restrictions:</p>
+<ul>
+<li>the mayor cannot <em>exclude</em> anyone from enjoying the garden
+(it's supposed to be in a public garden, after all)</li>
+<li>the mayor cannot <em>force</em> anyone to help construct to
+garden</li>
+<li>the mayor must ask the same donation amount from each resident</li>
+</ul>
+<p>So, how can the mayor best recruit people to construct the
+garden?</p>
+<p>Additionally, for the sake of simplicity, let us assume the following
+(which can be relaxed later):</p>
+<ul>
+<li>There are \( n \) residents of Perindale.</li>
+<li>Each resident gains \( X \) utility from the garden being
+constructed</li>
+<li>All the residents are the same with respect to factors influencing
+the funding and construction of the garden</li>
+<li>Constructing the garden costs \( C \) utility.</li>
+<li>The garden cannot be constructed partially; if not turned into a
+garden, the lot will be bought by an out-of-town euntrepenuer and turned
+into a private helicopter landing pad, from which residents get \( 0 \)
+utility.</li>
+<li>Each resident acts perfectly rationally (i.e. maximizes expected
+utility based on their beliefs).</li>
+</ul>
+<h2 id="proposal-1-simple-donations">Proposal 1: Simple Donations</h2>
+<p>The first idea that comes to the mayor's mind is to simply ask
+Perindale residents to donate \( D \) utility each, where \( D \leq C/(n
+- 1) \) i.e. the garden would still be constructed if one resident
+decided not to contribute (we shall consider the case \( D = C/(n-1) \)
+in the next section). Additionally, \(( D &lt; X \)) i.e. each
+resident's donation would be smaller than the amount they value the
+garden.</p>
+<p>Since each resident gains \( X \) utility from a constructed garden
+and is being asked to donate \( D \) utility, each resident is in the
+same position with respect to deciding what to do. So, the mayor asks an
+aribtrary resident, Jo, how they would decide, and then generalizes this
+result to all residents.</p>
+<p>Jo will decide what to do based on their beliefs about the outcome
+given everyone's actions. Since all the residents are the same, Jo can
+expect one of two situations:</p>
+<ol>
+<li>Every other resident donates</li>
+<li>Every other resident refrains</li>
+</ol>
+<p>The table below shows the utility payoffs to Jo and the other
+residents given Jo's desicion (leftmost column) and the other residents'
+desicion (topmost row).</p>
+<p>| <strong>Jo, others</strong> | <strong>others donate</strong> |
+<strong>others refrain</strong> | | <strong>donate</strong> | \( X - D,
+(n-1) (X - D) \) | \( -D, 0 \) | | <strong>refrain</strong> | \( X ,
+(n-1) (X - D) \) | \( 0, 0 \) |</p>
+<p>Then, Jo decides as follows, there are two cases for what Jo believes
+and so how they will decide:</p>
+<ol>
+<li>Suppose that Jo believes that every other resident will donate. Then
+Jo decides not to donate since \( X \geq X - D \) i.e. Jo still recieves
+the utility of the constructed garden without having to pay. Here, Jo is
+a <em>free rider</em>.</li>
+<li>Suppose that Jo believes that every other resident will refrain.
+Then Jo decides not to donate since \( 0 \geq -D \) their donation will
+only go towards a partial garden that is worth \( 0 \) utility.</li>
+</ol>
+<p>The mayor realies the tragic situation (more specifically,
+<em>prisoner's dillemma</em>): in either case, Jo decides not to
+contribute. And since Jo is an arbitrary resident, this implies that
+every resident acts like Jo, and thus no resident contributes. The
+garden will not be constructed by this simple donations proposal.</p>
+<p>Altogether for this proposal: refraining is a <strong>dominant
+strategy</strong> since there is always an incentive to refrain.</p>
+<p>As shown in Jo's reasoning, there are two sides to this tragedy:</p>
+<ol>
+<li>Jo is able to free-ride when the other residents donate</li>
+<li>Jo won't donate when they know the garden won't be constructed
+anyway</li>
+</ol>
+<p>The following proposals 2 and 3 will cumulatively remove these
+malincentives: assurance contracts prevent free-riders, and dominant
+assurance contracts additionally incentivizes pessimistic residents to
+still donate.</p>
+<p>The mayor thanks Jo, and returns to their office to think up the new
+proposals.</p>
+<h2 id="proposal-2-assurance-contracts">Proposal 2: Assurance
+Contracts</h2>
+<p>To tackle the free-rider problem, the mayor needs to write up a
+contract that removes the incentive for Jo to not contribute if Jo
+believes that the other residents will contribute. Additionally, the
+mayor wants to avoid wasting resources. So, they write up the following
+<strong>assurance contract</strong>:</p>
+<blockquote>
+<p>I promise to donate \( D \) utility if and only if every other
+resident also signs this contract. Otherwise, I refraine from
+donating.</p>
+</blockquote>
+<p>The mayor consults Jo again, asking what they would do with this
+proposal. Jo has the same two possible situations to expect:</p>
+<ol>
+<li>Every other resident promises (signs the contract)</li>
+<li>Every other resident refrains</li>
+</ol>
+<p>The table below shows the new utility payoffs to Jo and the other
+residents' desicions.</p>
+<p>| <strong>Jo, others</strong> | <strong>others promise</strong> |
+<strong>others refrain</strong> | | <strong>promise</strong> | \( X - D,
+(n - 1) (X - D) \) | \( 0, 0 \) | | <strong>refrain</strong> | \( 0 , 0
+\) | \( 0, 0 \) |</p>
+<p>Then, Jo decides how to act based on their belief:</p>
+<ol>
+<li>Suppose that Jo believes that every other resident will promise.
+Then Jo decides to donate since \( X - D \geq 0 \) i.e. Jo prefers to
+donate and then enjoy the garden over getting nothing.</li>
+<li>Suppose that Jo believes that every other resident will refrain.
+Then Jo is indifferent between donating and refraining since both given
+them a payoff of \( 0 \).</li>
+</ol>
+<p>The mayor has made some progress! There will never be free riders
+since it is strictly better to donate than refrain when Jo believes that
+others will donate. Additionally, Jo is not disincentivized from
+donating when other refrain. However, Jo is only indifferent here i.e.
+Jo is not strictly better off when they donate rather than refrain.</p>
+<p>Altogether for this proposal: promising is a <strong>weakly dominant
+strategy</strong> since there is never a disincentive from
+promising.</p>
+<p>The mayor still hopes to do better. Not wasting utility was a good
+move, but even one pessimistic believer in the whole town results in no
+garden. In fact, if even one resident forgets to sign the contract then
+there will be no garden! That is where the weakness in "weakly dominant
+strategy" comes in. The mayor thanks Jo again and returns to their
+office for, hopefully, a final draft.</p>
+<h2 id="proposal-3-dominant-assurance-contracts">Proposal 3: Dominant
+Assurance Contracts</h2>
+<p>Ideally, the mayor wishes that each resident always be actively
+incentivized to donate, not just indifferent about it, and even if they
+are pessimistic about the others. In other words, that donating is a
+dominant strategy. The mayor thinks for a while, and finally writes the
+following contract:</p>
+<blockquote>
+<p>I promise to donate \( D \) utility if and only if every other
+resident also signs this contract. Otherwise, I donate \( 0 \) and the
+mayor pays me \( F \) utility.</p>
+</blockquote>
+<p>Where \( D \leq C/n \) i.e. the garden is still constructed if just
+one resident decides not to sign.</p>
+<p>The mayor reflects on the contract, it does feel a little risky. If
+enough of the residents decide not to sign, then the mayor will be
+losing money by having to pay out to those that did sign, and still no
+garden will be constructed. Nevertheless, the mayor has a hunch that the
+details work out in everyone's favor in the end.</p>
+<p>The mayor finds Jo and presents the new contract. Jo follows the same
+method of consideration from earlier, where the table below shows the
+new utility payoffs.</p>
+<p>| <strong>Jo, others</strong> | <strong>others promise</strong> |
+<strong>others refrain</strong> | | <strong>promise</strong> | \( X - D,
+(n - 1) (X - D) \) | \( F, 0 \) | | <strong>refrain</strong> | \( 0 , 0
+\) | \( 0, 0 \) |</p>
+<p>Jo considers the new circumstances, and explains his updated
+belief-dependent desicions:</p>
+<ol>
+<li>Suppose that Jo believes that every other resident will promise.
+Then Jo decides to donate since \( X - D &gt; 0 \) i.e. Jo prefers to
+donate and then enjoy the garden over getting nothing.</li>
+<li>Suppose that Jo believes that every other resident will refrain.
+Then Jo decides to donate since \( F &gt; 0 \) i.e. Jo opts in to be
+paid by the mayor since the garden isn't going to be constructed
+anyway.</li>
+</ol>
+<p>"Aha!" the mayor exclaims. Jo concedes that this proposed contract,
+no matter their beliefs, yields a situation where Jo is always
+incentivized to sign. Since every other resident will also follow this
+logic, this implies that every resident will sign! And so the garden is
+garunteed to be fully funded.</p>
+<p>Even though the mayor had to include a clause about paying \( F \) to
+signers when there aren't enough signers, the mayor can expect this
+situation never to arise as long as the residents of Perindale are true
+to their perfect rationality.</p>
+<h1 id="dominant-assurance-contracts">Dominant Assurance Contracts</h1>
+<p>TODO: generalized definition and justification</p>
+<h1 id="complications">Complications</h1>
+<p>All about deciding the optimal value of \( F \).</p>
+<h2 id="buffering">Buffering</h2>
+<p>TODO: How to account for a certain number of agents deciding not to
+sign anyway? TODO: Avoiding sel-fulfilling negative beliefs</p>
+<h2 id="incomplete-information">Incomplete Information</h2>
+<p>TODO: How to account for agents having incomplete information about
+their peers? And probabilistic beliefs</p>
+<ul>
+<li>some graphs from Tabarrok</li>
+</ul>
+<h2 id="differentiated-evaluations">Differentiated Evaluations</h2>
+<p>TODO: How to account for when agents have different evaluations of
+the public good</p>
+<h2 id="privatization">Privatization</h2>
+<p>TODO: What if a private firm hosts the DAC instead of the mayor?
+Where the firm earns profits from the surplus donations.</p>
+<ul>
+<li>competition between firms will drive down required donations</li>
+</ul>
+<h1 id="glossary">Glossary</h1>
+<p>Some simple definitions and explanations of the formal terms used
+relating to public goods and collective action.</p>
+<h2 id="goods">Goods</h2>
+<p>A <strong>non-excludible good</strong> is a good that cannot have its
+enjoyment limited to specific consumers. <em>Examples:</em> national
+armies, outdoor air, TODO.</p>
+<p>A <strong>non-rivalrous good</strong> is a good for which its
+enjoyment by some consumers does not decrease the amount it can be
+enjoyed by other consumers. <em>Examples:</em> intellectual property,
+blogs, national armies, street lights.</p>
+<p>A <strong>public good</strong> is a good that is
+<strong>non-excludible</strong> and <strong>non-rivalrous</strong>.
+<em>Examples:</em> national armies, ideas, outdoor air, vistas, public
+parks,</p>
+<p>A <strong>free rider problem</strong> is a collective action problem
+of funding a <strong>public good</strong> when agents have the ability
+to opt-out of paying and still enjoy the good. A <strong>free
+rider</strong> is an agent that decides not to pay towards funding the
+public good, yet still enjoys the public good to the same extent as
+other agents that did decide to pay. <em>Examples:</em> funding many
+public services like parks, armies, etc.</p>
+<h2 id="collective-action-problems">Collective Action Problems</h2>
+<p>A <strong>collective action problem</strong> is a problem of
+coordinating agents to cooperate when there are incentives for each
+agent to defect, and if too many agents defect then every agent is worst
+off. Three popular classes of collective action problems are
+<strong>free rider problems</strong>, <strong>tragedies of the
+commons</strong>, and <strong>prisoners' dillemas</strong>.</p>
+<p>A <strong>tragedy of the commons</strong> is a collective action
+problem of rationing a public good that, while non-rivalrous at
+reasonable levels of use, becomes rivalrous over a certain volume of
+use. The <strong>tragedy</strong> is that each agent has an incentive to
+use the public good a reasonable amount on their own, but too many
+agents deciding to do so overuse the good. <em>Examples:</em> rationing
+use of public parks, lakes, air quality.</p>
+<p>A <strong>prisoners' dillema</strong> is a collective action problem
+where cooperating agents are well off, defecting agents are the best off
+when there are enough other cooperating agents, if too many agents
+defect then all agents are the worst off, and no communication between
+agents is allowed. (Note that a free rider problem without communication
+is a prisoner' dillema.) The name is inspired by the following
+story:</p>
+<blockquote>
+<p>Two prisoners, A and B, are on trial for a bank robbery they comitted
+as partners. They are put into seperate rooms and each offered the same
+options: (cooperate) recieve the standard sentence of 2 years, or
+(defect) reveal evidence incriminating your partner to increase their
+sentence by 3 years, and decrease your sentence by 1 year</p>
+</blockquote>
+<p>For each scenario, the sentences (in years) are arranged below. The
+entry "x, y" represents that prisoner A gets a sentnce</p>
+<p>| <strong>A , B</strong> | <strong>cooperate</strong> |
+<strong>defect</strong> | | <strong>cooperate</strong> | 2 , 2 | 5 , 1 |
+| <strong>defect</strong> | 1 , 5 | 4 , 4 |</p>
+<p>The prisoners have no opportunity to communicate before making their
+desicions, since they are in separate cells. From the table above, it is
+clear that the prisoners are best off in total if they both cooperate:
+they recieve sentencings of 4 years totaled between then.</p>
+<p>Yet, consider the ways that each prisoner considers their partner. If
+one knows that the other will cooperate, then it is best for one to
+defect and recieve 1 year instead of 2. Alternative, if one knows that
+the other will defect, then it is best for one to defect and recieve 4
+years instead of 5. So, it is inevitable that, whatever either prisoner
+believes of the other, the best option for each is to defect. This is a
+problem because even though there exists the best option overall to both
+cooperate, perfectly-rational prisoners will never obtain it.</p>
+<h2 id="assurance-contracts">Assurance Contracts</h2>
+<p>An <strong>assurance contract</strong> is a contract between a
+population of agents where each agent pledges to contribute towards an
+action if at least a certain amount is pledged in total. Examples:
+<span><a href="https://en.wikipedia.org/wiki/Escrow"><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FEscrow.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FEscrow.ico" />escrow</a><span
+class="sidenote preview"><span class="preview-title"><em><a
+href="https://en.wikipedia.org/wiki/Escrow" title="_blank"><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FEscrow.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FEscrow.ico" />https://en.wikipedia.org/wiki/Escrow</a></em></span><span
+class="preview-description">Placeholder description for
+https://en.wikipedia.org/wiki/Escrow</span></span></span>, certain kinds
+of <span><a href="https://en.wikipedia.org/wiki/Crowdfunding"><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FCrowdfunding.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FCrowdfunding.ico" />crowdfunding</a><span
+class="sidenote preview"><span class="preview-title"><em><a
+href="https://en.wikipedia.org/wiki/Crowdfunding" title="_blank"><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FCrowdfunding.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FCrowdfunding.ico" />https://en.wikipedia.org/wiki/Crowdfunding</a></em></span><span
+class="preview-description">Placeholder description for
+https://en.wikipedia.org/wiki/Crowdfunding</span></span></span>.</p>
+<p>A <strong>dominant assurance contract</strong> is an assurance
+contract between a population of agents where agents are promised a
+compensation in case when the contract fails to facilitate the target
+action, in such a way that yields agreeing to the contract as a dominant
+strategy. Dominant assurance contracts were primarily introduced in
+Tabarrok's "<span><a
+href="https://mason.gmu.edu/~atabarro/PrivateProvision.pdf"><img
+src="/missing.ico" class="favicon" alt="/missing.ico" />The private
+provision of public goods via dominant assurance contracts</a><span
+class="sidenote preview"><span class="preview-title"><em><a
+href="https://mason.gmu.edu/~atabarro/PrivateProvision.pdf"
+title="_blank"><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://mason.gmu.edu/~atabarro/PrivateProvision.pdf</a></em></span><span
+class="preview-description">Placeholder description for
+https://mason.gmu.edu/~atabarro/PrivateProvision.pdf</span></span></span>."</p>
+<h1 id="bibliography">Bibliography</h1>
+<ul>
+<li>Amoveo Editor, 2019. <span><a
+href="https://medium.com/amoveo/amoveo-use-case-crowdfunding-via-a-dominant-assurance-contract-dac-1be3482e7792"><img
+src="/favicon/https%253A%252F%252Fmedium.com%252Famoveo%252Famoveo-use-case-crowdfunding-via-a-dominant-assurance-contract-dac-1be3482e7792.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fmedium.com%2Famoveo%2Famoveo-use-case-crowdfunding-via-a-dominant-assurance-contract-dac-1be3482e7792.png" />Amoveo
+use-case: Crowdfunding via a Dominant Assurance Contract (DAC)</a><span
+class="sidenote preview"><span class="preview-title"><em><a
+href="https://medium.com/amoveo/amoveo-use-case-crowdfunding-via-a-dominant-assurance-contract-dac-1be3482e7792"
+title="_blank"><img
+src="/favicon/https%253A%252F%252Fmedium.com%252Famoveo%252Famoveo-use-case-crowdfunding-via-a-dominant-assurance-contract-dac-1be3482e7792.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fmedium.com%2Famoveo%2Famoveo-use-case-crowdfunding-via-a-dominant-assurance-contract-dac-1be3482e7792.png" />https://medium.com/amoveo/amoveo-use-case-crowdfunding-via-a-dominant-assurance-contract-dac-1be3482e7792</a></em></span><span
+class="preview-description">Placeholder description for
+https://medium.com/amoveo/amoveo-use-case-crowdfunding-via-a-dominant-assurance-contract-dac-1be3482e7792</span></span></span>.</li>
+<li>Guerra-Pujol F, 2018. <span><a
+href="https://priorprobability.com/2018/07/27/nozick-tabarrok-and-dominant-assurance-contracts/"><img
+src="/favicon/https%253A%252F%252Fpriorprobability.com%252F2018%252F07%252F27%252Fnozick-tabarrok-and-dominant-assurance-contracts%252F.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fpriorprobability.com%2F2018%2F07%2F27%2Fnozick-tabarrok-and-dominant-assurance-contracts%2F.ico" />Nozick,
+Tabarrok, and Dominant Assurance Contracts</a><span
+class="sidenote preview"><span class="preview-title"><em><a
+href="https://priorprobability.com/2018/07/27/nozick-tabarrok-and-dominant-assurance-contracts/"
+title="_blank"><img
+src="/favicon/https%253A%252F%252Fpriorprobability.com%252F2018%252F07%252F27%252Fnozick-tabarrok-and-dominant-assurance-contracts%252F.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fpriorprobability.com%2F2018%2F07%2F27%2Fnozick-tabarrok-and-dominant-assurance-contracts%2F.ico" />https://priorprobability.com/2018/07/27/nozick-tabarrok-and-dominant-assurance-contracts/</a></em></span><span
+class="preview-description">Placeholder description for
+https://priorprobability.com/2018/07/27/nozick-tabarrok-and-dominant-assurance-contracts/</span></span></span></li>
+<li>Michel M, 2019. <span><a
+href="https://commonwealth.im/edgeware/proposal/discussion/101-crowdsourcing-the-public-good-dominant-assurance-contracts"><img
+src="/favicon/https%253A%252F%252Fcommonwealth.im%252Fedgeware%252Fproposal%252Fdiscussion%252F101-crowdsourcing-the-public-good-dominant-assurance-contracts.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fcommonwealth.im%2Fedgeware%2Fproposal%2Fdiscussion%2F101-crowdsourcing-the-public-good-dominant-assurance-contracts.png" />Crowdsourcing
+the Public Good: Dominant Assurance Contracts</a><span
+class="sidenote preview"><span class="preview-title"><em><a
+href="https://commonwealth.im/edgeware/proposal/discussion/101-crowdsourcing-the-public-good-dominant-assurance-contracts"
+title="_blank"><img
+src="/favicon/https%253A%252F%252Fcommonwealth.im%252Fedgeware%252Fproposal%252Fdiscussion%252F101-crowdsourcing-the-public-good-dominant-assurance-contracts.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fcommonwealth.im%2Fedgeware%2Fproposal%2Fdiscussion%2F101-crowdsourcing-the-public-good-dominant-assurance-contracts.png" />https://commonwealth.im/edgeware/proposal/discussion/101-crowdsourcing-the-public-good-dominant-assurance-contracts</a></em></span><span
+class="preview-description">Placeholder description for
+https://commonwealth.im/edgeware/proposal/discussion/101-crowdsourcing-the-public-good-dominant-assurance-contracts</span></span></span>.</li>
+<li>Tabarrok A, 1998. <span><a
+href="https://mason.gmu.edu/~atabarro/PrivateProvision.pdf"><img
+src="/missing.ico" class="favicon" alt="/missing.ico" />The private
+provision of public goods via dominant assurance contracts</a><span
+class="sidenote preview"><span class="preview-title"><em><a
+href="https://mason.gmu.edu/~atabarro/PrivateProvision.pdf"
+title="_blank"><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://mason.gmu.edu/~atabarro/PrivateProvision.pdf</a></em></span><span
+class="preview-description">Placeholder description for
+https://mason.gmu.edu/~atabarro/PrivateProvision.pdf</span></span></span>.</li>
+<li>Tabarrok A, 2013. <span><a
+href="https://marginalrevolution.com/marginalrevolution/2013/08/a-test-of-dominant-assurance-contracts.html"><img
+src="/favicon/https%253A%252F%252Fmarginalrevolution.com%252Fmarginalrevolution%252F2013%252F08%252Fa-test-of-dominant-assurance-contracts.html.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fmarginalrevolution.com%2Fmarginalrevolution%2F2013%2F08%2Fa-test-of-dominant-assurance-contracts.html.png" />A
+Test of Dominant Assurance Contracts</a><span
+class="sidenote preview"><span class="preview-title"><em><a
+href="https://marginalrevolution.com/marginalrevolution/2013/08/a-test-of-dominant-assurance-contracts.html"
+title="_blank"><img
+src="/favicon/https%253A%252F%252Fmarginalrevolution.com%252Fmarginalrevolution%252F2013%252F08%252Fa-test-of-dominant-assurance-contracts.html.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fmarginalrevolution.com%2Fmarginalrevolution%2F2013%2F08%2Fa-test-of-dominant-assurance-contracts.html.png" />https://marginalrevolution.com/marginalrevolution/2013/08/a-test-of-dominant-assurance-contracts.html</a></em></span><span
+class="preview-description">Placeholder description for
+https://marginalrevolution.com/marginalrevolution/2013/08/a-test-of-dominant-assurance-contracts.html</span></span></span>.</li>
+<li>Tabarrok A, 2017. <span><a
+href="https://www.cato-unbound.org/2017/06/07/alex-tabarrok/making-markets-work-better-dominant-assurance-contracts-some-other-helpful"><img
+src="/favicon/https%253A%252F%252Fwww.cato-unbound.org%252F2017%252F06%252F07%252Falex-tabarrok%252Fmaking-markets-work-better-dominant-assurance-contracts-some-other-helpful.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.cato-unbound.org%2F2017%2F06%2F07%2Falex-tabarrok%2Fmaking-markets-work-better-dominant-assurance-contracts-some-other-helpful.png" />Making
+Markets Work Better: Dominant Assurance Contracts and Some Other Helpful
+Ideas</a><span class="sidenote preview"><span
+class="preview-title"><em><a
+href="https://www.cato-unbound.org/2017/06/07/alex-tabarrok/making-markets-work-better-dominant-assurance-contracts-some-other-helpful"
+title="_blank"><img
+src="/favicon/https%253A%252F%252Fwww.cato-unbound.org%252F2017%252F06%252F07%252Falex-tabarrok%252Fmaking-markets-work-better-dominant-assurance-contracts-some-other-helpful.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.cato-unbound.org%2F2017%2F06%2F07%2Falex-tabarrok%2Fmaking-markets-work-better-dominant-assurance-contracts-some-other-helpful.png" />https://www.cato-unbound.org/2017/06/07/alex-tabarrok/making-markets-work-better-dominant-assurance-contracts-some-other-helpful</a></em></span><span
+class="preview-description">Placeholder description for
+https://www.cato-unbound.org/2017/06/07/alex-tabarrok/making-markets-work-better-dominant-assurance-contracts-some-other-helpful</span></span></span>.</li>
+<li>Taylor J. <span><a href="http://jessic.at/writing/dac.pdf"><img
+src="/missing.ico" class="favicon" alt="/missing.ico" />Dominant
+Assurance Contracts with Continuous Pledges</a><span
+class="sidenote preview"><span class="preview-title"><em><a
+href="http://jessic.at/writing/dac.pdf" title="_blank"><img
+src="/missing.ico" class="favicon"
+alt="/missing.ico" />http://jessic.at/writing/dac.pdf</a></em></span><span
+class="preview-description">Placeholder description for
+http://jessic.at/writing/dac.pdf</span></span></span></li>
+</ul>
+<p>&lt;!-- --&gt; &lt;!-- links --&gt; &lt;!-- --&gt;</p>
+<h1 id="references">References</h1>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Escrow" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FEscrow.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FEscrow.ico" />escrow</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Crowdfunding"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FCrowdfunding.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FCrowdfunding.ico" />crowdfunding</a></li>
+<li><a href="https://mason.gmu.edu/~atabarro/PrivateProvision.pdf"
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />The private provision of public
+goods via dominant assurance contracts</a></li>
+<li><a
+href="https://medium.com/amoveo/amoveo-use-case-crowdfunding-via-a-dominant-assurance-contract-dac-1be3482e7792"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fmedium.com%252Famoveo%252Famoveo-use-case-crowdfunding-via-a-dominant-assurance-contract-dac-1be3482e7792.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fmedium.com%2Famoveo%2Famoveo-use-case-crowdfunding-via-a-dominant-assurance-contract-dac-1be3482e7792.png" />Amoveo
+use-case: Crowdfunding via a Dominant Assurance Contract (DAC)</a></li>
+<li><a
+href="https://priorprobability.com/2018/07/27/nozick-tabarrok-and-dominant-assurance-contracts/"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fpriorprobability.com%252F2018%252F07%252F27%252Fnozick-tabarrok-and-dominant-assurance-contracts%252F.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fpriorprobability.com%2F2018%2F07%2F27%2Fnozick-tabarrok-and-dominant-assurance-contracts%2F.ico" />Nozick,
+Tabarrok, and Dominant Assurance Contracts</a></li>
+<li><a
+href="https://commonwealth.im/edgeware/proposal/discussion/101-crowdsourcing-the-public-good-dominant-assurance-contracts"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fcommonwealth.im%252Fedgeware%252Fproposal%252Fdiscussion%252F101-crowdsourcing-the-public-good-dominant-assurance-contracts.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fcommonwealth.im%2Fedgeware%2Fproposal%2Fdiscussion%2F101-crowdsourcing-the-public-good-dominant-assurance-contracts.png" />Crowdsourcing
+the Public Good: Dominant Assurance Contracts</a></li>
+<li><a href="https://mason.gmu.edu/~atabarro/PrivateProvision.pdf"
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />The private provision of public
+goods via dominant assurance contracts</a></li>
+<li><a
+href="https://marginalrevolution.com/marginalrevolution/2013/08/a-test-of-dominant-assurance-contracts.html"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fmarginalrevolution.com%252Fmarginalrevolution%252F2013%252F08%252Fa-test-of-dominant-assurance-contracts.html.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fmarginalrevolution.com%2Fmarginalrevolution%2F2013%2F08%2Fa-test-of-dominant-assurance-contracts.html.png" />A
+Test of Dominant Assurance Contracts</a></li>
+<li><a
+href="https://www.cato-unbound.org/2017/06/07/alex-tabarrok/making-markets-work-better-dominant-assurance-contracts-some-other-helpful"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fwww.cato-unbound.org%252F2017%252F06%252F07%252Falex-tabarrok%252Fmaking-markets-work-better-dominant-assurance-contracts-some-other-helpful.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.cato-unbound.org%2F2017%2F06%2F07%2Falex-tabarrok%2Fmaking-markets-work-better-dominant-assurance-contracts-some-other-helpful.png" />Making
+Markets Work Better: Dominant Assurance Contracts and Some Other Helpful
+Ideas</a></li>
+<li><a href="http://jessic.at/writing/dac.pdf" data-inReference=""
+data-noLinkPreview=""><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />Dominant Assurance Contracts with Continuous
+Pledges</a></li>
+</ul>
+<h1 id="citations">Citations</h1></div>
+    </main>
+
+    <footer>
+      <div class="title">
+        <div class="root-title">
+          <a href="/">rybl.net</a>
+        </div>
+
+        <img class="website-icon" src="/image/rybl-small.png" />
+
+        <div class="local-title">Dominant Assurance Contracts</div>
+      </div>
+      <div class="menu">
+        <div class="item">
+          <a href="/">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon lucide lucide-library-icon lucide-library"
+            >
+              <path d="m16 6 4 14" />
+              <path d="M12 6v14" />
+              <path d="M8 8v12" />
+              <path d="M4 4v16" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/about.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon lucide lucide-info-icon lucide-info"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4" />
+              <path d="M12 8h.01" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/profile.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-globe-icon lucide-globe"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+              <path d="M2 12h20" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/graph.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-orbit-icon lucide-orbit"
+            >
+              <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+              <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+              <circle cx="12" cy="12" r="3" />
+              <circle cx="19" cy="5" r="2" />
+              <circle cx="5" cy="19" r="2" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/signature.html"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-fingerprint-icon lucide-fingerprint"
+            >
+              <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+              <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+              <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+              <path d="M2 12a10 10 0 0 1 18-6" />
+              <path d="M2 16h.01" />
+              <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+              <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+              <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+              <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+          ></a>
+        </div>
+      </div></footer>  </body>
+</html>

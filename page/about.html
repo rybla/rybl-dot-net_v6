@@ -1,67 +1,993 @@
 <!doctype html>
 <html>
   <head>
-    <title>About</title>
+    <title>rybl.net | About</title>
 
     <link rel="stylesheet" href="/style/common.css" />
-    <link rel="stylesheet" href="/style/header.css" />
-    <link rel="stylesheet" href="/style/footer.css" />
-    <link rel="stylesheet" href="/style/page.css" />
+    <link rel="stylesheet" href="/style/background.css" />
+    <link rel="stylesheet" href="/style/custom-elements.css" />
+    <link rel="stylesheet" href="/style/header-and-footer.css" />    <link rel="stylesheet" href="/style/page.css" />
 
-    <script
-      id="MathJax-script"
-      async
-      src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
-    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+  rel="stylesheet"
+/>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+  rel="stylesheet"
+/> <script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+></script>
+
+<script src="/script/parallax-body-background-on-scroll.js"></script>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+
+<script>
+  hljs.highlightAll();
+</script>
   </head>
   <body>
-    <svg style="display: none; visibility: hidden">
-      <defs>
-        <filter
-          id="body-background-filter"
-          color-interpolation-filters="linearRGB"
-          filterUnits="objectBoundingBox"
-          primitiveUnits="userSpaceOnUse"
-        >
-          <feTurbulence
-            type="fractalNoise"
-            baseFrequency="0.035 0.008"
-            numOctaves="4"
-            seed="2"
-            stitchTiles="stitch"
-            result="turbulence"
-          />
-          <feMerge result="merge">
-            <feMergeNode in="SourceGraphic" result="mergeNode" />
-            <feMergeNode in="turbulence" result="mergeNode1" />
-          </feMerge>
-          <feColorMatrix
-            type="saturate"
-            values="10"
-            in="merge"
-            result="colormatrix"
-          />
-          <feDisplacementMap
-            in="merge"
-            in2="colormatrix"
-            scale="1"
-            xChannelSelector="R"
-            yChannelSelector="R"
-            result="displacementMap"
-          />
-          <feComposite
-            in="displacementMap"
-            in2="SourceAlpha"
-            operator="in"
-            result="composite1"
-          />
-        </filter>
-      </defs>
-    </svg>
+    <div id="background"></div> <header><div class="title">
+  <div class="root-title">
+    <a href="/">rybl.net</a>
+  </div>
 
-    <div class="body-background"></div>    <header>This is the header as a template!</header>    <main>
-      <div class="main-inner"><h1>About</h1>
-<p>this is the about page</p></div>
-    </main>
-    <footer>This is the footer as a template!</footer>  </body>
+  <img class="website-icon" src="/image/rybl-small.png" />
+
+  <div class="local-title">About</div>
+</div>
+<div class="menu">
+  <div class="item">
+    <a href="/">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon lucide lucide-library-icon lucide-library"
+      >
+        <path d="m16 6 4 14" />
+        <path d="M12 6v14" />
+        <path d="M8 8v12" />
+        <path d="M4 4v16" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/about.html">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon lucide lucide-info-icon lucide-info"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 16v-4" />
+        <path d="M12 8h.01" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/profile.html">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-globe-icon lucide-globe"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+        <path d="M2 12h20" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/graph.html">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-orbit-icon lucide-orbit"
+      >
+        <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+        <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+        <circle cx="12" cy="12" r="3" />
+        <circle cx="19" cy="5" r="2" />
+        <circle cx="5" cy="19" r="2" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/signature.html"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-fingerprint-icon lucide-fingerprint"
+      >
+        <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+        <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+        <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+        <path d="M2 12a10 10 0 0 1 18-6" />
+        <path d="M2 16h.01" />
+        <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+        <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+        <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+        <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+    ></a>
+  </div>
+</div></header>
+
+    <main><h1>About</h1>
+<p>I'm Henry Blanchette, and this is my personal website. The program
+that generates this website is available at <a
+href="https://github.com/rybla/rybl-dot-net_v5"><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Frybla%252Frybl-dot-net_v5.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Frybla%2Frybl-dot-net_v5.svg" />rybla/rybl-dot-net_v5</a>.</p>
+<h2>Overview</h2>
+<p>I am a programmer and researcher focused on: - <a
+href="https://en.wikipedia.org/wiki/Programming_language_theory"><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FProgramming_language_theory.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FProgramming_language_theory.ico" />programming
+language theory</a> - <a
+href="https://en.wikipedia.org/wiki/Formal_verification."><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FFormal_verification..ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FFormal_verification..ico" />formal
+specification and verification</a> - <a
+href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FConway%252527s_Game_of_Life.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FConway%2527s_Game_of_Life.ico" />mathematical
+modeling and simulation</a> - <a
+href="https://en.wikipedia.org/wiki/User_interface_design"><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FUser_interface_design.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FUser_interface_design.ico" />user
+interface design</a> - <a
+href="https://en.wikipedia.org/wiki/Game_design"><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FGame_design.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGame_design.ico" />game
+design</a> - <a href="https://en.wikipedia.org/wiki/Game_theory"><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FGame_theory.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGame_theory.ico" />economics
+and game theory</a></p>
+<h2>Research</h2>
+<p>My research interests have centered around programming languages,
+simulation, mathematical modeling, and data analysis.</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>time</th>
+<th>topic</th>
+<th>association</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2022-2024</strong></td>
+<td><a href="https://pantographeditor.github.io/Pantograph/"><img
+src="/missing.ico" class="favicon" alt="/missing.ico" />Pantograph</a>
+(<a href="https://dl.acm.org/doi/10.1145/3704864"><img
+src="/favicon/https%253A%252F%252Fdl.acm.org%252Fdoi%252F10.1145%252F3704864.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fdl.acm.org%2Fdoi%2F10.1145%2F3704864.png" />acm</a>)
+-- a fluid and well-typed structure editor</td>
+<td>with <a href="https://github.com/jeprinz"><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Fjeprinz.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Fjeprinz.svg" />Jacob Prinz</a>;
+at <a href="https://www.umd.edu"><img
+src="/favicon/https%253A%252F%252Fumd.edu%252F.png" class="favicon"
+alt="/favicon/https%3A%2F%2Fumd.edu%2F.png" />University of
+Maryland</a></td>
+</tr>
+<tr>
+<td><strong>2022-2023</strong></td>
+<td>Liquid Flex -- extension of the <a
+href="https://tangramflex.com/flex"><img
+src="/favicon/https%253A%252F%252Ftangramflex.com%252Fflex.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Ftangramflex.com%2Fflex.png" />Flex</a>
+language with refinement types</td>
+<td>with <a href="https://www.tangramflex.com"><img
+src="/favicon/https%253A%252F%252Fwww.tangramflex.com.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.tangramflex.com.png" />Tangram</a></td>
+</tr>
+<tr>
+<td><strong>2022</strong></td>
+<td><a href="https://github.com/rybla/zypr"><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Frybla%252Fzypr.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Frybla%2Fzypr.svg" />Zypr</a> --
+a zipper-interfaced structure editor</td>
+<td>with <a href="https://github.com/jeprinz"><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Fjeprinz.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Fjeprinz.svg" />Jacob Prinz</a>;
+at <a href="https://www.umd.edu"><img
+src="/favicon/https%253A%252F%252Fumd.edu%252F.png" class="favicon"
+alt="/favicon/https%3A%2F%2Fumd.edu%2F.png" />University of
+Maryland</a></td>
+</tr>
+<tr>
+<td><strong>2022</strong></td>
+<td><a href="https://github.com/rybla/lh-tactics-test"><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Frybla%252Flh-tactics-test.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Frybla%2Flh-tactics-test.svg" />Liquid
+Proof Macros</a> (<a
+href="https://dl.acm.org/doi/abs/10.1145/3546189.3549921"><img
+src="/favicon/https%253A%252F%252Fdl.acm.org%252Fdoi%252Fabs%252F10.1145%252F3546189.3549921.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fdl.acm.org%2Fdoi%2Fabs%2F10.1145%2F3546189.3549921.png" />acm</a>)
+-- tactical metaprogramming for Liquid Haskell proofs</td>
+<td>with <a href="https://github.com/lemonidas"><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Flemonidas.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Flemonidas.svg" />Leonidas
+Lampropoulos</a> and <a href="https://github.com/nikivazou"><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Fnikivazou.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Fnikivazou.svg" />Niki
+Vazou</a>; at <a href="https://www.umd.edu"><img
+src="/favicon/https%253A%252F%252Fumd.edu%252F.png" class="favicon"
+alt="/favicon/https%3A%2F%2Fumd.edu%2F.png" />University of
+Maryland</a></td>
+</tr>
+<tr>
+<td><strong>2021</strong></td>
+<td><a href="https://github.com/rybla/liquid-monadic-selectionsort"><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Frybla%252Fliquid-monadic-selectionsort.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Frybla%2Fliquid-monadic-selectionsort.svg" />Extensional
+Equality in Liquid Haskell</a></td>
+<td>with <a href="https://github.com/lemonidas"><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Flemonidas.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Flemonidas.svg" />Leo
+Lampropolous</a>, <a href="https://github.com/nikivazou"><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Fnikivazou.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Fnikivazou.svg" />Niki
+Vazou</a>, and <a href="https://mgree.github.io"><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />Michael Greenberg</a>; at <a
+href="https://www.umd.edu"><img
+src="/favicon/https%253A%252F%252Fumd.edu%252F.png" class="favicon"
+alt="/favicon/https%3A%2F%2Fumd.edu%2F.png" />University of
+Maryland</a></td>
+</tr>
+<tr>
+<td><strong>2020</strong></td>
+<td>Generalized Price Equation</td>
+<td>with <a href="http://people.reed.edu/~mab/"><img
+src="/favicon/http%253A%252F%252Fpeople.reed.edu%252F~mab%252F.ico"
+class="favicon"
+alt="/favicon/http%3A%2F%2Fpeople.reed.edu%2F~mab%2F.ico" />Mark
+Bedau</a>; for the Artificial Life Lab at Reed College</td>
+</tr>
+<tr>
+<td><strong>2020</strong></td>
+<td>Separation Logic in Agda</td>
+<td>with <a href="https://jimfix.github.io"><img
+src="/favicon/https%253A%252F%252Fjimfix.github.io.ico" class="favicon"
+alt="/favicon/https%3A%2F%2Fjimfix.github.io.ico" />Jim Fix</a>; at <a
+href="https://www.reed.edu"><img
+src="/favicon/https%253A%252F%252Fwww.reed.edu.ico" class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.reed.edu.ico" />Reed College</a></td>
+</tr>
+<tr>
+<td><strong>2019</strong></td>
+<td>Gradual Verification</td>
+<td>with <a href="http://www.cs.cmu.edu/~aldrich/"><img
+src="/favicon/http%253A%252F%252Fwww.cs.cmu.edu%252F~aldrich%252F.ico"
+class="favicon"
+alt="/favicon/http%3A%2F%2Fwww.cs.cmu.edu%2F~aldrich%2F.ico" />Jonathan
+Aldrich</a>; for REUSE at <a href="https://www.cs.cmu.edu"><img
+src="/favicon/http%253A%252F%252Fwww.cs.cmu.edu%252F~aldrich%252F.ico"
+class="favicon"
+alt="/favicon/http%3A%2F%2Fwww.cs.cmu.edu%2F~aldrich%2F.ico" />CMU</a></td>
+</tr>
+<tr>
+<td><strong>2018</strong></td>
+<td><a href="https://arxiv.org/abs/2001.02293"><img
+src="/favicon/https%253A%252F%252Farxiv.org%252Fabs%252F2001.02293.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Farxiv.org%2Fabs%2F2001.02293.png" />Reputation
+in Academic Citation Networks</a></td>
+<td>with Eitan Frachtenburg; at <a href="https://www.reed.edu"><img
+src="/favicon/https%253A%252F%252Fwww.reed.edu.ico" class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.reed.edu.ico" />Reed College</a></td>
+</tr>
+<tr>
+<td><strong>2018</strong></td>
+<td><a
+href="http://people.reed.edu/~ormsbyk/projectproject/posts/milnor-fibrations.html"><img
+src="/favicon/http%253A%252F%252Fpeople.reed.edu%252F~ormsbyk%252Fprojectproject%252Fposts%252Fmilnor-fibrations.html.ico"
+class="favicon"
+alt="/favicon/http%3A%2F%2Fpeople.reed.edu%2F~ormsbyk%2Fprojectproject%2Fposts%2Fmilnor-fibrations.html.ico" />Vector
+Calculus Vizualizations</a></td>
+<td>with Kyle Ormsby for <a
+href="http://people.reed.edu/~ormsbyk/projectproject/posts/milnor-fibrations.html"><img
+src="/favicon/http%253A%252F%252Fpeople.reed.edu%252F~ormsbyk%252Fprojectproject%252Fposts%252Fmilnor-fibrations.html.ico"
+class="favicon"
+alt="/favicon/http%3A%2F%2Fpeople.reed.edu%2F~ormsbyk%2Fprojectproject%2Fposts%2Fmilnor-fibrations.html.ico" />Project
+Project</a>; at <a href="https://www.reed.edu"><img
+src="/favicon/https%253A%252F%252Fwww.reed.edu.ico" class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.reed.edu.ico" />Reed College</a></td>
+</tr>
+<tr>
+<td><strong>2017</strong></td>
+<td><a
+href="http://people.reed.edu/~ormsbyk/projectproject/posts/vector-calculus-demos.html"><img
+src="/favicon/http%253A%252F%252Fpeople.reed.edu%252F~ormsbyk%252Fprojectproject%252Fposts%252Fvector-calculus-demos.html.ico"
+class="favicon"
+alt="/favicon/http%3A%2F%2Fpeople.reed.edu%2F~ormsbyk%2Fprojectproject%2Fposts%2Fvector-calculus-demos.html.ico" />Milnor
+Fibration Vizualizations</a></td>
+<td>with Kyle Ormsby; for <a
+href="https://people.reed.edu/~ormsbyk/projectproject/"><img
+src="/favicon/https%253A%252F%252Fpeople.reed.edu%252F~ormsbyk%252Fprojectproject%252F.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fpeople.reed.edu%2F~ormsbyk%2Fprojectproject%2F.ico" />Project
+Project</a> at <a href="https://www.reed.edu"><img
+src="/favicon/https%253A%252F%252Fwww.reed.edu.ico" class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.reed.edu.ico" />Reed College</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Education and Employment</h2>
+<p>My education has centered around mathematics, computer science, and
+philosophy. My employment has been in software engineering, theoretical
+computer science research, and software verification.</p>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>time</th>
+<th>event</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>2024</strong></td>
+<td>worked as intern at <a
+href="https://labs.oracle.com/pls/apex/r/labs/labs/intro"><img
+src="/favicon/https%253A%252F%252Flabs.oracle.com%252Fpls%252Fapex%252Fr%252Flabs%252Flabs%252Fintro.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Flabs.oracle.com%2Fpls%2Fapex%2Fr%2Flabs%2Flabs%2Fintro.png" />Oracle
+Labs</a> with <a
+href="https://labs.oracle.com/pls/apex/f?p=94065:11:23393226324575:2619"><img
+src="/favicon/https%253A%252F%252Flabs.oracle.com%252Fpls%252Fapex%252Ff%253Fp%253D94065%253A11%253A23393226324575%253A2619.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Flabs.oracle.com%2Fpls%2Fapex%2Ff%3Fp%3D94065%3A11%3A23393226324575%3A2619.png" />Harold
+Carr</a> and <a
+href="https://labs.oracle.com/pls/apex/f?p=labs:bio:0:86"><img
+src="/favicon/https%253A%252F%252Flabs.oracle.com%252Fpls%252Fapex%252Ff%253Fp%253Dlabs%253Abio%253A0%253A86.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Flabs.oracle.com%2Fpls%2Fapex%2Ff%3Fp%3Dlabs%3Abio%3A0%3A86.png" />Mark
+Moir</a></td>
+</tr>
+<tr>
+<td><strong>2022-2023</strong></td>
+<td>worked as independent contractor at <a
+href="https://galois.com/"><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />Galois</a> with <a
+href="https://www.tangramflex.com"><img
+src="/favicon/https%253A%252F%252Fwww.tangramflex.com.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.tangramflex.com.png" />Tangram</a></td>
+</tr>
+<tr>
+<td><strong>2022</strong></td>
+<td>worked as summer intern at <a href="https://galois.com/"><img
+src="/missing.ico" class="favicon" alt="/missing.ico" />Galois</a>,
+developing the <a href="https://cryptol.net/"><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />Cryptol langauge</a> and verifying
+cyber-physical systems using <a href="https://coq.inria.fr/"><img
+src="/missing.ico" class="favicon" alt="/missing.ico" />Coq</a></td>
+</tr>
+<tr>
+<td><strong>2021</strong></td>
+<td>worked as summer intern at <a
+href="https://runtimeverification.com/"><img
+src="/favicon/https%253A%252F%252Fruntimeverification.com%252F.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fruntimeverification.com%2F.ico" />Runtime
+Verification</a>, verifying <a
+href="https://ethereum.org/en/developers/docs/smart-contracts/"><img
+src="/favicon/https%253A%252F%252Fethereum.org%252Fen%252Fdevelopers%252Fdocs%252Fsmart-contracts%252F.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fethereum.org%2Fen%2Fdevelopers%2Fdocs%2Fsmart-contracts%2F.ico" />Ethereum
+smart contracts</a> using the <a href="https://kframework.org/"><img
+src="/favicon/https%253A%252F%252Fkframework.org%252F.ico"
+class="favicon" alt="/favicon/https%3A%2F%2Fkframework.org%2F.ico" />K
+Framework</a></td>
+</tr>
+<tr>
+<td><strong>2020</strong></td>
+<td>began PhD program in computer science at <a
+href="https://umd.edu"><img
+src="/favicon/https%253A%252F%252Fumd.edu.ico" class="favicon"
+alt="/favicon/https%3A%2F%2Fumd.edu.ico" />University of
+Maryland</a></td>
+</tr>
+<tr>
+<td><strong>2020</strong></td>
+<td>graduated undergraduate program at <a
+href="https://www.reed.edu"><img
+src="/favicon/https%253A%252F%252Fwww.reed.edu.ico" class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.reed.edu.ico" />Reed College</a> with BA
+in computer science. Thesis: <a
+href="https://github.com/rybla/Thesis-Purity-and-Effect"><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Frybla%252FThesis-Purity-and-Effect.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Frybla%2FThesis-Purity-and-Effect.svg" />Thesis:
+Purity and Effect</a></td>
+</tr>
+<tr>
+<td><strong>2016</strong></td>
+<td>began undergraduate program at <a href="https://www.reed.edu"><img
+src="/favicon/https%253A%252F%252Fwww.reed.edu.ico" class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.reed.edu.ico" />Reed College</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Cool Stuff</h2>
+<ul>
+<li><a href="https://www.purescript.org/"><img
+src="/favicon/https%253A%252F%252Fwww.purescript.org%252F.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.purescript.org%2F.ico" />PureScript</a>:
+a general-purpose programming language inspired by Haskell that compiles
+to Javascript</li>
+<li><a href="https://www.haskell.org/"><img
+src="/favicon/https%253A%252F%252Fwww.haskell.org%252F.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.haskell.org%2F.ico" />Haskell</a>: a
+general-purpose programming language with the most advanced type
+system</li>
+<li><a href="https://bun.sh/"><img
+src="/favicon/https%253A%252F%252Fbun.sh%252F.png" class="favicon"
+alt="/favicon/https%3A%2F%2Fbun.sh%2F.png" />Bun</a>: a fast
+Typescript/Javascript runtime implemented in Zig</li>
+<li><a href="https://zed.dev/"><img
+src="/favicon/https%253A%252F%252Fzed.dev%252F.png" class="favicon"
+alt="/favicon/https%3A%2F%2Fzed.dev%2F.png" />Zed</a>: a fast editor
+implemented in Rust</li>
+<li><a href="https://ziglang.org/"><img
+src="/favicon/https%253A%252F%252Fziglang.org%252F.svg" class="favicon"
+alt="/favicon/https%3A%2F%2Fziglang.org%2F.svg" />Zig</a>: a systems
+programming language with a minimalist design and advanced
+metaprogramming capabilities</li>
+<li><a href="https://marginalrevolution.com/"><img
+src="/favicon/https%253A%252F%252Fmarginalrevolution.com%252F.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fmarginalrevolution.com%2F.png" />Marginal
+Revolution</a>: an economics blog by <a
+href="https://x.com/tylercowen"><img
+src="/favicon/https%253A%252F%252Fx.com%252Ftylercowen.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fx.com%2Ftylercowen.ico" />Tyler Cowen</a>
+and <a href="https://x.com/ATabarrok"><img
+src="/favicon/https%253A%252F%252Fx.com%252FATabarrok.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fx.com%2FATabarrok.ico" />Alex
+Tabarrok</a></li>
+<li><a href="https://overcast.fm/"><img
+src="/favicon/https%253A%252F%252Fovercast.fm%252F.ico" class="favicon"
+alt="/favicon/https%3A%2F%2Fovercast.fm%2F.ico" />Overcast</a>: a simple
+podcast player app for iOS</li>
+<li><a href="https://obsidian.md/"><img
+src="/favicon/https%253A%252F%252Fobsidian.md%252F.svg" class="favicon"
+alt="/favicon/https%3A%2F%2Fobsidian.md%2F.svg" />Obsidian</a>: a
+markdown-based notetaking app</li>
+</ul>
+<h1>References</h1>
+<ul>
+<li><a href="https://github.com/rybla/rybl-dot-net_v5"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Frybla%252Frybl-dot-net_v5.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Frybla%2Frybl-dot-net_v5.svg" />rybla/rybl-dot-net_v5</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Programming_language_theory"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FProgramming_language_theory.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FProgramming_language_theory.ico" />programming
+language theory</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Formal_verification."
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FFormal_verification..ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FFormal_verification..ico" />formal
+specification and verification</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FConway%252527s_Game_of_Life.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FConway%2527s_Game_of_Life.ico" />mathematical
+modeling and simulation</a></li>
+<li><a href="https://en.wikipedia.org/wiki/User_interface_design"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FUser_interface_design.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FUser_interface_design.ico" />user
+interface design</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Game_design"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FGame_design.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGame_design.ico" />game
+design</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Game_theory"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FGame_theory.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGame_theory.ico" />economics
+and game theory</a></li>
+<li><a href="https://pantographeditor.github.io/Pantograph/"
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />Pantograph</a></li>
+<li><a href="https://dl.acm.org/doi/10.1145/3704864" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fdl.acm.org%252Fdoi%252F10.1145%252F3704864.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fdl.acm.org%2Fdoi%2F10.1145%2F3704864.png" />acm</a></li>
+<li><a href="https://github.com/jeprinz" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Fjeprinz.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Fjeprinz.svg" />Jacob
+Prinz</a></li>
+<li><a href="https://www.umd.edu" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fumd.edu%252F.png" class="favicon"
+alt="/favicon/https%3A%2F%2Fumd.edu%2F.png" />University of
+Maryland</a></li>
+<li><a href="https://tangramflex.com/flex" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Ftangramflex.com%252Fflex.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Ftangramflex.com%2Fflex.png" />Flex</a></li>
+<li><a href="https://www.tangramflex.com" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fwww.tangramflex.com.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.tangramflex.com.png" />Tangram</a></li>
+<li><a href="https://github.com/rybla/zypr" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Frybla%252Fzypr.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Frybla%2Fzypr.svg" />Zypr</a></li>
+<li><a href="https://github.com/jeprinz" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Fjeprinz.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Fjeprinz.svg" />Jacob
+Prinz</a></li>
+<li><a href="https://www.umd.edu" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fumd.edu%252F.png" class="favicon"
+alt="/favicon/https%3A%2F%2Fumd.edu%2F.png" />University of
+Maryland</a></li>
+<li><a href="https://github.com/rybla/lh-tactics-test"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Frybla%252Flh-tactics-test.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Frybla%2Flh-tactics-test.svg" />Liquid
+Proof Macros</a></li>
+<li><a href="https://dl.acm.org/doi/abs/10.1145/3546189.3549921"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fdl.acm.org%252Fdoi%252Fabs%252F10.1145%252F3546189.3549921.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fdl.acm.org%2Fdoi%2Fabs%2F10.1145%2F3546189.3549921.png" />acm</a></li>
+<li><a href="https://github.com/lemonidas" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Flemonidas.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Flemonidas.svg" />Leonidas
+Lampropoulos</a></li>
+<li><a href="https://github.com/nikivazou" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Fnikivazou.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Fnikivazou.svg" />Niki
+Vazou</a></li>
+<li><a href="https://www.umd.edu" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fumd.edu%252F.png" class="favicon"
+alt="/favicon/https%3A%2F%2Fumd.edu%2F.png" />University of
+Maryland</a></li>
+<li><a href="https://github.com/rybla/liquid-monadic-selectionsort"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Frybla%252Fliquid-monadic-selectionsort.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Frybla%2Fliquid-monadic-selectionsort.svg" />Extensional
+Equality in Liquid Haskell</a></li>
+<li><a href="https://github.com/lemonidas" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Flemonidas.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Flemonidas.svg" />Leo
+Lampropolous</a></li>
+<li><a href="https://github.com/nikivazou" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Fnikivazou.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Fnikivazou.svg" />Niki
+Vazou</a></li>
+<li><a href="https://mgree.github.io" data-inReference=""
+data-noLinkPreview=""><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />Michael Greenberg</a></li>
+<li><a href="https://www.umd.edu" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fumd.edu%252F.png" class="favicon"
+alt="/favicon/https%3A%2F%2Fumd.edu%2F.png" />University of
+Maryland</a></li>
+<li><a href="http://people.reed.edu/~mab/" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/http%253A%252F%252Fpeople.reed.edu%252F~mab%252F.ico"
+class="favicon"
+alt="/favicon/http%3A%2F%2Fpeople.reed.edu%2F~mab%2F.ico" />Mark
+Bedau</a></li>
+<li><a href="https://jimfix.github.io" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fjimfix.github.io.ico" class="favicon"
+alt="/favicon/https%3A%2F%2Fjimfix.github.io.ico" />Jim Fix</a></li>
+<li><a href="https://www.reed.edu" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fwww.reed.edu.ico" class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.reed.edu.ico" />Reed College</a></li>
+<li><a href="http://www.cs.cmu.edu/~aldrich/" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/http%253A%252F%252Fwww.cs.cmu.edu%252F~aldrich%252F.ico"
+class="favicon"
+alt="/favicon/http%3A%2F%2Fwww.cs.cmu.edu%2F~aldrich%2F.ico" />Jonathan
+Aldrich</a></li>
+<li><a href="https://www.cs.cmu.edu" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/http%253A%252F%252Fwww.cs.cmu.edu%252F~aldrich%252F.ico"
+class="favicon"
+alt="/favicon/http%3A%2F%2Fwww.cs.cmu.edu%2F~aldrich%2F.ico" />CMU</a></li>
+<li><a href="https://arxiv.org/abs/2001.02293" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Farxiv.org%252Fabs%252F2001.02293.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Farxiv.org%2Fabs%2F2001.02293.png" />Reputation
+in Academic Citation Networks</a></li>
+<li><a href="https://www.reed.edu" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fwww.reed.edu.ico" class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.reed.edu.ico" />Reed College</a></li>
+<li><a
+href="http://people.reed.edu/~ormsbyk/projectproject/posts/milnor-fibrations.html"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/http%253A%252F%252Fpeople.reed.edu%252F~ormsbyk%252Fprojectproject%252Fposts%252Fmilnor-fibrations.html.ico"
+class="favicon"
+alt="/favicon/http%3A%2F%2Fpeople.reed.edu%2F~ormsbyk%2Fprojectproject%2Fposts%2Fmilnor-fibrations.html.ico" />Vector
+Calculus Vizualizations</a></li>
+<li><a
+href="http://people.reed.edu/~ormsbyk/projectproject/posts/milnor-fibrations.html"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/http%253A%252F%252Fpeople.reed.edu%252F~ormsbyk%252Fprojectproject%252Fposts%252Fmilnor-fibrations.html.ico"
+class="favicon"
+alt="/favicon/http%3A%2F%2Fpeople.reed.edu%2F~ormsbyk%2Fprojectproject%2Fposts%2Fmilnor-fibrations.html.ico" />Project
+Project</a></li>
+<li><a href="https://www.reed.edu" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fwww.reed.edu.ico" class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.reed.edu.ico" />Reed College</a></li>
+<li><a
+href="http://people.reed.edu/~ormsbyk/projectproject/posts/vector-calculus-demos.html"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/http%253A%252F%252Fpeople.reed.edu%252F~ormsbyk%252Fprojectproject%252Fposts%252Fvector-calculus-demos.html.ico"
+class="favicon"
+alt="/favicon/http%3A%2F%2Fpeople.reed.edu%2F~ormsbyk%2Fprojectproject%2Fposts%2Fvector-calculus-demos.html.ico" />Milnor
+Fibration Vizualizations</a></li>
+<li><a href="https://people.reed.edu/~ormsbyk/projectproject/"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fpeople.reed.edu%252F~ormsbyk%252Fprojectproject%252F.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fpeople.reed.edu%2F~ormsbyk%2Fprojectproject%2F.ico" />Project
+Project</a></li>
+<li><a href="https://www.reed.edu" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fwww.reed.edu.ico" class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.reed.edu.ico" />Reed College</a></li>
+<li><a href="https://labs.oracle.com/pls/apex/r/labs/labs/intro"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Flabs.oracle.com%252Fpls%252Fapex%252Fr%252Flabs%252Flabs%252Fintro.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Flabs.oracle.com%2Fpls%2Fapex%2Fr%2Flabs%2Flabs%2Fintro.png" />Oracle
+Labs</a></li>
+<li><a
+href="https://labs.oracle.com/pls/apex/f?p=94065:11:23393226324575:2619"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Flabs.oracle.com%252Fpls%252Fapex%252Ff%253Fp%253D94065%253A11%253A23393226324575%253A2619.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Flabs.oracle.com%2Fpls%2Fapex%2Ff%3Fp%3D94065%3A11%3A23393226324575%3A2619.png" />Harold
+Carr</a></li>
+<li><a href="https://labs.oracle.com/pls/apex/f?p=labs:bio:0:86"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Flabs.oracle.com%252Fpls%252Fapex%252Ff%253Fp%253Dlabs%253Abio%253A0%253A86.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Flabs.oracle.com%2Fpls%2Fapex%2Ff%3Fp%3Dlabs%3Abio%3A0%3A86.png" />Mark
+Moir</a></li>
+<li><a href="https://galois.com/" data-inReference=""
+data-noLinkPreview=""><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />Galois</a></li>
+<li><a href="https://www.tangramflex.com" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fwww.tangramflex.com.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.tangramflex.com.png" />Tangram</a></li>
+<li><a href="https://galois.com/" data-inReference=""
+data-noLinkPreview=""><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />Galois</a></li>
+<li><a href="https://cryptol.net/" data-inReference=""
+data-noLinkPreview=""><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />Cryptol langauge</a></li>
+<li><a href="https://coq.inria.fr/" data-inReference=""
+data-noLinkPreview=""><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />Coq</a></li>
+<li><a href="https://runtimeverification.com/" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fruntimeverification.com%252F.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fruntimeverification.com%2F.ico" />Runtime
+Verification</a></li>
+<li><a href="https://ethereum.org/en/developers/docs/smart-contracts/"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fethereum.org%252Fen%252Fdevelopers%252Fdocs%252Fsmart-contracts%252F.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fethereum.org%2Fen%2Fdevelopers%2Fdocs%2Fsmart-contracts%2F.ico" />Ethereum
+smart contracts</a></li>
+<li><a href="https://kframework.org/" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fkframework.org%252F.ico"
+class="favicon" alt="/favicon/https%3A%2F%2Fkframework.org%2F.ico" />K
+Framework</a></li>
+<li><a href="https://umd.edu" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fumd.edu.ico" class="favicon"
+alt="/favicon/https%3A%2F%2Fumd.edu.ico" />University of
+Maryland</a></li>
+<li><a href="https://www.reed.edu" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fwww.reed.edu.ico" class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.reed.edu.ico" />Reed College</a></li>
+<li><a href="https://github.com/rybla/Thesis-Purity-and-Effect"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Frybla%252FThesis-Purity-and-Effect.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Frybla%2FThesis-Purity-and-Effect.svg" />Thesis:
+Purity and Effect</a></li>
+<li><a href="https://www.reed.edu" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fwww.reed.edu.ico" class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.reed.edu.ico" />Reed College</a></li>
+<li><a href="https://www.purescript.org/" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fwww.purescript.org%252F.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.purescript.org%2F.ico" />PureScript</a></li>
+<li><a href="https://www.haskell.org/" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fwww.haskell.org%252F.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.haskell.org%2F.ico" />Haskell</a></li>
+<li><a href="https://bun.sh/" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fbun.sh%252F.png" class="favicon"
+alt="/favicon/https%3A%2F%2Fbun.sh%2F.png" />Bun</a></li>
+<li><a href="https://zed.dev/" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fzed.dev%252F.png" class="favicon"
+alt="/favicon/https%3A%2F%2Fzed.dev%2F.png" />Zed</a></li>
+<li><a href="https://ziglang.org/" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fziglang.org%252F.svg" class="favicon"
+alt="/favicon/https%3A%2F%2Fziglang.org%2F.svg" />Zig</a></li>
+<li><a href="https://marginalrevolution.com/" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fmarginalrevolution.com%252F.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fmarginalrevolution.com%2F.png" />Marginal
+Revolution</a></li>
+<li><a href="https://x.com/tylercowen" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fx.com%252Ftylercowen.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fx.com%2Ftylercowen.ico" />Tyler
+Cowen</a></li>
+<li><a href="https://x.com/ATabarrok" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fx.com%252FATabarrok.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fx.com%2FATabarrok.ico" />Alex
+Tabarrok</a></li>
+<li><a href="https://overcast.fm/" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fovercast.fm%252F.ico" class="favicon"
+alt="/favicon/https%3A%2F%2Fovercast.fm%2F.ico" />Overcast</a></li>
+<li><a href="https://obsidian.md/" data-inReference=""
+data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fobsidian.md%252F.svg" class="favicon"
+alt="/favicon/https%3A%2F%2Fobsidian.md%2F.svg" />Obsidian</a></li>
+</ul>
+<h1>Citations</h1></main>
+
+    <footer>
+      <div class="title">
+        <div class="root-title">
+          <a href="/">rybl.net</a>
+        </div>
+
+        <img class="website-icon" src="/image/rybl-small.png" />
+
+        <div class="local-title">About</div>
+      </div>
+      <div class="menu">
+        <div class="item">
+          <a href="/">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon lucide lucide-library-icon lucide-library"
+            >
+              <path d="m16 6 4 14" />
+              <path d="M12 6v14" />
+              <path d="M8 8v12" />
+              <path d="M4 4v16" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/about.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon lucide lucide-info-icon lucide-info"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4" />
+              <path d="M12 8h.01" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/profile.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-globe-icon lucide-globe"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+              <path d="M2 12h20" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/graph.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-orbit-icon lucide-orbit"
+            >
+              <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+              <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+              <circle cx="12" cy="12" r="3" />
+              <circle cx="19" cy="5" r="2" />
+              <circle cx="5" cy="19" r="2" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/signature.html"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-fingerprint-icon lucide-fingerprint"
+            >
+              <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+              <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+              <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+              <path d="M2 12a10 10 0 0 1 18-6" />
+              <path d="M2 16h.01" />
+              <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+              <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+              <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+              <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+          ></a>
+        </div>
+      </div></footer>  </body>
 </html>

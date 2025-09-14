@@ -1,0 +1,617 @@
+<!doctype html>
+<html>
+  <head>
+    <title>rybl.net | Competiting with YouTube</title>
+
+    <link rel="stylesheet" href="/style/common.css" />
+    <link rel="stylesheet" href="/style/background.css" />
+    <link rel="stylesheet" href="/style/custom-elements.css" />
+    <link rel="stylesheet" href="/style/header-and-footer.css" />    <link rel="stylesheet" href="/style/post.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+  rel="stylesheet"
+/>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+  rel="stylesheet"
+/> <script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+></script>
+
+<script src="/script/parallax-body-background-on-scroll.js"></script>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+
+<script>
+  hljs.highlightAll();
+</script>
+  </head>
+  <body>
+    <div id="background"></div> <header><div class="title">
+  <div class="root-title">
+    <a href="/">rybl.net</a>
+  </div>
+
+  <img class="website-icon" src="/image/rybl-small.png" />
+
+  <div class="local-title">Competiting with YouTube</div>
+</div>
+<div class="menu">
+  <div class="item">
+    <a href="/">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon lucide lucide-library-icon lucide-library"
+      >
+        <path d="m16 6 4 14" />
+        <path d="M12 6v14" />
+        <path d="M8 8v12" />
+        <path d="M4 4v16" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/about.html">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon lucide lucide-info-icon lucide-info"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 16v-4" />
+        <path d="M12 8h.01" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/profile.html">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-globe-icon lucide-globe"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+        <path d="M2 12h20" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/graph.html">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-orbit-icon lucide-orbit"
+      >
+        <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+        <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+        <circle cx="12" cy="12" r="3" />
+        <circle cx="19" cy="5" r="2" />
+        <circle cx="5" cy="19" r="2" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/signature.html"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-fingerprint-icon lucide-fingerprint"
+      >
+        <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+        <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+        <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+        <path d="M2 12a10 10 0 0 1 18-6" />
+        <path d="M2 16h.01" />
+        <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+        <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+        <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+        <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+    ></a>
+  </div>
+</div></header>
+
+    <main>
+      <div class="main-inner"><h2><a href="/post/youtube-alternatives.html" data-noLinkFavicon=""
+data-noLinkPreview="">Competiting with YouTube</a></h2>
+<div class="header-info">
+<p><u>Published:</u> 2021-08-25</p>
+<p><u>Tags:</u> technology</p>
+<p><u>Abstract</u></p>
+<p>YouTube is hugely dominant in the market of general public video
+hosting. Why is YouTube so dominant, how should new competators take on
+YouTube, and will YouTube maintain its dominance over the next 10
+years?</p>
+</div>
+<div class="table-of-contents">
+<p><u>Table of Contents</u></p>
+<ol type="1">
+<li><a href="#youtubes-popular-dominance" data-noLinkFavicon=""
+data-noLinkPreview="">YouTube's Popular Dominance</a></li>
+<li><a href="#youtubes-revenue-model" data-noLinkFavicon=""
+data-noLinkPreview="">YouTube's Revenue Model</a></li>
+<li><a href="#youtubes-network-effects" data-noLinkFavicon=""
+data-noLinkPreview="">YouTube's Network Effects</a></li>
+<li><a href="#competing-with-youtube" data-noLinkFavicon=""
+data-noLinkPreview="">Competing with YouTube</a></li>
+<li><a href="#youtubes-general-advantage" data-noLinkFavicon=""
+data-noLinkPreview="">YouTube's General Advantage</a></li>
+<li><a href="#predictions" data-noLinkFavicon=""
+data-noLinkPreview="">Predictions</a></li>
+<li><a href="#references" data-noLinkFavicon=""
+data-noLinkPreview="">References</a></li>
+<li><a href="#citations" data-noLinkFavicon=""
+data-noLinkPreview="">Citations</a></li>
+</ol>
+</div>
+<h1 id="youtubes-popular-dominance">YouTube's Popular Dominance</h1>
+<p>The following diagram ranks the top 50 websites by total average
+visits worldwide monthly [<span><a
+href="https://www.visualcapitalist.com/the-50-most-visited-websites-in-the-world/"><img
+src="/favicon/https%253A%252F%252Fwww.visualcapitalist.com%252Fthe-50-most-visited-websites-in-the-world%252F.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.visualcapitalist.com%2Fthe-50-most-visited-websites-in-the-world%2F.png" />visualcapitalist</a><span
+class="sidenote preview"><span class="preview-title"><em><a
+href="https://www.visualcapitalist.com/the-50-most-visited-websites-in-the-world/"
+title="_blank"><img
+src="/favicon/https%253A%252F%252Fwww.visualcapitalist.com%252Fthe-50-most-visited-websites-in-the-world%252F.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.visualcapitalist.com%2Fthe-50-most-visited-websites-in-the-world%2F.png" />https://www.visualcapitalist.com/the-50-most-visited-websites-in-the-world/</a></em></span><span
+class="preview-description">Placeholder description for
+https://www.visualcapitalist.com/the-50-most-visited-websites-in-the-world/</span></span></span>].</p>
+<p><img
+src="https://www.visualcapitalist.com/wp-content/uploads/2021/01/Top_50_Websites_V4-2-1536x1536.jpg" /></p>
+<p>YouTube.com was the second most popular with 34.6 billion visits.
+This was 37.4% as much traffic as the first most popular website --
+Google.com with 92.5 billion visits -- and 135.0% as much traffic as the
+third most popular website -- Facebook.com with 20 billion visits.</p>
+<p>Together, YouTube and Facebook majorly dominate the market of
+(non-porn) public video hosting. The only entity that even comes close
+is the fourth and fifth most popular websites -- Twitter.com with 6.6
+billion visits and Instagram.com with 6.1 billion visits -- which are
+19.1% and 17.6% as much traffic as just YouTube.com respectively. Of
+course, Facebook.com, Twitter.com, and Instagram.com are not only
+centered around video content so this comparison to YouTube.com's domain
+of video hosting is only partial.</p>
+<p>In the same way that Google.com has dominated search and Facebook.com
+has dominated social media (debatable what "social media" means here),
+YouTube has dominated public video hosting.</p>
+<h1 id="youtubes-revenue-model">YouTube's Revenue Model</h1>
+<p>How does YouTube make money? According to YouTube, they makes money
+in two ways:</p>
+<ul>
+<li>Payments from advertisers in return for hosting ads on most YouTube
+videos</li>
+<li>Payments from subscribers to YouTube Premium in return to access to
+exclusive content funded by YouTube</li>
+</ul>
+<p>[<span><a
+href="https://www.youtube.com/howyoutubeworks/our-commitments/sharing-revenue/"><img
+src="/favicon/https%253A%252F%252Fwww.youtube.com%252Fhowyoutubeworks%252Four-commitments%252Fsharing-revenue%252F.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.youtube.com%2Fhowyoutubeworks%2Four-commitments%2Fsharing-revenue%2F.png" />YouTube:
+Sharing Revenue</a><span class="sidenote preview"><span
+class="preview-title"><em><a
+href="https://www.youtube.com/howyoutubeworks/our-commitments/sharing-revenue/"
+title="_blank"><img
+src="/favicon/https%253A%252F%252Fwww.youtube.com%252Fhowyoutubeworks%252Four-commitments%252Fsharing-revenue%252F.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.youtube.com%2Fhowyoutubeworks%2Four-commitments%2Fsharing-revenue%2F.png" />https://www.youtube.com/howyoutubeworks/our-commitments/sharing-revenue/</a></em></span><span
+class="preview-description">Placeholder description for
+https://www.youtube.com/howyoutubeworks/our-commitments/sharing-revenue/</span></span></span>]</p>
+<p>The vast majority of YouTube's revenue comes from advertising
+[citation needed].</p>
+<h1 id="youtubes-network-effects">YouTube's Network Effects</h1>
+<p>Independent video creators (or just "creators" for short) create the
+vast majority of content of YouTube. Even the YouTube Premium content is
+usually made by creators that started out like anyone else and built an
+audience over years of producing publically-available videos on
+YouTube.</p>
+<p>In order for YouTube to be such a popular site, it needs to have a
+large amount and variety of content that appeal strongly to many
+different kinds of users. With such a huge creator base producing
+content, YouTube clearly meets this demand. The network effect here is
+that new creators that are considering where to publish their content
+are more attracted to YouTube the more users are there to watch their
+content, and new users that are considering where to look for content
+are more attracted to YouTube the more creators publish their content
+there. This virtuous cycle results in YouTube gaining a massive
+advantage over competitors, as any small starting differential in users
+and creators between YouTube and competitors in the past grows much
+larger over time as the advantage accumulates due to the increasing
+returns (as opposed to diminishing return) aspect of network effects
+with respect to gaining new users and creators.</p>
+<p>How could a new competitor possibly compete with YouTube with this
+dynamic persisting?</p>
+<h1 id="competing-with-youtube">Competing with YouTube</h1>
+<p>To decide a measure for competativeness with YouTube, first specify
+respects to which the competitor would like to compete with YouTube.
+This could be all respects where the competitor is better in every way,
+or a selection of respects where the competitor does not compete for all
+of YouTube's market but can still gain an advantage in a submarket.</p>
+<p>Some example respects:</p>
+<ul>
+<li>Attractiveness for creators</li>
+<li>Quality content</li>
+<li>Curated content</li>
+<li>Personalized/commissioned content</li>
+<li>TODO: more respects</li>
+</ul>
+<p>Many of these are already approved upon from YouTube by websites such
+as:</p>
+<ul>
+<li><em>Vimeo</em>, etc. allows a creator to put their videos on sale
+for a chosen prices so that users can directly buy access to individual
+videos.</li>
+<li><em>Patreon</em>, etc. simplfies the process of a creator receiving
+support directly from fans, and allows a creator to gather a
+personalized community and sell commisioned content to patrons.</li>
+<li><em>Netflix</em>, <em>Hulu</em>, etc. offer quality, curated,
+long-form content (movies and TV shows) for a fixed subscription price
+with (usually) no advertisements.</li>
+<li><em>Twitch</em>, etc. offer specialized livestreaming services and
+audience interaction.</li>
+<li>TODO: more examples</li>
+</ul>
+<p>Apparently, there still is some diverse competition among specific
+sub-markets of public video hosting, even if YouTube dominates the most
+generic case and, even combined altogether these submarkets probably do
+not match half of YouTube's popularity (by average views).</p>
+<p>So, is there some clear inefficiency in this state of affairs where a
+new competitor <em>should</em> be able to compete with YouTube more
+directly? Or are there good reasons why competition should focus on
+these more niche markets rather than try to compete for YouTube's
+creators and users in general?</p>
+<h1 id="youtubes-general-advantage">YouTube's General Advantage</h1>
+<p>A major respect to which no public video hosting service seems to
+compete well with YouTube on is sheer scale. As of February 2020,
+YouTube announced that about 720 thousand hours of video are uploaded to
+and 1 billion hours of video are watched on YouTube each day. [<span><a
+href="https://blog.youtube/news-and-events/youtube-at-15-my-personal-journey"><img
+src="/favicon/https%253A%252F%252Fblog.youtube%252Fnews-and-events%252Fyoutube-at-15-my-personal-journey.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fblog.youtube%2Fnews-and-events%2Fyoutube-at-15-my-personal-journey.ico" />Blog.Youtube:
+YouTube at 15</a><span class="sidenote preview"><span
+class="preview-title"><em><a
+href="https://blog.youtube/news-and-events/youtube-at-15-my-personal-journey"
+title="_blank"><img
+src="/favicon/https%253A%252F%252Fblog.youtube%252Fnews-and-events%252Fyoutube-at-15-my-personal-journey.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fblog.youtube%2Fnews-and-events%2Fyoutube-at-15-my-personal-journey.ico" />https://blog.youtube/news-and-events/youtube-at-15-my-personal-journey</a></em></span><span
+class="preview-description">Placeholder description for
+https://blog.youtube/news-and-events/youtube-at-15-my-personal-journey</span></span></span>].
+No other platform, not even Facebook, comes close to handling the size
+of that data being transmitted at that rate (as of 2018, Facebook serves
+about 100 million hours of video content each day) [<span><a
+href="https://www.yansmedia.com/blog/facebook-video-statistics"><img
+src="/favicon/https%253A%252F%252Fwww.yansmedia.com%252Fblog%252Ffacebook-video-statistics.jpg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.yansmedia.com%2Fblog%2Ffacebook-video-statistics.jpg" />Yansmedia:
+Facebook Video Statistics</a><span class="sidenote preview"><span
+class="preview-title"><em><a
+href="https://www.yansmedia.com/blog/facebook-video-statistics"
+title="_blank"><img
+src="/favicon/https%253A%252F%252Fwww.yansmedia.com%252Fblog%252Ffacebook-video-statistics.jpg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.yansmedia.com%2Fblog%2Ffacebook-video-statistics.jpg" />https://www.yansmedia.com/blog/facebook-video-statistics</a></em></span><span
+class="preview-description">Placeholder description for
+https://www.yansmedia.com/blog/facebook-video-statistics</span></span></span>].</p>
+<p>Video is the highest-bandwidth media popularly consumed: they are
+very large (being a long collection of images) and are consumed fast.
+Hosts and browsers have even adopted special support for
+<em>buffering</em> specifically to allow viewing to be possible in HTML.
+To facilitate such high-bandwidth hosting at such a large scale, a
+provider needs to have very distributed (for robustness and mitigating
+latency) and powerful infrastructure.</p>
+<p>Google (which owns YouTube and sustained it when it was popularly
+thought that YouTube might not have a sustainable business model
+[<span><a href="https://en.wikipedia.org/wiki/History_of_YouTube"><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FHistory_of_YouTube.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FHistory_of_YouTube.ico" />Wikipedia:
+History of YouTube</a><span class="sidenote preview"><span
+class="preview-title"><em><a
+href="https://en.wikipedia.org/wiki/History_of_YouTube"
+title="_blank"><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FHistory_of_YouTube.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FHistory_of_YouTube.ico" />https://en.wikipedia.org/wiki/History_of_YouTube</a></em></span><span
+class="preview-description">Placeholder description for
+https://en.wikipedia.org/wiki/History_of_YouTube</span></span></span>])
+has developed a huge advantange in these aspects through its array of
+datacenters [<span><a
+href="https://datacenterfrontier.com/inside-a-google-data-center-2020-version/"><img
+src="/favicon/https%253A%252F%252Fdatacenterfrontier.com%252Finside-a-google-data-center-2020-version%252F.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fdatacenterfrontier.com%2Finside-a-google-data-center-2020-version%2F.ico" />datacenterfrontier</a><span
+class="sidenote preview"><span class="preview-title"><em><a
+href="https://datacenterfrontier.com/inside-a-google-data-center-2020-version/"
+title="_blank"><img
+src="/favicon/https%253A%252F%252Fdatacenterfrontier.com%252Finside-a-google-data-center-2020-version%252F.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fdatacenterfrontier.com%2Finside-a-google-data-center-2020-version%2F.ico" />https://datacenterfrontier.com/inside-a-google-data-center-2020-version/</a></em></span><span
+class="preview-description">Placeholder description for
+https://datacenterfrontier.com/inside-a-google-data-center-2020-version/</span></span></span>].
+Building these datacenters is an huge activation cost [<span><a
+href="https://en.wikipedia.org/wiki/Activation_energy"><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FActivation_energy.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FActivation_energy.ico" />Wikipedia:
+activation energy</a><span class="sidenote preview"><span
+class="preview-title"><em><a
+href="https://en.wikipedia.org/wiki/Activation_energy"
+title="_blank"><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FActivation_energy.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FActivation_energy.ico" />https://en.wikipedia.org/wiki/Activation_energy</a></em></span><span
+class="preview-description">Placeholder description for
+https://en.wikipedia.org/wiki/Activation_energy</span></span></span>].
+When Google bought YouTube, it kickstarted its popularity by expanding
+this infrastructure in order to increase capacity, which ultimately
+facilitated the increasing returns of network effects that played such a
+large part in building YouTube's dominance today. Without access to
+Google's capital, YouTube the start-up might not have been able to
+afford or judge worthwhile the risk of investing in the infrastructure
+that was so important for its success.</p>
+<p>Today, the activation costs are higher and lower in different
+ways:</p>
+<ul>
+<li>The costs of hosting content online is much lower due to better
+access to third-party, business-oriented content hosting services.
+However, these services are more costly on margin than owning the
+infrastructure yourself, so in the long-run take a deep cut into overall
+profits.</li>
+<li>With YouTube as an existing and hugely dominant market player, a new
+competitor needs to overcome YouTube's advantages. Since YouTube is
+basically free for users and creators, it is diffuclt to undercut its
+prices (although, they can still be undercut by paying more to creators
+and even users). A competitor would need to appeal to a submarket, as
+mentioned in the Competing with YouTube section earlier.</li>
+<li>It is much easier for new competition to get noticed on today's
+internet as opposed to the internet of 2006 when there were many fewer
+users and much worse ability to share links to content. Online
+advertisement is easier and more efficient than ever.</li>
+<li>TODO: more ways</li>
+</ul>
+<h1 id="predictions">Predictions</h1>
+<p>In the next 10 years, I expect:</p>
+<ul>
+<li><p>Activation costs for undercutting YouTube with a generally better
+service are too high and have too low expected returns to expect it to
+be accomplished successfully anytime soon. YouTube will maintain a huge
+dominance in general public video hosting, but its dominant share of
+traffic will be roughly stable.</p></li>
+<li><p>The submarkets of public video hosting will become more
+prominent, and start to eat away at YouTube's user/creator base. YouTube
+will still be the home for random homemade content and newly independent
+creators, but a variety of other platforms will attract away creators
+with features cater to their specific kinds content. Creators can will
+make their start on YouTube, but usually migrate to other platforms once
+they find a content niche. This will be facilitated by a drop in the
+effective cost of using alternative platforms due to an homogenizing of
+user interfaces and sharing methods.</p></li>
+</ul>
+<h1 id="references">References</h1>
+<ul>
+<li><a
+href="https://www.visualcapitalist.com/the-50-most-visited-websites-in-the-world/"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fwww.visualcapitalist.com%252Fthe-50-most-visited-websites-in-the-world%252F.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.visualcapitalist.com%2Fthe-50-most-visited-websites-in-the-world%2F.png" />visualcapitalist</a></li>
+<li><a
+href="https://www.visualcapitalist.com/wp-content/uploads/2021/01/Top_50_Websites_V4-2-1536x1536.jpg"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fwww.visualcapitalist.com%252Fwp-content%252Fuploads%252F2021%252F01%252FTop_50_Websites_V4-2-1536x1536.jpg.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.visualcapitalist.com%2Fwp-content%2Fuploads%2F2021%2F01%2FTop_50_Websites_V4-2-1536x1536.jpg.png" /></a></li>
+<li><a
+href="https://www.youtube.com/howyoutubeworks/our-commitments/sharing-revenue/"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fwww.youtube.com%252Fhowyoutubeworks%252Four-commitments%252Fsharing-revenue%252F.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.youtube.com%2Fhowyoutubeworks%2Four-commitments%2Fsharing-revenue%2F.png" />YouTube:
+Sharing Revenue</a></li>
+<li><a
+href="https://blog.youtube/news-and-events/youtube-at-15-my-personal-journey"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fblog.youtube%252Fnews-and-events%252Fyoutube-at-15-my-personal-journey.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fblog.youtube%2Fnews-and-events%2Fyoutube-at-15-my-personal-journey.ico" />Blog.Youtube:
+YouTube at 15</a></li>
+<li><a href="https://www.yansmedia.com/blog/facebook-video-statistics"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fwww.yansmedia.com%252Fblog%252Ffacebook-video-statistics.jpg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fwww.yansmedia.com%2Fblog%2Ffacebook-video-statistics.jpg" />Yansmedia:
+Facebook Video Statistics</a></li>
+<li><a href="https://en.wikipedia.org/wiki/History_of_YouTube"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FHistory_of_YouTube.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FHistory_of_YouTube.ico" />Wikipedia:
+History of YouTube</a></li>
+<li><a
+href="https://datacenterfrontier.com/inside-a-google-data-center-2020-version/"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fdatacenterfrontier.com%252Finside-a-google-data-center-2020-version%252F.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fdatacenterfrontier.com%2Finside-a-google-data-center-2020-version%2F.ico" />datacenterfrontier</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Activation_energy"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FActivation_energy.ico"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FActivation_energy.ico" />Wikipedia:
+activation energy</a></li>
+</ul>
+<h1 id="citations">Citations</h1></div>
+    </main>
+
+    <footer>
+      <div class="title">
+        <div class="root-title">
+          <a href="/">rybl.net</a>
+        </div>
+
+        <img class="website-icon" src="/image/rybl-small.png" />
+
+        <div class="local-title">Competiting with YouTube</div>
+      </div>
+      <div class="menu">
+        <div class="item">
+          <a href="/">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon lucide lucide-library-icon lucide-library"
+            >
+              <path d="m16 6 4 14" />
+              <path d="M12 6v14" />
+              <path d="M8 8v12" />
+              <path d="M4 4v16" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/about.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon lucide lucide-info-icon lucide-info"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4" />
+              <path d="M12 8h.01" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/profile.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-globe-icon lucide-globe"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+              <path d="M2 12h20" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/graph.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-orbit-icon lucide-orbit"
+            >
+              <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+              <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+              <circle cx="12" cy="12" r="3" />
+              <circle cx="19" cy="5" r="2" />
+              <circle cx="5" cy="19" r="2" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/signature.html"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-fingerprint-icon lucide-fingerprint"
+            >
+              <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+              <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+              <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+              <path d="M2 12a10 10 0 0 1 18-6" />
+              <path d="M2 16h.01" />
+              <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+              <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+              <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+              <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+          ></a>
+        </div>
+      </div></footer>  </body>
+</html>

@@ -1,0 +1,505 @@
+<!doctype html>
+<html>
+  <head>
+    <title>rybl.net | Magic the Gathering - Deckbuilder Draft</title>
+
+    <link rel="stylesheet" href="/style/common.css" />
+    <link rel="stylesheet" href="/style/background.css" />
+    <link rel="stylesheet" href="/style/custom-elements.css" />
+    <link rel="stylesheet" href="/style/header-and-footer.css" />    <link rel="stylesheet" href="/style/post.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+  rel="stylesheet"
+/>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+  rel="stylesheet"
+/> <script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+></script>
+
+<script src="/script/parallax-body-background-on-scroll.js"></script>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+
+<script>
+  hljs.highlightAll();
+</script>
+  </head>
+  <body>
+    <div id="background"></div> <header><div class="title">
+  <div class="root-title">
+    <a href="/">rybl.net</a>
+  </div>
+
+  <img class="website-icon" src="/image/rybl-small.png" />
+
+  <div class="local-title">Magic the Gathering - Deckbuilder Draft</div>
+</div>
+<div class="menu">
+  <div class="item">
+    <a href="/">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon lucide lucide-library-icon lucide-library"
+      >
+        <path d="m16 6 4 14" />
+        <path d="M12 6v14" />
+        <path d="M8 8v12" />
+        <path d="M4 4v16" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/about.html">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon lucide lucide-info-icon lucide-info"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 16v-4" />
+        <path d="M12 8h.01" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/profile.html">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-globe-icon lucide-globe"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+        <path d="M2 12h20" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/graph.html">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-orbit-icon lucide-orbit"
+      >
+        <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+        <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+        <circle cx="12" cy="12" r="3" />
+        <circle cx="19" cy="5" r="2" />
+        <circle cx="5" cy="19" r="2" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/signature.html"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-fingerprint-icon lucide-fingerprint"
+      >
+        <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+        <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+        <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+        <path d="M2 12a10 10 0 0 1 18-6" />
+        <path d="M2 16h.01" />
+        <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+        <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+        <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+        <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+    ></a>
+  </div>
+</div></header>
+
+    <main>
+      <div class="main-inner"><h2><a href="/post/magic-the-gathering-deckbuilder-draft.html"
+data-noLinkFavicon="" data-noLinkPreview="">Magic the Gathering -
+Deckbuilder Draft</a></h2>
+<div class="header-info">
+<p><u>Published:</u> 2021-01-08</p>
+<p><u>Tags:</u> game-design</p>
+<p><u>Abstract</u></p>
+<p>A popular way to play Magic the Gathering is via a draft where
+players select cards to build decks, then compete in a small tournament
+with those decks. This article presents a modification of the typical
+draft format that incorporates deckbuilding from randomized markets
+between the tournament games, so that decks get progressively stronger
+and more specialized in a fair way throughout the tournament.</p>
+</div>
+<div class="table-of-contents">
+<p><u>Table of Contents</u></p>
+<ol type="1">
+<li><a href="#introduction" data-noLinkFavicon=""
+data-noLinkPreview="">Introduction</a></li>
+<li><a href="#goals" data-noLinkFavicon=""
+data-noLinkPreview="">Goals</a></li>
+<li><a href="#requirements" data-noLinkFavicon=""
+data-noLinkPreview="">Requirements</a></li>
+<li><a href="#definitions" data-noLinkFavicon=""
+data-noLinkPreview="">Definitions</a></li>
+<li><a href="#protocol" data-noLinkFavicon=""
+data-noLinkPreview="">Protocol</a></li>
+<li><a href="#variants" data-noLinkFavicon=""
+data-noLinkPreview="">Variants</a></li>
+<li><a href="#design-notes" data-noLinkFavicon=""
+data-noLinkPreview="">Design Notes</a></li>
+<li><a href="#references" data-noLinkFavicon=""
+data-noLinkPreview="">References</a></li>
+<li><a href="#citations" data-noLinkFavicon=""
+data-noLinkPreview="">Citations</a></li>
+</ol>
+</div>
+<h1 id="introduction">Introduction</h1>
+<p>Typically in a Magic the Gathering (MTG) draft, there are three
+phases:</p>
+<ol>
+<li>Select (i.e. draft) cards</li>
+<li>Build deck</li>
+<li>Play games Though this counts as a deck-building game, the
+deck-building happens entirely separately from the actual games you play
+with the built decks. To be sure, this kind of play can be very fun, but
+what if you wanted to have the deck-building happen amidst play? This
+sort of deck-building style has been made popular by such games as
+Dominion (board game) and Slay the Spire (video game). In MTG itself,
+the Conspiracy set (2014) experimented with cards that had abilities
+relevant during draft, inviting some interaction between draft and play
+itself.</li>
+</ol>
+<h1 id="goals">Goals</h1>
+<p>The following setup provides a way to conduct an MTG draft where the
+deck-building happens between MTG games, the idea being that each
+player’s deck is progressively built to be more refined and with better
+cards, where cards of higher rarities are only available later in the
+draft.</p>
+<p><strong>Main goals.</strong></p>
+<ol>
+<li>Decks start off weak and unrefined.</li>
+<li>It is still possible in the early and middle stages of the draft to
+change major deck strategies.</li>
+<li>More powerful cards are presented randomly throughout the draft, and
+to be obtained they require the trading-in of some amount of other
+cards.</li>
+</ol>
+<h1 id="requirements">Requirements</h1>
+<p>Let \(n\) be the number of players and \(r\) be the number of rounds
+to play. You will need the following volumes of cards (preferably
+color-balanced to at least a reasonable extent).</p>
+<ul>
+<li>commons: \(45 n + 8 r n\).</li>
+<li>uncommons: \(8 r\).</li>
+<li>rares + mythic rares: \(5 r\).</li>
+</ul>
+<p>This format is best played with 2 or 4 players, and for 5-10
+rounds.</p>
+<h1 id="definitions">Definitions</h1>
+<ul>
+<li><strong>Common starter pack</strong> (15 cards, all common)
+<ul>
+<li>2 mono-color of each color</li>
+<li>2 colorless</li>
+<li>3 multicolor</li>
+</ul></li>
+<li><strong>Common booster pack</strong> (8 cards, all common)
+<ul>
+<li>1 mon-color of each color</li>
+<li>3 colorless + multicolor</li>
+</ul></li>
+<li><strong>Uncommon booster packs</strong> (8 cards, all uncommon)
+<ul>
+<li>1 mono-color of each color</li>
+<li>3 colorless + multicolor</li>
+</ul></li>
+<li><strong>Rare booster packs</strong> (5 cards, all rare or mythic
+rare)</li>
+<li><strong>Draft</strong>
+<ol>
+<li>Each player opens one pack.</li>
+<li>Each player selects one card to keep from the pack they are holding
+(i.e. <strong>drafts</strong> one card).</li>
+<li>Each player passes their pack to the next player in the ring.</li>
+<li>The players repeat steps 2-3 until there are no cards left in the
+packs.</li>
+<li>The players repeat steps 1-4 until all 3 packs have been
+drafted.</li>
+</ol></li>
+<li><strong>Market</strong> (16 cards)
+<ul>
+<li>1 uncommon booster pack</li>
+<li>1 rare booster pack</li>
+<li>(<strong>Old Rare Market</strong>) all rare cards from the previous
+round's market</li>
+</ul></li>
+<li><strong>Buying a card</strong>
+<ul>
+<li>Common: worth 1.</li>
+<li>Uncommon: costs 10, worth 8.</li>
+<li>Rare: costs 20, worth 14.</li>
+<li>To buy a card that costs <em>X</em>, trade in a collection of cards
+with a total worth at least <em>X</em>. Cards in the collection are
+worth +1, +2, and +4 for commons, uncommona, and (mythic) rares
+respectively extra for each color they share with the card being
+bought.</li>
+</ul></li>
+</ul>
+<h1 id="protocol">Protocol</h1>
+<ol>
+<li><strong>Setup</strong> where <em>n</em> is the number of players and
+<em>r</em> is the number of rounds. Form the following packs:
+<ol>
+<li><em>common starter packs</em>: \(3 n\).</li>
+<li><em>common booster packs</em>: \(r n\).</li>
+<li><em>uncommon booster packs</em>: \(r\).</li>
+<li><em>rare booster packs</em>: \(r\).</li>
+</ol></li>
+<li><strong>Initial Draft.</strong>
+<ol>
+<li>The players drafts with 3 common starter packs each.</li>
+<li>Each player builds 40-card minimum decks (including freely-available
+basic lands) from the cards they’ve drafted.</li>
+</ol></li>
+<li><strong>Competitive Drafts.</strong>
+<ol>
+<li>Players play 1-versus-1 deathmatch (best of 1) games.</li>
+<li>Each player is dealt one common booster pack.</li>
+<li>Deal 1 uncommon booster pack and 1 rare booster pack into the
+market.</li>
+<li>In cyclic order from losers to winners, players take turns either
+<em>buying</em> a single card from the market or <em>passing</em>.
+Continue until all players <em>pass</em> consecutively.</li>
+<li>Discard from the market the <em>old rare market</em> and all
+uncommon cards. The rare cards left in the market become the new <em>old
+rare market</em>.</li>
+<li>Steps 1-4 constitute a <strong>round</strong>. Players play \(r\)
+rounds.</li>
+</ol></li>
+<li><strong>Scoring.</strong>
+<ul>
+<li>Each win is worth 2 points, each tie is worth 1 point.</li>
+<li>The winner is the player with the most points after the last
+round.</li>
+</ul></li>
+</ol>
+<h1 id="variants">Variants</h1>
+<ul>
+<li>Don't make all packs perfectly color-representative.</li>
+<li>Mofify costs and worths of uncommons and rares.</li>
+<li>Make mythic rares cost and worth more.</li>
+</ul>
+<h1 id="design-notes">Design Notes</h1>
+<ul>
+<li>The losers buy first, giving losers an advantage, because otherwise
+the repeated games would suffer from a <span><a
+href="https://insideupgames.com/the-runaway-leader-problem/"><img
+src="/favicon/https%253A%252F%252Finsideupgames.com%252Fthe-runaway-leader-problem%252F.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Finsideupgames.com%2Fthe-runaway-leader-problem%2F.png" />runaway
+leader</a><span class="sidenote preview"><span
+class="preview-title"><em><a
+href="https://insideupgames.com/the-runaway-leader-problem/"
+title="_blank"><img
+src="/favicon/https%253A%252F%252Finsideupgames.com%252Fthe-runaway-leader-problem%252F.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Finsideupgames.com%2Fthe-runaway-leader-problem%2F.png" />https://insideupgames.com/the-runaway-leader-problem/</a></em></span><span
+class="preview-description">Placeholder description for
+https://insideupgames.com/the-runaway-leader-problem/</span></span></span>
+--- the winner would have the advantage of getting first pick from the
+market which makes them more likely to keep winning in the future,
+dictating that an early winner gain an insurmountable advantage. Giving
+intermediate losers an advantage keeps playes closely competative, never
+allowing the tournament to feel "decided" too early on.</li>
+<li>There isn't a final game(s) that decides the winner, because
+otherwise there would be an incentive to lose the competative draft
+games in order toget first choice in the markets.</li>
+<li>Note there are never any common cards available in the market. This
+is because, if there were, they would probably be costed around 2-3.
+This opens the door to a lot of little calculations and metagaming,
+where players must consider buying and selling more that 10 cards each
+round in order to be competative, since there is enough liquidity with
+the ability to trade in commons later and some commons being only
+slightly better than others but are still worth the optimization against
+your opponent's specific decks. Though this could perhaps be a fun
+addition for very dedicated players, to me it seems to introduce too
+much complexity and not enough fun and/or interesting decisions. It's
+just a bunch of micromanaging and annoying risk-assessment or having to
+know the huge common pool.</li>
+</ul>
+<h1 id="references">References</h1>
+<ul>
+<li><a href="https://insideupgames.com/the-runaway-leader-problem/"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Finsideupgames.com%252Fthe-runaway-leader-problem%252F.png"
+class="favicon"
+alt="/favicon/https%3A%2F%2Finsideupgames.com%2Fthe-runaway-leader-problem%2F.png" />runaway
+leader</a></li>
+</ul>
+<h1 id="citations">Citations</h1></div>
+    </main>
+
+    <footer>
+      <div class="title">
+        <div class="root-title">
+          <a href="/">rybl.net</a>
+        </div>
+
+        <img class="website-icon" src="/image/rybl-small.png" />
+
+        <div class="local-title">Magic the Gathering - Deckbuilder Draft</div>
+      </div>
+      <div class="menu">
+        <div class="item">
+          <a href="/">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon lucide lucide-library-icon lucide-library"
+            >
+              <path d="m16 6 4 14" />
+              <path d="M12 6v14" />
+              <path d="M8 8v12" />
+              <path d="M4 4v16" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/about.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon lucide lucide-info-icon lucide-info"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4" />
+              <path d="M12 8h.01" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/profile.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-globe-icon lucide-globe"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+              <path d="M2 12h20" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/graph.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-orbit-icon lucide-orbit"
+            >
+              <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+              <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+              <circle cx="12" cy="12" r="3" />
+              <circle cx="19" cy="5" r="2" />
+              <circle cx="5" cy="19" r="2" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/signature.html"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-fingerprint-icon lucide-fingerprint"
+            >
+              <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+              <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+              <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+              <path d="M2 12a10 10 0 0 1 18-6" />
+              <path d="M2 16h.01" />
+              <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+              <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+              <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+              <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+          ></a>
+        </div>
+      </div></footer>  </body>
+</html>

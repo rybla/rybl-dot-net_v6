@@ -1,11 +1,16 @@
 :root {
   --main-width: 800px;
-  --basic-box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.5);
-}
 
-/* -------------------------------------------------------------------------- */
-/* existing elements */
-/* -------------------------------------------------------------------------- */
+  --basic-box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.5);
+
+  /*--basic-box-background: color-mix(in srgb, lightblue, transparent 50%);*/
+  --basic-box-background: color-mix(in srgb, darkblue, transparent 90%);
+
+  /*--popout-border: 3px dashed black;*/
+  --popout-border: none;
+
+  --indent-border-left: 3px solid black;
+}
 
 * {
   box-sizing: border-box;
@@ -15,7 +20,11 @@ html {
   margin: 0;
   padding: 0;
 
+  overflow-x: hidden;
   overscroll-behavior: none;
+  scroll-behavior: smooth;
+
+  font-family: "Spectral", serif;
 }
 
 body {
@@ -31,17 +40,12 @@ main {
   flex: 1 1 auto;
   margin: 1em auto;
 
-  /*background: color-mix(in srgb, #f6eee3, transparent 20%);*/
-  background: color-mix(in srgb, #cccccc, transparent 30%);
-}
+  background: color-mix(in srgb, #f6eee3, transparent 20%);
 
-@media (min-width: calc(800px)) {
-  main {
+  @media (min-width: calc(800px)) {
     width: var(--main-width);
   }
-}
-@media (max-width: calc(800px - 1px)) {
-  main {
+  @media (max-width: calc(800px - 1px)) {
     width: 100%;
   }
 }
@@ -58,6 +62,31 @@ h6 {
   padding: 0;
 }
 
+a {
+  display: inline;
+
+  color: inherit;
+  /*background: color-mix(in hsl, #f28500, transparent 50%);*/
+  background: color-mix(in hsl, black, transparent 90%);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  & > .favicon {
+    /*align-self: center;*/
+    margin-right: 0.2em;
+    margin-bottom: -0.2em;
+  }
+
+  & > .name {
+    align-self: baseline;
+  }
+}
+
 p {
   margin: 0.5em 0;
 }
@@ -67,62 +96,58 @@ main p > img {
 }
 
 pre {
-  padding: 1em;
-  background: black;
-  color: white;
+  max-height: 400px;
+  padding: 0.5rem;
+  border-left: 0.5rem solid var(--container--border--color);
+
+  /*background: color-mix(in hsl, black, transparent 20%);*/
+  /*color: white;*/
+
+  font-size: 1em;
+
+  code {
+    /*font-size: 0.8em;*/
+  }
+
+  overflow: auto;
+  scrollbar-width: thin;
+
+  font-family: "Fira Code", monospace;
 }
 
 blockquote {
-  padding: 1em;
-  background: lightgray;
-  color: black;
-  border-left: 4px solid black;
-
-  & > p {
-    margin: 0;
-  }
+  margin-block-end: 1em;
+  margin-block-start: 1em;
+  padding: 0.5em 1em;
+  background: var(--basic-box-background);
+  border-left: var(--indent-border-left);
 }
 
 ol,
 ul {
-  margin: 0;
-  padding-inline-start: 1em;
+  margin-left: 0.5em;
+  /*margin-block-end: 1em;*/
+  /*margin-block-start: 1em;*/
+  padding-inline-start: 1.3em;
 }
 
-blockquote {
-  margin: 0.5em 0;
-}
+table {
+  border-collapse: collapse;
 
-/* -------------------------------------------------------------------------- */
-/* customize elements */
-/* -------------------------------------------------------------------------- */
+  thead {
+    background: color-mix(in hsl, black, transparent 90%);
+  }
 
-.body-background {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: black;
-  filter: url(#body-background-filter);
-  z-index: -1000;
-}
+  /*tbody {
+  }*/
 
-.header-info {
-  margin-block-end: 1em;
-  margin-block-start: 1em;
-}
+  th {
+    padding: 0.5rem;
+    background: var(--basic-box-background);
+  }
 
-.warning {
-  padding: 1em;
-  border: 1px solid red;
-  background-color: color-mix(in hsl, white, black 5%);
-}
-
-.favicon {
-  margin-right: 0.2em;
-
-  aspect-ratio: 1;
-  height: 1em;
-  width: 1em;
+  td {
+    padding: 0.5rem;
+    background: var(--basic-box-background);
+  }
 }

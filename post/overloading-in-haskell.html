@@ -1,0 +1,675 @@
+<!doctype html>
+<html>
+  <head>
+    <title>rybl.net | Overloaded Functions in Haskell</title>
+
+    <link rel="stylesheet" href="/style/common.css" />
+    <link rel="stylesheet" href="/style/background.css" />
+    <link rel="stylesheet" href="/style/custom-elements.css" />
+    <link rel="stylesheet" href="/style/header-and-footer.css" />    <link rel="stylesheet" href="/style/post.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+  rel="stylesheet"
+/>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+  rel="stylesheet"
+/> <script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+></script>
+
+<script src="/script/parallax-body-background-on-scroll.js"></script>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+
+<script>
+  hljs.highlightAll();
+</script>
+  </head>
+  <body>
+    <div id="background"></div> <header><div class="title">
+  <div class="root-title">
+    <a href="/">rybl.net</a>
+  </div>
+
+  <img class="website-icon" src="/image/rybl-small.png" />
+
+  <div class="local-title">Overloaded Functions in Haskell</div>
+</div>
+<div class="menu">
+  <div class="item">
+    <a href="/">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon lucide lucide-library-icon lucide-library"
+      >
+        <path d="m16 6 4 14" />
+        <path d="M12 6v14" />
+        <path d="M8 8v12" />
+        <path d="M4 4v16" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/about.html">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon lucide lucide-info-icon lucide-info"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 16v-4" />
+        <path d="M12 8h.01" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/profile.html">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-globe-icon lucide-globe"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+        <path d="M2 12h20" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/graph.html">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-orbit-icon lucide-orbit"
+      >
+        <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+        <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+        <circle cx="12" cy="12" r="3" />
+        <circle cx="19" cy="5" r="2" />
+        <circle cx="5" cy="19" r="2" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/signature.html"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-fingerprint-icon lucide-fingerprint"
+      >
+        <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+        <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+        <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+        <path d="M2 12a10 10 0 0 1 18-6" />
+        <path d="M2 16h.01" />
+        <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+        <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+        <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+        <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+    ></a>
+  </div>
+</div></header>
+
+    <main>
+      <div class="main-inner"><h2><a href="/post/overloading-in-haskell.html" data-noLinkFavicon=""
+data-noLinkPreview="">Overloaded Functions in Haskell</a></h2>
+<div class="header-info">
+<p><u>Published:</u> 2021-11-07</p>
+<p><u>Tags:</u> computics, Haskell</p>
+<p><u>Abstract</u></p>
+<p>Basic Haskell functions do not support overloading, which is a
+feature that allows for multiple terms to have the same name in the same
+scope. This post demonstrates a comparison between three approaches to
+implementing overloading in Haskell -- typeclasses, templates, and
+singletons (mesaprogramming).</p>
+</div>
+<div class="table-of-contents">
+<p><u>Table of Contents</u></p>
+<ol type="1">
+<li><a href="#introduction" data-noLinkFavicon=""
+data-noLinkPreview="">Introduction</a></li>
+<li><a href="#overloading-with-typeclasses" data-noLinkFavicon=""
+data-noLinkPreview="">Overloading with Typeclasses</a></li>
+<li><a href="#overloading-with-templates" data-noLinkFavicon=""
+data-noLinkPreview="">Overloading with Templates</a></li>
+<li><a href="#overloading-with-singletons" data-noLinkFavicon=""
+data-noLinkPreview="">Overloading with Singletons</a></li>
+<li><a href="#overloading-with-π" data-noLinkFavicon=""
+data-noLinkPreview="">Overloading with Π</a></li>
+<li><a href="#conclusions" data-noLinkFavicon=""
+data-noLinkPreview="">Conclusions</a></li>
+<li><a href="#references" data-noLinkFavicon=""
+data-noLinkPreview="">References</a></li>
+<li><a href="#citations" data-noLinkFavicon=""
+data-noLinkPreview="">Citations</a></li>
+</ol>
+</div>
+<h1 id="introduction">Introduction</h1>
+<p>A common metaprogrammatic feature is overloading. A function is
+<em>overloaded</em> (by name) if multiple implementations of possibly
+different types can all be referred to by the same name (in the same
+scope). Overloading has many practical uses (such as optional arguments,
+default argument values, function classes, etc.), and is simple to
+describe, so I though it would be a nice way to demonstrate a comparison
+between a few different kinds of approaches to metaprogramming.</p>
+<p>The running example in the next few sections will be the overloading
+of a function <code>negate</code> to work on both integers and
+booleans.</p>
+<p>I conclude with a overview of the advantages and drawbacks of the
+different approaches, and some ideas about the generalization of my
+favored approach.</p>
+<h1 id="overloading-with-typeclasses">Overloading with Typeclasses</h1>
+<p>Haskell provides a nice interface (with a complicated backend) for a
+restricted form of overloading via typeclasses. A <em>typeclass</em> is
+a way of classifying types by <em>methods</em> (to match the
+object-oriented terminology for (abstract) classes) which haves types
+containing the classified type. If a typeclass has a method, then every
+type in that typeclass must have a corresponding implementation of that
+method for the type.</p>
+<p>To implement an overloaded <code>negate</code>, we make a class
+<code>Nullable a</code> with a method <code>negate :: a -&gt; a</code>,
+and then instantiate this class for <code>Int</code> and
+<code>Bool</code>.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">module</span> <span class="dt">OverloadTypeclass</span> <span class="kw">where</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="dt">Prelude</span> <span class="kw">hiding</span> (negate)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="dt">Negatable</span> a <span class="kw">where</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ot">  negate ::</span> a <span class="ot">-&gt;</span> a</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Negatable</span> <span class="dt">Int</span> <span class="kw">where</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">negate</span> x <span class="ot">=</span> (<span class="op">-</span> x)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Negatable</span> <span class="dt">Bool</span> <span class="kw">where</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">negate</span> b <span class="ot">=</span> <span class="fu">not</span> b</span></code></pre></div>
+<p>We can use <code>negate</code> simply:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">negate</span> <span class="dv">1</span> <span class="op">==&gt;</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">negate</span> <span class="dt">True</span> <span class="op">==&gt;</span> <span class="dt">False</span></span></code></pre></div>
+<p>The implementation and usage of overloading is very concise for this
+typeclass approach. Which overload to use is resolved via typeclass
+constraint solving, and to the user this looks just like overload
+resolving in languages that have built-in overloading (e.g. Java).
+However, this simple interface hides a lot of backend complexity in how
+that constraint-solving works.</p>
+<p>Additionally notice that, in order to write
+<code>Negateable a</code>, we had to choose a form for the type of
+<code>negate</code>, in this case, <code>a -&gt; a</code>. This is due
+to the way that Haskell's typeclass constraint solving works. If we had
+tried to be more general and written</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="dt">Negatable</span> a <span class="kw">where</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ot">  negate ::</span> a</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Negatable</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>) <span class="kw">where</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">negate</span> <span class="ot">=</span> \x <span class="ot">-&gt;</span> (<span class="op">-</span> x)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">Negatable</span> (<span class="dt">Bool</span> <span class="ot">-&gt;</span> <span class="dt">Bool</span>) <span class="kw">where</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">negate</span> <span class="ot">=</span> \b <span class="ot">-&gt;</span> <span class="fu">not</span> b</span></code></pre></div>
+<p>then GHC would reject, telling us</p>
+<blockquote>
+<p>All instance types must be of the form (T a1 ... an) where a1 ... an
+are <em>distinct type variables</em>, and each type variable appears at
+most once in the instance head.</p>
+</blockquote>
+<p>(Of course, this can be disabled via the language extensions
+<code>FlexibleInstances</code> and <code>FlexibleContexts</code>, but it
+turns out this just makes typeclass constraint resolution fail for our
+purposes.)</p>
+<p>In this way, typeclasses don't provide fully-general overloading
+capability where the different overload modes can have arbitrarily
+different types (e.g. take different numbers of arguments).</p>
+<h1 id="overloading-with-templates">Overloading with Templates</h1>
+<p>Templates (via Template Haskell) offer more general megaprogramming
+capabilities than typeclasses. Templates are metaprograms that are
+executed before typechecking the base program. Templates rely on quoting
+and unquoting -- <em>quoting</em> is the conversion of a string into
+syntax (encoded by a datatype), and <em>unquoting</em> is the conversion
+of syntax into code which is <em>spliced</em> (i.e.) into the base
+program.</p>
+<p>To implement an overloaded <code>negate</code>, we write it as a
+template function that takes an extra argument, the
+<code>NegateMode</code>, which specifies which overload for
+<code>negate</code> is intended. (This isn't possible via a naive
+implementation because the types of each overload would not match each
+other for the signature of negate.) Now to use <code>negate</code>, it
+must be spliced as <code>$(negate mode x)</code> where
+<code>mode :: NegateMode</code> and <code>x</code> is the argument to be
+negated. This splicing will be replaced in-place by the specified
+overload, before typechecking it. In this way, the type of the splice
+will be different depending on which <code>NegateMode</code> is
+given.</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ot">{-# LANGUAGE TemplateHaskell, QuasiQuotes #-}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">module</span> <span class="dt">OverloadTH</span> <span class="kw">where</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="dt">Prelude</span> <span class="kw">hiding</span> (negate)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="dt">Language.Haskell.TH</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">NegateMode</span> <span class="ot">=</span> <span class="dt">NegateInt</span> <span class="op">|</span> <span class="dt">NegateBool</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="fu">negate</span><span class="ot"> ::</span> <span class="dt">NegateMode</span> <span class="ot">-&gt;</span> <span class="dt">Q</span> <span class="dt">Exp</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="fu">negate</span> <span class="dt">NegateInt</span> <span class="ot">=</span> [<span class="op">|</span> \x <span class="ot">-&gt;</span> (<span class="op">-</span> x) <span class="op">|</span>]</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="fu">negate</span> <span class="dt">NegateBool</span> <span class="ot">=</span> [<span class="op">|</span> \b <span class="ot">-&gt;</span> <span class="fu">not</span> b <span class="op">|</span>]</span></code></pre></div>
+<p>The usage of <code>negate</code> is slightly more complicated now,
+because we need to splice and given the <code>NegateMode</code>:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">$</span>(<span class="fu">negate</span> <span class="dt">NegateInt</span>) <span class="dv">1</span> <span class="op">==&gt;</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="op">$</span>(<span class="fu">negate</span> <span class="dt">NegateBool</span>) <span class="dt">True</span> <span class="op">==&gt;</span> <span class="dt">False</span></span></code></pre></div>
+<p>Templates have a couple of significant advantages and drawbacks.
+Templates avoid the non-extensibility drawback of typeclasses; adding
+more overloads of arbitrary types is as simple as adding more
+constructors to <code>NegateMode</code> and cases for
+<code>negate</code>. Additionally, templates yield a concise
+implementation concise, even more concise than typeclasses.</p>
+<p>However, templates add a lot of complexity (much of it hidden) --
+much worse than typeclasses do. In order to use an overloaded function,
+we now need to splice it, which can perform arbitrary computations and
+needs a whole metaprogramming framework (Template Haskell) on top of the
+base language that generates untype syntax to be inserted at the splice.
+To be sure, for this trivial example, it is very easy to implement the
+metafunction <code>negate :: NegateMode -&gt; Q Exp</code> correctly,
+but this simplicity isn't modular. If the metafunction was more
+complicated and relied on other metafunctions, then complexity quickly
+exponentiates. And since metafunctions don't know about the types of the
+syntax they are manipulating, it is very easy to make mistakes and
+generate badly-typed or even well-typed but yet incorrect terms. Relying
+on arbitrarily-complicated template functions forgoes the entire purpose
+Haskell's lauded type system.</p>
+<p>Many probably admit these drawbacks but still find the power of
+templates to be worth the cost. After all, most languages are much less
+safe than Haskell, and they are still used prolifically. So, why not
+allow a very powerful feature (which is completely optional) that makes
+Haskell much more slick? This is a tempting point of view, and maybe I
+will adopt it one day. But for now, I am still naive enough to seek an
+alternative.s</p>
+<p>Additionally, You might think that it is a little annoying and
+probably unnecessary to have to provide a the extra
+<code>NegateMode</code> argument. And maybe for some decent range of
+applications of overloading that is true. But if you want fully-general
+overloading, where different overloads can have the same types, then the
+only sure way of specifying overloads is explicitly.</p>
+<p>(Sure, maybe you could ask for automatic overload resolution to be
+done via types when possible, and then only ask for it when that isn't
+sufficient. That is a cool idea, and a way to achieve it would be
+somehow taking advantage of type inference to allow an <code>_</code> in
+place of the overload specification argument. This won't work for this
+templates approach, but perhaps it could work for the singletons
+approach -- see the next section.)</p>
+<h1 id="overloading-with-singletons">Overloading with Singletons</h1>
+<p>Finally, this third approach is to take advantage of a restricted
+form of dependent typing that Haskell provides: singletons. In short, a
+<em>singleton</em> reflects a type at the term level (there are also
+utility templates for automatically generating singletons for many
+datatypes). In the code below, <code>SNegateMode</code> is the singleton
+for <code>NegateMode</code>. So, in <code>negate</code>, when the first
+argument is pattern-matched on, the case determines the
+<code>mode</code> type variable, and so <code>NegateType mode</code> is
+expanded to the appropriate overload type.</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ot">{-# LANGUAGE GADTs, KindSignatures, DataKinds, RankNTypes, TypeFamilies, AllowAmbiguousTypes #-}</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">module</span> <span class="dt">OverloadSingleton</span> <span class="kw">where</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="dt">Prelude</span> <span class="kw">hiding</span> (negate)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">NegateMode</span> <span class="ot">=</span> <span class="dt">NegateInt</span> <span class="op">|</span> <span class="dt">NegateBool</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">SNegateMode</span><span class="ot"> ::</span> <span class="dt">NegateMode</span> <span class="ot">-&gt;</span> <span class="op">*</span> <span class="kw">where</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">SNegateInt</span><span class="ot"> ::</span> <span class="dt">SNegateMode</span> <span class="dt">NegateInt</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">SNegateBool</span><span class="ot"> ::</span> <span class="dt">SNegateMode</span> <span class="dt">NegateBool</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="kw">family</span> <span class="dt">NegateType</span> (<span class="ot">mode ::</span> <span class="dt">NegateMode</span>)<span class="ot"> ::</span> <span class="op">*</span> <span class="kw">where</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">NegateType</span> <span class="dt">NegateInt</span> <span class="ot">=</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">NegateType</span> <span class="dt">NegateBool</span> <span class="ot">=</span> <span class="dt">Bool</span> <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="fu">negate</span><span class="ot"> ::</span> <span class="dt">SNegateMode</span> mode <span class="ot">-&gt;</span> <span class="dt">NegateType</span> mode</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="fu">negate</span> <span class="dt">SNegateInt</span> <span class="ot">=</span> \x <span class="ot">-&gt;</span> (<span class="op">-</span> x)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a><span class="fu">negate</span> <span class="dt">SNegateBool</span> <span class="ot">=</span> \b <span class="ot">-&gt;</span> <span class="fu">not</span> b</span></code></pre></div>
+<p>Using this <code>negate</code> looks similar to the version from the
+templates approach, but doesn't require splicing:</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">negate</span> <span class="dt">SNegateInt</span> <span class="dv">1</span> <span class="op">==&gt;</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">negate</span> <span class="dt">SNegateBool</span> <span class="dt">True</span> <span class="op">==&gt;</span> <span class="dt">False</span></span></code></pre></div>
+<p>This singletons approach has the extensibility advantage of the
+templates approach without the downside of untyped quoting/unquoting.
+Additionally, this approach doesn't rely on a complicated and hidden
+constraint-solving framework to use the overloads like the typeclass
+approach did, but we do have to provide an explicit overload
+specification argument (which I argued previously is actually probably
+correct).</p>
+<p>As just an idea, perhaps it could be possible, somehow, to allow type
+inference to take care of singleton arguments. For example, the example
+usages above could become</p>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">negate</span> _ <span class="dv">1</span> <span class="op">==&gt;</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">negate</span> _ <span class="dt">True</span> <span class="op">==&gt;</span> <span class="dt">False</span></span></code></pre></div>
+<p>where Haskell's type inference would figure out the type of
+<code>_</code>, which uniquely specifies the singleton constructor. This
+idea is not directly impossible in Haskell though.</p>
+<p>However, can can do something similar by using typeclasses and
+injective type families. In the following module
+<code>OverloadSingletonI</code>, there are three main changes upon
+<code>OverloadSingleton</code>:</p>
+<ol>
+<li>The type family <code>OverloadType</code> is injective. This is
+necessary because TODO.</li>
+<li>The class <code>SOverloadModeI</code> can provide
+<code>SOverloadMode</code> as a sort of implicit argument via a
+typeclass constraint. TODO: justify use of typeclasses</li>
+<li>The function <code>negate</code> now uses the
+<code>sOverloadMode</code> method provided by the
+<code>SOverloadModeI</code> typeclass constraint in order to call
+<code>negate'</code> which takes the argument explicitly. TODO: explain
+how typeclass constraint is like an implicit argument.</li>
+</ol>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ot">{-# LANGUAGE GADTs, KindSignatures, DataKinds, RankNTypes, TypeFamilies, TypeFamilyDependencies, AllowAmbiguousTypes, ScopedTypeVariables #-}</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">module</span> <span class="dt">OverloadSingletonI</span> <span class="kw">where</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="kw">import</span> <span class="dt">Prelude</span> <span class="kw">hiding</span> (negate)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">NegateMode</span> <span class="ot">=</span> <span class="dt">NegateInt</span> <span class="op">|</span> <span class="dt">NegateBool</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">SNegateMode</span><span class="ot"> ::</span> <span class="dt">NegateMode</span> <span class="ot">-&gt;</span> <span class="op">*</span> <span class="ot">-&gt;</span> <span class="op">*</span> <span class="kw">where</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">SNegateInt</span><span class="ot"> ::</span> <span class="dt">SNegateMode</span> <span class="dt">NegateInt</span> (<span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">SNegateBool</span><span class="ot"> ::</span> <span class="dt">SNegateMode</span> <span class="dt">NegateBool</span> (<span class="dt">Bool</span> <span class="ot">-&gt;</span> <span class="dt">Bool</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="kw">family</span> <span class="dt">NegateType</span> (<span class="ot">mode ::</span> <span class="dt">NegateMode</span>) <span class="ot">=</span> r <span class="op">|</span> r <span class="ot">-&gt;</span> mode <span class="kw">where</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">NegateType</span> <span class="dt">NegateInt</span> <span class="ot">=</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="dt">NegateType</span> <span class="dt">NegateBool</span> <span class="ot">=</span> <span class="dt">Bool</span> <span class="ot">-&gt;</span> <span class="dt">Bool</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="dt">SNegateModeI</span> (<span class="ot">mode ::</span> <span class="dt">NegateMode</span>) <span class="kw">where</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a><span class="ot">  sNegateMode ::</span> <span class="dt">SNegateMode</span> mode (<span class="dt">NegateType</span> mode)</span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">SNegateModeI</span> <span class="dt">NegateInt</span> <span class="kw">where</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  sNegateMode <span class="ot">=</span> <span class="dt">SNegateInt</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="kw">instance</span> <span class="dt">SNegateModeI</span> <span class="dt">NegateBool</span> <span class="kw">where</span></span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>  sNegateMode <span class="ot">=</span> <span class="dt">SNegateBool</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="fu">negate</span><span class="ot"> ::</span> <span class="kw">forall</span> (<span class="ot">mode ::</span> <span class="dt">NegateMode</span>)<span class="op">.</span> <span class="dt">SNegateModeI</span> mode <span class="ot">=&gt;</span> <span class="dt">NegateType</span> mode</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a><span class="fu">negate</span> <span class="ot">=</span> negate&#39; sNegateMode</span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="ot">negate&#39; ::</span> <span class="kw">forall</span> (<span class="ot">mode ::</span> <span class="dt">NegateMode</span>)<span class="op">.</span> <span class="dt">SNegateMode</span> mode (<span class="dt">NegateType</span> mode) <span class="ot">-&gt;</span> <span class="dt">NegateType</span> mode</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>negate&#39; <span class="dt">SNegateInt</span> <span class="ot">=</span> \x <span class="ot">-&gt;</span> (<span class="op">-</span> x)</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>negate&#39; <span class="dt">SNegateBool</span> <span class="ot">=</span> \b <span class="ot">-&gt;</span> <span class="fu">not</span> b</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="ot">negate_1 ::</span> <span class="dt">Int</span></span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>negate_1 <span class="ot">=</span> <span class="fu">negate</span> (<span class="dv">1</span><span class="ot"> ::</span> <span class="dt">Int</span>)</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a><span class="ot">negate_True ::</span> <span class="dt">Bool</span></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>negate_True <span class="ot">=</span> <span class="fu">negate</span> <span class="dt">True</span></span></code></pre></div>
+<p>Usage now looks like this:</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">negate</span> (<span class="dv">1</span><span class="ot"> ::</span> <span class="dt">Int</span>)<span class="ot"> ::</span> <span class="dt">Int</span> <span class="op">==&gt;</span> <span class="op">-</span><span class="dv">1</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">negate</span> <span class="dt">True</span><span class="ot"> ::</span> <span class="dt">Bool</span> <span class="op">==&gt;</span> <span class="dt">False</span></span></code></pre></div>
+<p>Note that the type annotations are now necessary in order for type
+inference to work. This is because, otherwise, the output type is just a
+type variable, and GHC would try to solve
+<code>Int -&gt; t ~ NegateType mode</code> which it cannot.</p>
+<h1 id="overloading-with-π">Overloading with Π</h1>
+<p>As described before, singletons are an implementation in Haskell of a
+restricted kind of dependent types. That is, they allow the output type
+of functions to depend on the values of its arguments. But how would we
+implement overloading with fully-fledged dependent types? The feature
+that we need is Π-types i.e. dependent functions -- <code>negate</code>
+is a dependent function because its output type
+<code>NegateType mode</code> depends on its input value
+<code>mode</code>. The following Agda program implements.</p>
+<pre class="plaintext"><code>module OverloadPi where
+
+open import Data.Integer
+open import Data.Bool
+
+data NegateMode : Set where
+  Negateℤ : NegateMode
+  NegateBool : NegateMode
+
+NegateType : NegateMode → Set
+NegateType Negateℤ = ℤ → ℤ
+NegateType NegateBool = Bool → Bool
+
+negate : ∀ (mode : NegateMode) → NegateType mode
+negate Negateℤ = λ x → - x
+negate NegateBool = λ b → not b</code></pre>
+<p>Using <code>negate</code> looks exaclty like in the singletons
+approach:</p>
+<pre class="plaintext"><code>negate Negateℤ 1ℤ ==&gt; -1ℤ
+negate NegateBool true ==&gt; false</code></pre>
+<p>Note that, although Agda offers the option to make arguments
+implicit, trying to make the <code>mode</code> argument of
+<code>negate</code> implicit will not work due to how type inference
+works, sadly.</p>
+<p>This implementation makes it clear what features were necessary to
+make the singletons approach work: pattern matching on an "overload
+mode" singleton, and a type family (i.e. type-level function from a type
+to a type) for the types of each overload mode.</p>
+<h1 id="conclusions">Conclusions</h1>
+<p>We have overviewed three approaches to implementing overloading in
+Haskell (or any other language that offers these features
+respectively):</p>
+<ul>
+<li>typeclasses
+<ul>
+<li>advantages: type-safe, very concise usage</li>
+<li>drawbacks: not extensible</li>
+</ul></li>
+<li>templates
+<ul>
+<li>advantages: very extensible, very concise implementation</li>
+<li>drawbacks: verbose usage (explicit mode argument), type-dangerous,
+anti-modular</li>
+</ul></li>
+<li>singletons/dependent types
+<ul>
+<li>advantages: type-safe, extensible</li>
+<li>drawbacks: verbose usage (explicit mode argument)</li>
+</ul></li>
+</ul>
+<p>So much has been built upon typeclasses in Haskell that it would be
+rediculous to suggest for them to be replaced with singleton-powered
+overloading. However I think that its advantage over typeclasses in
+extensibility and advantage over templates in safety are worth
+considering for new languages and design patterns. Typeclases are a huge
+framework on top of Haskell -- a new language might prefer to use
+singletons rather than go through designing typeclasses (or whatever
+similar feature in its place, such as traits in Rust and Scala).</p>
+<p>A generalization of this singletons approach is useful for much more
+than just implementing overloading. The basic idea used here was to
+encode the desired metaprogrammatic feature (overloading) as a datatype
+(<code>NegateMode</code>) in the base language (Haskell). Then the
+metaprogramming itself was simply to take the specified metaprogrammatic
+behavior as an extra argument to handle just like a normal function
+would (and, sometimes, such as in overloading, the function's type may
+need to depend on this argument's value).</p>
+<p>This style of metaprogramming can be called
+<strong>mesaprogramming</strong> because, rather than how normal
+metaprogramming relies on features <em>on top of</em> the base language
+to handle metaprogrammatic behaviors (as is most explicit in the
+templates approach, but also present in the typeclass approach if you
+think of typeclasses as a metaprogrammatic feature on top of the Haskell
+base language), mesaprogramming defines data <em>embedded in</em> the
+base language to specify metaprogrammatic behavior and then performs the
+metaprogrammatic behavior by pattern-matching on this data as an extra
+argument.</p>
+<p>I will write more about mesaprogramming more generally in later
+posts.</p>
+<h1 id="references">References</h1>
+<ul class="task-list">
+</ul>
+<h1 id="citations">Citations</h1></div>
+    </main>
+
+    <footer>
+      <div class="title">
+        <div class="root-title">
+          <a href="/">rybl.net</a>
+        </div>
+
+        <img class="website-icon" src="/image/rybl-small.png" />
+
+        <div class="local-title">Overloaded Functions in Haskell</div>
+      </div>
+      <div class="menu">
+        <div class="item">
+          <a href="/">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon lucide lucide-library-icon lucide-library"
+            >
+              <path d="m16 6 4 14" />
+              <path d="M12 6v14" />
+              <path d="M8 8v12" />
+              <path d="M4 4v16" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/about.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon lucide lucide-info-icon lucide-info"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4" />
+              <path d="M12 8h.01" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/profile.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-globe-icon lucide-globe"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+              <path d="M2 12h20" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/graph.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-orbit-icon lucide-orbit"
+            >
+              <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+              <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+              <circle cx="12" cy="12" r="3" />
+              <circle cx="19" cy="5" r="2" />
+              <circle cx="5" cy="19" r="2" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/signature.html"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-fingerprint-icon lucide-fingerprint"
+            >
+              <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+              <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+              <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+              <path d="M2 12a10 10 0 0 1 18-6" />
+              <path d="M2 16h.01" />
+              <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+              <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+              <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+              <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+          ></a>
+        </div>
+      </div></footer>  </body>
+</html>

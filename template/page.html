@@ -1,25 +1,18 @@
 <!doctype html>
 <html>
   <head>
-    <title>${title}</title>
+    <title>rybl.net | ${title}</title>
 
-    <link rel="stylesheet" href="/style/common.css" />
-    <link rel="stylesheet" href="/style/header.css" />
-    <link rel="stylesheet" href="/style/footer.css" />
+    ${common-styles.html()}
     <link rel="stylesheet" href="/style/page.css" />
 
-    <script
-      id="MathJax-script"
-      async
-      src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
-    ></script>
+    ${common-fonts.html()} ${common-scripts.html()}
   </head>
   <body>
-    ${body-background.html()}
-    ${header.html()}
-    <main>
-      <div class="main-inner">${content}</div>
-    </main>
+    ${background.html()} ${title:header.html()}
+
+    <main>${content}</main>
+
     ${footer.html()}
   </body>
 </html>

@@ -1,0 +1,460 @@
+<!doctype html>
+<html>
+  <head>
+    <title>rybl.net | No Explanation</title>
+
+    <link rel="stylesheet" href="/style/common.css" />
+    <link rel="stylesheet" href="/style/background.css" />
+    <link rel="stylesheet" href="/style/custom-elements.css" />
+    <link rel="stylesheet" href="/style/header-and-footer.css" />    <link rel="stylesheet" href="/style/post.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+  rel="stylesheet"
+/>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+  rel="stylesheet"
+/> <script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+></script>
+
+<script src="/script/parallax-body-background-on-scroll.js"></script>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+
+<script>
+  hljs.highlightAll();
+</script>
+  </head>
+  <body>
+    <div id="background"></div> <header><div class="title">
+  <div class="root-title">
+    <a href="/">rybl.net</a>
+  </div>
+
+  <img class="website-icon" src="/image/rybl-small.png" />
+
+  <div class="local-title">No Explanation</div>
+</div>
+<div class="menu">
+  <div class="item">
+    <a href="/">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon lucide lucide-library-icon lucide-library"
+      >
+        <path d="m16 6 4 14" />
+        <path d="M12 6v14" />
+        <path d="M8 8v12" />
+        <path d="M4 4v16" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/about.html">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon lucide lucide-info-icon lucide-info"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 16v-4" />
+        <path d="M12 8h.01" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/profile.html">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-globe-icon lucide-globe"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+        <path d="M2 12h20" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/graph.html">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-orbit-icon lucide-orbit"
+      >
+        <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+        <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+        <circle cx="12" cy="12" r="3" />
+        <circle cx="19" cy="5" r="2" />
+        <circle cx="5" cy="19" r="2" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/signature.html"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-fingerprint-icon lucide-fingerprint"
+      >
+        <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+        <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+        <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+        <path d="M2 12a10 10 0 0 1 18-6" />
+        <path d="M2 16h.01" />
+        <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+        <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+        <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+        <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+    ></a>
+  </div>
+</div></header>
+
+    <main>
+      <div class="main-inner"><h2><a href="/post/no-explanation.html" data-noLinkFavicon=""
+data-noLinkPreview="">No Explanation</a></h2>
+<div class="header-info">
+<p><u>Published:</u> 2019-08-22</p>
+<p><u>Tags:</u> philosophy, science</p>
+<p><u>Abstract</u></p>
+<p>Is it possible, and under what circumstances, for there to be no
+valid explanation of a phenomenon?</p>
+</div>
+<div class="table-of-contents">
+<p><u>Table of Contents</u></p>
+<ol type="1">
+<li><a href="#introduction" data-noLinkFavicon=""
+data-noLinkPreview="">Introduction</a></li>
+<li><a href="#bar-code" data-noLinkFavicon="" data-noLinkPreview="">Bar
+Code</a></li>
+<li><a href="#levels-of-abstraction" data-noLinkFavicon=""
+data-noLinkPreview="">Levels of Abstraction</a></li>
+<li><a href="#when-there-is-no-explanation" data-noLinkFavicon=""
+data-noLinkPreview="">When There is No Explanation</a></li>
+<li><a href="#references" data-noLinkFavicon=""
+data-noLinkPreview="">References</a></li>
+<li><a href="#citations" data-noLinkFavicon=""
+data-noLinkPreview="">Citations</a></li>
+</ol>
+</div>
+<h1 id="introduction">Introduction</h1>
+<p>Can some phenomena be so complex that there cannot be an
+<em>understandable</em> explanation for it? If so, could systems like
+brains and economies harbor such phenomena?</p>
+<h1 id="bar-code">Bar Code</h1>
+<p>In his 1991 paper <em><span><a
+href="https://ruccs.rutgers.edu/images/personal-zenon-pylyshyn/class-info/FP2012/FP2012_readings/Dennett_RealPatterns.pdf"><img
+src="/missing.ico" class="favicon" alt="/missing.ico" />Real
+Patterns</a><span class="sidenote preview"><span
+class="preview-title"><em><a
+href="https://ruccs.rutgers.edu/images/personal-zenon-pylyshyn/class-info/FP2012/FP2012_readings/Dennett_RealPatterns.pdf"
+title="_blank"><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://ruccs.rutgers.edu/images/personal-zenon-pylyshyn/class-info/FP2012/FP2012_readings/Dennett_RealPatterns.pdf</a></em></span><span
+class="preview-description">Placeholder description for
+https://ruccs.rutgers.edu/images/personal-zenon-pylyshyn/class-info/FP2012/FP2012_readings/Dennett_RealPatterns.pdf</span></span></span></em>,
+Dennet outlines a concrete challenge to the concept of <em>pattern</em>.
+He defines a pattern of pixels called Bar Code where in each row, there
+is a repeating occurence of 50 black pixels and then 50 white pixels.
+This Python program generates all of the Bar Code instances that appear
+later, with adjustments to the <code>noise</code> variable:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> PIL <span class="im">import</span> Image, ImageDraw</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>random.seed()</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>noise <span class="op">=</span> <span class="fl">0.1</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>stripeWidth <span class="op">=</span> <span class="dv">50</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>width <span class="op">=</span> <span class="dv">400</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>height <span class="op">=</span> <span class="dv">200</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>image <span class="op">=</span> Image.new(<span class="st">&#39;RGBA&#39;</span>, (width,height), (<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>draw <span class="op">=</span> ImageDraw.Draw(image)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>black <span class="op">=</span> (<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>, <span class="dv">255</span>)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>white <span class="op">=</span> (<span class="dv">255</span>,<span class="dv">255</span>,<span class="dv">255</span>, <span class="dv">255</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> x <span class="kw">in</span> <span class="bu">range</span>(width):</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> y <span class="kw">in</span> <span class="bu">range</span>(height):</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        value <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        value <span class="op">=</span> x <span class="op">%</span> stripeWidth <span class="op">&lt;</span> stripeWidth<span class="op">/</span><span class="dv">2</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> random.random() <span class="op">&lt;=</span> noise: value <span class="op">=</span> <span class="kw">not</span> value</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        color <span class="op">=</span> black <span class="cf">if</span> value <span class="cf">else</span> white</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        draw.point((x,y), fill<span class="op">=</span>color)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>image.save(<span class="st">&#39;barcode_noise=</span><span class="sc">{0}</span><span class="st">.png&#39;</span>.<span class="bu">format</span>(noise))</span></code></pre></div>
+<p>Simple enough. Here is a instance of Bar Code:</p>
+<p><img src="/assets/posts/no-explanation/barcode_noise=0.0.png" /></p>
+<p>Of course, this is a <em>perfect</em> instance of Bar Code. That is,
+this instance has no <em>noise</em> that is not accounted for by the
+definition of Bar Code. Consider the following image:</p>
+<p><img src="/assets/posts/no-explanation/barcode_noise=0.1.png" /></p>
+<p>This image is an instance of Bar Code with 10% random noise. The
+random noise is generated in the following way: each pixel in a perfect
+instance of Bar Code has a 10% chance of being flipped to the opposite
+color. Though the noise distorts the predictions that Bar Code yields
+about each pixel, Bar Code still seems like it can be a meaningful
+description.</p>
+<p>The following array shows instances of Bar Code ranging in the amount
+of random noise.</p>
+<p><img src="/assets/posts/no-explanation/barcode-array.png" /></p>
+<p>A phenomenon becomes clear: as the noise increases, Bar Code becomes
+a less and less useful way to recognize the image. At 50% noise in fact,
+it is mathematically equivelant to describe the image as "50% noise" as
+it is to describe it as "Bar Code with 50% noise" (in terms of
+predicting pixel values). At close to 50% noise, perhaps there is a
+better pattern than Bar Code at more accurately describing the
+pixels.</p>
+<p>Dennet uses this demonstration to show how the concept of patterns
+relies on something beyond a priori definitions --- a pattern does not
+exclusively relate to its perfect instances. Ultimately, Dennet argues
+that patterns can be instantiated to varying degrees based on their
+<em>usefulness</em> relative to the ovserver. For example, patterns can
+present trade-offs in accuracy (how often the pattern makes correct
+predictions) versus simplicity (how consisely the pattern's definition
+can be stated and measured) that must be weighed relative to the purpose
+for using the pattern.</p>
+<p>My argument will be along similar lines, analogizing to the
+trade-offs made in scientific patterns to build explanations at varying
+levels of abstraction.</p>
+<h1 id="levels-of-abstraction">Levels of Abstraction</h1>
+<p>Fields of scientific study can be organized into a abstraction-tree,
+where the leaves of the tree are the most precise and the deeper
+branches are abstractions of their children. Imagine the following as
+one path in this tree, in order of increasing abstraction: physics,
+chemistry, biology, psychology, sociology, political science. I will use
+the step between physics and chemistry as a canonical example. Chemistry
+is an abstraction of physics --- chemistry entirely depends on and is
+predicted by physics, but does not consider all of the details that
+physics considers.</p>
+<p>Why? Because chemistry yields explanations at a higher level of
+analysis than physics. When a chemist describes that a chemical reaction
+with certain proportions of reactants, they do mean something
+translatable to the language of physics. They importantly omit things
+like the mechanics and inner workings of individual atoms in order to
+give a <em>simple</em> explanation. It is simple because it reduces the
+complexity of the calculations needed to make predictions about the
+result of the reaction at chemistry's level of analysis.</p>
+<p>If asked to make predictions about things like the tradjectories of
+individual atoms, the chemical explanation is not much if at all better
+than random noise. So in order to rise to a higher level of abstract
+terms, chemistry forgoes explanatory power at lower levels like
+physics.</p>
+<p>But why does chemistry consist of the abstractions that it does in
+fact consist of? Many of the chemistry-abstractions, in fact, must
+contend with trade-offs such as accuracy vesus simplicity. Many
+chemistry-abstractions have <em>exceptions</em> that are unaccounted for
+in chemical terms and must be explained in physical terms --- at the
+chemical leve, they are treated as unexplainable. This is because the
+chemical terms sometimes forfeit explanatory power over the lower level
+that are necessary for describing certain phenomena at the chemical
+level. For example, perhaps a chemical reaction is affected by the
+quantum properties of its contents. Quantum mechanical examplations are
+at a lower-level of description that cannot mention
+chemistry-abstractions because the explanations depends on properties of
+the referents of the chemistry-abstractions that are left ambiguous.</p>
+<p>The reason, however, that chemistry is successfully and meaningly
+separate from physics is that chemistry-abstractions are <em>useful</em>
+enough. Among other things, chemistry-abstractions have enough precision
+and accuracy to be scientifically pragmatic. If chemistry did not have
+these properties, it would probably follow the fate of so many other
+proto-scientific fields that dwindled as exceptions built up.</p>
+<p>In chemistry so far, the abstractions have been useful enough. But it
+is imaginable that one day (perhaps alread), there will be discovered
+some phenomenon that no chemical explanation can give a
+better-than-noise account of. This would have to be a phenomenon that
+exists at the level of chemical analysis, yet has no explanation via
+chemical terms. There are two possible solutions: take theory from
+physics in order to explain it (if there is such an explanation), or
+introduce the explanation as an assumption.</p>
+<h1 id="when-there-is-no-explanation">When There is No Explanation</h1>
+<p>But what exactly does something like this look like? Let's consider
+the example of economics. Why does my bread cost $4? There may in fact
+not be a useful explanation at the level of micro-economics.</p>
+<h1 id="references">References</h1>
+<ul>
+<li><a
+href="https://ruccs.rutgers.edu/images/personal-zenon-pylyshyn/class-info/FP2012/FP2012_readings/Dennett_RealPatterns.pdf"
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />Real Patterns</a></li>
+<li><a href="/assets/posts/no-explanation/barcode_noise=0.0.png"
+data-inReference="" data-noLinkPreview=""><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" /></a></li>
+<li><a href="/assets/posts/no-explanation/barcode_noise=0.1.png"
+data-inReference="" data-noLinkPreview=""><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" /></a></li>
+<li><a href="/assets/posts/no-explanation/barcode-array.png"
+data-inReference="" data-noLinkPreview=""><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" /></a></li>
+</ul>
+<h1 id="citations">Citations</h1></div>
+    </main>
+
+    <footer>
+      <div class="title">
+        <div class="root-title">
+          <a href="/">rybl.net</a>
+        </div>
+
+        <img class="website-icon" src="/image/rybl-small.png" />
+
+        <div class="local-title">No Explanation</div>
+      </div>
+      <div class="menu">
+        <div class="item">
+          <a href="/">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon lucide lucide-library-icon lucide-library"
+            >
+              <path d="m16 6 4 14" />
+              <path d="M12 6v14" />
+              <path d="M8 8v12" />
+              <path d="M4 4v16" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/about.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon lucide lucide-info-icon lucide-info"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4" />
+              <path d="M12 8h.01" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/profile.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-globe-icon lucide-globe"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+              <path d="M2 12h20" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/graph.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-orbit-icon lucide-orbit"
+            >
+              <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+              <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+              <circle cx="12" cy="12" r="3" />
+              <circle cx="19" cy="5" r="2" />
+              <circle cx="5" cy="19" r="2" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/signature.html"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-fingerprint-icon lucide-fingerprint"
+            >
+              <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+              <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+              <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+              <path d="M2 12a10 10 0 0 1 18-6" />
+              <path d="M2 16h.01" />
+              <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+              <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+              <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+              <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+          ></a>
+        </div>
+      </div></footer>  </body>
+</html>

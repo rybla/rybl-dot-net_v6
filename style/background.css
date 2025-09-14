@@ -1,0 +1,21 @@
+#background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-size: 100px;
+  z-index: -1;
+
+  background: url("/image/stars.jpeg") repeat;
+
+  /*TODO*/
+  /*@media (prefers-color-scheme: dark) {
+    background: url("/asset/image/stars.jpeg");
+  }
+
+  @media (prefers-color-scheme: light) {
+    background: url("/asset/image/day_clouds.png");
+  }*/
+}

@@ -1,0 +1,577 @@
+<!doctype html>
+<html>
+  <head>
+    <title>rybl.net | agda2lh</title>
+
+    <link rel="stylesheet" href="/style/common.css" />
+    <link rel="stylesheet" href="/style/background.css" />
+    <link rel="stylesheet" href="/style/custom-elements.css" />
+    <link rel="stylesheet" href="/style/header-and-footer.css" />    <link rel="stylesheet" href="/style/post.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+  rel="stylesheet"
+/>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+  rel="stylesheet"
+/> <script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+></script>
+
+<script src="/script/parallax-body-background-on-scroll.js"></script>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+
+<script>
+  hljs.highlightAll();
+</script>
+  </head>
+  <body>
+    <div id="background"></div> <header><div class="title">
+  <div class="root-title">
+    <a href="/">rybl.net</a>
+  </div>
+
+  <img class="website-icon" src="/image/rybl-small.png" />
+
+  <div class="local-title">agda2lh</div>
+</div>
+<div class="menu">
+  <div class="item">
+    <a href="/">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon lucide lucide-library-icon lucide-library"
+      >
+        <path d="m16 6 4 14" />
+        <path d="M12 6v14" />
+        <path d="M8 8v12" />
+        <path d="M4 4v16" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/about.html">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="icon lucide lucide-info-icon lucide-info"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 16v-4" />
+        <path d="M12 8h.01" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/profile.html">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="20"
+        height="20"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-globe-icon lucide-globe"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+        <path d="M2 12h20" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/graph.html">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-orbit-icon lucide-orbit"
+      >
+        <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+        <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+        <circle cx="12" cy="12" r="3" />
+        <circle cx="19" cy="5" r="2" />
+        <circle cx="5" cy="19" r="2" />
+      </svg>
+    </a>
+  </div>
+  <div class="item">
+    <a href="/page/signature.html"
+      ><svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-fingerprint-icon lucide-fingerprint"
+      >
+        <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+        <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+        <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+        <path d="M2 12a10 10 0 0 1 18-6" />
+        <path d="M2 16h.01" />
+        <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+        <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+        <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+        <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+    ></a>
+  </div>
+</div></header>
+
+    <main>
+      <div class="main-inner"><h2><a href="/post/Agda2LH.html" data-noLinkFavicon=""
+data-noLinkPreview="">agda2lh</a></h2>
+<div class="header-info">
+<p><u>Published:</u> 2022-09-17</p>
+<p><u>Tags:</u> computics, Agda, Haskell, LiquidHaskell</p>
+<p><u>Abstract</u></p>
+<p>The project <code>agda2hs</code> claims that a reasonable subset of
+Agda programs can be directly compiled to Haskell programs which can be
+considered verified up to the Agda programs' specifications. However,
+<code>agda2hs</code>'s extraction leaves the resulting Haskell program
+bare of all statically-checkable guarantees from the perspective of
+client Haskell programs that would like to use it. This article proposes
+a modified extraction <code>agda2lh</code> which compiles a reasonable
+Agda program, which has specifications in terms of decidable relations,
+to a Liquid Haskell program that includes those specifications as Liquid
+Haskell refinements. Such a Liquid Haskell program exposes the
+Agda-originating specifications to client Haskell code that also uses
+Liquid Haskell to variable degree.</p>
+</div>
+<div class="table-of-contents">
+<p><u>Table of Contents</u></p>
+<ol type="1">
+<li><a href="#introduction-to-agda2hs" data-noLinkFavicon=""
+data-noLinkPreview="">Introduction to agda2hs</a></li>
+<li><a href="#problem-agda-is-more-expressive-than-haskell"
+data-noLinkFavicon="" data-noLinkPreview="">Problem: Agda is more
+expressive than Haskell</a></li>
+<li><a href="#solution-target-liquidhaskell-with-agda2lh"
+data-noLinkFavicon="" data-noLinkPreview="">Solution: target
+LiquidHaskell with agda2lh</a></li>
+<li><a href="#references" data-noLinkFavicon=""
+data-noLinkPreview="">References</a></li>
+<li><a href="#references" data-noLinkFavicon=""
+data-noLinkPreview="">References</a></li>
+<li><a href="#citations" data-noLinkFavicon=""
+data-noLinkPreview="">Citations</a></li>
+</ol>
+</div>
+<h2 id="introduction-to-agda2hs">Introduction to agda2hs</h2>
+<p>In the paper <em><span><a
+href="https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf"><img
+src="/missing.ico" class="favicon" alt="/missing.ico" />Reasonable Agda
+Is Correct Haskell: Writing Verified Haskell using agda2hs</a><span
+class="sidenote preview"><span class="preview-title"><em><a
+href="https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf"
+title="_blank"><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf</a></em></span><span
+class="preview-description">Placeholder description for
+https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf</span></span></span></em>,
+the authors identify a reasonable correspondence between a subset of
+Agda and Haskell within which they can perform a reasonable translation
+from Agda to Haskell.</p>
+<p>For example, consider the following Agda program:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode agda"><code class="sourceCode agda"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- utilities</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>⊔ <span class="ot">:</span> ℕ <span class="ot">→</span> ℕ <span class="ot">→</span> ℕ</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>⊔-comm <span class="ot">:</span> <span class="ot">∀</span> m n <span class="ot">→</span> m ⊔ n ≡ n ⊔ m</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="pp">{-# COMPILE AGDA2HS ⊔-comm irrelevant #-}</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co">-- Tree</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> Tree <span class="ot">(</span>A <span class="ot">:</span> <span class="dt">Set</span><span class="ot">)</span> <span class="ot">:</span> <span class="ot">(@</span><span class="dv">0</span> <span class="ot">_</span> <span class="ot">:</span> ℕ<span class="ot">)</span> <span class="ot">-&gt;</span> <span class="dt">Set</span> <span class="kw">where</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  Leaf <span class="ot">:</span> Tree A <span class="dv">0</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  Branch <span class="ot">:</span> A <span class="ot">→</span> <span class="ot">∀</span> nₗ nᵣ <span class="ot">→</span> Tree A nₗ <span class="ot">→</span> Tree A nᵣ <span class="ot">→</span> Tree A <span class="ot">(</span>nₗ ⊔ nᵣ<span class="ot">)</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="pp">{-# COMPILE AGDA2HS Tree #-}</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">-- mirror</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>mirror <span class="ot">:</span> <span class="ot">∀</span> <span class="ot">{</span>A<span class="ot">}</span> <span class="ot">{</span>n<span class="ot">}</span> <span class="ot">→</span> Tree A n <span class="ot">→</span> Tree A n</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>mirror Leaf <span class="ot">=</span> Leaf</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>mirror <span class="ot">(</span>Branch a nₗ nᵣ tₗ tᵣ<span class="ot">)</span> <span class="kw">rewrite</span> ⊔-comm nₗ nᵣ <span class="ot">=</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  Branch a nᵣ nₗ <span class="ot">(</span>mirror tᵣ<span class="ot">)</span> <span class="ot">(</span>mirror tₗ<span class="ot">)</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="pp">{-# COMPILE AGDA2HS mirror #-}</span></span></code></pre></div>
+<p><code>Tree</code> is indexed by its height, which is annotated by
+<code>@0</code> as runtime-irrelevant. Without the height indexing, this
+Agda program could be written in Haskell as the following, which is in
+fact what the <code>AGDA2HS</code> annotations specify
+<code>agda2hs</code> to extract.</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- Tree</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Tree</span> a <span class="kw">where</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Leaf</span><span class="ot"> ::</span> <span class="dt">Tree</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Branch</span><span class="ot"> ::</span> a <span class="ot">-&gt;</span> <span class="dt">Tree</span> <span class="ot">-&gt;</span> <span class="dt">Tree</span> <span class="ot">-&gt;</span> <span class="dt">Tree</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">-- mirror</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="ot">mirror ::</span> <span class="dt">Tree</span> a <span class="ot">-&gt;</span> <span class="dt">Tree</span> a</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>mirror <span class="dt">Leaf</span> <span class="ot">=</span> <span class="dt">Leaf</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>mirror (<span class="dt">Branch</span> a tl tr) <span class="ot">=</span> <span class="dt">Branch</span> a (mirror tr) (mirror tl)</span></code></pre></div>
+<p>Behaviorally, these programs are the same. But still something has
+been lost in translation.</p>
+<h2 id="problem-agda-is-more-expressive-than-haskell">Problem: Agda is
+more expressive than Haskell</h2>
+<p>Since Haskell does not support full dependent typing, the Haskell
+program above does not have the same statically-checked properties as
+the Agda program. In particular, the Agda <code>mirror</code> preserves
+the height of the <code>Tree</code> it operates on, since both the input
+and the output type are <code>Tree</code>s with height index
+<code>n</code>. The Haskell <code>mirror</code> has no such
+statically-ensured property -- the Haskell <code>Tree</code> is not
+height-indexed.</p>
+<p>Of course, one could use some advanced Haskell type features to
+include a sort of height-indexing into the Haskell <code>Tree</code>
+(perhaps something like <code>-XGADTs</code>, <code>-XDataKinds</code>,
+<code>-XTypeFamilies</code>). But, these sorts of techniques are clunky,
+hard to generalize, probably require some explicit witnesses, and, very
+importantly, don't interoperate well with other Haskell code that are
+not also using fancy GADTs with indexing.</p>
+<p>In summary, what we are lacking is a Haskell target that maintains
+the static checks of the original Agda code and is still easily
+interoperable with normal Haskell code when desired.</p>
+<h2 id="solution-target-liquidhaskell-with-agda2lh">Solution: target
+LiquidHaskell with agda2lh</h2>
+<p><em><span><a
+href="https://github.com/ucsd-progsys/liquidhaskell"><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Fucsd-progsys%252Fliquidhaskell.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Fucsd-progsys%2Fliquidhaskell.svg" />Liquid
+Haskell</a><span class="sidenote preview"><span
+class="preview-title"><em><a
+href="https://github.com/ucsd-progsys/liquidhaskell" title="_blank"><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Fucsd-progsys%252Fliquidhaskell.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Fucsd-progsys%2Fliquidhaskell.svg" />https://github.com/ucsd-progsys/liquidhaskell</a></em></span><span
+class="preview-description">Placeholder description for
+https://github.com/ucsd-progsys/liquidhaskell</span></span></span></em>
+is a plugin to Haskell that adds automatically-checked refinement types
+to Haskell's type system. A <em>refinement type</em> is a basic Haskell
+type that is <em>refined</em> by a boolean predicate over values of the
+type. For example, the following function has a refined input type and a
+refined output type.</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">{-@ mulOdds :: {x:Int | (x % 2) == 1} -&gt; {y:Int | (x % 2) == 1}</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">            -&gt; {z:Int | (z % 2) == 0} @-}</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ot">mulOdds ::</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span> <span class="ot">-&gt;</span> <span class="dt">Int</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>mulOdds x y <span class="ot">=</span> x <span class="op">*</span> y</span></code></pre></div>
+<p>In this way, Liquid Haskell adds lightweight dependent types to
+Haskell, with heavy (SMT-powered) automation for checking refinements
+(The proof that the product of two odds is even is not totally trivial,
+and the SMT solver figured it out!). Since Liquid Haskell can ensure
+dependent-types related properties (such as indexing of datatypes) via
+typechecking then perhaps we can attempt to encode the information
+discarded by <code>agda2hs</code> as Liquid Haskell refinements.</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">{-@ LIQUID &quot;--reflection&quot; @-}</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">{-@ LIQUID &quot;--ple&quot; @-}</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co">-- utilities</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co">{-@ by :: {x:a1 | b1} -&gt; {y:a2 | b2} -&gt; {x&#39;:a1 | (x == x&#39;) &amp;&amp; b1 &amp;&amp; b2} @-}</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co">-- Nat</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Nat</span> <span class="ot">=</span> <span class="dt">Zero</span> <span class="op">|</span> <span class="dt">Suc</span> <span class="dt">Nat</span> <span class="kw">deriving</span> (<span class="dt">Eq</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co">{-@ reflect max @-}</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span><span class="ot"> ::</span> <span class="dt">Nat</span> <span class="ot">-&gt;</span> <span class="dt">Nat</span> <span class="ot">-&gt;</span> <span class="dt">N</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span> <span class="dt">Zero</span> n <span class="ot">=</span> n</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span> m <span class="dt">Zero</span> <span class="ot">=</span> m</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="fu">max</span> (<span class="dt">Suc</span> m) (<span class="dt">Suc</span> n) <span class="ot">=</span> <span class="dt">Suc</span> (<span class="fu">max</span> m n)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co">{-@ max_comm :: m:Nat -&gt; n:Nat -&gt; {max m n == max n m} @-}</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="ot">max_comm ::</span> <span class="dt">Nat</span> <span class="ot">-&gt;</span> <span class="dt">Nat</span> <span class="ot">-&gt;</span> ()</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>max_comm (<span class="dt">Suc</span> m) (<span class="dt">Suc</span> n) <span class="ot">=</span> max_comm m n</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>max_comm _ _ <span class="ot">=</span> ()</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a><span class="co">-- Tree</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Tree</span> a <span class="ot">=</span> <span class="dt">Leaf</span> <span class="op">|</span> <span class="dt">Branch</span> a (<span class="dt">Tree</span> a) (<span class="dt">Tree</span> a)</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="co">-- derived from indexing in definition of Agda `Tree`</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="co">{-@ reflect height @-}</span></span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="ot">height ::</span> <span class="dt">Tree</span> a <span class="ot">-&gt;</span> <span class="dt">Nat</span></span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>height <span class="dt">Leaf</span> <span class="ot">=</span> <span class="dt">Zero</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>height (<span class="dt">Branch</span> _ tl tr) <span class="ot">=</span> <span class="fu">max</span> (height tl) (height tr)</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="co">-- mirror</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="co">-- preserves height of `Tree`</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="co">{-@ mirror :: t:Tree a -&gt; {t&#39;:Tree a | height t == height t&#39;} @-}</span></span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a><span class="ot">mirror ::</span> <span class="dt">Tree</span> a <span class="ot">-&gt;</span> <span class="dt">Tree</span> a</span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>mirror <span class="dt">Leaf</span> <span class="ot">=</span> <span class="dt">Leaf</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>mirror (<span class="dt">Branch</span> a tl tr) <span class="ot">=</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Branch</span> a (mirror tr) (mirror tl)</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>      <span class="ot">`by`</span> max_comm (height tl) (height tr)</span></code></pre></div>
+<p>This kind of translation required a few derivations:</p>
+<ul>
+<li>The Agda lemma <code>⊔-comm</code> was translated to the Liquid
+Haskell lemma <code>max_comm</code>, which implicitly converted Agda's
+propositional equality <code>_≡_</code> into Liquid Haskell's
+refinement-level decidable equality <code>(==)</code>. This translation
+requires that Agda's <code>_≡_ {ℕ}</code> is decidable, and also the the
+user must specify that <code>_≡_</code> is meant to be
+proof-irrelevant</li>
+<li>The Agda datatype <code>Tree</code>'s height index is extracted to a
+reflected Liquid Haskell function <code>height</code>. This derivation
+is performed by inspecting the output index for each constructor of
+Agda's <code>Tree</code>.</li>
+</ul>
+<p>In the same style of <code>agda2hs</code>, an <code>agda2lh</code>
+could be annotated like so to specify these derivations.</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode agda"><code class="sourceCode agda"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">-- utilities</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">-- decidable equality over ℕ</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="ot">_</span>==<span class="ot">_</span> <span class="ot">:</span> <span class="ot">∀</span> <span class="ot">(</span>m n <span class="ot">:</span> ℕ<span class="ot">)</span> <span class="ot">→</span> Dec <span class="ot">(</span>m ≡ n<span class="ot">)</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>zero == zero <span class="ot">=</span> yes refl</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>zero == suc n <span class="ot">=</span> no <span class="ot">λ</span> <span class="ot">()</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>suc m == zero <span class="ot">=</span> no <span class="ot">λ</span> <span class="ot">()</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>suc m == suc n <span class="kw">with</span> m == n</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>suc m == suc n    <span class="ot">|</span> yes m≡n <span class="ot">=</span> yes <span class="ot">(</span>cong suc m≡n<span class="ot">)</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>suc m == suc n    <span class="ot">|</span> no ¬m≡n <span class="ot">=</span> no <span class="ot">(λ</span> <span class="ot">{</span> refl <span class="ot">→</span> ¬m≡n refl <span class="ot">})</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co">-- specify that `_==_` should be used as the instance of decidable equality</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co">-- over `ℕ` for refinement-relevant extractions</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="pp">{-# COMPILE AGDA2LH _==_ REFINEMENT-EQUALITY(ℕ) #-}</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>⊔ <span class="ot">:</span> ℕ <span class="ot">→</span> ℕ <span class="ot">→</span> ℕ</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>⊔-comm <span class="ot">:</span> <span class="ot">∀</span> m n <span class="ot">→</span> m ⊔ n ≡ n ⊔ m</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">-- specify that `⊔-comm` is proof-irrelevant but refinement-relevant; uses</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co">-- `_==_` as the instance of decidable equality in the extracted refinement, as</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">-- per the previous annotation</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="pp">{-# COMPILE AGDA2LH ⊔-comm REFINEMENT #-}</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="co">-- Tree</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> Tree <span class="ot">(</span>A <span class="ot">:</span> <span class="dt">Set</span><span class="ot">)</span> <span class="ot">:</span> <span class="ot">(@</span><span class="dv">0</span> height <span class="ot">:</span> ℕ<span class="ot">)</span> <span class="ot">-&gt;</span> <span class="dt">Set</span> <span class="kw">where</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  Leaf <span class="ot">:</span> Tree A <span class="dv">0</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  Branch <span class="ot">:</span> A <span class="ot">→</span> <span class="ot">∀</span> nₗ nᵣ <span class="ot">→</span> Tree A nₗ <span class="ot">→</span> Tree A nᵣ <span class="ot">→</span> Tree A <span class="ot">(</span>nₗ ⊔ nᵣ<span class="ot">)</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a><span class="co">-- specify that `Tree`&#39;s term-irrelevant parameter `height` should be extracted</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a><span class="co">-- as an index which is kept track of by extracted refinements.</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="pp">{-# COMPILE AGDA2LH Tree REFINEMENT-INDEX(height) #-}</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a><span class="co">-- mirror</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>mirror <span class="ot">:</span> <span class="ot">∀</span> <span class="ot">{</span>A<span class="ot">}</span> <span class="ot">{</span>n<span class="ot">}</span> <span class="ot">→</span> Tree A n <span class="ot">→</span> Tree A n</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>mirror Leaf <span class="ot">=</span> Leaf</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>mirror <span class="ot">(</span>Branch a nₗ nᵣ tₗ tᵣ<span class="ot">)</span> <span class="kw">rewrite</span> ⊔-comm nₗ nᵣ <span class="ot">=</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  Branch a nᵣ nₗ <span class="ot">(</span>mirror tᵣ<span class="ot">)</span> <span class="ot">(</span>mirror tₗ<span class="ot">)</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a><span class="co">-- no special annotations needed here; the enforcement of `mirror` preserving</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="co">-- height is derived from the previous annotation that specifies the `height`</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="co">-- of a tree to be refinement-relevant index</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="pp">{-# COMPILE AGDA2LH mirror #-}</span></span></code></pre></div>
+<h2 id="references">References</h2>
+<ul>
+<li><span><a
+href="https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf"><img
+src="/missing.ico" class="favicon" alt="/missing.ico" />agda2hs</a><span
+class="sidenote preview"><span class="preview-title"><em><a
+href="https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf"
+title="_blank"><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf</a></em></span><span
+class="preview-description">Placeholder description for
+https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf</span></span></span></li>
+<li><span><a href="https://github.com/ucsd-progsys/liquidhaskell"><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Fucsd-progsys%252Fliquidhaskell.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Fucsd-progsys%2Fliquidhaskell.svg" />Liquid
+Haskell</a><span class="sidenote preview"><span
+class="preview-title"><em><a
+href="https://github.com/ucsd-progsys/liquidhaskell" title="_blank"><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Fucsd-progsys%252Fliquidhaskell.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Fucsd-progsys%2Fliquidhaskell.svg" />https://github.com/ucsd-progsys/liquidhaskell</a></em></span><span
+class="preview-description">Placeholder description for
+https://github.com/ucsd-progsys/liquidhaskell</span></span></span></li>
+</ul>
+<h1 id="references">References</h1>
+<ul>
+<li><a
+href="https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf"
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />Reasonable Agda Is Correct Haskell:
+Writing Verified Haskell using agda2hs</a></li>
+<li><a href="https://github.com/ucsd-progsys/liquidhaskell"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Fucsd-progsys%252Fliquidhaskell.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Fucsd-progsys%2Fliquidhaskell.svg" />Liquid
+Haskell</a></li>
+<li><a
+href="https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf"
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />agda2hs</a></li>
+<li><a href="https://github.com/ucsd-progsys/liquidhaskell"
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/https%253A%252F%252Fgithub.com%252Fucsd-progsys%252Fliquidhaskell.svg"
+class="favicon"
+alt="/favicon/https%3A%2F%2Fgithub.com%2Fucsd-progsys%2Fliquidhaskell.svg" />Liquid
+Haskell</a></li>
+</ul>
+<h1 id="citations">Citations</h1></div>
+    </main>
+
+    <footer>
+      <div class="title">
+        <div class="root-title">
+          <a href="/">rybl.net</a>
+        </div>
+
+        <img class="website-icon" src="/image/rybl-small.png" />
+
+        <div class="local-title">agda2lh</div>
+      </div>
+      <div class="menu">
+        <div class="item">
+          <a href="/">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon lucide lucide-library-icon lucide-library"
+            >
+              <path d="m16 6 4 14" />
+              <path d="M12 6v14" />
+              <path d="M8 8v12" />
+              <path d="M4 4v16" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/about.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon lucide lucide-info-icon lucide-info"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4" />
+              <path d="M12 8h.01" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/profile.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-globe-icon lucide-globe"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+              <path d="M2 12h20" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/graph.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-orbit-icon lucide-orbit"
+            >
+              <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+              <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+              <circle cx="12" cy="12" r="3" />
+              <circle cx="19" cy="5" r="2" />
+              <circle cx="5" cy="19" r="2" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/signature.html"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-fingerprint-icon lucide-fingerprint"
+            >
+              <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+              <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+              <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+              <path d="M2 12a10 10 0 0 1 18-6" />
+              <path d="M2 16h.01" />
+              <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+              <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+              <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+              <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+          ></a>
+        </div>
+      </div></footer>  </body>
+</html>
