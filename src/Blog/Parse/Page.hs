@@ -19,6 +19,7 @@ import Control.Monad.Except (MonadError)
 import Control.Monad.State (MonadState)
 import Control.Monad.Writer (MonadIO)
 import Data.Map (Map)
+import qualified Data.Maybe as Maybe
 import Data.Text (Text)
 import qualified Data.Text as Text
 import Network.URI (URI)
@@ -46,6 +47,10 @@ parsePage outLinks inLinks pageId pageText = do
 
   pageHref <- toPageHref pageId
   pageTitle <- doc & Pandoc.getMetaValueSuchThat Pandoc.fromMetaString "title"
+  pageReferencesEnabled <-
+    doc
+      & Pandoc.getMetaValueMaybeSuchThat Pandoc.fromMetaBool "references"
+      <&> Maybe.fromMaybe True
 
   void $
     doc & Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
@@ -70,6 +75,7 @@ parsePage outLinks inLinks pageId pageText = do
       { _pageId = pageId,
         _pageHref = pageHref,
         _pageTitle = pageTitle,
+        _pageReferencesEnabled = pageReferencesEnabled,
         _pageDoc = doc
       }
   where

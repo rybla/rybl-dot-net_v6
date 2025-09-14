@@ -53,7 +53,10 @@ parsePost outLinks inLinks postId postText = do
         "pubDate"
   postTags <- doc & Pandoc.getMetaValueSuchThat Pandoc.fromMetaListString "tags"
   postAbstract <- doc & Pandoc.getMetaValueMaybeSuchThat Pandoc.fromMetaBlocks "abstract"
-  postTableOfContentsEnabled <- doc & Pandoc.getMetaValueMaybeSuchThat Pandoc.fromMetaBool "table_of_contents" <&> Maybe.fromMaybe True
+  postTableOfContentsEnabled <-
+    doc
+      & Pandoc.getMetaValueMaybeSuchThat Pandoc.fromMetaBool "table_of_contents"
+      <&> Maybe.fromMaybe True
 
   void $
     doc & Pandoc.walkM \(x :: Pandoc.Inline) -> case x of

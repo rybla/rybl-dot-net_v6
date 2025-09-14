@@ -35,7 +35,7 @@ processPage manager outLinks inLinks page = do
 
   page . pageDoc %= removeCommentBlocks
 
-  do
+  whenM (gets (^. page . pageReferencesEnabled)) do
     ph <- gets (^. page . pageHref)
     ols <- gets (^. outLinks . at ph . to (Maybe.fromMaybe []))
     page . pageDoc .=* addReferencesSection ols
