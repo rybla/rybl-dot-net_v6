@@ -1,0 +1,92 @@
+.header-info {
+  margin-block-end: 1em;
+  margin-block-start: 1em;
+  padding: 0.5em 1em;
+  background: var(--basic-box-background);
+  border: var(--dashed-border);
+}
+
+.table-of-contents {
+  margin-block-end: 1em;
+  margin-block-start: 1em;
+  padding: 0.5em 1em;
+  background: var(--basic-box-background);
+  border: var(--dashed-border);
+}
+
+.definition {
+  margin-block-end: 1em;
+  margin-block-start: 1em;
+  padding: 0.5em 1em;
+  background: var(--basic-box-background);
+  border-left: var(--indent-border-left);
+
+  &::before {
+    content: "Definition";
+    text-decoration: underline;
+  }
+}
+
+.sidenote {
+  position: relative;
+  display: block;
+  float: right;
+  clear: right;
+  width: calc(
+    var(--sidenote-width) - var(--spacing-between-main-and-sidenotes)
+  );
+  margin-right: calc(-1 * var(--sidenote-width));
+
+  margin-top: -1em;
+  margin-bottom: 2em;
+  border: var(--dashed-border);
+  /*box-shadow: var(--basic-box-shadow);*/
+  background: var(--basic-box-background);
+  /*padding: 1em;*/
+  padding: 0.5em 1em;
+
+  @media (min-width: calc(800px)) {
+    display: block;
+    visibility: visible;
+  }
+  @media (max-width: calc(800px - 1px)) {
+    display: none;
+    visibility: hidden;
+  }
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+
+  & > .preview-title {
+    display: block;
+    word-break: break-all;
+    font-weight: bold;
+  }
+
+  & > .preview-description {
+    display: block;
+    word-break: break-all;
+  }
+}
+
+.warning {
+  padding: 1em;
+  border: 1px solid red;
+  background-color: color-mix(in hsl, white, black 5%);
+}
+
+.favicon {
+  margin-right: 0.2em;
+
+  aspect-ratio: 1;
+  height: 1em;
+  width: 1em;
+}
+
+.todo {
+  padding: 1em;
+  background-color: color-mix(in hsl, red, transparent 60%);
+}
