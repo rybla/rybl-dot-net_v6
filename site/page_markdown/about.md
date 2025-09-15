@@ -2,8 +2,6 @@
 title: About
 ---
 
-# About
-
 I'm Henry Blanchette, and this is my personal website.
 The program that generates this website is available at [rybla/rybl-dot-net_v6](https://github.com/rybla/rybl-dot-net_v6).
 

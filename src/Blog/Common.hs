@@ -66,6 +66,7 @@ data Page = Page
     _pageHref :: URI,
     _pageTitle :: Text,
     _pageReferencesEnabled :: Bool,
+    _pageTableOfContentsEnabled :: Bool,
     _pageDoc :: Pandoc.Pandoc
   }
 

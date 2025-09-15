@@ -51,6 +51,10 @@ parsePage outLinks inLinks pageId pageText = do
     doc
       & Pandoc.getMetaValueMaybeSuchThat Pandoc.fromMetaBool "references"
       <&> Maybe.fromMaybe True
+  pageTableOfContentsEnabled <-
+    doc
+      & Pandoc.getMetaValueMaybeSuchThat Pandoc.fromMetaBool "table_of_contents"
+      <&> Maybe.fromMaybe True
 
   void $
     doc & Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
@@ -76,6 +80,7 @@ parsePage outLinks inLinks pageId pageText = do
         _pageHref = pageHref,
         _pageTitle = pageTitle,
         _pageReferencesEnabled = pageReferencesEnabled,
+        _pageTableOfContentsEnabled = pageTableOfContentsEnabled,
         _pageDoc = doc
       }
   where

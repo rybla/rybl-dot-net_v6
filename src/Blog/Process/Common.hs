@@ -170,28 +170,6 @@ addTableOfContents doc0 = do
 
     orderedListStyle = (1, Pandoc.Decimal, Pandoc.Period)
 
-renderPostHeader :: Post -> [Pandoc.Block]
-renderPostHeader post =
-  concat
-    [ [ Pandoc.Header
-          2
-          mempty
-          [ Pandoc.Link
-              (mempty & Pandoc.attrData %~ ([("noLinkFavicon", ""), ("noLinkPreview", "")] ++))
-              [Pandoc.Str post._postTitle]
-              (showText post._postHref, mempty)
-          ]
-      ],
-      [ Pandoc.Div
-          (mempty & Pandoc.attrClasses %~ (["header-info"] ++))
-          $ concat
-            [ [makePubDate post._postPubDate],
-              [renderPubDate post._postTags],
-              [renderAbstract abstract | abstract <- post._postAbstract & refold] & concat
-            ]
-      ]
-    ]
-
 renderAbstract :: [Pandoc.Block] -> [Pandoc.Block]
 renderAbstract blocks =
   concat
@@ -225,3 +203,25 @@ removeCommentBlocks = Pandoc.walk \(x :: [Pandoc.Block]) ->
   x & filter \case
     Pandoc.Div attr _ -> not $ attr ^. Pandoc.attrClasses . to ("comment" `elem`)
     _ -> True
+
+renderPostHeader :: Post -> [Pandoc.Block]
+renderPostHeader post =
+  concat
+    [ [ Pandoc.Header
+          2
+          mempty
+          [ Pandoc.Link
+              (mempty & Pandoc.attrData %~ ([("noLinkFavicon", ""), ("noLinkPreview", "")] ++))
+              [Pandoc.Str post._postTitle]
+              (showText post._postHref, mempty)
+          ]
+      ],
+      [ Pandoc.Div
+          (mempty & Pandoc.attrClasses %~ (["header-info"] ++))
+          $ concat
+            [ [makePubDate post._postPubDate],
+              [renderPubDate post._postTags],
+              [renderAbstract abstract | abstract <- post._postAbstract & refold] & concat
+            ]
+      ]
+    ]

@@ -10,6 +10,7 @@
 module Blog.Process.Page where
 
 import Blog.Common
+import qualified Blog.Pandoc as Pandoc
 import Blog.Process.Common
 import Blog.Utility
 import Control.Lens
@@ -20,6 +21,8 @@ import qualified Data.Maybe as Maybe
 import qualified Network.HTTP.Client as Network
 import Network.URI (URI)
 import Service.Favicon (FaviconService)
+import Text.Pandoc (Pandoc (..))
+import qualified Text.Pandoc as Pandoc
 import Text.PrettyPrint.HughesPJClass (Doc)
 
 processPage ::
@@ -44,6 +47,37 @@ processPage manager outLinks inLinks page = do
     ils <- gets (^. inLinks . at ph . to (Maybe.fromMaybe []))
     page . pageDoc .=* addCitationsSection ils
 
+  whenM (gets (^. page . pageTableOfContentsEnabled)) do
+    page . pageDoc .=* addTableOfContents
+
+  pageSnapshot <- gets (^. page)
+  page . pageDoc .=* addPageHeader pageSnapshot
+
   page . pageDoc .=* addLinkFavicons mgr
 
   return ()
+
+--
+
+addPageHeader :: (Monad m) => Page -> Pandoc -> m Pandoc
+addPageHeader page (Pandoc meta blocks) = do
+  return $
+    Pandoc meta $
+      concat
+        [ renderPageHeader page,
+          blocks
+        ]
+
+renderPageHeader :: Page -> [Pandoc.Block]
+renderPageHeader page =
+  concat
+    [ [ Pandoc.Header
+          2
+          mempty
+          [ Pandoc.Link
+              (mempty & Pandoc.attrData %~ ([("noLinkFavicon", ""), ("noLinkPreview", "")] ++))
+              [Pandoc.Str page._pageTitle]
+              (showText page._pageHref, mempty)
+          ]
+      ]
+    ]

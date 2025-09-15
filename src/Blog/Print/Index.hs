@@ -8,7 +8,6 @@ import Blog.Common
 import qualified Blog.Pandoc as Pandoc
 import qualified Blog.Paths as Paths
 import Blog.Print.Common
-import Blog.Process.Common
 import Blog.Utility
 import Control.Lens hiding (index)
 import Control.Monad.Except (MonadError)
@@ -24,6 +23,7 @@ import System.FilePath ((</>))
 import Text.Pandoc (Pandoc)
 import qualified Text.Pandoc as Pandoc
 import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
+import Blog.Process.Common (renderPostHeader)
 
 printIndex ::
   (MonadIO m, MonadError Doc m, MonadState env m) =>

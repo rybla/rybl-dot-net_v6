@@ -2,8 +2,6 @@
 title: Signature
 ---
 
-# Signature
-
 PGP signature:
 ```
 -----BEGIN PUBLIC KEY-----
