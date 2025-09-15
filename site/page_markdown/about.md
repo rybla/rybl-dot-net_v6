@@ -8,6 +8,7 @@ The program that generates this website is available at [rybla/rybl-dot-net_v6](
 ## Overview
 
 I am a programmer and researcher focused on:
+
 - [programming language theory](https://en.wikipedia.org/wiki/Programming_language_theory)
 - [formal specification and verification](https://en.wikipedia.org/wiki/Formal_verification.)
 - [mathematical modeling and simulation](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
