@@ -24,7 +24,7 @@ footer {
     gap: 1em;
 
     & > .root-title {
-      width: 150px;
+      width: 9em;
       text-align: right;
     }
 
@@ -34,7 +34,7 @@ footer {
     }
 
     & > .local-title {
-      width: 150px;
+      width: 9em;
       text-align: left;
     }
   }
@@ -44,13 +44,20 @@ footer {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    gap: 2em;
 
     & > .item {
-      width: 50px;
+      width: 2em;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+
+      svg {
+        aspect-ratio: 1;
+        width: auto;
+        height: 2em;
+      }
     }
   }
 }

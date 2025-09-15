@@ -1,5 +1,5 @@
 :root {
-  --main-inner-width: 500px;
+  --main-inner-width: 28em;
   --spacing-between-main-and-sidenotes: 1em;
   --sidenote-width: calc(var(--main-width) - var(--main-inner-width));
 
@@ -10,10 +10,10 @@
 .main-inner {
   padding: 1em;
 
-  @media (min-width: calc(800px)) {
+  @media (min-width: calc(1000px)) {
     width: var(--main-inner-width);
   }
-  @media (max-width: calc(800px - 1px)) {
+  @media (max-width: calc(1000px - 1px)) {
     width: 100%;
   }
 }

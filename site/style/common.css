@@ -1,15 +1,14 @@
 :root {
-  --main-width: 800px;
+  --main-width: 50em;
 
-  --basic-box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.5);
+  --basic-box-shadow: 0 0 1em 0.5em rgba(0, 0, 0, 0.5);
 
   /*--basic-box-background: color-mix(in srgb, lightblue, transparent 50%);*/
   --basic-box-background: color-mix(in srgb, darkblue, transparent 90%);
 
-  /*--popout-border: 3px dashed black;*/
   --popout-border: none;
 
-  --indent-border-left: 3px solid black;
+  --indent-border-left: 0.5em solid black;
 }
 
 * {
@@ -34,6 +33,13 @@ body {
 
   display: flex;
   flex-direction: column;
+
+  @media (min-width: calc(1000px)) {
+    font-size: 12pt;
+  }
+  @media (max-width: calc(1000px - 1px)) {
+    font-size: 20pt;
+  }
 }
 
 main {
@@ -42,10 +48,10 @@ main {
 
   background: color-mix(in srgb, #f6eee3, transparent 10%);
 
-  @media (min-width: calc(800px)) {
+  @media (min-width: calc(1000px)) {
     width: var(--main-width);
   }
-  @media (max-width: calc(800px - 1px)) {
+  @media (max-width: calc(1000px - 1px)) {
     width: 100%;
   }
 }
@@ -104,26 +110,16 @@ pre {
 
   font-size: 1em;
 
-  /*overflow-y: auto;*/
-  /*scrollbar-width: thin;*/
-
   & > code {
-    max-height: 400px;
+    max-height: 40em;
     margin: 0;
     padding: 1em;
     font-size: 0.9em;
-    width: 100%;
+    width: calc(100% + 2em);
     white-space: no-wrap;
     font-family: "Fira Code", monospace;
     overflow: visible;
   }
-}
-
-pre {
-  max-height: 400px;
-  padding: 0;
-
-  font-size: 1em;
 }
 
 blockquote {

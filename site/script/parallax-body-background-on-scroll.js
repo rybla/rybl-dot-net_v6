@@ -12,3 +12,12 @@ document.addEventListener("DOMContentLoaded", () => {
     parallaxContainer.style.backgroundPosition = `-${dx}px -${dy}px`;
   });
 });
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   const clientWidth = document.body.clientWidth
+//   const clientHeight = document.body.clientHeight
+//   const displayElement = document.createElement('div');
+//   displayElement.textContent = `Client Width: ${clientWidth}px, Client Height: ${clientHeight}px`;
+//   displayElement.style.color = "white";
+//   document.body.prepend(displayElement);
+// });
