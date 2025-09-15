@@ -1,4 +1,11 @@
 :root {
+  @media (min-width: calc(1000px)) {
+    --body-font-size: 12pt;
+  }
+  @media (max-width: calc(1000px - 1px)) {
+    --body-font-size: 24pt;
+  }
+
   --main-width: 50em;
 
   --basic-box-shadow: 0 0 1em 0.5em rgba(0, 0, 0, 0.5);
@@ -34,12 +41,7 @@ body {
   display: flex;
   flex-direction: column;
 
-  @media (min-width: calc(1000px)) {
-    font-size: 12pt;
-  }
-  @media (max-width: calc(1000px - 1px)) {
-    font-size: 20pt;
-  }
+  font-size: var(--body-font-size);
 }
 
 main {
@@ -123,6 +125,7 @@ pre {
 }
 
 blockquote {
+  margin: 0;
   margin-block-end: 1em;
   margin-block-start: 1em;
   padding: 0.5em 1em;
