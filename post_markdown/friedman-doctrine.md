@@ -50,9 +50,14 @@ i.e. "the doctrine of 'social responsibility' involves the acceptance of the
 socialist view that political mechanisms, not market mechanisms, are the
 appropriate way to determine the allocation of scarce resources to alternative
 uses."
-<!-- often ineffective, "approaching fraud", and undermining a free society. -->
 
-<!-- Friedman focusses on the connection between businesses and social responsibility. -->
+::: todo
+often ineffective, "approaching fraud", and undermining a free society.
+:::
+
+::: todo
+Friedman focusses on the connection between businesses and social responsibility.
+:::
 
 I am disposed to sympathize with many of Friedman's conclusions, however, there
 are many points in his arguments which I find confusing, difficult, and/or just
@@ -85,9 +90,9 @@ TODO
 
 ## Caveats
 
-TODO
-
-<!-- my own judgements, extensions -->
+::: todo
+my own judgements, extensions
+:::
 
 # Judgements
 

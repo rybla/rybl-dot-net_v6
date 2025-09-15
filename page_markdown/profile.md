@@ -1,9 +1,8 @@
 ---
 title: Profile
 references: false
+table_of_contents: false
 ---
-
-# Profile
 
 The following are my personal profiles on various websites.
 

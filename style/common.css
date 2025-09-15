@@ -97,21 +97,22 @@ main p > img {
 }
 
 pre {
-  max-height: 400px;
   padding: 0;
+  width: 100%;
   margin-left: -1em;
   margin-right: -1em;
 
   font-size: 1em;
 
-  overflow-y: auto;
-  scrollbar-width: thin;
+  /*overflow-y: auto;*/
+  /*scrollbar-width: thin;*/
 
   & > code {
+    max-height: 400px;
     margin: 0;
     padding: 1em;
     font-size: 0.9em;
-    width: fit-content;
+    width: 100%;
     white-space: no-wrap;
     font-family: "Fira Code", monospace;
     overflow: visible;

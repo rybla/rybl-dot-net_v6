@@ -261,7 +261,9 @@ https://github.com/rybla/impe</span></span></span>.</p>
 <h1 id="design">Design</h1>
 <h2 id="grammar">Grammar</h2>
 <p>Grammar:</p>
-<p>&lt;!-- TODO: what <code>...</code> means --&gt;</p>
+<div class="todo">
+<p>define what <code>...</code> means</p>
+</div>
 <pre><code>&lt;program&gt;
   ::= &lt;instruction&gt; ...
 
@@ -292,14 +294,14 @@ https://github.com/rybla/impe</span></span></span>.</p>
     | &lt;string&gt;
     | &lt;name&gt;
     | &lt;name&gt;(&lt;expression&gt;, ...)</code></pre>
-<p>&lt;!-- TODO: <code>&lt;-</code> vs <code>=</code> syntax --&gt;
-&lt;!-- TODO: why initialization is a seperate statement rather than
-syntax sugar --&gt; &lt;!-- TODO: where semicolons are necessary and
-where not --&gt; &lt;!-- TODO: brief description of syntax features
---&gt; &lt;!-- TODO: what are procedure calls --&gt; &lt;!-- TODO: what
-are blocks and scopes --&gt; &lt;!-- TODO: how does <code>return</code>
-work --&gt; &lt;!-- TODO: how does <code>pass</code> work, and is it
-different from <code>{}</code>--&gt;</p>
+<div class="todo">
+<p><code>&lt;-</code> vs <code>=</code> syntax why initialization is a
+seperate statement rather than syntax sugar where semicolons are
+necessary and where not brief description of syntax features what are
+procedure calls what are blocks and scopes how does <code>return</code>
+work how does <code>pass</code> work, and is it different from
+<code>{}</code></p>
+</div>
 <h2 id="variables">Variables</h2>
 <p>Variables are <em>mutable</em> -- the value of a variable can be
 changed during the program's execution. An analogy: a variable is like a
@@ -310,8 +312,10 @@ box that can have its contents replaced while still staying the same box
 is opposed to <em>call by name</em> where an argument variable is passed
 by name and is then evaluated when it is needed in the function's
 execution.</p>
-<p>&lt;!-- TODO: citations to sources that explain this --&gt; &lt;!--
-TODO: tangent about Haskell's laziness --&gt;</p>
+<div class="todo">
+<p>citations to sources that explain this tangent about Haskell's
+laziness</p>
+</div>
 <h2 id="void-versus-unit">Void versus Unit</h2>
 <p>Typically when you want to ignore the output of a function, you can
 do just that without a second thought. But in this design, you must be
@@ -342,8 +346,10 @@ way since I haven't seen it enforced like this in many other languages,
 but I makes for a useful little extra check that functions with outputs
 that shouldn't be used do in fact don't have their output used (even
 trivially).</p>
-<p>&lt;!-- TODO: should the only way to ignore output of function be to
-do this? or should there be special syntax --&gt;</p>
+<div class="todo">
+<p>should the only way to ignore output of function be to do this? or
+should there be special syntax</p>
+</div>
 <p>To ignore output of a non-<code>void</code>-returning function
 without cluttering namespace, you can do</p>
 <pre class="plain"><code>{ _: t &lt;- f(e, ...); }</code></pre>

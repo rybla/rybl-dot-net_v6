@@ -23,11 +23,9 @@ abstract: My essential mac applications that I always install right away.
 [spectacle]: https://www.spectacleapp.com
 [quitter]: https://marco.org/apps#quitter
 
-<!-- safari -->
 [adblock pro]: https://apps.apple.com/us/app/adblock-pro-safari-ad-blocker/id1018301773
 [raindrop]: https://apps.apple.com/app/id1549370672
 
-<!-- firefox -->
 [firefox]: https://www.mozilla.org/en-US/firefox/
 [adblock plus]: https://addons.mozilla.org/en-US/firefox/addon/adblock-plus/
 [mendeley]: https://addons.mozilla.org/en-US/firefox/addon/mendeley-web-importer/
