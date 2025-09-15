@@ -5,6 +5,7 @@ footer {
   color: white;
   a {
     color: white;
+    background: transparent !important;
   }
 
   padding: 1em;
