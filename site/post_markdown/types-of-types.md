@@ -24,9 +24,10 @@ resource for these words.
 | biological/genetic | strain, ilk, species, breed, family, ancestry, generation, kin, progeny, legacy, lineage, brood, kindred, folk, genealogy, pedigree, stock, tribe, descent, scions, issue, organism, parentage, stemma, genus, phylum, kith, cognate                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | natural/temporal   | bag, flock, herd, pack, pool, branch, world, tree, realm, dimension, place, age, epoch, era, period, sheave (category theory), fiber (abstract algebra), glob (category theory), space, site (category theory)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | technical          | grade, caliber, gradation                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+::: todo
 
-<!--
 abstract
+
 - type
 - kind
 - set
@@ -74,6 +75,7 @@ abstract
 - case
 
 social/political
+
 - cast
 - gang
 - band
@@ -127,6 +129,7 @@ social/political
 - alliance
 
 artistic
+
 - style
 - orchestration/orchestra
 - ensemble
@@ -148,6 +151,7 @@ artistic
 
 
 biological/genetic
+
 - strain
 - ilk
 - species
@@ -179,6 +183,7 @@ biological/genetic
 
 
 natural/physical/temporal
+
 - bag
 - flock
 - herd
@@ -195,13 +200,13 @@ natural/physical/temporal
 - era
 - period
 
-
 jargon
+
 - grade
 - caliber
 - gradation
 
--->
+:::
 
 # Criteria
 

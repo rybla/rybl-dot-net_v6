@@ -237,8 +237,6 @@ really needed in VR was the equivalent of a tablet. I'm sure that something like
 this is possible, its just a matter of UI design. So, I'm very interested to see
 where that sort of feature becomes available.
 
-<!-- TODO: more? -->
-
 ## RecRoom
 
 ![RecRoom](http://static1.squarespace.com/static/582e7271bebafbd72792bd97/t/5cfeaf9a904d11000101ece8/1560194976582/OC+LANDSCAPE.jpg?format=1500w)

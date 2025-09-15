@@ -27,7 +27,9 @@ in this post can be found in this github repository:
 
 Grammar:
 
-<!-- TODO: what `...` means -->
+::: todo
+define what `...` means
+:::
 
 ```
 <program>
@@ -62,14 +64,16 @@ Grammar:
     | <name>(<expression>, ...)
 ```
 
-<!-- TODO: `<-` vs `=` syntax -->
-<!-- TODO: why initialization is a seperate statement rather than syntax sugar -->
-<!-- TODO: where semicolons are necessary and where not -->
-<!-- TODO: brief description of syntax features -->
-<!-- TODO: what are procedure calls -->
-<!-- TODO: what are blocks and scopes -->
-<!-- TODO: how does `return` work -->
-<!-- TODO: how does `pass` work, and is it different from `{}`-->
+::: todo
+`<-` vs `=` syntax
+why initialization is a seperate statement rather than syntax sugar
+where semicolons are necessary and where not
+brief description of syntax features
+what are procedure calls
+what are blocks and scopes
+how does `return` work
+how does `pass` work, and is it different from `{}`
+:::
 
 ## Variables
 
@@ -83,8 +87,10 @@ a function call), it is immediately evaluated. This is opposed to _call by name_
 where an argument variable is passed by name and is then evaluated when it is
 needed in the function's execution.
 
-<!-- TODO: citations to sources that explain this -->
-<!-- TODO: tangent about Haskell's laziness -->
+::: todo
+citations to sources that explain this
+tangent about Haskell's laziness
+:::
 
 ## Void versus Unit
 
@@ -116,7 +122,9 @@ languages, but I makes for a useful little extra check that functions with
 outputs that shouldn't be used do in fact don't have their output used (even
 trivially).
 
-<!-- TODO: should the only way to ignore output of function be to do this? or should there be special syntax -->
+::: todo
+should the only way to ignore output of function be to do this? or should there be special syntax
+:::
 
 To ignore output of a non-`void`-returning function without cluttering
 namespace, you can do

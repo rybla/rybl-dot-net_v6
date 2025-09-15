@@ -324,10 +324,6 @@ assurance contracts][tabarrok1998]."
   and Some Other Helpful Ideas][tabarrok2017].
 - Taylor J. [Dominant Assurance Contracts with Continuous Pledges][taylor1]
 
-<!--  -->
-<!-- links -->
-<!--  -->
-
 [taylor1]: http://jessic.at/writing/dac.pdf
 [guerra-pujol2018]:
   https://priorprobability.com/2018/07/27/nozick-tabarrok-and-dominant-assurance-contracts/
