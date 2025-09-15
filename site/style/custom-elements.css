@@ -35,14 +35,14 @@
   width: calc(
     var(--sidenote-width) - var(--spacing-between-main-and-sidenotes)
   );
-  margin-right: calc(-1 * (var(--sidenote-width) + var(--spacing-between-main-and-sidenotes)));
+  margin-right: calc(
+    -1 * (var(--sidenote-width) + var(--spacing-between-main-and-sidenotes))
+  );
 
   margin-top: -1em;
   margin-bottom: 2em;
   border: var(--popout-border);
-  /*box-shadow: var(--basic-box-shadow);*/
   background: var(--basic-box-background);
-  /*padding: 1em;*/
   padding: 0.5em 1em;
 
   @media (min-width: calc(1000px)) {

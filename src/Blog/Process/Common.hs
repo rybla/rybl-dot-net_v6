@@ -208,7 +208,7 @@ renderPostHeader :: Post -> [Pandoc.Block]
 renderPostHeader post =
   concat
     [ [ Pandoc.Header
-          2
+          1
           mempty
           [ Pandoc.Link
               (mempty & Pandoc.attrData %~ ([("noLinkFavicon", ""), ("noLinkPreview", "")] ++))
