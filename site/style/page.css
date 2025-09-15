@@ -7,10 +7,4 @@ main {
   @media (max-width: calc(1000px - 1px)) {
     width: 100%;
   }
-
-  margin: 1em auto;
-
-  z-index: 0;
-
-  padding: 1em;
 }

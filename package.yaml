@@ -37,6 +37,7 @@ dependencies:
   - uri-encode
   - data-default
   - time
+  - skylighting-core
 
 ghc-options:
   - -Wall

@@ -20,6 +20,7 @@ import Data.Default (def)
 import qualified Data.Text.IO as TextIO
 import System.FilePath ((</>))
 import qualified Text.Pandoc as Pandoc
+import qualified Text.Pandoc.Highlighting as Highlighting
 import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
 
 printPost :: (MonadIO m, MonadError Doc m, MonadState env m) => Post -> m ()
@@ -29,7 +30,8 @@ printPost post = evalIsoStateT (pairIso def) do
   contentHtml <-
     Pandoc.writeHtml5String
       Pandoc.def
-        { Pandoc.writerHTMLMathMethod = Pandoc.MathJax ""
+        { Pandoc.writerHTMLMathMethod = Pandoc.MathJax "",
+          Pandoc.writerHighlightStyle = Just Highlighting.espresso
         }
       post._postDoc
       & Pandoc.lensPandocM _1

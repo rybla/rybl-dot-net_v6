@@ -33,11 +33,10 @@
   float: right;
   clear: right;
   width: calc(
-    var(--sidenote-width) - var(--spacing-between-main-and-sidenotes)
+    var(--sidenote-width) - var(--spacing-between-main-and-sidenotes) - 2 *
+      var(--main-padding)
   );
-  margin-right: calc(
-    -1 * (var(--sidenote-width) + var(--spacing-between-main-and-sidenotes))
-  );
+  margin-right: calc(-1 * var(--sidenote-width) + var(--main-padding));
 
   margin-top: -1em;
   margin-bottom: 2em;

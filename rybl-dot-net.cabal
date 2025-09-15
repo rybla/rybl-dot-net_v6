@@ -87,6 +87,7 @@ library
     , pandoc
     , pandoc-types
     , pretty
+    , skylighting-core
     , template-haskell
     , text
     , time
@@ -135,6 +136,7 @@ executable rybl-dot-net-exe
     , pandoc-types
     , pretty
     , rybl-dot-net
+    , skylighting-core
     , template-haskell
     , text
     , time
@@ -185,6 +187,7 @@ test-suite rybl-dot-net-test
     , pandoc-types
     , pretty
     , rybl-dot-net
+    , skylighting-core
     , template-haskell
     , text
     , time

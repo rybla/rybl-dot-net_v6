@@ -35,7 +35,6 @@ open import Data.String using (String; _++_)
 Consider the following simple Agda macro:
 
 ```agda
-
 intro-helper : ℕ → Type → Term → TC Term
 intro-helper i (pi _ (abs _ b)) rest = do
   body ← intro-helper (suc i) b rest

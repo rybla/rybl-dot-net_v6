@@ -1,5 +1,5 @@
 :root {
-  --main-inner-width: 28em;
+  --main-inner-width: 500px;
   --spacing-between-main-and-sidenotes: 1em;
   --sidenote-width: calc(var(--main-width) - var(--main-inner-width));
 
@@ -7,14 +7,16 @@
   --sidenote-visibility: visible;
 }
 
-.main-inner {
-  padding: 1em;
-
-  @media (min-width: calc(1000px)) {
-    width: var(--main-inner-width);
-  }
-  @media (max-width: calc(1000px - 1px)) {
-    width: 100%;
+main {
+  & > p,
+  & > div.sourceCode,
+  & > pre {
+    @media (min-width: calc(1000px)) {
+      width: var(--main-inner-width);
+    }
+    @media (max-width: calc(1000px - 1px)) {
+      width: 100%;
+    }
   }
 }
 
@@ -30,11 +32,13 @@
     float: right;
     clear: right;
     width: calc(
-      var(--sidenote-width) - var(--spacing-between-main-and-sidenotes)
+      var(--sidenote-width) - var(--spacing-between-main-and-sidenotes) - 2 *
+        var(--main-padding)
     );
     margin-right: calc(
       -1 * (var(--sidenote-width) + var(--spacing-between-main-and-sidenotes))
     );
+    margin-right: calc(-1 * var(--spacing-between-main-and-sidenotes));
 
     margin-top: -1em;
     margin-bottom: 2em;
@@ -47,6 +51,6 @@
 
 .header-info {
   @media (min-width: calc(1000px)) {
-    margin-top: -3em;
+    margin-top: 0;
   }
 }
