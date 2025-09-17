@@ -36,15 +36,53 @@ prettyPandoc (Pandoc meta blocks) =
 -- | Extract the root URI from a URI. Example:
 --
 -- > uriRoot "https://test.example.com/seg1#id?query=string" == "https://test.example.com"
-uriRoot :: URI -> String
+uriRoot :: URI -> URI
 uriRoot uri =
-  URI.uriScheme uri ++ uriHost uri
+  uri
+    { URI.uriFragment = mempty,
+      URI.uriQuery = mempty,
+      URI.uriPath = mempty
+    }
+
+-- | Extract the core host from a URI. Example:
+--
+-- > uriRoot "https://test.example.com/seg1#id?query=string" == "example.com"
+uriCoreHost :: URI -> String
+uriCoreHost uri =
+  uriHost uri
+    & List.reverse
+    & List.takeWhile (not . ('.' ==))
+    & List.reverse
+
+-- | Extract the core root from a URI. Example:
+--
+-- > uriRoot "https://test.example.com/seg1#id?query=string" == "https://example.com"
+uriCoreRoot :: URI -> URI
+uriCoreRoot uri =
+  uri
+    { URI.uriFragment = mempty,
+      URI.uriAuthority =
+        URI.uriAuthority uri <&> \auth ->
+          auth
+            { URI.uriRegName =
+                URI.uriRegName auth
+                  & List.reverse
+                  & splitBy ('.' ==)
+                  & take 2
+                  & List.intercalate "."
+                  & List.reverse
+            }
+    }
 
 -- | Extract the root URI and path from a URI. Example:
 --
 -- > uriRoot "https://test.example.com#id?query=string" == "https://test.example.com/seg1"
-uriRootAndPath :: URI -> String
-uriRootAndPath uri = uriRoot uri ++ URI.uriPath uri
+uriRootAndPath :: URI -> URI
+uriRootAndPath uri =
+  uri
+    { URI.uriFragment = mempty,
+      URI.uriQuery = mempty
+    }
 
 -- | Extract the host from a URI. Example:
 --
@@ -124,3 +162,11 @@ parseDay = Time.parseTimeM @Maybe True Time.defaultTimeLocale "%Y-%-m-%-d"
 
 whenM :: (Monad m) => m Bool -> m () -> m ()
 whenM cond action = cond >>= \b -> if b then action else return ()
+
+splitBy :: (a -> Bool) -> [a] -> [[a]]
+splitBy f = go []
+  where
+    go acc [] = reverse $ filter (not . null) $ acc
+    go acc xs =
+      let (ys, zs) = span (not . f) xs
+       in go (ys : acc) (drop 1 zs)
