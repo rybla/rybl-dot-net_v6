@@ -1,15 +1,13 @@
 <!doctype html>
 <html>
   <head>
-    <title>rybl.net | ${title}</title>
-
-    ${common-styles.html()}
+    ${common-head-prefix.html()}
     <link rel="stylesheet" href="/style/index.css" />
-
-    ${common-fonts.html()} ${common-scripts.html()}
   </head>
   <body>
-    ${background.html()} ${title:header.html()}
+    ${common-body-prefix.html()}
+
+    ${header.html()}
 
     <main>${content}</main>
 

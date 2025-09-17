@@ -23,9 +23,7 @@ printPage page = evalIsoStateT (pairIso def) do
 
   contentHtml <-
     Pandoc.writeHtml5String
-      Pandoc.def
-        { Pandoc.writerHTMLMathMethod = Pandoc.MathJax ""
-        }
+      (commonWriterOptions mempty mempty)
       page._pageDoc
       & Pandoc.lensPandocM _1
 
@@ -45,11 +43,7 @@ printPage page = evalIsoStateT (pairIso def) do
         )
         & fromEither (("Error when parsing template variables JSON:" <+>) . text)
     Pandoc.writeHtml5String
-      Pandoc.def
-        { Pandoc.writerTemplate = Just pageTemplate,
-          Pandoc.writerVariables = vars,
-          Pandoc.writerHTMLMathMethod = Pandoc.MathJax ""
-        }
+      (commonWriterOptions (Just pageTemplate) vars)
       (page ^. pageDoc)
       & Pandoc.lensPandocM _1
 

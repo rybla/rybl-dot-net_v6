@@ -8,6 +8,7 @@ import Blog.Common
 import qualified Blog.Pandoc as Pandoc
 import qualified Blog.Paths as Paths
 import Blog.Print.Common
+import Blog.Process.Common (renderPostHeader)
 import Blog.Utility
 import Control.Lens hiding (index)
 import Control.Monad.Except (MonadError)
@@ -23,7 +24,6 @@ import System.FilePath ((</>))
 import Text.Pandoc (Pandoc)
 import qualified Text.Pandoc as Pandoc
 import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
-import Blog.Process.Common (renderPostHeader)
 
 printIndex ::
   (MonadIO m, MonadError Doc m, MonadState env m) =>
@@ -37,7 +37,11 @@ printIndex posts = evalIsoStateT (pairIso def) do
 
   templateText <- TextIO.readFile (Paths.offlineSite.template.here </> ("index" & toHtmlFileName)) & liftIO
 
-  contentHtml <- Pandoc.writeHtml5String Pandoc.def index & Pandoc.lensPandocM _1
+  contentHtml <-
+    Pandoc.writeHtml5String
+      (commonWriterOptions mempty mempty)
+      index
+      & Pandoc.lensPandocM _1
 
   indexTemplate <-
     Pandoc.compileTemplate mempty templateText
@@ -55,12 +59,7 @@ printIndex posts = evalIsoStateT (pairIso def) do
         )
         & fromEither (("Error when parsing template variables JSON:" <+>) . text)
     Pandoc.writeHtml5String
-      ( def
-          { Pandoc.writerTemplate = Just indexTemplate,
-            Pandoc.writerVariables = vars,
-            Pandoc.writerHTMLMathMethod = Pandoc.MathJax ""
-          }
-      )
+      (commonWriterOptions (Just indexTemplate) vars)
       index
       & Pandoc.lensPandocM _1
 

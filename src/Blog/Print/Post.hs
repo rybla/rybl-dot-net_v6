@@ -20,7 +20,6 @@ import Data.Default (def)
 import qualified Data.Text.IO as TextIO
 import System.FilePath ((</>))
 import qualified Text.Pandoc as Pandoc
-import qualified Text.Pandoc.Highlighting as Highlighting
 import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
 
 printPost :: (MonadIO m, MonadError Doc m, MonadState env m) => Post -> m ()
@@ -29,10 +28,7 @@ printPost post = evalIsoStateT (pairIso def) do
 
   contentHtml <-
     Pandoc.writeHtml5String
-      Pandoc.def
-        { Pandoc.writerHTMLMathMethod = Pandoc.MathJax "",
-          Pandoc.writerHighlightStyle = Just Highlighting.espresso
-        }
+      (commonWriterOptions mempty mempty)
       post._postDoc
       & Pandoc.lensPandocM _1
 
@@ -53,11 +49,7 @@ printPost post = evalIsoStateT (pairIso def) do
         )
         & fromEither (("Error when parsing template variables JSON:" <+>) . text)
     Pandoc.writeHtml5String
-      Pandoc.def
-        { Pandoc.writerTemplate = Just postTemplate,
-          Pandoc.writerVariables = vars,
-          Pandoc.writerHTMLMathMethod = Pandoc.MathJax ""
-        }
+      (commonWriterOptions (Just postTemplate) vars)
       (post ^. postDoc)
       & Pandoc.lensPandocM _1
 
