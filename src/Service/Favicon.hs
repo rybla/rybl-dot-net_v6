@@ -62,11 +62,11 @@ cache uri manager = do
         False -> do
           logM "Favicon.cache" $ "didn't find cache at" <+> text infoFilePath
           info <- fetchFaviconInfo (uriDomainUri uri) manager
-          when (not (URI.uriIsRelative (info & originalIconRef & unUriReference))) do
+          when (not $ URI.uriIsRelative (info & originalIconRef & unUriReference)) do
             request <- HTTP.parseRequest (info & originalIconRef & unUriReference & show) & liftIO
             response <- manager & HTTP.httpLbs request & liftIO
             ByteString.writeFile (info & mirrorIconFilePath) (HTTP.responseBody response) & liftIO
-            ByteString.writeFile infoFilePath (encode info) & liftIO
+          ByteString.writeFile infoFilePath (encode info) & liftIO
           return info
 
 baseFaviconInfo :: FaviconInfo
