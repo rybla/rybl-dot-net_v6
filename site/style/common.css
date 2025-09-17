@@ -124,6 +124,7 @@ pre {
   }
 }
 
+/* TODO: how to properly get blocks like this to be full-width even in articles where you have the cutsom logic that shrinks everything to be the same widtgh at hte top level childrten of main so that it doesnt overlap with the sidenote margin area? */
 blockquote {
   margin: 0;
   margin-block-end: 1em;

@@ -49,9 +49,8 @@ cache uri manager = do
     then do
       return baseFaviconInfo
     else do
-      let coreRoot = uriCoreRoot uri
-          coreHost = uriCoreHost uri
-      let infoFilePath = Paths.offlineSite.favicon.here </> (coreHost & makeValidIdent & toDataFileName)
+      let infoFilePath = toFaviconInfoFilePath uri
+      logM "Favicone.cache" $ "uriDomain uri =" <+> text (show (uriDomain uri))
       doesFileExist infoFilePath & liftIO >>= \case
         True -> do
           ByteString.readFile infoFilePath
@@ -62,7 +61,7 @@ cache uri manager = do
               Just info -> return info
         False -> do
           logM "Favicon.cache" $ "didn't find cache at" <+> text infoFilePath
-          info <- fetchFaviconInfo coreRoot manager
+          info <- fetchFaviconInfo (uriDomainUri uri) manager
           when (not (URI.uriIsRelative (info & originalIconRef & unUriReference))) do
             request <- HTTP.parseRequest (info & originalIconRef & unUriReference & show) & liftIO
             response <- manager & HTTP.httpLbs request & liftIO

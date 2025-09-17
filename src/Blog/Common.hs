@@ -97,7 +97,12 @@ toPageFilePath postId = Paths.offlineSite.page.here </> (postId & unPageId & mak
 -- Favicon
 
 toFaviconInfoFilePath :: URI -> FilePath
-toFaviconInfoFilePath uri = Paths.offlineSite.preview.here </> (uri & uriRootAndPath & makeValidIdent & toDataFileName)
+toFaviconInfoFilePath uri = Paths.offlineSite.favicon.here </> (uri & uriDomain & makeValidIdent & toDataFileName)
+
+-- Preview
+
+toPreviewFilePath :: URI -> FilePath
+toPreviewFilePath uri = Paths.offlineSite.preview.here </> (uri & uriDomain & makeValidIdent & toDataFileName)
 
 -- generic
 

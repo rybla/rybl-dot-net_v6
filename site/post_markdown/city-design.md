@@ -6,7 +6,7 @@ tags:
   - economics
 ---
 
-![](city-design/header.jpg)
+![](asset/city-design/header.jpg)
 
 # Introduction
 

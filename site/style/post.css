@@ -8,9 +8,7 @@
 }
 
 main {
-  & > p,
-  & > div.sourceCode,
-  & > pre {
+  & > * {
     @media (min-width: calc(1000px)) {
       width: var(--main-inner-width);
     }

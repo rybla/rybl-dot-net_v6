@@ -48,7 +48,7 @@ instance Favicon.FaviconService where
       Nothing -> return Favicon.missingFaviconInfo
       Just response | not response.hasIcon -> return Favicon.missingFaviconInfo
       Just response -> do
-        let ident = uri & show & makeValidIdent
+        let ident = uri & uriHost & makeValidIdent
         let faviconFileName = ident <.> response.format
         iconUri <- parseUriM response.icon
         mirrorIconRef <- Paths.onlineSite.favicon.here </> faviconFileName & parseUriReferenceM

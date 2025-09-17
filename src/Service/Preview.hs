@@ -43,7 +43,7 @@ cache uri manager = do
     then do
       return basePreview
     else do
-      let previewFilePath = uri & toFaviconInfoFilePath
+      let previewFilePath = uri & toPreviewFilePath
       doesFileExist previewFilePath & liftIO >>= \case
         True -> do
           ByteString.readFile previewFilePath & liftIO <&> Aeson.decode @Preview >>= \case

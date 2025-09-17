@@ -44,34 +44,29 @@ uriRoot uri =
       URI.uriPath = mempty
     }
 
--- | Extract the core host from a URI. Example:
+-- | Extract the domain from a URI. Example:
 --
--- > uriRoot "https://test.example.com/seg1#id?query=string" == "example.com"
-uriCoreHost :: URI -> String
-uriCoreHost uri =
-  uriHost uri
+-- > uriDomain "https://test.example.com/seg1#id?query=string" == "example.com"
+uriDomain :: URI -> String
+uriDomain uri =
+  uri
+    & URI.uriAuthority
+    & fromJust
+    & URI.uriRegName
     & List.reverse
-    & List.takeWhile (not . ('.' ==))
+    & splitBy ('.' ==)
+    & take 2
+    & List.intercalate "."
     & List.reverse
 
--- | Extract the core root from a URI. Example:
+-- | Extract the domain URI from a URI. Example:
 --
 -- > uriRoot "https://test.example.com/seg1#id?query=string" == "https://example.com"
-uriCoreRoot :: URI -> URI
-uriCoreRoot uri =
+uriDomainUri :: URI -> URI
+uriDomainUri uri =
   uri
     { URI.uriFragment = mempty,
-      URI.uriAuthority =
-        URI.uriAuthority uri <&> \auth ->
-          auth
-            { URI.uriRegName =
-                URI.uriRegName auth
-                  & List.reverse
-                  & splitBy ('.' ==)
-                  & take 2
-                  & List.intercalate "."
-                  & List.reverse
-            }
+      URI.uriAuthority = URI.uriAuthority uri <&> \auth -> auth {URI.uriRegName = uriDomain uri}
     }
 
 -- | Extract the root URI and path from a URI. Example:
@@ -88,10 +83,7 @@ uriRootAndPath uri =
 --
 -- > uriHost "https://test.example.com/seg1#id?query=string" == "test.example.com"
 uriHost :: URI -> String
-uriHost uri =
-  URI.uriAuthToString mempty (URI.uriAuthority uri) ""
-    & List.stripPrefix "//"
-    & fromJust
+uriHost uri = uri & URI.uriAuthority & maybe (error "URI doesn't have a host: " ++ show uri) URI.uriRegName
 
 fromMaybe :: (MonadError Doc m) => Doc -> Maybe a -> m a
 fromMaybe msg = maybe (throwError msg) return
