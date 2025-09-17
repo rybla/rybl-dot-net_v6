@@ -91,6 +91,7 @@ a {
     /*align-self: center;*/
     margin-right: 0.2em;
     margin-bottom: -0.2em;
+    background: white;
   }
 
   & > .name {

@@ -1,1 +1,6 @@
-{"format":"ico","mirrorIconFilePath":"site/favicon/purescript.org.ico","mirrorIconRef":"/favicon/purescript.org.ico","originalIconRef":"https://icons.favicone.com/i/purescript.org.ico?f=d"}
+{
+  "format": "png",
+  "mirrorIconFilePath": "site/favicon/purescript.org.png",
+  "mirrorIconRef": "/favicon/purescript.org.png",
+  "originalIconRef": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrxxFrNKNn26kvlDcNpMnlweOL5QFUIggZvw&s"
+}
