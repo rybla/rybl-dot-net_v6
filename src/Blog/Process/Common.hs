@@ -75,11 +75,11 @@ addPostSignatureSection post = do
                 [ Pandoc.Header 1 mempty [Pandoc.Str "Signature"],
                   Pandoc.Para
                     [ Pandoc.Str "The following code block is the ",
-                      Pandoc.Link mempty [Pandoc.Str "Ed25519 signature"] ("https://en.wikipedia.org/wiki/EdDSA#Ed25519", "_blank"),
+                      Pandoc.Link (mempty & Pandoc.attrData %~ (("target", "_blank") :)) [Pandoc.Str "Ed25519 signature"] ("https://en.wikipedia.org/wiki/EdDSA#Ed25519", ""),
                       Pandoc.Str " of this post's ",
                       Pandoc.Link mempty [Pandoc.Str "markdown content"] (post._postMarkdownHref & showText, ""),
                       Pandoc.Str " as a byte array, using my secret key and ",
-                      Pandoc.Link mempty [Pandoc.Str "public key"] (Config.publicKeyUri, "_blank"),
+                      Pandoc.Link (mempty & Pandoc.attrData %~ (("target", "_blank") :)) [Pandoc.Str "public key"] (Config.publicKeyUri, ""),
                       Pandoc.Str "."
                     ],
                   Pandoc.CodeBlock mempty (Text.pack $ show $ ByteArray.unpack $ post._postMarkdownSignature)
@@ -145,7 +145,7 @@ addLinkPreviews manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
             (mempty & Pandoc.attrClasses %~ (["sidenote", "preview"] ++))
             [ Pandoc.Span
                 (mempty & Pandoc.attrClasses %~ (["preview-title"] ++))
-                [Pandoc.Emph [Pandoc.Link mempty [Pandoc.Str (preview.title & Text.pack)] (urlText, "_blank")]],
+                [Pandoc.Emph [Pandoc.Link (mempty & Pandoc.attrData <>~ [("target", "_blank")]) [Pandoc.Str (preview.title & Text.pack)] (urlText, "")]],
               Pandoc.Span
                 (mempty & Pandoc.attrClasses %~ (["preview-description"] ++))
                 [Pandoc.Str (preview.description & Text.pack)]
