@@ -93,7 +93,7 @@ is that we actually get a typed hole there that is _spliced_ into the result of 
 
 We can do this with non-hole terms via quotation e.g. something like
 
-```
+```agda
 intros (x + y)
 ```
 
@@ -112,7 +112,7 @@ Note that quoted holes do not require any new features of Agda's type theory -- 
 
 This feature will allow you to write something like
 
-```
+```agda
 _ : ℕ → ℕ → ℕ
 _ = intros ?
 ```
@@ -134,7 +134,7 @@ Ultimately, this gives you exactly the kind of interactivity as interactively ru
 
 In the example, the idea is that the macro invocation `intros ?` to [desugars](https://agda.readthedocs.io/en/v2.8.0-rc1/language/reflection.html#macros)  to
 
-```
+```agda
 unquote (intros (quoteTerm ?))
 ```
 
