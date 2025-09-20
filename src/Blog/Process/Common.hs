@@ -13,7 +13,7 @@ import qualified Blog.Pandoc as Pandoc
 import Blog.Tree
 import Blog.Utility
 import Control.Lens hiding (preview)
-import Control.Monad (filterM, (>=>))
+import Control.Monad (filterM)
 import Control.Monad.Except (MonadError)
 import Control.Monad.State (modify, runStateT)
 import Control.Monad.Writer (MonadIO)
@@ -41,6 +41,7 @@ removeCommentBlocks = Pandoc.walkM \(x :: [Pandoc.Block]) ->
   x & filterM \case
     Pandoc.Div attr _ -> return $ not $ attr ^. Pandoc.attrClasses . to ("comment" `elem`)
     _ -> return True
+
 
 addReferencesSection ::
   (MonadError Doc m) =>
