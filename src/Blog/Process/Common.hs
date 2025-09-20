@@ -9,6 +9,7 @@
 module Blog.Process.Common where
 
 import Blog.Common
+import qualified Blog.Config as Config
 import qualified Blog.Pandoc as Pandoc
 import Blog.Tree
 import Blog.Utility
@@ -17,6 +18,7 @@ import Control.Monad (filterM)
 import Control.Monad.Except (MonadError)
 import Control.Monad.State (modify, runStateT)
 import Control.Monad.Writer (MonadIO)
+import qualified Data.ByteArray as ByteArray
 import Data.Text (Text)
 import qualified Data.Text as Text
 import qualified Data.Time as Time
@@ -60,6 +62,30 @@ addReferencesSection outLinks (Pandoc meta blocks) = do
                    ]
                ]
          ]
+
+addPostSignatureSection :: (Monad m) => Post -> m Post
+addPostSignatureSection post = do
+  let Pandoc meta blocks = post._postDoc
+  pure $
+    post
+      { _postDoc =
+          Pandoc meta $
+            concat $
+              [ blocks,
+                [ Pandoc.Header 1 mempty [Pandoc.Str "Signature"],
+                  Pandoc.Para
+                    [ Pandoc.Str "The following code block is the ",
+                      Pandoc.Link mempty [Pandoc.Str "Ed25519 signature"] ("https://en.wikipedia.org/wiki/EdDSA#Ed25519", "_blank"),
+                      Pandoc.Str " of this post's ",
+                      Pandoc.Link mempty [Pandoc.Str "markdown content"] (post._postMarkdownHref & showText, ""),
+                      Pandoc.Str " as a byte array, using my secret key and ",
+                      Pandoc.Link mempty [Pandoc.Str "public key"] (Config.publicKeyUri, "_blank"),
+                      Pandoc.Str "."
+                    ],
+                  Pandoc.CodeBlock mempty (Text.pack $ show $ ByteArray.unpack $ post._postMarkdownSignature)
+                ]
+              ]
+      }
 
 addCitationsSection ::
   (MonadError Doc m) =>

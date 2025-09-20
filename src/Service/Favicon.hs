@@ -23,7 +23,6 @@ import qualified Network.HTTP.Client as HTTP
 import Network.URI (URI)
 import qualified Network.URI as URI
 import System.Directory (doesFileExist)
-import System.FilePath ((</>))
 import Text.PrettyPrint.HughesPJClass
 
 class FaviconService where

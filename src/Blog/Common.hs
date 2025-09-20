@@ -11,6 +11,7 @@ import Control.Category ((>>>))
 import Control.Lens hiding ((<.>))
 import Control.Monad ((>=>))
 import Control.Monad.Except (MonadError)
+import qualified Crypto.PubKey.Ed25519 as Ed25519
 import Data.Aeson (FromJSON, ToJSON, parseJSON)
 import Data.Aeson.Types (toJSON)
 import Data.Text (Text)
@@ -56,6 +57,8 @@ data Post = Post
     _postTags :: [Text],
     _postAbstract :: Maybe [Pandoc.Block],
     _postTableOfContentsEnabled :: Bool,
+    _postMarkdownHref :: URI,
+    _postMarkdownSignature :: Ed25519.Signature,
     _postDoc :: Pandoc.Pandoc
   }
 
@@ -76,6 +79,9 @@ makeLenses ''Page
 
 toPostHref :: (MonadError Doc m) => PostId -> m URI
 toPostHref postId = parseUriReferenceM (Paths.onlineSite.post.here </> (postId & unPostId & makeValidIdent & toHtmlFileName))
+
+toPostMarkdownHref :: (MonadError Doc m) => PostId -> m URI
+toPostMarkdownHref postId = parseUriReferenceM (Paths.onlineSite.post_markdown.here </> (postId & unPostId & makeValidIdent & toMarkdownFileName))
 
 toPostMarkdownFilePath :: PostId -> FilePath
 toPostMarkdownFilePath postId = Paths.offlineSite.post_markdown.here </> (postId & unPostId & makeValidIdent & toMarkdownFileName)

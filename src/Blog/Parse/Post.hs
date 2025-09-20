@@ -11,16 +11,20 @@ module Blog.Parse.Post where
 import Blog.Common
 import Blog.Pandoc (runPandocM)
 import qualified Blog.Pandoc as Pandoc
+import qualified Blog.Secret as Secret
 import Blog.Utility
 import Control.Lens
 import Control.Monad (void, (>=>))
 import Control.Monad.Except (MonadError, throwError)
 import Control.Monad.State (MonadState)
 import Control.Monad.Writer (MonadIO)
+import qualified Crypto.PubKey.Ed25519 as Crypto
+import Data.ByteArray ()
 import Data.Map (Map)
 import qualified Data.Maybe as Maybe
 import Data.Text (Text)
 import qualified Data.Text as Text
+import qualified Data.Text.Encoding as Text
 import Network.URI (URI)
 import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Walk as Pandoc
@@ -44,7 +48,10 @@ parsePost outLinks inLinks postId postText = do
           }
       & runPandocM
 
+  let postMarkdownSignature = Crypto.sign Secret.secretKey Secret.publicKey (Text.encodeUtf8 postText)
+
   postHref <- toPostHref postId
+  postMarkdownHref <- toPostMarkdownHref postId
   postTitle <- doc & Pandoc.getMetaValueSuchThat Pandoc.fromMetaString "title"
   postPubDate <-
     doc
@@ -85,6 +92,8 @@ parsePost outLinks inLinks postId postText = do
         _postAbstract = postAbstract,
         _postTags = postTags,
         _postTableOfContentsEnabled = postTableOfContentsEnabled,
+        _postMarkdownHref = postMarkdownHref,
+        _postMarkdownSignature = postMarkdownSignature,
         _postDoc = doc
       }
   where

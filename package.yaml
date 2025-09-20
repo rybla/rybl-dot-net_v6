@@ -38,6 +38,8 @@ dependencies:
   - data-default
   - time
   - skylighting-core
+  - cryptonite
+  - memory
 
 ghc-options:
   - -Wall

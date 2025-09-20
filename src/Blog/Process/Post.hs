@@ -54,6 +54,8 @@ processPost manager outLinks inLinks post = do
   postSnapshot <- gets (^. post)
   post . postDoc %=* addPostHeader postSnapshot
 
+  post %=* addPostSignatureSection
+
   post . postDoc %=* addLinkFavicons mgr
 
   return ()
