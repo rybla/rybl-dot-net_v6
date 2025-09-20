@@ -36,24 +36,24 @@ processPage manager outLinks inLinks page = do
   mgr <- gets (^. manager)
   ph <- gets (^. page . pageHref)
 
-  page . pageDoc %= removeCommentBlocks
+  page . pageDoc %=* commonTransformations
 
   whenM (gets (^. page . pageReferencesEnabled)) do
     ph <- gets (^. page . pageHref)
     ols <- gets (^. outLinks . at ph . to (Maybe.fromMaybe []))
-    page . pageDoc .=* addReferencesSection ols
+    page . pageDoc %=* addReferencesSection ols
 
   do
     ils <- gets (^. inLinks . at ph . to (Maybe.fromMaybe []))
-    page . pageDoc .=* addCitationsSection ils
+    page . pageDoc %=* addCitationsSection ils
 
   whenM (gets (^. page . pageTableOfContentsEnabled)) do
-    page . pageDoc .=* addTableOfContents
+    page . pageDoc %=* addTableOfContents
 
   pageSnapshot <- gets (^. page)
-  page . pageDoc .=* addPageHeader pageSnapshot
+  page . pageDoc %=* addPageHeader pageSnapshot
 
-  page . pageDoc .=* addLinkFavicons mgr
+  page . pageDoc %=* addLinkFavicons mgr
 
   return ()
 

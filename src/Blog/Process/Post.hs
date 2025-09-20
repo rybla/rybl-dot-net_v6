@@ -35,26 +35,26 @@ processPost manager outLinks inLinks post = do
   mgr <- gets (^. manager)
   ph <- gets (^. post . postHref)
 
-  post . postDoc %= removeCommentBlocks
+  post . postDoc %=* commonTransformations
 
   (post . postDoc .=) =<< addLinkPreviews mgr =<< gets (^. post . postDoc)
 
   do
     ph <- gets (^. post . postHref)
     ols <- gets (^. outLinks . at ph . to (Maybe.fromMaybe []))
-    post . postDoc .=* addReferencesSection ols
+    post . postDoc %=* addReferencesSection ols
 
   do
     ils <- gets (^. inLinks . at ph . to (Maybe.fromMaybe []))
-    post . postDoc .=* addCitationsSection ils
+    post . postDoc %=* addCitationsSection ils
 
   whenM (gets (^. post . postTableOfContentsEnabled)) do
-    post . postDoc .=* addTableOfContents
+    post . postDoc %=* addTableOfContents
 
   postSnapshot <- gets (^. post)
-  post . postDoc .=* addPostHeader postSnapshot
+  post . postDoc %=* addPostHeader postSnapshot
 
-  post . postDoc .=* addLinkFavicons mgr
+  post . postDoc %=* addLinkFavicons mgr
 
   return ()
 

@@ -13,6 +13,7 @@ import qualified Blog.Pandoc as Pandoc
 import Blog.Tree
 import Blog.Utility
 import Control.Lens hiding (preview)
+import Control.Monad (filterM, (>=>))
 import Control.Monad.Except (MonadError)
 import Control.Monad.State (modify, runStateT)
 import Control.Monad.Writer (MonadIO)
@@ -30,6 +31,16 @@ import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Shared as Pandoc
 import qualified Text.Pandoc.Walk as Pandoc
 import Text.PrettyPrint.HughesPJClass (Doc, (<+>))
+
+commonTransformations :: (Monad m) => Pandoc -> m Pandoc
+commonTransformations =
+  removeCommentBlocks
+
+removeCommentBlocks :: (Monad m) => Pandoc -> m Pandoc
+removeCommentBlocks = Pandoc.walkM \(x :: [Pandoc.Block]) ->
+  x & filterM \case
+    Pandoc.Div attr _ -> return $ not $ attr ^. Pandoc.attrClasses . to ("comment" `elem`)
+    _ -> return True
 
 addReferencesSection ::
   (MonadError Doc m) =>
@@ -197,12 +208,6 @@ renderPubDate tags =
       Pandoc.Str " ",
       Pandoc.Str $ tags & Text.intercalate ", "
     ]
-
-removeCommentBlocks :: Pandoc -> Pandoc
-removeCommentBlocks = Pandoc.walk \(x :: [Pandoc.Block]) ->
-  x & filter \case
-    Pandoc.Div attr _ -> not $ attr ^. Pandoc.attrClasses . to ("comment" `elem`)
-    _ -> True
 
 renderPostHeader :: Post -> [Pandoc.Block]
 renderPostHeader post =

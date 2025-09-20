@@ -110,16 +110,22 @@ main p > img {
 
 pre {
   padding: 0;
-  margin-left: -1em;
-  margin-right: -1em;
+  /*margin-left: -1em;*/
+  /*margin-right: -1em;*/
+  /*width: calc(100% + var(--main-padding));*/
+  overflow: auto;
+  max-height: 30em;
 
   & > code {
+    display: block;
+    padding: 1em;
+
     max-height: 40em;
     margin: 0;
     padding: 1em;
     font-size: 0.9em;
-    width: calc(100% + var(--main-padding));
-    white-space: no-wrap;
+    /*white-space: no-wrap;*/
+    white-space: pre;
     font-family: "Fira Code", monospace;
     overflow: visible;
   }

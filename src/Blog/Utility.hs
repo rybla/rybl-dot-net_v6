@@ -126,10 +126,10 @@ assocList :: (Eq k) => k -> [(k, v)] -> Maybe v
 assocList _ [] = Nothing
 assocList k ((k', v) : kvs) = if k == k' then Just v else assocList k kvs
 
-(.=*) :: (MonadState s m) => Lens' s a -> (a -> m a) -> m ()
-l .=* f = (l .=) =<< f =<< gets (^. l)
+(%=*) :: (MonadState s m) => Lens' s a -> (a -> m a) -> m ()
+l %=* f = (l .=) =<< f =<< gets (^. l)
 
-infix 4 .=*
+infix 4 %=*
 
 runIsoStateT :: (MonadState outer m) => Iso' outer inner -> StateT inner m a -> m (inner, a)
 runIsoStateT i m = do
