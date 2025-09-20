@@ -42,7 +42,6 @@ removeCommentBlocks = Pandoc.walkM \(x :: [Pandoc.Block]) ->
     Pandoc.Div attr _ -> return $ not $ attr ^. Pandoc.attrClasses . to ("comment" `elem`)
     _ -> return True
 
-
 addReferencesSection ::
   (MonadError Doc m) =>
   [Link] -> Pandoc -> m Pandoc
