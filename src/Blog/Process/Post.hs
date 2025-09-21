@@ -43,7 +43,7 @@ processPost manager outLinks inLinks post = do
   mgr <- gets (^. manager)
   ph <- gets (^. post . postHref)
 
-  post . postDoc %=* commonLastTransformations
+  post . postDoc %=* commonFirstTransformations
 
   post . postDoc %=* addLinkPreviews mgr
 
