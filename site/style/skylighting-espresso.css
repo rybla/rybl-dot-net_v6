@@ -1,3 +1,6 @@
+pre {
+  background: #2a211c;
+}
 pre > code.sourceCode {
   white-space: pre;
   position: relative;

@@ -12,11 +12,11 @@
   --basic-box-shadow: 0 0 1em 0.5em rgba(0, 0, 0, 0.5);
 
   /*--basic-box-background: color-mix(in srgb, lightblue, transparent 50%);*/
-  --basic-box-background: color-mix(in srgb, darkblue, transparent 90%);
+  --basic-box-background: color-mix(in srgb, rgb(17, 44, 69), transparent 90%);
 
   --popout-border: none;
 
-  --indent-border-left: 0.5em solid blue;
+  --indent-border-left: 0.5em solid rgb(17, 44, 69);
 }
 
 * {
@@ -136,6 +136,9 @@ blockquote {
   padding: 0.5em 1em;
   background: var(--basic-box-background);
   border-left: var(--indent-border-left);
+
+  margin-left: -1em;
+  margin-right: -1em;
 }
 
 ol,

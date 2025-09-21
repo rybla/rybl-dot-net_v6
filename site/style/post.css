@@ -42,8 +42,7 @@ main {
     margin-bottom: 2em;
   }
   @media (max-width: calc(1000px - 1px)) {
-    display: none;
-    visibility: hidden;
+
   }
 }
 

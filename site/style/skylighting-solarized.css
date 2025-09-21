@@ -1,5 +1,5 @@
 /* Solarized theme for Pandoc Code */
-pre.sourceCode {
+pre {
   background: rgba(0, 0, 0, 0.1);
 }
 pre code {

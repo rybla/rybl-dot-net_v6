@@ -12,6 +12,7 @@ module Blog.Process.Post where
 import Blog.Common
 import qualified Blog.Common as Config
 import qualified Blog.Pandoc as Pandoc
+import qualified Blog.Paths as Paths
 import Blog.Process.Common
 import Blog.Utility
 import Control.Lens
@@ -24,6 +25,7 @@ import qualified Network.HTTP.Client as Network
 import Network.URI (URI)
 import Service.Favicon (FaviconService)
 import Service.Preview (PreviewService)
+import System.FilePath ((</>))
 import qualified Text.Pandoc as Pandoc
 import Text.PrettyPrint.HughesPJClass (Doc)
 
@@ -51,11 +53,12 @@ processPost manager outLinks inLinks post = do
     ils <- gets (^. inLinks . at ph . to (Maybe.fromMaybe []))
     post . postDoc %=* addCitationsSection ils
 
+  addPostSignatureSection
+
   whenM (gets (^. post . postTableOfContentsEnabled)) do
     post . postDoc %=* addTableOfContents
 
   addPostHeader
-  addPostSignatureSection
 
   post . postDoc %=* addLinkFavicons mgr
 
@@ -87,6 +90,14 @@ processPost manager outLinks inLinks post = do
                   Pandoc.Link mempty [Pandoc.Str "public key"] (showText Config.publicKeyUri, "_blank"),
                   Pandoc.Str "."
                 ],
-              Pandoc.CodeBlock mempty (Text.pack $ showByteArrayAsBase64 $ post'._postMarkdownSignature)
+              Pandoc.CodeBlock mempty (Text.pack $ showByteArrayAsBase64 $ post'._postMarkdownSignature),
+              Pandoc.Para
+                [ Pandoc.Str "See ",
+                  Pandoc.Link
+                    mempty
+                    [Pandoc.Str "Signature"]
+                    (Text.pack $ Paths.onlineSite.page.here </> "signature.html", ""),
+                  Pandoc.Str " for more information."
+                ]
             ]
           ]
