@@ -230,28 +230,28 @@ interactive holes well!</p>
 <p><u>Table of Contents</u></p>
 <ol type="1">
 <li><a href="#interactive-tactics-not-in-agda"
-class="no-link-favicon no-link-preview">§ Interactive Tactics (not in
+class="no-link-favicon no-link-preview">Interactive Tactics (not in
 Agda)</a></li>
 <li><a href="#agdas-typed-holes-and-macros"
-class="no-link-favicon no-link-preview">§ Agda's Typed Holes and
+class="no-link-favicon no-link-preview">Agda's Typed Holes and
 Macros</a>
 <ol type="1">
 <li><a href="#example-of-macro-hole-interaction"
-class="no-link-favicon no-link-preview">§ Example of Macro-Hole
+class="no-link-favicon no-link-preview">Example of Macro-Hole
 Interaction</a></li>
 </ol></li>
 <li><a href="#proposal-quoted-holes"
-class="no-link-favicon no-link-preview">§ Proposal: Quoted Holes</a>
+class="no-link-favicon no-link-preview">Proposal: Quoted Holes</a>
 <ol type="1">
-<li><a href="#example-usage" class="no-link-favicon no-link-preview">§
-Example Usage</a></li>
+<li><a href="#example-usage"
+class="no-link-favicon no-link-preview">Example Usage</a></li>
 <li><a href="#more-about-quoted-holes"
-class="no-link-favicon no-link-preview">§ More about Quoted Holes</a>
+class="no-link-favicon no-link-preview">More about Quoted Holes</a>
 <ol type="1">
-<li><a href="#desugaring" class="no-link-favicon no-link-preview">§
-Desugaring</a></li>
+<li><a href="#desugaring"
+class="no-link-favicon no-link-preview">Desugaring</a></li>
 <li><a href="#multiply-spliced-quoted-holes"
-class="no-link-favicon no-link-preview">§ Multiply-spliced Quoted
+class="no-link-favicon no-link-preview">Multiply-spliced Quoted
 Holes??</a></li>
 </ol></li>
 </ol></li>
@@ -264,7 +264,7 @@ class="no-link-favicon no-link-preview">Signature</a></li>
 </div>
 <h2 id="interactive-tactics-not-in-agda">§ <a
 href="#interactive-tactics-not-in-agda"
-class="no-link-favicon no-link-preview">§ Interactive Tactics (not in
+class="no-link-favicon no-link-preview">Interactive Tactics (not in
 Agda)</a></h2>
 <p>Interactive tactics, such as <span><a
 href="https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html"><img
@@ -294,7 +294,7 @@ otherwise be inaccessible if you were only able to view the final output
 of the tactic script.</p>
 <h2 id="agdas-typed-holes-and-macros">§ <a
 href="#agdas-typed-holes-and-macros"
-class="no-link-favicon no-link-preview">§ Agda's Typed Holes and
+class="no-link-favicon no-link-preview">Agda's Typed Holes and
 Macros</a></h2>
 <p><span><a href="https://agda.readthedocs.io/en/latest/index.html"><img
 src="/favicon/readthedocs.io.ico" class="favicon"
@@ -346,7 +346,7 @@ Interactivity would require the hole's evaluation to be delayed until
 to splice the hole into a different context and expected type.</p>
 <h3 id="example-of-macro-hole-interaction">§ <a
 href="#example-of-macro-hole-interaction"
-class="no-link-favicon no-link-preview">§ Example of Macro-Hole
+class="no-link-favicon no-link-preview">Example of Macro-Hole
 Interaction</a></h3>
 <p>Imports:</p>
 <div class="sourceCode" id="cb1"><pre
@@ -391,21 +391,21 @@ class="sourceCode agda"><code class="sourceCode agda"><span id="cb4-1"><a href="
 <p>But this is interpreted differently than it might first appear. Agda
 is going to complain that it gets blocked at the hole (where
 <code>_64</code> is the value of the hole):</p>
-<pre><code>———— Error ———————————
-Failed to solve the following constraints:
-  unquote
-  (λ hole →
-     bindTC (inferType hole)
-     (λ α → bindTC (intro-helper zero α _64) (unify hole)))
-    (blocked on _64)</code></pre>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>———— Error ———————————</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Failed to solve the following constraints:</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  unquote</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  (λ hole →</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>     bindTC (inferType hole)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>     (λ α → bindTC (intro-helper zero α _64) (unify hole)))</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    (blocked on _64)</span></code></pre></div>
 <p>This is because <code>unquote</code> is blocked when trying to
 evaluate the hole, and so macro expansion doesn't even get started.
 Because of this, we <em>can't</em> inspect that intermediate state in
 the same way we could if this was a function application rather than a
 macro invocation.</p>
 <h2 id="proposal-quoted-holes">§ <a href="#proposal-quoted-holes"
-class="no-link-favicon no-link-preview">§ Proposal: Quoted
-Holes</a></h2>
+class="no-link-favicon no-link-preview">Proposal: Quoted Holes</a></h2>
 <p>What would be desirable in this instance,</p>
 <div class="sourceCode" id="cb6"><pre
 class="sourceCode agda"><code class="sourceCode agda"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ot">_</span> <span class="ot">:</span> ℕ <span class="ot">→</span> ℕ <span class="ot">→</span> ℕ</span>
@@ -433,25 +433,25 @@ of the new splice as well.</p>
 <p>Note that quoted holes do not require any new features of Agda's type
 theory -- they are purely a UI phenomenon.</p>
 <h3 id="example-usage">§ <a href="#example-usage"
-class="no-link-favicon no-link-preview">§ Example Usage</a></h3>
+class="no-link-favicon no-link-preview">Example Usage</a></h3>
 <p>This feature will allow you to write something like</p>
 <div class="sourceCode" id="cb8"><pre
 class="sourceCode agda"><code class="sourceCode agda"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ot">_</span> <span class="ot">:</span> ℕ <span class="ot">→</span> ℕ <span class="ot">→</span> ℕ</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ot">_</span> <span class="ot">=</span> intros ?</span></code></pre></div>
 <p>and then inspect the hole to see the context and expected type:</p>
-<pre><code>Goal: ℕ
-————————————————————
-x1 : ℕ
-x0 : ℕ</code></pre>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Goal: ℕ</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>————————————————————</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>x1 : ℕ</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>x0 : ℕ</span></code></pre></div>
 <p>Ultimately, this gives you exactly the kind of interactivity as
 interactively running tactic scripts in Coq. Most of the feature is
 already implemented in how Agda's typed holes work -- it just needs this
 one extra feature to to be able to quote and splice holes!</p>
 <h3 id="more-about-quoted-holes">§ <a href="#more-about-quoted-holes"
-class="no-link-favicon no-link-preview">§ More about Quoted
-Holes</a></h3>
+class="no-link-favicon no-link-preview">More about Quoted Holes</a></h3>
 <h4 id="desugaring">§ <a href="#desugaring"
-class="no-link-favicon no-link-preview">§ Desugaring</a></h4>
+class="no-link-favicon no-link-preview">Desugaring</a></h4>
 <p>In the example, the idea is that the macro invocation
 <code>intros ?</code> to <span><a
 href="https://agda.readthedocs.io/en/v2.8.0-rc1/language/reflection.html#macros"><img
@@ -469,7 +469,7 @@ class="sourceCode agda"><code class="sourceCode agda"><span id="cb10-1"><a href=
 properly.</p>
 <h4 id="multiply-spliced-quoted-holes">§ <a
 href="#multiply-spliced-quoted-holes"
-class="no-link-favicon no-link-preview">§ Multiply-spliced Quoted
+class="no-link-favicon no-link-preview">Multiply-spliced Quoted
 Holes??</a></h4>
 <p>A quoted hole is more special than other quoted terms, since it must
 remember its original source. A quoted term is spliced as a completely
