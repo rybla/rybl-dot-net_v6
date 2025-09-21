@@ -211,9 +211,10 @@
         ></a>
       </div>
     </div></header>
-    <main><h1><a href="/post/Agda2LH.html" data-noLinkFavicon=""
-data-noLinkPreview="">agda2lh</a></h1>
-<div class="header-info">
+    <main><h1><a href="/post/Agda2LH.html"
+class="no-link-favicon no-link-preview">agda2lh</a></h1>
+<div>
+<div class="sidenote persistent header-info">
 <p><u>Published:</u> 2022-09-17</p>
 <p><u>Tags:</u> computics, Agda, Haskell, LiquidHaskell</p>
 <p><u>Abstract</u></p>
@@ -230,17 +231,19 @@ Haskell refinements. Such a Liquid Haskell program exposes the
 Agda-originating specifications to client Haskell code that also uses
 Liquid Haskell to variable degree.</p>
 </div>
-<h2>Introduction to agda2hs</h2>
+</div>
+<h2>§ § Introduction to agda2hs</h2>
 <p>In the paper <em><span><a
 href="https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf"><img
 src="/missing.ico" class="favicon" alt="/missing.ico" />Reasonable Agda
 Is Correct Haskell: Writing Verified Haskell using agda2hs</a><span
-class="sidenote preview"><span class="preview-title"><em><a
+class="sidenote preview">Reasonable Agda Is Correct Haskell: Writing
+Verified Haskell using agda2hs<br/><em><a
 href="https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf"
 title="_blank"><img src="/missing.ico" class="favicon"
-alt="/missing.ico" />https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf</a></em></span><span
-class="preview-description">Placeholder description for
-https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf</span></span></span></em>,
+alt="/missing.ico" />https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf</a></em><br/>Placeholder
+description for
+https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf</span></span></em>,
 the authors identify a reasonable correspondence between a subset of
 Agda and Haskell within which they can perform a reasonable translation
 from Agda to Haskell.</p>
@@ -285,7 +288,7 @@ class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb2-1"><a 
 <span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>mirror (<span class="dt">Branch</span> a tl tr) <span class="ot">=</span> <span class="dt">Branch</span> a (mirror tr) (mirror tl)</span></code></pre></div>
 <p>Behaviorally, these programs are the same. But still something has
 been lost in translation.</p>
-<h2>Problem: Agda is more expressive than Haskell</h2>
+<h2>§ § Problem: Agda is more expressive than Haskell</h2>
 <p>Since Haskell does not support full dependent typing, the Haskell
 program above does not have the same statically-checked properties as
 the Agda program. In particular, the Agda <code>mirror</code> preserves
@@ -304,19 +307,19 @@ not also using fancy GADTs with indexing.</p>
 <p>In summary, what we are lacking is a Haskell target that maintains
 the static checks of the original Agda code and is still easily
 interoperable with normal Haskell code when desired.</p>
-<h2>Solution: target LiquidHaskell with agda2lh</h2>
+<h2>§ § Solution: target LiquidHaskell with agda2lh</h2>
 <p><em><span><a
 href="https://github.com/ucsd-progsys/liquidhaskell"><img
 src="/favicon/github.com.svg" class="favicon"
 alt="/favicon/github.com.svg" />Liquid Haskell</a><span
-class="sidenote preview"><span class="preview-title"><em><a
+class="sidenote preview">Liquid Haskell<br/><em><a
 href="https://github.com/ucsd-progsys/liquidhaskell" title="_blank"><img
 src="/favicon/github.com.svg" class="favicon"
-alt="/favicon/github.com.svg" />https://github.com/ucsd-progsys/liquidhaskell</a></em></span><span
-class="preview-description">Placeholder description for
-https://github.com/ucsd-progsys/liquidhaskell</span></span></span></em>
-is a plugin to Haskell that adds automatically-checked refinement types
-to Haskell's type system. A <em>refinement type</em> is a basic Haskell
+alt="/favicon/github.com.svg" />https://github.com/ucsd-progsys/liquidhaskell</a></em><br/>Placeholder
+description for
+https://github.com/ucsd-progsys/liquidhaskell</span></span></em> is a
+plugin to Haskell that adds automatically-checked refinement types to
+Haskell's type system. A <em>refinement type</em> is a basic Haskell
 type that is <em>refined</em> by a boolean predicate over values of the
 type. For example, the following function has a refined input type and a
 refined output type.</p>
@@ -431,46 +434,44 @@ class="sourceCode agda"><code class="sourceCode agda"><span id="cb5-1"><a href="
 <span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a><span class="co">-- height is derived from the previous annotation that specifies the `height`</span></span>
 <span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a><span class="co">-- of a tree to be refinement-relevant index</span></span>
 <span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a><span class="pp">{-# COMPILE AGDA2LH mirror #-}</span></span></code></pre></div>
-<h2>References</h2>
+<h2>§ § References</h2>
 <ul>
 <li><span><a
 href="https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf"><img
 src="/missing.ico" class="favicon" alt="/missing.ico" />agda2hs</a><span
-class="sidenote preview"><span class="preview-title"><em><a
+class="sidenote preview">agda2hs<br/><em><a
 href="https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf"
 title="_blank"><img src="/missing.ico" class="favicon"
-alt="/missing.ico" />https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf</a></em></span><span
-class="preview-description">Placeholder description for
-https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf</span></span></span></li>
+alt="/missing.ico" />https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf</a></em><br/>Placeholder
+description for
+https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf</span></span></li>
 <li><span><a href="https://github.com/ucsd-progsys/liquidhaskell"><img
 src="/favicon/github.com.svg" class="favicon"
 alt="/favicon/github.com.svg" />Liquid Haskell</a><span
-class="sidenote preview"><span class="preview-title"><em><a
+class="sidenote preview">Liquid Haskell<br/><em><a
 href="https://github.com/ucsd-progsys/liquidhaskell" title="_blank"><img
 src="/favicon/github.com.svg" class="favicon"
-alt="/favicon/github.com.svg" />https://github.com/ucsd-progsys/liquidhaskell</a></em></span><span
-class="preview-description">Placeholder description for
-https://github.com/ucsd-progsys/liquidhaskell</span></span></span></li>
+alt="/favicon/github.com.svg" />https://github.com/ucsd-progsys/liquidhaskell</a></em><br/>Placeholder
+description for
+https://github.com/ucsd-progsys/liquidhaskell</span></span></li>
 </ul>
-<h1>References</h1>
+<h2>§ References</h2>
 <ul>
 <li><a
 href="https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf"
-data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="inReference no-link-preview"><img src="/missing.ico"
 class="favicon" alt="/missing.ico" />Reasonable Agda Is Correct Haskell:
 Writing Verified Haskell using agda2hs</a></li>
 <li><a href="https://github.com/ucsd-progsys/liquidhaskell"
-data-inReference="" data-noLinkPreview=""><img
-src="/favicon/github.com.svg" class="favicon"
-alt="/favicon/github.com.svg" />Liquid Haskell</a></li>
+class="inReference no-link-preview"><img src="/favicon/github.com.svg"
+class="favicon" alt="/favicon/github.com.svg" />Liquid Haskell</a></li>
 <li><a
 href="https://jesper.sikanda.be/files/reasonable-agda-is-correct-haskell.pdf"
-data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="inReference no-link-preview"><img src="/missing.ico"
 class="favicon" alt="/missing.ico" />agda2hs</a></li>
 <li><a href="https://github.com/ucsd-progsys/liquidhaskell"
-data-inReference="" data-noLinkPreview=""><img
-src="/favicon/github.com.svg" class="favicon"
-alt="/favicon/github.com.svg" />Liquid Haskell</a></li>
+class="inReference no-link-preview"><img src="/favicon/github.com.svg"
+class="favicon" alt="/favicon/github.com.svg" />Liquid Haskell</a></li>
 </ul>
 <h1>Signature</h1>
 <p>The following code block is the <a
@@ -482,7 +483,8 @@ class="favicon" alt="/favicon.ico" />markdown content</a> encoded in
 base 64, using my <em>secret key</em> and <a
 href="/key/main_ed25519.pub.txt" title="_blank"><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />public key</a>.</p>
-<pre><code>8fb5528bd5c3b7c67b42eb6965249a80247ec8b124b4eb5ffbd6775cab7c55eb68827230a824f6b7529ee703c6458146187876f53e069043eae35f8803023f0d</code></pre>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>8fb5528bd5c3b7c67b42eb6965249a80247ec8b124b4eb5ffbd6775cab7c55eb68827230a824f6b7529ee703c6458146187876f53e069043eae35f8803023f0d</span></code></pre></div>
 <p>See <a href="/page/signature.html"><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />Signature</a> for more
 information.</p></main>

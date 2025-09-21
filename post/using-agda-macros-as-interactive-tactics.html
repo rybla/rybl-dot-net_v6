@@ -212,9 +212,10 @@
       </div>
     </div></header>
     <main><h1><a href="/post/using-agda-macros-as-interactive-tactics.html"
-data-noLinkFavicon="" data-noLinkPreview="">Using Agda Macros as
-Interactive Tactics</a></h1>
-<div class="header-info">
+class="no-link-favicon no-link-preview">Using Agda Macros as Interactive
+Tactics</a></h1>
+<div>
+<div class="sidenote persistent header-info">
 <p><u>Published:</u> 2025-05-13</p>
 <p><u>Tags:</u> computics, Agda</p>
 <p><u>Abstract</u></p>
@@ -223,58 +224,67 @@ features of interactive tactics LTac in Coq/Rocq. Agda's typed holes
 already get almost all the way there; they just need to handle
 interactive holes well!</p>
 </div>
-<div class="table-of-contents">
+</div>
+<div>
+<div class="sidenote persistent table-of-contents">
 <p><u>Table of Contents</u></p>
 <ol type="1">
-<li><a href="#interactive-tactics-not-in-agda" data-noLinkFavicon=""
-data-noLinkPreview="">Interactive Tactics (not in Agda)</a></li>
-<li><a href="#agdas-typed-holes-and-macros" data-noLinkFavicon=""
-data-noLinkPreview="">Agda's Typed Holes and Macros</a>
+<li><a href="#interactive-tactics-not-in-agda"
+class="no-link-favicon no-link-preview">§ Interactive Tactics (not in
+Agda)</a></li>
+<li><a href="#agdas-typed-holes-and-macros"
+class="no-link-favicon no-link-preview">§ Agda's Typed Holes and
+Macros</a>
 <ol type="1">
-<li><a href="#example-of-macro-hole-interaction" data-noLinkFavicon=""
-data-noLinkPreview="">Example of Macro-Hole Interaction</a></li>
+<li><a href="#example-of-macro-hole-interaction"
+class="no-link-favicon no-link-preview">§ Example of Macro-Hole
+Interaction</a></li>
 </ol></li>
-<li><a href="#proposal-quoted-holes" data-noLinkFavicon=""
-data-noLinkPreview="">Proposal: Quoted Holes</a>
+<li><a href="#proposal-quoted-holes"
+class="no-link-favicon no-link-preview">§ Proposal: Quoted Holes</a>
 <ol type="1">
-<li><a href="#example-usage" data-noLinkFavicon=""
-data-noLinkPreview="">Example Usage</a></li>
-<li><a href="#more-about-quoted-holes" data-noLinkFavicon=""
-data-noLinkPreview="">More about Quoted Holes</a>
+<li><a href="#example-usage" class="no-link-favicon no-link-preview">§
+Example Usage</a></li>
+<li><a href="#more-about-quoted-holes"
+class="no-link-favicon no-link-preview">§ More about Quoted Holes</a>
 <ol type="1">
-<li><a href="#desugaring" data-noLinkFavicon=""
-data-noLinkPreview="">Desugaring</a></li>
-<li><a href="#multiply-spliced-quoted-holes" data-noLinkFavicon=""
-data-noLinkPreview="">Multiply-spliced Quoted Holes??</a></li>
+<li><a href="#desugaring" class="no-link-favicon no-link-preview">§
+Desugaring</a></li>
+<li><a href="#multiply-spliced-quoted-holes"
+class="no-link-favicon no-link-preview">§ Multiply-spliced Quoted
+Holes??</a></li>
 </ol></li>
 </ol></li>
-<li><a href="#references" data-noLinkFavicon=""
-data-noLinkPreview="">References</a></li>
-<li><a href="#signature" data-noLinkFavicon=""
-data-noLinkPreview="">Signature</a></li>
+<li><a href="#references"
+class="no-link-favicon no-link-preview">References</a></li>
+<li><a href="#signature"
+class="no-link-favicon no-link-preview">Signature</a></li>
 </ol>
 </div>
-<h2 id="interactive-tactics-not-in-agda">Interactive Tactics (not in
-Agda)</h2>
+</div>
+<h2 id="interactive-tactics-not-in-agda">§ <a
+href="#interactive-tactics-not-in-agda"
+class="no-link-favicon no-link-preview">§ Interactive Tactics (not in
+Agda)</a></h2>
 <p>Interactive tactics, such as <span><a
 href="https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html"><img
 src="/favicon/rocq-prover.org.ico" class="favicon"
 alt="/favicon/rocq-prover.org.ico" />LTac</a><span
-class="sidenote preview"><span class="preview-title"><em><a
+class="sidenote preview">LTac<br/><em><a
 href="https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html"
 title="_blank"><img src="/favicon/rocq-prover.org.ico" class="favicon"
-alt="/favicon/rocq-prover.org.ico" />https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html</a></em></span><span
-class="preview-description">Placeholder description for
-https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html</span></span></span>
+alt="/favicon/rocq-prover.org.ico" />https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html</a></em><br/>Placeholder
+description for
+https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html</span></span>
 in <span><a href="https://rocq-prover.org/"><img
 src="/favicon/rocq-prover.org.ico" class="favicon"
 alt="/favicon/rocq-prover.org.ico" />Coq/Rocq</a><span
-class="sidenote preview"><span class="preview-title"><em><a
+class="sidenote preview">Coq/Rocq<br/><em><a
 href="https://rocq-prover.org/" title="_blank"><img
 src="/favicon/rocq-prover.org.ico" class="favicon"
-alt="/favicon/rocq-prover.org.ico" />https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html</a></em></span><span
-class="preview-description">Placeholder description for
-https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html</span></span></span>,
+alt="/favicon/rocq-prover.org.ico" />https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html</a></em><br/>Placeholder
+description for
+https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html</span></span>,
 support an interesting and often useful workflow: to interactively run a
 tactic script (which can leverage metaprogramming), viewing the context
 and expected type of the rest of the tactic script (in a nested fashion)
@@ -282,58 +292,62 @@ at each step. In this way, you as a programmer can view the intermediate
 states that are yielded by metaprogrammatic computations which would
 otherwise be inaccessible if you were only able to view the final output
 of the tactic script.</p>
-<h2 id="agdas-typed-holes-and-macros">Agda's Typed Holes and Macros</h2>
+<h2 id="agdas-typed-holes-and-macros">§ <a
+href="#agdas-typed-holes-and-macros"
+class="no-link-favicon no-link-preview">§ Agda's Typed Holes and
+Macros</a></h2>
 <p><span><a href="https://agda.readthedocs.io/en/latest/index.html"><img
 src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />Agda</a><span
-class="sidenote preview"><span class="preview-title"><em><a
+class="sidenote preview">Agda<br/><em><a
 href="https://agda.readthedocs.io/en/latest/index.html"
 title="_blank"><img src="/favicon/readthedocs.io.ico" class="favicon"
-alt="/favicon/readthedocs.io.ico" />https://agda.readthedocs.io/en/latest/index.html</a></em></span><span
-class="preview-description">Placeholder description for
-https://agda.readthedocs.io/en/latest/index.html</span></span></span>
-has an interactive editing mode that provides some similar features to
-this workflow. In particular, <span><a
+alt="/favicon/readthedocs.io.ico" />https://agda.readthedocs.io/en/latest/index.html</a></em><br/>Placeholder
+description for
+https://agda.readthedocs.io/en/latest/index.html</span></span> has an
+interactive editing mode that provides some similar features to this
+workflow. In particular, <span><a
 href="https://agda.readthedocs.io/en/latest/language/lexical-structure.html#holes"><img
 src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />typed holes</a><span
-class="sidenote preview"><span class="preview-title"><em><a
+class="sidenote preview">typed holes<br/><em><a
 href="https://agda.readthedocs.io/en/latest/language/lexical-structure.html#holes"
 title="_blank"><img src="/favicon/readthedocs.io.ico" class="favicon"
-alt="/favicon/readthedocs.io.ico" />https://agda.readthedocs.io/en/latest/index.html</a></em></span><span
-class="preview-description">Placeholder description for
-https://agda.readthedocs.io/en/latest/index.html</span></span></span>
-let you as a programmer view the intermediate state (context and
-expected type) of the typechecker at any point in your program. This is
-a very interesting and useful feature for many of the same reasons as is
+alt="/favicon/readthedocs.io.ico" />https://agda.readthedocs.io/en/latest/index.html</a></em><br/>Placeholder
+description for
+https://agda.readthedocs.io/en/latest/index.html</span></span> let you
+as a programmer view the intermediate state (context and expected type)
+of the typechecker at any point in your program. This is a very
+interesting and useful feature for many of the same reasons as is
 interactively running a tactic script.</p>
 <p>Agda <em>also</em> has a <span><a
 href="https://agda.readthedocs.io/en/stable/language/reflection.html"><img
 src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />macro system</a><span
-class="sidenote preview"><span class="preview-title"><em><a
+class="sidenote preview">macro system<br/><em><a
 href="https://agda.readthedocs.io/en/stable/language/reflection.html"
 title="_blank"><img src="/favicon/readthedocs.io.ico" class="favicon"
-alt="/favicon/readthedocs.io.ico" />https://agda.readthedocs.io/en/latest/index.html</a></em></span><span
-class="preview-description">Placeholder description for
-https://agda.readthedocs.io/en/latest/index.html</span></span></span>.
-These macros allow for all the same computations that can be performed
-in tactic languages such as LTac, in particular because it allows the
-macro programmer to inspect that current context and expected type of
-the macro expansion's result. However, the macro system <em>does
-not</em> provide the same interactive experience as interactive tactic
-scripts because of the way that holes and macros interact: when a hole
-is given as an argument to a macro, that hole is evaluated (where the
-evaluation immediately gets stuck, since its a hole after all)
-<em>before</em> the macro starts expanding (just like any other argument
-to the macro), and so that hole's expected type and context can only be
-considered in the context and expected type <em>at the macro's
-invocation</em>. Interactivity would require the hole's evaluation to be
-delayed until <em>after</em> the macro is expanded, since this would
-allow the macro to splice the hole into a different context and expected
-type.</p>
-<h3 id="example-of-macro-hole-interaction">Example of Macro-Hole
-Interaction</h3>
+alt="/favicon/readthedocs.io.ico" />https://agda.readthedocs.io/en/latest/index.html</a></em><br/>Placeholder
+description for
+https://agda.readthedocs.io/en/latest/index.html</span></span>. These
+macros allow for all the same computations that can be performed in
+tactic languages such as LTac, in particular because it allows the macro
+programmer to inspect that current context and expected type of the
+macro expansion's result. However, the macro system <em>does not</em>
+provide the same interactive experience as interactive tactic scripts
+because of the way that holes and macros interact: when a hole is given
+as an argument to a macro, that hole is evaluated (where the evaluation
+immediately gets stuck, since its a hole after all) <em>before</em> the
+macro starts expanding (just like any other argument to the macro), and
+so that hole's expected type and context can only be considered in the
+context and expected type <em>at the macro's invocation</em>.
+Interactivity would require the hole's evaluation to be delayed until
+<em>after</em> the macro is expanded, since this would allow the macro
+to splice the hole into a different context and expected type.</p>
+<h3 id="example-of-macro-hole-interaction">§ <a
+href="#example-of-macro-hole-interaction"
+class="no-link-favicon no-link-preview">§ Example of Macro-Hole
+Interaction</a></h3>
 <p>Imports:</p>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode agda"><code class="sourceCode agda"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">open</span> <span class="kw">import</span> Reflection <span class="kw">using</span> <span class="ot">(_</span>&gt;&gt;=<span class="ot">_)</span></span>
@@ -377,20 +391,21 @@ class="sourceCode agda"><code class="sourceCode agda"><span id="cb4-1"><a href="
 <p>But this is interpreted differently than it might first appear. Agda
 is going to complain that it gets blocked at the hole (where
 <code>_64</code> is the value of the hole):</p>
-<div class="sourceCode" id="cb5"><pre
-class="sourceCode txt"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>———— Error ———————————</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Failed to solve the following constraints:</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  unquote</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  (λ hole →</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>     bindTC (inferType hole)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>     (λ α → bindTC (intro-helper zero α _64) (unify hole)))</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    (blocked on _64)</span></code></pre></div>
+<pre><code>———— Error ———————————
+Failed to solve the following constraints:
+  unquote
+  (λ hole →
+     bindTC (inferType hole)
+     (λ α → bindTC (intro-helper zero α _64) (unify hole)))
+    (blocked on _64)</code></pre>
 <p>This is because <code>unquote</code> is blocked when trying to
 evaluate the hole, and so macro expansion doesn't even get started.
 Because of this, we <em>can't</em> inspect that intermediate state in
 the same way we could if this was a function application rather than a
 macro invocation.</p>
-<h2 id="proposal-quoted-holes">Proposal: Quoted Holes</h2>
+<h2 id="proposal-quoted-holes">§ <a href="#proposal-quoted-holes"
+class="no-link-favicon no-link-preview">§ Proposal: Quoted
+Holes</a></h2>
 <p>What would be desirable in this instance,</p>
 <div class="sourceCode" id="cb6"><pre
 class="sourceCode agda"><code class="sourceCode agda"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ot">_</span> <span class="ot">:</span> ℕ <span class="ot">→</span> ℕ <span class="ot">→</span> ℕ</span>
@@ -417,41 +432,45 @@ metavariable associated with that quoted hole's type is used as the type
 of the new splice as well.</p>
 <p>Note that quoted holes do not require any new features of Agda's type
 theory -- they are purely a UI phenomenon.</p>
-<h3 id="example-usage">Example Usage</h3>
+<h3 id="example-usage">§ <a href="#example-usage"
+class="no-link-favicon no-link-preview">§ Example Usage</a></h3>
 <p>This feature will allow you to write something like</p>
 <div class="sourceCode" id="cb8"><pre
 class="sourceCode agda"><code class="sourceCode agda"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ot">_</span> <span class="ot">:</span> ℕ <span class="ot">→</span> ℕ <span class="ot">→</span> ℕ</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ot">_</span> <span class="ot">=</span> intros ?</span></code></pre></div>
 <p>and then inspect the hole to see the context and expected type:</p>
-<div class="sourceCode" id="cb9"><pre
-class="sourceCode txt"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Goal: ℕ</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>————————————————————</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>x1 : ℕ</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>x0 : ℕ</span></code></pre></div>
+<pre><code>Goal: ℕ
+————————————————————
+x1 : ℕ
+x0 : ℕ</code></pre>
 <p>Ultimately, this gives you exactly the kind of interactivity as
 interactively running tactic scripts in Coq. Most of the feature is
 already implemented in how Agda's typed holes work -- it just needs this
 one extra feature to to be able to quote and splice holes!</p>
-<h3 id="more-about-quoted-holes">More about Quoted Holes</h3>
-<h4 id="desugaring">Desugaring</h4>
+<h3 id="more-about-quoted-holes">§ <a href="#more-about-quoted-holes"
+class="no-link-favicon no-link-preview">§ More about Quoted
+Holes</a></h3>
+<h4 id="desugaring">§ <a href="#desugaring"
+class="no-link-favicon no-link-preview">§ Desugaring</a></h4>
 <p>In the example, the idea is that the macro invocation
 <code>intros ?</code> to <span><a
 href="https://agda.readthedocs.io/en/v2.8.0-rc1/language/reflection.html#macros"><img
 src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />desugars</a><span
-class="sidenote preview"><span class="preview-title"><em><a
+class="sidenote preview">desugars<br/><em><a
 href="https://agda.readthedocs.io/en/v2.8.0-rc1/language/reflection.html#macros"
 title="_blank"><img src="/favicon/readthedocs.io.ico" class="favicon"
-alt="/favicon/readthedocs.io.ico" />https://agda.readthedocs.io/en/latest/index.html</a></em></span><span
-class="preview-description">Placeholder description for
-https://agda.readthedocs.io/en/latest/index.html</span></span></span>
-to</p>
+alt="/favicon/readthedocs.io.ico" />https://agda.readthedocs.io/en/latest/index.html</a></em><br/>Placeholder
+description for
+https://agda.readthedocs.io/en/latest/index.html</span></span> to</p>
 <div class="sourceCode" id="cb10"><pre
 class="sourceCode agda"><code class="sourceCode agda"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">unquote</span> <span class="ot">(</span>intros <span class="ot">(</span><span class="kw">quoteTerm</span> ?<span class="ot">))</span></span></code></pre></div>
 <p>So, <code>quoteTerm</code> needs to handle quoting holes
 properly.</p>
-<h4 id="multiply-spliced-quoted-holes">Multiply-spliced Quoted
-Holes??</h4>
+<h4 id="multiply-spliced-quoted-holes">§ <a
+href="#multiply-spliced-quoted-holes"
+class="no-link-favicon no-link-preview">§ Multiply-spliced Quoted
+Holes??</a></h4>
 <p>A quoted hole is more special than other quoted terms, since it must
 remember its original source. A quoted term is spliced as a completely
 new copy of the term that was quoted. In contrast, all splices of the
@@ -470,37 +489,40 @@ particular, think of splicing a macro that will expand). But I think
 that's mostly ok. An alternative would be to make a special kind of
 metavariable for quoted holes that can accumulate multiple contexts and
 expected types and not try to unify.</p>
-<h1 id="references">References</h1>
+<h2 id="references">§ <a href="#references"
+class="no-link-favicon no-link-preview">References</a></h2>
 <ul>
 <li><a
 href="https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html"
-data-inReference="" data-noLinkPreview=""><img
+class="inReference no-link-preview"><img
 src="/favicon/rocq-prover.org.ico" class="favicon"
 alt="/favicon/rocq-prover.org.ico" />LTac</a></li>
-<li><a href="https://rocq-prover.org/" data-inReference=""
-data-noLinkPreview=""><img src="/favicon/rocq-prover.org.ico"
-class="favicon" alt="/favicon/rocq-prover.org.ico" />Coq/Rocq</a></li>
+<li><a href="https://rocq-prover.org/"
+class="inReference no-link-preview"><img
+src="/favicon/rocq-prover.org.ico" class="favicon"
+alt="/favicon/rocq-prover.org.ico" />Coq/Rocq</a></li>
 <li><a href="https://agda.readthedocs.io/en/latest/index.html"
-data-inReference="" data-noLinkPreview=""><img
+class="inReference no-link-preview"><img
 src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />Agda</a></li>
 <li><a
 href="https://agda.readthedocs.io/en/latest/language/lexical-structure.html#holes"
-data-inReference="" data-noLinkPreview=""><img
+class="inReference no-link-preview"><img
 src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />typed holes</a></li>
 <li><a
 href="https://agda.readthedocs.io/en/stable/language/reflection.html"
-data-inReference="" data-noLinkPreview=""><img
+class="inReference no-link-preview"><img
 src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />macro system</a></li>
 <li><a
 href="https://agda.readthedocs.io/en/v2.8.0-rc1/language/reflection.html#macros"
-data-inReference="" data-noLinkPreview=""><img
+class="inReference no-link-preview"><img
 src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />desugars</a></li>
 </ul>
-<h1 id="signature">Signature</h1>
+<h1 id="signature"><a href="#signature"
+class="no-link-favicon no-link-preview">Signature</a></h1>
 <p>The following code block is the <a
 href="https://en.wikipedia.org/wiki/EdDSA#Ed25519" title="_blank"><img
 src="/favicon/wikipedia.org.ico" class="favicon"
@@ -511,7 +533,8 @@ src="/favicon.ico" class="favicon" alt="/favicon.ico" />markdown
 content</a> encoded in base 64, using my <em>secret key</em> and <a
 href="/key/main_ed25519.pub.txt" title="_blank"><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />public key</a>.</p>
-<pre><code>cf15a419c03f81ff8754b7572a04b94c134f47d846e676927d4f03718f485c0c6212e5980a2f34486509ca1473e9d88a5e9b17afc2dbccbd04dd988e0f3c270a</code></pre>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>cf15a419c03f81ff8754b7572a04b94c134f47d846e676927d4f03718f485c0c6212e5980a2f34486509ca1473e9d88a5e9b17afc2dbccbd04dd988e0f3c270a</span></code></pre></div>
 <p>See <a href="/page/signature.html"><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />Signature</a> for more
 information.</p></main>

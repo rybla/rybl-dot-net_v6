@@ -211,9 +211,10 @@
         ></a>
       </div>
     </div></header>
-    <main><h1><a href="/post/mesaprogramming.html" data-noLinkFavicon=""
-data-noLinkPreview="">Mesaprogramming</a></h1>
-<div class="header-info">
+    <main><h1><a href="/post/mesaprogramming.html"
+class="no-link-favicon no-link-preview">Mesaprogramming</a></h1>
+<div>
+<div class="sidenote persistent header-info">
 <p><u>Published:</u> 2021-08-24</p>
 <p><u>Tags:</u> computics</p>
 <p><u>Abstract</u></p>
@@ -227,27 +228,34 @@ metaprogramming capabilities in a way that naturally parallels the use
 of the base language. For example. this approach extends naturally to
 safe tactics.</p>
 </div>
-<div class="table-of-contents">
+</div>
+<div>
+<div class="sidenote persistent table-of-contents">
 <p><u>Table of Contents</u></p>
 <ol type="1">
-<li><a href="#dependent-types" data-noLinkFavicon=""
-data-noLinkPreview="">Dependent Types</a></li>
-<li><a href="#metaprogramming" data-noLinkFavicon=""
-data-noLinkPreview="">Metaprogramming</a></li>
-<li><a href="#embedded-languages" data-noLinkFavicon=""
-data-noLinkPreview="">Embedded Languages</a></li>
-<li><a href="#mesaprogramming" data-noLinkFavicon=""
-data-noLinkPreview="">Mesaprogramming</a></li>
-<li><a href="#references" data-noLinkFavicon=""
-data-noLinkPreview="">References</a></li>
-<li><a href="#signature" data-noLinkFavicon=""
-data-noLinkPreview="">Signature</a></li>
+<li><a href="#dependent-types"
+class="no-link-favicon no-link-preview">Dependent Types</a></li>
+<li><a href="#metaprogramming"
+class="no-link-favicon no-link-preview">Metaprogramming</a></li>
+<li><a href="#embedded-languages"
+class="no-link-favicon no-link-preview">Embedded Languages</a></li>
+<li><a href="#mesaprogramming"
+class="no-link-favicon no-link-preview">Mesaprogramming</a>
+<ol type="1">
+<li><a href="#references"
+class="no-link-favicon no-link-preview">References</a></li>
+</ol></li>
+<li><a href="#signature"
+class="no-link-favicon no-link-preview">Signature</a></li>
 </ol>
+</div>
 </div>
 <p>Whenever I write "language" I implicitly mean "programming
 langauge".</p>
-<h1 id="dependent-types">Dependent Types</h1>
-<h1 id="metaprogramming">Metaprogramming</h1>
+<h1 id="dependent-types"><a href="#dependent-types"
+class="no-link-favicon no-link-preview">Dependent Types</a></h1>
+<h1 id="metaprogramming"><a href="#metaprogramming"
+class="no-link-favicon no-link-preview">Metaprogramming</a></h1>
 <p><em>Metaprogramming</em> is the design of programs that generate code
 meant to be used at the same of a similarly high level of abstraction as
 the metaprogram's language. For example, the popular languages Python
@@ -287,7 +295,8 @@ class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb1-1"><a 
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>n <span class="ot">=</span> <span class="op">$</span>(addN <span class="dv">2</span>) <span class="dv">1</span> <span class="dv">2</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co">-- n == 1 + 2</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">-- n == 3</span></span></code></pre></div>
-<h1 id="embedded-languages">Embedded Languages</h1>
+<h1 id="embedded-languages"><a href="#embedded-languages"
+class="no-link-favicon no-link-preview">Embedded Languages</a></h1>
 <p>The definition of a language consists of its syntax and semantics.
 The <strong>syntax</strong> of a language is the specification for
 well-formed programs in the language. The <strong>semantics</strong> of
@@ -359,22 +368,21 @@ parse unstrucutred strings like JavaScript and Python's
 <code>eval</code>, languages like Haskell (via <span><a
 href="https://wiki.haskell.org/Template_Haskell"><img src="/missing.ico"
 class="favicon" alt="/missing.ico" />Template Haskell</a><span
-class="sidenote preview"><span class="preview-title"><em><a
+class="sidenote preview">Template Haskell<br/><em><a
 href="https://wiki.haskell.org/Template_Haskell" title="_blank"><img
 src="/missing.ico" class="favicon"
-alt="/missing.ico" />https://wiki.haskell.org/Dependent_type</a></em></span><span
-class="preview-description">Placeholder description for
-https://wiki.haskell.org/Dependent_type</span></span></span>) and C++
-(via <span><a
+alt="/missing.ico" />https://wiki.haskell.org/Dependent_type</a></em><br/>Placeholder
+description for https://wiki.haskell.org/Dependent_type</span></span>)
+and C++ (via <span><a
 href="https://docs.microsoft.com/en-us/cpp/cpp/templates-cpp"><img
 src="/favicon/microsoft.com.ico" class="favicon"
 alt="/favicon/microsoft.com.ico" />templates</a><span
-class="sidenote preview"><span class="preview-title"><em><a
+class="sidenote preview">templates<br/><em><a
 href="https://docs.microsoft.com/en-us/cpp/cpp/templates-cpp"
 title="_blank"><img src="/favicon/microsoft.com.ico" class="favicon"
-alt="/favicon/microsoft.com.ico" />https://docs.microsoft.com/en-us/cpp/cpp/templates-cpp</a></em></span><span
-class="preview-description">Placeholder description for
-https://docs.microsoft.com/en-us/cpp/cpp/templates-cpp</span></span></span>)
+alt="/favicon/microsoft.com.ico" />https://docs.microsoft.com/en-us/cpp/cpp/templates-cpp</a></em><br/>Placeholder
+description for
+https://docs.microsoft.com/en-us/cpp/cpp/templates-cpp</span></span>)
 offer a metaprogramming interface for manipulate structured
 representations of the language's syntax. This makes writing and
 reasoning about metaprograms somewhat easier.</li>
@@ -384,16 +392,17 @@ proofs about the syntax and semantics of programs in the embedded
 language. This is useful for verifying properties of important programs
 in the embedded language, such as <span><a
 href="https://compcert.org"><img src="/missing.ico" class="favicon"
-alt="/missing.ico" />compilers</a><span class="sidenote preview"><span
-class="preview-title"><em><a href="https://compcert.org"
-title="_blank"><img src="/missing.ico" class="favicon"
-alt="/missing.ico" />https://compcert.org</a></em></span><span
-class="preview-description">Placeholder description for
-https://compcert.org</span></span></span>.</li>
+alt="/missing.ico" />compilers</a><span
+class="sidenote preview">compilers<br/><em><a
+href="https://compcert.org" title="_blank"><img src="/missing.ico"
+class="favicon"
+alt="/missing.ico" />https://compcert.org</a></em><br/>Placeholder
+description for https://compcert.org</span></span>.</li>
 </ol>
 <p>In the following section, I will introduce another use case,
 mesaprogramming, which is a combination of these two use cases.</p>
-<h1 id="mesaprogramming">Mesaprogramming</h1>
+<h1 id="mesaprogramming"><a href="#mesaprogramming"
+class="no-link-favicon no-link-preview">Mesaprogramming</a></h1>
 <p>The usual technique of metaprogramming ("above-programming") is to
 provide a special interface for invoking code generation (e.g. templates
 as a built-in or library feature). The main issue with this is that it
@@ -448,20 +457,22 @@ class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a 
 <p>For example, TODO: example of metaprogramming in python</p>
 <div class="sourceCode" id="cb4"><pre
 class="sourceCode python"><code class="sourceCode python"></code></pre></div>
-<h1 id="references">References</h1>
+<h2 id="references">§ <a href="#references"
+class="no-link-favicon no-link-preview">References</a></h2>
 <ul>
 <li><a href="https://wiki.haskell.org/Template_Haskell"
-data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="inReference no-link-preview"><img src="/missing.ico"
 class="favicon" alt="/missing.ico" />Template Haskell</a></li>
 <li><a href="https://docs.microsoft.com/en-us/cpp/cpp/templates-cpp"
-data-inReference="" data-noLinkPreview=""><img
+class="inReference no-link-preview"><img
 src="/favicon/microsoft.com.ico" class="favicon"
 alt="/favicon/microsoft.com.ico" />templates</a></li>
-<li><a href="https://compcert.org" data-inReference=""
-data-noLinkPreview=""><img src="/missing.ico" class="favicon"
-alt="/missing.ico" />compilers</a></li>
+<li><a href="https://compcert.org"
+class="inReference no-link-preview"><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />compilers</a></li>
 </ul>
-<h1 id="signature">Signature</h1>
+<h1 id="signature"><a href="#signature"
+class="no-link-favicon no-link-preview">Signature</a></h1>
 <p>The following code block is the <a
 href="https://en.wikipedia.org/wiki/EdDSA#Ed25519" title="_blank"><img
 src="/favicon/wikipedia.org.ico" class="favicon"
@@ -471,7 +482,8 @@ class="favicon" alt="/favicon.ico" />markdown content</a> encoded in
 base 64, using my <em>secret key</em> and <a
 href="/key/main_ed25519.pub.txt" title="_blank"><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />public key</a>.</p>
-<pre><code>f973d8a6dc4bf91fa9f34a7ff12e1a5005aff4336f985491bdebc3b2177a9592e5a84a4aac48252ba439dcf16502d2d0d464262c46f41edc8e768bf9783e620c</code></pre>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>f973d8a6dc4bf91fa9f34a7ff12e1a5005aff4336f985491bdebc3b2177a9592e5a84a4aac48252ba439dcf16502d2d0d464262c46f41edc8e768bf9783e620c</span></code></pre></div>
 <p>See <a href="/page/signature.html"><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />Signature</a> for more
 information.</p></main>

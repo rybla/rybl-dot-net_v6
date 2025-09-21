@@ -211,9 +211,11 @@
         ></a>
       </div>
     </div></header>
-    <main><h1><a href="/post/overloading-in-haskell.html" data-noLinkFavicon=""
-data-noLinkPreview="">Overloaded Functions in Haskell</a></h1>
-<div class="header-info">
+    <main><h1><a href="/post/overloading-in-haskell.html"
+class="no-link-favicon no-link-preview">Overloaded Functions in
+Haskell</a></h1>
+<div>
+<div class="sidenote persistent header-info">
 <p><u>Published:</u> 2021-11-07</p>
 <p><u>Tags:</u> computics, Haskell</p>
 <p><u>Abstract</u></p>
@@ -223,26 +225,33 @@ scope. This post demonstrates a comparison between three approaches to
 implementing overloading in Haskell -- typeclasses, templates, and
 singletons (mesaprogramming).</p>
 </div>
-<div class="table-of-contents">
+</div>
+<div>
+<div class="sidenote persistent table-of-contents">
 <p><u>Table of Contents</u></p>
 <ol type="1">
-<li><a href="#introduction" data-noLinkFavicon=""
-data-noLinkPreview="">Introduction</a></li>
-<li><a href="#overloading-with-typeclasses" data-noLinkFavicon=""
-data-noLinkPreview="">Overloading with Typeclasses</a></li>
-<li><a href="#overloading-with-templates" data-noLinkFavicon=""
-data-noLinkPreview="">Overloading with Templates</a></li>
-<li><a href="#overloading-with-singletons" data-noLinkFavicon=""
-data-noLinkPreview="">Overloading with Singletons</a></li>
-<li><a href="#overloading-with-π" data-noLinkFavicon=""
-data-noLinkPreview="">Overloading with Π</a></li>
-<li><a href="#conclusions" data-noLinkFavicon=""
-data-noLinkPreview="">Conclusions</a></li>
-<li><a href="#signature" data-noLinkFavicon=""
-data-noLinkPreview="">Signature</a></li>
+<li><a href="#introduction"
+class="no-link-favicon no-link-preview">Introduction</a></li>
+<li><a href="#overloading-with-typeclasses"
+class="no-link-favicon no-link-preview">Overloading with
+Typeclasses</a></li>
+<li><a href="#overloading-with-templates"
+class="no-link-favicon no-link-preview">Overloading with
+Templates</a></li>
+<li><a href="#overloading-with-singletons"
+class="no-link-favicon no-link-preview">Overloading with
+Singletons</a></li>
+<li><a href="#overloading-with-π"
+class="no-link-favicon no-link-preview">Overloading with Π</a></li>
+<li><a href="#conclusions"
+class="no-link-favicon no-link-preview">Conclusions</a></li>
+<li><a href="#signature"
+class="no-link-favicon no-link-preview">Signature</a></li>
 </ol>
 </div>
-<h1 id="introduction">Introduction</h1>
+</div>
+<h1 id="introduction"><a href="#introduction"
+class="no-link-favicon no-link-preview">Introduction</a></h1>
 <p>A common metaprogrammatic feature is overloading. A function is
 <em>overloaded</em> (by name) if multiple implementations of possibly
 different types can all be referred to by the same name (in the same
@@ -256,7 +265,10 @@ booleans.</p>
 <p>I conclude with a overview of the advantages and drawbacks of the
 different approaches, and some ideas about the generalization of my
 favored approach.</p>
-<h1 id="overloading-with-typeclasses">Overloading with Typeclasses</h1>
+<h1 id="overloading-with-typeclasses"><a
+href="#overloading-with-typeclasses"
+class="no-link-favicon no-link-preview">Overloading with
+Typeclasses</a></h1>
 <p>Haskell provides a nice interface (with a complicated backend) for a
 restricted form of overloading via typeclasses. A <em>typeclass</em> is
 a way of classifying types by <em>methods</em> (to match the
@@ -318,7 +330,10 @@ purposes.)</p>
 <p>In this way, typeclasses don't provide fully-general overloading
 capability where the different overload modes can have arbitrarily
 different types (e.g. take different numbers of arguments).</p>
-<h1 id="overloading-with-templates">Overloading with Templates</h1>
+<h1 id="overloading-with-templates"><a
+href="#overloading-with-templates"
+class="no-link-favicon no-link-preview">Overloading with
+Templates</a></h1>
 <p>Templates (via Template Haskell) offer more general megaprogramming
 capabilities than typeclasses. Templates are metaprograms that are
 executed before typechecking the base program. Templates rely on quoting
@@ -396,7 +411,10 @@ somehow taking advantage of type inference to allow an <code>_</code> in
 place of the overload specification argument. This won't work for this
 templates approach, but perhaps it could work for the singletons
 approach -- see the next section.)</p>
-<h1 id="overloading-with-singletons">Overloading with Singletons</h1>
+<h1 id="overloading-with-singletons"><a
+href="#overloading-with-singletons"
+class="no-link-favicon no-link-preview">Overloading with
+Singletons</a></h1>
 <p>Finally, this third approach is to take advantage of a restricted
 form of dependent typing that Haskell provides: singletons. In short, a
 <em>singleton</em> reflects a type at the term level (there are also
@@ -509,7 +527,8 @@ class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb10-1"><a
 inference to work. This is because, otherwise, the output type is just a
 type variable, and GHC would try to solve
 <code>Int -&gt; t ~ NegateType mode</code> which it cannot.</p>
-<h1 id="overloading-with-π">Overloading with Π</h1>
+<h1 id="overloading-with-π"><a href="#overloading-with-%CF%80"
+class="no-link-favicon no-link-preview">Overloading with Π</a></h1>
 <p>As described before, singletons are an implementation in Haskell of a
 restricted kind of dependent types. That is, they allow the output type
 of functions to depend on the values of its arguments. But how would we
@@ -546,7 +565,8 @@ works, sadly.</p>
 make the singletons approach work: pattern matching on an "overload
 mode" singleton, and a type family (i.e. type-level function from a type
 to a type) for the types of each overload mode.</p>
-<h1 id="conclusions">Conclusions</h1>
+<h1 id="conclusions"><a href="#conclusions"
+class="no-link-favicon no-link-preview">Conclusions</a></h1>
 <p>We have overviewed three approaches to implementing overloading in
 Haskell (or any other language that offers these features
 respectively):</p>
@@ -596,7 +616,8 @@ metaprogrammatic behavior by pattern-matching on this data as an extra
 argument.</p>
 <p>I will write more about mesaprogramming more generally in later
 posts.</p>
-<h1 id="signature">Signature</h1>
+<h1 id="signature"><a href="#signature"
+class="no-link-favicon no-link-preview">Signature</a></h1>
 <p>The following code block is the <a
 href="https://en.wikipedia.org/wiki/EdDSA#Ed25519" title="_blank"><img
 src="/favicon/wikipedia.org.ico" class="favicon"
@@ -606,7 +627,8 @@ src="/favicon.ico" class="favicon" alt="/favicon.ico" />markdown
 content</a> encoded in base 64, using my <em>secret key</em> and <a
 href="/key/main_ed25519.pub.txt" title="_blank"><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />public key</a>.</p>
-<pre><code>aba039eac307d8fc9d65cb2fe1b60d9b6da83ff011a3fb3f8d21a32936fafc6f2d51e38fcdcbaba38e2671dd183f3a6808199b68dbb333a734396ffdd63cb104</code></pre>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>aba039eac307d8fc9d65cb2fe1b60d9b6da83ff011a3fb3f8d21a32936fafc6f2d51e38fcdcbaba38e2671dd183f3a6808199b68dbb333a734396ffdd63cb104</span></code></pre></div>
 <p>See <a href="/page/signature.html"><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />Signature</a> for more
 information.</p></main>
