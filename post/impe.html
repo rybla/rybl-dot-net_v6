@@ -306,15 +306,15 @@ for a very simple imperative programming lanugage, <em>Impe</em>, using
 Haskell. The goal is to demonstrate the convenience and advanced
 features and libraries that Haskell offers for programming language
 implementation. All the code used and referenced in this post can be
-found in this github repository: <span><a
-href="https://github.com/rybla/impe"><img src="/favicon/github.com.svg"
-class="favicon" alt="/favicon/github.com.svg" />riib/impe</a><span
+found in this github repository: <span><span
 class="sidenote preview">riib/impe<br/><em><a
 href="https://github.com/rybla/impe" title="_blank"><img
 src="/favicon/github.com.svg" class="favicon"
 alt="/favicon/github.com.svg" />https://github.com/ucsd-progsys/liquidhaskell</a></em><br/>Placeholder
-description for
-https://github.com/ucsd-progsys/liquidhaskell</span></span>.</p>
+description for https://github.com/ucsd-progsys/liquidhaskell</span><a
+href="https://github.com/rybla/impe"><img src="/favicon/github.com.svg"
+class="favicon"
+alt="/favicon/github.com.svg" />riib/impe</a></span>.</p>
 <h1 id="design"><a href="#design"
 class="no-link-favicon no-link-preview">Design</a></h1>
 <h2 id="grammar">§ <a href="#grammar"
@@ -573,27 +573,24 @@ similar to the <em>writer</em> effect, except is it specialized for
 writing lists of outputs that aren't to be interacted with inside within
 an output-performing computation (whereas the writer effect provides
 <em>listen</em> and <em>pass</em> actions in addition to <em>tell</em>;
-see <span><a
-href="https://hackage.haskell.org/package/polysemy-1.4.0.0/docs/Polysemy-Output.html"><img
-src="/missing.ico" class="favicon"
-alt="/missing.ico" />Polysemy.Output</a><span
-class="sidenote preview">Polysemy.Output<br/><em><a
+see <span><span class="sidenote preview">Polysemy.Output<br/><em><a
 href="https://hackage.haskell.org/package/polysemy-1.4.0.0/docs/Polysemy-Output.html"
 title="_blank"><img src="/missing.ico" class="favicon"
 alt="/missing.ico" />https://wiki.haskell.org/Dependent_type</a></em><br/>Placeholder
-description for https://wiki.haskell.org/Dependent_type</span></span>
-and <span><a
-href="https://hackage.haskell.org/package/polysemy-1.4.0.0/docs/Polysemy-Writer.html"><img
+description for https://wiki.haskell.org/Dependent_type</span><a
+href="https://hackage.haskell.org/package/polysemy-1.4.0.0/docs/Polysemy-Output.html"><img
 src="/missing.ico" class="favicon"
-alt="/missing.ico" />Polysemy.Writer</a><span
+alt="/missing.ico" />Polysemy.Output</a></span> and <span><span
 class="sidenote preview">Polysemy.Writer<br/><em><a
 href="https://hackage.haskell.org/package/polysemy-1.4.0.0/docs/Polysemy-Writer.html"
 title="_blank"><img src="/missing.ico" class="favicon"
 alt="/missing.ico" />https://wiki.haskell.org/Dependent_type</a></em><br/>Placeholder
-description for https://wiki.haskell.org/Dependent_type</span></span>
-for details). Actually handling the logging effect will be done later on
-in the <em>Main</em> section, since for the most part logging is handled
-by IO.</p>
+description for https://wiki.haskell.org/Dependent_type</span><a
+href="https://hackage.haskell.org/package/polysemy-1.4.0.0/docs/Polysemy-Writer.html"><img
+src="/missing.ico" class="favicon"
+alt="/missing.ico" />Polysemy.Writer</a></span> for details). Actually
+handling the logging effect will be done later on in the <em>Main</em>
+section, since for the most part logging is handled by IO.</p>
 <h3 id="excepting">§ <a href="#excepting"
 class="no-link-favicon no-link-preview">Excepting</a></h3>
 <p><code>Language.Impe.Excepting</code></p>
@@ -691,18 +688,19 @@ state data type, and using lens fields that generate lenses using
 <h2 id="parsing">§ <a href="#parsing"
 class="no-link-favicon no-link-preview">Parsing</a></h2>
 <p>Parsing is the process of reading some input source code and yielding
-a program constructed by the program's language's grammar. The <span><a
-href="https://hackage.haskell.org/package/parsec"><img
-src="/missing.ico" class="favicon" alt="/missing.ico" />Parsec</a><span
-class="sidenote preview">Parsec<br/><em><a
+a program constructed by the program's language's grammar. The
+<span><span class="sidenote preview">Parsec<br/><em><a
 href="https://hackage.haskell.org/package/parsec" title="_blank"><img
 src="/missing.ico" class="favicon"
 alt="/missing.ico" />https://wiki.haskell.org/Dependent_type</a></em><br/>Placeholder
-description for https://wiki.haskell.org/Dependent_type</span></span>
-package provides a convenient framework for doing parsing using
-<em>monadic parsing combinators</em>. Read the details of the package to
-learn exactly how such combinators are implemented, but here will focus
-just on how to use them to write Impe's parser.</p>
+description for https://wiki.haskell.org/Dependent_type</span><a
+href="https://hackage.haskell.org/package/parsec"><img
+src="/missing.ico" class="favicon"
+alt="/missing.ico" />Parsec</a></span> package provides a convenient
+framework for doing parsing using <em>monadic parsing combinators</em>.
+Read the details of the package to learn exactly how such combinators
+are implemented, but here will focus just on how to use them to write
+Impe's parser.</p>
 <p>Parsec breaks up parsing into two stages: defining a <em>lexer</em>,
 and defining the parsers for each grammatical structure. The lexer can
 be configured and generates some useful parsers that can recognize what
@@ -1639,18 +1637,17 @@ class="sourceCode hs"><code class="sourceCode haskell"><span id="cb38-1"><a href
 <h2 id="interpreting">§ <a href="#interpreting"
 class="no-link-favicon no-link-preview">Interpreting</a></h2>
 <p>Now to combine it all together! To <em>interpret</em> a program is,
-following the three steps outlined in <span><a
-href="#interpretation"><img src="/favicon.ico" class="favicon"
-alt="/favicon.ico" />Interpetation</a><span
+following the three steps outlined in <span><span
 class="sidenote preview">Interpetation<br/><em><a href="#interpretation"
 title="_blank"><img src="/favicon.ico" class="favicon"
 alt="/favicon.ico" />rybl.net</a></em><br/>TODO:
-baseDescription</span></span>, to pass the results from each step to the
-next, all inside of an effect monad that handles logging and exceptions.
-Even more, polysemy makes it each to include different state effects, so
-the interpretation effect can include the state effects from
-typechecking and execution as well -- all in the
-<code>Interpretation</code> monad:</p>
+baseDescription</span><a href="#interpretation"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />Interpetation</a></span>, to pass
+the results from each step to the next, all inside of an effect monad
+that handles logging and exceptions. Even more, polysemy makes it each
+to include different state effects, so the interpretation effect can
+include the state effects from typechecking and execution as well -- all
+in the <code>Interpretation</code> monad:</p>
 <div class="sourceCode" id="cb39"><pre
 class="sourceCode hs"><code class="sourceCode haskell"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="kw">type</span> <span class="dt">Interpretation</span> r a <span class="ot">=</span></span>
 <span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  ( <span class="dt">Member</span> (<span class="dt">Output</span> <span class="dt">Log</span>) r,</span>
