@@ -187,15 +187,15 @@ addLinkPreviews manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
     return $
       Pandoc.Span
         mempty
-        [ x,
-          Pandoc.Span
+        [ Pandoc.Span
             (mempty & Pandoc.attrClasses %~ (["sidenote", "preview"] ++))
             [ Pandoc.Str $ kids & Pandoc.stringify,
               Pandoc.RawInline (Pandoc.Format "html") "<br/>",
               Pandoc.Emph [Pandoc.Link mempty [Pandoc.Str (preview.title & Text.pack)] (urlText, "_blank")],
               Pandoc.RawInline (Pandoc.Format "html") "<br/>",
               Pandoc.Str (preview.description & Text.pack)
-            ]
+            ],
+          x
         ]
   _ -> return x
 

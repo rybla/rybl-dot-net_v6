@@ -6,7 +6,7 @@ table_of_contents: false
 
 The following are my personal profiles on various websites.
 
-- [GitHub](https://github.com/)
+- [GitHub](https://github.com/rybla)
 - [GitLab](https://gitlab.com/rybl)
 - [X/Twitter](https://x.com/rybl4)
 - [BlueSky](https://bsky.app/profile/rybl.net)
