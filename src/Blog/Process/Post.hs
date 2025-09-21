@@ -93,7 +93,9 @@ processPost manager outLinks inLinks post = do
                   Pandoc.Link mempty [Pandoc.Str "public key"] (showText Config.publicKeyUri, "_blank"),
                   Pandoc.Str "."
                 ],
-              Pandoc.CodeBlock mempty (Text.pack $ showByteArrayAsBase64 $ post'._postMarkdownSignature),
+              Pandoc.CodeBlock
+                (mempty & Pandoc.attrClasses <>~ ["txt"])
+                (Text.pack $ showByteArrayAsBase64 $ post'._postMarkdownSignature),
               Pandoc.Para
                 [ Pandoc.Str "See ",
                   Pandoc.Link

@@ -1,3 +1,7 @@
+:root {
+  --main-inner-width: 100%;
+}
+
 main {
   flex: 1 1 auto;
 

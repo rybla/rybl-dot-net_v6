@@ -77,7 +77,7 @@ renderPageHeader page =
           2
           mempty
           [ Pandoc.Link
-              (mempty & Pandoc.attrClasses %~ (["noLinkFavicon", "noLinkPreview"] ++))
+              (mempty & Pandoc.attrClasses %~ (["no-link-favicon", "no-link-preview"] ++))
               [Pandoc.Str page._pageTitle]
               (showText page._pageHref, mempty)
           ]
