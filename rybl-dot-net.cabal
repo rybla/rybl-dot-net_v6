@@ -71,6 +71,7 @@ library
   build-depends:
       aeson
     , base >=4.7 && <5
+    , base16-bytestring
     , bytestring
     , conduit
     , containers
@@ -98,7 +99,59 @@ library
     , uri-encode
   default-language: Haskell2010
 
-executable rybl-dot-net-exe
+executable generate-secret-key-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_rybl_dot_net
+  autogen-modules:
+      Paths_rybl_dot_net
+  hs-source-dirs:
+      generate-secret-key
+  default-extensions:
+      BlockArguments
+      FlexibleContexts
+      NamedFieldPuns
+      OverloadedRecordDot
+      OverloadedStrings
+      LambdaCase
+      DeriveAnyClass
+      DeriveGeneric
+      StandaloneDeriving
+      TypeApplications
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wno-missing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      aeson
+    , base >=4.7 && <5
+    , base16-bytestring
+    , bytestring
+    , conduit
+    , containers
+    , cryptonite
+    , data-default
+    , directory
+    , doctemplates
+    , filepath
+    , http-client
+    , http-client-tls
+    , http-conduit
+    , lens
+    , list-t
+    , memory
+    , mtl
+    , network-uri
+    , pandoc
+    , pandoc-types
+    , pretty
+    , rybl-dot-net
+    , skylighting-core
+    , template-haskell
+    , text
+    , time
+    , transformers
+    , uri-encode
+  default-language: Haskell2010
+
+executable generate-website
   main-is: Main.hs
   other-modules:
       Paths_rybl_dot_net
@@ -121,6 +174,7 @@ executable rybl-dot-net-exe
   build-depends:
       aeson
     , base >=4.7 && <5
+    , base16-bytestring
     , bytestring
     , conduit
     , containers
@@ -174,6 +228,7 @@ test-suite rybl-dot-net-test
   build-depends:
       aeson
     , base >=4.7 && <5
+    , base16-bytestring
     , bytestring
     , conduit
     , containers
