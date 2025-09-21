@@ -250,8 +250,6 @@ data-noLinkPreview="">Multiply-spliced Quoted Holes??</a></li>
 </ol></li>
 <li><a href="#references" data-noLinkFavicon=""
 data-noLinkPreview="">References</a></li>
-<li><a href="#signature" data-noLinkFavicon=""
-data-noLinkPreview="">Signature</a></li>
 </ol>
 </div>
 <h2 id="interactive-tactics-not-in-agda">Interactive Tactics (not in
@@ -262,7 +260,7 @@ src="/favicon/rocq-prover.org.ico" class="favicon"
 alt="/favicon/rocq-prover.org.ico" />LTac</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html"
-title="_blank"><img src="/favicon/rocq-prover.org.ico" class="favicon"
+target="_blank"><img src="/favicon/rocq-prover.org.ico" class="favicon"
 alt="/favicon/rocq-prover.org.ico" />https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html</a></em></span><span
 class="preview-description">Placeholder description for
 https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html</span></span></span>
@@ -270,7 +268,7 @@ in <span><a href="https://rocq-prover.org/"><img
 src="/favicon/rocq-prover.org.ico" class="favicon"
 alt="/favicon/rocq-prover.org.ico" />Coq/Rocq</a><span
 class="sidenote preview"><span class="preview-title"><em><a
-href="https://rocq-prover.org/" title="_blank"><img
+href="https://rocq-prover.org/" target="_blank"><img
 src="/favicon/rocq-prover.org.ico" class="favicon"
 alt="/favicon/rocq-prover.org.ico" />https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html</a></em></span><span
 class="preview-description">Placeholder description for
@@ -288,7 +286,7 @@ src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />Agda</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://agda.readthedocs.io/en/latest/index.html"
-title="_blank"><img src="/favicon/readthedocs.io.ico" class="favicon"
+target="_blank"><img src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />https://agda.readthedocs.io/en/latest/index.html</a></em></span><span
 class="preview-description">Placeholder description for
 https://agda.readthedocs.io/en/latest/index.html</span></span></span>
@@ -299,7 +297,7 @@ src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />typed holes</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://agda.readthedocs.io/en/latest/language/lexical-structure.html#holes"
-title="_blank"><img src="/favicon/readthedocs.io.ico" class="favicon"
+target="_blank"><img src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />https://agda.readthedocs.io/en/latest/index.html</a></em></span><span
 class="preview-description">Placeholder description for
 https://agda.readthedocs.io/en/latest/index.html</span></span></span>
@@ -313,7 +311,7 @@ src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />macro system</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://agda.readthedocs.io/en/stable/language/reflection.html"
-title="_blank"><img src="/favicon/readthedocs.io.ico" class="favicon"
+target="_blank"><img src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />https://agda.readthedocs.io/en/latest/index.html</a></em></span><span
 class="preview-description">Placeholder description for
 https://agda.readthedocs.io/en/latest/index.html</span></span></span>.
@@ -377,14 +375,13 @@ class="sourceCode agda"><code class="sourceCode agda"><span id="cb4-1"><a href="
 <p>But this is interpreted differently than it might first appear. Agda
 is going to complain that it gets blocked at the hole (where
 <code>_64</code> is the value of the hole):</p>
-<div class="sourceCode" id="cb5"><pre
-class="sourceCode txt"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>———— Error ———————————</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Failed to solve the following constraints:</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  unquote</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  (λ hole →</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>     bindTC (inferType hole)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>     (λ α → bindTC (intro-helper zero α _64) (unify hole)))</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    (blocked on _64)</span></code></pre></div>
+<pre><code>———— Error ———————————
+Failed to solve the following constraints:
+  unquote
+  (λ hole →
+     bindTC (inferType hole)
+     (λ α → bindTC (intro-helper zero α _64) (unify hole)))
+    (blocked on _64)</code></pre>
 <p>This is because <code>unquote</code> is blocked when trying to
 evaluate the hole, and so macro expansion doesn't even get started.
 Because of this, we <em>can't</em> inspect that intermediate state in
@@ -423,11 +420,10 @@ theory -- they are purely a UI phenomenon.</p>
 class="sourceCode agda"><code class="sourceCode agda"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ot">_</span> <span class="ot">:</span> ℕ <span class="ot">→</span> ℕ <span class="ot">→</span> ℕ</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ot">_</span> <span class="ot">=</span> intros ?</span></code></pre></div>
 <p>and then inspect the hole to see the context and expected type:</p>
-<div class="sourceCode" id="cb9"><pre
-class="sourceCode txt"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Goal: ℕ</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>————————————————————</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>x1 : ℕ</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>x0 : ℕ</span></code></pre></div>
+<pre><code>Goal: ℕ
+————————————————————
+x1 : ℕ
+x0 : ℕ</code></pre>
 <p>Ultimately, this gives you exactly the kind of interactivity as
 interactively running tactic scripts in Coq. Most of the feature is
 already implemented in how Agda's typed holes work -- it just needs this
@@ -441,7 +437,7 @@ src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />desugars</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://agda.readthedocs.io/en/v2.8.0-rc1/language/reflection.html#macros"
-title="_blank"><img src="/favicon/readthedocs.io.ico" class="favicon"
+target="_blank"><img src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />https://agda.readthedocs.io/en/latest/index.html</a></em></span><span
 class="preview-description">Placeholder description for
 https://agda.readthedocs.io/en/latest/index.html</span></span></span>
@@ -500,21 +496,18 @@ data-inReference="" data-noLinkPreview=""><img
 src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />desugars</a></li>
 </ul>
-<h1 id="signature">Signature</h1>
+<h1>Signature</h1>
 <p>The following code block is the <a
-href="https://en.wikipedia.org/wiki/EdDSA#Ed25519" title="_blank"><img
+href="https://en.wikipedia.org/wiki/EdDSA#Ed25519" target="_blank"><img
 src="/favicon/wikipedia.org.ico" class="favicon"
 alt="/favicon/wikipedia.org.ico" />Ed25519 signature</a> of this post's
 <a
 href="/post_markdown/using-agda-macros-as-interactive-tactics.md"><img
 src="/favicon.ico" class="favicon" alt="/favicon.ico" />markdown
 content</a> encoded in base 64, using my <em>secret key</em> and <a
-href="/key/main_ed25519.pub.txt" title="_blank"><img src="/favicon.ico"
+href="/key/main_ed25519.pub.txt" target="_blank"><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />public key</a>.</p>
-<pre><code>cf15a419c03f81ff8754b7572a04b94c134f47d846e676927d4f03718f485c0c6212e5980a2f34486509ca1473e9d88a5e9b17afc2dbccbd04dd988e0f3c270a</code></pre>
-<p>See <a href="/page/signature.html"><img src="/favicon.ico"
-class="favicon" alt="/favicon.ico" />Signature</a> for more
-information.</p></main>
+<pre><code>a9b4ca9fcf0f1980c27c4f57628aafe7171ce40a3ec93451f6d7fa43dc05f4c6f8da9f3df23c9af3bd1610b7909ea7e6f2928ec941d87b9875ff5ebb67b3580e</code></pre></main>
 
     <footer>
       <div class="title">

@@ -290,8 +290,6 @@ data-noLinkPreview="">Interactive REPL</a></li>
 data-noLinkPreview="">Conclusions</a></li>
 <li><a href="#references" data-noLinkFavicon=""
 data-noLinkPreview="">References</a></li>
-<li><a href="#signature" data-noLinkFavicon=""
-data-noLinkPreview="">Signature</a></li>
 </ol>
 </div>
 <h1 id="introduction">Introduction</h1>
@@ -304,7 +302,7 @@ found in this github repository: <span><a
 href="https://github.com/rybla/impe"><img src="/favicon/github.com.svg"
 class="favicon" alt="/favicon/github.com.svg" />riib/impe</a><span
 class="sidenote preview"><span class="preview-title"><em><a
-href="https://github.com/rybla/impe" title="_blank"><img
+href="https://github.com/rybla/impe" target="_blank"><img
 src="/favicon/github.com.svg" class="favicon"
 alt="/favicon/github.com.svg" />https://github.com/ucsd-progsys/liquidhaskell</a></em></span><span
 class="preview-description">Placeholder description for
@@ -315,37 +313,36 @@ https://github.com/ucsd-progsys/liquidhaskell</span></span></span>.</p>
 <div class="todo">
 <p>define what <code>...</code> means</p>
 </div>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>&lt;program&gt;</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  ::= &lt;instruction&gt; ...</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>&lt;instruction&gt;</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  ::= { &lt;instruction&gt; ... }</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    | &lt;name&gt;: &lt;type&gt;;</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    | &lt;name&gt; &lt;- &lt;expression&gt;;</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    | &lt;name&gt;: &lt;type&gt; &lt;- expression;</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    | &lt;name&gt;(&lt;name&gt;: &lt;type&gt;, ...): &lt;type&gt; = &lt;instruction&gt;</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    | &lt;name&gt;(&lt;expression&gt;, ...);</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    | if &lt;expression&gt; then &lt;instruction&gt; else &lt;instruction&gt;</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    | while &lt;expression&gt; do &lt;instruction&gt;</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    | return &lt;expression&gt;;</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    | pass;</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>&lt;type&gt;</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  ::= void</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    | unit</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    | int</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    | bool</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    | string</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    | (&lt;type&gt;, ...) -&gt; &lt;type&gt;</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>&lt;expression&gt;</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  ::= unit</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    | &lt;bool&gt;</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    | &lt;int&gt;</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    | &lt;string&gt;</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    | &lt;name&gt;</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    | &lt;name&gt;(&lt;expression&gt;, ...)</span></code></pre></div>
+<pre><code>&lt;program&gt;
+  ::= &lt;instruction&gt; ...
+
+&lt;instruction&gt;
+  ::= { &lt;instruction&gt; ... }
+    | &lt;name&gt;: &lt;type&gt;;
+    | &lt;name&gt; &lt;- &lt;expression&gt;;
+    | &lt;name&gt;: &lt;type&gt; &lt;- expression;
+    | &lt;name&gt;(&lt;name&gt;: &lt;type&gt;, ...): &lt;type&gt; = &lt;instruction&gt;
+    | &lt;name&gt;(&lt;expression&gt;, ...);
+    | if &lt;expression&gt; then &lt;instruction&gt; else &lt;instruction&gt;
+    | while &lt;expression&gt; do &lt;instruction&gt;
+    | return &lt;expression&gt;;
+    | pass;
+
+&lt;type&gt;
+  ::= void
+    | unit
+    | int
+    | bool
+    | string
+    | (&lt;type&gt;, ...) -&gt; &lt;type&gt;
+
+&lt;expression&gt;
+  ::= unit
+    | &lt;bool&gt;
+    | &lt;int&gt;
+    | &lt;string&gt;
+    | &lt;name&gt;
+    | &lt;name&gt;(&lt;expression&gt;, ...)</code></pre>
 <div class="todo">
 <p><code>&lt;-</code> vs <code>=</code> syntax why initialization is a
 seperate statement rather than syntax sugar where semicolons are
@@ -526,16 +523,15 @@ class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb5-1"><a 
 function performs multiple effects. Consider the following function that
 performs the <code>State</code>, <code>Reader</code>, and
 <code>Writer</code> effects:</p>
-<div class="sourceCode" id="cb6"><pre
-class="sourceCode txt"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>h ::</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  ( Member (State Int) r,</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    Member (Reader Int) r,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    Member (Writer Bool) r</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  ) =&gt; Sem r ()</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>h = do</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  x &lt;- get</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  y &lt;- ask</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  tell $ x == y</span></code></pre></div>
+<pre><code>h ::
+  ( Member (State Int) r,
+    Member (Reader Int) r,
+    Member (Writer Bool) r
+  ) =&gt; Sem r ()
+h = do
+  x &lt;- get
+  y &lt;- ask
+  tell $ x == y</code></pre>
 <h3 id="logging">Logging</h3>
 <p><code>Language.Impe.Logging</code></p>
 <p>The idea behind logging is to produce little messages that give some
@@ -563,7 +559,7 @@ src="/missing.ico" class="favicon"
 alt="/missing.ico" />Polysemy.Output</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://hackage.haskell.org/package/polysemy-1.4.0.0/docs/Polysemy-Output.html"
-title="_blank"><img src="/missing.ico" class="favicon"
+target="_blank"><img src="/missing.ico" class="favicon"
 alt="/missing.ico" />https://wiki.haskell.org/Dependent_type</a></em></span><span
 class="preview-description">Placeholder description for
 https://wiki.haskell.org/Dependent_type</span></span></span> and
@@ -573,7 +569,7 @@ src="/missing.ico" class="favicon"
 alt="/missing.ico" />Polysemy.Writer</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://hackage.haskell.org/package/polysemy-1.4.0.0/docs/Polysemy-Writer.html"
-title="_blank"><img src="/missing.ico" class="favicon"
+target="_blank"><img src="/missing.ico" class="favicon"
 alt="/missing.ico" />https://wiki.haskell.org/Dependent_type</a></em></span><span
 class="preview-description">Placeholder description for
 https://wiki.haskell.org/Dependent_type</span></span></span> for
@@ -678,7 +674,7 @@ a program constructed by the program's language's grammar. The <span><a
 href="https://hackage.haskell.org/package/parsec"><img
 src="/missing.ico" class="favicon" alt="/missing.ico" />Parsec</a><span
 class="sidenote preview"><span class="preview-title"><em><a
-href="https://hackage.haskell.org/package/parsec" title="_blank"><img
+href="https://hackage.haskell.org/package/parsec" target="_blank"><img
 src="/missing.ico" class="favicon"
 alt="/missing.ico" />https://wiki.haskell.org/Dependent_type</a></em></span><span
 class="preview-description">Placeholder description for
@@ -742,8 +738,7 @@ cannot be used in identifiers)</li>
 <p>The <code>tokenParser</code> is a <code>TokenParser</code> produced
 by <code>languageDef</code>. It provides a variety of useful parsers,
 such as</p>
-<div class="sourceCode" id="cb15"><pre
-class="sourceCode txt"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>identifier :: Parser String</span></code></pre></div>
+<pre><code>identifier :: Parser String</code></pre>
 <p>which is a <code>Parser</code> that parses the next identifier (which
 is of type <code>String</code>).</p>
 <h3 id="parsing-with-parsec">Parsing with Parsec</h3>
@@ -1620,7 +1615,7 @@ following the three steps outlined in <span><a
 href="#interpretation"><img src="/favicon.ico" class="favicon"
 alt="/favicon.ico" />Interpetation</a><span
 class="sidenote preview"><span class="preview-title"><em><a
-href="#interpretation" title="_blank"><img src="/favicon.ico"
+href="#interpretation" target="_blank"><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />rybl.net</a></em></span><span
 class="preview-description">TODO: baseDescription</span></span></span>,
 to pass the results from each step to the next, all inside of an effect
@@ -1993,20 +1988,17 @@ class="favicon" alt="/missing.ico" />Parsec</a></li>
 data-noLinkPreview=""><img src="/favicon.ico" class="favicon"
 alt="/favicon.ico" />Interpetation</a></li>
 </ul>
-<h1 id="signature">Signature</h1>
+<h1>Signature</h1>
 <p>The following code block is the <a
-href="https://en.wikipedia.org/wiki/EdDSA#Ed25519" title="_blank"><img
+href="https://en.wikipedia.org/wiki/EdDSA#Ed25519" target="_blank"><img
 src="/favicon/wikipedia.org.ico" class="favicon"
 alt="/favicon/wikipedia.org.ico" />Ed25519 signature</a> of this post's
 <a href="/post_markdown/impe.md"><img src="/favicon.ico" class="favicon"
 alt="/favicon.ico" />markdown content</a> encoded in base 64, using my
 <em>secret key</em> and <a href="/key/main_ed25519.pub.txt"
-title="_blank"><img src="/favicon.ico" class="favicon"
+target="_blank"><img src="/favicon.ico" class="favicon"
 alt="/favicon.ico" />public key</a>.</p>
-<pre><code>c6626d564ad4cff8c65f0200f2342cecdbb47541aa8252ca6985d9dbbe26b3ad61eee0faba8d4d682811c12069bd4447519d01f762bad9cd7467c73e49e3ec00</code></pre>
-<p>See <a href="/page/signature.html"><img src="/favicon.ico"
-class="favicon" alt="/favicon.ico" />Signature</a> for more
-information.</p></main>
+<pre><code>959d82772daa861a354fbf8224135516fc102ba51f41db2a24fe1cd93212f655ba46b00030892e7ebb0fb1c6f62ebf96d99a08dae9cb56ce0c8402f70ac6a001</code></pre></main>
 
     <footer>
       <div class="title">
