@@ -222,57 +222,64 @@ determined by their types.</p>
 </div>
 <h1>In the polymorphic λ-calculus (System F)</h1>
 <p>The polymorphic λ-calculus has the following grammar</p>
-<pre><code>&lt;judgment&gt; ::= &lt;term&gt; :: &lt;type&gt;
-
-&lt;type&gt; ::= * | &lt;var&gt; | &lt;type&gt; -&gt; &lt;type&gt;
-
-&lt;term&gt; ::= unit
-         | &lt;var&gt;
-         | λ &lt;var&gt;* . &lt;term&gt; | &lt;term&gt; &lt;term*&gt;</code></pre>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>&lt;judgment&gt; ::= &lt;term&gt; :: &lt;type&gt;</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>&lt;type&gt; ::= * | &lt;var&gt; | &lt;type&gt; -&gt; &lt;type&gt;</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>&lt;term&gt; ::= unit</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>         | &lt;var&gt;</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>         | λ &lt;var&gt;* . &lt;term&gt; | &lt;term&gt; &lt;term*&gt;</span></code></pre></div>
 <p>with the usual typing rules.</p>
 <p>The following judgements are uniquely determined by the type (up to
 normalization and α-renaming):</p>
-<pre><code>id = λ x . x :: a -&gt; a
-
-apply = λ f x . f x :: (a -&gt; b) -&gt; a -&gt; b
-
-const = λ x y . x :: a -&gt; b -&gt; a
-
-inj1 = ...
-inj2 = ...
-case • of { inj1 • -&gt; • | inj • -&gt; • } = ...
-proj1 = ...
-proj2 = ...
-( • , • ) = ...
-( • , • , ... ) = ...
-
-proj&lt;i&gt; = proj2 o ... o proj2 o proj1 :: (... * a * ...) -&gt; a</code></pre>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>id = λ x . x :: a -&gt; a</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>apply = λ f x . f x :: (a -&gt; b) -&gt; a -&gt; b</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>const = λ x y . x :: a -&gt; b -&gt; a</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>inj1 = ...</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>inj2 = ...</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>case • of { inj1 • -&gt; • | inj • -&gt; • } = ...</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>proj1 = ...</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>proj2 = ...</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>( • , • ) = ...</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>( • , • , ... ) = ...</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>proj&lt;i&gt; = proj2 o ... o proj2 o proj1 :: (... * a * ...) -&gt; a</span></code></pre></div>
 <h1>In the dependently-typed λ-calculus</h1>
-<pre><code>&lt;judgment&gt; ::= &lt;term&gt; :: &lt;term&gt;
-
-&lt;term&gt; ::= U
-         | Π (&lt;var&gt; : &lt;term&gt;)* . &lt;term&gt;
-         | λ &lt;var&gt;* : &lt;term&gt;
-         | &lt;term&gt; &lt;term&gt;
-         | &lt;var&gt;</code></pre>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>&lt;judgment&gt; ::= &lt;term&gt; :: &lt;term&gt;</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>&lt;term&gt; ::= U</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>         | Π (&lt;var&gt; : &lt;term&gt;)* . &lt;term&gt;</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>         | λ &lt;var&gt;* : &lt;term&gt;</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>         | &lt;term&gt; &lt;term&gt;</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>         | &lt;var&gt;</span></code></pre></div>
 <p>The following judgments are uniquely determined (up to normalization
 and α-renaming).</p>
-<pre><code>id = λ A x . x :: Π (A : U) (x : A) . A
-
-apply = λ A B f x . f x :: Π (A : U) (B : U) (f : A -&gt; B) (x : A) -&gt; B
-
-const = λ A B x y . x :: Π (A : U) (B : U) (x : A) (y : B) -&gt; A</code></pre>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>id = λ A x . x :: Π (A : U) (x : A) . A</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>apply = λ A B f x . f x :: Π (A : U) (B : U) (f : A -&gt; B) (x : A) -&gt; B</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>const = λ A B x y . x :: Π (A : U) (B : U) (x : A) (y : B) -&gt; A</span></code></pre></div>
 <h1>Signature</h1>
 <p>The following code block is the <a
-href="https://en.wikipedia.org/wiki/EdDSA#Ed25519" target="_blank"><img
+href="https://en.wikipedia.org/wiki/EdDSA#Ed25519" title="_blank"><img
 src="/favicon/wikipedia.org.ico" class="favicon"
 alt="/favicon/wikipedia.org.ico" />Ed25519 signature</a> of this post's
 <a href="/post_markdown/unique-terms.md"><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />markdown content</a> encoded in
 base 64, using my <em>secret key</em> and <a
-href="/key/main_ed25519.pub.txt" target="_blank"><img src="/favicon.ico"
+href="/key/main_ed25519.pub.txt" title="_blank"><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />public key</a>.</p>
-<pre><code>d1ab84f887025fc92431ce008266fd6789fdbde39b9b4f657d35a3f735f26b7c03cad25e48ce2aaa9826a2df4ad78a0ed9aeada41c739cf57d056dd13efe5e01</code></pre></main>
+<pre><code>80f7c456727c93389c11403739384000b17c15950bc375f00a846779b0ce3e5d2650396669dd0d4f51f8ec7165aee26c39182b5f431d43527206de349f086c04</code></pre>
+<p>See <a href="/page/signature.html"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />Signature</a> for more
+information.</p></main>
 
     <footer>
       <div class="title">

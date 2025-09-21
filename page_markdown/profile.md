@@ -10,6 +10,7 @@ The following are my personal profiles on various websites.
 - [GitLab](https://gitlab.com/rybl)
 - [X/Twitter](https://x.com/rybl4)
 - [BlueSky](https://bsky.app/profile/rybl.net)
+- [Mastodon](https://mastodon.social/@rybl)
 - [LinkedIn](https://www.linkedin.com/in/henry-blanchette-520542a1/)
 - [YouTube](https://www.youtube.com/@SpiralSpawn52)
 - [SoundCloud](https://soundcloud.com/spiralspawn52)
