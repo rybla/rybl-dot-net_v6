@@ -105,7 +105,7 @@ insertDefaultCodeBlockLanguage = Pandoc.walkM \(x :: Pandoc.Block) -> case x of
   Pandoc.CodeBlock attr txt ->
     pure $
       Pandoc.CodeBlock
-        (attr & Pandoc.attrClasses %~ \cs -> if null cs then ["txt"] else [])
+        (attr & Pandoc.attrClasses %~ \cs -> if null cs then ["txt"] else cs)
         txt
   _ -> pure x
 
