@@ -9,22 +9,25 @@
 
 main {
   & > * {
-    @media (min-width: calc(1000px)) {
+    @media (width >= 1000px) {
       width: var(--main-inner-width);
+      /*width: 100%;*/
     }
-    @media (max-width: calc(1000px - 1px)) {
-      width: 100%;
+    @media (width < 1000px) {
+      /*width: 100%;*/
+      /*width: var(--main-inner-width);*/
+      /*width: var(--main-width);*/
     }
   }
 }
 
-.header-info,
+/*.header-info,
 .table-of-contents {
   padding: 0.5em 1em;
   background: var(--basic-box-background);
   border: var(--popout-border);
 
-  @media (min-width: calc(1000px)) {
+  @media (width >= 1000px) {
     position: relative;
     display: block;
     float: right;
@@ -41,13 +44,12 @@ main {
     margin-top: -1em;
     margin-bottom: 2em;
   }
-  @media (max-width: calc(1000px - 1px)) {
-
+  @media (width < 1000px) {
   }
-}
+}*/
 
-.header-info {
-  @media (min-width: calc(1000px)) {
+/*.header-info {
+  @media (width >= 1000px) {
     margin-top: 0;
   }
-}
+}*/

@@ -14,7 +14,6 @@ import System.FilePath ((</>))
 import Text.DocTemplates (TemplateMonad (..))
 import qualified Text.DocTemplates as DocTemplates
 import qualified Text.Pandoc as Pandoc
-import qualified Text.Pandoc.Highlighting as Highlighting
 
 newtype BlogTemplateMonad m a = BlogTemplateMonad {unBlogTemplateMonad :: m a}
 
@@ -35,5 +34,5 @@ commonWriterOptions mb_template vars =
     { Pandoc.writerTemplate = mb_template,
       Pandoc.writerVariables = vars,
       Pandoc.writerHTMLMathMethod = Pandoc.MathJax Pandoc.defaultMathJaxURL,
-      Pandoc.writerHighlightStyle = Just Highlighting.espresso
+      Pandoc.writerExtensions = Pandoc.extensionsFromList []
     }

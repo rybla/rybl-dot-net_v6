@@ -94,7 +94,7 @@ processCustomBlocks = Pandoc.walkM \(x :: Pandoc.Block) -> case x of
 removeCommentBlocks :: (Monad m) => Pandoc -> m Pandoc
 removeCommentBlocks = Pandoc.walkM \(x :: [Pandoc.Block]) ->
   x & filterM \case
-    Pandoc.Div attr _ -> return $ not $ attr ^. Pandoc.attrClasses . to ("comment" `elem`)
+    Pandoc.Div attr _ -> return $ not $ attr ^. Pandoc.attrClasses & elem "comment"
     _ -> return True
 
 insertDefaultCodeBlockLanguage :: (Monad m) => Pandoc -> m Pandoc
@@ -118,7 +118,7 @@ addReferencesSection outLinks (Pandoc meta blocks) = do
              outLinks & reverse <&> \link ->
                [ Pandoc.Plain
                    [ Pandoc.Link
-                       (mempty & Pandoc.attrData %~ ([("inReference", ""), ("noLinkPreview", "")] ++))
+                       (mempty & Pandoc.attrClasses <>~ ["inReference", "noLinkPreview"])
                        (link & linkLabel)
                        (link & linkUri & showText, "")
                    ]
@@ -142,7 +142,7 @@ addCitationsSection inLinks (Pandoc meta blocks) = do
                   inLinks & reverse <&> \link ->
                     [ Pandoc.Plain
                         [ Pandoc.Link
-                            (mempty & Pandoc.attrData %~ ([("inCitation", ""), ("noLinkPreview", "")] ++))
+                            (mempty & Pandoc.attrClasses <>~ ["inCitation", "noLinkPreview"])
                             (link & linkLabel)
                             (link & linkUri & showText, "")
                         ]
@@ -155,7 +155,7 @@ addLinkFavicons ::
   (FaviconService, MonadError Doc m, MonadIO m) =>
   Network.Manager -> Pandoc -> m Pandoc
 addLinkFavicons manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
-  Pandoc.Link attr kids target@(urlText, _) | attr ^. Pandoc.attrData . to (not . ("noLinkFavicon" `elem`) . (fst <$>)) -> do
+  Pandoc.Link attr kids target@(urlText, _) | not $ attr ^. Pandoc.attrClasses & (elem "noLinkFavicon") -> do
     url <- urlText & Text.unpack & parseUriReferenceM
     faviconInfo <- manager & Favicon.cache url
     logM "addLinkFavicons" $ showDoc url <+> "~~>" <+> showDoc faviconInfo
@@ -172,7 +172,7 @@ addLinkPreviews ::
   (PreviewService, MonadError Doc m, MonadIO m) =>
   Network.Manager -> Pandoc -> m Pandoc
 addLinkPreviews manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
-  Pandoc.Link attr _kids _target@(urlText, _) | attr ^. Pandoc.attrData . to (not . ("noLinkPreview" `elem`) . (fst <$>)) -> do
+  Pandoc.Link attr _kids _target@(urlText, _) | not $ attr ^. Pandoc.attrClasses & (elem "noLinkPreview") -> do
     url <- urlText & Text.unpack & parseUriReferenceM
     preview <- Preview.cache url manager
     return $
@@ -212,18 +212,17 @@ addTableOfContents doc0 = do
       <&> (<&> unCursor)
 
   return $
-    Pandoc
-      (Pandoc.pandocMeta doc1)
-      ( concat
-          [ [ Pandoc.Div
-                (mempty & Pandoc.attrClasses %~ ("table-of-contents" :))
+    Pandoc (Pandoc.pandocMeta doc1) . concat $
+      [ [ Pandoc.Div mempty $
+            [ Pandoc.Div
+                (mempty & Pandoc.attrClasses %~ (["table-of-contents", "sidenote"] ++))
                 [ Pandoc.Para [Pandoc.Underline [Pandoc.Str "Table of Contents"]],
                   Pandoc.OrderedList orderedListStyle (renderToc <$> tocKids)
                 ]
-            ],
-            Pandoc.pandocBlocks doc1
-          ]
-      )
+            ]
+        ],
+        Pandoc.pandocBlocks doc1
+      ]
   where
     addHeaderToToc :: TocNode -> Cursor TocNode -> Cursor TocNode
     addHeaderToToc x c
@@ -236,10 +235,20 @@ addTableOfContents doc0 = do
 
     renderToc :: Tree TocNode -> [Pandoc.Block]
     renderToc (Tree (_, ident, xs) []) =
-      [ Pandoc.Plain [Pandoc.Link (mempty & Pandoc.attrData %~ ([("noLinkFavicon", ""), ("noLinkPreview", "")] ++)) xs (Text.pack $ "#" ++ Text.unpack ident, "")]
+      [ Pandoc.Plain
+          [ Pandoc.Link
+              (mempty & Pandoc.attrClasses <>~ ["noLinkFavicon", "noLinkPreview"])
+              xs
+              (Text.pack $ "#" ++ Text.unpack ident, "")
+          ]
       ]
     renderToc (Tree (_, ident, xs) kids) =
-      [ Pandoc.Plain [Pandoc.Link (mempty & Pandoc.attrData %~ ([("noLinkFavicon", ""), ("noLinkPreview", "")] ++)) xs (Text.pack $ "#" ++ Text.unpack ident, "")],
+      [ Pandoc.Plain
+          [ Pandoc.Link
+              (mempty & Pandoc.attrClasses <>~ ["noLinkFavicon", "noLinkPreview"])
+              xs
+              (Text.pack $ "#" ++ Text.unpack ident, "")
+          ],
         Pandoc.OrderedList orderedListStyle (renderToc <$> kids)
       ]
 
@@ -254,7 +263,7 @@ renderAbstract blocks =
       blocks
     ]
     <&> Pandoc.walk \(x :: Pandoc.Inline) -> case x of
-      Pandoc.Link attr kids target -> Pandoc.Link (attr & Pandoc.attrData %~ ([("noLinkFavicon", "")] ++)) kids target
+      Pandoc.Link attr kids target -> Pandoc.Link (attr & Pandoc.attrClasses <>~ ["noLinkFavicon"]) kids target
       _ -> x
 
 makePubDate :: Time.Day -> Pandoc.Block
@@ -280,17 +289,17 @@ renderPostHeader post =
           1
           mempty
           [ Pandoc.Link
-              (mempty & Pandoc.attrData %~ ([("noLinkFavicon", ""), ("noLinkPreview", "")] ++))
+              (mempty & Pandoc.attrClasses <>~ ["noLinkFavicon", "noLinkPreview"])
               [Pandoc.Str post._postTitle]
               (showText post._postHref, mempty)
           ]
       ],
-      [ Pandoc.Div
-          (mempty & Pandoc.attrClasses %~ (["header-info"] ++))
-          $ concat
-            [ [makePubDate post._postPubDate],
-              [renderPubDate post._postTags],
-              [renderAbstract abstract | abstract <- post._postAbstract & refold] & concat
-            ]
+      [ Pandoc.Div mempty $
+          [ Pandoc.Div (mempty & Pandoc.attrClasses <>~ ["header-info", "sidenote"]) . concat $
+              [ [makePubDate post._postPubDate],
+                [renderPubDate post._postTags],
+                [renderAbstract abstract | abstract <- post._postAbstract & refold] & concat
+              ]
+          ]
       ]
     ]

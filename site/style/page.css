@@ -1,10 +1,5 @@
 main {
   flex: 1 1 auto;
 
-  @media (min-width: calc(1000px)) {
-    width: var(--main-width);
-  }
-  @media (max-width: calc(1000px - 1px)) {
-    width: 100%;
-  }
+  width: var(--main-width);
 }
