@@ -6,7 +6,13 @@
     --body-font-size: 24pt;
   }
 
-  --main-width: 890px;
+  @media (min-width: calc(1000px)) {
+    --main-width: 890px;
+  }
+  @media (max-width: calc(1000px - 1px)) {
+    width: 100vw;
+  }
+
   --main-padding: 1em;
 
   --basic-box-shadow: 0 0 1em 0.5em rgba(0, 0, 0, 0.5);
@@ -53,12 +59,7 @@ main {
 
   background: color-mix(in srgb, #f6eee3, transparent 10%);
 
-  @media (min-width: calc(1000px)) {
-    width: var(--main-width);
-  }
-  @media (max-width: calc(1000px - 1px)) {
-    width: 100%;
-  }
+  width: var(--main-width);
 }
 
 h1,
