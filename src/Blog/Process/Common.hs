@@ -215,7 +215,7 @@ addTableOfContents doc0 = do
     Pandoc (Pandoc.pandocMeta doc1) . concat $
       [ [ Pandoc.Div mempty $
             [ Pandoc.Div
-                (mempty & Pandoc.attrClasses %~ (["table-of-contents", "sidenote"] ++))
+                (mempty & Pandoc.attrClasses %~ (["sidenote", "persistent", "table-of-contents"] ++))
                 [ Pandoc.Para [Pandoc.Underline [Pandoc.Str "Table of Contents"]],
                   Pandoc.OrderedList orderedListStyle (renderToc <$> tocKids)
                 ]
@@ -295,7 +295,7 @@ renderPostHeader post =
           ]
       ],
       [ Pandoc.Div mempty $
-          [ Pandoc.Div (mempty & Pandoc.attrClasses <>~ ["header-info", "sidenote"]) . concat $
+          [ Pandoc.Div (mempty & Pandoc.attrClasses <>~ ["sidenote", "persistent", "header-info"]) . concat $
               [ [makePubDate post._postPubDate],
                 [renderPubDate post._postTags],
                 [renderAbstract abstract | abstract <- post._postAbstract & refold] & concat
