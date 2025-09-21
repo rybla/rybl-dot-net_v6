@@ -27,7 +27,7 @@ import Service.Favicon (FaviconService)
 import Service.Preview (PreviewService)
 import System.FilePath ((</>))
 import qualified Text.Pandoc as Pandoc
-import Text.PrettyPrint.HughesPJClass (Doc)
+import Text.PrettyPrint.HughesPJClass (Doc, (<+>))
 
 processPost ::
   (FaviconService, PreviewService, MonadError Doc m, MonadState env m, MonadIO m) =>
@@ -37,6 +37,9 @@ processPost ::
   Lens' env Post ->
   m ()
 processPost manager outLinks inLinks post = do
+  gets (^. post) >>= \post' ->
+    logM "processPost" $ "title =" <+> textDoc post'._postTitle
+
   mgr <- gets (^. manager)
   ph <- gets (^. post . postHref)
 

@@ -1,6 +1,10 @@
 module Main (main) where
 
 import qualified Blog.Build
+import Blog.Utility
 
 main :: IO ()
-main = Blog.Build.main
+main = do
+  logM "main" "begin"
+  Blog.Build.main
+  logM "main" "end"

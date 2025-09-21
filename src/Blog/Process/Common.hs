@@ -18,7 +18,6 @@ import Control.Monad (filterM, when, (>=>))
 import Control.Monad.Except (MonadError, throwError)
 import Control.Monad.State (modify, runStateT)
 import Control.Monad.Writer (MonadIO, liftIO)
-import qualified Data.Maybe as Maybe
 import Data.Text (Text)
 import qualified Data.Text as Text
 import qualified Data.Text.IO as Text
@@ -38,13 +37,14 @@ import Text.PrettyPrint.HughesPJClass (Doc, doubleQuotes, text, (<+>))
 
 commonTransformations :: (MonadIO m, MonadError Doc m) => Pandoc -> m Pandoc
 commonTransformations =
-  removeCommentBlocks
-    >=> processCustomBlocks
+  {- removeCommentBlocks
+    >=> -} processCustomBlocks
     >=> insertDefaultCodeBlockLanguage
 
 processCustomBlocks :: (MonadIO m, MonadError Doc m) => Pandoc -> m Pandoc
 processCustomBlocks = Pandoc.walkM \(x :: Pandoc.Block) -> case x of
   Pandoc.Div attr blocks -> do
+    logM "processCustomBlocks" $ "class =" <+> text (show (attr ^. Pandoc.attrClasses))
     let extractClass c =
           let cs = attr ^. Pandoc.attrClasses
               cs' = cs & filter (c /=)
@@ -66,12 +66,12 @@ processCustomBlocks = Pandoc.walkM \(x :: Pandoc.Block) -> case x of
           logM "processCustomBlocks: include-code-block" $ "attr =" <+> text (show attr)
           srcFilePathText <- lookupDataRequired c "src"
           let srcFilePath = Text.unpack srcFilePathText
-          when (not (srcFilePath & FilePath.isValid)) do
-            throwError $ "invalid FilePath" <+> text srcFilePath
+          logM "processCustomBlocks: include-code-block" $ "src =" <+> textDoc srcFilePathText
           let extMb = filepathExtension srcFilePath <&> Text.pack
           let titleMb = lookupDataOptional "title"
           hrefMb <- lookupDataOptional "href" <&> Text.unpack & traverse parseUriReferenceM
           txt <- Text.readFile srcFilePath & liftIO
+          logM "processCustomBlocks: include-code-block" $ "txt =" <+> textDoc txt
           pure . Pandoc.BlockQuote . concat $
             [ [ Pandoc.Para
                   [ let makeTitle title = Pandoc.Strong [Pandoc.Str title]

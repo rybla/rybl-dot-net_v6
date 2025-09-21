@@ -6,6 +6,7 @@
 {-# LANGUAGE TypeApplications #-}
 {-# OPTIONS_GHC -Wno-missing-export-lists #-}
 {-# OPTIONS_GHC -Wno-name-shadowing #-}
+{-# LANGUAGE BangPatterns #-}
 
 module Blog.Process.Page where
 
@@ -23,7 +24,7 @@ import Network.URI (URI)
 import Service.Favicon (FaviconService)
 import Text.Pandoc (Pandoc (..))
 import qualified Text.Pandoc as Pandoc
-import Text.PrettyPrint.HughesPJClass (Doc)
+import Text.PrettyPrint.HughesPJClass (Doc, (<+>))
 
 processPage ::
   (FaviconService, MonadError Doc m, MonadState env m, MonadIO m) =>
@@ -33,6 +34,9 @@ processPage ::
   Lens' env Page ->
   m ()
 processPage manager outLinks inLinks page = do
+  gets (^. page) >>= \page' ->
+    logM "processPost" $ "title =" <+> textDoc page'._pageTitle
+
   mgr <- gets (^. manager)
   ph <- gets (^. page . pageHref)
 
@@ -56,8 +60,6 @@ processPage manager outLinks inLinks page = do
   page . pageDoc %=* addLinkFavicons mgr
 
   return ()
-
---
 
 addPageHeader :: (Monad m) => Page -> Pandoc -> m Pandoc
 addPageHeader page (Pandoc meta blocks) = do
