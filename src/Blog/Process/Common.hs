@@ -36,9 +36,9 @@ import Text.PrettyPrint.HughesPJClass (Doc, doubleQuotes, text, (<+>))
 
 commonTransformations :: (MonadIO m, MonadError Doc m) => Pandoc -> m Pandoc
 commonTransformations =
-  {- removeCommentBlocks
-    >=> -} processCustomBlocks
-    >=> insertDefaultCodeBlockLanguage
+  removeCommentBlocks
+    >=> processCustomBlocks
+    >=> processCodeBlocks
 
 processCustomBlocks :: (MonadIO m, MonadError Doc m) => Pandoc -> m Pandoc
 processCustomBlocks = Pandoc.walkM \(x :: Pandoc.Block) -> case x of
@@ -97,13 +97,15 @@ removeCommentBlocks = Pandoc.walkM \(x :: [Pandoc.Block]) ->
     Pandoc.Div attr _ -> return $ not $ attr ^. Pandoc.attrClasses & elem "comment"
     _ -> return True
 
-insertDefaultCodeBlockLanguage :: (Monad m) => Pandoc -> m Pandoc
-insertDefaultCodeBlockLanguage = Pandoc.walkM \(x :: Pandoc.Block) -> case x of
+processCodeBlocks :: (Monad m) => Pandoc -> m Pandoc
+processCodeBlocks = Pandoc.walkM \(x :: Pandoc.Block) -> case x of
   Pandoc.CodeBlock attr txt ->
     pure $
-      Pandoc.CodeBlock
-        (attr & Pandoc.attrClasses %~ \cs -> if null cs then ["txt"] else cs)
-        txt
+      Pandoc.Div mempty $
+        [ Pandoc.CodeBlock
+            (attr & Pandoc.attrClasses %~ \cs -> (if null cs then ["txt"] else cs))
+            txt
+        ]
   _ -> pure x
 
 addReferencesSection ::
@@ -181,12 +183,9 @@ addLinkPreviews manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
         [ x,
           Pandoc.Span
             (mempty & Pandoc.attrClasses %~ (["sidenote", "preview"] ++))
-            [ Pandoc.Span
-                (mempty & Pandoc.attrClasses %~ (["preview-title"] ++))
-                [Pandoc.Emph [Pandoc.Link mempty [Pandoc.Str (preview.title & Text.pack)] (urlText, "_blank")]],
-              Pandoc.Span
-                (mempty & Pandoc.attrClasses %~ (["preview-description"] ++))
-                [Pandoc.Str (preview.description & Text.pack)]
+            [ Pandoc.Emph [Pandoc.Link mempty [Pandoc.Str (preview.title & Text.pack)] (urlText, "_blank")],
+              Pandoc.RawInline (Pandoc.Format "html") "<br/>",
+              Pandoc.Str (preview.description & Text.pack)
             ]
         ]
   _ -> return x
