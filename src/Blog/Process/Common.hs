@@ -101,11 +101,9 @@ processCodeBlocks :: (Monad m) => Pandoc -> m Pandoc
 processCodeBlocks = Pandoc.walkM \(x :: Pandoc.Block) -> case x of
   Pandoc.CodeBlock attr txt ->
     pure $
-      Pandoc.Div mempty $
-        [ Pandoc.CodeBlock
-            (attr & Pandoc.attrClasses %~ \cs -> (if null cs then ["txt"] else cs))
-            txt
-        ]
+      Pandoc.CodeBlock
+        (attr & Pandoc.attrClasses %~ \cs -> (if null cs then ["txt"] else cs))
+        txt
   _ -> pure x
 
 addReferencesSection ::
@@ -174,7 +172,7 @@ addLinkPreviews ::
   (PreviewService, MonadError Doc m, MonadIO m) =>
   Network.Manager -> Pandoc -> m Pandoc
 addLinkPreviews manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
-  Pandoc.Link attr _kids _target@(urlText, _) | not $ attr ^. Pandoc.attrClasses & (elem "noLinkPreview") -> do
+  Pandoc.Link attr kids _target@(urlText, _) | not $ attr ^. Pandoc.attrClasses & (elem "noLinkPreview") -> do
     url <- urlText & Text.unpack & parseUriReferenceM
     preview <- Preview.cache url manager
     return $
@@ -183,7 +181,9 @@ addLinkPreviews manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
         [ x,
           Pandoc.Span
             (mempty & Pandoc.attrClasses %~ (["sidenote", "preview"] ++))
-            [ Pandoc.Emph [Pandoc.Link mempty [Pandoc.Str (preview.title & Text.pack)] (urlText, "_blank")],
+            [ Pandoc.Str $ kids & Pandoc.stringify,
+              Pandoc.RawInline (Pandoc.Format "html") "<br/>",
+              Pandoc.Emph [Pandoc.Link mempty [Pandoc.Str (preview.title & Text.pack)] (urlText, "_blank")],
               Pandoc.RawInline (Pandoc.Format "html") "<br/>",
               Pandoc.Str (preview.description & Text.pack)
             ]
