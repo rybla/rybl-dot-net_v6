@@ -3,3 +3,7 @@ main {
     width: var(--main-inner-width);
   }
 }
+
+h1 {
+  width: 100%;
+}

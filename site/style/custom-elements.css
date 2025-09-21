@@ -1,10 +1,9 @@
-.header-info,
-.table-of-contents {
-  margin-block-end: 1em;
-  margin-block-start: 1em;
-  padding: 0.5em 1em;
-  background: var(--basic-box-background);
-  border: var(--popout-border);
+div.sourceCode {
+  margin-left: calc(-1 * var(--main-padding));
+  margin-right: calc(-1 * var(--main-padding));
+  width: var(--main-inner-width);
+  overflow: auto;
+  max-height: 30em;
 }
 
 .definition {
@@ -20,24 +19,11 @@
   }
 }
 
-/*.preview {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5em;
-
-  & > .preview-title {
-    display: block;
-    word-break: break-all;
-    font-weight: bold;
-  }
-
-  & > .preview-description {
-    display: block;
-    word-break: break-all;
-  }
-}*/
-
 .sidenote {
+  padding: 0.5em 1em;
+  background: var(--basic-box-background);
+  border: var(--popout-border);
+
   @media (width >= 1000px) {
     display: block;
     visibility: visible;
@@ -47,16 +33,12 @@
     float: right;
     clear: right;
     width: calc(
-      var(--sidenote-width) - var(--spacing-between-main-and-sidenotes) - 2 *
-        var(--main-padding)
+      var(--gutter-width) - var(--gutter-padding-left) - 2 * var(--main-padding)
     );
-    margin-right: calc(-1 * var(--sidenote-width) + var(--main-padding));
-    margin-top: -1em;
+    margin-right: calc(-1 * var(--gutter-width) + var(--main-padding));
+    /*margin-top: -1em;*/
     margin-bottom: 2em;
     word-break: break-all;
-    border: var(--popout-border);
-    background: var(--basic-box-background);
-    padding: 0.5em 1em;
   }
   @media (width < 1000px) {
     display: none;
@@ -67,8 +49,18 @@
     @media (width < 1000px) {
       display: block;
       visibility: visible;
+      margin-block-end: 1em;
+      margin-block-start: 1em;
     }
   }
+}
+
+.popout {
+  padding: 0.5em 1em;
+  background: var(--basic-box-background);
+  border: var(--popout-border);
+  margin-block-end: 1em;
+  margin-block-start: 1em;
 }
 
 .warning {

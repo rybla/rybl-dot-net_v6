@@ -13,6 +13,16 @@
     --main-width: 100vw;
   }
 
+  @media (width >= 1000px) {
+    --main-inner-width: 500px;
+  }
+  @media (width < 1000px) {
+    --main-inner-width: 100%;
+  }
+
+  --gutter-width: calc(var(--main-width) - var(--main-inner-width));
+  --gutter-padding-left: 1em;
+
   --main-padding: 1em;
 
   --basic-box-shadow: 0 0 1em 0.5em rgba(0, 0, 0, 0.5);
@@ -111,11 +121,6 @@ main p > img {
 
 pre {
   padding: 0;
-  margin-left: -1em;
-  margin-right: -1em;
-  /*width: calc(100% + var(--main-padding));*/
-  overflow: auto;
-  max-height: 30em;
 
   & > code {
     display: block;

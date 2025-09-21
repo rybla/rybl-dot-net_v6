@@ -1,4 +1,5 @@
 {-# LANGUAGE AllowAmbiguousTypes #-}
+{-# LANGUAGE BangPatterns #-}
 {-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE ScopedTypeVariables #-}
@@ -6,7 +7,6 @@
 {-# LANGUAGE TypeApplications #-}
 {-# OPTIONS_GHC -Wno-missing-export-lists #-}
 {-# OPTIONS_GHC -Wno-name-shadowing #-}
-{-# LANGUAGE BangPatterns #-}
 
 module Blog.Process.Page where
 
@@ -52,7 +52,7 @@ processPage manager outLinks inLinks page = do
     page . pageDoc %=* addCitationsSection ils
 
   whenM (gets (^. page . pageTableOfContentsEnabled)) do
-    page . pageDoc %=* addTableOfContents
+    page . pageDoc %=* addTableOfContents False
 
   pageSnapshot <- gets (^. page)
   page . pageDoc %=* addPageHeader pageSnapshot
@@ -77,7 +77,7 @@ renderPageHeader page =
           2
           mempty
           [ Pandoc.Link
-              (mempty & Pandoc.attrData %~ ([("noLinkFavicon", ""), ("noLinkPreview", "")] ++))
+              (mempty & Pandoc.attrClasses %~ (["noLinkFavicon", "noLinkPreview"] ++))
               [Pandoc.Str page._pageTitle]
               (showText page._pageHref, mempty)
           ]

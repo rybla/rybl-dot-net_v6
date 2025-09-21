@@ -194,8 +194,10 @@ type TocNode = (Int, Text, [Pandoc.Inline])
 
 addTableOfContents ::
   (MonadError Doc m) =>
-  Pandoc -> m Pandoc
-addTableOfContents doc0 = do
+  Bool ->
+  Pandoc ->
+  m Pandoc
+addTableOfContents isSidenote doc0 = do
   title <- doc0 & Pandoc.getMetaValue "title" <&> Pandoc.stringify
   (doc1, Tree _ tocKids) <-
     doc0
@@ -214,7 +216,7 @@ addTableOfContents doc0 = do
     Pandoc (Pandoc.pandocMeta doc1) . concat $
       [ [ Pandoc.Div mempty $
             [ Pandoc.Div
-                (mempty & Pandoc.attrClasses %~ (["sidenote", "persistent", "table-of-contents"] ++))
+                (mempty & Pandoc.attrClasses %~ ((concat [if isSidenote then ["sidenote", "persistent"] else ["popout"], ["table-of-contents"]]) ++))
                 [ Pandoc.Para [Pandoc.Underline [Pandoc.Str "Table of Contents"]],
                   Pandoc.OrderedList orderedListStyle (renderToc <$> tocKids)
                 ]
@@ -281,8 +283,8 @@ renderPubDate tags =
       Pandoc.Str $ tags & Text.intercalate ", "
     ]
 
-renderPostHeader :: Post -> [Pandoc.Block]
-renderPostHeader post =
+renderPostHeader :: Bool -> Post -> [Pandoc.Block]
+renderPostHeader isSidenote post =
   concat
     [ [ Pandoc.Header
           1
@@ -294,11 +296,13 @@ renderPostHeader post =
           ]
       ],
       [ Pandoc.Div mempty $
-          [ Pandoc.Div (mempty & Pandoc.attrClasses <>~ ["sidenote", "persistent", "header-info"]) . concat $
-              [ [makePubDate post._postPubDate],
-                [renderPubDate post._postTags],
-                [renderAbstract abstract | abstract <- post._postAbstract & refold] & concat
-              ]
+          [ Pandoc.Div
+              (mempty & Pandoc.attrClasses %~ ((concat [if isSidenote then ["sidenote", "persistent"] else ["popout"], ["header-info"]]) ++))
+              $ concat
+              $ [ [makePubDate post._postPubDate],
+                  [renderPubDate post._postTags],
+                  [renderAbstract abstract | abstract <- post._postAbstract & refold] & concat
+                ]
           ]
       ]
     ]

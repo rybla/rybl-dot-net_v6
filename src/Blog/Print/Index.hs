@@ -86,4 +86,4 @@ makePostCard post = do
   return
     $ Pandoc.Div
       (mempty & Pandoc.attrClasses %~ (["post-card"] ++))
-    $ renderPostHeader post
+    $ renderPostHeader False post

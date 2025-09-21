@@ -59,7 +59,7 @@ processPost manager outLinks inLinks post = do
   addPostSignatureSection
 
   whenM (gets (^. post . postTableOfContentsEnabled)) do
-    post . postDoc %=* addTableOfContents
+    post . postDoc %=* addTableOfContents True
 
   addPostHeader
 
@@ -71,7 +71,7 @@ processPost manager outLinks inLinks post = do
       post' <- gets (^. post)
       post . postDoc . Pandoc._pandocBlocks %= \blocks ->
         concat
-          [ renderPostHeader post',
+          [ renderPostHeader True post',
             blocks
           ]
       pure ()
