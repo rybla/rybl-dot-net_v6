@@ -41,6 +41,7 @@ dependencies:
   - skylighting-core
   - cryptonite
   - memory
+  - safe
 
 ghc-options:
   - -Wall

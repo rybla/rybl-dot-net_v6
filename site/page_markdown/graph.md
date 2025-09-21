@@ -1,5 +1,7 @@
 ---
 title: Graph
+references: false
+table_of_contents: false
 ---
 
 ::: todo

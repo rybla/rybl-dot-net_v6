@@ -1,4 +1,5 @@
 {-# LANGUAGE AllowAmbiguousTypes #-}
+{-# LANGUAGE MultiWayIf #-}
 {-# LANGUAGE NamedFieldPuns #-}
 {-# LANGUAGE RankNTypes #-}
 {-# LANGUAGE ScopedTypeVariables #-}
@@ -13,12 +14,14 @@ import qualified Blog.Pandoc as Pandoc
 import Blog.Tree
 import Blog.Utility
 import Control.Lens hiding (preview)
-import Control.Monad (filterM)
-import Control.Monad.Except (MonadError)
+import Control.Monad (filterM, when, (>=>))
+import Control.Monad.Except (MonadError, throwError)
 import Control.Monad.State (modify, runStateT)
-import Control.Monad.Writer (MonadIO)
+import Control.Monad.Writer (MonadIO, liftIO)
+import qualified Data.Maybe as Maybe
 import Data.Text (Text)
 import qualified Data.Text as Text
+import qualified Data.Text.IO as Text
 import qualified Data.Time as Time
 import qualified Network.HTTP.Client as Network
 import qualified Network.URI as URI
@@ -26,21 +29,85 @@ import Service.Favicon (FaviconService)
 import qualified Service.Favicon as Favicon
 import Service.Preview (PreviewService)
 import qualified Service.Preview as Preview
+import qualified System.FilePath as FilePath
 import Text.Pandoc (Pandoc (..))
 import qualified Text.Pandoc as Pandoc
 import qualified Text.Pandoc.Shared as Pandoc
 import qualified Text.Pandoc.Walk as Pandoc
-import Text.PrettyPrint.HughesPJClass (Doc, (<+>))
+import Text.PrettyPrint.HughesPJClass (Doc, doubleQuotes, text, (<+>))
 
-commonTransformations :: (Monad m) => Pandoc -> m Pandoc
+commonTransformations :: (MonadIO m, MonadError Doc m) => Pandoc -> m Pandoc
 commonTransformations =
   removeCommentBlocks
+    >=> processCustomBlocks
+    >=> insertDefaultCodeBlockLanguage
+
+processCustomBlocks :: (MonadIO m, MonadError Doc m) => Pandoc -> m Pandoc
+processCustomBlocks = Pandoc.walkM \(x :: Pandoc.Block) -> case x of
+  Pandoc.Div attr blocks -> do
+    let extractClass c =
+          let cs = attr ^. Pandoc.attrClasses
+              cs' = cs & filter (c /=)
+           in if (cs' & length) < (cs & length)
+                then
+                  pure (c, cs')
+                else
+                  mempty
+
+        lookupDataRequired c key =
+          attr ^. Pandoc.attrData
+            & assocList key
+            & fromMaybe ("custom block" <+> doubleQuotes (textDoc c) <+> "requires data key:" <+> doubleQuotes (textDoc key))
+        lookupDataOptional key =
+          attr ^. Pandoc.attrData
+            & assocList key
+    if
+      | Just (c, _cs) <- extractClass "include-code-block" -> do
+          logM "processCustomBlocks: include-code-block" $ "attr =" <+> text (show attr)
+          srcFilePathText <- lookupDataRequired c "src"
+          let srcFilePath = Text.unpack srcFilePathText
+          when (not (srcFilePath & FilePath.isValid)) do
+            throwError $ "invalid FilePath" <+> text srcFilePath
+          let extMb = filepathExtension srcFilePath <&> Text.pack
+          let titleMb = lookupDataOptional "title"
+          hrefMb <- lookupDataOptional "href" <&> Text.unpack & traverse parseUriReferenceM
+          txt <- Text.readFile srcFilePath & liftIO
+          pure . Pandoc.BlockQuote . concat $
+            [ titleMb & maybe mempty \title ->
+                [Pandoc.Para [Pandoc.Strong [Pandoc.Str title]]],
+              [ Pandoc.CodeBlock
+                  (mempty & Pandoc.attrClasses <>~ (extMb & refold))
+                  txt
+              ],
+              hrefMb & maybe mempty \href ->
+                let hrefText = showText href
+                 in [ Pandoc.Para
+                        [ Pandoc.Str "Quoted from: ",
+                          Pandoc.Link
+                            mempty
+                            [Pandoc.Str $ attr ^. Pandoc.attrData . to (assocList "label") & Maybe.fromMaybe hrefText]
+                            (hrefText, "_blank")
+                        ]
+                    ],
+              blocks
+            ]
+      | otherwise -> pure x
+  _ -> pure x
 
 removeCommentBlocks :: (Monad m) => Pandoc -> m Pandoc
 removeCommentBlocks = Pandoc.walkM \(x :: [Pandoc.Block]) ->
   x & filterM \case
     Pandoc.Div attr _ -> return $ not $ attr ^. Pandoc.attrClasses . to ("comment" `elem`)
     _ -> return True
+
+insertDefaultCodeBlockLanguage :: (Monad m) => Pandoc -> m Pandoc
+insertDefaultCodeBlockLanguage = Pandoc.walkM \(x :: Pandoc.Block) -> case x of
+  Pandoc.CodeBlock attr txt ->
+    pure $
+      Pandoc.CodeBlock
+        (attr & Pandoc.attrClasses %~ \cs -> if null cs then ["txt"] else [])
+        txt
+  _ -> pure x
 
 addReferencesSection ::
   (MonadError Doc m) =>
@@ -119,7 +186,7 @@ addLinkPreviews manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
             (mempty & Pandoc.attrClasses %~ (["sidenote", "preview"] ++))
             [ Pandoc.Span
                 (mempty & Pandoc.attrClasses %~ (["preview-title"] ++))
-                [Pandoc.Emph [Pandoc.Link (mempty & Pandoc.attrData <>~ [Pandoc.targetBlank]) [Pandoc.Str (preview.title & Text.pack)] (urlText, "")]],
+                [Pandoc.Emph [Pandoc.Link mempty [Pandoc.Str (preview.title & Text.pack)] (urlText, "_blank")]],
               Pandoc.Span
                 (mempty & Pandoc.attrClasses %~ (["preview-description"] ++))
                 [Pandoc.Str (preview.description & Text.pack)]

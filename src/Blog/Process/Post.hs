@@ -78,13 +78,13 @@ processPost manager outLinks inLinks post = do
             [ Pandoc.Header 1 mempty [Pandoc.Str "Signature"],
               Pandoc.Para
                 [ Pandoc.Str "The following code block is the ",
-                  Pandoc.Link (mempty & Pandoc.attrData %~ (Pandoc.targetBlank :)) [Pandoc.Str "Ed25519 signature"] ("https://en.wikipedia.org/wiki/EdDSA#Ed25519", ""),
+                  Pandoc.Link mempty [Pandoc.Str "Ed25519 signature"] ("https://en.wikipedia.org/wiki/EdDSA#Ed25519", "_blank"),
                   Pandoc.Str " of this post's ",
                   Pandoc.Link mempty [Pandoc.Str "markdown content"] (post'._postMarkdownHref & showText, ""),
                   Pandoc.Str " encoded in base 64, using my ",
                   Pandoc.Emph [Pandoc.Str "secret key"],
                   Pandoc.Str " and ",
-                  Pandoc.Link (mempty & Pandoc.attrData %~ (Pandoc.targetBlank :)) [Pandoc.Str "public key"] (showText Config.publicKeyUri, ""),
+                  Pandoc.Link mempty [Pandoc.Str "public key"] (showText Config.publicKeyUri, "_blank"),
                   Pandoc.Str "."
                 ],
               Pandoc.CodeBlock mempty (Text.pack $ showByteArrayAsBase64 $ post'._postMarkdownSignature)

@@ -24,6 +24,7 @@ import qualified Data.Time as Time
 import Network.URI (URI)
 import qualified Network.URI as URI
 import qualified Network.URI.Encode as URI
+import Safe (lastMay)
 import qualified System.FilePath as FilePath
 import Text.Pandoc
 import Text.PrettyPrint.HughesPJClass
@@ -174,3 +175,9 @@ showByteArrayAsBase64 = C8.unpack . B16.encode . fromByteArrayAccessToByteString
 
 fromByteArrayAccessToByteString :: (ByteArrayAccess ba) => ba -> ByteString
 fromByteArrayAccessToByteString = ByteString.pack . ByteArray.unpack
+
+filepathExtension :: FilePath -> Maybe String
+filepathExtension = lastMay . splitBy ('.' ==)
+
+textDoc :: Text -> Doc
+textDoc = text . Text.unpack
