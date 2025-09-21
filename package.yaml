@@ -79,7 +79,7 @@ executables:
     dependencies:
       - rybl-dot-net
 
-  generate-secret-key-exe:
+  generate-secret-key:
     source-dirs: generate-secret-key
     main: Main.hs
     ghc-options:

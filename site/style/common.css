@@ -124,10 +124,7 @@ pre {
     margin: 0;
     padding: 1em;
     font-size: 0.9em;
-    /*white-space: no-wrap;*/
-    white-space: pre;
     font-family: "Fira Code", monospace;
-    overflow: visible;
   }
 }
 

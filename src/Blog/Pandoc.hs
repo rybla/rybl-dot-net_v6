@@ -144,3 +144,6 @@ attrClasses = _2
 
 attrData :: Lens' Attr [(Text, Text)]
 attrData = _3
+
+targetBlank :: (Text, Text)
+targetBlank = ("target", "_blank")

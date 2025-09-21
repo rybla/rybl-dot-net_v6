@@ -99,7 +99,7 @@ library
     , uri-encode
   default-language: Haskell2010
 
-executable generate-secret-key-exe
+executable generate-secret-key
   main-is: Main.hs
   other-modules:
       Paths_rybl_dot_net

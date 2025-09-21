@@ -9,6 +9,12 @@ import Control.Monad (MonadPlus (..))
 import Control.Monad.Except (MonadError, throwError)
 import Control.Monad.IO.Class
 import Control.Monad.State (MonadState, StateT, gets, put, runStateT)
+import Data.ByteArray (ByteArrayAccess)
+import qualified Data.ByteArray as ByteArray
+import Data.ByteString (ByteString)
+import qualified Data.ByteString as ByteString
+import qualified Data.ByteString.Base16 as B16
+import qualified Data.ByteString.Char8 as C8
 import qualified Data.List as List
 import qualified Data.Map as Map
 import Data.Maybe (fromJust)
@@ -162,3 +168,9 @@ splitBy f = go []
     go acc xs =
       let (ys, zs) = span (not . f) xs
        in go (ys : acc) (drop 1 zs)
+
+showByteArrayAsBase64 :: (ByteArrayAccess ba) => ba -> String
+showByteArrayAsBase64 = C8.unpack . B16.encode . fromByteArrayAccessToByteString
+
+fromByteArrayAccessToByteString :: (ByteArrayAccess ba) => ba -> ByteString
+fromByteArrayAccessToByteString = ByteString.pack . ByteArray.unpack

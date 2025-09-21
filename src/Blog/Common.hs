@@ -1,3 +1,4 @@
+{-# LANGUAGE QuasiQuotes #-}
 {-# LANGUAGE TemplateHaskell #-}
 {-# LANGUAGE TemplateHaskellQuotes #-}
 {-# OPTIONS_GHC -Wno-missing-export-lists #-}
@@ -18,6 +19,7 @@ import Data.Text (Text)
 import Data.Time (Day)
 import Network.URI (URI)
 import qualified Network.URI as URI
+import qualified Network.URI.Static as URI
 import System.FilePath ((<.>), (</>))
 import qualified Text.Pandoc as Pandoc
 import Text.PrettyPrint.HughesPJClass (Doc, Pretty, brackets, hcat, pPrint, text)
@@ -74,6 +76,17 @@ data Page = Page
   }
 
 makeLenses ''Page
+
+-- Secret
+
+secretKeyFilePath :: FilePath
+secretKeyFilePath = "secret/main_ed25519"
+
+publicKeyFilePath :: FilePath
+publicKeyFilePath = "site/key/main_ed25519.pub.txt"
+
+publicKeyUri :: URI
+publicKeyUri = [URI.relativeReference|/key/main_ed25519.pub.txt|]
 
 -- Post
 

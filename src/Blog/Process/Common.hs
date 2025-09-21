@@ -9,7 +9,6 @@
 module Blog.Process.Common where
 
 import Blog.Common
-import qualified Blog.Config as Config
 import qualified Blog.Pandoc as Pandoc
 import Blog.Tree
 import Blog.Utility
@@ -18,7 +17,6 @@ import Control.Monad (filterM)
 import Control.Monad.Except (MonadError)
 import Control.Monad.State (modify, runStateT)
 import Control.Monad.Writer (MonadIO)
-import qualified Data.ByteArray as ByteArray
 import Data.Text (Text)
 import qualified Data.Text as Text
 import qualified Data.Time as Time
@@ -62,30 +60,6 @@ addReferencesSection outLinks (Pandoc meta blocks) = do
                    ]
                ]
          ]
-
-addPostSignatureSection :: (Monad m) => Post -> m Post
-addPostSignatureSection post = do
-  let Pandoc meta blocks = post._postDoc
-  pure $
-    post
-      { _postDoc =
-          Pandoc meta $
-            concat $
-              [ blocks,
-                [ Pandoc.Header 1 mempty [Pandoc.Str "Signature"],
-                  Pandoc.Para
-                    [ Pandoc.Str "The following code block is the ",
-                      Pandoc.Link (mempty & Pandoc.attrData %~ (("target", "_blank") :)) [Pandoc.Str "Ed25519 signature"] ("https://en.wikipedia.org/wiki/EdDSA#Ed25519", ""),
-                      Pandoc.Str " of this post's ",
-                      Pandoc.Link mempty [Pandoc.Str "markdown content"] (post._postMarkdownHref & showText, ""),
-                      Pandoc.Str " as a byte array, using my secret key and ",
-                      Pandoc.Link (mempty & Pandoc.attrData %~ (("target", "_blank") :)) [Pandoc.Str "public key"] (Config.publicKeyUri, ""),
-                      Pandoc.Str "."
-                    ],
-                  Pandoc.CodeBlock mempty (Text.pack $ show $ ByteArray.unpack $ post._postMarkdownSignature)
-                ]
-              ]
-      }
 
 addCitationsSection ::
   (MonadError Doc m) =>
@@ -145,7 +119,7 @@ addLinkPreviews manager = Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
             (mempty & Pandoc.attrClasses %~ (["sidenote", "preview"] ++))
             [ Pandoc.Span
                 (mempty & Pandoc.attrClasses %~ (["preview-title"] ++))
-                [Pandoc.Emph [Pandoc.Link (mempty & Pandoc.attrData <>~ [("target", "_blank")]) [Pandoc.Str (preview.title & Text.pack)] (urlText, "")]],
+                [Pandoc.Emph [Pandoc.Link (mempty & Pandoc.attrData <>~ [Pandoc.targetBlank]) [Pandoc.Str (preview.title & Text.pack)] (urlText, "")]],
               Pandoc.Span
                 (mempty & Pandoc.attrClasses %~ (["preview-description"] ++))
                 [Pandoc.Str (preview.description & Text.pack)]
