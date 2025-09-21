@@ -110,8 +110,8 @@ main p > img {
 
 pre {
   padding: 0;
-  /*margin-left: -1em;*/
-  /*margin-right: -1em;*/
+  margin-left: -1em;
+  margin-right: -1em;
   /*width: calc(100% + var(--main-padding));*/
   overflow: auto;
   max-height: 30em;

@@ -73,22 +73,20 @@ processCustomBlocks = Pandoc.walkM \(x :: Pandoc.Block) -> case x of
           hrefMb <- lookupDataOptional "href" <&> Text.unpack & traverse parseUriReferenceM
           txt <- Text.readFile srcFilePath & liftIO
           pure . Pandoc.BlockQuote . concat $
-            [ titleMb & maybe mempty \title ->
-                [Pandoc.Para [Pandoc.Strong [Pandoc.Str title]]],
+            [ [ Pandoc.Para
+                  [ let makeTitle title = Pandoc.Strong [Pandoc.Str title]
+                        makeTarget href = (href & showText, "_blank")
+                     in case (titleMb, hrefMb) of
+                          (Just title, Just href) -> Pandoc.Link mempty [makeTitle title] (makeTarget href)
+                          (Just title, Nothing) -> makeTitle title
+                          (Nothing, Just href) -> Pandoc.Link mempty [makeTitle $ href & showText] (href & showText, "_blank")
+                          (Nothing, Nothing) -> makeTitle $ srcFilePath & Text.pack
+                  ]
+              ],
               [ Pandoc.CodeBlock
                   (mempty & Pandoc.attrClasses <>~ (extMb & refold))
                   txt
               ],
-              hrefMb & maybe mempty \href ->
-                let hrefText = showText href
-                 in [ Pandoc.Para
-                        [ Pandoc.Str "Quoted from: ",
-                          Pandoc.Link
-                            mempty
-                            [Pandoc.Str $ attr ^. Pandoc.attrData . to (assocList "label") & Maybe.fromMaybe hrefText]
-                            (hrefText, "_blank")
-                        ]
-                    ],
               blocks
             ]
       | otherwise -> pure x
