@@ -72,24 +72,12 @@ main {
   width: var(--main-width);
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-  margin-top: 0.5em;
-  margin-bottom: 0.5em;
-  padding: 0;
-}
-
 a {
   display: inline;
 
   color: inherit;
   /*background: color-mix(in hsl, #f28500, transparent 50%);*/
-  background: color-mix(in hsl, black, transparent 90%);
+  background: color-mix(in hsl, darkblue, transparent 80%);
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
   text-decoration: none;
@@ -110,6 +98,22 @@ a {
   }
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding: 0;
+
+  & > a {
+    background: transparent;
+  }
+}
+
 p {
   margin: 0.5em 0;
 }
@@ -119,18 +123,32 @@ main p > img {
   margin-left: -1em;
 }
 
-pre {
-  padding: 0;
+code {
+  font-size: 0.9em;
+  font-family: "Fira Code", monospace;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  background: rgba(0, 0, 0, 0.1);
+}
 
-  & > code {
-    display: block;
-    padding: 1em;
+div.sourceCode {
+  margin-block-end: 1em;
+  margin-block-start: 1em;
+  margin-left: calc(-1 * var(--main-padding));
+  margin-right: calc(-1 * var(--main-padding));
+  width: calc(var(--main-inner-width) + 2 * var(--main-padding));
+  overflow: auto;
+  max-height: 15em;
 
-    max-height: 40em;
+  & > pre {
+    width: fit-content;
+    height: fit-content;
     margin: 0;
     padding: 1em;
-    font-size: 0.9em;
-    font-family: "Fira Code", monospace;
+
+    & > code {
+      background: transparent;
+    }
   }
 }
 
@@ -156,13 +174,20 @@ ul {
 }
 
 table {
+  display: block;
   border-collapse: collapse;
+  margin-left: calc(-1 * var(--main-padding));
+  margin-right: calc(-1 * var(--main-padding));
+  width: calc(var(--main-inner-width) + 2 * var(--main-padding)) !important;
 
   thead {
     background: color-mix(in hsl, black, transparent 90%);
   }
 
   /*tbody {
+    display: block;
+    max-height: 5em !important;
+    overflow-y: auto !important;
   }*/
 
   th {
