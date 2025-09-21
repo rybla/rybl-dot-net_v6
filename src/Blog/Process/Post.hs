@@ -83,7 +83,7 @@ processPost manager outLinks inLinks post = do
       post . postDoc . Pandoc._pandocBlocks %= \blocks ->
         concat
           [ blocks,
-            [ Pandoc.Header 1 mempty [Pandoc.Str "Signature"],
+            [ Pandoc.Header 2 mempty [Pandoc.Str "Signature"],
               Pandoc.Para
                 [ Pandoc.Str "The following code block is the ",
                   Pandoc.Link mempty [Pandoc.Str "Ed25519 signature"] ("https://en.wikipedia.org/wiki/EdDSA#Ed25519", "_blank"),
