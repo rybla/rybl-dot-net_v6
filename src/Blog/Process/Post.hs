@@ -43,9 +43,9 @@ processPost manager outLinks inLinks post = do
   mgr <- gets (^. manager)
   ph <- gets (^. post . postHref)
 
-  post . postDoc %=* commonTransformations
+  post . postDoc %=* commonLastTransformations
 
-  (post . postDoc .=) =<< addLinkPreviews mgr =<< gets (^. post . postDoc)
+  post . postDoc %=* addLinkPreviews mgr
 
   do
     ph <- gets (^. post . postHref)
@@ -64,6 +64,8 @@ processPost manager outLinks inLinks post = do
   addPostHeader
 
   post . postDoc %=* addLinkFavicons mgr
+
+  post . postDoc %=* commonLastTransformations
 
   return ()
   where

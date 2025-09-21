@@ -77,7 +77,7 @@ a {
 
   color: inherit;
   /*background: color-mix(in hsl, #f28500, transparent 50%);*/
-  background: color-mix(in hsl, darkblue, transparent 80%);
+  background: color-mix(in hsl, darkblue, transparent 90%);
   -webkit-box-decoration-break: clone;
   box-decoration-break: clone;
   text-decoration: none;

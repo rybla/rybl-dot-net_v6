@@ -34,11 +34,15 @@ import qualified Text.Pandoc.Shared as Pandoc
 import qualified Text.Pandoc.Walk as Pandoc
 import Text.PrettyPrint.HughesPJClass (Doc, doubleQuotes, text, (<+>))
 
-commonTransformations :: (MonadIO m, MonadError Doc m) => Pandoc -> m Pandoc
-commonTransformations =
+commonFirstTransformations :: (MonadIO m, MonadError Doc m) => Pandoc -> m Pandoc
+commonFirstTransformations =
   removeCommentBlocks
     >=> processCustomBlocks
     >=> processCodeBlocks
+
+commonLastTransformations :: (MonadIO m) => Pandoc -> m Pandoc
+commonLastTransformations =
+  addSectionHeaderPrefixes
 
 processCustomBlocks :: (MonadIO m, MonadError Doc m) => Pandoc -> m Pandoc
 processCustomBlocks = Pandoc.walkM \(x :: Pandoc.Block) -> case x of
@@ -104,6 +108,11 @@ processCodeBlocks = Pandoc.walkM \(x :: Pandoc.Block) -> case x of
       Pandoc.CodeBlock
         (attr & Pandoc.attrClasses %~ \cs -> (if null cs then ["txt"] else cs))
         txt
+  _ -> pure x
+
+addSectionHeaderPrefixes :: (Monad m) => Pandoc -> m Pandoc
+addSectionHeaderPrefixes = Pandoc.walkM \(x :: Pandoc.Block) -> case x of
+  Pandoc.Header level attr kids | level > 1 -> pure $ Pandoc.Header level attr ([Pandoc.Str $ "§ "] ++ kids)
   _ -> pure x
 
 addReferencesSection ::

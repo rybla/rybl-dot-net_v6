@@ -40,7 +40,7 @@ processPage manager outLinks inLinks page = do
   mgr <- gets (^. manager)
   ph <- gets (^. page . pageHref)
 
-  page . pageDoc %=* commonTransformations
+  page . pageDoc %=* commonFirstTransformations
 
   whenM (gets (^. page . pageReferencesEnabled)) do
     ph <- gets (^. page . pageHref)
@@ -54,10 +54,13 @@ processPage manager outLinks inLinks page = do
   whenM (gets (^. page . pageTableOfContentsEnabled)) do
     page . pageDoc %=* addTableOfContents False
 
-  pageSnapshot <- gets (^. page)
-  page . pageDoc %=* addPageHeader pageSnapshot
+  do
+    page' <- gets (^. page)
+    page . pageDoc %=* addPageHeader page'
 
   page . pageDoc %=* addLinkFavicons mgr
+
+  page . pageDoc %=* commonLastTransformations
 
   return ()
 
@@ -73,9 +76,7 @@ addPageHeader page (Pandoc meta blocks) = do
 renderPageHeader :: Page -> [Pandoc.Block]
 renderPageHeader page =
   concat
-    [ [ Pandoc.Header
-          2
-          mempty
+    [ [ Pandoc.Header 1 mempty $
           [ Pandoc.Link
               (mempty & Pandoc.attrClasses %~ (["no-link-favicon", "no-link-preview"] ++))
               [Pandoc.Str page._pageTitle]
