@@ -1,16 +1,10 @@
 main {
   flex: 1 1 auto;
 
-  @media (min-width: calc(800px)) {
+  @media (min-width: calc(1000px)) {
     width: var(--main-width);
   }
-  @media (max-width: calc(800px - 1px)) {
+  @media (max-width: calc(1000px - 1px)) {
     width: 100%;
   }
-
-  margin: 1em auto;
-
-  z-index: 0;
-
-  padding: 1em;
 }

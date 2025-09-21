@@ -7,13 +7,47 @@
   --sidenote-visibility: visible;
 }
 
-.main-inner {
-  padding: 1em;
-
-  @media (min-width: calc(800px)) {
-    width: var(--main-inner-width);
+main {
+  & > * {
+    @media (min-width: calc(1000px)) {
+      width: var(--main-inner-width);
+    }
+    @media (max-width: calc(1000px - 1px)) {
+      width: 100%;
+    }
   }
-  @media (max-width: calc(800px - 1px)) {
-    width: 100%;
+}
+
+.header-info,
+.table-of-contents {
+  padding: 0.5em 1em;
+  background: var(--basic-box-background);
+  border: var(--popout-border);
+
+  @media (min-width: calc(1000px)) {
+    position: relative;
+    display: block;
+    float: right;
+    clear: right;
+    width: calc(
+      var(--sidenote-width) - var(--spacing-between-main-and-sidenotes) - 2 *
+        var(--main-padding)
+    );
+    margin-right: calc(
+      -1 * (var(--sidenote-width) + var(--spacing-between-main-and-sidenotes))
+    );
+    margin-right: calc(-1 * var(--spacing-between-main-and-sidenotes));
+
+    margin-top: -1em;
+    margin-bottom: 2em;
+  }
+  @media (max-width: calc(1000px - 1px)) {
+
+  }
+}
+
+.header-info {
+  @media (min-width: calc(1000px)) {
+    margin-top: 0;
   }
 }

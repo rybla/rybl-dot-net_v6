@@ -4,163 +4,215 @@
     <title>rybl.net | Example Post</title>
 
     <link rel="stylesheet" href="/style/common.css" />
+    <!--<link rel="stylesheet" href="/style/skylighting-espresso.css" />-->
+    <link rel="stylesheet" href="/style/skylighting-solarized.css" />
     <link rel="stylesheet" href="/style/background.css" />
     <link rel="stylesheet" href="/style/custom-elements.css" />
-    <link rel="stylesheet" href="/style/header-and-footer.css" />    <link rel="stylesheet" href="/style/post.css" />
-
+    <link rel="stylesheet" href="/style/header-and-footer.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-  rel="stylesheet"
-/>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-  rel="stylesheet"
-/> <script
-  id="MathJax-script"
-  async
-  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
-></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+    ></script>
 
-<script src="/script/parallax-body-background-on-scroll.js"></script>
+    <script src="/script/parallax-body-background-on-scroll.js"></script>
 
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
-/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <!--<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 
-<script>
-  hljs.highlightAll();
-</script>
+    <script>
+      hljs.highlightAll();
+    </script>-->    <link rel="stylesheet" href="/style/post.css" />
   </head>
   <body>
-    <div id="background"></div> <header><div class="title">
-  <div class="root-title">
-    <a href="/">rybl.net</a>
-  </div>
+    <svg>
+      <defs>
+        <filter
+          id="dancing-stroke-svg-filter"
+          color-interpolation-filters="linearRGB"
+          filterUnits="objectBoundingBox"
+          primitiveUnits="userSpaceOnUse"
+        >
+          <feMorphology
+            operator="dilate"
+            radius="4 4"
+            in="SourceAlpha"
+            result="morphology"
+          />
+          <feFlood flood-color="#30597E" flood-opacity="1" result="flood" />
+          <feComposite
+            in="flood"
+            in2="morphology"
+            operator="in"
+            result="composite"
+          />
+          <feComposite
+            in="composite"
+            in2="SourceAlpha"
+            operator="out"
+            result="composite1"
+          />
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.01 0.02"
+            numOctaves="1"
+            seed="0"
+            stitchTiles="stitch"
+            result="turbulence"
+          />
+          <feDisplacementMap
+            in="composite1"
+            in2="turbulence"
+            scale="17"
+            xChannelSelector="A"
+            yChannelSelector="A"
+            result="displacementMap"
+          />
+          <feMerge result="merge">
+            <feMergeNode in="SourceGraphic" result="mergeNode" />
+            <feMergeNode in="displacementMap" result="mergeNode1" />
+          </feMerge>
+        </filter>
+      </defs>
+    </svg>
 
-  <img class="website-icon" src="/image/rybl-small.png" />
+    <div id="background"></div>
+    <header><div class="title">
+      <div class="root-title">
+        <a href="/">rybl.net</a>
+      </div>
 
-  <div class="local-title">Example Post</div>
-</div>
-<div class="menu">
-  <div class="item">
-    <a href="/">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="icon lucide lucide-library-icon lucide-library"
-      >
-        <path d="m16 6 4 14" />
-        <path d="M12 6v14" />
-        <path d="M8 8v12" />
-        <path d="M4 4v16" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/about.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="icon lucide lucide-info-icon lucide-info"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 16v-4" />
-        <path d="M12 8h.01" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/profile.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-globe-icon lucide-globe"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-        <path d="M2 12h20" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/graph.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-orbit-icon lucide-orbit"
-      >
-        <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
-        <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
-        <circle cx="12" cy="12" r="3" />
-        <circle cx="19" cy="5" r="2" />
-        <circle cx="5" cy="19" r="2" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/signature.html"
-      ><svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-fingerprint-icon lucide-fingerprint"
-      >
-        <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
-        <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
-        <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
-        <path d="M2 12a10 10 0 0 1 18-6" />
-        <path d="M2 16h.01" />
-        <path d="M21.8 16c.2-2 .131-5.354 0-6" />
-        <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
-        <path d="M8.65 22c.21-.66.45-1.32.57-2" />
-        <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
-    ></a>
-  </div>
-</div></header>
+      <img class="website-icon" src="/image/rybl-small.png" />
 
-    <main>
-      <div class="main-inner"><h2><a href="/post/example-post.html" data-noLinkFavicon=""
-data-noLinkPreview="">Example Post</a></h2>
+      <div class="local-title">Example Post</div>
+    </div>
+    <div class="menu">
+      <div class="item">
+        <a href="/">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon lucide lucide-library-icon lucide-library"
+          >
+            <path d="m16 6 4 14" />
+            <path d="M12 6v14" />
+            <path d="M8 8v12" />
+            <path d="M4 4v16" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/about.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon lucide lucide-info-icon lucide-info"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 16v-4" />
+            <path d="M12 8h.01" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/profile.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-globe-icon lucide-globe"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+            <path d="M2 12h20" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/graph.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-orbit-icon lucide-orbit"
+          >
+            <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+            <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+            <circle cx="12" cy="12" r="3" />
+            <circle cx="19" cy="5" r="2" />
+            <circle cx="5" cy="19" r="2" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/signature.html"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-fingerprint-icon lucide-fingerprint"
+          >
+            <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+            <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+            <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+            <path d="M2 12a10 10 0 0 1 18-6" />
+            <path d="M2 16h.01" />
+            <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+            <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+            <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+            <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+        ></a>
+      </div>
+    </div></header>
+    <main><h1><a href="/post/example-post.html" data-noLinkFavicon=""
+data-noLinkPreview="">Example Post</a></h1>
 <div class="header-info">
 <p><u>Published:</u> 1000-10-10</p>
 <p><u>Tags:</u> example, markdown, post</p>
@@ -222,6 +274,8 @@ data-noLinkPreview="">Math</a></li>
 </ol></li>
 <li><a href="#references" data-noLinkFavicon=""
 data-noLinkPreview="">References</a></li>
+<li><a href="#signature" data-noLinkFavicon=""
+data-noLinkPreview="">Signature</a></li>
 </ol>
 </div>
 <h1 id="h1-heading">h1 Heading</h1>
@@ -327,12 +381,14 @@ other...</p>
 <h2 id="code">Code</h2>
 <p>Inline <code>code</code></p>
 <p>Indented code</p>
-<pre><code>// Some comments
-line 1 of code
-line 2 of code
-line 3 of code</code></pre>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>// Some comments</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>line 1 of code</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>line 2 of code</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>line 3 of code</span></code></pre></div>
 <p>Block code "fences"</p>
-<pre><code>Sample text here...</code></pre>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Sample text here...</span></code></pre></div>
 <p>Syntax highlighting</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode ts"><code class="sourceCode typescript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>functin <span class="fu">f</span>() {</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">1</span><span class="op">;</span></span>
@@ -343,22 +399,20 @@ line 3 of code</code></pre>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="fu">foo</span>(<span class="dv">5</span>))<span class="op">;</span></span></code></pre></div>
 <h2 id="links">Links</h2>
-<p><span><a href="https://google.com"><img
-src="/favicon/https%253A%252F%252Fgoogle.com.ico" class="favicon"
-alt="/favicon/https%3A%2F%2Fgoogle.com.ico" />link text</a><span
+<p><span><a href="https://google.com"><img src="/favicon/google.com.ico"
+class="favicon" alt="/favicon/google.com.ico" />link text</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://google.com" title="_blank"><img
-src="/favicon/https%253A%252F%252Fgoogle.com.ico" class="favicon"
-alt="/favicon/https%3A%2F%2Fgoogle.com.ico" />https://google.com</a></em></span><span
+src="/favicon/google.com.ico" class="favicon"
+alt="/favicon/google.com.ico" />https://google.com</a></em></span><span
 class="preview-description">Placeholder description for
 https://google.com</span></span></span></p>
-<p><span><a href="https://google.com"><img
-src="/favicon/https%253A%252F%252Fgoogle.com.ico" class="favicon"
-alt="/favicon/https%3A%2F%2Fgoogle.com.ico" />link with title</a><span
+<p><span><a href="https://google.com"><img src="/favicon/google.com.ico"
+class="favicon" alt="/favicon/google.com.ico" />link with title</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://google.com" title="_blank"><img
-src="/favicon/https%253A%252F%252Fgoogle.com.ico" class="favicon"
-alt="/favicon/https%3A%2F%2Fgoogle.com.ico" />https://google.com</a></em></span><span
+src="/favicon/google.com.ico" class="favicon"
+alt="/favicon/google.com.ico" />https://google.com</a></em></span><span
 class="preview-description">Placeholder description for
 https://google.com</span></span></span></p>
 <p>Autoconverted link https://github.com/nodeca/pica (enable linkify to
@@ -402,32 +456,39 @@ title="The Dojocat" alt="Alt text" /></p>
 <h1 id="references">References</h1>
 <ul>
 <li><a href="https://google.com" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fgoogle.com.ico" class="favicon"
-alt="/favicon/https%3A%2F%2Fgoogle.com.ico" />link text</a></li>
+data-noLinkPreview=""><img src="/favicon/google.com.ico" class="favicon"
+alt="/favicon/google.com.ico" />link text</a></li>
 <li><a href="https://google.com" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fgoogle.com.ico" class="favicon"
-alt="/favicon/https%3A%2F%2Fgoogle.com.ico" />link with title</a></li>
+data-noLinkPreview=""><img src="/favicon/google.com.ico" class="favicon"
+alt="/favicon/google.com.ico" />link with title</a></li>
 <li><a
 href="https://upload.wikimedia.org/wikipedia/commons/8/8a/Banana-Single.jpg"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fupload.wikimedia.org%252Fwikipedia%252Fcommons%252F8%252F8a%252FBanana-Single.jpg.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F8%2F8a%2FBanana-Single.jpg.ico" />Banana</a></li>
+src="/favicon/wikimedia.org.ico" class="favicon"
+alt="/favicon/wikimedia.org.ico" />Banana</a></li>
 <li><a href="https://octodex.github.com/images/stormtroopocat.jpg"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Foctodex.github.com%252Fimages%252Fstormtroopocat.jpg.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Foctodex.github.com%2Fimages%2Fstormtroopocat.jpg.ico" />Stormtroopocat</a></li>
+src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />Stormtroopocat</a></li>
 <li><a href="https://octodex.github.com/images/dojocat.jpg"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Foctodex.github.com%252Fimages%252Fdojocat.jpg.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Foctodex.github.com%2Fimages%2Fdojocat.jpg.ico" />Alt
-text</a></li>
-</ul></div>
-    </main>
+src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />Alt text</a></li>
+</ul>
+<h1 id="signature">Signature</h1>
+<p>The following code block is the <a
+href="https://en.wikipedia.org/wiki/EdDSA#Ed25519" title="_blank"><img
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />Ed25519 signature</a> of this post's
+<a href="/post_markdown/example-post.md"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />markdown content</a> encoded in
+base 64, using my <em>secret key</em> and <a
+href="/key/main_ed25519.pub.txt" title="_blank"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />public key</a>.</p>
+<pre><code>f8307e9fddad6910b589185897e062c6e3741e5cb808704421b547097047cf4b39ac4b974b2bd9eec371bf36fa1f2b3f1ac2bea30e544b62a9063650469b1607</code></pre>
+<p>See <a href="/page/signature.html"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />Signature</a> for more
+information.</p></main>
 
     <footer>
       <div class="title">

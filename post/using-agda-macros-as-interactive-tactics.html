@@ -4,164 +4,216 @@
     <title>rybl.net | Using Agda Macros as Interactive Tactics</title>
 
     <link rel="stylesheet" href="/style/common.css" />
+    <!--<link rel="stylesheet" href="/style/skylighting-espresso.css" />-->
+    <link rel="stylesheet" href="/style/skylighting-solarized.css" />
     <link rel="stylesheet" href="/style/background.css" />
     <link rel="stylesheet" href="/style/custom-elements.css" />
-    <link rel="stylesheet" href="/style/header-and-footer.css" />    <link rel="stylesheet" href="/style/post.css" />
-
+    <link rel="stylesheet" href="/style/header-and-footer.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-  rel="stylesheet"
-/>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-  rel="stylesheet"
-/> <script
-  id="MathJax-script"
-  async
-  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
-></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+    ></script>
 
-<script src="/script/parallax-body-background-on-scroll.js"></script>
+    <script src="/script/parallax-body-background-on-scroll.js"></script>
 
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
-/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <!--<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 
-<script>
-  hljs.highlightAll();
-</script>
+    <script>
+      hljs.highlightAll();
+    </script>-->    <link rel="stylesheet" href="/style/post.css" />
   </head>
   <body>
-    <div id="background"></div> <header><div class="title">
-  <div class="root-title">
-    <a href="/">rybl.net</a>
-  </div>
+    <svg>
+      <defs>
+        <filter
+          id="dancing-stroke-svg-filter"
+          color-interpolation-filters="linearRGB"
+          filterUnits="objectBoundingBox"
+          primitiveUnits="userSpaceOnUse"
+        >
+          <feMorphology
+            operator="dilate"
+            radius="4 4"
+            in="SourceAlpha"
+            result="morphology"
+          />
+          <feFlood flood-color="#30597E" flood-opacity="1" result="flood" />
+          <feComposite
+            in="flood"
+            in2="morphology"
+            operator="in"
+            result="composite"
+          />
+          <feComposite
+            in="composite"
+            in2="SourceAlpha"
+            operator="out"
+            result="composite1"
+          />
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.01 0.02"
+            numOctaves="1"
+            seed="0"
+            stitchTiles="stitch"
+            result="turbulence"
+          />
+          <feDisplacementMap
+            in="composite1"
+            in2="turbulence"
+            scale="17"
+            xChannelSelector="A"
+            yChannelSelector="A"
+            result="displacementMap"
+          />
+          <feMerge result="merge">
+            <feMergeNode in="SourceGraphic" result="mergeNode" />
+            <feMergeNode in="displacementMap" result="mergeNode1" />
+          </feMerge>
+        </filter>
+      </defs>
+    </svg>
 
-  <img class="website-icon" src="/image/rybl-small.png" />
+    <div id="background"></div>
+    <header><div class="title">
+      <div class="root-title">
+        <a href="/">rybl.net</a>
+      </div>
 
-  <div class="local-title">Using Agda Macros as Interactive Tactics</div>
-</div>
-<div class="menu">
-  <div class="item">
-    <a href="/">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="icon lucide lucide-library-icon lucide-library"
-      >
-        <path d="m16 6 4 14" />
-        <path d="M12 6v14" />
-        <path d="M8 8v12" />
-        <path d="M4 4v16" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/about.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="icon lucide lucide-info-icon lucide-info"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 16v-4" />
-        <path d="M12 8h.01" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/profile.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-globe-icon lucide-globe"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-        <path d="M2 12h20" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/graph.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-orbit-icon lucide-orbit"
-      >
-        <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
-        <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
-        <circle cx="12" cy="12" r="3" />
-        <circle cx="19" cy="5" r="2" />
-        <circle cx="5" cy="19" r="2" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/signature.html"
-      ><svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-fingerprint-icon lucide-fingerprint"
-      >
-        <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
-        <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
-        <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
-        <path d="M2 12a10 10 0 0 1 18-6" />
-        <path d="M2 16h.01" />
-        <path d="M21.8 16c.2-2 .131-5.354 0-6" />
-        <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
-        <path d="M8.65 22c.21-.66.45-1.32.57-2" />
-        <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
-    ></a>
-  </div>
-</div></header>
+      <img class="website-icon" src="/image/rybl-small.png" />
 
-    <main>
-      <div class="main-inner"><h2><a href="/post/using-agda-macros-as-interactive-tactics.html"
+      <div class="local-title">Using Agda Macros as Interactive Tactics</div>
+    </div>
+    <div class="menu">
+      <div class="item">
+        <a href="/">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon lucide lucide-library-icon lucide-library"
+          >
+            <path d="m16 6 4 14" />
+            <path d="M12 6v14" />
+            <path d="M8 8v12" />
+            <path d="M4 4v16" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/about.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon lucide lucide-info-icon lucide-info"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 16v-4" />
+            <path d="M12 8h.01" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/profile.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-globe-icon lucide-globe"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+            <path d="M2 12h20" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/graph.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-orbit-icon lucide-orbit"
+          >
+            <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+            <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+            <circle cx="12" cy="12" r="3" />
+            <circle cx="19" cy="5" r="2" />
+            <circle cx="5" cy="19" r="2" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/signature.html"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-fingerprint-icon lucide-fingerprint"
+          >
+            <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+            <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+            <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+            <path d="M2 12a10 10 0 0 1 18-6" />
+            <path d="M2 16h.01" />
+            <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+            <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+            <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+            <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+        ></a>
+      </div>
+    </div></header>
+    <main><h1><a href="/post/using-agda-macros-as-interactive-tactics.html"
 data-noLinkFavicon="" data-noLinkPreview="">Using Agda Macros as
-Interactive Tactics</a></h2>
+Interactive Tactics</a></h1>
 <div class="header-info">
 <p><u>Published:</u> 2025-05-13</p>
 <p><u>Tags:</u> computics, Agda</p>
@@ -198,87 +250,73 @@ data-noLinkPreview="">Multiply-spliced Quoted Holes??</a></li>
 </ol></li>
 <li><a href="#references" data-noLinkFavicon=""
 data-noLinkPreview="">References</a></li>
+<li><a href="#signature" data-noLinkFavicon=""
+data-noLinkPreview="">Signature</a></li>
 </ol>
 </div>
-<h1 id="interactive-tactics-not-in-agda">Interactive Tactics (not in
-Agda)</h1>
+<h2 id="interactive-tactics-not-in-agda">Interactive Tactics (not in
+Agda)</h2>
 <p>Interactive tactics, such as <span><a
 href="https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html"><img
-src="/favicon/https%253A%252F%252Frocq-prover.org%252Fdoc%252Fv8.19%252Frefman%252Fproof-engine%252Fltac.html.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Frocq-prover.org%2Fdoc%2Fv8.19%2Frefman%2Fproof-engine%2Fltac.html.ico" />LTac</a><span
+src="/favicon/rocq-prover.org.ico" class="favicon"
+alt="/favicon/rocq-prover.org.ico" />LTac</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Frocq-prover.org%252Fdoc%252Fv8.19%252Frefman%252Fproof-engine%252Fltac.html.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Frocq-prover.org%2Fdoc%2Fv8.19%2Frefman%2Fproof-engine%2Fltac.html.ico" />https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html</a></em></span><span
+title="_blank"><img src="/favicon/rocq-prover.org.ico" class="favicon"
+alt="/favicon/rocq-prover.org.ico" />https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html</a></em></span><span
 class="preview-description">Placeholder description for
 https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html</span></span></span>
 in <span><a href="https://rocq-prover.org/"><img
-src="/favicon/https%253A%252F%252Frocq-prover.org%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Frocq-prover.org%2F.ico" />Coq/Rocq</a><span
+src="/favicon/rocq-prover.org.ico" class="favicon"
+alt="/favicon/rocq-prover.org.ico" />Coq/Rocq</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://rocq-prover.org/" title="_blank"><img
-src="/favicon/https%253A%252F%252Frocq-prover.org%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Frocq-prover.org%2F.ico" />https://rocq-prover.org/</a></em></span><span
+src="/favicon/rocq-prover.org.ico" class="favicon"
+alt="/favicon/rocq-prover.org.ico" />https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html</a></em></span><span
 class="preview-description">Placeholder description for
-https://rocq-prover.org/</span></span></span>, support an interesting
-and often useful workflow: to interactively run a tactic script (which
-can leverage metaprogramming), viewing the context and expected type of
-the rest of the tactic script (in a nested fashion) at each step. In
-this way, you as a programmer can view the intermediate states that are
-yielded by metaprogrammatic computations which would otherwise be
-inaccessible if you were only able to view the final output of the
-tactic script.</p>
-<h1 id="agdas-typed-holes-and-macros">Agda's Typed Holes and Macros</h1>
+https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html</span></span></span>,
+support an interesting and often useful workflow: to interactively run a
+tactic script (which can leverage metaprogramming), viewing the context
+and expected type of the rest of the tactic script (in a nested fashion)
+at each step. In this way, you as a programmer can view the intermediate
+states that are yielded by metaprogrammatic computations which would
+otherwise be inaccessible if you were only able to view the final output
+of the tactic script.</p>
+<h2 id="agdas-typed-holes-and-macros">Agda's Typed Holes and Macros</h2>
 <p><span><a href="https://agda.readthedocs.io/en/latest/index.html"><img
-src="/favicon/https%253A%252F%252Fagda.readthedocs.io%252Fen%252Flatest%252Findex.html.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fagda.readthedocs.io%2Fen%2Flatest%2Findex.html.ico" />Agda</a><span
+src="/favicon/readthedocs.io.ico" class="favicon"
+alt="/favicon/readthedocs.io.ico" />Agda</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://agda.readthedocs.io/en/latest/index.html"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fagda.readthedocs.io%252Fen%252Flatest%252Findex.html.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fagda.readthedocs.io%2Fen%2Flatest%2Findex.html.ico" />https://agda.readthedocs.io/en/latest/index.html</a></em></span><span
+title="_blank"><img src="/favicon/readthedocs.io.ico" class="favicon"
+alt="/favicon/readthedocs.io.ico" />https://agda.readthedocs.io/en/latest/index.html</a></em></span><span
 class="preview-description">Placeholder description for
 https://agda.readthedocs.io/en/latest/index.html</span></span></span>
 has an interactive editing mode that provides some similar features to
 this workflow. In particular, <span><a
 href="https://agda.readthedocs.io/en/latest/language/lexical-structure.html#holes"><img
-src="/favicon/https%253A%252F%252Fagda.readthedocs.io%252Fen%252Flatest%252Flanguage%252Flexical-structure.html%2523holes.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fagda.readthedocs.io%2Fen%2Flatest%2Flanguage%2Flexical-structure.html%23holes.ico" />typed
-holes</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/readthedocs.io.ico" class="favicon"
+alt="/favicon/readthedocs.io.ico" />typed holes</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://agda.readthedocs.io/en/latest/language/lexical-structure.html#holes"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fagda.readthedocs.io%252Fen%252Flatest%252Flanguage%252Flexical-structure.html%2523holes.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fagda.readthedocs.io%2Fen%2Flatest%2Flanguage%2Flexical-structure.html%23holes.ico" />https://agda.readthedocs.io/en/latest/language/lexical-structure.html#holes</a></em></span><span
+title="_blank"><img src="/favicon/readthedocs.io.ico" class="favicon"
+alt="/favicon/readthedocs.io.ico" />https://agda.readthedocs.io/en/latest/index.html</a></em></span><span
 class="preview-description">Placeholder description for
-https://agda.readthedocs.io/en/latest/language/lexical-structure.html#holes</span></span></span>
+https://agda.readthedocs.io/en/latest/index.html</span></span></span>
 let you as a programmer view the intermediate state (context and
 expected type) of the typechecker at any point in your program. This is
 a very interesting and useful feature for many of the same reasons as is
 interactively running a tactic script.</p>
 <p>Agda <em>also</em> has a <span><a
 href="https://agda.readthedocs.io/en/stable/language/reflection.html"><img
-src="/favicon/https%253A%252F%252Fagda.readthedocs.io%252Fen%252Fstable%252Flanguage%252Freflection.html.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fagda.readthedocs.io%2Fen%2Fstable%2Flanguage%2Freflection.html.ico" />macro
-system</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/readthedocs.io.ico" class="favicon"
+alt="/favicon/readthedocs.io.ico" />macro system</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://agda.readthedocs.io/en/stable/language/reflection.html"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fagda.readthedocs.io%252Fen%252Fstable%252Flanguage%252Freflection.html.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fagda.readthedocs.io%2Fen%2Fstable%2Flanguage%2Freflection.html.ico" />https://agda.readthedocs.io/en/stable/language/reflection.html</a></em></span><span
+title="_blank"><img src="/favicon/readthedocs.io.ico" class="favicon"
+alt="/favicon/readthedocs.io.ico" />https://agda.readthedocs.io/en/latest/index.html</a></em></span><span
 class="preview-description">Placeholder description for
-https://agda.readthedocs.io/en/stable/language/reflection.html</span></span></span>.
+https://agda.readthedocs.io/en/latest/index.html</span></span></span>.
 These macros allow for all the same computations that can be performed
 in tactic languages such as LTac, in particular because it allows the
 macro programmer to inspect that current context and expected type of
@@ -294,8 +332,8 @@ invocation</em>. Interactivity would require the hole's evaluation to be
 delayed until <em>after</em> the macro is expanded, since this would
 allow the macro to splice the hole into a different context and expected
 type.</p>
-<h2 id="example-of-macro-hole-interaction">Example of Macro-Hole
-Interaction</h2>
+<h3 id="example-of-macro-hole-interaction">Example of Macro-Hole
+Interaction</h3>
 <p>Imports:</p>
 <div class="sourceCode" id="cb1"><pre
 class="sourceCode agda"><code class="sourceCode agda"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">open</span> <span class="kw">import</span> Reflection <span class="kw">using</span> <span class="ot">(_</span>&gt;&gt;=<span class="ot">_)</span></span>
@@ -306,20 +344,19 @@ class="sourceCode agda"><code class="sourceCode agda"><span id="cb1-1"><a href="
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="kw">open</span> <span class="kw">import</span> Data<span class="ot">.</span>String <span class="kw">using</span> <span class="ot">(</span>String<span class="ot">;</span> <span class="ot">_</span>++<span class="ot">_)</span></span></code></pre></div>
 <p>Consider the following simple Agda macro:</p>
 <div class="sourceCode" id="cb2"><pre
-class="sourceCode agda"><code class="sourceCode agda"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>intro-helper <span class="ot">:</span> ℕ <span class="ot">→</span> Type <span class="ot">→</span> Term <span class="ot">→</span> TC Term</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>intro-helper i <span class="ot">(</span>pi <span class="ot">_</span> <span class="ot">(</span>abs <span class="ot">_</span> b<span class="ot">))</span> rest <span class="ot">=</span> <span class="kw">do</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  body ← intro-helper <span class="ot">(</span>suc i<span class="ot">)</span> b rest</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  returnTC <span class="ot">(</span>lam visible <span class="ot">(</span>abs <span class="ot">(</span><span class="st">&quot;x&quot;</span> ++ primShowNat i<span class="ot">)</span> body<span class="ot">))</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>intro-helper <span class="ot">_</span> <span class="ot">_</span> rest <span class="ot">=</span> returnTC rest</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">-- introduces as many arguments as the goal type allows</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="kw">macro</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  intros <span class="ot">:</span> Term <span class="ot">→</span> Term <span class="ot">→</span> TC ⊤</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  intros rest hole <span class="ot">=</span> <span class="kw">do</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    α ← inferType hole</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    hole′ ← intro-helper zero α rest</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    unify hole hole′</span></code></pre></div>
+class="sourceCode agda"><code class="sourceCode agda"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>intro-helper <span class="ot">:</span> ℕ <span class="ot">→</span> Type <span class="ot">→</span> Term <span class="ot">→</span> TC Term</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>intro-helper i <span class="ot">(</span>pi <span class="ot">_</span> <span class="ot">(</span>abs <span class="ot">_</span> b<span class="ot">))</span> rest <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  body ← intro-helper <span class="ot">(</span>suc i<span class="ot">)</span> b rest</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  returnTC <span class="ot">(</span>lam visible <span class="ot">(</span>abs <span class="ot">(</span><span class="st">&quot;x&quot;</span> ++ primShowNat i<span class="ot">)</span> body<span class="ot">))</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>intro-helper <span class="ot">_</span> <span class="ot">_</span> rest <span class="ot">=</span> returnTC rest</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">-- introduces as many arguments as the goal type allows</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="kw">macro</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  intros <span class="ot">:</span> Term <span class="ot">→</span> Term <span class="ot">→</span> TC ⊤</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  intros rest hole <span class="ot">=</span> <span class="kw">do</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    α ← inferType hole</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    hole′ ← intro-helper zero α rest</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    unify hole hole′</span></code></pre></div>
 <p>In the macro <code>intros</code>, the <code>rest</code> argument
 corresponds to the "rest" of what should happen after the arguments have
 been introduced. For example,</p>
@@ -340,19 +377,20 @@ class="sourceCode agda"><code class="sourceCode agda"><span id="cb4-1"><a href="
 <p>But this is interpreted differently than it might first appear. Agda
 is going to complain that it gets blocked at the hole (where
 <code>_64</code> is the value of the hole):</p>
-<pre><code>———— Error ———————————
-Failed to solve the following constraints:
-  unquote
-  (λ hole →
-     bindTC (inferType hole)
-     (λ α → bindTC (intro-helper zero α _64) (unify hole)))
-    (blocked on _64)</code></pre>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>———— Error ———————————</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Failed to solve the following constraints:</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  unquote</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  (λ hole →</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>     bindTC (inferType hole)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>     (λ α → bindTC (intro-helper zero α _64) (unify hole)))</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    (blocked on _64)</span></code></pre></div>
 <p>This is because <code>unquote</code> is blocked when trying to
 evaluate the hole, and so macro expansion doesn't even get started.
 Because of this, we <em>can't</em> inspect that intermediate state in
 the same way we could if this was a function application rather than a
 macro invocation.</p>
-<h1 id="proposal-quoted-holes">Proposal: Quoted Holes</h1>
+<h2 id="proposal-quoted-holes">Proposal: Quoted Holes</h2>
 <p>What would be desirable in this instance,</p>
 <div class="sourceCode" id="cb6"><pre
 class="sourceCode agda"><code class="sourceCode agda"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ot">_</span> <span class="ot">:</span> ℕ <span class="ot">→</span> ℕ <span class="ot">→</span> ℕ</span>
@@ -363,7 +401,8 @@ actually be in a context with two new entries that are not present where
 the macro is invoked.</p>
 <p>We can do this with non-hole terms via quotation e.g. something
 like</p>
-<pre><code>intros (x + y)</code></pre>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode agda"><code class="sourceCode agda"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>intros <span class="ot">(</span>x + y<span class="ot">)</span></span></code></pre></div>
 <p>would literally splice the <code>x + y</code> into the result of the
 macro expansion without first evaluating the expression. But this
 doesn't work with holes since holes can't be quoted.</p>
@@ -378,41 +417,41 @@ metavariable associated with that quoted hole's type is used as the type
 of the new splice as well.</p>
 <p>Note that quoted holes do not require any new features of Agda's type
 theory -- they are purely a UI phenomenon.</p>
-<h2 id="example-usage">Example Usage</h2>
+<h3 id="example-usage">Example Usage</h3>
 <p>This feature will allow you to write something like</p>
-<pre><code>_ : ℕ → ℕ → ℕ
-_ = intros ?</code></pre>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode agda"><code class="sourceCode agda"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ot">_</span> <span class="ot">:</span> ℕ <span class="ot">→</span> ℕ <span class="ot">→</span> ℕ</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ot">_</span> <span class="ot">=</span> intros ?</span></code></pre></div>
 <p>and then inspect the hole to see the context and expected type:</p>
-<pre><code>Goal: ℕ
-————————————————————
-x1 : ℕ
-x0 : ℕ</code></pre>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Goal: ℕ</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>————————————————————</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>x1 : ℕ</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>x0 : ℕ</span></code></pre></div>
 <p>Ultimately, this gives you exactly the kind of interactivity as
 interactively running tactic scripts in Coq. Most of the feature is
 already implemented in how Agda's typed holes work -- it just needs this
 one extra feature to to be able to quote and splice holes!</p>
-<h2 id="more-about-quoted-holes">More about Quoted Holes</h2>
-<h3 id="desugaring">Desugaring</h3>
+<h3 id="more-about-quoted-holes">More about Quoted Holes</h3>
+<h4 id="desugaring">Desugaring</h4>
 <p>In the example, the idea is that the macro invocation
 <code>intros ?</code> to <span><a
 href="https://agda.readthedocs.io/en/v2.8.0-rc1/language/reflection.html#macros"><img
-src="/favicon/https%253A%252F%252Fagda.readthedocs.io%252Fen%252Fv2.8.0-rc1%252Flanguage%252Freflection.html%2523macros.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fagda.readthedocs.io%2Fen%2Fv2.8.0-rc1%2Flanguage%2Freflection.html%23macros.ico" />desugars</a><span
+src="/favicon/readthedocs.io.ico" class="favicon"
+alt="/favicon/readthedocs.io.ico" />desugars</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://agda.readthedocs.io/en/v2.8.0-rc1/language/reflection.html#macros"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fagda.readthedocs.io%252Fen%252Fv2.8.0-rc1%252Flanguage%252Freflection.html%2523macros.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fagda.readthedocs.io%2Fen%2Fv2.8.0-rc1%2Flanguage%2Freflection.html%23macros.ico" />https://agda.readthedocs.io/en/v2.8.0-rc1/language/reflection.html#macros</a></em></span><span
+title="_blank"><img src="/favicon/readthedocs.io.ico" class="favicon"
+alt="/favicon/readthedocs.io.ico" />https://agda.readthedocs.io/en/latest/index.html</a></em></span><span
 class="preview-description">Placeholder description for
-https://agda.readthedocs.io/en/v2.8.0-rc1/language/reflection.html#macros</span></span></span>
+https://agda.readthedocs.io/en/latest/index.html</span></span></span>
 to</p>
-<pre><code>unquote (intros (quoteTerm ?))</code></pre>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode agda"><code class="sourceCode agda"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">unquote</span> <span class="ot">(</span>intros <span class="ot">(</span><span class="kw">quoteTerm</span> ?<span class="ot">))</span></span></code></pre></div>
 <p>So, <code>quoteTerm</code> needs to handle quoting holes
 properly.</p>
-<h3 id="multiply-spliced-quoted-holes">Multiply-spliced Quoted
-Holes??</h3>
+<h4 id="multiply-spliced-quoted-holes">Multiply-spliced Quoted
+Holes??</h4>
 <p>A quoted hole is more special than other quoted terms, since it must
 remember its original source. A quoted term is spliced as a completely
 new copy of the term that was quoted. In contrast, all splices of the
@@ -436,41 +475,46 @@ expected types and not try to unify.</p>
 <li><a
 href="https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Frocq-prover.org%252Fdoc%252Fv8.19%252Frefman%252Fproof-engine%252Fltac.html.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Frocq-prover.org%2Fdoc%2Fv8.19%2Frefman%2Fproof-engine%2Fltac.html.ico" />LTac</a></li>
+src="/favicon/rocq-prover.org.ico" class="favicon"
+alt="/favicon/rocq-prover.org.ico" />LTac</a></li>
 <li><a href="https://rocq-prover.org/" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Frocq-prover.org%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Frocq-prover.org%2F.ico" />Coq/Rocq</a></li>
+data-noLinkPreview=""><img src="/favicon/rocq-prover.org.ico"
+class="favicon" alt="/favicon/rocq-prover.org.ico" />Coq/Rocq</a></li>
 <li><a href="https://agda.readthedocs.io/en/latest/index.html"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fagda.readthedocs.io%252Fen%252Flatest%252Findex.html.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fagda.readthedocs.io%2Fen%2Flatest%2Findex.html.ico" />Agda</a></li>
+src="/favicon/readthedocs.io.ico" class="favicon"
+alt="/favicon/readthedocs.io.ico" />Agda</a></li>
 <li><a
 href="https://agda.readthedocs.io/en/latest/language/lexical-structure.html#holes"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fagda.readthedocs.io%252Fen%252Flatest%252Flanguage%252Flexical-structure.html%2523holes.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fagda.readthedocs.io%2Fen%2Flatest%2Flanguage%2Flexical-structure.html%23holes.ico" />typed
-holes</a></li>
+src="/favicon/readthedocs.io.ico" class="favicon"
+alt="/favicon/readthedocs.io.ico" />typed holes</a></li>
 <li><a
 href="https://agda.readthedocs.io/en/stable/language/reflection.html"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fagda.readthedocs.io%252Fen%252Fstable%252Flanguage%252Freflection.html.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fagda.readthedocs.io%2Fen%2Fstable%2Flanguage%2Freflection.html.ico" />macro
-system</a></li>
+src="/favicon/readthedocs.io.ico" class="favicon"
+alt="/favicon/readthedocs.io.ico" />macro system</a></li>
 <li><a
 href="https://agda.readthedocs.io/en/v2.8.0-rc1/language/reflection.html#macros"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fagda.readthedocs.io%252Fen%252Fv2.8.0-rc1%252Flanguage%252Freflection.html%2523macros.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fagda.readthedocs.io%2Fen%2Fv2.8.0-rc1%2Flanguage%2Freflection.html%23macros.ico" />desugars</a></li>
-</ul></div>
-    </main>
+src="/favicon/readthedocs.io.ico" class="favicon"
+alt="/favicon/readthedocs.io.ico" />desugars</a></li>
+</ul>
+<h1 id="signature">Signature</h1>
+<p>The following code block is the <a
+href="https://en.wikipedia.org/wiki/EdDSA#Ed25519" title="_blank"><img
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />Ed25519 signature</a> of this post's
+<a
+href="/post_markdown/using-agda-macros-as-interactive-tactics.md"><img
+src="/favicon.ico" class="favicon" alt="/favicon.ico" />markdown
+content</a> encoded in base 64, using my <em>secret key</em> and <a
+href="/key/main_ed25519.pub.txt" title="_blank"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />public key</a>.</p>
+<pre><code>cf15a419c03f81ff8754b7572a04b94c134f47d846e676927d4f03718f485c0c6212e5980a2f34486509ca1473e9d88a5e9b17afc2dbccbd04dd988e0f3c270a</code></pre>
+<p>See <a href="/page/signature.html"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />Signature</a> for more
+information.</p></main>
 
     <footer>
       <div class="title">

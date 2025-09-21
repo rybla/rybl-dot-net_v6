@@ -4,163 +4,215 @@
     <title>rybl.net | Impe</title>
 
     <link rel="stylesheet" href="/style/common.css" />
+    <!--<link rel="stylesheet" href="/style/skylighting-espresso.css" />-->
+    <link rel="stylesheet" href="/style/skylighting-solarized.css" />
     <link rel="stylesheet" href="/style/background.css" />
     <link rel="stylesheet" href="/style/custom-elements.css" />
-    <link rel="stylesheet" href="/style/header-and-footer.css" />    <link rel="stylesheet" href="/style/post.css" />
-
+    <link rel="stylesheet" href="/style/header-and-footer.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-  rel="stylesheet"
-/>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-  rel="stylesheet"
-/> <script
-  id="MathJax-script"
-  async
-  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
-></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+    ></script>
 
-<script src="/script/parallax-body-background-on-scroll.js"></script>
+    <script src="/script/parallax-body-background-on-scroll.js"></script>
 
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
-/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <!--<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 
-<script>
-  hljs.highlightAll();
-</script>
+    <script>
+      hljs.highlightAll();
+    </script>-->    <link rel="stylesheet" href="/style/post.css" />
   </head>
   <body>
-    <div id="background"></div> <header><div class="title">
-  <div class="root-title">
-    <a href="/">rybl.net</a>
-  </div>
+    <svg>
+      <defs>
+        <filter
+          id="dancing-stroke-svg-filter"
+          color-interpolation-filters="linearRGB"
+          filterUnits="objectBoundingBox"
+          primitiveUnits="userSpaceOnUse"
+        >
+          <feMorphology
+            operator="dilate"
+            radius="4 4"
+            in="SourceAlpha"
+            result="morphology"
+          />
+          <feFlood flood-color="#30597E" flood-opacity="1" result="flood" />
+          <feComposite
+            in="flood"
+            in2="morphology"
+            operator="in"
+            result="composite"
+          />
+          <feComposite
+            in="composite"
+            in2="SourceAlpha"
+            operator="out"
+            result="composite1"
+          />
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.01 0.02"
+            numOctaves="1"
+            seed="0"
+            stitchTiles="stitch"
+            result="turbulence"
+          />
+          <feDisplacementMap
+            in="composite1"
+            in2="turbulence"
+            scale="17"
+            xChannelSelector="A"
+            yChannelSelector="A"
+            result="displacementMap"
+          />
+          <feMerge result="merge">
+            <feMergeNode in="SourceGraphic" result="mergeNode" />
+            <feMergeNode in="displacementMap" result="mergeNode1" />
+          </feMerge>
+        </filter>
+      </defs>
+    </svg>
 
-  <img class="website-icon" src="/image/rybl-small.png" />
+    <div id="background"></div>
+    <header><div class="title">
+      <div class="root-title">
+        <a href="/">rybl.net</a>
+      </div>
 
-  <div class="local-title">Impe</div>
-</div>
-<div class="menu">
-  <div class="item">
-    <a href="/">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="icon lucide lucide-library-icon lucide-library"
-      >
-        <path d="m16 6 4 14" />
-        <path d="M12 6v14" />
-        <path d="M8 8v12" />
-        <path d="M4 4v16" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/about.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="icon lucide lucide-info-icon lucide-info"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 16v-4" />
-        <path d="M12 8h.01" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/profile.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-globe-icon lucide-globe"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-        <path d="M2 12h20" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/graph.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-orbit-icon lucide-orbit"
-      >
-        <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
-        <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
-        <circle cx="12" cy="12" r="3" />
-        <circle cx="19" cy="5" r="2" />
-        <circle cx="5" cy="19" r="2" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/signature.html"
-      ><svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-fingerprint-icon lucide-fingerprint"
-      >
-        <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
-        <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
-        <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
-        <path d="M2 12a10 10 0 0 1 18-6" />
-        <path d="M2 16h.01" />
-        <path d="M21.8 16c.2-2 .131-5.354 0-6" />
-        <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
-        <path d="M8.65 22c.21-.66.45-1.32.57-2" />
-        <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
-    ></a>
-  </div>
-</div></header>
+      <img class="website-icon" src="/image/rybl-small.png" />
 
-    <main>
-      <div class="main-inner"><h2><a href="/post/impe.html" data-noLinkFavicon=""
-data-noLinkPreview="">Impe</a></h2>
+      <div class="local-title">Impe</div>
+    </div>
+    <div class="menu">
+      <div class="item">
+        <a href="/">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon lucide lucide-library-icon lucide-library"
+          >
+            <path d="m16 6 4 14" />
+            <path d="M12 6v14" />
+            <path d="M8 8v12" />
+            <path d="M4 4v16" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/about.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon lucide lucide-info-icon lucide-info"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 16v-4" />
+            <path d="M12 8h.01" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/profile.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-globe-icon lucide-globe"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+            <path d="M2 12h20" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/graph.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-orbit-icon lucide-orbit"
+          >
+            <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+            <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+            <circle cx="12" cy="12" r="3" />
+            <circle cx="19" cy="5" r="2" />
+            <circle cx="5" cy="19" r="2" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/signature.html"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-fingerprint-icon lucide-fingerprint"
+          >
+            <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+            <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+            <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+            <path d="M2 12a10 10 0 0 1 18-6" />
+            <path d="M2 16h.01" />
+            <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+            <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+            <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+            <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+        ></a>
+      </div>
+    </div></header>
+    <main><h1><a href="/post/impe.html" data-noLinkFavicon=""
+data-noLinkPreview="">Impe</a></h1>
 <div class="header-info">
 <p><u>Published:</u> 2021-03-15</p>
 <p><u>Tags:</u> computics, Haskell</p>
@@ -238,6 +290,8 @@ data-noLinkPreview="">Interactive REPL</a></li>
 data-noLinkPreview="">Conclusions</a></li>
 <li><a href="#references" data-noLinkFavicon=""
 data-noLinkPreview="">References</a></li>
+<li><a href="#signature" data-noLinkFavicon=""
+data-noLinkPreview="">Signature</a></li>
 </ol>
 </div>
 <h1 id="introduction">Introduction</h1>
@@ -247,53 +301,51 @@ Haskell. The goal is to demonstrate the convenience and advanced
 features and libraries that Haskell offers for programming language
 implementation. All the code used and referenced in this post can be
 found in this github repository: <span><a
-href="https://github.com/rybla/impe"><img
-src="/favicon/https%253A%252F%252Fgithub.com%252Frybla%252Fimpe.svg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fgithub.com%2Frybla%2Fimpe.svg" />riib/impe</a><span
+href="https://github.com/rybla/impe"><img src="/favicon/github.com.svg"
+class="favicon" alt="/favicon/github.com.svg" />riib/impe</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://github.com/rybla/impe" title="_blank"><img
-src="/favicon/https%253A%252F%252Fgithub.com%252Frybla%252Fimpe.svg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fgithub.com%2Frybla%2Fimpe.svg" />https://github.com/rybla/impe</a></em></span><span
+src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />https://github.com/ucsd-progsys/liquidhaskell</a></em></span><span
 class="preview-description">Placeholder description for
-https://github.com/rybla/impe</span></span></span>.</p>
+https://github.com/ucsd-progsys/liquidhaskell</span></span></span>.</p>
 <h1 id="design">Design</h1>
 <h2 id="grammar">Grammar</h2>
 <p>Grammar:</p>
 <div class="todo">
 <p>define what <code>...</code> means</p>
 </div>
-<pre><code>&lt;program&gt;
-  ::= &lt;instruction&gt; ...
-
-&lt;instruction&gt;
-  ::= { &lt;instruction&gt; ... }
-    | &lt;name&gt;: &lt;type&gt;;
-    | &lt;name&gt; &lt;- &lt;expression&gt;;
-    | &lt;name&gt;: &lt;type&gt; &lt;- expression;
-    | &lt;name&gt;(&lt;name&gt;: &lt;type&gt;, ...): &lt;type&gt; = &lt;instruction&gt;
-    | &lt;name&gt;(&lt;expression&gt;, ...);
-    | if &lt;expression&gt; then &lt;instruction&gt; else &lt;instruction&gt;
-    | while &lt;expression&gt; do &lt;instruction&gt;
-    | return &lt;expression&gt;;
-    | pass;
-
-&lt;type&gt;
-  ::= void
-    | unit
-    | int
-    | bool
-    | string
-    | (&lt;type&gt;, ...) -&gt; &lt;type&gt;
-
-&lt;expression&gt;
-  ::= unit
-    | &lt;bool&gt;
-    | &lt;int&gt;
-    | &lt;string&gt;
-    | &lt;name&gt;
-    | &lt;name&gt;(&lt;expression&gt;, ...)</code></pre>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>&lt;program&gt;</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  ::= &lt;instruction&gt; ...</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>&lt;instruction&gt;</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  ::= { &lt;instruction&gt; ... }</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    | &lt;name&gt;: &lt;type&gt;;</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    | &lt;name&gt; &lt;- &lt;expression&gt;;</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    | &lt;name&gt;: &lt;type&gt; &lt;- expression;</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    | &lt;name&gt;(&lt;name&gt;: &lt;type&gt;, ...): &lt;type&gt; = &lt;instruction&gt;</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    | &lt;name&gt;(&lt;expression&gt;, ...);</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    | if &lt;expression&gt; then &lt;instruction&gt; else &lt;instruction&gt;</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    | while &lt;expression&gt; do &lt;instruction&gt;</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    | return &lt;expression&gt;;</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    | pass;</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>&lt;type&gt;</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  ::= void</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    | unit</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    | int</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    | bool</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    | string</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    | (&lt;type&gt;, ...) -&gt; &lt;type&gt;</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>&lt;expression&gt;</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  ::= unit</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    | &lt;bool&gt;</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    | &lt;int&gt;</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>    | &lt;string&gt;</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    | &lt;name&gt;</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    | &lt;name&gt;(&lt;expression&gt;, ...)</span></code></pre></div>
 <div class="todo">
 <p><code>&lt;-</code> vs <code>=</code> syntax why initialization is a
 seperate statement rather than syntax sugar where semicolons are
@@ -474,15 +526,16 @@ class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb5-1"><a 
 function performs multiple effects. Consider the following function that
 performs the <code>State</code>, <code>Reader</code>, and
 <code>Writer</code> effects:</p>
-<pre><code>h ::
-  ( Member (State Int) r,
-    Member (Reader Int) r,
-    Member (Writer Bool) r
-  ) =&gt; Sem r ()
-h = do
-  x &lt;- get
-  y &lt;- ask
-  tell $ x == y</code></pre>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>h ::</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  ( Member (State Int) r,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    Member (Reader Int) r,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    Member (Writer Bool) r</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  ) =&gt; Sem r ()</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>h = do</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  x &lt;- get</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  y &lt;- ask</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  tell $ x == y</span></code></pre></div>
 <h3 id="logging">Logging</h3>
 <p><code>Language.Impe.Logging</code></p>
 <p>The idea behind logging is to produce little messages that give some
@@ -506,33 +559,27 @@ an output-performing computation (whereas the writer effect provides
 <em>listen</em> and <em>pass</em> actions in addition to <em>tell</em>;
 see <span><a
 href="https://hackage.haskell.org/package/polysemy-1.4.0.0/docs/Polysemy-Output.html"><img
-src="/favicon/https%253A%252F%252Fhackage.haskell.org%252Fpackage%252Fpolysemy-1.4.0.0%252Fdocs%252FPolysemy-Output.html.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fhackage.haskell.org%2Fpackage%2Fpolysemy-1.4.0.0%2Fdocs%2FPolysemy-Output.html.png" />Polysemy.Output</a><span
+src="/missing.ico" class="favicon"
+alt="/missing.ico" />Polysemy.Output</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://hackage.haskell.org/package/polysemy-1.4.0.0/docs/Polysemy-Output.html"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fhackage.haskell.org%252Fpackage%252Fpolysemy-1.4.0.0%252Fdocs%252FPolysemy-Output.html.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fhackage.haskell.org%2Fpackage%2Fpolysemy-1.4.0.0%2Fdocs%2FPolysemy-Output.html.png" />https://hackage.haskell.org/package/polysemy-1.4.0.0/docs/Polysemy-Output.html</a></em></span><span
+title="_blank"><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://wiki.haskell.org/Dependent_type</a></em></span><span
 class="preview-description">Placeholder description for
-https://hackage.haskell.org/package/polysemy-1.4.0.0/docs/Polysemy-Output.html</span></span></span>
-and <span><a
+https://wiki.haskell.org/Dependent_type</span></span></span> and
+<span><a
 href="https://hackage.haskell.org/package/polysemy-1.4.0.0/docs/Polysemy-Writer.html"><img
-src="/favicon/https%253A%252F%252Fhackage.haskell.org%252Fpackage%252Fpolysemy-1.4.0.0%252Fdocs%252FPolysemy-Writer.html.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fhackage.haskell.org%2Fpackage%2Fpolysemy-1.4.0.0%2Fdocs%2FPolysemy-Writer.html.png" />Polysemy.Writer</a><span
+src="/missing.ico" class="favicon"
+alt="/missing.ico" />Polysemy.Writer</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://hackage.haskell.org/package/polysemy-1.4.0.0/docs/Polysemy-Writer.html"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fhackage.haskell.org%252Fpackage%252Fpolysemy-1.4.0.0%252Fdocs%252FPolysemy-Writer.html.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fhackage.haskell.org%2Fpackage%2Fpolysemy-1.4.0.0%2Fdocs%2FPolysemy-Writer.html.png" />https://hackage.haskell.org/package/polysemy-1.4.0.0/docs/Polysemy-Writer.html</a></em></span><span
+title="_blank"><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://wiki.haskell.org/Dependent_type</a></em></span><span
 class="preview-description">Placeholder description for
-https://hackage.haskell.org/package/polysemy-1.4.0.0/docs/Polysemy-Writer.html</span></span></span>
-for details). Actually handling the logging effect will be done later on
-in the <em>Main</em> section, since for the most part logging is handled
-by IO.</p>
+https://wiki.haskell.org/Dependent_type</span></span></span> for
+details). Actually handling the logging effect will be done later on in
+the <em>Main</em> section, since for the most part logging is handled by
+IO.</p>
 <h3 id="excepting">Excepting</h3>
 <p><code>Language.Impe.Excepting</code></p>
 <p>The idea behind excepting is to allow a computation to "escape" its
@@ -629,16 +676,13 @@ state data type, and using lens fields that generate lenses using
 <p>Parsing is the process of reading some input source code and yielding
 a program constructed by the program's language's grammar. The <span><a
 href="https://hackage.haskell.org/package/parsec"><img
-src="/favicon/https%253A%252F%252Fhackage.haskell.org%252Fpackage%252Fparsec.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fhackage.haskell.org%2Fpackage%2Fparsec.png" />Parsec</a><span
+src="/missing.ico" class="favicon" alt="/missing.ico" />Parsec</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://hackage.haskell.org/package/parsec" title="_blank"><img
-src="/favicon/https%253A%252F%252Fhackage.haskell.org%252Fpackage%252Fparsec.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fhackage.haskell.org%2Fpackage%2Fparsec.png" />https://hackage.haskell.org/package/parsec</a></em></span><span
+src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://wiki.haskell.org/Dependent_type</a></em></span><span
 class="preview-description">Placeholder description for
-https://hackage.haskell.org/package/parsec</span></span></span> package
+https://wiki.haskell.org/Dependent_type</span></span></span> package
 provides a convenient framework for doing parsing using <em>monadic
 parsing combinators</em>. Read the details of the package to learn
 exactly how such combinators are implemented, but here will focus just
@@ -698,7 +742,8 @@ cannot be used in identifiers)</li>
 <p>The <code>tokenParser</code> is a <code>TokenParser</code> produced
 by <code>languageDef</code>. It provides a variety of useful parsers,
 such as</p>
-<pre><code>identifier :: Parser String</code></pre>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>identifier :: Parser String</span></code></pre></div>
 <p>which is a <code>Parser</code> that parses the next identifier (which
 is of type <code>String</code>).</p>
 <h3 id="parsing-with-parsec">Parsing with Parsec</h3>
@@ -1572,10 +1617,10 @@ class="sourceCode hs"><code class="sourceCode haskell"><span id="cb38-1"><a href
 <h2 id="interpreting">Interpreting</h2>
 <p>Now to combine it all together! To <em>interpret</em> a program is,
 following the three steps outlined in <span><a
-href="#Interpretation"><img src="/favicon.ico" class="favicon"
+href="#interpretation"><img src="/favicon.ico" class="favicon"
 alt="/favicon.ico" />Interpetation</a><span
 class="sidenote preview"><span class="preview-title"><em><a
-href="#Interpretation" title="_blank"><img src="/favicon.ico"
+href="#interpretation" title="_blank"><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />rybl.net</a></em></span><span
 class="preview-description">TODO: baseDescription</span></span></span>,
 to pass the results from each step to the next, all inside of an effect
@@ -1931,32 +1976,37 @@ class="sourceCode hs"><code class="sourceCode haskell"><span id="cb46-1"><a href
 <h1 id="references">References</h1>
 <ul>
 <li><a href="https://github.com/rybla/impe" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fgithub.com%252Frybla%252Fimpe.svg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fgithub.com%2Frybla%2Fimpe.svg" />riib/impe</a></li>
+data-noLinkPreview=""><img src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />riib/impe</a></li>
 <li><a
 href="https://hackage.haskell.org/package/polysemy-1.4.0.0/docs/Polysemy-Output.html"
-data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fhackage.haskell.org%252Fpackage%252Fpolysemy-1.4.0.0%252Fdocs%252FPolysemy-Output.html.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fhackage.haskell.org%2Fpackage%2Fpolysemy-1.4.0.0%2Fdocs%2FPolysemy-Output.html.png" />Polysemy.Output</a></li>
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />Polysemy.Output</a></li>
 <li><a
 href="https://hackage.haskell.org/package/polysemy-1.4.0.0/docs/Polysemy-Writer.html"
-data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fhackage.haskell.org%252Fpackage%252Fpolysemy-1.4.0.0%252Fdocs%252FPolysemy-Writer.html.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fhackage.haskell.org%2Fpackage%2Fpolysemy-1.4.0.0%2Fdocs%2FPolysemy-Writer.html.png" />Polysemy.Writer</a></li>
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />Polysemy.Writer</a></li>
 <li><a href="https://hackage.haskell.org/package/parsec"
-data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fhackage.haskell.org%252Fpackage%252Fparsec.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fhackage.haskell.org%2Fpackage%2Fparsec.png" />Parsec</a></li>
-<li><a href="#Interpretation" data-inReference=""
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />Parsec</a></li>
+<li><a href="#interpretation" data-inReference=""
 data-noLinkPreview=""><img src="/favicon.ico" class="favicon"
 alt="/favicon.ico" />Interpetation</a></li>
-</ul></div>
-    </main>
+</ul>
+<h1 id="signature">Signature</h1>
+<p>The following code block is the <a
+href="https://en.wikipedia.org/wiki/EdDSA#Ed25519" title="_blank"><img
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />Ed25519 signature</a> of this post's
+<a href="/post_markdown/impe.md"><img src="/favicon.ico" class="favicon"
+alt="/favicon.ico" />markdown content</a> encoded in base 64, using my
+<em>secret key</em> and <a href="/key/main_ed25519.pub.txt"
+title="_blank"><img src="/favicon.ico" class="favicon"
+alt="/favicon.ico" />public key</a>.</p>
+<pre><code>c6626d564ad4cff8c65f0200f2342cecdbb47541aa8252ca6985d9dbbe26b3ad61eee0faba8d4d682811c12069bd4447519d01f762bad9cd7467c73e49e3ec00</code></pre>
+<p>See <a href="/page/signature.html"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />Signature</a> for more
+information.</p></main>
 
     <footer>
       <div class="title">

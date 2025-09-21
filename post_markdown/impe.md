@@ -1302,7 +1302,7 @@ queryVariable x =
 ## Interpreting
 
 Now to combine it all together! To _interpret_ a program is, following the three
-steps outlined in [Interpetation](#Interpretation), to pass the results from
+steps outlined in [Interpetation](#interpretation), to pass the results from
 each step to the next, all inside of an effect monad that handles logging and
 exceptions. Even more, polysemy makes it each to include different state
 effects, so the interpretation effect can include the state effects from

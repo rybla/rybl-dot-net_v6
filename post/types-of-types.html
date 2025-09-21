@@ -4,163 +4,215 @@
     <title>rybl.net | Types of "Type"s</title>
 
     <link rel="stylesheet" href="/style/common.css" />
+    <!--<link rel="stylesheet" href="/style/skylighting-espresso.css" />-->
+    <link rel="stylesheet" href="/style/skylighting-solarized.css" />
     <link rel="stylesheet" href="/style/background.css" />
     <link rel="stylesheet" href="/style/custom-elements.css" />
-    <link rel="stylesheet" href="/style/header-and-footer.css" />    <link rel="stylesheet" href="/style/post.css" />
-
+    <link rel="stylesheet" href="/style/header-and-footer.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-  rel="stylesheet"
-/>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-  rel="stylesheet"
-/> <script
-  id="MathJax-script"
-  async
-  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
-></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+    ></script>
 
-<script src="/script/parallax-body-background-on-scroll.js"></script>
+    <script src="/script/parallax-body-background-on-scroll.js"></script>
 
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
-/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <!--<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 
-<script>
-  hljs.highlightAll();
-</script>
+    <script>
+      hljs.highlightAll();
+    </script>-->    <link rel="stylesheet" href="/style/post.css" />
   </head>
   <body>
-    <div id="background"></div> <header><div class="title">
-  <div class="root-title">
-    <a href="/">rybl.net</a>
-  </div>
+    <svg>
+      <defs>
+        <filter
+          id="dancing-stroke-svg-filter"
+          color-interpolation-filters="linearRGB"
+          filterUnits="objectBoundingBox"
+          primitiveUnits="userSpaceOnUse"
+        >
+          <feMorphology
+            operator="dilate"
+            radius="4 4"
+            in="SourceAlpha"
+            result="morphology"
+          />
+          <feFlood flood-color="#30597E" flood-opacity="1" result="flood" />
+          <feComposite
+            in="flood"
+            in2="morphology"
+            operator="in"
+            result="composite"
+          />
+          <feComposite
+            in="composite"
+            in2="SourceAlpha"
+            operator="out"
+            result="composite1"
+          />
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.01 0.02"
+            numOctaves="1"
+            seed="0"
+            stitchTiles="stitch"
+            result="turbulence"
+          />
+          <feDisplacementMap
+            in="composite1"
+            in2="turbulence"
+            scale="17"
+            xChannelSelector="A"
+            yChannelSelector="A"
+            result="displacementMap"
+          />
+          <feMerge result="merge">
+            <feMergeNode in="SourceGraphic" result="mergeNode" />
+            <feMergeNode in="displacementMap" result="mergeNode1" />
+          </feMerge>
+        </filter>
+      </defs>
+    </svg>
 
-  <img class="website-icon" src="/image/rybl-small.png" />
+    <div id="background"></div>
+    <header><div class="title">
+      <div class="root-title">
+        <a href="/">rybl.net</a>
+      </div>
 
-  <div class="local-title">Types of "Type"s</div>
-</div>
-<div class="menu">
-  <div class="item">
-    <a href="/">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="icon lucide lucide-library-icon lucide-library"
-      >
-        <path d="m16 6 4 14" />
-        <path d="M12 6v14" />
-        <path d="M8 8v12" />
-        <path d="M4 4v16" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/about.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="icon lucide lucide-info-icon lucide-info"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 16v-4" />
-        <path d="M12 8h.01" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/profile.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-globe-icon lucide-globe"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-        <path d="M2 12h20" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/graph.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-orbit-icon lucide-orbit"
-      >
-        <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
-        <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
-        <circle cx="12" cy="12" r="3" />
-        <circle cx="19" cy="5" r="2" />
-        <circle cx="5" cy="19" r="2" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/signature.html"
-      ><svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-fingerprint-icon lucide-fingerprint"
-      >
-        <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
-        <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
-        <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
-        <path d="M2 12a10 10 0 0 1 18-6" />
-        <path d="M2 16h.01" />
-        <path d="M21.8 16c.2-2 .131-5.354 0-6" />
-        <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
-        <path d="M8.65 22c.21-.66.45-1.32.57-2" />
-        <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
-    ></a>
-  </div>
-</div></header>
+      <img class="website-icon" src="/image/rybl-small.png" />
 
-    <main>
-      <div class="main-inner"><h2><a href="/post/types-of-types.html" data-noLinkFavicon=""
-data-noLinkPreview="">Types of "Type"s</a></h2>
+      <div class="local-title">Types of "Type"s</div>
+    </div>
+    <div class="menu">
+      <div class="item">
+        <a href="/">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon lucide lucide-library-icon lucide-library"
+          >
+            <path d="m16 6 4 14" />
+            <path d="M12 6v14" />
+            <path d="M8 8v12" />
+            <path d="M4 4v16" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/about.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon lucide lucide-info-icon lucide-info"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 16v-4" />
+            <path d="M12 8h.01" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/profile.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-globe-icon lucide-globe"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+            <path d="M2 12h20" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/graph.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-orbit-icon lucide-orbit"
+          >
+            <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+            <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+            <circle cx="12" cy="12" r="3" />
+            <circle cx="19" cy="5" r="2" />
+            <circle cx="5" cy="19" r="2" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/signature.html"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-fingerprint-icon lucide-fingerprint"
+          >
+            <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+            <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+            <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+            <path d="M2 12a10 10 0 0 1 18-6" />
+            <path d="M2 16h.01" />
+            <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+            <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+            <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+            <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+        ></a>
+      </div>
+    </div></header>
+    <main><h1><a href="/post/types-of-types.html" data-noLinkFavicon=""
+data-noLinkPreview="">Types of "Type"s</a></h1>
 <div class="header-info">
 <p><u>Published:</u> 2021-04-15</p>
 <p><u>Tags:</u> computics</p>
@@ -188,6 +240,8 @@ data-noLinkPreview="">Category Theory</a></li>
 </ol></li>
 <li><a href="#references" data-noLinkFavicon=""
 data-noLinkPreview="">References</a></li>
+<li><a href="#signature" data-noLinkFavicon=""
+data-noLinkPreview="">Signature</a></li>
 </ol>
 </div>
 <p>In mathematics and theoretical computer science, theoreticians seem
@@ -504,58 +558,42 @@ memory").</p>
 theory is mainly interested in formalizing systems of interesting types,
 such as <span><a
 href="https://en.wikipedia.org/wiki/Polymorphism_(computer_science)"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FPolymorphism_%2528computer_science%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FPolymorphism_%28computer_science%29.ico" />polymorphic
-types</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />polymorphic types</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://en.wikipedia.org/wiki/Polymorphism_(computer_science)"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FPolymorphism_%2528computer_science%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FPolymorphism_%28computer_science%29.ico" />https://en.wikipedia.org/wiki/Polymorphism_(computer_science)</a></em></span><span
+title="_blank"><img src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />https://en.wikipedia.org/wiki/Escrow</a></em></span><span
 class="preview-description">Placeholder description for
-https://en.wikipedia.org/wiki/Polymorphism_(computer_science)</span></span></span>,
-<span><a
+https://en.wikipedia.org/wiki/Escrow</span></span></span>, <span><a
 href="https://link.springer.com/chapter/10.1007%2F978-3-662-07964-5_6"><img
-src="/favicon/https%253A%252F%252Flink.springer.com%252Fchapter%252F10.1007%25252F978-3-662-07964-5_6.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Flink.springer.com%2Fchapter%2F10.1007%252F978-3-662-07964-5_6.ico" />inductive
-data types</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/springer.com.svg" class="favicon"
+alt="/favicon/springer.com.svg" />inductive data types</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://link.springer.com/chapter/10.1007%2F978-3-662-07964-5_6"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Flink.springer.com%252Fchapter%252F10.1007%25252F978-3-662-07964-5_6.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Flink.springer.com%2Fchapter%2F10.1007%252F978-3-662-07964-5_6.ico" />https://link.springer.com/chapter/10.1007%2F978-3-662-07964-5_6</a></em></span><span
+title="_blank"><img src="/favicon/springer.com.svg" class="favicon"
+alt="/favicon/springer.com.svg" />https://link.springer.com/chapter/10.1007%2F978-3-662-07964-5_6</a></em></span><span
 class="preview-description">Placeholder description for
 https://link.springer.com/chapter/10.1007%2F978-3-662-07964-5_6</span></span></span>,
 <span><a href="https://wiki.haskell.org/Dependent_type"><img
-src="/favicon/https%253A%252F%252Fwiki.haskell.org%252FDependent_type.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwiki.haskell.org%2FDependent_type.ico" />dependent
+src="/missing.ico" class="favicon" alt="/missing.ico" />dependent
 types</a><span class="sidenote preview"><span
 class="preview-title"><em><a
 href="https://wiki.haskell.org/Dependent_type" title="_blank"><img
-src="/favicon/https%253A%252F%252Fwiki.haskell.org%252FDependent_type.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwiki.haskell.org%2FDependent_type.ico" />https://wiki.haskell.org/Dependent_type</a></em></span><span
+src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://wiki.haskell.org/Dependent_type</a></em></span><span
 class="preview-description">Placeholder description for
 https://wiki.haskell.org/Dependent_type</span></span></span>, or even
 <span><a
 href="https://link.springer.com/chapter/10.1007%2F978-3-319-08918-8_16"><img
-src="/favicon/https%253A%252F%252Flink.springer.com%252Fchapter%252F10.1007%25252F978-3-319-08918-8_16.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Flink.springer.com%2Fchapter%2F10.1007%252F978-3-319-08918-8_16.ico" />self
-types</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/springer.com.svg" class="favicon"
+alt="/favicon/springer.com.svg" />self types</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://link.springer.com/chapter/10.1007%2F978-3-319-08918-8_16"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Flink.springer.com%252Fchapter%252F10.1007%25252F978-3-319-08918-8_16.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Flink.springer.com%2Fchapter%2F10.1007%252F978-3-319-08918-8_16.ico" />https://link.springer.com/chapter/10.1007%2F978-3-319-08918-8_16</a></em></span><span
+title="_blank"><img src="/favicon/springer.com.svg" class="favicon"
+alt="/favicon/springer.com.svg" />https://link.springer.com/chapter/10.1007%2F978-3-662-07964-5_6</a></em></span><span
 class="preview-description">Placeholder description for
-https://link.springer.com/chapter/10.1007%2F978-3-319-08918-8_16</span></span></span>.
+https://link.springer.com/chapter/10.1007%2F978-3-662-07964-5_6</span></span></span>.
 However, to investigate such interesting type systems, a higher-order
 concept of <em>type</em> is needed. For example, what is the type of a
 type, if the type is considered as a type of data type itself? A common
@@ -594,170 +632,136 @@ interesting structures generated within the axioms of set theory. See
 selection:</p>
 <ul>
 <li><span><a href="https://en.wikipedia.org/wiki/Pointed_set"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FPointed_set.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FPointed_set.ico" />pointed
-set</a><span class="sidenote preview"><span class="preview-title"><em><a
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />pointed set</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://en.wikipedia.org/wiki/Pointed_set" title="_blank"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FPointed_set.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FPointed_set.ico" />https://en.wikipedia.org/wiki/Pointed_set</a></em></span><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />https://en.wikipedia.org/wiki/Escrow</a></em></span><span
 class="preview-description">Placeholder description for
-https://en.wikipedia.org/wiki/Pointed_set</span></span></span></li>
+https://en.wikipedia.org/wiki/Escrow</span></span></span></li>
 <li><span><a href="https://en.wikipedia.org/wiki/Magma_(algebra)"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FMagma_%2528algebra%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FMagma_%28algebra%29.ico" />magma</a><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />magma</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://en.wikipedia.org/wiki/Magma_(algebra)" title="_blank"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FMagma_%2528algebra%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FMagma_%28algebra%29.ico" />https://en.wikipedia.org/wiki/Magma_(algebra)</a></em></span><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />https://en.wikipedia.org/wiki/Escrow</a></em></span><span
 class="preview-description">Placeholder description for
-https://en.wikipedia.org/wiki/Magma_(algebra)</span></span></span></li>
+https://en.wikipedia.org/wiki/Escrow</span></span></span></li>
 <li><span><a href="https://en.wikipedia.org/wiki/Semigroup"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FSemigroup.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FSemigroup.ico" />semigroup</a><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />semigroup</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://en.wikipedia.org/wiki/Semigroup" title="_blank"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FSemigroup.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FSemigroup.ico" />https://en.wikipedia.org/wiki/Semigroup</a></em></span><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />https://en.wikipedia.org/wiki/Escrow</a></em></span><span
 class="preview-description">Placeholder description for
-https://en.wikipedia.org/wiki/Semigroup</span></span></span></li>
+https://en.wikipedia.org/wiki/Escrow</span></span></span></li>
 <li><span><a href="https://en.wikipedia.org/wiki/Monoid"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FMonoid.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FMonoid.ico" />monoid</a><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />monoid</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://en.wikipedia.org/wiki/Monoid" title="_blank"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FMonoid.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FMonoid.ico" />https://en.wikipedia.org/wiki/Monoid</a></em></span><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />https://en.wikipedia.org/wiki/Escrow</a></em></span><span
 class="preview-description">Placeholder description for
-https://en.wikipedia.org/wiki/Monoid</span></span></span></li>
+https://en.wikipedia.org/wiki/Escrow</span></span></span></li>
 <li><span><a
 href="https://en.wikipedia.org/wiki/Group_(mathematics)"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FGroup_%2528mathematics%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGroup_%28mathematics%29.ico" />group</a><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />group</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://en.wikipedia.org/wiki/Group_(mathematics)"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FGroup_%2528mathematics%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGroup_%28mathematics%29.ico" />https://en.wikipedia.org/wiki/Group_(mathematics)</a></em></span><span
+title="_blank"><img src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />https://en.wikipedia.org/wiki/Escrow</a></em></span><span
 class="preview-description">Placeholder description for
-https://en.wikipedia.org/wiki/Group_(mathematics)</span></span></span></li>
+https://en.wikipedia.org/wiki/Escrow</span></span></span></li>
 <li><span><a
 href="https://en.wikipedia.org/wiki/Ring_(mathematics)"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FRing_%2528mathematics%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FRing_%28mathematics%29.ico" />ring</a><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />ring</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://en.wikipedia.org/wiki/Ring_(mathematics)"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FRing_%2528mathematics%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FRing_%28mathematics%29.ico" />https://en.wikipedia.org/wiki/Ring_(mathematics)</a></em></span><span
+title="_blank"><img src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />https://en.wikipedia.org/wiki/Escrow</a></em></span><span
 class="preview-description">Placeholder description for
-https://en.wikipedia.org/wiki/Ring_(mathematics)</span></span></span></li>
+https://en.wikipedia.org/wiki/Escrow</span></span></span></li>
 <li><span><a href="https://en.wikipedia.org/wiki/Lattice_(order)"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FLattice_%2528order%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FLattice_%28order%29.ico" />lattice</a><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />lattice</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://en.wikipedia.org/wiki/Lattice_(order)" title="_blank"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FLattice_%2528order%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FLattice_%28order%29.ico" />https://en.wikipedia.org/wiki/Lattice_(order)</a></em></span><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />https://en.wikipedia.org/wiki/Escrow</a></em></span><span
 class="preview-description">Placeholder description for
-https://en.wikipedia.org/wiki/Lattice_(order)</span></span></span></li>
+https://en.wikipedia.org/wiki/Escrow</span></span></span></li>
 <li><span><a
 href="https://en.wikipedia.org/wiki/Field_(mathematics)"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FField_%2528mathematics%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FField_%28mathematics%29.ico" />field</a><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />field</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://en.wikipedia.org/wiki/Field_(mathematics)"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FField_%2528mathematics%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FField_%28mathematics%29.ico" />https://en.wikipedia.org/wiki/Field_(mathematics)</a></em></span><span
+title="_blank"><img src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />https://en.wikipedia.org/wiki/Escrow</a></em></span><span
 class="preview-description">Placeholder description for
-https://en.wikipedia.org/wiki/Field_(mathematics)</span></span></span></li>
+https://en.wikipedia.org/wiki/Escrow</span></span></span></li>
 <li><span><a
 href="https://en.wikipedia.org/wiki/Algebra_over_a_field"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FAlgebra_over_a_field.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FAlgebra_over_a_field.ico" />algebra</a><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />algebra</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://en.wikipedia.org/wiki/Algebra_over_a_field"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FAlgebra_over_a_field.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FAlgebra_over_a_field.ico" />https://en.wikipedia.org/wiki/Algebra_over_a_field</a></em></span><span
+title="_blank"><img src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />https://en.wikipedia.org/wiki/Escrow</a></em></span><span
 class="preview-description">Placeholder description for
-https://en.wikipedia.org/wiki/Algebra_over_a_field</span></span></span></li>
+https://en.wikipedia.org/wiki/Escrow</span></span></span></li>
 <li><span><a href="https://en.wikipedia.org/wiki/Peano_axioms"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FPeano_axioms.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FPeano_axioms.ico" />arithmetic</a><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />arithmetic</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://en.wikipedia.org/wiki/Peano_axioms" title="_blank"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FPeano_axioms.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FPeano_axioms.ico" />https://en.wikipedia.org/wiki/Peano_axioms</a></em></span><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />https://en.wikipedia.org/wiki/Escrow</a></em></span><span
 class="preview-description">Placeholder description for
-https://en.wikipedia.org/wiki/Peano_axioms</span></span></span></li>
+https://en.wikipedia.org/wiki/Escrow</span></span></span></li>
 <li><span><a
 href="https://en.wikipedia.org/wiki/Module_(mathematics)"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FModule_%2528mathematics%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FModule_%28mathematics%29.ico" />module</a><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />module</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://en.wikipedia.org/wiki/Module_(mathematics)"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FModule_%2528mathematics%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FModule_%28mathematics%29.ico" />https://en.wikipedia.org/wiki/Module_(mathematics)</a></em></span><span
+title="_blank"><img src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />https://en.wikipedia.org/wiki/Escrow</a></em></span><span
 class="preview-description">Placeholder description for
-https://en.wikipedia.org/wiki/Module_(mathematics)</span></span></span></li>
+https://en.wikipedia.org/wiki/Escrow</span></span></span></li>
 <li><span><a href="https://en.wikipedia.org/wiki/Vector_space"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FVector_space.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FVector_space.ico" />vector
-space</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />vector space</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://en.wikipedia.org/wiki/Vector_space" title="_blank"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FVector_space.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FVector_space.ico" />https://en.wikipedia.org/wiki/Vector_space</a></em></span><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />https://en.wikipedia.org/wiki/Escrow</a></em></span><span
 class="preview-description">Placeholder description for
-https://en.wikipedia.org/wiki/Vector_space</span></span></span></li>
+https://en.wikipedia.org/wiki/Escrow</span></span></span></li>
 <li><span><a href="https://en.wikipedia.org/wiki/Topology"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FTopology.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FTopology.ico" />topology</a><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />topology</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://en.wikipedia.org/wiki/Topology" title="_blank"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FTopology.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FTopology.ico" />https://en.wikipedia.org/wiki/Topology</a></em></span><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />https://en.wikipedia.org/wiki/Escrow</a></em></span><span
 class="preview-description">Placeholder description for
-https://en.wikipedia.org/wiki/Topology</span></span></span></li>
+https://en.wikipedia.org/wiki/Escrow</span></span></span></li>
 <li><span><a href="https://en.wikipedia.org/wiki/Hilbert_space"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FHilbert_space.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FHilbert_space.ico" />space</a><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />space</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://en.wikipedia.org/wiki/Hilbert_space" title="_blank"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FHilbert_space.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FHilbert_space.ico" />https://en.wikipedia.org/wiki/Hilbert_space</a></em></span><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />https://en.wikipedia.org/wiki/Escrow</a></em></span><span
 class="preview-description">Placeholder description for
-https://en.wikipedia.org/wiki/Hilbert_space</span></span></span></li>
+https://en.wikipedia.org/wiki/Escrow</span></span></span></li>
 </ul>
 <h2 id="category-theory">Category Theory</h2>
 <p>When modern mathematics was first formalized in the 19th and 20th
@@ -773,18 +777,14 @@ theory, any theory could also be proven or disproven) in the language of
 sets. Famously, Alfred Whitehead and Bertrand Russel attempted to prove
 this plausibility in the <span><a
 href="https://en.wikipedia.org/wiki/Principia_Mathematica"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FPrincipia_Mathematica.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FPrincipia_Mathematica.ico" />Principia
-Mathematica</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />Principia Mathematica</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://en.wikipedia.org/wiki/Principia_Mathematica"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FPrincipia_Mathematica.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FPrincipia_Mathematica.ico" />https://en.wikipedia.org/wiki/Principia_Mathematica</a></em></span><span
+title="_blank"><img src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />https://en.wikipedia.org/wiki/Escrow</a></em></span><span
 class="preview-description">Placeholder description for
-https://en.wikipedia.org/wiki/Principia_Mathematica</span></span></span>.</p>
+https://en.wikipedia.org/wiki/Escrow</span></span></span>.</p>
 <p>Since those developments however, mathematicians learned that there
 are some mathematical theories that are "beyond set theory" i.e.
 mathematical theories which represent structures that cannot be
@@ -794,15 +794,12 @@ general than mere sets. Why the name "category"?; is it not just another
 term for "set"? Yes, it does seem to be. Additionally, it turns out that
 there is a <span><a
 href="https://ncatlab.org/nlab/show/computational+trinitarianism"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fcomputational%252Btrinitarianism.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fcomputational%2Btrinitarianism.ico" />correspondence</a><span
+src="/missing.ico" class="favicon"
+alt="/missing.ico" />correspondence</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://ncatlab.org/nlab/show/computational+trinitarianism"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fcomputational%252Btrinitarianism.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fcomputational%2Btrinitarianism.ico" />https://ncatlab.org/nlab/show/computational+trinitarianism</a></em></span><span
+title="_blank"><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://ncatlab.org/nlab/show/computational+trinitarianism</a></em></span><span
 class="preview-description">Placeholder description for
 https://ncatlab.org/nlab/show/computational+trinitarianism</span></span></span>
 between categories (from category theory) and types (from type theory),
@@ -813,177 +810,130 @@ around, of course many others come:</p>
 <ul>
 <li><span><a
 href="https://ncatlab.org/nlab/show/Categories+and+Sheaves"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252FCategories%252Band%252BSheaves.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2FCategories%2Band%2BSheaves.ico" />sheave</a><span
+src="/missing.ico" class="favicon" alt="/missing.ico" />sheave</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://ncatlab.org/nlab/show/Categories+and+Sheaves"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252FCategories%252Band%252BSheaves.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2FCategories%2Band%2BSheaves.ico" />https://ncatlab.org/nlab/show/Categories+and+Sheaves</a></em></span><span
+title="_blank"><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://ncatlab.org/nlab/show/computational+trinitarianism</a></em></span><span
 class="preview-description">Placeholder description for
-https://ncatlab.org/nlab/show/Categories+and+Sheaves</span></span></span></li>
+https://ncatlab.org/nlab/show/computational+trinitarianism</span></span></span></li>
 <li><span><a
 href="https://en.wikipedia.org/wiki/Homology_(mathematics)"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FHomology_%2528mathematics%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FHomology_%28mathematics%29.ico" />homology</a><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />homology</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://en.wikipedia.org/wiki/Homology_(mathematics)"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FHomology_%2528mathematics%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FHomology_%28mathematics%29.ico" />https://en.wikipedia.org/wiki/Homology_(mathematics)</a></em></span><span
+title="_blank"><img src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />https://en.wikipedia.org/wiki/Escrow</a></em></span><span
 class="preview-description">Placeholder description for
-https://en.wikipedia.org/wiki/Homology_(mathematics)</span></span></span></li>
+https://en.wikipedia.org/wiki/Escrow</span></span></span></li>
 <li><span><a href="https://ncatlab.org/nlab/show/Lawvere+theory"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252FLawvere%252Btheory.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2FLawvere%2Btheory.ico" />theory</a><span
+src="/missing.ico" class="favicon" alt="/missing.ico" />theory</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://ncatlab.org/nlab/show/Lawvere+theory" title="_blank"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252FLawvere%252Btheory.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2FLawvere%2Btheory.ico" />https://ncatlab.org/nlab/show/Lawvere+theory</a></em></span><span
+src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://ncatlab.org/nlab/show/computational+trinitarianism</a></em></span><span
 class="preview-description">Placeholder description for
-https://ncatlab.org/nlab/show/Lawvere+theory</span></span></span></li>
+https://ncatlab.org/nlab/show/computational+trinitarianism</span></span></span></li>
 <li><span><a href="https://ncatlab.org/nlab/show/fiber+bundle"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Ffiber%252Bbundle.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Ffiber%2Bbundle.ico" />fiber</a><span
+src="/missing.ico" class="favicon" alt="/missing.ico" />fiber</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://ncatlab.org/nlab/show/fiber+bundle" title="_blank"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Ffiber%252Bbundle.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Ffiber%2Bbundle.ico" />https://ncatlab.org/nlab/show/fiber+bundle</a></em></span><span
+src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://ncatlab.org/nlab/show/computational+trinitarianism</a></em></span><span
 class="preview-description">Placeholder description for
-https://ncatlab.org/nlab/show/fiber+bundle</span></span></span></li>
+https://ncatlab.org/nlab/show/computational+trinitarianism</span></span></span></li>
 <li><span><a href="https://ncatlab.org/nlab/show/fiber+bundle"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Ffiber%252Bbundle.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Ffiber%2Bbundle.ico" />bundle</a><span
+src="/missing.ico" class="favicon" alt="/missing.ico" />bundle</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://ncatlab.org/nlab/show/fiber+bundle" title="_blank"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Ffiber%252Bbundle.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Ffiber%2Bbundle.ico" />https://ncatlab.org/nlab/show/fiber+bundle</a></em></span><span
+src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://ncatlab.org/nlab/show/computational+trinitarianism</a></em></span><span
 class="preview-description">Placeholder description for
-https://ncatlab.org/nlab/show/fiber+bundle</span></span></span></li>
+https://ncatlab.org/nlab/show/computational+trinitarianism</span></span></span></li>
 <li><span><a href="https://ncatlab.org/nlab/show/topos"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Ftopos.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Ftopos.ico" />topos</a><span
+src="/missing.ico" class="favicon" alt="/missing.ico" />topos</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://ncatlab.org/nlab/show/topos" title="_blank"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Ftopos.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Ftopos.ico" />https://ncatlab.org/nlab/show/topos</a></em></span><span
+src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://ncatlab.org/nlab/show/computational+trinitarianism</a></em></span><span
 class="preview-description">Placeholder description for
-https://ncatlab.org/nlab/show/topos</span></span></span></li>
+https://ncatlab.org/nlab/show/computational+trinitarianism</span></span></span></li>
 <li><span><a href="https://ncatlab.org/nlab/show/globular+theory"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fglobular%252Btheory.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fglobular%2Btheory.ico" />glob</a><span
+src="/missing.ico" class="favicon" alt="/missing.ico" />glob</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://ncatlab.org/nlab/show/globular+theory" title="_blank"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fglobular%252Btheory.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fglobular%2Btheory.ico" />https://ncatlab.org/nlab/show/globular+theory</a></em></span><span
+src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://ncatlab.org/nlab/show/computational+trinitarianism</a></em></span><span
 class="preview-description">Placeholder description for
-https://ncatlab.org/nlab/show/globular+theory</span></span></span></li>
+https://ncatlab.org/nlab/show/computational+trinitarianism</span></span></span></li>
 <li><span><a
 href="https://ncatlab.org/nlab/show/algebra+over+a+monad"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Falgebra%252Bover%252Ba%252Bmonad.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Falgebra%2Bover%2Ba%2Bmonad.ico" />monad</a><span
+src="/missing.ico" class="favicon" alt="/missing.ico" />monad</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://ncatlab.org/nlab/show/algebra+over+a+monad"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Falgebra%252Bover%252Ba%252Bmonad.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Falgebra%2Bover%2Ba%2Bmonad.ico" />https://ncatlab.org/nlab/show/algebra+over+a+monad</a></em></span><span
+title="_blank"><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://ncatlab.org/nlab/show/computational+trinitarianism</a></em></span><span
 class="preview-description">Placeholder description for
-https://ncatlab.org/nlab/show/algebra+over+a+monad</span></span></span></li>
+https://ncatlab.org/nlab/show/computational+trinitarianism</span></span></span></li>
 <li><span><a href="https://ncatlab.org/nlab/show/shelf"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fshelf.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fshelf.ico" />shelf</a><span
+src="/missing.ico" class="favicon" alt="/missing.ico" />shelf</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://ncatlab.org/nlab/show/shelf" title="_blank"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fshelf.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fshelf.ico" />https://ncatlab.org/nlab/show/shelf</a></em></span><span
+src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://ncatlab.org/nlab/show/computational+trinitarianism</a></em></span><span
 class="preview-description">Placeholder description for
-https://ncatlab.org/nlab/show/shelf</span></span></span></li>
+https://ncatlab.org/nlab/show/computational+trinitarianism</span></span></span></li>
 <li><span><a href="https://ncatlab.org/nlab/show/braid+group"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fbraid%252Bgroup.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fbraid%2Bgroup.ico" />braid</a><span
+src="/missing.ico" class="favicon" alt="/missing.ico" />braid</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://ncatlab.org/nlab/show/braid+group" title="_blank"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fbraid%252Bgroup.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fbraid%2Bgroup.ico" />https://ncatlab.org/nlab/show/braid+group</a></em></span><span
+src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://ncatlab.org/nlab/show/computational+trinitarianism</a></em></span><span
 class="preview-description">Placeholder description for
-https://ncatlab.org/nlab/show/braid+group</span></span></span></li>
+https://ncatlab.org/nlab/show/computational+trinitarianism</span></span></span></li>
 <li><span><a
 href="https://ncatlab.org/nlab/show/commutative+diagram"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fcommutative%252Bdiagram.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fcommutative%2Bdiagram.ico" />diagram</a><span
+src="/missing.ico" class="favicon" alt="/missing.ico" />diagram</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://ncatlab.org/nlab/show/commutative+diagram"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fcommutative%252Bdiagram.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fcommutative%2Bdiagram.ico" />https://ncatlab.org/nlab/show/commutative+diagram</a></em></span><span
+title="_blank"><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://ncatlab.org/nlab/show/computational+trinitarianism</a></em></span><span
 class="preview-description">Placeholder description for
-https://ncatlab.org/nlab/show/commutative+diagram</span></span></span></li>
+https://ncatlab.org/nlab/show/computational+trinitarianism</span></span></span></li>
 <li><span><a href="https://ncatlab.org/nlab/show/link"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Flink.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Flink.ico" />link</a><span
+src="/missing.ico" class="favicon" alt="/missing.ico" />link</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://ncatlab.org/nlab/show/link" title="_blank"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Flink.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Flink.ico" />https://ncatlab.org/nlab/show/link</a></em></span><span
+src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://ncatlab.org/nlab/show/computational+trinitarianism</a></em></span><span
 class="preview-description">Placeholder description for
-https://ncatlab.org/nlab/show/link</span></span></span></li>
+https://ncatlab.org/nlab/show/computational+trinitarianism</span></span></span></li>
 <li><span><a href="https://ncatlab.org/nlab/show/model"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fmodel.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fmodel.ico" />model</a><span
+src="/missing.ico" class="favicon" alt="/missing.ico" />model</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://ncatlab.org/nlab/show/model" title="_blank"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fmodel.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fmodel.ico" />https://ncatlab.org/nlab/show/model</a></em></span><span
+src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://ncatlab.org/nlab/show/computational+trinitarianism</a></em></span><span
 class="preview-description">Placeholder description for
-https://ncatlab.org/nlab/show/model</span></span></span></li>
+https://ncatlab.org/nlab/show/computational+trinitarianism</span></span></span></li>
 <li><span><a href="https://ncatlab.org/nlab/show/site"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fsite.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fsite.ico" />site</a><span
+src="/missing.ico" class="favicon" alt="/missing.ico" />site</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://ncatlab.org/nlab/show/site" title="_blank"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fsite.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fsite.ico" />https://ncatlab.org/nlab/show/site</a></em></span><span
+src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://ncatlab.org/nlab/show/computational+trinitarianism</a></em></span><span
 class="preview-description">Placeholder description for
-https://ncatlab.org/nlab/show/site</span></span></span></li>
+https://ncatlab.org/nlab/show/computational+trinitarianism</span></span></span></li>
 <li><span><a href="https://ncatlab.org/nlab/show/allegory"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fallegory.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fallegory.ico" />allegory</a><span
-class="sidenote preview"><span class="preview-title"><em><a
+src="/missing.ico" class="favicon"
+alt="/missing.ico" />allegory</a><span class="sidenote preview"><span
+class="preview-title"><em><a
 href="https://ncatlab.org/nlab/show/allegory" title="_blank"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fallegory.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fallegory.ico" />https://ncatlab.org/nlab/show/allegory</a></em></span><span
+src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://ncatlab.org/nlab/show/computational+trinitarianism</a></em></span><span
 class="preview-description">Placeholder description for
-https://ncatlab.org/nlab/show/allegory</span></span></span></li>
+https://ncatlab.org/nlab/show/computational+trinitarianism</span></span></span></li>
 </ul>
 <p>Of course, coming up with many different names that often are
 different words for "type" is not unique to category theory. But given
@@ -996,190 +946,143 @@ than "type" in a slightly specific context.</p>
 <li><a
 href="https://en.wikipedia.org/wiki/Polymorphism_(computer_science)"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FPolymorphism_%2528computer_science%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FPolymorphism_%28computer_science%29.ico" />polymorphic
-types</a></li>
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />polymorphic types</a></li>
 <li><a
 href="https://link.springer.com/chapter/10.1007%2F978-3-662-07964-5_6"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Flink.springer.com%252Fchapter%252F10.1007%25252F978-3-662-07964-5_6.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Flink.springer.com%2Fchapter%2F10.1007%252F978-3-662-07964-5_6.ico" />inductive
-data types</a></li>
+src="/favicon/springer.com.svg" class="favicon"
+alt="/favicon/springer.com.svg" />inductive data types</a></li>
 <li><a href="https://wiki.haskell.org/Dependent_type"
-data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fwiki.haskell.org%252FDependent_type.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwiki.haskell.org%2FDependent_type.ico" />dependent
-types</a></li>
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />dependent types</a></li>
 <li><a
 href="https://link.springer.com/chapter/10.1007%2F978-3-319-08918-8_16"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Flink.springer.com%252Fchapter%252F10.1007%25252F978-3-319-08918-8_16.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Flink.springer.com%2Fchapter%2F10.1007%252F978-3-319-08918-8_16.ico" />self
-types</a></li>
+src="/favicon/springer.com.svg" class="favicon"
+alt="/favicon/springer.com.svg" />self types</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Pointed_set"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FPointed_set.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FPointed_set.ico" />pointed
-set</a></li>
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />pointed set</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Magma_(algebra)"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FMagma_%2528algebra%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FMagma_%28algebra%29.ico" />magma</a></li>
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />magma</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Semigroup"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FSemigroup.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FSemigroup.ico" />semigroup</a></li>
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />semigroup</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Monoid" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FMonoid.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FMonoid.ico" />monoid</a></li>
+data-noLinkPreview=""><img src="/favicon/wikipedia.org.ico"
+class="favicon" alt="/favicon/wikipedia.org.ico" />monoid</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Group_(mathematics)"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FGroup_%2528mathematics%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FGroup_%28mathematics%29.ico" />group</a></li>
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />group</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Ring_(mathematics)"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FRing_%2528mathematics%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FRing_%28mathematics%29.ico" />ring</a></li>
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />ring</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Lattice_(order)"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FLattice_%2528order%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FLattice_%28order%29.ico" />lattice</a></li>
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />lattice</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Field_(mathematics)"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FField_%2528mathematics%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FField_%28mathematics%29.ico" />field</a></li>
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />field</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Algebra_over_a_field"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FAlgebra_over_a_field.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FAlgebra_over_a_field.ico" />algebra</a></li>
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />algebra</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Peano_axioms"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FPeano_axioms.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FPeano_axioms.ico" />arithmetic</a></li>
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />arithmetic</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Module_(mathematics)"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FModule_%2528mathematics%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FModule_%28mathematics%29.ico" />module</a></li>
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />module</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Vector_space"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FVector_space.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FVector_space.ico" />vector
-space</a></li>
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />vector space</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Topology" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FTopology.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FTopology.ico" />topology</a></li>
+data-noLinkPreview=""><img src="/favicon/wikipedia.org.ico"
+class="favicon" alt="/favicon/wikipedia.org.ico" />topology</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Hilbert_space"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FHilbert_space.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FHilbert_space.ico" />space</a></li>
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />space</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Principia_Mathematica"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FPrincipia_Mathematica.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FPrincipia_Mathematica.ico" />Principia
-Mathematica</a></li>
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />Principia Mathematica</a></li>
 <li><a href="https://ncatlab.org/nlab/show/computational+trinitarianism"
-data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fcomputational%252Btrinitarianism.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fcomputational%2Btrinitarianism.ico" />correspondence</a></li>
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />correspondence</a></li>
 <li><a href="https://ncatlab.org/nlab/show/Categories+and+Sheaves"
-data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252FCategories%252Band%252BSheaves.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2FCategories%2Band%2BSheaves.ico" />sheave</a></li>
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />sheave</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Homology_(mathematics)"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FHomology_%2528mathematics%2529.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FHomology_%28mathematics%29.ico" />homology</a></li>
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />homology</a></li>
 <li><a href="https://ncatlab.org/nlab/show/Lawvere+theory"
-data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252FLawvere%252Btheory.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2FLawvere%2Btheory.ico" />theory</a></li>
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />theory</a></li>
 <li><a href="https://ncatlab.org/nlab/show/fiber+bundle"
-data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Ffiber%252Bbundle.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Ffiber%2Bbundle.ico" />fiber</a></li>
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />fiber</a></li>
 <li><a href="https://ncatlab.org/nlab/show/fiber+bundle"
-data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Ffiber%252Bbundle.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Ffiber%2Bbundle.ico" />bundle</a></li>
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />bundle</a></li>
 <li><a href="https://ncatlab.org/nlab/show/topos" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Ftopos.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Ftopos.ico" />topos</a></li>
+data-noLinkPreview=""><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />topos</a></li>
 <li><a href="https://ncatlab.org/nlab/show/globular+theory"
-data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fglobular%252Btheory.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fglobular%2Btheory.ico" />glob</a></li>
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />glob</a></li>
 <li><a href="https://ncatlab.org/nlab/show/algebra+over+a+monad"
-data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Falgebra%252Bover%252Ba%252Bmonad.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Falgebra%2Bover%2Ba%2Bmonad.ico" />monad</a></li>
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />monad</a></li>
 <li><a href="https://ncatlab.org/nlab/show/shelf" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fshelf.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fshelf.ico" />shelf</a></li>
+data-noLinkPreview=""><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />shelf</a></li>
 <li><a href="https://ncatlab.org/nlab/show/braid+group"
-data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fbraid%252Bgroup.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fbraid%2Bgroup.ico" />braid</a></li>
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />braid</a></li>
 <li><a href="https://ncatlab.org/nlab/show/commutative+diagram"
-data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fcommutative%252Bdiagram.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fcommutative%2Bdiagram.ico" />diagram</a></li>
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />diagram</a></li>
 <li><a href="https://ncatlab.org/nlab/show/link" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Flink.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Flink.ico" />link</a></li>
+data-noLinkPreview=""><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />link</a></li>
 <li><a href="https://ncatlab.org/nlab/show/model" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fmodel.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fmodel.ico" />model</a></li>
+data-noLinkPreview=""><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />model</a></li>
 <li><a href="https://ncatlab.org/nlab/show/site" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fsite.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fsite.ico" />site</a></li>
+data-noLinkPreview=""><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />site</a></li>
 <li><a href="https://ncatlab.org/nlab/show/allegory" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Fallegory.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Fallegory.ico" />allegory</a></li>
-</ul></div>
-    </main>
+data-noLinkPreview=""><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />allegory</a></li>
+</ul>
+<h1 id="signature">Signature</h1>
+<p>The following code block is the <a
+href="https://en.wikipedia.org/wiki/EdDSA#Ed25519" title="_blank"><img
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />Ed25519 signature</a> of this post's
+<a href="/post_markdown/types-of-types.md"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />markdown content</a> encoded in
+base 64, using my <em>secret key</em> and <a
+href="/key/main_ed25519.pub.txt" title="_blank"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />public key</a>.</p>
+<pre><code>a3918bfbd97185f76dc2833a503e73d52b45bff02b2db67216283589c96105df7e597ed72bbcfa45b9a8d99d202c0218554d016e719a979c3a44ce1ddb69e80e</code></pre>
+<p>See <a href="/page/signature.html"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />Signature</a> for more
+information.</p></main>
 
     <footer>
       <div class="title">

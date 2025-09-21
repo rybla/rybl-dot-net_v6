@@ -4,164 +4,216 @@
     <title>rybl.net | Dominant Assurance Contracts</title>
 
     <link rel="stylesheet" href="/style/common.css" />
+    <!--<link rel="stylesheet" href="/style/skylighting-espresso.css" />-->
+    <link rel="stylesheet" href="/style/skylighting-solarized.css" />
     <link rel="stylesheet" href="/style/background.css" />
     <link rel="stylesheet" href="/style/custom-elements.css" />
-    <link rel="stylesheet" href="/style/header-and-footer.css" />    <link rel="stylesheet" href="/style/post.css" />
-
+    <link rel="stylesheet" href="/style/header-and-footer.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-  rel="stylesheet"
-/>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-  rel="stylesheet"
-/> <script
-  id="MathJax-script"
-  async
-  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
-></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+    ></script>
 
-<script src="/script/parallax-body-background-on-scroll.js"></script>
+    <script src="/script/parallax-body-background-on-scroll.js"></script>
 
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
-/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <!--<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 
-<script>
-  hljs.highlightAll();
-</script>
+    <script>
+      hljs.highlightAll();
+    </script>-->    <link rel="stylesheet" href="/style/post.css" />
   </head>
   <body>
-    <div id="background"></div> <header><div class="title">
-  <div class="root-title">
-    <a href="/">rybl.net</a>
-  </div>
+    <svg>
+      <defs>
+        <filter
+          id="dancing-stroke-svg-filter"
+          color-interpolation-filters="linearRGB"
+          filterUnits="objectBoundingBox"
+          primitiveUnits="userSpaceOnUse"
+        >
+          <feMorphology
+            operator="dilate"
+            radius="4 4"
+            in="SourceAlpha"
+            result="morphology"
+          />
+          <feFlood flood-color="#30597E" flood-opacity="1" result="flood" />
+          <feComposite
+            in="flood"
+            in2="morphology"
+            operator="in"
+            result="composite"
+          />
+          <feComposite
+            in="composite"
+            in2="SourceAlpha"
+            operator="out"
+            result="composite1"
+          />
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.01 0.02"
+            numOctaves="1"
+            seed="0"
+            stitchTiles="stitch"
+            result="turbulence"
+          />
+          <feDisplacementMap
+            in="composite1"
+            in2="turbulence"
+            scale="17"
+            xChannelSelector="A"
+            yChannelSelector="A"
+            result="displacementMap"
+          />
+          <feMerge result="merge">
+            <feMergeNode in="SourceGraphic" result="mergeNode" />
+            <feMergeNode in="displacementMap" result="mergeNode1" />
+          </feMerge>
+        </filter>
+      </defs>
+    </svg>
 
-  <img class="website-icon" src="/image/rybl-small.png" />
+    <div id="background"></div>
+    <header><div class="title">
+      <div class="root-title">
+        <a href="/">rybl.net</a>
+      </div>
 
-  <div class="local-title">Dominant Assurance Contracts</div>
-</div>
-<div class="menu">
-  <div class="item">
-    <a href="/">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="icon lucide lucide-library-icon lucide-library"
-      >
-        <path d="m16 6 4 14" />
-        <path d="M12 6v14" />
-        <path d="M8 8v12" />
-        <path d="M4 4v16" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/about.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="icon lucide lucide-info-icon lucide-info"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 16v-4" />
-        <path d="M12 8h.01" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/profile.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-globe-icon lucide-globe"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-        <path d="M2 12h20" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/graph.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-orbit-icon lucide-orbit"
-      >
-        <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
-        <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
-        <circle cx="12" cy="12" r="3" />
-        <circle cx="19" cy="5" r="2" />
-        <circle cx="5" cy="19" r="2" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/signature.html"
-      ><svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-fingerprint-icon lucide-fingerprint"
-      >
-        <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
-        <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
-        <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
-        <path d="M2 12a10 10 0 0 1 18-6" />
-        <path d="M2 16h.01" />
-        <path d="M21.8 16c.2-2 .131-5.354 0-6" />
-        <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
-        <path d="M8.65 22c.21-.66.45-1.32.57-2" />
-        <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
-    ></a>
-  </div>
-</div></header>
+      <img class="website-icon" src="/image/rybl-small.png" />
 
-    <main>
-      <div class="main-inner"><h2><a href="/post/dominant-assurance-contracts.html"
+      <div class="local-title">Dominant Assurance Contracts</div>
+    </div>
+    <div class="menu">
+      <div class="item">
+        <a href="/">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon lucide lucide-library-icon lucide-library"
+          >
+            <path d="m16 6 4 14" />
+            <path d="M12 6v14" />
+            <path d="M8 8v12" />
+            <path d="M4 4v16" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/about.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon lucide lucide-info-icon lucide-info"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 16v-4" />
+            <path d="M12 8h.01" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/profile.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-globe-icon lucide-globe"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+            <path d="M2 12h20" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/graph.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-orbit-icon lucide-orbit"
+          >
+            <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+            <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+            <circle cx="12" cy="12" r="3" />
+            <circle cx="19" cy="5" r="2" />
+            <circle cx="5" cy="19" r="2" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/signature.html"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-fingerprint-icon lucide-fingerprint"
+          >
+            <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+            <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+            <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+            <path d="M2 12a10 10 0 0 1 18-6" />
+            <path d="M2 16h.01" />
+            <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+            <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+            <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+            <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+        ></a>
+      </div>
+    </div></header>
+    <main><h1><a href="/post/dominant-assurance-contracts.html"
 data-noLinkFavicon="" data-noLinkPreview="">Dominant Assurance
-Contracts</a></h2>
+Contracts</a></h1>
 <div class="header-info">
 <p><u>Published:</u> 2020-11-10</p>
 <p><u>Tags:</u> economics</p>
@@ -221,6 +273,8 @@ data-noLinkPreview="">Assurance Contracts</a></li>
 data-noLinkPreview="">Bibliography</a></li>
 <li><a href="#references" data-noLinkFavicon=""
 data-noLinkPreview="">References</a></li>
+<li><a href="#signature" data-noLinkFavicon=""
+data-noLinkPreview="">Signature</a></li>
 </ol>
 </div>
 <h1 id="the-problem-of-providing-public-goods">The Problem of Providing
@@ -501,27 +555,23 @@ cooperate, perfectly-rational prisoners will never obtain it.</p>
 population of agents where each agent pledges to contribute towards an
 action if at least a certain amount is pledged in total. Examples:
 <span><a href="https://en.wikipedia.org/wiki/Escrow"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FEscrow.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FEscrow.ico" />escrow</a><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />escrow</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://en.wikipedia.org/wiki/Escrow" title="_blank"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FEscrow.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FEscrow.ico" />https://en.wikipedia.org/wiki/Escrow</a></em></span><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />https://en.wikipedia.org/wiki/Escrow</a></em></span><span
 class="preview-description">Placeholder description for
 https://en.wikipedia.org/wiki/Escrow</span></span></span>, certain kinds
 of <span><a href="https://en.wikipedia.org/wiki/Crowdfunding"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FCrowdfunding.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FCrowdfunding.ico" />crowdfunding</a><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />crowdfunding</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://en.wikipedia.org/wiki/Crowdfunding" title="_blank"><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FCrowdfunding.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FCrowdfunding.ico" />https://en.wikipedia.org/wiki/Crowdfunding</a></em></span><span
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />https://en.wikipedia.org/wiki/Escrow</a></em></span><span
 class="preview-description">Placeholder description for
-https://en.wikipedia.org/wiki/Crowdfunding</span></span></span>.</p>
+https://en.wikipedia.org/wiki/Escrow</span></span></span>.</p>
 <p>A <strong>dominant assurance contract</strong> is an assurance
 contract between a population of agents where agents are promised a
 compensation in case when the contract fails to facilitate the target
@@ -541,44 +591,36 @@ https://mason.gmu.edu/~atabarro/PrivateProvision.pdf</span></span></span>."</p>
 <ul>
 <li>Amoveo Editor, 2019. <span><a
 href="https://medium.com/amoveo/amoveo-use-case-crowdfunding-via-a-dominant-assurance-contract-dac-1be3482e7792"><img
-src="/favicon/https%253A%252F%252Fmedium.com%252Famoveo%252Famoveo-use-case-crowdfunding-via-a-dominant-assurance-contract-dac-1be3482e7792.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fmedium.com%2Famoveo%2Famoveo-use-case-crowdfunding-via-a-dominant-assurance-contract-dac-1be3482e7792.png" />Amoveo
-use-case: Crowdfunding via a Dominant Assurance Contract (DAC)</a><span
+src="/favicon/medium.com.png" class="favicon"
+alt="/favicon/medium.com.png" />Amoveo use-case: Crowdfunding via a
+Dominant Assurance Contract (DAC)</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://medium.com/amoveo/amoveo-use-case-crowdfunding-via-a-dominant-assurance-contract-dac-1be3482e7792"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fmedium.com%252Famoveo%252Famoveo-use-case-crowdfunding-via-a-dominant-assurance-contract-dac-1be3482e7792.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fmedium.com%2Famoveo%2Famoveo-use-case-crowdfunding-via-a-dominant-assurance-contract-dac-1be3482e7792.png" />https://medium.com/amoveo/amoveo-use-case-crowdfunding-via-a-dominant-assurance-contract-dac-1be3482e7792</a></em></span><span
+title="_blank"><img src="/favicon/medium.com.png" class="favicon"
+alt="/favicon/medium.com.png" />https://medium.com/amoveo/amoveo-use-case-crowdfunding-via-a-dominant-assurance-contract-dac-1be3482e7792</a></em></span><span
 class="preview-description">Placeholder description for
 https://medium.com/amoveo/amoveo-use-case-crowdfunding-via-a-dominant-assurance-contract-dac-1be3482e7792</span></span></span>.</li>
 <li>Guerra-Pujol F, 2018. <span><a
 href="https://priorprobability.com/2018/07/27/nozick-tabarrok-and-dominant-assurance-contracts/"><img
-src="/favicon/https%253A%252F%252Fpriorprobability.com%252F2018%252F07%252F27%252Fnozick-tabarrok-and-dominant-assurance-contracts%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fpriorprobability.com%2F2018%2F07%2F27%2Fnozick-tabarrok-and-dominant-assurance-contracts%2F.ico" />Nozick,
-Tabarrok, and Dominant Assurance Contracts</a><span
-class="sidenote preview"><span class="preview-title"><em><a
+src="/favicon/priorprobability.com.ico" class="favicon"
+alt="/favicon/priorprobability.com.ico" />Nozick, Tabarrok, and Dominant
+Assurance Contracts</a><span class="sidenote preview"><span
+class="preview-title"><em><a
 href="https://priorprobability.com/2018/07/27/nozick-tabarrok-and-dominant-assurance-contracts/"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fpriorprobability.com%252F2018%252F07%252F27%252Fnozick-tabarrok-and-dominant-assurance-contracts%252F.ico"
+title="_blank"><img src="/favicon/priorprobability.com.ico"
 class="favicon"
-alt="/favicon/https%3A%2F%2Fpriorprobability.com%2F2018%2F07%2F27%2Fnozick-tabarrok-and-dominant-assurance-contracts%2F.ico" />https://priorprobability.com/2018/07/27/nozick-tabarrok-and-dominant-assurance-contracts/</a></em></span><span
+alt="/favicon/priorprobability.com.ico" />https://priorprobability.com/2018/07/27/nozick-tabarrok-and-dominant-assurance-contracts/</a></em></span><span
 class="preview-description">Placeholder description for
 https://priorprobability.com/2018/07/27/nozick-tabarrok-and-dominant-assurance-contracts/</span></span></span></li>
 <li>Michel M, 2019. <span><a
 href="https://commonwealth.im/edgeware/proposal/discussion/101-crowdsourcing-the-public-good-dominant-assurance-contracts"><img
-src="/favicon/https%253A%252F%252Fcommonwealth.im%252Fedgeware%252Fproposal%252Fdiscussion%252F101-crowdsourcing-the-public-good-dominant-assurance-contracts.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fcommonwealth.im%2Fedgeware%2Fproposal%2Fdiscussion%2F101-crowdsourcing-the-public-good-dominant-assurance-contracts.png" />Crowdsourcing
-the Public Good: Dominant Assurance Contracts</a><span
-class="sidenote preview"><span class="preview-title"><em><a
+src="/favicon/commonwealth.im.png" class="favicon"
+alt="/favicon/commonwealth.im.png" />Crowdsourcing the Public Good:
+Dominant Assurance Contracts</a><span class="sidenote preview"><span
+class="preview-title"><em><a
 href="https://commonwealth.im/edgeware/proposal/discussion/101-crowdsourcing-the-public-good-dominant-assurance-contracts"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fcommonwealth.im%252Fedgeware%252Fproposal%252Fdiscussion%252F101-crowdsourcing-the-public-good-dominant-assurance-contracts.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fcommonwealth.im%2Fedgeware%2Fproposal%2Fdiscussion%2F101-crowdsourcing-the-public-good-dominant-assurance-contracts.png" />https://commonwealth.im/edgeware/proposal/discussion/101-crowdsourcing-the-public-good-dominant-assurance-contracts</a></em></span><span
+title="_blank"><img src="/favicon/commonwealth.im.png" class="favicon"
+alt="/favicon/commonwealth.im.png" />https://commonwealth.im/edgeware/proposal/discussion/101-crowdsourcing-the-public-good-dominant-assurance-contracts</a></em></span><span
 class="preview-description">Placeholder description for
 https://commonwealth.im/edgeware/proposal/discussion/101-crowdsourcing-the-public-good-dominant-assurance-contracts</span></span></span>.</li>
 <li>Tabarrok A, 1998. <span><a
@@ -593,55 +635,46 @@ class="preview-description">Placeholder description for
 https://mason.gmu.edu/~atabarro/PrivateProvision.pdf</span></span></span>.</li>
 <li>Tabarrok A, 2013. <span><a
 href="https://marginalrevolution.com/marginalrevolution/2013/08/a-test-of-dominant-assurance-contracts.html"><img
-src="/favicon/https%253A%252F%252Fmarginalrevolution.com%252Fmarginalrevolution%252F2013%252F08%252Fa-test-of-dominant-assurance-contracts.html.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fmarginalrevolution.com%2Fmarginalrevolution%2F2013%2F08%2Fa-test-of-dominant-assurance-contracts.html.png" />A
-Test of Dominant Assurance Contracts</a><span
-class="sidenote preview"><span class="preview-title"><em><a
+src="/favicon/marginalrevolution.com.png" class="favicon"
+alt="/favicon/marginalrevolution.com.png" />A Test of Dominant Assurance
+Contracts</a><span class="sidenote preview"><span
+class="preview-title"><em><a
 href="https://marginalrevolution.com/marginalrevolution/2013/08/a-test-of-dominant-assurance-contracts.html"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fmarginalrevolution.com%252Fmarginalrevolution%252F2013%252F08%252Fa-test-of-dominant-assurance-contracts.html.png"
+title="_blank"><img src="/favicon/marginalrevolution.com.png"
 class="favicon"
-alt="/favicon/https%3A%2F%2Fmarginalrevolution.com%2Fmarginalrevolution%2F2013%2F08%2Fa-test-of-dominant-assurance-contracts.html.png" />https://marginalrevolution.com/marginalrevolution/2013/08/a-test-of-dominant-assurance-contracts.html</a></em></span><span
+alt="/favicon/marginalrevolution.com.png" />https://marginalrevolution.com/marginalrevolution/2013/08/a-test-of-dominant-assurance-contracts.html</a></em></span><span
 class="preview-description">Placeholder description for
 https://marginalrevolution.com/marginalrevolution/2013/08/a-test-of-dominant-assurance-contracts.html</span></span></span>.</li>
 <li>Tabarrok A, 2017. <span><a
 href="https://www.cato-unbound.org/2017/06/07/alex-tabarrok/making-markets-work-better-dominant-assurance-contracts-some-other-helpful"><img
-src="/favicon/https%253A%252F%252Fwww.cato-unbound.org%252F2017%252F06%252F07%252Falex-tabarrok%252Fmaking-markets-work-better-dominant-assurance-contracts-some-other-helpful.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.cato-unbound.org%2F2017%2F06%2F07%2Falex-tabarrok%2Fmaking-markets-work-better-dominant-assurance-contracts-some-other-helpful.png" />Making
-Markets Work Better: Dominant Assurance Contracts and Some Other Helpful
-Ideas</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/cato-unbound.org.png" class="favicon"
+alt="/favicon/cato-unbound.org.png" />Making Markets Work Better:
+Dominant Assurance Contracts and Some Other Helpful Ideas</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://www.cato-unbound.org/2017/06/07/alex-tabarrok/making-markets-work-better-dominant-assurance-contracts-some-other-helpful"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fwww.cato-unbound.org%252F2017%252F06%252F07%252Falex-tabarrok%252Fmaking-markets-work-better-dominant-assurance-contracts-some-other-helpful.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.cato-unbound.org%2F2017%2F06%2F07%2Falex-tabarrok%2Fmaking-markets-work-better-dominant-assurance-contracts-some-other-helpful.png" />https://www.cato-unbound.org/2017/06/07/alex-tabarrok/making-markets-work-better-dominant-assurance-contracts-some-other-helpful</a></em></span><span
+title="_blank"><img src="/favicon/cato-unbound.org.png" class="favicon"
+alt="/favicon/cato-unbound.org.png" />https://www.cato-unbound.org/2017/06/07/alex-tabarrok/making-markets-work-better-dominant-assurance-contracts-some-other-helpful</a></em></span><span
 class="preview-description">Placeholder description for
 https://www.cato-unbound.org/2017/06/07/alex-tabarrok/making-markets-work-better-dominant-assurance-contracts-some-other-helpful</span></span></span>.</li>
 <li>Taylor J. <span><a href="http://jessic.at/writing/dac.pdf"><img
-src="/missing.ico" class="favicon" alt="/missing.ico" />Dominant
-Assurance Contracts with Continuous Pledges</a><span
-class="sidenote preview"><span class="preview-title"><em><a
-href="http://jessic.at/writing/dac.pdf" title="_blank"><img
-src="/missing.ico" class="favicon"
-alt="/missing.ico" />http://jessic.at/writing/dac.pdf</a></em></span><span
+src="/favicon/jessic.at.ico" class="favicon"
+alt="/favicon/jessic.at.ico" />Dominant Assurance Contracts with
+Continuous Pledges</a><span class="sidenote preview"><span
+class="preview-title"><em><a href="http://jessic.at/writing/dac.pdf"
+title="_blank"><img src="/favicon/jessic.at.ico" class="favicon"
+alt="/favicon/jessic.at.ico" />http://jessic.at/writing/dac.pdf</a></em></span><span
 class="preview-description">Placeholder description for
 http://jessic.at/writing/dac.pdf</span></span></span></li>
 </ul>
 <h1 id="references">References</h1>
 <ul>
 <li><a href="https://en.wikipedia.org/wiki/Escrow" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FEscrow.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FEscrow.ico" />escrow</a></li>
+data-noLinkPreview=""><img src="/favicon/wikipedia.org.ico"
+class="favicon" alt="/favicon/wikipedia.org.ico" />escrow</a></li>
 <li><a href="https://en.wikipedia.org/wiki/Crowdfunding"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fen.wikipedia.org%252Fwiki%252FCrowdfunding.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FCrowdfunding.ico" />crowdfunding</a></li>
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />crowdfunding</a></li>
 <li><a href="https://mason.gmu.edu/~atabarro/PrivateProvision.pdf"
 data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
 class="favicon" alt="/missing.ico" />The private provision of public
@@ -649,24 +682,21 @@ goods via dominant assurance contracts</a></li>
 <li><a
 href="https://medium.com/amoveo/amoveo-use-case-crowdfunding-via-a-dominant-assurance-contract-dac-1be3482e7792"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fmedium.com%252Famoveo%252Famoveo-use-case-crowdfunding-via-a-dominant-assurance-contract-dac-1be3482e7792.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fmedium.com%2Famoveo%2Famoveo-use-case-crowdfunding-via-a-dominant-assurance-contract-dac-1be3482e7792.png" />Amoveo
-use-case: Crowdfunding via a Dominant Assurance Contract (DAC)</a></li>
+src="/favicon/medium.com.png" class="favicon"
+alt="/favicon/medium.com.png" />Amoveo use-case: Crowdfunding via a
+Dominant Assurance Contract (DAC)</a></li>
 <li><a
 href="https://priorprobability.com/2018/07/27/nozick-tabarrok-and-dominant-assurance-contracts/"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fpriorprobability.com%252F2018%252F07%252F27%252Fnozick-tabarrok-and-dominant-assurance-contracts%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fpriorprobability.com%2F2018%2F07%2F27%2Fnozick-tabarrok-and-dominant-assurance-contracts%2F.ico" />Nozick,
-Tabarrok, and Dominant Assurance Contracts</a></li>
+src="/favicon/priorprobability.com.ico" class="favicon"
+alt="/favicon/priorprobability.com.ico" />Nozick, Tabarrok, and Dominant
+Assurance Contracts</a></li>
 <li><a
 href="https://commonwealth.im/edgeware/proposal/discussion/101-crowdsourcing-the-public-good-dominant-assurance-contracts"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fcommonwealth.im%252Fedgeware%252Fproposal%252Fdiscussion%252F101-crowdsourcing-the-public-good-dominant-assurance-contracts.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fcommonwealth.im%2Fedgeware%2Fproposal%2Fdiscussion%2F101-crowdsourcing-the-public-good-dominant-assurance-contracts.png" />Crowdsourcing
-the Public Good: Dominant Assurance Contracts</a></li>
+src="/favicon/commonwealth.im.png" class="favicon"
+alt="/favicon/commonwealth.im.png" />Crowdsourcing the Public Good:
+Dominant Assurance Contracts</a></li>
 <li><a href="https://mason.gmu.edu/~atabarro/PrivateProvision.pdf"
 data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
 class="favicon" alt="/missing.ico" />The private provision of public
@@ -674,24 +704,34 @@ goods via dominant assurance contracts</a></li>
 <li><a
 href="https://marginalrevolution.com/marginalrevolution/2013/08/a-test-of-dominant-assurance-contracts.html"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fmarginalrevolution.com%252Fmarginalrevolution%252F2013%252F08%252Fa-test-of-dominant-assurance-contracts.html.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fmarginalrevolution.com%2Fmarginalrevolution%2F2013%2F08%2Fa-test-of-dominant-assurance-contracts.html.png" />A
-Test of Dominant Assurance Contracts</a></li>
+src="/favicon/marginalrevolution.com.png" class="favicon"
+alt="/favicon/marginalrevolution.com.png" />A Test of Dominant Assurance
+Contracts</a></li>
 <li><a
 href="https://www.cato-unbound.org/2017/06/07/alex-tabarrok/making-markets-work-better-dominant-assurance-contracts-some-other-helpful"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fwww.cato-unbound.org%252F2017%252F06%252F07%252Falex-tabarrok%252Fmaking-markets-work-better-dominant-assurance-contracts-some-other-helpful.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.cato-unbound.org%2F2017%2F06%2F07%2Falex-tabarrok%2Fmaking-markets-work-better-dominant-assurance-contracts-some-other-helpful.png" />Making
-Markets Work Better: Dominant Assurance Contracts and Some Other Helpful
-Ideas</a></li>
+src="/favicon/cato-unbound.org.png" class="favicon"
+alt="/favicon/cato-unbound.org.png" />Making Markets Work Better:
+Dominant Assurance Contracts and Some Other Helpful Ideas</a></li>
 <li><a href="http://jessic.at/writing/dac.pdf" data-inReference=""
-data-noLinkPreview=""><img src="/missing.ico" class="favicon"
-alt="/missing.ico" />Dominant Assurance Contracts with Continuous
-Pledges</a></li>
-</ul></div>
-    </main>
+data-noLinkPreview=""><img src="/favicon/jessic.at.ico" class="favicon"
+alt="/favicon/jessic.at.ico" />Dominant Assurance Contracts with
+Continuous Pledges</a></li>
+</ul>
+<h1 id="signature">Signature</h1>
+<p>The following code block is the <a
+href="https://en.wikipedia.org/wiki/EdDSA#Ed25519" title="_blank"><img
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />Ed25519 signature</a> of this post's
+<a href="/post_markdown/dominant-assurance-contracts.md"><img
+src="/favicon.ico" class="favicon" alt="/favicon.ico" />markdown
+content</a> encoded in base 64, using my <em>secret key</em> and <a
+href="/key/main_ed25519.pub.txt" title="_blank"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />public key</a>.</p>
+<pre><code>438c349a4da0db5e2a5e1ccffb3f851b26295783ac918203da948540237ee5d0b870870265138a01288bfe4cf16e635fdbf3a33a1cb0878ef866a780764be00a</code></pre>
+<p>See <a href="/page/signature.html"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />Signature</a> for more
+information.</p></main>
 
     <footer>
       <div class="title">

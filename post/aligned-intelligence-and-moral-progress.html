@@ -4,164 +4,216 @@
     <title>rybl.net | Aligned Intelligence and Moral Progress</title>
 
     <link rel="stylesheet" href="/style/common.css" />
+    <!--<link rel="stylesheet" href="/style/skylighting-espresso.css" />-->
+    <link rel="stylesheet" href="/style/skylighting-solarized.css" />
     <link rel="stylesheet" href="/style/background.css" />
     <link rel="stylesheet" href="/style/custom-elements.css" />
-    <link rel="stylesheet" href="/style/header-and-footer.css" />    <link rel="stylesheet" href="/style/post.css" />
-
+    <link rel="stylesheet" href="/style/header-and-footer.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-  rel="stylesheet"
-/>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-  rel="stylesheet"
-/> <script
-  id="MathJax-script"
-  async
-  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
-></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+    ></script>
 
-<script src="/script/parallax-body-background-on-scroll.js"></script>
+    <script src="/script/parallax-body-background-on-scroll.js"></script>
 
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
-/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <!--<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 
-<script>
-  hljs.highlightAll();
-</script>
+    <script>
+      hljs.highlightAll();
+    </script>-->    <link rel="stylesheet" href="/style/post.css" />
   </head>
   <body>
-    <div id="background"></div> <header><div class="title">
-  <div class="root-title">
-    <a href="/">rybl.net</a>
-  </div>
+    <svg>
+      <defs>
+        <filter
+          id="dancing-stroke-svg-filter"
+          color-interpolation-filters="linearRGB"
+          filterUnits="objectBoundingBox"
+          primitiveUnits="userSpaceOnUse"
+        >
+          <feMorphology
+            operator="dilate"
+            radius="4 4"
+            in="SourceAlpha"
+            result="morphology"
+          />
+          <feFlood flood-color="#30597E" flood-opacity="1" result="flood" />
+          <feComposite
+            in="flood"
+            in2="morphology"
+            operator="in"
+            result="composite"
+          />
+          <feComposite
+            in="composite"
+            in2="SourceAlpha"
+            operator="out"
+            result="composite1"
+          />
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.01 0.02"
+            numOctaves="1"
+            seed="0"
+            stitchTiles="stitch"
+            result="turbulence"
+          />
+          <feDisplacementMap
+            in="composite1"
+            in2="turbulence"
+            scale="17"
+            xChannelSelector="A"
+            yChannelSelector="A"
+            result="displacementMap"
+          />
+          <feMerge result="merge">
+            <feMergeNode in="SourceGraphic" result="mergeNode" />
+            <feMergeNode in="displacementMap" result="mergeNode1" />
+          </feMerge>
+        </filter>
+      </defs>
+    </svg>
 
-  <img class="website-icon" src="/image/rybl-small.png" />
+    <div id="background"></div>
+    <header><div class="title">
+      <div class="root-title">
+        <a href="/">rybl.net</a>
+      </div>
 
-  <div class="local-title">Aligned Intelligence and Moral Progress</div>
-</div>
-<div class="menu">
-  <div class="item">
-    <a href="/">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="icon lucide lucide-library-icon lucide-library"
-      >
-        <path d="m16 6 4 14" />
-        <path d="M12 6v14" />
-        <path d="M8 8v12" />
-        <path d="M4 4v16" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/about.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="icon lucide lucide-info-icon lucide-info"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 16v-4" />
-        <path d="M12 8h.01" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/profile.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-globe-icon lucide-globe"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-        <path d="M2 12h20" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/graph.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-orbit-icon lucide-orbit"
-      >
-        <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
-        <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
-        <circle cx="12" cy="12" r="3" />
-        <circle cx="19" cy="5" r="2" />
-        <circle cx="5" cy="19" r="2" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/signature.html"
-      ><svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-fingerprint-icon lucide-fingerprint"
-      >
-        <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
-        <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
-        <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
-        <path d="M2 12a10 10 0 0 1 18-6" />
-        <path d="M2 16h.01" />
-        <path d="M21.8 16c.2-2 .131-5.354 0-6" />
-        <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
-        <path d="M8.65 22c.21-.66.45-1.32.57-2" />
-        <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
-    ></a>
-  </div>
-</div></header>
+      <img class="website-icon" src="/image/rybl-small.png" />
 
-    <main>
-      <div class="main-inner"><h2><a href="/post/aligned-intelligence-and-moral-progress.html"
+      <div class="local-title">Aligned Intelligence and Moral Progress</div>
+    </div>
+    <div class="menu">
+      <div class="item">
+        <a href="/">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon lucide lucide-library-icon lucide-library"
+          >
+            <path d="m16 6 4 14" />
+            <path d="M12 6v14" />
+            <path d="M8 8v12" />
+            <path d="M4 4v16" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/about.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon lucide lucide-info-icon lucide-info"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 16v-4" />
+            <path d="M12 8h.01" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/profile.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-globe-icon lucide-globe"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+            <path d="M2 12h20" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/graph.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-orbit-icon lucide-orbit"
+          >
+            <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+            <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+            <circle cx="12" cy="12" r="3" />
+            <circle cx="19" cy="5" r="2" />
+            <circle cx="5" cy="19" r="2" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/signature.html"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-fingerprint-icon lucide-fingerprint"
+          >
+            <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+            <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+            <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+            <path d="M2 12a10 10 0 0 1 18-6" />
+            <path d="M2 16h.01" />
+            <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+            <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+            <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+            <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+        ></a>
+      </div>
+    </div></header>
+    <main><h1><a href="/post/aligned-intelligence-and-moral-progress.html"
 data-noLinkFavicon="" data-noLinkPreview="">Aligned Intelligence and
-Moral Progress</a></h2>
+Moral Progress</a></h1>
 <div class="header-info">
 <p><u>Published:</u> 2023-06-06</p>
 <p><u>Tags:</u> philosophy, ai</p>
@@ -189,20 +241,18 @@ Alignement of Humans</a></li>
 data-noLinkPreview="">The Myth of Moral Progress</a></li>
 <li><a href="#references" data-noLinkFavicon=""
 data-noLinkPreview="">References</a></li>
+<li><a href="#signature" data-noLinkFavicon=""
+data-noLinkPreview="">Signature</a></li>
 </ol>
 </div>
 <h2 id="robin-hanson-on-ai">Robin Hanson on AI</h2>
 <p>Robin Hanson's blog: <span><a
-href="https://www.overcomingbias.com"><img
-src="/favicon/https%253A%252F%252Fwww.overcomingbias.com.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.overcomingbias.com.jpg" />Overcoming
-Bias</a><span class="sidenote preview"><span
-class="preview-title"><em><a href="https://www.overcomingbias.com"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fwww.overcomingbias.com.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.overcomingbias.com.jpg" />https://www.overcomingbias.com</a></em></span><span
+href="https://www.overcomingbias.com"><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />Overcoming Bias</a><span
+class="sidenote preview"><span class="preview-title"><em><a
+href="https://www.overcomingbias.com" title="_blank"><img
+src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://www.overcomingbias.com</a></em></span><span
 class="preview-description">Placeholder description for
 https://www.overcomingbias.com</span></span></span>.</p>
 <p>I've been reading/listening to some Hanson recently on the topic of
@@ -210,130 +260,96 @@ the future of humanity and the AI it could create.</p>
 <ul>
 <li><span><a
 href="https://www.overcomingbias.com/p/ai-fear-is-mostly-fear-of-future"><img
-src="/favicon/https%253A%252F%252Fwww.overcomingbias.com%252Fp%252Fai-fear-is-mostly-fear-of-future.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.overcomingbias.com%2Fp%2Fai-fear-is-mostly-fear-of-future.jpg" />Most
-AI Fear Is Future Fear</a><span class="sidenote preview"><span
+src="/missing.ico" class="favicon" alt="/missing.ico" />Most AI Fear Is
+Future Fear</a><span class="sidenote preview"><span
 class="preview-title"><em><a
 href="https://www.overcomingbias.com/p/ai-fear-is-mostly-fear-of-future"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fwww.overcomingbias.com%252Fp%252Fai-fear-is-mostly-fear-of-future.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.overcomingbias.com%2Fp%2Fai-fear-is-mostly-fear-of-future.jpg" />https://www.overcomingbias.com/p/ai-fear-is-mostly-fear-of-future</a></em></span><span
+title="_blank"><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://www.overcomingbias.com</a></em></span><span
 class="preview-description">Placeholder description for
-https://www.overcomingbias.com/p/ai-fear-is-mostly-fear-of-future</span></span></span></li>
+https://www.overcomingbias.com</span></span></span></li>
 <li><span><a
 href="https://www.overcomingbias.com/p/types-of-partiality"><img
-src="/favicon/https%253A%252F%252Fwww.overcomingbias.com%252Fp%252Ftypes-of-partiality.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.overcomingbias.com%2Fp%2Ftypes-of-partiality.jpg" />Types
-of Partiality</a><span class="sidenote preview"><span
+src="/missing.ico" class="favicon" alt="/missing.ico" />Types of
+Partiality</a><span class="sidenote preview"><span
 class="preview-title"><em><a
 href="https://www.overcomingbias.com/p/types-of-partiality"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fwww.overcomingbias.com%252Fp%252Ftypes-of-partiality.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.overcomingbias.com%2Fp%2Ftypes-of-partiality.jpg" />https://www.overcomingbias.com/p/types-of-partiality</a></em></span><span
+title="_blank"><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://www.overcomingbias.com</a></em></span><span
 class="preview-description">Placeholder description for
-https://www.overcomingbias.com/p/types-of-partiality</span></span></span></li>
+https://www.overcomingbias.com</span></span></span></li>
 <li><span><a
 href="https://www.overcomingbias.com/p/fertile-factions"><img
-src="/favicon/https%253A%252F%252Fwww.overcomingbias.com%252Fp%252Ffertile-factions.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.overcomingbias.com%2Fp%2Ffertile-factions.jpg" />Fertile
+src="/missing.ico" class="favicon" alt="/missing.ico" />Fertile
 Factors</a><span class="sidenote preview"><span
 class="preview-title"><em><a
 href="https://www.overcomingbias.com/p/fertile-factions"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fwww.overcomingbias.com%252Fp%252Ffertile-factions.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.overcomingbias.com%2Fp%2Ffertile-factions.jpg" />https://www.overcomingbias.com/p/fertile-factions</a></em></span><span
+title="_blank"><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://www.overcomingbias.com</a></em></span><span
 class="preview-description">Placeholder description for
-https://www.overcomingbias.com/p/fertile-factions</span></span></span></li>
+https://www.overcomingbias.com</span></span></span></li>
 <li><span><a
 href="https://www.overcomingbias.com/p/ai-risk-convo-synthesis"><img
-src="/favicon/https%253A%252F%252Fwww.overcomingbias.com%252Fp%252Fai-risk-convo-synthesis.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.overcomingbias.com%2Fp%2Fai-risk-convo-synthesis.jpg" />AI
-Risk Convo Synthesis</a><span class="sidenote preview"><span
+src="/missing.ico" class="favicon" alt="/missing.ico" />AI Risk Convo
+Synthesis</a><span class="sidenote preview"><span
 class="preview-title"><em><a
 href="https://www.overcomingbias.com/p/ai-risk-convo-synthesis"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fwww.overcomingbias.com%252Fp%252Fai-risk-convo-synthesis.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.overcomingbias.com%2Fp%2Fai-risk-convo-synthesis.jpg" />https://www.overcomingbias.com/p/ai-risk-convo-synthesis</a></em></span><span
+title="_blank"><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://www.overcomingbias.com</a></em></span><span
 class="preview-description">Placeholder description for
-https://www.overcomingbias.com/p/ai-risk-convo-synthesis</span></span></span></li>
+https://www.overcomingbias.com</span></span></span></li>
 <li><span><a
 href="https://www.overcomingbias.com/p/which-of-your-origins-are-you"><img
-src="/favicon/https%253A%252F%252Fwww.overcomingbias.com%252Fp%252Fwhich-of-your-origins-are-you.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.overcomingbias.com%2Fp%2Fwhich-of-your-origins-are-you.jpg" />Which
-Of Your Origins Are You?</a><span class="sidenote preview"><span
+src="/missing.ico" class="favicon" alt="/missing.ico" />Which Of Your
+Origins Are You?</a><span class="sidenote preview"><span
 class="preview-title"><em><a
 href="https://www.overcomingbias.com/p/which-of-your-origins-are-you"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fwww.overcomingbias.com%252Fp%252Fwhich-of-your-origins-are-you.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.overcomingbias.com%2Fp%2Fwhich-of-your-origins-are-you.jpg" />https://www.overcomingbias.com/p/which-of-your-origins-are-you</a></em></span><span
+title="_blank"><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://www.overcomingbias.com</a></em></span><span
 class="preview-description">Placeholder description for
-https://www.overcomingbias.com/p/which-of-your-origins-are-you</span></span></span></li>
+https://www.overcomingbias.com</span></span></span></li>
 <li><span><a
 href="https://www.overcomingbias.com/p/to-imagine-ai-imagine-no-ai"><img
-src="/favicon/https%253A%252F%252Fwww.overcomingbias.com%252Fp%252Fto-imagine-ai-imagine-no-ai.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.overcomingbias.com%2Fp%2Fto-imagine-ai-imagine-no-ai.jpg" />To
-Imagine AI, Imagine No AI</a><span class="sidenote preview"><span
+src="/missing.ico" class="favicon" alt="/missing.ico" />To Imagine AI,
+Imagine No AI</a><span class="sidenote preview"><span
 class="preview-title"><em><a
 href="https://www.overcomingbias.com/p/to-imagine-ai-imagine-no-ai"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fwww.overcomingbias.com%252Fp%252Fto-imagine-ai-imagine-no-ai.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.overcomingbias.com%2Fp%2Fto-imagine-ai-imagine-no-ai.jpg" />https://www.overcomingbias.com/p/to-imagine-ai-imagine-no-ai</a></em></span><span
+title="_blank"><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://www.overcomingbias.com</a></em></span><span
 class="preview-description">Placeholder description for
-https://www.overcomingbias.com/p/to-imagine-ai-imagine-no-ai</span></span></span></li>
+https://www.overcomingbias.com</span></span></span></li>
 <li><span><a href="https://m.youtube.com/watch?v=9XuVn6nljCM"><img
-src="/favicon/https%253A%252F%252Fm.youtube.com%252Fwatch%253Fv%253D9XuVn6nljCM.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fm.youtube.com%2Fwatch%3Fv%3D9XuVn6nljCM.png" />Zvi
-Mowshowitz &amp; Robin Hanson Discuss AI Risk</a><span
-class="sidenote preview"><span class="preview-title"><em><a
+src="/favicon/youtube.com.png" class="favicon"
+alt="/favicon/youtube.com.png" />Zvi Mowshowitz &amp; Robin Hanson
+Discuss AI Risk</a><span class="sidenote preview"><span
+class="preview-title"><em><a
 href="https://m.youtube.com/watch?v=9XuVn6nljCM" title="_blank"><img
-src="/favicon/https%253A%252F%252Fm.youtube.com%252Fwatch%253Fv%253D9XuVn6nljCM.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fm.youtube.com%2Fwatch%3Fv%3D9XuVn6nljCM.png" />https://m.youtube.com/watch?v=9XuVn6nljCM</a></em></span><span
+src="/favicon/youtube.com.png" class="favicon"
+alt="/favicon/youtube.com.png" />https://m.youtube.com/watch?v=9XuVn6nljCM</a></em></span><span
 class="preview-description">Placeholder description for
 https://m.youtube.com/watch?v=9XuVn6nljCM</span></span></span></li>
 </ul>
 <p>Of course, Hanson has been publicly writing and discussing the future
 of AI since at least 2008 (viz <span><a
 href="https://www.lesswrong.com/tag/the-hanson-yudkowsky-ai-foom-debate"><img
-src="/favicon/https%253A%252F%252Fwww.lesswrong.com%252Ftag%252Fthe-hanson-yudkowsky-ai-foom-debate.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.lesswrong.com%2Ftag%2Fthe-hanson-yudkowsky-ai-foom-debate.ico" />The
+src="/missing.ico" class="favicon" alt="/missing.ico" />The
 Hanson-Yudkowsky AI-Foom Debate</a><span class="sidenote preview"><span
 class="preview-title"><em><a
 href="https://www.lesswrong.com/tag/the-hanson-yudkowsky-ai-foom-debate"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fwww.lesswrong.com%252Ftag%252Fthe-hanson-yudkowsky-ai-foom-debate.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.lesswrong.com%2Ftag%2Fthe-hanson-yudkowsky-ai-foom-debate.ico" />https://www.lesswrong.com/tag/the-hanson-yudkowsky-ai-foom-debate</a></em></span><span
+title="_blank"><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://www.lesswrong.com/tag/the-hanson-yudkowsky-ai-foom-debate</a></em></span><span
 class="preview-description">Placeholder description for
 https://www.lesswrong.com/tag/the-hanson-yudkowsky-ai-foom-debate</span></span></span>,
 and <span><a
 href="https://www.lesswrong.com/posts/gGSvwd62TJAxxhcGh/yudkowsky-vs-hanson-on-foom-whose-predictions-were-better"><img
-src="/favicon/https%253A%252F%252Fwww.lesswrong.com%252Fposts%252FgGSvwd62TJAxxhcGh%252Fyudkowsky-vs-hanson-on-foom-whose-predictions-were-better.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.lesswrong.com%2Fposts%2FgGSvwd62TJAxxhcGh%2Fyudkowsky-vs-hanson-on-foom-whose-predictions-were-better.ico" />Yudkowsky
-vs Hanson on FOOM: Whose Predictions Were Better?</a><span
+src="/missing.ico" class="favicon" alt="/missing.ico" />Yudkowsky vs
+Hanson on FOOM: Whose Predictions Were Better?</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://www.lesswrong.com/posts/gGSvwd62TJAxxhcGh/yudkowsky-vs-hanson-on-foom-whose-predictions-were-better"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fwww.lesswrong.com%252Fposts%252FgGSvwd62TJAxxhcGh%252Fyudkowsky-vs-hanson-on-foom-whose-predictions-were-better.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.lesswrong.com%2Fposts%2FgGSvwd62TJAxxhcGh%2Fyudkowsky-vs-hanson-on-foom-whose-predictions-were-better.ico" />https://www.lesswrong.com/posts/gGSvwd62TJAxxhcGh/yudkowsky-vs-hanson-on-foom-whose-predictions-were-better</a></em></span><span
+title="_blank"><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://www.lesswrong.com/tag/the-hanson-yudkowsky-ai-foom-debate</a></em></span><span
 class="preview-description">Placeholder description for
-https://www.lesswrong.com/posts/gGSvwd62TJAxxhcGh/yudkowsky-vs-hanson-on-foom-whose-predictions-were-better</span></span></span>),
+https://www.lesswrong.com/tag/the-hanson-yudkowsky-ai-foom-debate</span></span></span>),
 but the topic has attracted a lot more attention recently due to recent
 advances in AI technology as well as some popular figures (including
 Yudkowsky himself) warning about a likely imminent AI doomsday.</p>
@@ -476,72 +492,62 @@ compared to older generations.</p>
 <h1 id="references">References</h1>
 <ul>
 <li><a href="https://www.overcomingbias.com" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fwww.overcomingbias.com.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.overcomingbias.com.jpg" />Overcoming
-Bias</a></li>
+data-noLinkPreview=""><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />Overcoming Bias</a></li>
 <li><a
 href="https://www.overcomingbias.com/p/ai-fear-is-mostly-fear-of-future"
-data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fwww.overcomingbias.com%252Fp%252Fai-fear-is-mostly-fear-of-future.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.overcomingbias.com%2Fp%2Fai-fear-is-mostly-fear-of-future.jpg" />Most
-AI Fear Is Future Fear</a></li>
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />Most AI Fear Is Future
+Fear</a></li>
 <li><a href="https://www.overcomingbias.com/p/types-of-partiality"
-data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fwww.overcomingbias.com%252Fp%252Ftypes-of-partiality.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.overcomingbias.com%2Fp%2Ftypes-of-partiality.jpg" />Types
-of Partiality</a></li>
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />Types of Partiality</a></li>
 <li><a href="https://www.overcomingbias.com/p/fertile-factions"
-data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fwww.overcomingbias.com%252Fp%252Ffertile-factions.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.overcomingbias.com%2Fp%2Ffertile-factions.jpg" />Fertile
-Factors</a></li>
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />Fertile Factors</a></li>
 <li><a href="https://www.overcomingbias.com/p/ai-risk-convo-synthesis"
-data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fwww.overcomingbias.com%252Fp%252Fai-risk-convo-synthesis.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.overcomingbias.com%2Fp%2Fai-risk-convo-synthesis.jpg" />AI
-Risk Convo Synthesis</a></li>
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />AI Risk Convo Synthesis</a></li>
 <li><a
 href="https://www.overcomingbias.com/p/which-of-your-origins-are-you"
-data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fwww.overcomingbias.com%252Fp%252Fwhich-of-your-origins-are-you.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.overcomingbias.com%2Fp%2Fwhich-of-your-origins-are-you.jpg" />Which
-Of Your Origins Are You?</a></li>
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />Which Of Your Origins Are
+You?</a></li>
 <li><a
 href="https://www.overcomingbias.com/p/to-imagine-ai-imagine-no-ai"
-data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fwww.overcomingbias.com%252Fp%252Fto-imagine-ai-imagine-no-ai.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.overcomingbias.com%2Fp%2Fto-imagine-ai-imagine-no-ai.jpg" />To
-Imagine AI, Imagine No AI</a></li>
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />To Imagine AI, Imagine No
+AI</a></li>
 <li><a href="https://m.youtube.com/watch?v=9XuVn6nljCM"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fm.youtube.com%252Fwatch%253Fv%253D9XuVn6nljCM.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fm.youtube.com%2Fwatch%3Fv%3D9XuVn6nljCM.png" />Zvi
-Mowshowitz &amp; Robin Hanson Discuss AI Risk</a></li>
+src="/favicon/youtube.com.png" class="favicon"
+alt="/favicon/youtube.com.png" />Zvi Mowshowitz &amp; Robin Hanson
+Discuss AI Risk</a></li>
 <li><a
 href="https://www.lesswrong.com/tag/the-hanson-yudkowsky-ai-foom-debate"
-data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fwww.lesswrong.com%252Ftag%252Fthe-hanson-yudkowsky-ai-foom-debate.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.lesswrong.com%2Ftag%2Fthe-hanson-yudkowsky-ai-foom-debate.ico" />The
-Hanson-Yudkowsky AI-Foom Debate</a></li>
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />The Hanson-Yudkowsky AI-Foom
+Debate</a></li>
 <li><a
 href="https://www.lesswrong.com/posts/gGSvwd62TJAxxhcGh/yudkowsky-vs-hanson-on-foom-whose-predictions-were-better"
-data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fwww.lesswrong.com%252Fposts%252FgGSvwd62TJAxxhcGh%252Fyudkowsky-vs-hanson-on-foom-whose-predictions-were-better.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.lesswrong.com%2Fposts%2FgGSvwd62TJAxxhcGh%2Fyudkowsky-vs-hanson-on-foom-whose-predictions-were-better.ico" />Yudkowsky
-vs Hanson on FOOM: Whose Predictions Were Better?</a></li>
-</ul></div>
-    </main>
+data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />Yudkowsky vs Hanson on FOOM: Whose
+Predictions Were Better?</a></li>
+</ul>
+<h1 id="signature">Signature</h1>
+<p>The following code block is the <a
+href="https://en.wikipedia.org/wiki/EdDSA#Ed25519" title="_blank"><img
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />Ed25519 signature</a> of this post's
+<a href="/post_markdown/aligned-intelligence-and-moral-progress.md"><img
+src="/favicon.ico" class="favicon" alt="/favicon.ico" />markdown
+content</a> encoded in base 64, using my <em>secret key</em> and <a
+href="/key/main_ed25519.pub.txt" title="_blank"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />public key</a>.</p>
+<pre><code>11356df648a9176f9a0d9d001675c7a63a32a4a76546805e2fa8f10509d243273322bbeeae7f79cf28feb36b882771643aebe6bdf9394a3116a36c9f7ed00f0d</code></pre>
+<p>See <a href="/page/signature.html"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />Signature</a> for more
+information.</p></main>
 
     <footer>
       <div class="title">

@@ -4,163 +4,215 @@
     <title>rybl.net | Social VR?</title>
 
     <link rel="stylesheet" href="/style/common.css" />
+    <!--<link rel="stylesheet" href="/style/skylighting-espresso.css" />-->
+    <link rel="stylesheet" href="/style/skylighting-solarized.css" />
     <link rel="stylesheet" href="/style/background.css" />
     <link rel="stylesheet" href="/style/custom-elements.css" />
-    <link rel="stylesheet" href="/style/header-and-footer.css" />    <link rel="stylesheet" href="/style/post.css" />
-
+    <link rel="stylesheet" href="/style/header-and-footer.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-  rel="stylesheet"
-/>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-  rel="stylesheet"
-/> <script
-  id="MathJax-script"
-  async
-  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
-></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+    ></script>
 
-<script src="/script/parallax-body-background-on-scroll.js"></script>
+    <script src="/script/parallax-body-background-on-scroll.js"></script>
 
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
-/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <!--<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 
-<script>
-  hljs.highlightAll();
-</script>
+    <script>
+      hljs.highlightAll();
+    </script>-->    <link rel="stylesheet" href="/style/post.css" />
   </head>
   <body>
-    <div id="background"></div> <header><div class="title">
-  <div class="root-title">
-    <a href="/">rybl.net</a>
-  </div>
+    <svg>
+      <defs>
+        <filter
+          id="dancing-stroke-svg-filter"
+          color-interpolation-filters="linearRGB"
+          filterUnits="objectBoundingBox"
+          primitiveUnits="userSpaceOnUse"
+        >
+          <feMorphology
+            operator="dilate"
+            radius="4 4"
+            in="SourceAlpha"
+            result="morphology"
+          />
+          <feFlood flood-color="#30597E" flood-opacity="1" result="flood" />
+          <feComposite
+            in="flood"
+            in2="morphology"
+            operator="in"
+            result="composite"
+          />
+          <feComposite
+            in="composite"
+            in2="SourceAlpha"
+            operator="out"
+            result="composite1"
+          />
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.01 0.02"
+            numOctaves="1"
+            seed="0"
+            stitchTiles="stitch"
+            result="turbulence"
+          />
+          <feDisplacementMap
+            in="composite1"
+            in2="turbulence"
+            scale="17"
+            xChannelSelector="A"
+            yChannelSelector="A"
+            result="displacementMap"
+          />
+          <feMerge result="merge">
+            <feMergeNode in="SourceGraphic" result="mergeNode" />
+            <feMergeNode in="displacementMap" result="mergeNode1" />
+          </feMerge>
+        </filter>
+      </defs>
+    </svg>
 
-  <img class="website-icon" src="/image/rybl-small.png" />
+    <div id="background"></div>
+    <header><div class="title">
+      <div class="root-title">
+        <a href="/">rybl.net</a>
+      </div>
 
-  <div class="local-title">Social VR?</div>
-</div>
-<div class="menu">
-  <div class="item">
-    <a href="/">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="icon lucide lucide-library-icon lucide-library"
-      >
-        <path d="m16 6 4 14" />
-        <path d="M12 6v14" />
-        <path d="M8 8v12" />
-        <path d="M4 4v16" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/about.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="icon lucide lucide-info-icon lucide-info"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 16v-4" />
-        <path d="M12 8h.01" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/profile.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-globe-icon lucide-globe"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-        <path d="M2 12h20" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/graph.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-orbit-icon lucide-orbit"
-      >
-        <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
-        <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
-        <circle cx="12" cy="12" r="3" />
-        <circle cx="19" cy="5" r="2" />
-        <circle cx="5" cy="19" r="2" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/signature.html"
-      ><svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-fingerprint-icon lucide-fingerprint"
-      >
-        <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
-        <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
-        <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
-        <path d="M2 12a10 10 0 0 1 18-6" />
-        <path d="M2 16h.01" />
-        <path d="M21.8 16c.2-2 .131-5.354 0-6" />
-        <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
-        <path d="M8.65 22c.21-.66.45-1.32.57-2" />
-        <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
-    ></a>
-  </div>
-</div></header>
+      <img class="website-icon" src="/image/rybl-small.png" />
 
-    <main>
-      <div class="main-inner"><h2><a href="/post/VR-social.html" data-noLinkFavicon=""
-data-noLinkPreview="">Social VR?</a></h2>
+      <div class="local-title">Social VR?</div>
+    </div>
+    <div class="menu">
+      <div class="item">
+        <a href="/">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon lucide lucide-library-icon lucide-library"
+          >
+            <path d="m16 6 4 14" />
+            <path d="M12 6v14" />
+            <path d="M8 8v12" />
+            <path d="M4 4v16" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/about.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon lucide lucide-info-icon lucide-info"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 16v-4" />
+            <path d="M12 8h.01" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/profile.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-globe-icon lucide-globe"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+            <path d="M2 12h20" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/graph.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-orbit-icon lucide-orbit"
+          >
+            <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+            <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+            <circle cx="12" cy="12" r="3" />
+            <circle cx="19" cy="5" r="2" />
+            <circle cx="5" cy="19" r="2" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/signature.html"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-fingerprint-icon lucide-fingerprint"
+          >
+            <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+            <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+            <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+            <path d="M2 12a10 10 0 0 1 18-6" />
+            <path d="M2 16h.01" />
+            <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+            <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+            <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+            <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+        ></a>
+      </div>
+    </div></header>
+    <main><h1><a href="/post/VR-social.html" data-noLinkFavicon=""
+data-noLinkPreview="">Social VR?</a></h1>
 <div class="header-info">
 <p><u>Published:</u> 2022-10-22</p>
 <p><u>Tags:</u> technology, vr</p>
@@ -195,20 +247,19 @@ data-noLinkPreview="">Conclusions</a></li>
 data-noLinkPreview="">Resources</a></li>
 <li><a href="#references" data-noLinkFavicon=""
 data-noLinkPreview="">References</a></li>
+<li><a href="#signature" data-noLinkFavicon=""
+data-noLinkPreview="">Signature</a></li>
 </ol>
 </div>
 <h1 id="my-background-with-vr">My Background with VR</h1>
 <p>I bought a VR headset, <span><a
 href="https://store.steampowered.com/valveindex"><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fvalveindex.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fvalveindex.ico" />the
-Valve Index</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />the Valve Index</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://store.steampowered.com/valveindex" title="_blank"><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fvalveindex.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fvalveindex.ico" />https://store.steampowered.com/valveindex</a></em></span><span
+src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />https://store.steampowered.com/valveindex</a></em></span><span
 class="preview-description">Placeholder description for
 https://store.steampowered.com/valveindex</span></span></span> to be
 used tethered with PC and its dedicated graphics card, about 6 months
@@ -217,73 +268,54 @@ as:</p>
 <ul>
 <li><span><a
 href="https://store.steampowered.com/app/546560/HalfLife_Alyx"><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fapp%252F546560%252FHalfLife_Alyx.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fapp%2F546560%2FHalfLife_Alyx.ico" />Half-Life:
-Alyx</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />Half-Life: Alyx</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://store.steampowered.com/app/546560/HalfLife_Alyx"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fapp%252F546560%252FHalfLife_Alyx.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fapp%2F546560%2FHalfLife_Alyx.ico" />https://store.steampowered.com/app/546560/HalfLife_Alyx</a></em></span><span
+title="_blank"><img src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />https://store.steampowered.com/valveindex</a></em></span><span
 class="preview-description">Placeholder description for
-https://store.steampowered.com/app/546560/HalfLife_Alyx</span></span></span></li>
+https://store.steampowered.com/valveindex</span></span></span></li>
 <li><span><a
 href="https://store.steampowered.com/app/488310/Eleven_Table_Tennis/"><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fapp%252F488310%252FEleven_Table_Tennis%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fapp%2F488310%2FEleven_Table_Tennis%2F.ico" />Eleven
-Table Tennis</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />Eleven Table Tennis</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://store.steampowered.com/app/488310/Eleven_Table_Tennis/"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fapp%252F488310%252FEleven_Table_Tennis%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fapp%2F488310%2FEleven_Table_Tennis%2F.ico" />https://store.steampowered.com/app/488310/Eleven_Table_Tennis/</a></em></span><span
+title="_blank"><img src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />https://store.steampowered.com/valveindex</a></em></span><span
 class="preview-description">Placeholder description for
-https://store.steampowered.com/app/488310/Eleven_Table_Tennis/</span></span></span></li>
+https://store.steampowered.com/valveindex</span></span></span></li>
 <li><span><a
 href="https://store.steampowered.com/app/348250/Google_Earth_VR/"><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fapp%252F348250%252FGoogle_Earth_VR%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fapp%2F348250%2FGoogle_Earth_VR%2F.ico" />Google
-Earth VR</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />Google Earth VR</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://store.steampowered.com/app/348250/Google_Earth_VR/"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fapp%252F348250%252FGoogle_Earth_VR%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fapp%2F348250%2FGoogle_Earth_VR%2F.ico" />https://store.steampowered.com/app/348250/Google_Earth_VR/</a></em></span><span
+title="_blank"><img src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />https://store.steampowered.com/valveindex</a></em></span><span
 class="preview-description">Placeholder description for
-https://store.steampowered.com/app/348250/Google_Earth_VR/</span></span></span></li>
+https://store.steampowered.com/valveindex</span></span></span></li>
 <li><span><a
 href="https://store.steampowered.com/app/629730/Blade_and_Sorcery/"><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fapp%252F629730%252FBlade_and_Sorcery%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fapp%2F629730%2FBlade_and_Sorcery%2F.ico" />Blade
-and Sorcery</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />Blade and Sorcery</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://store.steampowered.com/app/629730/Blade_and_Sorcery/"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fapp%252F629730%252FBlade_and_Sorcery%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fapp%2F629730%2FBlade_and_Sorcery%2F.ico" />https://store.steampowered.com/app/629730/Blade_and_Sorcery/</a></em></span><span
+title="_blank"><img src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />https://store.steampowered.com/valveindex</a></em></span><span
 class="preview-description">Placeholder description for
-https://store.steampowered.com/app/629730/Blade_and_Sorcery/</span></span></span></li>
+https://store.steampowered.com/valveindex</span></span></span></li>
 <li><span><a
 href="https://store.steampowered.com/app/438100/VRChat/"><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fapp%252F438100%252FVRChat%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fapp%2F438100%2FVRChat%2F.ico" />VRChat</a><span
+src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />VRChat</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://store.steampowered.com/app/438100/VRChat/"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fapp%252F438100%252FVRChat%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fapp%2F438100%2FVRChat%2F.ico" />https://store.steampowered.com/app/438100/VRChat/</a></em></span><span
+title="_blank"><img src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />https://store.steampowered.com/valveindex</a></em></span><span
 class="preview-description">Placeholder description for
-https://store.steampowered.com/app/438100/VRChat/</span></span></span></li>
+https://store.steampowered.com/valveindex</span></span></span></li>
 </ul>
 <p><img
 src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/348250/ss_6042a4e24d73c5972a9ee0728ade8a2c2893faef.1920x1080.jpg?t=1508799201"
@@ -350,39 +382,31 @@ given the positive results of the following experiment, I may be willing
 to try it once in the future.</p>
 <p>I invited a friend, who will go by QMD in this article, who I talk
 with (via text) frequently online to join me in VR via his <span><a
-href="https://www.oculus.com/rift-s/"><img
-src="/favicon/https%253A%252F%252Fwww.oculus.com%252Frift-s%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.oculus.com%2Frift-s%2F.ico" />Oculus
-Rift S</a><span class="sidenote preview"><span
-class="preview-title"><em><a href="https://www.oculus.com/rift-s/"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fwww.oculus.com%252Frift-s%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.oculus.com%2Frift-s%2F.ico" />https://www.oculus.com/rift-s/</a></em></span><span
+href="https://www.oculus.com/rift-s/"><img src="/favicon/oculus.com.ico"
+class="favicon" alt="/favicon/oculus.com.ico" />Oculus Rift S</a><span
+class="sidenote preview"><span class="preview-title"><em><a
+href="https://www.oculus.com/rift-s/" title="_blank"><img
+src="/favicon/oculus.com.ico" class="favicon"
+alt="/favicon/oculus.com.ico" />https://www.oculus.com/rift-s/</a></em></span><span
 class="preview-description">Placeholder description for
 https://www.oculus.com/rift-s/</span></span></span>, the last model from
 the old Rift days for Oculus. We first met in <span><a
 href="https://store.steampowered.com/app/438100/VRChat/"><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fapp%252F438100%252FVRChat%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fapp%2F438100%2FVRChat%2F.ico" />VRChat</a><span
+src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />VRChat</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://store.steampowered.com/app/438100/VRChat/"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fapp%252F438100%252FVRChat%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fapp%2F438100%2FVRChat%2F.ico" />https://store.steampowered.com/app/438100/VRChat/</a></em></span><span
+title="_blank"><img src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />https://store.steampowered.com/valveindex</a></em></span><span
 class="preview-description">Placeholder description for
-https://store.steampowered.com/app/438100/VRChat/</span></span></span>
-for about 2.5 hours, and then in <span><a
-href="https://recroom.com/"><img
-src="/favicon/https%253A%252F%252Frecroom.com%252F.png" class="favicon"
-alt="/favicon/https%3A%2F%2Frecroom.com%2F.png" />RecRoom</a><span
+https://store.steampowered.com/valveindex</span></span></span> for about
+2.5 hours, and then in <span><a href="https://recroom.com/"><img
+src="/favicon/recroom.com.png" class="favicon"
+alt="/favicon/recroom.com.png" />RecRoom</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://recroom.com/" title="_blank"><img
-src="/favicon/https%253A%252F%252Frecroom.com%252F.png" class="favicon"
-alt="/favicon/https%3A%2F%2Frecroom.com%2F.png" />https://recroom.com/</a></em></span><span
+src="/favicon/recroom.com.png" class="favicon"
+alt="/favicon/recroom.com.png" />https://recroom.com/</a></em></span><span
 class="preview-description">Placeholder description for
 https://recroom.com/</span></span></span> for about 2.5 hours.</p>
 <h2 id="vrchat">VRChat</h2>
@@ -397,19 +421,16 @@ visit user-created private/public virtual worlds. You exist in these
 worlds as a configurable and user-created avatar of your choice. If
 you've never seen VR Chat before, I reccomend looking up a <span><a
 href="https://www.youtube.com/results?search_query=vr+chat+gameplay"><img
-src="/favicon/https%253A%252F%252Fwww.youtube.com%252Fresults%253Fsearch_query%253Dvr%252Bchat%252Bgameplay.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3Dvr%2Bchat%2Bgameplay.png" />short
-YouTube video demonstration</a><span class="sidenote preview"><span
+src="/favicon/youtube.com.png" class="favicon"
+alt="/favicon/youtube.com.png" />short YouTube video
+demonstration</a><span class="sidenote preview"><span
 class="preview-title"><em><a
 href="https://www.youtube.com/results?search_query=vr+chat+gameplay"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fwww.youtube.com%252Fresults%253Fsearch_query%253Dvr%252Bchat%252Bgameplay.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3Dvr%2Bchat%2Bgameplay.png" />https://www.youtube.com/results?search_query=vr+chat+gameplay</a></em></span><span
+title="_blank"><img src="/favicon/youtube.com.png" class="favicon"
+alt="/favicon/youtube.com.png" />https://m.youtube.com/watch?v=9XuVn6nljCM</a></em></span><span
 class="preview-description">Placeholder description for
-https://www.youtube.com/results?search_query=vr+chat+gameplay</span></span></span>,
-which will instantly give a better idea that a textual description.</p>
+https://m.youtube.com/watch?v=9XuVn6nljCM</span></span></span>, which
+will instantly give a better idea that a textual description.</p>
 <p>QMD and I donned avatars and explored some random VRChat words.
 VRChat has these notable capabilities:</p>
 <ul>
@@ -523,16 +544,12 @@ improve the sense of natural communication over video calling. But video
 has some other advantages as well, in particular the lack of facial
 expressions. Meta is <span><a
 href="https://www.wired.com/story/metas-vr-headset-quest-pro-personal-data-face/"><img
-src="/favicon/https%253A%252F%252Fwww.wired.com%252Fstory%252Fmetas-vr-headset-quest-pro-personal-data-face%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.wired.com%2Fstory%2Fmetas-vr-headset-quest-pro-personal-data-face%2F.ico" />working
-on this</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/wired.com.ico" class="favicon"
+alt="/favicon/wired.com.ico" />working on this</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://www.wired.com/story/metas-vr-headset-quest-pro-personal-data-face/"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fwww.wired.com%252Fstory%252Fmetas-vr-headset-quest-pro-personal-data-face%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.wired.com%2Fstory%2Fmetas-vr-headset-quest-pro-personal-data-face%2F.ico" />https://www.wired.com/story/metas-vr-headset-quest-pro-personal-data-face/</a></em></span><span
+title="_blank"><img src="/favicon/wired.com.ico" class="favicon"
+alt="/favicon/wired.com.ico" />https://www.wired.com/story/metas-vr-headset-quest-pro-personal-data-face/</a></em></span><span
 class="preview-description">Placeholder description for
 https://www.wired.com/story/metas-vr-headset-quest-pro-personal-data-face/</span></span></span>.</p>
 <p><em>Avatar Projection.</em> To some extent its still can be
@@ -578,13 +595,12 @@ that sort of feature becomes available.</p>
 src="http://static1.squarespace.com/static/582e7271bebafbd72792bd97/t/5cfeaf9a904d11000101ece8/1560194976582/OC+LANDSCAPE.jpg?format=1500w"
 alt="RecRoom" /></p>
 <p>After VRChat, QMD and I decided to try out <span><a
-href="https://recroom.com/"><img
-src="/favicon/https%253A%252F%252Frecroom.com%252F.png" class="favicon"
-alt="/favicon/https%3A%2F%2Frecroom.com%2F.png" />RecRoom</a><span
+href="https://recroom.com/"><img src="/favicon/recroom.com.png"
+class="favicon" alt="/favicon/recroom.com.png" />RecRoom</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://recroom.com/" title="_blank"><img
-src="/favicon/https%253A%252F%252Frecroom.com%252F.png" class="favicon"
-alt="/favicon/https%3A%2F%2Frecroom.com%2F.png" />https://recroom.com/</a></em></span><span
+src="/favicon/recroom.com.png" class="favicon"
+alt="/favicon/recroom.com.png" />https://recroom.com/</a></em></span><span
 class="preview-description">Placeholder description for
 https://recroom.com/</span></span></span>. I've used RecRoom briefly
 before, but QMD hadn't.</p>
@@ -750,51 +766,41 @@ time.</p>
 <h1 id="resources">Resources</h1>
 <ul>
 <li><span><a href="https://store.steampowered.com/valveindex"><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fvalveindex.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fvalveindex.ico" />Valve
-Index</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />Valve Index</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://store.steampowered.com/valveindex" title="_blank"><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fvalveindex.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fvalveindex.ico" />https://store.steampowered.com/valveindex</a></em></span><span
+src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />https://store.steampowered.com/valveindex</a></em></span><span
 class="preview-description">Placeholder description for
 https://store.steampowered.com/valveindex</span></span></span></li>
 <li><span><a
 href="https://www.oculus.com/blog/meta-quest-2-pricing-changes/"><img
-src="/favicon/https%253A%252F%252Fwww.oculus.com%252Fblog%252Fmeta-quest-2-pricing-changes%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.oculus.com%2Fblog%2Fmeta-quest-2-pricing-changes%2F.ico" />Meta
-Quest 2</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/oculus.com.ico" class="favicon"
+alt="/favicon/oculus.com.ico" />Meta Quest 2</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://www.oculus.com/blog/meta-quest-2-pricing-changes/"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fwww.oculus.com%252Fblog%252Fmeta-quest-2-pricing-changes%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.oculus.com%2Fblog%2Fmeta-quest-2-pricing-changes%2F.ico" />https://www.oculus.com/blog/meta-quest-2-pricing-changes/</a></em></span><span
+title="_blank"><img src="/favicon/oculus.com.ico" class="favicon"
+alt="/favicon/oculus.com.ico" />https://www.oculus.com/rift-s/</a></em></span><span
 class="preview-description">Placeholder description for
-https://www.oculus.com/blog/meta-quest-2-pricing-changes/</span></span></span></li>
+https://www.oculus.com/rift-s/</span></span></span></li>
 <li><span><a
 href="https://store.steampowered.com/app/438100/VRChat/"><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fapp%252F438100%252FVRChat%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fapp%2F438100%2FVRChat%2F.ico" />VRChat</a><span
+src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />VRChat</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://store.steampowered.com/app/438100/VRChat/"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fapp%252F438100%252FVRChat%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fapp%2F438100%2FVRChat%2F.ico" />https://store.steampowered.com/app/438100/VRChat/</a></em></span><span
+title="_blank"><img src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />https://store.steampowered.com/valveindex</a></em></span><span
 class="preview-description">Placeholder description for
-https://store.steampowered.com/app/438100/VRChat/</span></span></span></li>
+https://store.steampowered.com/valveindex</span></span></span></li>
 <li><span><a href="https://recroom.com/"><img
-src="/favicon/https%253A%252F%252Frecroom.com%252F.png" class="favicon"
-alt="/favicon/https%3A%2F%2Frecroom.com%2F.png" />RecRoom</a><span
+src="/favicon/recroom.com.png" class="favicon"
+alt="/favicon/recroom.com.png" />RecRoom</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://recroom.com/" title="_blank"><img
-src="/favicon/https%253A%252F%252Frecroom.com%252F.png" class="favicon"
-alt="/favicon/https%3A%2F%2Frecroom.com%2F.png" />https://recroom.com/</a></em></span><span
+src="/favicon/recroom.com.png" class="favicon"
+alt="/favicon/recroom.com.png" />https://recroom.com/</a></em></span><span
 class="preview-description">Placeholder description for
 https://recroom.com/</span></span></span></li>
 </ul>
@@ -802,41 +808,30 @@ https://recroom.com/</span></span></span></li>
 <ul>
 <li><a href="https://store.steampowered.com/valveindex"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fvalveindex.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fvalveindex.ico" />the
-Valve Index</a></li>
+src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />the Valve Index</a></li>
 <li><a href="https://store.steampowered.com/app/546560/HalfLife_Alyx"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fapp%252F546560%252FHalfLife_Alyx.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fapp%2F546560%2FHalfLife_Alyx.ico" />Half-Life:
-Alyx</a></li>
+src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />Half-Life: Alyx</a></li>
 <li><a
 href="https://store.steampowered.com/app/488310/Eleven_Table_Tennis/"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fapp%252F488310%252FEleven_Table_Tennis%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fapp%2F488310%2FEleven_Table_Tennis%2F.ico" />Eleven
-Table Tennis</a></li>
+src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />Eleven Table Tennis</a></li>
 <li><a href="https://store.steampowered.com/app/348250/Google_Earth_VR/"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fapp%252F348250%252FGoogle_Earth_VR%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fapp%2F348250%2FGoogle_Earth_VR%2F.ico" />Google
-Earth VR</a></li>
+src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />Google Earth VR</a></li>
 <li><a
 href="https://store.steampowered.com/app/629730/Blade_and_Sorcery/"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fapp%252F629730%252FBlade_and_Sorcery%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fapp%2F629730%2FBlade_and_Sorcery%2F.ico" />Blade
-and Sorcery</a></li>
+src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />Blade and Sorcery</a></li>
 <li><a href="https://store.steampowered.com/app/438100/VRChat/"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fapp%252F438100%252FVRChat%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fapp%2F438100%2FVRChat%2F.ico" />VRChat</a></li>
+src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />VRChat</a></li>
 <li><a
 href="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/348250/ss_6042a4e24d73c5972a9ee0728ade8a2c2893faef.1920x1080.jpg?t=1508799201"
 data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
@@ -844,10 +839,8 @@ class="favicon" alt="/missing.ico" />Google Earth VR</a></li>
 <li><a
 href="https://arcritic.com/wp-content/uploads/2021/01/outdoor-vistas-half-life-alyx-screenshot.jpg"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Farcritic.com%252Fwp-content%252Fuploads%252F2021%252F01%252Foutdoor-vistas-half-life-alyx-screenshot.jpg.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Farcritic.com%2Fwp-content%2Fuploads%2F2021%2F01%2Foutdoor-vistas-half-life-alyx-screenshot.jpg.png" />Half-Life
-Alyx</a></li>
+src="/favicon/arcritic.com.png" class="favicon"
+alt="/favicon/arcritic.com.png" />Half-Life Alyx</a></li>
 <li><a href="#VRChat" data-inReference="" data-noLinkPreview=""><img
 src="/favicon.ico" class="favicon" alt="/favicon.ico" />VRChat</a></li>
 <li><a href="https://i.ytimg.com/vi/nBEWCsmq-Yk/maxresdefault.jpg"
@@ -856,20 +849,15 @@ class="favicon" alt="/missing.ico" />VRChat</a></li>
 <li><a href="#RecRoom" data-inReference="" data-noLinkPreview=""><img
 src="/favicon.ico" class="favicon" alt="/favicon.ico" />RecRoom</a></li>
 <li><a href="https://www.oculus.com/rift-s/" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fwww.oculus.com%252Frift-s%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.oculus.com%2Frift-s%2F.ico" />Oculus
-Rift S</a></li>
+data-noLinkPreview=""><img src="/favicon/oculus.com.ico" class="favicon"
+alt="/favicon/oculus.com.ico" />Oculus Rift S</a></li>
 <li><a href="https://store.steampowered.com/app/438100/VRChat/"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fapp%252F438100%252FVRChat%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fapp%2F438100%2FVRChat%2F.ico" />VRChat</a></li>
+src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />VRChat</a></li>
 <li><a href="https://recroom.com/" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Frecroom.com%252F.png" class="favicon"
-alt="/favicon/https%3A%2F%2Frecroom.com%2F.png" />RecRoom</a></li>
+data-noLinkPreview=""><img src="/favicon/recroom.com.png"
+class="favicon" alt="/favicon/recroom.com.png" />RecRoom</a></li>
 <li><a
 href="https://images.squarespace-cdn.com/content/v1/5f0770791aaf57311515b23d/1594323097093-T0ZKL126WLLITS38XH7L/logo.png"
 data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
@@ -877,59 +865,62 @@ class="favicon" alt="/missing.ico" />VRChat</a></li>
 <li><a
 href="https://www.youtube.com/results?search_query=vr+chat+gameplay"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fwww.youtube.com%252Fresults%253Fsearch_query%253Dvr%252Bchat%252Bgameplay.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.youtube.com%2Fresults%3Fsearch_query%3Dvr%2Bchat%2Bgameplay.png" />short
-YouTube video demonstration</a></li>
+src="/favicon/youtube.com.png" class="favicon"
+alt="/favicon/youtube.com.png" />short YouTube video
+demonstration</a></li>
 <li><a
 href="https://vrlowdown.com/wp-content/uploads/2022/05/VRChat-avatar-worlds-big-als-avatar-corridors.jpg"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fvrlowdown.com%252Fwp-content%252Fuploads%252F2022%252F05%252FVRChat-avatar-worlds-big-als-avatar-corridors.jpg.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fvrlowdown.com%2Fwp-content%2Fuploads%2F2022%2F05%2FVRChat-avatar-worlds-big-als-avatar-corridors.jpg.jpg" />an
-example VRChat avatar galery world</a></li>
+src="/favicon/vrlowdown.com.jpg" class="favicon"
+alt="/favicon/vrlowdown.com.jpg" />an example VRChat avatar galery
+world</a></li>
 <li><a
 href="https://www.wired.com/story/metas-vr-headset-quest-pro-personal-data-face/"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fwww.wired.com%252Fstory%252Fmetas-vr-headset-quest-pro-personal-data-face%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.wired.com%2Fstory%2Fmetas-vr-headset-quest-pro-personal-data-face%2F.ico" />working
-on this</a></li>
+src="/favicon/wired.com.ico" class="favicon"
+alt="/favicon/wired.com.ico" />working on this</a></li>
 <li><a
 href="http://static1.squarespace.com/static/582e7271bebafbd72792bd97/t/5cfeaf9a904d11000101ece8/1560194976582/OC+LANDSCAPE.jpg?format=1500w"
-data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
-class="favicon" alt="/missing.ico" />RecRoom</a></li>
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/squarespace.com.png" class="favicon"
+alt="/favicon/squarespace.com.png" />RecRoom</a></li>
 <li><a href="https://recroom.com/" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Frecroom.com%252F.png" class="favicon"
-alt="/favicon/https%3A%2F%2Frecroom.com%2F.png" />RecRoom</a></li>
+data-noLinkPreview=""><img src="/favicon/recroom.com.png"
+class="favicon" alt="/favicon/recroom.com.png" />RecRoom</a></li>
 <li><a
 href="https://external-preview.redd.it/aO3LrgpPwH5z1DU_LFMwjLbLIMtMO-KXHRXFfsXLp40.gif?format=png8&amp;s=18b94063c1576f6cca40366a3e8b46b65fd17d7f"
 data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
 class="favicon" alt="/missing.ico" />Bowling in RecRoom</a></li>
 <li><a href="https://store.steampowered.com/valveindex"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fvalveindex.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fvalveindex.ico" />Valve
-Index</a></li>
+src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />Valve Index</a></li>
 <li><a href="https://www.oculus.com/blog/meta-quest-2-pricing-changes/"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fwww.oculus.com%252Fblog%252Fmeta-quest-2-pricing-changes%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.oculus.com%2Fblog%2Fmeta-quest-2-pricing-changes%2F.ico" />Meta
-Quest 2</a></li>
+src="/favicon/oculus.com.ico" class="favicon"
+alt="/favicon/oculus.com.ico" />Meta Quest 2</a></li>
 <li><a href="https://store.steampowered.com/app/438100/VRChat/"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fstore.steampowered.com%252Fapp%252F438100%252FVRChat%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fstore.steampowered.com%2Fapp%2F438100%2FVRChat%2F.ico" />VRChat</a></li>
+src="/favicon/steampowered.com.svg" class="favicon"
+alt="/favicon/steampowered.com.svg" />VRChat</a></li>
 <li><a href="https://recroom.com/" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Frecroom.com%252F.png" class="favicon"
-alt="/favicon/https%3A%2F%2Frecroom.com%2F.png" />RecRoom</a></li>
-</ul></div>
-    </main>
+data-noLinkPreview=""><img src="/favicon/recroom.com.png"
+class="favicon" alt="/favicon/recroom.com.png" />RecRoom</a></li>
+</ul>
+<h1 id="signature">Signature</h1>
+<p>The following code block is the <a
+href="https://en.wikipedia.org/wiki/EdDSA#Ed25519" title="_blank"><img
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />Ed25519 signature</a> of this post's
+<a href="/post_markdown/VR-social.md"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />markdown content</a> encoded in
+base 64, using my <em>secret key</em> and <a
+href="/key/main_ed25519.pub.txt" title="_blank"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />public key</a>.</p>
+<pre><code>1b9fcb484c4b1d6dd3467cb0ac457e9a38d5a2ae923c9cf97d8e1e43e554aa82127361150b7ab4715759b7ad94643a84859000c51660bef4ce697dd92f44f20e</code></pre>
+<p>See <a href="/page/signature.html"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />Signature</a> for more
+information.</p></main>
 
     <footer>
       <div class="title">

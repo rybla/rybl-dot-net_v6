@@ -1,15 +1,28 @@
 :root {
-  --main-width: 800px;
+  @media (min-width: calc(1000px)) {
+    --body-font-size: 12pt;
+  }
+  @media (max-width: calc(1000px - 1px)) {
+    --body-font-size: 24pt;
+  }
 
-  --basic-box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.5);
+  @media (min-width: calc(1000px)) {
+    --main-width: 890px;
+  }
+  @media (max-width: calc(1000px - 1px)) {
+    width: 100vw;
+  }
+
+  --main-padding: 1em;
+
+  --basic-box-shadow: 0 0 1em 0.5em rgba(0, 0, 0, 0.5);
 
   /*--basic-box-background: color-mix(in srgb, lightblue, transparent 50%);*/
-  --basic-box-background: color-mix(in srgb, darkblue, transparent 90%);
+  --basic-box-background: color-mix(in srgb, rgb(17, 44, 69), transparent 90%);
 
-  /*--popout-border: 3px dashed black;*/
   --popout-border: none;
 
-  --indent-border-left: 3px solid black;
+  --indent-border-left: 0.5em solid rgb(17, 44, 69);
 }
 
 * {
@@ -34,20 +47,19 @@ body {
 
   display: flex;
   flex-direction: column;
+
+  font-size: var(--body-font-size);
 }
 
 main {
   flex: 1 1 auto;
   margin: 1em auto;
+  padding: var(--main-padding);
+  z-index: 0;
 
   background: color-mix(in srgb, #f6eee3, transparent 10%);
 
-  @media (min-width: calc(800px)) {
-    width: var(--main-width);
-  }
-  @media (max-width: calc(800px - 1px)) {
-    width: 100%;
-  }
+  width: var(--main-width);
 }
 
 h1,
@@ -80,6 +92,7 @@ a {
     /*align-self: center;*/
     margin-right: 0.2em;
     margin-bottom: -0.2em;
+    background: white;
   }
 
   & > .name {
@@ -98,40 +111,35 @@ main p > img {
 
 pre {
   padding: 0;
-  width: 100%;
   margin-left: -1em;
   margin-right: -1em;
-
-  font-size: 1em;
-
-  /*overflow-y: auto;*/
-  /*scrollbar-width: thin;*/
+  /*width: calc(100% + var(--main-padding));*/
+  overflow: auto;
+  max-height: 30em;
 
   & > code {
-    max-height: 400px;
+    display: block;
+    padding: 1em;
+
+    max-height: 40em;
     margin: 0;
     padding: 1em;
     font-size: 0.9em;
-    width: 100%;
-    white-space: no-wrap;
     font-family: "Fira Code", monospace;
-    overflow: visible;
   }
 }
 
-pre {
-  max-height: 400px;
-  padding: 0;
-
-  font-size: 1em;
-}
-
+/* TODO: how to properly get blocks like this to be full-width even in articles where you have the cutsom logic that shrinks everything to be the same widtgh at hte top level childrten of main so that it doesnt overlap with the sidenote margin area? */
 blockquote {
+  margin: 0;
   margin-block-end: 1em;
   margin-block-start: 1em;
   padding: 0.5em 1em;
   background: var(--basic-box-background);
   border-left: var(--indent-border-left);
+
+  margin-left: -1em;
+  margin-right: -1em;
 }
 
 ol,

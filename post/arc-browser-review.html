@@ -4,163 +4,215 @@
     <title>rybl.net | Review of the Arc Browser</title>
 
     <link rel="stylesheet" href="/style/common.css" />
+    <!--<link rel="stylesheet" href="/style/skylighting-espresso.css" />-->
+    <link rel="stylesheet" href="/style/skylighting-solarized.css" />
     <link rel="stylesheet" href="/style/background.css" />
     <link rel="stylesheet" href="/style/custom-elements.css" />
-    <link rel="stylesheet" href="/style/header-and-footer.css" />    <link rel="stylesheet" href="/style/post.css" />
-
+    <link rel="stylesheet" href="/style/header-and-footer.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-  rel="stylesheet"
-/>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-  rel="stylesheet"
-/> <script
-  id="MathJax-script"
-  async
-  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
-></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+    ></script>
 
-<script src="/script/parallax-body-background-on-scroll.js"></script>
+    <script src="/script/parallax-body-background-on-scroll.js"></script>
 
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
-/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <!--<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 
-<script>
-  hljs.highlightAll();
-</script>
+    <script>
+      hljs.highlightAll();
+    </script>-->    <link rel="stylesheet" href="/style/post.css" />
   </head>
   <body>
-    <div id="background"></div> <header><div class="title">
-  <div class="root-title">
-    <a href="/">rybl.net</a>
-  </div>
+    <svg>
+      <defs>
+        <filter
+          id="dancing-stroke-svg-filter"
+          color-interpolation-filters="linearRGB"
+          filterUnits="objectBoundingBox"
+          primitiveUnits="userSpaceOnUse"
+        >
+          <feMorphology
+            operator="dilate"
+            radius="4 4"
+            in="SourceAlpha"
+            result="morphology"
+          />
+          <feFlood flood-color="#30597E" flood-opacity="1" result="flood" />
+          <feComposite
+            in="flood"
+            in2="morphology"
+            operator="in"
+            result="composite"
+          />
+          <feComposite
+            in="composite"
+            in2="SourceAlpha"
+            operator="out"
+            result="composite1"
+          />
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.01 0.02"
+            numOctaves="1"
+            seed="0"
+            stitchTiles="stitch"
+            result="turbulence"
+          />
+          <feDisplacementMap
+            in="composite1"
+            in2="turbulence"
+            scale="17"
+            xChannelSelector="A"
+            yChannelSelector="A"
+            result="displacementMap"
+          />
+          <feMerge result="merge">
+            <feMergeNode in="SourceGraphic" result="mergeNode" />
+            <feMergeNode in="displacementMap" result="mergeNode1" />
+          </feMerge>
+        </filter>
+      </defs>
+    </svg>
 
-  <img class="website-icon" src="/image/rybl-small.png" />
+    <div id="background"></div>
+    <header><div class="title">
+      <div class="root-title">
+        <a href="/">rybl.net</a>
+      </div>
 
-  <div class="local-title">Review of the Arc Browser</div>
-</div>
-<div class="menu">
-  <div class="item">
-    <a href="/">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="icon lucide lucide-library-icon lucide-library"
-      >
-        <path d="m16 6 4 14" />
-        <path d="M12 6v14" />
-        <path d="M8 8v12" />
-        <path d="M4 4v16" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/about.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="icon lucide lucide-info-icon lucide-info"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 16v-4" />
-        <path d="M12 8h.01" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/profile.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-globe-icon lucide-globe"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-        <path d="M2 12h20" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/graph.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-orbit-icon lucide-orbit"
-      >
-        <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
-        <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
-        <circle cx="12" cy="12" r="3" />
-        <circle cx="19" cy="5" r="2" />
-        <circle cx="5" cy="19" r="2" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/signature.html"
-      ><svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-fingerprint-icon lucide-fingerprint"
-      >
-        <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
-        <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
-        <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
-        <path d="M2 12a10 10 0 0 1 18-6" />
-        <path d="M2 16h.01" />
-        <path d="M21.8 16c.2-2 .131-5.354 0-6" />
-        <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
-        <path d="M8.65 22c.21-.66.45-1.32.57-2" />
-        <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
-    ></a>
-  </div>
-</div></header>
+      <img class="website-icon" src="/image/rybl-small.png" />
 
-    <main>
-      <div class="main-inner"><h2><a href="/post/arc-browser-review.html" data-noLinkFavicon=""
-data-noLinkPreview="">Review of the Arc Browser</a></h2>
+      <div class="local-title">Review of the Arc Browser</div>
+    </div>
+    <div class="menu">
+      <div class="item">
+        <a href="/">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon lucide lucide-library-icon lucide-library"
+          >
+            <path d="m16 6 4 14" />
+            <path d="M12 6v14" />
+            <path d="M8 8v12" />
+            <path d="M4 4v16" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/about.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon lucide lucide-info-icon lucide-info"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 16v-4" />
+            <path d="M12 8h.01" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/profile.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-globe-icon lucide-globe"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+            <path d="M2 12h20" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/graph.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-orbit-icon lucide-orbit"
+          >
+            <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+            <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+            <circle cx="12" cy="12" r="3" />
+            <circle cx="19" cy="5" r="2" />
+            <circle cx="5" cy="19" r="2" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/signature.html"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-fingerprint-icon lucide-fingerprint"
+          >
+            <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+            <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+            <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+            <path d="M2 12a10 10 0 0 1 18-6" />
+            <path d="M2 16h.01" />
+            <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+            <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+            <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+            <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+        ></a>
+      </div>
+    </div></header>
+    <main><h1><a href="/post/arc-browser-review.html" data-noLinkFavicon=""
+data-noLinkPreview="">Review of the Arc Browser</a></h1>
 <div class="header-info">
 <p><u>Published:</u> 2024-03-05</p>
 <p><u>Tags:</u> technology</p>
@@ -220,26 +272,25 @@ Site-Specific Keyboard Shortcuts</a></li>
 </ol></li>
 <li><a href="#references" data-noLinkFavicon=""
 data-noLinkPreview="">References</a></li>
+<li><a href="#signature" data-noLinkFavicon=""
+data-noLinkPreview="">Signature</a></li>
 </ol>
 </div>
-<p>The <span><a href="https://arc.net/"><img
-src="/favicon/https%253A%252F%252Farc.net%252F.png" class="favicon"
-alt="/favicon/https%3A%2F%2Farc.net%2F.png" />Arc</a><span
+<p>The <span><a href="https://arc.net/"><img src="/favicon/arc.net.png"
+class="favicon" alt="/favicon/arc.net.png" />Arc</a><span
 class="sidenote preview"><span class="preview-title"><em><a
-href="https://arc.net/" title="_blank"><img
-src="/favicon/https%253A%252F%252Farc.net%252F.png" class="favicon"
-alt="/favicon/https%3A%2F%2Farc.net%2F.png" />https://arc.net/</a></em></span><span
+href="https://arc.net/" title="_blank"><img src="/favicon/arc.net.png"
+class="favicon"
+alt="/favicon/arc.net.png" />https://arc.net/</a></em></span><span
 class="preview-description">Placeholder description for
 https://arc.net/</span></span></span> browser is a new browser (est. mid
 2022) that extends <span><a href="https://www.chromium.org/Home/"><img
-src="/favicon/https%253A%252F%252Fwww.chromium.org%252FHome%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.chromium.org%2FHome%2F.ico" />Chromium</a><span
+src="/favicon/chromium.org.ico" class="favicon"
+alt="/favicon/chromium.org.ico" />Chromium</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://www.chromium.org/Home/" title="_blank"><img
-src="/favicon/https%253A%252F%252Fwww.chromium.org%252FHome%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.chromium.org%2FHome%2F.ico" />https://www.chromium.org/Home/</a></em></span><span
+src="/favicon/chromium.org.ico" class="favicon"
+alt="/favicon/chromium.org.ico" />https://www.chromium.org/Home/</a></em></span><span
 class="preview-description">Placeholder description for
 https://www.chromium.org/Home/</span></span></span> in some very novel
 and unique ways. Overall, after using Arc for about a month on my Apple
@@ -347,14 +398,12 @@ actually looking for a tab in sidebar as I'm quickly opening and closing
 lots of tabs, and I can't believe other browsers don't have it, it just
 makes so much sense. [<span><a
 href="https://youtu.be/GwvHZgF_fWY?t=38"><img
-src="/favicon/https%253A%252F%252Fyoutu.be%252FGwvHZgF_fWY%253Ft%253D38.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fyoutu.be%2FGwvHZgF_fWY%3Ft%3D38.png" />demo</a><span
+src="/favicon/youtu.be.png" class="favicon"
+alt="/favicon/youtu.be.png" />demo</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://youtu.be/GwvHZgF_fWY?t=38" title="_blank"><img
-src="/favicon/https%253A%252F%252Fyoutu.be%252FGwvHZgF_fWY%253Ft%253D38.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fyoutu.be%2FGwvHZgF_fWY%3Ft%3D38.png" />https://youtu.be/GwvHZgF_fWY?t=38</a></em></span><span
+src="/favicon/youtu.be.png" class="favicon"
+alt="/favicon/youtu.be.png" />https://youtu.be/GwvHZgF_fWY?t=38</a></em></span><span
 class="preview-description">Placeholder description for
 https://youtu.be/GwvHZgF_fWY?t=38</span></span></span>]</p>
 <p><img src="/asset/arc-browser-review/switch-tabs.png"
@@ -398,14 +447,12 @@ bookmark of the current URL by <code>CMD+T raindrop</code> and selecting
 the appropriate dropdown menu option. - some site-specific searches
 (similar to bang patterns in <span><a
 href="https://duckduckgo.com/bangs"><img
-src="/favicon/https%253A%252F%252Fduckduckgo.com%252Fbangs.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fduckduckgo.com%2Fbangs.ico" />duckduckgo</a><span
+src="/favicon/duckduckgo.com.ico" class="favicon"
+alt="/favicon/duckduckgo.com.ico" />duckduckgo</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://duckduckgo.com/bangs" title="_blank"><img
-src="/favicon/https%253A%252F%252Fduckduckgo.com%252Fbangs.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fduckduckgo.com%2Fbangs.ico" />https://duckduckgo.com/bangs</a></em></span><span
+src="/favicon/duckduckgo.com.ico" class="favicon"
+alt="/favicon/duckduckgo.com.ico" />https://duckduckgo.com/bangs</a></em></span><span
 class="preview-description">Placeholder description for
 https://duckduckgo.com/bangs</span></span></span> or ChatGPT (doesn’t
 work with other AI assistants (yet?)) * The command bar opens the result
@@ -438,18 +485,17 @@ skimming (e.g. it was linked to by another article you were focussing
 on, and this one’s just for some brief context). However, for this kind
 of situation the next feature is also particularly useful.</p>
 <p>It looks like Arc is planning to a lot with <span><a
-href="https://arc.net/max"><img
-src="/favicon/https%253A%252F%252Farc.net%252Fmax.png" class="favicon"
-alt="/favicon/https%3A%2F%2Farc.net%2Fmax.png" />Max</a><span
+href="https://arc.net/max"><img src="/favicon/arc.net.png"
+class="favicon" alt="/favicon/arc.net.png" />Max</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://arc.net/max" title="_blank"><img
-src="/favicon/https%253A%252F%252Farc.net%252Fmax.png" class="favicon"
-alt="/favicon/https%3A%2F%2Farc.net%2Fmax.png" />https://arc.net/max</a></em></span><span
+src="/favicon/arc.net.png" class="favicon"
+alt="/favicon/arc.net.png" />https://arc.net/</a></em></span><span
 class="preview-description">Placeholder description for
-https://arc.net/max</span></span></span>, Arc's AI Assistant
-integrations. I'm not sure how much of it will be actually useful, and
-how much is purely justification for saying "AI-powered" more often, but
-so far so good.</p>
+https://arc.net/</span></span></span>, Arc's AI Assistant integrations.
+I'm not sure how much of it will be actually useful, and how much is
+purely justification for saying "AI-powered" more often, but so far so
+good.</p>
 <h3 id="link-summaries-via-ai">Link Summaries via AI</h3>
 <p>If you hover over a link for a second (this used to require holding
 <code>Shift</code>), a little box will appear nearby it with some text
@@ -468,21 +514,18 @@ webpage are, and don’t give much idea of the specific content.</p>
 <h3 id="little-arc">Little Arc</h3>
 <p><span><a
 href="https://resources.arc.net/hc/en-us/articles/19235387524503-Little-Arc-Quick-Lookups-Instant-Triaging"><img
-src="/favicon/https%253A%252F%252Fresources.arc.net%252Fhc%252Fen-us%252Farticles%252F19235387524503-Little-Arc-Quick-Lookups-Instant-Triaging.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fresources.arc.net%2Fhc%2Fen-us%2Farticles%2F19235387524503-Little-Arc-Quick-Lookups-Instant-Triaging.png" />Little
-Arc</a><span class="sidenote preview"><span class="preview-title"><em><a
+src="/favicon/arc.net.png" class="favicon"
+alt="/favicon/arc.net.png" />Little Arc</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://resources.arc.net/hc/en-us/articles/19235387524503-Little-Arc-Quick-Lookups-Instant-Triaging"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fresources.arc.net%252Fhc%252Fen-us%252Farticles%252F19235387524503-Little-Arc-Quick-Lookups-Instant-Triaging.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fresources.arc.net%2Fhc%2Fen-us%2Farticles%2F19235387524503-Little-Arc-Quick-Lookups-Instant-Triaging.png" />https://resources.arc.net/hc/en-us/articles/19235387524503-Little-Arc-Quick-Lookups-Instant-Triaging</a></em></span><span
+title="_blank"><img src="/favicon/arc.net.png" class="favicon"
+alt="/favicon/arc.net.png" />https://arc.net/</a></em></span><span
 class="preview-description">Placeholder description for
-https://resources.arc.net/hc/en-us/articles/19235387524503-Little-Arc-Quick-Lookups-Instant-Triaging</span></span></span>
-is an Arc window that is not associated with a Space. If you set Arc to
-be your default browser, then following a link from another application
-will open in Little Arc. From Little Arc, you can quickly add the
-current page to a specific Space of course.</p>
+https://arc.net/</span></span></span> is an Arc window that is not
+associated with a Space. If you set Arc to be your default browser, then
+following a link from another application will open in Little Arc. From
+Little Arc, you can quickly add the current page to a specific Space of
+course.</p>
 <p>I find Little Arc to be super useful — much more useful than I
 expected. For example, if I follow a link from an email, a chat app, a
 calendar event Zoom link, etc. it opens in its own new Little Arc window
@@ -496,25 +539,22 @@ Picture-in-Picture Popout</h3>
 <p>This is a feature I didn’t know I wanted. Arc has it's own
 implementation of picture-in-picture, <span><a
 href="https://resources.arc.net/hc/en-us/articles/19234766331799-Mini-Player-Watch-or-Listen-as-you-Browse"><img
-src="/favicon/https%253A%252F%252Fresources.arc.net%252Fhc%252Fen-us%252Farticles%252F19234766331799-Mini-Player-Watch-or-Listen-as-you-Browse.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fresources.arc.net%2Fhc%2Fen-us%2Farticles%2F19234766331799-Mini-Player-Watch-or-Listen-as-you-Browse.png" />MiniPlayer</a><span
+src="/favicon/arc.net.png" class="favicon"
+alt="/favicon/arc.net.png" />MiniPlayer</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://resources.arc.net/hc/en-us/articles/19234766331799-Mini-Player-Watch-or-Listen-as-you-Browse"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fresources.arc.net%252Fhc%252Fen-us%252Farticles%252F19234766331799-Mini-Player-Watch-or-Listen-as-you-Browse.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fresources.arc.net%2Fhc%2Fen-us%2Farticles%2F19234766331799-Mini-Player-Watch-or-Listen-as-you-Browse.png" />https://resources.arc.net/hc/en-us/articles/19234766331799-Mini-Player-Watch-or-Listen-as-you-Browse</a></em></span><span
+title="_blank"><img src="/favicon/arc.net.png" class="favicon"
+alt="/favicon/arc.net.png" />https://arc.net/</a></em></span><span
 class="preview-description">Placeholder description for
-https://resources.arc.net/hc/en-us/articles/19234766331799-Mini-Player-Watch-or-Listen-as-you-Browse</span></span></span>.
-When you have a picture-in-picture enabled view active in one Arc tab,
-then when you leave that tab (by going to another tab or another
-application) picture-in-picture starts automatically. This works with,
-for example, youtube videos and google meet calls. So far I’ve found it
-really nice to be able to, while in a Google Meeting, quickly start
-using the same browser window as normal without having to open a new
-window to manage, and have the picture-in-picture automatically take
-care of keeping the meeting visible.</p>
+https://arc.net/</span></span></span>. When you have a
+picture-in-picture enabled view active in one Arc tab, then when you
+leave that tab (by going to another tab or another application)
+picture-in-picture starts automatically. This works with, for example,
+youtube videos and google meet calls. So far I’ve found it really nice
+to be able to, while in a Google Meeting, quickly start using the same
+browser window as normal without having to open a new window to manage,
+and have the picture-in-picture automatically take care of keeping the
+meeting visible.</p>
 <p><img src="/asset/arc-browser-review/pic-in-pic.png"
 alt="pic-in-pic" /></p>
 <h3 id="boosts">Boosts</h3>
@@ -523,46 +563,33 @@ some custom CSS to from the client site into a specific webpage’s html.
 You can also inject Javascript, but Boosts that don’t support sharing by
 Arc natively for security (of course you can just share the Javascript
 directly). There isn’t much available in the <span><a
-href="https://arc.net/boosts"><img
-src="/favicon/https%253A%252F%252Farc.net%252Fboosts.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Farc.net%2Fboosts.png" />Boost
-Gallery</a><span class="sidenote preview"><span
-class="preview-title"><em><a href="https://arc.net/boosts"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Farc.net%252Fboosts.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Farc.net%2Fboosts.png" />https://arc.net/boosts</a></em></span><span
+href="https://arc.net/boosts"><img src="/favicon/arc.net.png"
+class="favicon" alt="/favicon/arc.net.png" />Boost Gallery</a><span
+class="sidenote preview"><span class="preview-title"><em><a
+href="https://arc.net/boosts" title="_blank"><img
+src="/favicon/arc.net.png" class="favicon"
+alt="/favicon/arc.net.png" />https://arc.net/</a></em></span><span
 class="preview-description">Placeholder description for
-https://arc.net/boosts</span></span></span> yet, but I like the idea and
-look forward to finding useful Boosts, such as the following: - <span><a
+https://arc.net/</span></span></span> yet, but I like the idea and look
+forward to finding useful Boosts, such as the following: - <span><a
 href="https://arc.net/boost/C05314CD-FE01-43E2-8D5C-D4B15BB4879B"><img
-src="/favicon/https%253A%252F%252Farc.net%252Fboost%252FC05314CD-FE01-43E2-8D5C-D4B15BB4879B.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Farc.net%2Fboost%2FC05314CD-FE01-43E2-8D5C-D4B15BB4879B.png" />block
-youtube shorts</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/arc.net.png" class="favicon"
+alt="/favicon/arc.net.png" />block youtube shorts</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://arc.net/boost/C05314CD-FE01-43E2-8D5C-D4B15BB4879B"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Farc.net%252Fboost%252FC05314CD-FE01-43E2-8D5C-D4B15BB4879B.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Farc.net%2Fboost%2FC05314CD-FE01-43E2-8D5C-D4B15BB4879B.png" />https://arc.net/boost/C05314CD-FE01-43E2-8D5C-D4B15BB4879B</a></em></span><span
+title="_blank"><img src="/favicon/arc.net.png" class="favicon"
+alt="/favicon/arc.net.png" />https://arc.net/</a></em></span><span
 class="preview-description">Placeholder description for
-https://arc.net/boost/C05314CD-FE01-43E2-8D5C-D4B15BB4879B</span></span></span>
-- <span><a
+https://arc.net/</span></span></span> - <span><a
 href="https://arc.net/boost/0B081663-9784-4495-8447-BCD09F834AAC"><img
-src="/favicon/https%253A%252F%252Farc.net%252Fboost%252F0B081663-9784-4495-8447-BCD09F834AAC.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Farc.net%2Fboost%2F0B081663-9784-4495-8447-BCD09F834AAC.png" />twitter
-theme</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/arc.net.png" class="favicon"
+alt="/favicon/arc.net.png" />twitter theme</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://arc.net/boost/0B081663-9784-4495-8447-BCD09F834AAC"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Farc.net%252Fboost%252F0B081663-9784-4495-8447-BCD09F834AAC.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Farc.net%2Fboost%2F0B081663-9784-4495-8447-BCD09F834AAC.png" />https://arc.net/boost/0B081663-9784-4495-8447-BCD09F834AAC</a></em></span><span
+title="_blank"><img src="/favicon/arc.net.png" class="favicon"
+alt="/favicon/arc.net.png" />https://arc.net/</a></em></span><span
 class="preview-description">Placeholder description for
-https://arc.net/boost/0B081663-9784-4495-8447-BCD09F834AAC</span></span></span></p>
+https://arc.net/</span></span></span></p>
 <p>Additionally, it’s basically an easy way to hack your own dark mode,
 custom formatting (i.e. change fonts), or ad blocker (you can delete any
 html elements <em>permanently</em>) on any website. I’ve used it ad hoc
@@ -576,24 +603,20 @@ is fortunately an easy choice.</p>
 <h3 id="easels-notes">Easels &amp; Notes</h3>
 <p>Arc has native support for <span><a
 href="https://resources.arc.net/hc/en-us/articles/19231142050071-Easels-Capture-Create"><img
-src="/favicon/https%253A%252F%252Fresources.arc.net%252Fhc%252Fen-us%252Farticles%252F19231142050071-Easels-Capture-Create.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fresources.arc.net%2Fhc%2Fen-us%2Farticles%2F19231142050071-Easels-Capture-Create.png" />Easels</a><span
+src="/favicon/arc.net.png" class="favicon"
+alt="/favicon/arc.net.png" />Easels</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://resources.arc.net/hc/en-us/articles/19231142050071-Easels-Capture-Create"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fresources.arc.net%252Fhc%252Fen-us%252Farticles%252F19231142050071-Easels-Capture-Create.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fresources.arc.net%2Fhc%2Fen-us%2Farticles%2F19231142050071-Easels-Capture-Create.png" />https://resources.arc.net/hc/en-us/articles/19231142050071-Easels-Capture-Create</a></em></span><span
+title="_blank"><img src="/favicon/arc.net.png" class="favicon"
+alt="/favicon/arc.net.png" />https://arc.net/</a></em></span><span
 class="preview-description">Placeholder description for
-https://resources.arc.net/hc/en-us/articles/19231142050071-Easels-Capture-Create</span></span></span>,
-which are little workspaces taking notes and making sketches in a tab
-that can be manipulated like any other tab. I actually haven’t used
-Arc’s built-in version of this for anything, but Arc also integrates
-with Notion which I use as my main note management tool. As a result
-there’s a keyboard shortcut to make a new note in Notion and I can
-access a recent notion page from a dropdown menu triggered by hovering
-over the Notion Favorite tab.</p>
+https://arc.net/</span></span></span>, which are little workspaces
+taking notes and making sketches in a tab that can be manipulated like
+any other tab. I actually haven’t used Arc’s built-in version of this
+for anything, but Arc also integrates with Notion which I use as my main
+note management tool. As a result there’s a keyboard shortcut to make a
+new note in Notion and I can access a recent notion page from a dropdown
+menu triggered by hovering over the Notion Favorite tab.</p>
 <p><img src="/asset/arc-browser-review/easel.png" alt="easel" /></p>
 <h3 id="chromium">Chromium</h3>
 <p>Since Arc is based on Chromium, pretty much all Chrome extensions
@@ -603,17 +626,15 @@ uBlock Origin, Video Speed Controller)</p>
 <h3 id="chromium">Chromium</h3>
 <p>Since it’s <span><a
 href="https://www.chromium.org/chromium-projects/"><img
-src="/favicon/https%253A%252F%252Fwww.chromium.org%252Fchromium-projects%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.chromium.org%2Fchromium-projects%2F.ico" />Chromium</a><span
+src="/favicon/chromium.org.ico" class="favicon"
+alt="/favicon/chromium.org.ico" />Chromium</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://www.chromium.org/chromium-projects/" title="_blank"><img
-src="/favicon/https%253A%252F%252Fwww.chromium.org%252Fchromium-projects%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.chromium.org%2Fchromium-projects%2F.ico" />https://www.chromium.org/chromium-projects/</a></em></span><span
+src="/favicon/chromium.org.ico" class="favicon"
+alt="/favicon/chromium.org.ico" />https://www.chromium.org/Home/</a></em></span><span
 class="preview-description">Placeholder description for
-https://www.chromium.org/chromium-projects/</span></span></span>, it’s
-not as integrated with the Apple ecosystem as Safari, so there are still
+https://www.chromium.org/Home/</span></span></span>, it’s not as
+integrated with the Apple ecosystem as Safari, so there are still
 somethings that I go to Safari for. One particular thing this is
 annoying for is passwords, since I use the Safari password manager to
 generate and save passwords (auto syncs with my iPhone). Beyond that, it
@@ -686,14 +707,11 @@ shortcuts on websites.</p>
 <h1 id="references">References</h1>
 <ul>
 <li><a href="https://arc.net/" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Farc.net%252F.png" class="favicon"
-alt="/favicon/https%3A%2F%2Farc.net%2F.png" />Arc</a></li>
+data-noLinkPreview=""><img src="/favicon/arc.net.png" class="favicon"
+alt="/favicon/arc.net.png" />Arc</a></li>
 <li><a href="https://www.chromium.org/Home/" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fwww.chromium.org%252FHome%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.chromium.org%2FHome%2F.ico" />Chromium</a></li>
+data-noLinkPreview=""><img src="/favicon/chromium.org.ico"
+class="favicon" alt="/favicon/chromium.org.ico" />Chromium</a></li>
 <li><a href="/asset/arc-browser-review/arc-search.png"
 data-inReference="" data-noLinkPreview=""><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />arc-search</a></li>
@@ -701,10 +719,8 @@ class="favicon" alt="/favicon.ico" />arc-search</a></li>
 data-noLinkPreview=""><img src="/favicon.ico" class="favicon"
 alt="/favicon.ico" />spaces</a></li>
 <li><a href="https://youtu.be/GwvHZgF_fWY?t=38" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fyoutu.be%252FGwvHZgF_fWY%253Ft%253D38.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fyoutu.be%2FGwvHZgF_fWY%3Ft%3D38.png" />demo</a></li>
+data-noLinkPreview=""><img src="/favicon/youtu.be.png" class="favicon"
+alt="/favicon/youtu.be.png" />demo</a></li>
 <li><a href="/asset/arc-browser-review/switch-tabs.png"
 data-inReference="" data-noLinkPreview=""><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />switch-tabs</a></li>
@@ -715,10 +731,8 @@ class="favicon" alt="/favicon.ico" />split-view</a></li>
 src="/favicon.ico" class="favicon"
 alt="/favicon.ico" />Raindrop</a></li>
 <li><a href="https://duckduckgo.com/bangs" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fduckduckgo.com%252Fbangs.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fduckduckgo.com%2Fbangs.ico" />duckduckgo</a></li>
+data-noLinkPreview=""><img src="/favicon/duckduckgo.com.ico"
+class="favicon" alt="/favicon/duckduckgo.com.ico" />duckduckgo</a></li>
 <li><a href="/asset/arc-browser-review/command-bar-google-search.png"
 data-inReference="" data-noLinkPreview=""><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />command-bar-google-search</a></li>
@@ -729,68 +743,68 @@ class="favicon" alt="/favicon.ico" />command-bar-raindrop</a></li>
 data-inReference="" data-noLinkPreview=""><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />find-ask-with-ai</a></li>
 <li><a href="https://arc.net/max" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Farc.net%252Fmax.png" class="favicon"
-alt="/favicon/https%3A%2F%2Farc.net%2Fmax.png" />Max</a></li>
+data-noLinkPreview=""><img src="/favicon/arc.net.png" class="favicon"
+alt="/favicon/arc.net.png" />Max</a></li>
 <li><a href="/asset/arc-browser-review/ai-preview.png"
 data-inReference="" data-noLinkPreview=""><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />ai-preview</a></li>
 <li><a
 href="https://resources.arc.net/hc/en-us/articles/19235387524503-Little-Arc-Quick-Lookups-Instant-Triaging"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fresources.arc.net%252Fhc%252Fen-us%252Farticles%252F19235387524503-Little-Arc-Quick-Lookups-Instant-Triaging.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fresources.arc.net%2Fhc%2Fen-us%2Farticles%2F19235387524503-Little-Arc-Quick-Lookups-Instant-Triaging.png" />Little
-Arc</a></li>
+src="/favicon/arc.net.png" class="favicon"
+alt="/favicon/arc.net.png" />Little Arc</a></li>
 <li><a
 href="https://resources.arc.net/hc/en-us/articles/19234766331799-Mini-Player-Watch-or-Listen-as-you-Browse"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fresources.arc.net%252Fhc%252Fen-us%252Farticles%252F19234766331799-Mini-Player-Watch-or-Listen-as-you-Browse.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fresources.arc.net%2Fhc%2Fen-us%2Farticles%2F19234766331799-Mini-Player-Watch-or-Listen-as-you-Browse.png" />MiniPlayer</a></li>
+src="/favicon/arc.net.png" class="favicon"
+alt="/favicon/arc.net.png" />MiniPlayer</a></li>
 <li><a href="/asset/arc-browser-review/pic-in-pic.png"
 data-inReference="" data-noLinkPreview=""><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />pic-in-pic</a></li>
 <li><a href="https://arc.net/boosts" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Farc.net%252Fboosts.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Farc.net%2Fboosts.png" />Boost
-Gallery</a></li>
+data-noLinkPreview=""><img src="/favicon/arc.net.png" class="favicon"
+alt="/favicon/arc.net.png" />Boost Gallery</a></li>
 <li><a href="https://arc.net/boost/C05314CD-FE01-43E2-8D5C-D4B15BB4879B"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Farc.net%252Fboost%252FC05314CD-FE01-43E2-8D5C-D4B15BB4879B.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Farc.net%2Fboost%2FC05314CD-FE01-43E2-8D5C-D4B15BB4879B.png" />block
-youtube shorts</a></li>
+src="/favicon/arc.net.png" class="favicon"
+alt="/favicon/arc.net.png" />block youtube shorts</a></li>
 <li><a href="https://arc.net/boost/0B081663-9784-4495-8447-BCD09F834AAC"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Farc.net%252Fboost%252F0B081663-9784-4495-8447-BCD09F834AAC.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Farc.net%2Fboost%2F0B081663-9784-4495-8447-BCD09F834AAC.png" />twitter
-theme</a></li>
+src="/favicon/arc.net.png" class="favicon"
+alt="/favicon/arc.net.png" />twitter theme</a></li>
 <li><a href="/asset/arc-browser-review/boosts.png" data-inReference=""
 data-noLinkPreview=""><img src="/favicon.ico" class="favicon"
 alt="/favicon.ico" />boosts</a></li>
 <li><a
 href="https://resources.arc.net/hc/en-us/articles/19231142050071-Easels-Capture-Create"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fresources.arc.net%252Fhc%252Fen-us%252Farticles%252F19231142050071-Easels-Capture-Create.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fresources.arc.net%2Fhc%2Fen-us%2Farticles%2F19231142050071-Easels-Capture-Create.png" />Easels</a></li>
+src="/favicon/arc.net.png" class="favicon"
+alt="/favicon/arc.net.png" />Easels</a></li>
 <li><a href="/asset/arc-browser-review/easel.png" data-inReference=""
 data-noLinkPreview=""><img src="/favicon.ico" class="favicon"
 alt="/favicon.ico" />easel</a></li>
 <li><a href="https://www.chromium.org/chromium-projects/"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fwww.chromium.org%252Fchromium-projects%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.chromium.org%2Fchromium-projects%2F.ico" />Chromium</a></li>
+src="/favicon/chromium.org.ico" class="favicon"
+alt="/favicon/chromium.org.ico" />Chromium</a></li>
 <li><a href="/asset/arc-browser-review/spaces.png" data-inReference=""
 data-noLinkPreview=""><img src="/favicon.ico" class="favicon"
 alt="/favicon.ico" />spaces</a></li>
-</ul></div>
-    </main>
+</ul>
+<h1 id="signature">Signature</h1>
+<p>The following code block is the <a
+href="https://en.wikipedia.org/wiki/EdDSA#Ed25519" title="_blank"><img
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />Ed25519 signature</a> of this post's
+<a href="/post_markdown/arc-browser-review.md"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />markdown content</a> encoded in
+base 64, using my <em>secret key</em> and <a
+href="/key/main_ed25519.pub.txt" title="_blank"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />public key</a>.</p>
+<pre><code>410d954126aa1d3c31e9fa1093483c68348c0910655ff692eb74ceab132bc8104563bc5f89b5ed07b5cde7eeecc1b96c9e0569074a7a55600e4fcd37d750aa0e</code></pre>
+<p>See <a href="/page/signature.html"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />Signature</a> for more
+information.</p></main>
 
     <footer>
       <div class="title">

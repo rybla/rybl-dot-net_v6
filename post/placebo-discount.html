@@ -4,163 +4,215 @@
     <title>rybl.net | Placebo Discount</title>
 
     <link rel="stylesheet" href="/style/common.css" />
+    <!--<link rel="stylesheet" href="/style/skylighting-espresso.css" />-->
+    <link rel="stylesheet" href="/style/skylighting-solarized.css" />
     <link rel="stylesheet" href="/style/background.css" />
     <link rel="stylesheet" href="/style/custom-elements.css" />
-    <link rel="stylesheet" href="/style/header-and-footer.css" />    <link rel="stylesheet" href="/style/post.css" />
-
+    <link rel="stylesheet" href="/style/header-and-footer.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-  rel="stylesheet"
-/>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-  rel="stylesheet"
-/> <script
-  id="MathJax-script"
-  async
-  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
-></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+    ></script>
 
-<script src="/script/parallax-body-background-on-scroll.js"></script>
+    <script src="/script/parallax-body-background-on-scroll.js"></script>
 
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
-/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <!--<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 
-<script>
-  hljs.highlightAll();
-</script>
+    <script>
+      hljs.highlightAll();
+    </script>-->    <link rel="stylesheet" href="/style/post.css" />
   </head>
   <body>
-    <div id="background"></div> <header><div class="title">
-  <div class="root-title">
-    <a href="/">rybl.net</a>
-  </div>
+    <svg>
+      <defs>
+        <filter
+          id="dancing-stroke-svg-filter"
+          color-interpolation-filters="linearRGB"
+          filterUnits="objectBoundingBox"
+          primitiveUnits="userSpaceOnUse"
+        >
+          <feMorphology
+            operator="dilate"
+            radius="4 4"
+            in="SourceAlpha"
+            result="morphology"
+          />
+          <feFlood flood-color="#30597E" flood-opacity="1" result="flood" />
+          <feComposite
+            in="flood"
+            in2="morphology"
+            operator="in"
+            result="composite"
+          />
+          <feComposite
+            in="composite"
+            in2="SourceAlpha"
+            operator="out"
+            result="composite1"
+          />
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.01 0.02"
+            numOctaves="1"
+            seed="0"
+            stitchTiles="stitch"
+            result="turbulence"
+          />
+          <feDisplacementMap
+            in="composite1"
+            in2="turbulence"
+            scale="17"
+            xChannelSelector="A"
+            yChannelSelector="A"
+            result="displacementMap"
+          />
+          <feMerge result="merge">
+            <feMergeNode in="SourceGraphic" result="mergeNode" />
+            <feMergeNode in="displacementMap" result="mergeNode1" />
+          </feMerge>
+        </filter>
+      </defs>
+    </svg>
 
-  <img class="website-icon" src="/image/rybl-small.png" />
+    <div id="background"></div>
+    <header><div class="title">
+      <div class="root-title">
+        <a href="/">rybl.net</a>
+      </div>
 
-  <div class="local-title">Placebo Discount</div>
-</div>
-<div class="menu">
-  <div class="item">
-    <a href="/">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="icon lucide lucide-library-icon lucide-library"
-      >
-        <path d="m16 6 4 14" />
-        <path d="M12 6v14" />
-        <path d="M8 8v12" />
-        <path d="M4 4v16" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/about.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="icon lucide lucide-info-icon lucide-info"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 16v-4" />
-        <path d="M12 8h.01" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/profile.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-globe-icon lucide-globe"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-        <path d="M2 12h20" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/graph.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-orbit-icon lucide-orbit"
-      >
-        <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
-        <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
-        <circle cx="12" cy="12" r="3" />
-        <circle cx="19" cy="5" r="2" />
-        <circle cx="5" cy="19" r="2" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/signature.html"
-      ><svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-fingerprint-icon lucide-fingerprint"
-      >
-        <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
-        <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
-        <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
-        <path d="M2 12a10 10 0 0 1 18-6" />
-        <path d="M2 16h.01" />
-        <path d="M21.8 16c.2-2 .131-5.354 0-6" />
-        <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
-        <path d="M8.65 22c.21-.66.45-1.32.57-2" />
-        <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
-    ></a>
-  </div>
-</div></header>
+      <img class="website-icon" src="/image/rybl-small.png" />
 
-    <main>
-      <div class="main-inner"><h2><a href="/post/placebo-discount.html" data-noLinkFavicon=""
-data-noLinkPreview="">Placebo Discount</a></h2>
+      <div class="local-title">Placebo Discount</div>
+    </div>
+    <div class="menu">
+      <div class="item">
+        <a href="/">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon lucide lucide-library-icon lucide-library"
+          >
+            <path d="m16 6 4 14" />
+            <path d="M12 6v14" />
+            <path d="M8 8v12" />
+            <path d="M4 4v16" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/about.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon lucide lucide-info-icon lucide-info"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 16v-4" />
+            <path d="M12 8h.01" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/profile.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-globe-icon lucide-globe"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+            <path d="M2 12h20" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/graph.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-orbit-icon lucide-orbit"
+          >
+            <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+            <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+            <circle cx="12" cy="12" r="3" />
+            <circle cx="19" cy="5" r="2" />
+            <circle cx="5" cy="19" r="2" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/signature.html"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-fingerprint-icon lucide-fingerprint"
+          >
+            <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+            <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+            <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+            <path d="M2 12a10 10 0 0 1 18-6" />
+            <path d="M2 16h.01" />
+            <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+            <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+            <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+            <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+        ></a>
+      </div>
+    </div></header>
+    <main><h1><a href="/post/placebo-discount.html" data-noLinkFavicon=""
+data-noLinkPreview="">Placebo Discount</a></h1>
 <div class="header-info">
 <p><u>Published:</u> 2021-03-28</p>
 <p><u>Tags:</u> economics, medicine</p>
@@ -171,40 +223,35 @@ of placebo doses.</p>
 </div>
 <p>The <em><span><a
 href="https://www.nccih.nih.gov/health/placebo-effect"><img
-src="/missing.ico" class="favicon" alt="/missing.ico" />placebo
-effect</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />placebo effect</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://www.nccih.nih.gov/health/placebo-effect"
-title="_blank"><img src="/missing.ico" class="favicon"
-alt="/missing.ico" />https://www.nccih.nih.gov/health/placebo-effect</a></em></span><span
+title="_blank"><img src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />https://www.nccih.nih.gov/health/placebo-effect</a></em></span><span
 class="preview-description">Placeholder description for
 https://www.nccih.nih.gov/health/placebo-effect</span></span></span></em>
 is a <span><a
 href="https://www.medicalnewstoday.com/articles/306437#how-does-it-work"><img
-src="/favicon/https%253A%252F%252Fwww.medicalnewstoday.com%252Farticles%252F306437%2523how-does-it-work.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.medicalnewstoday.com%2Farticles%2F306437%23how-does-it-work.jpg" />well-studied</a><span
+src="/favicon/medicalnewstoday.com.jpg" class="favicon"
+alt="/favicon/medicalnewstoday.com.jpg" />well-studied</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://www.medicalnewstoday.com/articles/306437#how-does-it-work"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fwww.medicalnewstoday.com%252Farticles%252F306437%2523how-does-it-work.jpg"
+title="_blank"><img src="/favicon/medicalnewstoday.com.jpg"
 class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.medicalnewstoday.com%2Farticles%2F306437%23how-does-it-work.jpg" />https://www.medicalnewstoday.com/articles/306437#how-does-it-work</a></em></span><span
+alt="/favicon/medicalnewstoday.com.jpg" />https://www.medicalnewstoday.com/articles/306437#how-does-it-work</a></em></span><span
 class="preview-description">Placeholder description for
 https://www.medicalnewstoday.com/articles/306437#how-does-it-work</span></span></span>
 and <span><a
 href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC524103/"><img
-src="/favicon/https%253A%252F%252Fwww.ncbi.nlm.nih.gov%252Fpmc%252Farticles%252FPMC524103%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.ncbi.nlm.nih.gov%2Fpmc%2Farticles%2FPMC524103%2F.ico" />used</a><span
+src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />used</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC524103/"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fwww.ncbi.nlm.nih.gov%252Fpmc%252Farticles%252FPMC524103%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.ncbi.nlm.nih.gov%2Fpmc%2Farticles%2FPMC524103%2F.ico" />https://www.ncbi.nlm.nih.gov/pmc/articles/PMC524103/</a></em></span><span
+title="_blank"><img src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />https://www.nccih.nih.gov/health/placebo-effect</a></em></span><span
 class="preview-description">Placeholder description for
-https://www.ncbi.nlm.nih.gov/pmc/articles/PMC524103/</span></span></span>
+https://www.nccih.nih.gov/health/placebo-effect</span></span></span>
 effect of a <em>placebo</em> intervention on a recipient who expects the
 intervention to be active. A <em>placebo</em> intervention is a medical
 intervention (most commonly a drug administration) that is considered
@@ -215,54 +262,41 @@ effect of common drugs is only slightly higher than the placebo!</p>
 <p>Examples of the effectiveness of placebo versus non-placebo:</p>
 <ul>
 <li><span><a href="https://pubmed.ncbi.nlm.nih.gov/26143019/"><img
-src="/favicon/https%253A%252F%252Fpubmed.ncbi.nlm.nih.gov%252F26143019%252F.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fpubmed.ncbi.nlm.nih.gov%2F26143019%2F.png" />nasal
-congestion medicine</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />nasal congestion medicine</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://pubmed.ncbi.nlm.nih.gov/26143019/" title="_blank"><img
-src="/favicon/https%253A%252F%252Fpubmed.ncbi.nlm.nih.gov%252F26143019%252F.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fpubmed.ncbi.nlm.nih.gov%2F26143019%2F.png" />https://pubmed.ncbi.nlm.nih.gov/26143019/</a></em></span><span
+src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />https://www.nccih.nih.gov/health/placebo-effect</a></em></span><span
 class="preview-description">Placeholder description for
-https://pubmed.ncbi.nlm.nih.gov/26143019/</span></span></span></li>
+https://www.nccih.nih.gov/health/placebo-effect</span></span></span></li>
 <li><span><a
 href="https://bmjopen.bmj.com/content/9/6/e024886.full"><img
-src="/favicon/https%253A%252F%252Fbmjopen.bmj.com%252Fcontent%252F9%252F6%252Fe024886.full.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fbmjopen.bmj.com%2Fcontent%2F9%2F6%2Fe024886.full.ico" />antidepressants</a><span
+src="/favicon/bmj.com.ico" class="favicon"
+alt="/favicon/bmj.com.ico" />antidepressants</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://bmjopen.bmj.com/content/9/6/e024886.full"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fbmjopen.bmj.com%252Fcontent%252F9%252F6%252Fe024886.full.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fbmjopen.bmj.com%2Fcontent%2F9%2F6%2Fe024886.full.ico" />https://bmjopen.bmj.com/content/9/6/e024886.full</a></em></span><span
+title="_blank"><img src="/favicon/bmj.com.ico" class="favicon"
+alt="/favicon/bmj.com.ico" />https://bmjopen.bmj.com/content/9/6/e024886.full</a></em></span><span
 class="preview-description">Placeholder description for
 https://bmjopen.bmj.com/content/9/6/e024886.full</span></span></span></li>
 <li><span><a href="https://pubmed.ncbi.nlm.nih.gov/24401940/"><img
-src="/favicon/https%253A%252F%252Fpubmed.ncbi.nlm.nih.gov%252F24401940%252F.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fpubmed.ncbi.nlm.nih.gov%2F24401940%2F.png" />migrane
-medicine</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />migrane medicine</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://pubmed.ncbi.nlm.nih.gov/24401940/" title="_blank"><img
-src="/favicon/https%253A%252F%252Fpubmed.ncbi.nlm.nih.gov%252F24401940%252F.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fpubmed.ncbi.nlm.nih.gov%2F24401940%2F.png" />https://pubmed.ncbi.nlm.nih.gov/24401940/</a></em></span><span
+src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />https://www.nccih.nih.gov/health/placebo-effect</a></em></span><span
 class="preview-description">Placeholder description for
-https://pubmed.ncbi.nlm.nih.gov/24401940/</span></span></span></li>
+https://www.nccih.nih.gov/health/placebo-effect</span></span></span></li>
 <li><span><a
 href="https://journals.lww.com/pain/Fulltext/2015/12000/Increasing_placebo_responses_over_time_in_U_S_.27.aspx"><img
-src="/favicon/https%253A%252F%252Fjournals.lww.com%252Fpain%252FFulltext%252F2015%252F12000%252FIncreasing_placebo_responses_over_time_in_U_S_.27.aspx.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fjournals.lww.com%2Fpain%2FFulltext%2F2015%2F12000%2FIncreasing_placebo_responses_over_time_in_U_S_.27.aspx.ico" />nerve
-pain treatments</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/lww.com.ico" class="favicon"
+alt="/favicon/lww.com.ico" />nerve pain treatments</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://journals.lww.com/pain/Fulltext/2015/12000/Increasing_placebo_responses_over_time_in_U_S_.27.aspx"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fjournals.lww.com%252Fpain%252FFulltext%252F2015%252F12000%252FIncreasing_placebo_responses_over_time_in_U_S_.27.aspx.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fjournals.lww.com%2Fpain%2FFulltext%2F2015%2F12000%2FIncreasing_placebo_responses_over_time_in_U_S_.27.aspx.ico" />https://journals.lww.com/pain/Fulltext/2015/12000/Increasing_placebo_responses_over_time_in_U_S_.27.aspx</a></em></span><span
+title="_blank"><img src="/favicon/lww.com.ico" class="favicon"
+alt="/favicon/lww.com.ico" />https://journals.lww.com/pain/Fulltext/2015/12000/Increasing_placebo_responses_over_time_in_U_S_.27.aspx</a></em></span><span
 class="preview-description">Placeholder description for
 https://journals.lww.com/pain/Fulltext/2015/12000/Increasing_placebo_responses_over_time_in_U_S_.27.aspx</span></span></span></li>
 </ul>
@@ -270,56 +304,48 @@ https://journals.lww.com/pain/Fulltext/2015/12000/Increasing_placebo_responses_o
 <ul>
 <li><span><a
 href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC524103/"><img
-src="/favicon/https%253A%252F%252Fwww.ncbi.nlm.nih.gov%252Fpmc%252Farticles%252FPMC524103%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.ncbi.nlm.nih.gov%2Fpmc%2Farticles%2FPMC524103%2F.ico" />Questionnaire
-survey on use of placebo</a><span class="sidenote preview"><span
+src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />Questionnaire survey on use of
+placebo</a><span class="sidenote preview"><span
 class="preview-title"><em><a
 href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC524103/"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fwww.ncbi.nlm.nih.gov%252Fpmc%252Farticles%252FPMC524103%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.ncbi.nlm.nih.gov%2Fpmc%2Farticles%2FPMC524103%2F.ico" />https://www.ncbi.nlm.nih.gov/pmc/articles/PMC524103/</a></em></span><span
+title="_blank"><img src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />https://www.nccih.nih.gov/health/placebo-effect</a></em></span><span
 class="preview-description">Placeholder description for
-https://www.ncbi.nlm.nih.gov/pmc/articles/PMC524103/</span></span></span></li>
+https://www.nccih.nih.gov/health/placebo-effect</span></span></span></li>
 <li><span><a
 href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3026149/"><img
-src="/favicon/https%253A%252F%252Fwww.ncbi.nlm.nih.gov%252Fpmc%252Farticles%252FPMC3026149%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.ncbi.nlm.nih.gov%2Fpmc%2Farticles%2FPMC3026149%2F.ico" />Placebo
-interventions in practice: a questionnaire survey on the attitudes of
-patients and physicians</a><span class="sidenote preview"><span
+src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />Placebo interventions in practice: a
+questionnaire survey on the attitudes of patients and
+physicians</a><span class="sidenote preview"><span
 class="preview-title"><em><a
 href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3026149/"
-title="_blank"><img
-src="/favicon/https%253A%252F%252Fwww.ncbi.nlm.nih.gov%252Fpmc%252Farticles%252FPMC3026149%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.ncbi.nlm.nih.gov%2Fpmc%2Farticles%2FPMC3026149%2F.ico" />https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3026149/</a></em></span><span
+title="_blank"><img src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />https://www.nccih.nih.gov/health/placebo-effect</a></em></span><span
 class="preview-description">Placeholder description for
-https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3026149/</span></span></span></li>
+https://www.nccih.nih.gov/health/placebo-effect</span></span></span></li>
 <li><span><a href="https://www.bmj.com/content/347/bmj.f3757"><img
-src="/favicon/https%253A%252F%252Fwww.bmj.com%252Fcontent%252F347%252Fbmj.f3757.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.bmj.com%2Fcontent%2F347%2Fbmj.f3757.ico" />Patients’
-attitudes about the use of placebo treatments: telephone survey</a><span
+src="/favicon/bmj.com.ico" class="favicon"
+alt="/favicon/bmj.com.ico" />Patients’ attitudes about the use of
+placebo treatments: telephone survey</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://www.bmj.com/content/347/bmj.f3757" title="_blank"><img
-src="/favicon/https%253A%252F%252Fwww.bmj.com%252Fcontent%252F347%252Fbmj.f3757.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.bmj.com%2Fcontent%2F347%2Fbmj.f3757.ico" />https://www.bmj.com/content/347/bmj.f3757</a></em></span><span
+src="/favicon/bmj.com.ico" class="favicon"
+alt="/favicon/bmj.com.ico" />https://bmjopen.bmj.com/content/9/6/e024886.full</a></em></span><span
 class="preview-description">Placeholder description for
-https://www.bmj.com/content/347/bmj.f3757</span></span></span></li>
+https://bmjopen.bmj.com/content/9/6/e024886.full</span></span></span></li>
 </ul>
 <p>While the power of the placebo effect is well-recognized and used
 prolifically by randomized, placebo-controlled clinical trials clinical
 trials (usually considered the "<span><a
 href="https://www.nccih.nih.gov/health/placebo-effect"><img
-src="/missing.ico" class="favicon" alt="/missing.ico" />gold
-standard</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />gold standard</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://www.nccih.nih.gov/health/placebo-effect"
-title="_blank"><img src="/missing.ico" class="favicon"
-alt="/missing.ico" />https://www.nccih.nih.gov/health/placebo-effect</a></em></span><span
+title="_blank"><img src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />https://www.nccih.nih.gov/health/placebo-effect</a></em></span><span
 class="preview-description">Placeholder description for
 https://www.nccih.nih.gov/health/placebo-effect</span></span></span>" of
 clinical trials) to determine the efficacy of medical interventions,
@@ -332,17 +358,14 @@ are a few reasons I can think of:</p>
 side-effects or mixing drugs</li>
 <li>users assume they are taking a placebo and so experience an adverse
 <span><a href="https://pubmed.ncbi.nlm.nih.gov/30118338/"><img
-src="/favicon/https%253A%252F%252Fpubmed.ncbi.nlm.nih.gov%252F30118338%252F.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fpubmed.ncbi.nlm.nih.gov%2F30118338%2F.png" />nocebo
-effect</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />nocebo effect</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://pubmed.ncbi.nlm.nih.gov/30118338/" title="_blank"><img
-src="/favicon/https%253A%252F%252Fpubmed.ncbi.nlm.nih.gov%252F30118338%252F.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fpubmed.ncbi.nlm.nih.gov%2F30118338%2F.png" />https://pubmed.ncbi.nlm.nih.gov/30118338/</a></em></span><span
+src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />https://www.nccih.nih.gov/health/placebo-effect</a></em></span><span
 class="preview-description">Placeholder description for
-https://pubmed.ncbi.nlm.nih.gov/30118338/</span></span></span></li>
+https://www.nccih.nih.gov/health/placebo-effect</span></span></span></li>
 <li>users feel scammed if it is not clear that some amount of the drug
 they are buying is just sugar pills</li>
 <li>pharmacuetical companies use manipulative marketing to advertise
@@ -378,73 +401,74 @@ if they sold a deal 2 pack.</p>
 <h1>References</h1>
 <ul>
 <li><a href="https://www.nccih.nih.gov/health/placebo-effect"
-data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
-class="favicon" alt="/missing.ico" />placebo effect</a></li>
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />placebo effect</a></li>
 <li><a
 href="https://www.medicalnewstoday.com/articles/306437#how-does-it-work"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fwww.medicalnewstoday.com%252Farticles%252F306437%2523how-does-it-work.jpg"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.medicalnewstoday.com%2Farticles%2F306437%23how-does-it-work.jpg" />well-studied</a></li>
+src="/favicon/medicalnewstoday.com.jpg" class="favicon"
+alt="/favicon/medicalnewstoday.com.jpg" />well-studied</a></li>
 <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC524103/"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fwww.ncbi.nlm.nih.gov%252Fpmc%252Farticles%252FPMC524103%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.ncbi.nlm.nih.gov%2Fpmc%2Farticles%2FPMC524103%2F.ico" />used</a></li>
+src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />used</a></li>
 <li><a href="https://pubmed.ncbi.nlm.nih.gov/26143019/"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fpubmed.ncbi.nlm.nih.gov%252F26143019%252F.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fpubmed.ncbi.nlm.nih.gov%2F26143019%2F.png" />nasal
-congestion medicine</a></li>
+src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />nasal congestion medicine</a></li>
 <li><a href="https://bmjopen.bmj.com/content/9/6/e024886.full"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fbmjopen.bmj.com%252Fcontent%252F9%252F6%252Fe024886.full.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fbmjopen.bmj.com%2Fcontent%2F9%2F6%2Fe024886.full.ico" />antidepressants</a></li>
+src="/favicon/bmj.com.ico" class="favicon"
+alt="/favicon/bmj.com.ico" />antidepressants</a></li>
 <li><a href="https://pubmed.ncbi.nlm.nih.gov/24401940/"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fpubmed.ncbi.nlm.nih.gov%252F24401940%252F.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fpubmed.ncbi.nlm.nih.gov%2F24401940%2F.png" />migrane
-medicine</a></li>
+src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />migrane medicine</a></li>
 <li><a
 href="https://journals.lww.com/pain/Fulltext/2015/12000/Increasing_placebo_responses_over_time_in_U_S_.27.aspx"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fjournals.lww.com%252Fpain%252FFulltext%252F2015%252F12000%252FIncreasing_placebo_responses_over_time_in_U_S_.27.aspx.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fjournals.lww.com%2Fpain%2FFulltext%2F2015%2F12000%2FIncreasing_placebo_responses_over_time_in_U_S_.27.aspx.ico" />nerve
-pain treatments</a></li>
+src="/favicon/lww.com.ico" class="favicon"
+alt="/favicon/lww.com.ico" />nerve pain treatments</a></li>
 <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC524103/"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fwww.ncbi.nlm.nih.gov%252Fpmc%252Farticles%252FPMC524103%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.ncbi.nlm.nih.gov%2Fpmc%2Farticles%2FPMC524103%2F.ico" />Questionnaire
-survey on use of placebo</a></li>
+src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />Questionnaire survey on use of
+placebo</a></li>
 <li><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3026149/"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fwww.ncbi.nlm.nih.gov%252Fpmc%252Farticles%252FPMC3026149%252F.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.ncbi.nlm.nih.gov%2Fpmc%2Farticles%2FPMC3026149%2F.ico" />Placebo
-interventions in practice: a questionnaire survey on the attitudes of
-patients and physicians</a></li>
+src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />Placebo interventions in practice: a
+questionnaire survey on the attitudes of patients and
+physicians</a></li>
 <li><a href="https://www.bmj.com/content/347/bmj.f3757"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fwww.bmj.com%252Fcontent%252F347%252Fbmj.f3757.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fwww.bmj.com%2Fcontent%2F347%2Fbmj.f3757.ico" />Patients’
-attitudes about the use of placebo treatments: telephone survey</a></li>
+src="/favicon/bmj.com.ico" class="favicon"
+alt="/favicon/bmj.com.ico" />Patients’ attitudes about the use of
+placebo treatments: telephone survey</a></li>
 <li><a href="https://www.nccih.nih.gov/health/placebo-effect"
-data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
-class="favicon" alt="/missing.ico" />gold standard</a></li>
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />gold standard</a></li>
 <li><a href="https://pubmed.ncbi.nlm.nih.gov/30118338/"
 data-inReference="" data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fpubmed.ncbi.nlm.nih.gov%252F30118338%252F.png"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fpubmed.ncbi.nlm.nih.gov%2F30118338%2F.png" />nocebo
-effect</a></li>
-</ul></div>
-    </main>
+src="/favicon/nih.gov.png" class="favicon"
+alt="/favicon/nih.gov.png" />nocebo effect</a></li>
+</ul>
+<h1>Signature</h1>
+<p>The following code block is the <a
+href="https://en.wikipedia.org/wiki/EdDSA#Ed25519" title="_blank"><img
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />Ed25519 signature</a> of this post's
+<a href="/post_markdown/placebo-discount.md"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />markdown content</a> encoded in
+base 64, using my <em>secret key</em> and <a
+href="/key/main_ed25519.pub.txt" title="_blank"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />public key</a>.</p>
+<pre><code>47d2dbee6f464a857b2f7f5ab6f4946e8aeec8e65381593fd735e76d531df906bedc4180aa8fe10cec272db33582d920a698e7f6d6d242466382895851ccb507</code></pre>
+<p>See <a href="/page/signature.html"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />Signature</a> for more
+information.</p></main>
 
     <footer>
       <div class="title">

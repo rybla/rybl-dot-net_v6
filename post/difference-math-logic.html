@@ -4,164 +4,216 @@
     <title>rybl.net | The Difference Between Mathematics and Logic</title>
 
     <link rel="stylesheet" href="/style/common.css" />
+    <!--<link rel="stylesheet" href="/style/skylighting-espresso.css" />-->
+    <link rel="stylesheet" href="/style/skylighting-solarized.css" />
     <link rel="stylesheet" href="/style/background.css" />
     <link rel="stylesheet" href="/style/custom-elements.css" />
-    <link rel="stylesheet" href="/style/header-and-footer.css" />    <link rel="stylesheet" href="/style/post.css" />
-
+    <link rel="stylesheet" href="/style/header-and-footer.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-  rel="stylesheet"
-/>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
-  rel="stylesheet"
-/> <script
-  id="MathJax-script"
-  async
-  src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
-></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+    ></script>
 
-<script src="/script/parallax-body-background-on-scroll.js"></script>
+    <script src="/script/parallax-body-background-on-scroll.js"></script>
 
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
-/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <!--<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
 
-<script>
-  hljs.highlightAll();
-</script>
+    <script>
+      hljs.highlightAll();
+    </script>-->    <link rel="stylesheet" href="/style/post.css" />
   </head>
   <body>
-    <div id="background"></div> <header><div class="title">
-  <div class="root-title">
-    <a href="/">rybl.net</a>
-  </div>
+    <svg>
+      <defs>
+        <filter
+          id="dancing-stroke-svg-filter"
+          color-interpolation-filters="linearRGB"
+          filterUnits="objectBoundingBox"
+          primitiveUnits="userSpaceOnUse"
+        >
+          <feMorphology
+            operator="dilate"
+            radius="4 4"
+            in="SourceAlpha"
+            result="morphology"
+          />
+          <feFlood flood-color="#30597E" flood-opacity="1" result="flood" />
+          <feComposite
+            in="flood"
+            in2="morphology"
+            operator="in"
+            result="composite"
+          />
+          <feComposite
+            in="composite"
+            in2="SourceAlpha"
+            operator="out"
+            result="composite1"
+          />
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.01 0.02"
+            numOctaves="1"
+            seed="0"
+            stitchTiles="stitch"
+            result="turbulence"
+          />
+          <feDisplacementMap
+            in="composite1"
+            in2="turbulence"
+            scale="17"
+            xChannelSelector="A"
+            yChannelSelector="A"
+            result="displacementMap"
+          />
+          <feMerge result="merge">
+            <feMergeNode in="SourceGraphic" result="mergeNode" />
+            <feMergeNode in="displacementMap" result="mergeNode1" />
+          </feMerge>
+        </filter>
+      </defs>
+    </svg>
 
-  <img class="website-icon" src="/image/rybl-small.png" />
+    <div id="background"></div>
+    <header><div class="title">
+      <div class="root-title">
+        <a href="/">rybl.net</a>
+      </div>
 
-  <div class="local-title">The Difference Between Mathematics and Logic</div>
-</div>
-<div class="menu">
-  <div class="item">
-    <a href="/">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="icon lucide lucide-library-icon lucide-library"
-      >
-        <path d="m16 6 4 14" />
-        <path d="M12 6v14" />
-        <path d="M8 8v12" />
-        <path d="M4 4v16" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/about.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="icon lucide lucide-info-icon lucide-info"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 16v-4" />
-        <path d="M12 8h.01" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/profile.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="20"
-        height="20"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-globe-icon lucide-globe"
-      >
-        <circle cx="12" cy="12" r="10" />
-        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
-        <path d="M2 12h20" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/graph.html">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-orbit-icon lucide-orbit"
-      >
-        <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
-        <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
-        <circle cx="12" cy="12" r="3" />
-        <circle cx="19" cy="5" r="2" />
-        <circle cx="5" cy="19" r="2" />
-      </svg>
-    </a>
-  </div>
-  <div class="item">
-    <a href="/page/signature.html"
-      ><svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="lucide lucide-fingerprint-icon lucide-fingerprint"
-      >
-        <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
-        <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
-        <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
-        <path d="M2 12a10 10 0 0 1 18-6" />
-        <path d="M2 16h.01" />
-        <path d="M21.8 16c.2-2 .131-5.354 0-6" />
-        <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
-        <path d="M8.65 22c.21-.66.45-1.32.57-2" />
-        <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
-    ></a>
-  </div>
-</div></header>
+      <img class="website-icon" src="/image/rybl-small.png" />
 
-    <main>
-      <div class="main-inner"><h2><a href="/post/difference-math-logic.html" data-noLinkFavicon=""
+      <div class="local-title">The Difference Between Mathematics and Logic</div>
+    </div>
+    <div class="menu">
+      <div class="item">
+        <a href="/">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon lucide lucide-library-icon lucide-library"
+          >
+            <path d="m16 6 4 14" />
+            <path d="M12 6v14" />
+            <path d="M8 8v12" />
+            <path d="M4 4v16" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/about.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon lucide lucide-info-icon lucide-info"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 16v-4" />
+            <path d="M12 8h.01" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/profile.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-globe-icon lucide-globe"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+            <path d="M2 12h20" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/graph.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-orbit-icon lucide-orbit"
+          >
+            <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+            <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+            <circle cx="12" cy="12" r="3" />
+            <circle cx="19" cy="5" r="2" />
+            <circle cx="5" cy="19" r="2" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/signature.html"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-fingerprint-icon lucide-fingerprint"
+          >
+            <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+            <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+            <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+            <path d="M2 12a10 10 0 0 1 18-6" />
+            <path d="M2 16h.01" />
+            <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+            <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+            <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+            <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+        ></a>
+      </div>
+    </div></header>
+    <main><h1><a href="/post/difference-math-logic.html" data-noLinkFavicon=""
 data-noLinkPreview="">The Difference Between Mathematics and
-Logic</a></h2>
+Logic</a></h1>
 <div class="header-info">
 <p><u>Published:</u> 2021-10-17</p>
 <p><u>Tags:</u> computics, philosophy, mathematics</p>
@@ -174,14 +226,15 @@ model-dependently.</p>
 <p>Of course, logic is used in mathematics, but the domains are
 distinguished. The core of logic is <strong><span><a
 href="https://plato.stanford.edu/entries/modeltheory-fo/"><img
-src="/missing.ico" class="favicon" alt="/missing.ico" />classical
-first-order logic (FOL)</a><span class="sidenote preview"><span
+src="/favicon/stanford.edu.ico" class="favicon"
+alt="/favicon/stanford.edu.ico" />classical first-order logic
+(FOL)</a><span class="sidenote preview"><span
 class="preview-title"><em><a
 href="https://plato.stanford.edu/entries/modeltheory-fo/"
-title="_blank"><img src="/missing.ico" class="favicon"
-alt="/missing.ico" />https://plato.stanford.edu/entries/modeltheory-fo/</a></em></span><span
+title="_blank"><img src="/favicon/stanford.edu.ico" class="favicon"
+alt="/favicon/stanford.edu.ico" />https://plato.stanford.edu/entries/truthmakers/</a></em></span><span
 class="preview-description">Placeholder description for
-https://plato.stanford.edu/entries/modeltheory-fo/</span></span></span></strong>,
+https://plato.stanford.edu/entries/truthmakers/</span></span></span></strong>,
 which is the logic of <em>well-formed</em>, <em>classical</em>,
 <em>first-order</em> sentences.</p>
 <ul>
@@ -194,14 +247,14 @@ self-referential domain</li>
 <p>The formalization of logics such as classical FOL is the study of
 <strong><span><a
 href="https://plato.stanford.edu/entries/model-theory/"><img
-src="/missing.ico" class="favicon" alt="/missing.ico" />model
-theory</a><span class="sidenote preview"><span
-class="preview-title"><em><a
+src="/favicon/stanford.edu.ico" class="favicon"
+alt="/favicon/stanford.edu.ico" />model theory</a><span
+class="sidenote preview"><span class="preview-title"><em><a
 href="https://plato.stanford.edu/entries/model-theory/"
-title="_blank"><img src="/missing.ico" class="favicon"
-alt="/missing.ico" />https://plato.stanford.edu/entries/model-theory/</a></em></span><span
+title="_blank"><img src="/favicon/stanford.edu.ico" class="favicon"
+alt="/favicon/stanford.edu.ico" />https://plato.stanford.edu/entries/truthmakers/</a></em></span><span
 class="preview-description">Placeholder description for
-https://plato.stanford.edu/entries/model-theory/</span></span></span></strong>,
+https://plato.stanford.edu/entries/truthmakers/</span></span></span></strong>,
 which is a branch of mathematics. However, can only ever study the truth
 of sentences (which are used to indicate propositions) within the
 context of a model. The study of logic itself is concerned only with
@@ -211,22 +264,19 @@ cross-sectional study of logical truth.</p>
 branch of mathematics has a model that includes an enumeration of axioms
 and, usually, inherits from a model of classical FOL or some similar
 logic. For example, field theory is the study of <span><a
-href="https://ncatlab.org/nlab/show/field"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Ffield.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Ffield.ico" />fields</a><span
+href="https://ncatlab.org/nlab/show/field"><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />fields</a><span
 class="sidenote preview"><span class="preview-title"><em><a
 href="https://ncatlab.org/nlab/show/field" title="_blank"><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Ffield.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Ffield.ico" />https://ncatlab.org/nlab/show/field</a></em></span><span
+src="/missing.ico" class="favicon"
+alt="/missing.ico" />https://ncatlab.org/nlab/show/computational+trinitarianism</a></em></span><span
 class="preview-description">Placeholder description for
-https://ncatlab.org/nlab/show/field</span></span></span> which is a
-mathematics object that obeys a selection of axioms called the field
-axioms. The existence of these mathematical objects is posited. Only
-under all of these conditions, and within a chosen model (that is
-typically beyond first-order), does field theory contain truths. Nearly
-all mathematical theories have this form:</p>
+https://ncatlab.org/nlab/show/computational+trinitarianism</span></span></span>
+which is a mathematics object that obeys a selection of axioms called
+the field axioms. The existence of these mathematical objects is
+posited. Only under all of these conditions, and within a chosen model
+(that is typically beyond first-order), does field theory contain
+truths. Nearly all mathematical theories have this form:</p>
 <ul>
 <li>posit a new mathematical object</li>
 <li>specify axioms about the new object</li>
@@ -248,19 +298,32 @@ it must be communicated by appealing to the framework itself.</p>
 <h1>References</h1>
 <ul>
 <li><a href="https://plato.stanford.edu/entries/modeltheory-fo/"
-data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
-class="favicon" alt="/missing.ico" />classical first-order logic
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/stanford.edu.ico" class="favicon"
+alt="/favicon/stanford.edu.ico" />classical first-order logic
 (FOL)</a></li>
 <li><a href="https://plato.stanford.edu/entries/model-theory/"
-data-inReference="" data-noLinkPreview=""><img src="/missing.ico"
-class="favicon" alt="/missing.ico" />model theory</a></li>
+data-inReference="" data-noLinkPreview=""><img
+src="/favicon/stanford.edu.ico" class="favicon"
+alt="/favicon/stanford.edu.ico" />model theory</a></li>
 <li><a href="https://ncatlab.org/nlab/show/field" data-inReference=""
-data-noLinkPreview=""><img
-src="/favicon/https%253A%252F%252Fncatlab.org%252Fnlab%252Fshow%252Ffield.ico"
-class="favicon"
-alt="/favicon/https%3A%2F%2Fncatlab.org%2Fnlab%2Fshow%2Ffield.ico" />fields</a></li>
-</ul></div>
-    </main>
+data-noLinkPreview=""><img src="/missing.ico" class="favicon"
+alt="/missing.ico" />fields</a></li>
+</ul>
+<h1>Signature</h1>
+<p>The following code block is the <a
+href="https://en.wikipedia.org/wiki/EdDSA#Ed25519" title="_blank"><img
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />Ed25519 signature</a> of this post's
+<a href="/post_markdown/difference-math-logic.md"><img
+src="/favicon.ico" class="favicon" alt="/favicon.ico" />markdown
+content</a> encoded in base 64, using my <em>secret key</em> and <a
+href="/key/main_ed25519.pub.txt" title="_blank"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />public key</a>.</p>
+<pre><code>3fca1ca276e0299d8f5693596782fc200d8323aa0b2e45560c34511a2187da58d734b464af0cc0e665a551fd6491f942d549c88c2604a6fa5e4e8e5a51e7fd07</code></pre>
+<p>See <a href="/page/signature.html"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />Signature</a> for more
+information.</p></main>
 
     <footer>
       <div class="title">
