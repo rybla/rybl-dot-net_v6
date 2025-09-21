@@ -16,6 +16,7 @@ dependencies:
   - base >= 4.7 && < 5
   - template-haskell
   - bytestring
+  - base16-bytestring
   - filepath
   - directory
   - text
@@ -68,9 +69,19 @@ library:
   source-dirs: src
 
 executables:
-  rybl-dot-net-exe:
-    main: Main.hs
+  generate-website:
     source-dirs: app
+    main: Main.hs
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - rybl-dot-net
+
+  generate-secret-key-exe:
+    source-dirs: generate-secret-key
+    main: Main.hs
     ghc-options:
       - -threaded
       - -rtsopts
