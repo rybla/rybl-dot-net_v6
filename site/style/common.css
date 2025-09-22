@@ -198,5 +198,6 @@ table {
   td {
     padding: 0.5rem;
     background: var(--basic-box-background);
+    vertical-align: top;
   }
 }
