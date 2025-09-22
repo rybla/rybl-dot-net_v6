@@ -8,5 +8,3 @@ Each post on this website has a Signature section that includes the [Ed25519](ht
 
 ::: {.include-code-block src="site/key/main_ed25519.pub.txt" title="main_ed25519.pub.txt" href="/key/main_ed25519.pub.txt"}
 :::
-
-Each post's signature is included in its Signature section.
