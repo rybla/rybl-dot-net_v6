@@ -19,6 +19,7 @@ import qualified Data.Aeson as Aeson
 import qualified Data.Aeson.Types as Aeson
 import Data.Default (def)
 import qualified Data.List as List
+import qualified Data.Text as Text
 import qualified Data.Text.IO as TextIO
 import System.FilePath ((</>))
 import Text.Pandoc (Pandoc)
@@ -75,7 +76,14 @@ makeIndex posts = do
     Pandoc.Pandoc
       mempty
       ( concat
-          [ [ Pandoc.Header 1 mempty [Pandoc.Str "Index"]
+          [ [ Pandoc.Header
+                1
+                mempty
+                [ Pandoc.Link
+                    mempty
+                    [Pandoc.Str "Index"]
+                    (Paths.onlineSite.here & Text.pack, "")
+                ]
             ],
             postCards
           ]
