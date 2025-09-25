@@ -1,7 +1,7 @@
 ---
 title: iPhone Elements
 pubDate: 2025-09-25
-abstract: We recently saw the release of the iPhone Air. So, actually, here are the rest.
+abstract: We recently saw the release of the iPhone Air. So, naturally, here are the rest.
 tags:
   - funny
   - technology
