@@ -29,6 +29,7 @@ commonReaderOptions =
             Pandoc.Ext_pipe_tables,
             Pandoc.Ext_inline_notes,
             Pandoc.Ext_footnotes,
+            Pandoc.Ext_raw_html,
             -- attributes
             Pandoc.Ext_attributes,
             Pandoc.Ext_fenced_code_attributes,
