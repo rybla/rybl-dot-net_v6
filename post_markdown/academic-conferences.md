@@ -11,7 +11,7 @@ abstract: |
 table_of_contents: true
 ---
 
-# Introduction
+## Introduction
 
 I recently attended POPL 2022 in Philadelphia, which is an academic conference
 on the _principles of programming languages_ -- in my field of research as a PhD
@@ -33,7 +33,7 @@ support in mind.
 But for physical participants, everything was conducted pretty much as normal
 except for the mandatory mask-wearing at all times of course.
 
-# Ideals
+## Ideals
 
 The main goals of a conference, it appears to me, are:
 
@@ -45,11 +45,11 @@ The main goals of a conference, it appears to me, are:
 - gather researchers from many different institutions so they can make
   connections and exchange developing ideas
 
-# Realities
+## Realities
 
 How do real conferences live up to these ideals?
 
-## Online Conferences
+### Online Conferences
 
 During the COVID-19 pandemic, almost all academic conferences were converted to
 online events, and only recently have they started to be hosted in a hybrid
@@ -91,6 +91,6 @@ What online conference attendees discovered was that the talks are not a very
 important aspect of why they attend conferences. They are more of a background
 ambiance for the hallways discussions and social gatherings.
 
-## Hybrid Conferences
+### Hybrid Conferences
 
 TODO

@@ -12,7 +12,7 @@ abstract: |
 table_of_contents: true
 ---
 
-# Introduction
+## Introduction
 
 This post documents the design and implementation of an interpreter for a very
 simple imperative programming lanugage, _Impe_, using Haskell. The goal is to
@@ -21,9 +21,9 @@ offers for programming language implementation. All the code used and referenced
 in this post can be found in this github repository:
 [riib/impe](https://github.com/rybla/impe).
 
-# Design
+## Design
 
-## Grammar
+### Grammar
 
 Grammar:
 
@@ -75,7 +75,7 @@ how does `return` work
 how does `pass` work, and is it different from `{}`
 :::
 
-## Variables
+### Variables
 
 Variables are _mutable_ -- the value of a variable can be changed during the
 program's execution. An analogy: a variable is like a box that can have its
@@ -92,7 +92,7 @@ citations to sources that explain this
 tangent about Haskell's laziness
 :::
 
-## Void versus Unit
+### Void versus Unit
 
 Typically when you want to ignore the output of a function, you can do just that
 without a second thought. But in this design, you must be conscious of it. The
@@ -135,9 +135,9 @@ namespace, you can do
 
 where `t` is the return type of function `f`.
 
-# Implementation
+## Implementation
 
-## Interpretation
+### Interpretation
 
 To interpret some given source code, there are three stages:
 
@@ -148,7 +148,7 @@ To interpret some given source code, there are three stages:
 3. _Executing_: takes a program AST as input, executes the program and gives the
    resulting execution context as output.
 
-### Organization
+#### Organization
 
 The `Language.Impe` modules contains a collection of submodules that define how
 the Impe programming language interprets Impe source code. For each of the three
@@ -179,7 +179,7 @@ module that exports an `interpretProgram` function is defined for convenience:
 - `Interpretation`: interpret an Impe program (from source code to execution
   result)
 
-## Grammar
+### Grammar
 
 `Language.Impe.Grammar`
 
@@ -226,7 +226,7 @@ newtype Name
 The `Grammar` module also defines for this data `Show` instances that map each
 grammar term to the source code that it would be parsed from.
 
-## Effects
+### Effects
 
 TODO: rewrite this... how much detail do I want to give? TODO: talk about
 handling effects
@@ -270,7 +270,7 @@ h = do
   tell $ x == y
 ```
 
-### Logging
+#### Logging
 
 `Language.Impe.Logging`
 
@@ -302,7 +302,7 @@ and
 for details). Actually handling the logging effect will be done later on in the
 _Main_ section, since for the most part logging is handled by IO.
 
-### Excepting
+#### Excepting
 
 `Language.Impe.Excepting`
 
@@ -404,12 +404,12 @@ effect is safely removed from the head of the effect row.
 TODO: by default, each stage of interpretation will use the _logging_ and
 _exepting_ effects.
 
-### Statefulness
+#### Statefulness
 
 TODO: how `State s` works TODO: pattern of describing state data type, and using
 lens fields that generate lenses using `makeLenses` via Templatehaskell
 
-## Parsing
+### Parsing
 
 Parsing is the process of reading some input source code and yielding a program
 constructed by the program's language's grammar. The
@@ -424,7 +424,7 @@ generates some useful parsers that can recognize what counts as whitespace,
 identifiers, string literals, etc. The programmer-defined parsers are build from
 the generated parsers.
 
-### Lexing with Parsec
+#### Lexing with Parsec
 
 `Language.Impe.Lexing`
 
@@ -480,7 +480,7 @@ identifier :: Parser String
 
 which is a `Parser` that parses the next identifier (which is of type `String`).
 
-### Parsing with Parsec
+#### Parsing with Parsec
 
 `Language.Impe.Parsing`
 
@@ -622,7 +622,7 @@ major functions used here are these that deal with special strings and symbols:
   stream, where the characters allowed to start and be contained in an
   identifier are defined in the Impe lexer
 
-#### Infixed Operators
+##### Infixed Operators
 
 Parsec offers a conventient little system for setting up the parsing of infixed
 operators (unary and binary) with specified _infixity levels_ and _associative
@@ -703,11 +703,11 @@ expression' =
 
 where `unit`, `bool`, etc. are parsers for each of those kinds of expressions.
 
-## Namespaces
+### Namespaces
 
 TODO: describe goals, description of impl, and main interface
 
-## Typechecking
+### Typechecking
 
 `Language.Impe.Typechecking`
 
@@ -1022,7 +1022,7 @@ synthesizeInstructionStep inst_ = case inst_ of
     return Nothing
 ```
 
-## Executing
+### Executing
 
 `Language.Impe.Executing`
 
@@ -1299,7 +1299,7 @@ queryVariable x =
       throw $ Excepting.VariableUndeclaredMention x
 ```
 
-## Interpreting
+### Interpreting
 
 Now to combine it all together! To _interpret_ a program is, following the three
 steps outlined in [Interpetation](#interpretation), to pass the results from
@@ -1348,7 +1348,7 @@ The core library for `impe` is now complete.
 
 Now all is needed is a way to handle an `Interpretation`.
 
-## Main
+### Main
 
 The executable program that runs Impe.
 
@@ -1364,7 +1364,7 @@ Impe's definition. So far the executable has two functionalities:
 To organize this executable and some options about how to interpret Impe
 programs, some command line options will be useful.
 
-### Command Line Options
+#### Command Line Options
 
 Modules `Main.Config.Grammar`and `Main.Config.Parsing`. Using
 `options-applicative`.
@@ -1490,7 +1490,7 @@ parseConfig :: Member (Embed IO) r => Sem r Grammar.Config
 parseConfig = embed $ execParser config
 ```
 
-### Interactive REPL
+#### Interactive REPL
 
 Modules `Main.Interacting`, `Main.Interacting.Grammar`,
 `Main.Interacting.Lexing`, `Main.Interacting.Parsing`.
@@ -1676,4 +1676,4 @@ interpretMetaCommand = \case
     return False
 ```
 
-# Conclusions
+## Conclusions

@@ -12,7 +12,7 @@ abstract: |
 table_of_contents: true
 ---
 
-# Introduction
+## Introduction
 
 A common metaprogrammatic feature is overloading. A function is _overloaded_ (by
 name) if multiple implementations of possibly different types can all be
@@ -28,7 +28,7 @@ function `negate` to work on both integers and booleans.
 I conclude with a overview of the advantages and drawbacks of the different
 approaches, and some ideas about the generalization of my favored approach.
 
-# Overloading with Typeclasses
+## Overloading with Typeclasses
 
 Haskell provides a nice interface (with a complicated backend) for a restricted
 form of overloading via typeclasses. A _typeclass_ is a way of classifying types
@@ -98,7 +98,7 @@ In this way, typeclasses don't provide fully-general overloading capability
 where the different overload modes can have arbitrarily different types (e.g.
 take different numbers of arguments).
 
-# Overloading with Templates
+## Overloading with Templates
 
 Templates (via Template Haskell) offer more general megaprogramming capabilities
 than typeclasses. Templates are metaprograms that are executed before
@@ -180,7 +180,7 @@ type inference to allow an `_` in place of the overload specification argument.
 This won't work for this templates approach, but perhaps it could work for the
 singletons approach -- see the next section.)
 
-# Overloading with Singletons
+## Overloading with Singletons
 
 Finally, this third approach is to take advantage of a restricted form of
 dependent typing that Haskell provides: singletons. In short, a _singleton_
@@ -303,7 +303,7 @@ Note that the type annotations are now necessary in order for type inference to
 work. This is because, otherwise, the output type is just a type variable, and
 GHC would try to solve `Int -> t ~ NegateType mode` which it cannot.
 
-# Overloading with Π
+## Overloading with Π
 
 As described before, singletons are an implementation in Haskell of a restricted
 kind of dependent types. That is, they allow the output type of functions to
@@ -348,7 +348,7 @@ singletons approach work: pattern matching on an "overload mode" singleton, and
 a type family (i.e. type-level function from a type to a type) for the types of
 each overload mode.
 
-# Conclusions
+## Conclusions
 
 We have overviewed three approaches to implementing overloading in Haskell (or
 any other language that offers these features respectively):

@@ -8,7 +8,7 @@ abstract: An overview of different capabilities and styles of metaprogramming.
 table_of_contents: true
 ---
 
-# Overview
+## Overview
 
 A *metaprogram* is a program that operates on the syntax of a programming
 language as data. Many advanced programming languages provide some sort of
@@ -47,7 +47,7 @@ Overall, I group these capabilities into the following tags:
   classes, Python meta classes.
 - *Dynamic semantics* — modify semantics. Examples: JavaScript proxies.
 
-# Macros
+## Macros
 
 Macros are common style of reification — splicing syntax. Generally, a language
 with macros provides a special syntax for defining macro functions, which are

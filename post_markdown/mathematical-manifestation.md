@@ -10,7 +10,7 @@ tags:
   - science
 ---
 
-# Introduction
+## Introduction
 
 Question: _Why is mathematics useful for, and often seemingly prophetic of,
 physics?_
@@ -37,14 +37,14 @@ So, are there results from pure mathematics that inspire physics in a nontrivial
 way? In this article I argue that this is possible and will offer a few possible
 examples.
 
-# Nontriviality
+## Nontriviality
 
 What would it mean for such a relationship to be _nontrivial_?
 
-# Mathematical Mirror
+## Mathematical Mirror
 
 Physics mirrors mathematics.
 
-# Trends
+## Trends
 
 Trends of this phenomenon.

@@ -8,11 +8,11 @@ status: updated 2020/11/13
 abstract: Dominant assurance contracts are an interesting solution to many collective action problems. A DAC asks an agent to pledge a donation towards a collective action to be paid if any only if enough other agents also pledge, and promises to pay the agent if not enough other agents pledge. Such a contract can yield opting-in as a dominant strategy even when an agent expects other agents not to opt-in; free-rider incentives are removed by the assurance that no one benefits if any agent opts-out, and payment incentivizes pessimistic agents to opt-in anyway.
 ---
 
-# The Problem of Providing Public Goods
+## The Problem of Providing Public Goods
 
 TODO
 
-# The Two Sides of Prisoners' Dillemas
+## The Two Sides of Prisoners' Dillemas
 
 Let's consider the town of Perindale. There is a proposal to construct a public
 garden in downtown Perindale, and the mayor is planning on how to faciliate
@@ -39,7 +39,7 @@ be relaxed later):
 - Each resident acts perfectly rationally (i.e. maximizes expected utility based
   on their beliefs).
 
-## Proposal 1: Simple Donations
+### Proposal 1: Simple Donations
 
 The first idea that comes to the mayor's mind is to simply ask Perindale
 residents to donate \\( D \\) utility each, where \\( D \leq C/(n - 1) \\) i.e.
@@ -98,7 +98,7 @@ additionally incentivizes pessimistic residents to still donate.
 
 The mayor thanks Jo, and returns to their office to think up the new proposals.
 
-## Proposal 2: Assurance Contracts
+### Proposal 2: Assurance Contracts
 
 To tackle the free-rider problem, the mayor needs to write up a contract that
 removes the incentive for Jo to not contribute if Jo believes that the other
@@ -145,7 +145,7 @@ if even one resident forgets to sign the contract then there will be no garden!
 That is where the weakness in "weakly dominant strategy" comes in. The mayor
 thanks Jo again and returns to their office for, hopefully, a final draft.
 
-## Proposal 3: Dominant Assurance Contracts
+### Proposal 3: Dominant Assurance Contracts
 
 Ideally, the mayor wishes that each resident always be actively incentivized to
 donate, not just indifferent about it, and even if they are pessimistic about
@@ -192,44 +192,44 @@ when there aren't enough signers, the mayor can expect this situation never to
 arise as long as the residents of Perindale are true to their perfect
 rationality.
 
-# Dominant Assurance Contracts
+## Dominant Assurance Contracts
 
 TODO: generalized definition and justification
 
-# Complications
+## Complications
 
 All about deciding the optimal value of \\( F \\).
 
-## Buffering
+### Buffering
 
 TODO: How to account for a certain number of agents deciding not to sign anyway?
 TODO: Avoiding sel-fulfilling negative beliefs
 
-## Incomplete Information
+### Incomplete Information
 
 TODO: How to account for agents having incomplete information about their peers?
 And probabilistic beliefs
 
 - some graphs from Tabarrok
 
-## Differentiated Evaluations
+### Differentiated Evaluations
 
 TODO: How to account for when agents have different evaluations of the public
 good
 
-## Privatization
+### Privatization
 
 TODO: What if a private firm hosts the DAC instead of the mayor? Where the firm
 earns profits from the surplus donations.
 
 - competition between firms will drive down required donations
 
-# Glossary
+## Glossary
 
 Some simple definitions and explanations of the formal terms used relating to
 public goods and collective action.
 
-## Goods
+### Goods
 
 A **non-excludible good** is a good that cannot have its enjoyment limited to
 specific consumers. _Examples:_ national armies, outdoor air, TODO.
@@ -248,7 +248,7 @@ public good, yet still enjoys the public good to the same extent as other agents
 that did decide to pay. _Examples:_ funding many public services like parks,
 armies, etc.
 
-## Collective Action Problems
+### Collective Action Problems
 
 A **collective action problem** is a problem of coordinating agents to cooperate
 when there are incentives for each agent to defect, and if too many agents
@@ -295,7 +295,7 @@ that, whatever either prisoner believes of the other, the best option for each
 is to defect. This is a problem because even though there exists the best option
 overall to both cooperate, perfectly-rational prisoners will never obtain it.
 
-## Assurance Contracts
+### Assurance Contracts
 
 An **assurance contract** is a contract between a population of agents where
 each agent pledges to contribute towards an action if at least a certain amount
@@ -309,7 +309,7 @@ contract as a dominant strategy. Dominant assurance contracts were primarily
 introduced in Tabarrok's "[The private provision of public goods via dominant
 assurance contracts][tabarrok1998]."
 
-# Bibliography
+## Bibliography
 
 - Amoveo Editor, 2019. [Amoveo use-case: Crowdfunding via a Dominant Assurance
   Contract (DAC)][amoveo2019].

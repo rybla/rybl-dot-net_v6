@@ -9,7 +9,7 @@ abstract: Where do you go in cryostasis?
 table_of_contents: false
 ---
 
-# Cryodreams
+## Cryodreams
 
 You lie still on the hospital bed. Just now you were told the full severity of
 your situation: the rare disease you've contracted will claim your life in less
@@ -54,7 +54,7 @@ believes that they are you, then the awaker _is_ you. But what if they don't
 remember me? What if I don't believe in them? What if something goes wrong? What
 happens to me? Your last thoughts dissapate.
 
-# Use Cases for Cryogensis
+## Use Cases for Cryogensis
 
 This short story above was a short exercise in imagining a medium-term future
 use case for cryogenesis, along with the existential dread that might befall

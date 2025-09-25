@@ -7,7 +7,7 @@ tags:
   - technology
 ---
 
-# Introduction
+## Introduction
 
 A common argument is that Bitcoin and other cryptocurrencies have no _real
 value_ because they have no backing asset with _intrinsic value_. Call these
@@ -22,6 +22,12 @@ refutation:
 - **II.** An Intangible derives value through the utility it provides without
   relation to specified backing assets, similarly to fiat currencies.
 
-# Contentious Complications
+## Contentious Complications
 
-# Cyclic Evaluation
+::: todo
+:::
+
+## Cyclic Evaluation
+
+::: todo
+:::

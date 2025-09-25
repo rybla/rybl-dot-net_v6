@@ -17,9 +17,9 @@ table_of_contents: true
 
 Whenever I write "language" I implicitly mean "programming langauge".
 
-# Dependent Types
+## Dependent Types
 
-# Metaprogramming
+## Metaprogramming
 
 _Metaprogramming_ is the design of programs that generate code meant to be used
 at the same of a similarly high level of abstraction as the metaprogram's
@@ -61,7 +61,7 @@ n = $(addN 2) 1 2
 -- n == 3
 ```
 
-# Embedded Languages
+## Embedded Languages
 
 The definition of a language consists of its syntax and semantics. The
 **syntax** of a language is the specification for well-formed programs in the
@@ -151,7 +151,7 @@ following:
 In the following section, I will introduce another use case, mesaprogramming,
 which is a combination of these two use cases.
 
-# Mesaprogramming
+## Mesaprogramming
 
 The usual technique of metaprogramming ("above-programming") is to provide a
 special interface for invoking code generation (e.g. templates as a built-in or

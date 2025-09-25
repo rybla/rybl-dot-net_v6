@@ -14,7 +14,7 @@ an implicit monotheism:
 This essay is a short exposition of a more developed version of this view: A
 Monotheistic Foundation for the Epistemology of Science.
 
-# Two Axioms
+## Two Axioms
 
 The epistemology of science can be formulated as having two axioms:
 
@@ -50,7 +50,7 @@ science and are not derivable.
     itself (i.e. "natural induction is true because it’s made true predictions
     in the past"), but circular arguments are inconsistent.
 
-# God
+## God
 
 Universal objectivity implies that there is exactly one universe, as the
 universe is everything that can be observed and all observers observe the same
@@ -100,7 +100,7 @@ If you don’t want to _call_ this source God, that’s fine. But I think "God" 
 fitting name for such an extra-universal entity that is the basis for
 understanding reality.
 
-# Proofs
+## Proofs
 
 Proof of claim #1. Cyclical hierarchies of explanations are inconsistent because
 an explanation cannot be in terms of itself. Hierarchies of explanations that,

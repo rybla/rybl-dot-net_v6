@@ -289,18 +289,16 @@ class="no-link-favicon no-link-preview">Interactive REPL</a></li>
 </ol></li>
 </ol></li>
 <li><a href="#conclusions"
-class="no-link-favicon no-link-preview">Conclusions</a>
-<ol type="1">
+class="no-link-favicon no-link-preview">Conclusions</a></li>
 <li><a href="#references"
 class="no-link-favicon no-link-preview">References</a></li>
 <li><a href="#signature"
 class="no-link-favicon no-link-preview">Signature</a></li>
-</ol></li>
 </ol>
 </div>
 </div>
-<h1 id="introduction"><a href="#introduction"
-class="no-link-favicon no-link-preview">Introduction</a></h1>
+<h2 id="introduction">§ <a href="#introduction"
+class="no-link-favicon no-link-preview">Introduction</a></h2>
 <p>This post documents the design and implementation of an interpreter
 for a very simple imperative programming lanugage, <em>Impe</em>, using
 Haskell. The goal is to demonstrate the convenience and advanced
@@ -315,10 +313,10 @@ description for https://github.com/ucsd-progsys/liquidhaskell</span><a
 href="https://github.com/rybla/impe"><img src="/favicon/github.com.svg"
 class="favicon"
 alt="/favicon/github.com.svg" />riib/impe</a></span>.</p>
-<h1 id="design"><a href="#design"
-class="no-link-favicon no-link-preview">Design</a></h1>
-<h2 id="grammar">§ <a href="#grammar"
-class="no-link-favicon no-link-preview">Grammar</a></h2>
+<h2 id="design">§ <a href="#design"
+class="no-link-favicon no-link-preview">Design</a></h2>
+<h3 id="grammar">§ <a href="#grammar"
+class="no-link-favicon no-link-preview">Grammar</a></h3>
 <p>Grammar:</p>
 <div class="todo">
 <p>define what <code>...</code> means</p>
@@ -362,8 +360,8 @@ procedure calls what are blocks and scopes how does <code>return</code>
 work how does <code>pass</code> work, and is it different from
 <code>{}</code></p>
 </div>
-<h2 id="variables">§ <a href="#variables"
-class="no-link-favicon no-link-preview">Variables</a></h2>
+<h3 id="variables">§ <a href="#variables"
+class="no-link-favicon no-link-preview">Variables</a></h3>
 <p>Variables are <em>mutable</em> -- the value of a variable can be
 changed during the program's execution. An analogy: a variable is like a
 box that can have its contents replaced while still staying the same box
@@ -377,8 +375,8 @@ execution.</p>
 <p>citations to sources that explain this tangent about Haskell's
 laziness</p>
 </div>
-<h2 id="void-versus-unit">§ <a href="#void-versus-unit"
-class="no-link-favicon no-link-preview">Void versus Unit</a></h2>
+<h3 id="void-versus-unit">§ <a href="#void-versus-unit"
+class="no-link-favicon no-link-preview">Void versus Unit</a></h3>
 <p>Typically when you want to ignore the output of a function, you can
 do just that without a second thought. But in this design, you must be
 conscious of it. The syntax for calling a procedure will be typechecked
@@ -417,10 +415,10 @@ without cluttering namespace, you can do</p>
 <pre class="plain"><code>{ _: t &lt;- f(e, ...); }</code></pre>
 <p>where <code>t</code> is the return type of function
 <code>f</code>.</p>
-<h1 id="implementation"><a href="#implementation"
-class="no-link-favicon no-link-preview">Implementation</a></h1>
-<h2 id="interpretation">§ <a href="#interpretation"
-class="no-link-favicon no-link-preview">Interpretation</a></h2>
+<h2 id="implementation">§ <a href="#implementation"
+class="no-link-favicon no-link-preview">Implementation</a></h2>
+<h3 id="interpretation">§ <a href="#interpretation"
+class="no-link-favicon no-link-preview">Interpretation</a></h3>
 <p>To interpret some given source code, there are three stages:</p>
 <ol>
 <li><em>Parsing</em>: takes source code as input, gives an AST of the
@@ -431,8 +429,8 @@ as output.</li>
 <li><em>Executing</em>: takes a program AST as input, executes the
 program and gives the resulting execution context as output.</li>
 </ol>
-<h3 id="organization">§ <a href="#organization"
-class="no-link-favicon no-link-preview">Organization</a></h3>
+<h4 id="organization">§ <a href="#organization"
+class="no-link-favicon no-link-preview">Organization</a></h4>
 <p>The <code>Language.Impe</code> modules contains a collection of
 submodules that define how the Impe programming language interprets Impe
 source code. For each of the three stages of interpretation, there is a
@@ -469,8 +467,8 @@ function is defined for convenience:</p>
 <li><code>Interpretation</code>: interpret an Impe program (from source
 code to execution result)</li>
 </ul>
-<h2 id="grammar">§ <a href="#grammar"
-class="no-link-favicon no-link-preview">Grammar</a></h2>
+<h3 id="grammar">§ <a href="#grammar"
+class="no-link-favicon no-link-preview">Grammar</a></h3>
 <p><code>Language.Impe.Grammar</code></p>
 <p>The grammar given in the <em>Design</em> section was written in a
 formal notation for reading ease and concision. The following code block
@@ -513,8 +511,8 @@ class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb3-1"><a 
 <p>The <code>Grammar</code> module also defines for this data
 <code>Show</code> instances that map each grammar term to the source
 code that it would be parsed from.</p>
-<h2 id="effects">§ <a href="#effects"
-class="no-link-favicon no-link-preview">Effects</a></h2>
+<h3 id="effects">§ <a href="#effects"
+class="no-link-favicon no-link-preview">Effects</a></h3>
 <p>TODO: rewrite this... how much detail do I want to give? TODO: talk
 about handling effects</p>
 <p>Effects -- such as statefulness, logging, excepting, and IO -- are
@@ -551,8 +549,8 @@ class="sourceCode txt"><code class="sourceCode default"><span id="cb6-1"><a href
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  x &lt;- get</span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  y &lt;- ask</span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  tell $ x == y</span></code></pre></div>
-<h3 id="logging">§ <a href="#logging"
-class="no-link-favicon no-link-preview">Logging</a></h3>
+<h4 id="logging">§ <a href="#logging"
+class="no-link-favicon no-link-preview">Logging</a></h4>
 <p><code>Language.Impe.Logging</code></p>
 <p>The idea behind logging is to produce little messages that give some
 insight into what the Haskell program is doing at different points of
@@ -591,8 +589,8 @@ src="/missing.ico" class="favicon"
 alt="/missing.ico" />Polysemy.Writer</a></span> for details). Actually
 handling the logging effect will be done later on in the <em>Main</em>
 section, since for the most part logging is handled by IO.</p>
-<h3 id="excepting">§ <a href="#excepting"
-class="no-link-favicon no-link-preview">Excepting</a></h3>
+<h4 id="excepting">§ <a href="#excepting"
+class="no-link-favicon no-link-preview">Excepting</a></h4>
 <p><code>Language.Impe.Excepting</code></p>
 <p>The idea behind excepting is to allow a computation to "escape" its
 normal control flow part-way through. In basic Haskell, this is usually
@@ -680,13 +678,13 @@ into <code>Either e a</code>, the error effect is safely removed from
 the head of the effect row.</p>
 <p>TODO: by default, each stage of interpretation will use the
 <em>logging</em> and <em>exepting</em> effects.</p>
-<h3 id="statefulness">§ <a href="#statefulness"
-class="no-link-favicon no-link-preview">Statefulness</a></h3>
+<h4 id="statefulness">§ <a href="#statefulness"
+class="no-link-favicon no-link-preview">Statefulness</a></h4>
 <p>TODO: how <code>State s</code> works TODO: pattern of describing
 state data type, and using lens fields that generate lenses using
 <code>makeLenses</code> via Templatehaskell</p>
-<h2 id="parsing">§ <a href="#parsing"
-class="no-link-favicon no-link-preview">Parsing</a></h2>
+<h3 id="parsing">§ <a href="#parsing"
+class="no-link-favicon no-link-preview">Parsing</a></h3>
 <p>Parsing is the process of reading some input source code and yielding
 a program constructed by the program's language's grammar. The
 <span><span class="sidenote preview">Parsec<br/><em><a
@@ -706,8 +704,8 @@ and defining the parsers for each grammatical structure. The lexer can
 be configured and generates some useful parsers that can recognize what
 counts as whitespace, identifiers, string literals, etc. The
 programmer-defined parsers are build from the generated parsers.</p>
-<h3 id="lexing-with-parsec">§ <a href="#lexing-with-parsec"
-class="no-link-favicon no-link-preview">Lexing with Parsec</a></h3>
+<h4 id="lexing-with-parsec">§ <a href="#lexing-with-parsec"
+class="no-link-favicon no-link-preview">Lexing with Parsec</a></h4>
 <p><code>Language.Impe.Lexing</code></p>
 <p>The Impe lexer (or as Parsec calls it, a <em>tokenParser</em>) is
 defined as follows:</p>
@@ -761,8 +759,8 @@ such as</p>
 class="sourceCode txt"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>identifier :: Parser String</span></code></pre></div>
 <p>which is a <code>Parser</code> that parses the next identifier (which
 is of type <code>String</code>).</p>
-<h3 id="parsing-with-parsec">§ <a href="#parsing-with-parsec"
-class="no-link-favicon no-link-preview">Parsing with Parsec</a></h3>
+<h4 id="parsing-with-parsec">§ <a href="#parsing-with-parsec"
+class="no-link-favicon no-link-preview">Parsing with Parsec</a></h4>
 <p><code>Language.Impe.Parsing</code></p>
 <p>Now that the lexer is defined, the atomic parsers such as
 <code>identifier</code> can be built up to define parsers for each of
@@ -973,8 +971,8 @@ stream</li>
 (string) from the stream, where the characters allowed to start and be
 contained in an identifier are defined in the Impe lexer</li>
 </ul>
-<h4 id="infixed-operators">§ <a href="#infixed-operators"
-class="no-link-favicon no-link-preview">Infixed Operators</a></h4>
+<h5 id="infixed-operators">§ <a href="#infixed-operators"
+class="no-link-favicon no-link-preview">Infixed Operators</a></h5>
 <p>Parsec offers a conventient little system for setting up the parsing
 of infixed operators (unary and binary) with specified <em>infixity
 levels</em> and <em>associative handedness</em> (left or right).</p>
@@ -1055,11 +1053,11 @@ class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb21-1"><a
 <span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">&lt;|&gt;</span> try variable</span></code></pre></div>
 <p>where <code>unit</code>, <code>bool</code>, etc. are parsers for each
 of those kinds of expressions.</p>
-<h2 id="namespaces">§ <a href="#namespaces"
-class="no-link-favicon no-link-preview">Namespaces</a></h2>
+<h3 id="namespaces">§ <a href="#namespaces"
+class="no-link-favicon no-link-preview">Namespaces</a></h3>
 <p>TODO: describe goals, description of impl, and main interface</p>
-<h2 id="typechecking">§ <a href="#typechecking"
-class="no-link-favicon no-link-preview">Typechecking</a></h2>
+<h3 id="typechecking">§ <a href="#typechecking"
+class="no-link-favicon no-link-preview">Typechecking</a></h3>
 <p><code>Language.Impe.Typechecking</code></p>
 <p>Typechecking is the process of checking that program is
 <em>well-typed</em>, where a program is well-typed in Impe if the
@@ -1368,8 +1366,8 @@ class="sourceCode hs"><code class="sourceCode haskell"><span id="cb32-1"><a href
 <span id="cb32-74"><a href="#cb32-74" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-75"><a href="#cb32-75" aria-hidden="true" tabindex="-1"></a>  <span class="dt">Pass</span> <span class="ot">-&gt;</span></span>
 <span id="cb32-76"><a href="#cb32-76" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span> <span class="dt">Nothing</span></span></code></pre></div>
-<h2 id="executing">§ <a href="#executing"
-class="no-link-favicon no-link-preview">Executing</a></h2>
+<h3 id="executing">§ <a href="#executing"
+class="no-link-favicon no-link-preview">Executing</a></h3>
 <p><code>Language.Impe.Executing</code></p>
 <p>The setup for starting to implement <em>execution</em> is very
 similar to typechecking. There is a context that contains the
@@ -1634,8 +1632,8 @@ class="sourceCode hs"><code class="sourceCode haskell"><span id="cb38-1"><a href
 <span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>      throw <span class="op">$</span> <span class="dt">Excepting.VariableNo</span> x</span>
 <span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Nothing</span> <span class="ot">-&gt;</span></span>
 <span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>      throw <span class="op">$</span> <span class="dt">Excepting.VariableUndeclaredMention</span> x</span></code></pre></div>
-<h2 id="interpreting">§ <a href="#interpreting"
-class="no-link-favicon no-link-preview">Interpreting</a></h2>
+<h3 id="interpreting">§ <a href="#interpreting"
+class="no-link-favicon no-link-preview">Interpreting</a></h3>
 <p>Now to combine it all together! To <em>interpret</em> a program is,
 following the three steps outlined in <span><span
 class="sidenote preview">Interpetation<br/><em><a href="#interpretation"
@@ -1681,8 +1679,8 @@ with the relevant exception in tact.</p>
 <p>The core library for <code>impe</code> is now complete.</p>
 <p>Now all is needed is a way to handle an
 <code>Interpretation</code>.</p>
-<h2 id="main">§ <a href="#main"
-class="no-link-favicon no-link-preview">Main</a></h2>
+<h3 id="main">§ <a href="#main"
+class="no-link-favicon no-link-preview">Main</a></h3>
 <p>The executable program that runs Impe.</p>
 <p>Modules <code>Main</code>, <code>Main.Output</code>, and
 <code>Main.Excepting</code>.</p>
@@ -1696,8 +1694,8 @@ two functionalities:</p>
 </ol>
 <p>To organize this executable and some options about how to interpret
 Impe programs, some command line options will be useful.</p>
-<h3 id="command-line-options">§ <a href="#command-line-options"
-class="no-link-favicon no-link-preview">Command Line Options</a></h3>
+<h4 id="command-line-options">§ <a href="#command-line-options"
+class="no-link-favicon no-link-preview">Command Line Options</a></h4>
 <p>Modules <code>Main.Config.Grammar</code>and
 <code>Main.Config.Parsing</code>. Using
 <code>options-applicative</code>.</p>
@@ -1816,8 +1814,8 @@ follows:</p>
 <div class="sourceCode" id="cb43"><pre
 class="sourceCode hs"><code class="sourceCode haskell"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="ot">parseConfig ::</span> <span class="dt">Member</span> (<span class="dt">Embed</span> <span class="dt">IO</span>) r <span class="ot">=&gt;</span> <span class="dt">Sem</span> r <span class="dt">Grammar.Config</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>parseConfig <span class="ot">=</span> embed <span class="op">$</span> execParser config</span></code></pre></div>
-<h3 id="interactive-repl">§ <a href="#interactive-repl"
-class="no-link-favicon no-link-preview">Interactive REPL</a></h3>
+<h4 id="interactive-repl">§ <a href="#interactive-repl"
+class="no-link-favicon no-link-preview">Interactive REPL</a></h4>
 <p>Modules <code>Main.Interacting</code>,
 <code>Main.Interacting.Grammar</code>,
 <code>Main.Interacting.Lexing</code>,
@@ -1850,10 +1848,10 @@ class="sourceCode hs"><code class="sourceCode haskell"><span id="cb44-1"><a href
 <p>The details are omitted, but a simple parsec parser can be derived
 for this language, where:</p>
 <ul>
-<li>an instruction is input as "&lt;instruction&gt;"</li>
-<li>an expression is input as ":e &lt;expression&gt;" or ":eval
-&lt;expression&gt;"</li>
-<li>a metacommand is input as ":&lt;metacommand&gt;"</li>
+<li>an instruction is input as "<instruction>"</li>
+<li>an expression is input as ":e <expression>" or ":eval
+<expression>"</li>
+<li>a metacommand is input as ":<metacommand>"</li>
 </ul>
 <p>Finally, the REPL itself is implemented in a slightly convoluted way,
 which takes advantage of polysemy.</p>
@@ -1995,8 +1993,8 @@ class="sourceCode hs"><code class="sourceCode haskell"><span id="cb46-1"><a href
 <span id="cb46-107"><a href="#cb46-107" aria-hidden="true" tabindex="-1"></a>  <span class="dt">MetaCommand_Quit</span> <span class="ot">-&gt;</span></span>
 <span id="cb46-108"><a href="#cb46-108" aria-hidden="true" tabindex="-1"></a>    <span class="co">-- quit</span></span>
 <span id="cb46-109"><a href="#cb46-109" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span> <span class="dt">False</span></span></code></pre></div>
-<h1 id="conclusions"><a href="#conclusions"
-class="no-link-favicon no-link-preview">Conclusions</a></h1>
+<h2 id="conclusions">§ <a href="#conclusions"
+class="no-link-favicon no-link-preview">Conclusions</a></h2>
 <h2 id="references">§ <a href="#references"
 class="no-link-favicon no-link-preview">References</a></h2>
 <ul>
@@ -2030,7 +2028,7 @@ alt="/favicon.ico" />markdown content</a> encoded in base 64, using my
 title="_blank"><img src="/favicon.ico" class="favicon"
 alt="/favicon.ico" />public key</a>.</p>
 <div class="sourceCode" id="cb47"><pre
-class="sourceCode txt"><code class="sourceCode default"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>c6626d564ad4cff8c65f0200f2342cecdbb47541aa8252ca6985d9dbbe26b3ad61eee0faba8d4d682811c12069bd4447519d01f762bad9cd7467c73e49e3ec00</span></code></pre></div>
+class="sourceCode txt"><code class="sourceCode default"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>5cb9bf2b422a7b1233c83f8a8f6c26a5968f92f37fc032ebe65c20309b8222ec31978005ed5688ddde768210ffa415f67d1b2969d9793bec71d970677f4c140f</span></code></pre></div>
 <p>See <a href="/page/signature.html"><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />Signature</a> for more
 information.</p></main>

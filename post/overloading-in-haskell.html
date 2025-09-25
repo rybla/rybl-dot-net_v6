@@ -244,16 +244,14 @@ Singletons</a></li>
 <li><a href="#overloading-with-π"
 class="no-link-favicon no-link-preview">Overloading with Π</a></li>
 <li><a href="#conclusions"
-class="no-link-favicon no-link-preview">Conclusions</a>
-<ol type="1">
+class="no-link-favicon no-link-preview">Conclusions</a></li>
 <li><a href="#signature"
 class="no-link-favicon no-link-preview">Signature</a></li>
-</ol></li>
 </ol>
 </div>
 </div>
-<h1 id="introduction"><a href="#introduction"
-class="no-link-favicon no-link-preview">Introduction</a></h1>
+<h2 id="introduction">§ <a href="#introduction"
+class="no-link-favicon no-link-preview">Introduction</a></h2>
 <p>A common metaprogrammatic feature is overloading. A function is
 <em>overloaded</em> (by name) if multiple implementations of possibly
 different types can all be referred to by the same name (in the same
@@ -267,10 +265,10 @@ booleans.</p>
 <p>I conclude with a overview of the advantages and drawbacks of the
 different approaches, and some ideas about the generalization of my
 favored approach.</p>
-<h1 id="overloading-with-typeclasses"><a
+<h2 id="overloading-with-typeclasses">§ <a
 href="#overloading-with-typeclasses"
 class="no-link-favicon no-link-preview">Overloading with
-Typeclasses</a></h1>
+Typeclasses</a></h2>
 <p>Haskell provides a nice interface (with a complicated backend) for a
 restricted form of overloading via typeclasses. A <em>typeclass</em> is
 a way of classifying types by <em>methods</em> (to match the
@@ -332,10 +330,10 @@ purposes.)</p>
 <p>In this way, typeclasses don't provide fully-general overloading
 capability where the different overload modes can have arbitrarily
 different types (e.g. take different numbers of arguments).</p>
-<h1 id="overloading-with-templates"><a
+<h2 id="overloading-with-templates">§ <a
 href="#overloading-with-templates"
 class="no-link-favicon no-link-preview">Overloading with
-Templates</a></h1>
+Templates</a></h2>
 <p>Templates (via Template Haskell) offer more general megaprogramming
 capabilities than typeclasses. Templates are metaprograms that are
 executed before typechecking the base program. Templates rely on quoting
@@ -413,10 +411,10 @@ somehow taking advantage of type inference to allow an <code>_</code> in
 place of the overload specification argument. This won't work for this
 templates approach, but perhaps it could work for the singletons
 approach -- see the next section.)</p>
-<h1 id="overloading-with-singletons"><a
+<h2 id="overloading-with-singletons">§ <a
 href="#overloading-with-singletons"
 class="no-link-favicon no-link-preview">Overloading with
-Singletons</a></h1>
+Singletons</a></h2>
 <p>Finally, this third approach is to take advantage of a restricted
 form of dependent typing that Haskell provides: singletons. In short, a
 <em>singleton</em> reflects a type at the term level (there are also
@@ -529,8 +527,8 @@ class="sourceCode haskell"><code class="sourceCode haskell"><span id="cb10-1"><a
 inference to work. This is because, otherwise, the output type is just a
 type variable, and GHC would try to solve
 <code>Int -&gt; t ~ NegateType mode</code> which it cannot.</p>
-<h1 id="overloading-with-π"><a href="#overloading-with-%CF%80"
-class="no-link-favicon no-link-preview">Overloading with Π</a></h1>
+<h2 id="overloading-with-π">§ <a href="#overloading-with-%CF%80"
+class="no-link-favicon no-link-preview">Overloading with Π</a></h2>
 <p>As described before, singletons are an implementation in Haskell of a
 restricted kind of dependent types. That is, they allow the output type
 of functions to depend on the values of its arguments. But how would we
@@ -567,8 +565,8 @@ works, sadly.</p>
 make the singletons approach work: pattern matching on an "overload
 mode" singleton, and a type family (i.e. type-level function from a type
 to a type) for the types of each overload mode.</p>
-<h1 id="conclusions"><a href="#conclusions"
-class="no-link-favicon no-link-preview">Conclusions</a></h1>
+<h2 id="conclusions">§ <a href="#conclusions"
+class="no-link-favicon no-link-preview">Conclusions</a></h2>
 <p>We have overviewed three approaches to implementing overloading in
 Haskell (or any other language that offers these features
 respectively):</p>
@@ -630,7 +628,7 @@ content</a> encoded in base 64, using my <em>secret key</em> and <a
 href="/key/main_ed25519.pub.txt" title="_blank"><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />public key</a>.</p>
 <div class="sourceCode" id="cb13"><pre
-class="sourceCode txt"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>aba039eac307d8fc9d65cb2fe1b60d9b6da83ff011a3fb3f8d21a32936fafc6f2d51e38fcdcbaba38e2671dd183f3a6808199b68dbb333a734396ffdd63cb104</span></code></pre></div>
+class="sourceCode txt"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>d89301805d688efded14e5feee5235083baa1c17e6e0f04db7c4a2090ec6bba6f850f0c05d51658f604f64cbfccf5ecb1b3a384b5dbc5d905a47dea177311e04</span></code></pre></div>
 <p>See <a href="/page/signature.html"><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />Signature</a> for more
 information.</p></main>

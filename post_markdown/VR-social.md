@@ -10,7 +10,7 @@ abstract: |
 table_of_contents: true
 ---
 
-# My Background with VR
+## My Background with VR
 
 I bought a VR headset, [the Valve Index][valve-index] to be used tethered with
 PC and its dedicated graphics card, about 6 months ago. Since then, I've mostly
@@ -63,7 +63,7 @@ next. The games weren't as fun as other VR games I already had.
 Overall, it was a funny gimmick to see the early stages of social VR, but I
 only participated in social VR around 5 times during 6 months.
 
-# Giving Social VR another Chance
+## Giving Social VR another Chance
 
 Listening the Meta and technology enthusiasts talk about the promises of social
 VR, I started to wonder if there's something that I missed from my previous
@@ -79,7 +79,7 @@ S](https://www.oculus.com/rift-s/), the last model from the old Rift days for
 Oculus. We first met in [VRChat][vr-chat] for about 2.5 hours, and then in
 [RecRoom][recroom] for about 2.5 hours.
 
-## VRChat
+### VRChat
 
 ![VRChat](https://images.squarespace-cdn.com/content/v1/5f0770791aaf57311515b23d/1594323097093-T0ZKL126WLLITS38XH7L/logo.png)
 
@@ -167,7 +167,7 @@ the village that was transforming into a large dinosaur or something, which was
 distracting, so we configured _earmuff mode_ which limited our hearing to just
 people within a few meters.
 
-### VRChat Review
+#### VRChat Review
 
 QMD and I took physical and virtual seats to review our experience so far. How
 does our communication in VRChat compare to our physical interactions? For
@@ -237,7 +237,7 @@ really needed in VR was the equivalent of a tablet. I'm sure that something like
 this is possible, its just a matter of UI design. So, I'm very interested to see
 where that sort of feature becomes available.
 
-## RecRoom
+### RecRoom
 
 ![RecRoom](http://static1.squarespace.com/static/582e7271bebafbd72792bd97/t/5cfeaf9a904d11000101ece8/1560194976582/OC+LANDSCAPE.jpg?format=1500w)
 
@@ -311,7 +311,7 @@ definitely seems to be a lot of user-generated content in RecRoom, but we were
 satisfied enough with the dev-created worlds we tried for a few hours that we
 didn't end up trying many of user-created ones.
 
-### RecRoom Review
+#### RecRoom Review
 
 _Attention._ One of the restrictions that comes with the avatars is that
 RecRoom's developers decided to make the avatars simplified floating torsos with
@@ -349,7 +349,7 @@ QMD than many of the VRChat worlds. Still, however, having tablets to use
 collaboratively inside of RecRoom would be a great feature which should be added
 as soon as possible.
 
-# Conclusions
+## Conclusions
 
 What was new about this experience was that I shared it with someone that I have
 interacted with physically and in non-VR games  many times before. In this way,
@@ -406,14 +406,3 @@ see there being particular worlds I would be interested in enough to boot up
 VRChat specifically to visit, but none of the worlds I've seen so far qualify.
 Finally, if I was inviting someone to hang out with me in VR for the first time,
 I would choose RecRoom over VRChat pretty much every time.
-
-# Resources
-
-- [Valve Index][valve-index]
-- [Meta Quest 2](https://www.oculus.com/blog/meta-quest-2-pricing-changes/)
-- [VRChat][vr-chat]
-- [RecRoom][recroom]
-
-[valve-index]: https://store.steampowered.com/valveindex
-[vr-chat]: https://store.steampowered.com/app/438100/VRChat/
-[recroom]: https://recroom.com/

@@ -15,7 +15,7 @@ abstract: |
 table_of_contents: true
 ---
 
-# Metaprogramming
+## Metaprogramming
 
 _Metaprogramming_ is the design of programs that generate code meant to be used
 at the same of a similarly high level of abstraction as the metaprogram's
@@ -40,6 +40,6 @@ some severe side-effects.
    a string and nothing more!
 3.
 
-# Dependent Types
+## Dependent Types
 
-# Metaprogramming via Dependent Types
+## Metaprogramming via Dependent Types
