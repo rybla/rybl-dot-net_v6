@@ -7,7 +7,7 @@ tags:
 table_of_contents: true
 ---
 
-# Introduction
+## Introduction
 
 In the United States of America, Democracy is viewed as an integral to both the
 nation's identity and political system. However sympathies to alternatives have
@@ -31,7 +31,7 @@ _Note_: I use "Democracy" capitalized not to refer to the Democratic political
 party in the USA, but to specifically refer to "democracy" as popularly
 conceived in the USA.
 
-# What is Democracy?
+## What is Democracy?
 
 This section serves as an overview of what Democracy means in this article.
 There are many other resources that provide a more thorough foundation, but that
@@ -70,7 +70,7 @@ by jury. So, the USA does not practice absolute democracy.
 _Note_: A democratic republic being a kind of democracy, I take the republican
 side of this category to be an aspect of Democracy in the USA.
 
-# The Upsides of Democracy
+## The Upsides of Democracy
 
 From a historical perspective, Democracy seems to have coincided with the
 development of a hugely powerful and influencial country that is the USA. The
@@ -99,7 +99,7 @@ practice of Democracy. Some plausible upside of Democracy are:
 
 **U6. cohesion of national identity**
 
-# The Downsides of Democracy
+## The Downsides of Democracy
 
 Although Democracy is almost unanimously pronounced good by the Americans both
 publically and privately, it is not without is downsides. Notably, the history
@@ -123,6 +123,6 @@ some plausible downsides of Democracy are:
 
 **D6. distributed and vague responsibiltiy**
 
-# The Net Weighting of Democracy
+## The Net Weighting of Democracy
 
 TODO

@@ -9,7 +9,7 @@ tags:
 table_of_contents: true
 ---
 
-# Introduction
+## Introduction
 
 Sharing text online in the form of urls, quotes, or just raw text has been a
 core part of how content is shared online. For almost any kind of content on the
@@ -21,7 +21,7 @@ developed medium.
 The following sections outline a few features that I think take better advantage
 of how nontext context is consumed on the internet.
 
-# Splicing
+## Splicing
 
 Currently, YouTube offers a functionality for tagging a video link with a
 _start_ time. When the link is opened, the video will load the video player with
@@ -79,7 +79,7 @@ and what they will prefer to do in other ways (e.g. the raw video source). For
 example, I predict that not many people would make use of the parallel-videos
 Playlist functionlity just mentioned.
 
-# Timestamped Comments
+## Timestamped Comments
 
 For text-centric content such as articles, a commenter can easily refer to a
 part of the article by quoting the section. But for nontext content the
@@ -109,6 +109,12 @@ current time of the player or by allowing a scrubber interfact for choosing a
 timestamp. This removes the middle step of reading, remembering, and then typing
 the timestamp.
 
-# Chapters, Sections, Etc.
+## Chapters, Sections, Etc.
 
-# Modular Video and Audio Widgets
+::: todo
+:::
+
+## Modular Video and Audio Widgets
+
+::: todo
+:::

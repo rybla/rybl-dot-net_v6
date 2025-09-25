@@ -109,8 +109,14 @@ h6 {
   margin-bottom: 0.5em;
   padding: 0;
 
+  overflow-wrap: break-word; /* Older property, good for fallback */
+  -webkit-hyphens: auto; /* For Safari */
+  -ms-hyphens: auto; /* For Internet Explorer */
+  hyphens: auto; /* Standard property */
+
   & > a {
     background: transparent;
+    display: inline;
   }
 }
 

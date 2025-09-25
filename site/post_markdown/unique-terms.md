@@ -9,7 +9,7 @@ abstract: |
 table_of_contents: false
 ---
 
-# In the polymorphic λ-calculus (System F)
+## In the polymorphic λ-calculus (System F)
 
 The polymorphic λ-calculus has the following grammar
 
@@ -46,7 +46,7 @@ proj2 = ...
 proj<i> = proj2 o ... o proj2 o proj1 :: (... * a * ...) -> a
 ```
 
-# In the dependently-typed λ-calculus
+## In the dependently-typed λ-calculus
 
 ```
 <judgment> ::= <term> :: <term>

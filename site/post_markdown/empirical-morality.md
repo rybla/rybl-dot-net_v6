@@ -10,7 +10,7 @@ abstract: |
 table_of_contents: true
 ---
 
-# Moral Theories and Metaethics
+## Moral Theories and Metaethics
 
 A _moral claim_ is a true judgment of the morality of an action i.e. whether or
 not an action _ought_ to be taken. An _ethical theory_ is a theory that explains
@@ -117,9 +117,9 @@ Utilitarianism is true because:
 
 Or, replace “utilitarianism” with your most favored/hated ethical theory.
 
-# Metaethical Justifications for Ethical Theories
+## Metaethical Justifications for Ethical Theories
 
-## Moral Intuitionism
+### Moral Intuitionism
 
 One popular way to approach metaethical justification is to rely heavily on type
 3 moral claims. In particular, a particular ethical theory is justified by how
@@ -149,7 +149,7 @@ As (implicitly) popular as it is, moral intuitionism has some steep drawbacks.
   inconsistent ethical theories, a moral intuitionist must account for which
   intuitions do and don’t correspond to moral truths and why.
 
-### Accepting Moral Relativism
+#### Accepting Moral Relativism
 
 The simplest response to these drawbacks is to accept moral relativism, but this
 has two very steep drawbacks. To accept moral relativism is to claim that all
@@ -187,7 +187,7 @@ objective reality) only A or not A can actually be done.
 // TODO: really get into why moral relativism is objectionable, and justify
 meta\*ethical justifications here.
 
-## Hierarchies of Moral Intuitions
+### Hierarchies of Moral Intuitions
 
 If a moral intuitionist rejects moral relativism (i.e. they maintain that there
 are objective moral truths) then they must account for how to decide which moral
@@ -226,7 +226,7 @@ specified yet:
 So altogether, the variety of branches that moral intuitionism provides all seem
 to end in weak positions.
 
-# Moral Constructivism
+## Moral Constructivism
 
 A tac that is more successful and much more popular than moral intuitionism is
 _moral constructivism_, which is the claim that moral truths are socially
@@ -286,7 +286,7 @@ time. E.g. There’s nothing morally wrong with slavery _at the time_ and in the
 places where is was accepted. Only looking back do we say that slavery _is wrong
 now_ according to our modern society’s ethical theory.
 
-# Moral Empiricism
+## Moral Empiricism
 
 _Moral empiricism_ is the view that the fact of which ethical theory is correct
 is merely an _empirical_ fact about _human nature_.

@@ -8,11 +8,11 @@ abstract: My thoughts on "A Friedman Doctrine".
 table_of_contents: true
 ---
 
-# Introduction
+## Introduction
 
 In 1970, the New York Times published a Milton Friedman op-ed by the name of _A
 Friedman dotrine-- The Social Responsibility Of Business Is to Increase Its
-Profits_ [[NYT article][friedman-doctrine]]. It begins with this paragraph.
+Profits_ [[NYT article](https://www.nytimes.com/1970/09/13/archives/a-friedman-doctrine-the-social-responsibility-of-business-is-to.html)]. It begins with this paragraph.
 
 > When I hear businessmen speak eloquently about the "social responsibilities of
 > business in a free‐enterprise system," I am reminded of the wonderful line
@@ -46,10 +46,10 @@ three components:
    within the rules of the game, which is to say, engages in open and free
    competition without deception fraud."
 3. The endorsement of social responsibility for businesses amounts to socialism
-i.e. "the doctrine of 'social responsibility' involves the acceptance of the
-socialist view that political mechanisms, not market mechanisms, are the
-appropriate way to determine the allocation of scarce resources to alternative
-uses."
+   i.e. "the doctrine of 'social responsibility' involves the acceptance of the
+   socialist view that political mechanisms, not market mechanisms, are the
+   appropriate way to determine the allocation of scarce resources to alternative
+   uses."
 
 ::: todo
 often ineffective, "approaching fraud", and undermining a free society.
@@ -71,32 +71,32 @@ order to:
 - propose some extensions and other modifications of Friedman's that address my
   criticisms
 
-# A Friedman Doctrine
+## A Friedman Doctrine
 
 In this section I present an outline of Friedman's arguments, along with my own
 elaborations on his formalizations.
 
-## Social Responsibility
+### Social Responsibility
 
 TODO
 
-## Corporate Responsibility
+### Corporate Responsibility
 
 TODO
 
-## Socialism and "The Cloak of Social Responsibility"
+### Socialism and "The Cloak of Social Responsibility"
 
 TODO
 
-## Caveats
+### Caveats
 
 ::: todo
 my own judgements, extensions
 :::
 
-# Judgements
+## Judgements
 
-## No Collective Responsibility
+### No Collective Responsibility
 
 - I like his point of view on this, because I think collectivization of
   responsibility is a huge flaw in many popular arguments about economics,
@@ -108,7 +108,7 @@ my own judgements, extensions
   - Ok, then why is it a problem if businesspeople voluntarily take on social
     responsibilities?
 
-## A Special Social Responsibility?
+### A Special Social Responsibility?
 
 - So does the argument come down to that corporate exec's have a _special_
   social responsibility, beyond being normal humans? This doesn't quite make
@@ -116,7 +116,7 @@ my own judgements, extensions
   "social responsibility of business" to be the social responsibility of the
   businessmen.
 
-## Principles of Effectiveness
+### Principles of Effectiveness
 
 - Though Friedman is most loud about the moral principles behind a his defense
   of what he calls altogether "a basis for a free society," he also claims many
@@ -136,13 +136,13 @@ my own judgements, extensions
     variety of reasons e.g. police, military, democratic rule. Why could there
     not be any submarket that also meets similar criteria?
 
-# Extensions
+## Extensions
 
-## Accounting for Non-Profits
+### Accounting for Non-Profits
 
 TODO
 
-## "The Robe of Social Responsibility"
+### "The Robe of Social Responsibility"
 
 - how to do more good by making money at the same time
 - examples
@@ -150,15 +150,6 @@ TODO
   - fracking
   - TODO: more examples
 
-# Resources
+## Podcast
 
-- _The Social Responsibility of Business in "A Friedman Doctrine"_
-  [[Metagnosis podcast episode][mg-friedman]]
-
-- _A Friedman dotrine-- The Social Responsibility Of Business Is to Increase Its
-  Profits_ [[NYT article][friedman-doctrine]]
-
-[friedman-doctrine]:
-  https://www.nytimes.com/1970/09/13/archives/a-friedman-doctrine-the-social-responsibility-of-business-is-to.html
-[mg-friedman]:
-  https://metagnosis.simplecast.com/episodes/the-social-responsibility-of-business-in-the-friedman-doctrine
+- [The Social Responsibility of Business in "A Friedman Doctrine"](https://metagnosis.simplecast.com/episodes/the-social-responsibility-of-business-in-the-friedman-doctrine)

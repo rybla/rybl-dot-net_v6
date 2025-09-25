@@ -10,13 +10,13 @@ tags:
 status: updated 2019/08/22
 ---
 
-# Introduction
+## Introduction
 
 Can some phenomena be so complex that there cannot be an _understandable_
 explanation for it? If so, could systems like brains and economies harbor such
 phenomena?
 
-# Bar Code
+## Bar Code
 
 In his 1991 paper
 _[Real Patterns](https://ruccs.rutgers.edu/images/personal-zenon-pylyshyn/class-info/FP2012/FP2012_readings/Dennett_RealPatterns.pdf)_,
@@ -93,7 +93,7 @@ to the purpose for using the pattern.
 My argument will be along similar lines, analogizing to the trade-offs made in
 scientific patterns to build explanations at varying levels of abstraction.
 
-# Levels of Abstraction
+## Levels of Abstraction
 
 Fields of scientific study can be organized into a abstraction-tree, where the
 leaves of the tree are the most precise and the deeper branches are abstractions
@@ -145,7 +145,7 @@ analysis, yet has no explanation via chemical terms. There are two possible
 solutions: take theory from physics in order to explain it (if there is such an
 explanation), or introduce the explanation as an assumption.
 
-# When There is No Explanation
+## When There is No Explanation
 
 But what exactly does something like this look like? Let's consider the example
 of economics. Why does my bread cost $4? There may in fact not be a useful

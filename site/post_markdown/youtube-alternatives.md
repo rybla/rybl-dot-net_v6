@@ -10,7 +10,7 @@ abstract: |
 table_of_contents: true
 ---
 
-# YouTube's Popular Dominance
+## YouTube's Popular Dominance
 
 The following diagram ranks the top 50 websites by total average visits
 worldwide monthly
@@ -35,7 +35,7 @@ In the same way that Google.com has dominated search and Facebook.com has
 dominated social media (debatable what "social media" means here), YouTube has
 dominated public video hosting.
 
-# YouTube's Revenue Model
+## YouTube's Revenue Model
 
 How does YouTube make money? According to YouTube, they makes money in two ways:
 
@@ -47,7 +47,7 @@ How does YouTube make money? According to YouTube, they makes money in two ways:
 
 The vast majority of YouTube's revenue comes from advertising [citation needed].
 
-# YouTube's Network Effects
+## YouTube's Network Effects
 
 Independent video creators (or just "creators" for short) create the vast
 majority of content of YouTube. Even the YouTube Premium content is usually made
@@ -70,7 +70,7 @@ aspect of network effects with respect to gaining new users and creators.
 How could a new competitor possibly compete with YouTube with this dynamic
 persisting?
 
-# Competing with YouTube
+## Competing with YouTube
 
 To decide a measure for competativeness with YouTube, first specify respects to
 which the competitor would like to compete with YouTube. This could be all
@@ -109,7 +109,7 @@ competitor _should_ be able to compete with YouTube more directly? Or are there
 good reasons why competition should focus on these more niche markets rather
 than try to compete for YouTube's creators and users in general?
 
-# YouTube's General Advantage
+## YouTube's General Advantage
 
 A major respect to which no public video hosting service seems to compete well
 with YouTube on is sheer scale. As of February 2020, YouTube announced that
@@ -161,7 +161,7 @@ Today, the activation costs are higher and lower in different ways:
   more efficient than ever.
 - TODO: more ways
 
-# Predictions
+## Predictions
 
 In the next 10 years, I expect:
 

@@ -8,7 +8,7 @@ tags:
 
 ![](asset/city-design/header.jpg)
 
-# Introduction
+## Introduction
 
 Lately I've been reading the book
 [Order without Design: How Markets Shape Cities](https://www.goodreads.com/book/show/39644188-order-without-design)
@@ -28,7 +28,7 @@ arguments that led to them. They are the following:
   direction. Market-oriented explanations in terms of trade-offs are more
   accurate and insightful.
 
-# Purposeful Cities
+## Purposeful Cities
 
 To be clear, Bertaud's thesis is not that cities should be completely without
 any design. In fact, he specifies a few roles that he advocates city designers
@@ -55,10 +55,10 @@ the policies) beneficial the the city's residents, the purpose of "fostering an
 efficient labor market" and "to be beneficial, in some way, for the people that
 live in the city, currently or in the future" converge very closely.
 
-# The Designer's Perspective
+## The Designer's Perspective
 
 TODO
 
-# Recognizing Trade-Offs
+## Recognizing Trade-Offs
 
 TODO

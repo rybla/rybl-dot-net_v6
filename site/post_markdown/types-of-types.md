@@ -14,7 +14,7 @@ In mathematics and theoretical computer science, theoreticians seem to always be
 grasping for synonyms of the word "type." This post serves as a convenient
 resource for these words.
 
-# Types of "Type"s
+## Types of "Type"s
 
 | analogy            | types of types                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
 | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -208,7 +208,7 @@ jargon
 
 :::
 
-# Criteria
+## Criteria
 
 In choosing these words, I mostly looked to mathematical convention for what
 works as new terms. Though my goal is that these words should be able to be used
@@ -262,9 +262,9 @@ though I'm sure its out there somewhere. This is how I define it:
 > a finite number of applications of the axioms, via the rules of logical
 > inference.
 
-# Case Studies
+## Case Studies
 
-## Type Theory
+### Type Theory
 
 As a particular example close to my interests, the field of theoretical computer
 science _type theory_ revolves around a concept called "type," where data
@@ -299,7 +299,7 @@ distinguish levels of the heirarchy. With these retroactive renamings:
 - _sort_ := _type2_
 - type of type of ... := _typeN_
 
-## Abstract Algebra
+### Abstract Algebra
 
 Abstract algebra upon set theory with a (non-technical) variety of structures,
 the most commonly-recognized name among them being "group." The name is fitting
@@ -327,7 +327,7 @@ selection:
 - [topology](https://en.wikipedia.org/wiki/Topology)
 - [space](https://en.wikipedia.org/wiki/Hilbert_space)
 
-## Category Theory
+### Category Theory
 
 When modern mathematics was first formalized in the 19th and 20th centuries, a
 new standard basis for all of mathematics was formalized: _set theory_. The

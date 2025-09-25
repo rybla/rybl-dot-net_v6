@@ -13,7 +13,7 @@ abstract: |
 table_of_contents: true
 ---
 
-# Introduction
+## Introduction
 
 Typically in a Magic the Gathering (MTG) draft, there are three phases:
 
@@ -28,7 +28,7 @@ Typically in a Magic the Gathering (MTG) draft, there are three phases:
    with cards that had abilities relevant during draft, inviting some
    interaction between draft and play itself.
 
-# Goals
+## Goals
 
 The following setup provides a way to conduct an MTG draft where the
 deck-building happens between MTG games, the idea being that each player’s deck
@@ -43,7 +43,7 @@ higher rarities are only available later in the draft.
 3. More powerful cards are presented randomly throughout the draft, and to be
    obtained they require the trading-in of some amount of other cards.
 
-# Requirements
+## Requirements
 
 Let \\(n\\) be the number of players and \\(r\\) be the number of rounds to
 play. You will need the following volumes of cards (preferably color-balanced to
@@ -55,7 +55,7 @@ at least a reasonable extent).
 
 This format is best played with 2 or 4 players, and for 5-10 rounds.
 
-# Definitions
+## Definitions
 
 - **Common starter pack** (15 cards, all common)
   - 2 mono-color of each color
@@ -88,7 +88,7 @@ This format is best played with 2 or 4 players, and for 5-10 rounds.
     commons, uncommona, and (mythic) rares respectively extra for each color
     they share with the card being bought.
 
-# Protocol
+## Protocol
 
 1. **Setup** where _n_ is the number of players and _r_ is the number of rounds.
    Form the following packs:
@@ -114,13 +114,13 @@ This format is best played with 2 or 4 players, and for 5-10 rounds.
    - Each win is worth 2 points, each tie is worth 1 point.
    - The winner is the player with the most points after the last round.
 
-# Variants
+## Variants
 
 - Don't make all packs perfectly color-representative.
 - Mofify costs and worths of uncommons and rares.
 - Make mythic rares cost and worth more.
 
-# Design Notes
+## Design Notes
 
 - The losers buy first, giving losers an advantage, because otherwise the
   repeated games would suffer from a

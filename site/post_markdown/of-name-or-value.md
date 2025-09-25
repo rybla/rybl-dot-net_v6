@@ -21,10 +21,3 @@ The following parable is borrowed from _[Call-by-value is dual to call-by-name](
 > "Grant me my wish!"
 > The devil took possession of the valise. Then he said, "Oh, did I say (b) before? I'm so sorry. I meant (a). It is my great pleasure to give you one billion dollars."
 > And the devil handed back to the man the same valise that the man had just handed to him.
-
-
-# References
-
-- Philip Wadler. 2003. _Call-by-value is dual to call-by-name_. [doi][wadlerp-2003]
-
-[wadlerp-2003]: https://doi.org/10.1145/944705.944723
