@@ -1,1 +1,4 @@
-{"description":"Placeholder description for https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html","title":"https://rocq-prover.org/doc/v8.19/refman/proof-engine/ltac.html"}
+{
+  "title": "Rocq Prover",
+  "description": "A trustworthy, industrial-strength interactive theorem prover and dependently-typed programming language for mechanised reasoning in mathematics, computer science and more."
+}

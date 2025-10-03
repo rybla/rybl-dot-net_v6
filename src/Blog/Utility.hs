@@ -88,9 +88,15 @@ uriRootAndPath uri =
 
 -- | Extract the host from a URI. Example:
 --
--- > uriHost "https://test.example.com/seg1#id?query=string" == "test.example.com"
+-- > uriHost "https://www.test.example.com/seg1#id?query=string" == "test.example.com"
 uriHost :: URI -> String
-uriHost uri = uri & URI.uriAuthority & maybe (error "URI doesn't have a host: " ++ show uri) URI.uriRegName
+uriHost uri =
+  uri
+    & URI.uriAuthority
+    & maybe (error "URI doesn't have a host: " ++ show uri) URI.uriRegName
+    & splitBy ('.' ==)
+    & List.filter ("www" /=)
+    & List.intercalate "."
 
 fromMaybe :: (MonadError Doc m) => Doc -> Maybe a -> m a
 fromMaybe msg = maybe (throwError msg) return

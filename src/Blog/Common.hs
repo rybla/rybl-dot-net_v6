@@ -121,7 +121,7 @@ toFaviconInfoFilePath uri = Paths.offlineSite.favicon.here </> (uri & uriDomain 
 -- Preview
 
 toPreviewFilePath :: URI -> FilePath
-toPreviewFilePath uri = Paths.offlineSite.preview.here </> (uri & uriDomain & makeValidIdent & toDataFileName)
+toPreviewFilePath uri = Paths.offlineSite.preview.here </> (uri & uriHost & makeValidIdent & toDataFileName)
 
 -- generic
 
