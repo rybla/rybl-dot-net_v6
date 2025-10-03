@@ -15,6 +15,8 @@
   padding: 0.5em 1em;
   background: var(--basic-box-background);
   border: var(--popout-border);
+  overflow-wrap: break-word;
+  hyphens: auto;
 
   @media (width >= 1000px) {
     display: block;
@@ -30,7 +32,6 @@
     margin-right: calc(-1 * var(--gutter-width) + var(--main-padding));
     /*margin-top: -1em;*/
     margin-bottom: 2em;
-    word-break: break-all;
   }
   @media (width < 1000px) {
     display: none;
