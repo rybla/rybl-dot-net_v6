@@ -1,1 +1,4 @@
-{"description":"Placeholder description for https://agda.readthedocs.io/en/latest/index.html","title":"https://agda.readthedocs.io/en/latest/index.html"}
+{
+  "title": "Agda programming language documentation",
+  "description": "ThisThisThisThisThisThisThisThisThisThisThisThi is the manual for the Agda programming language, its type checking, compilation and editing system and related resources/tools. Agda is a dependently typed programming language. It is an extension of Martin-Löf’s type theory and is the latest in the tradition of languages developed in the programming logic group at Chalmers."
+}
