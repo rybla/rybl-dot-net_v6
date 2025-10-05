@@ -30,12 +30,13 @@ import Text.PrettyPrint.HughesPJClass (Doc, pPrint, (<+>))
 
 parsePage ::
   (MonadIO m, MonadError Doc m, MonadState env m) =>
+  Lens' env (Map URI Text) ->
   Lens' env (Map URI [Link]) ->
   Lens' env (Map URI [Link]) ->
   PageId ->
   Text ->
   m Page
-parsePage outLinks inLinks pageId pageText = do
+parsePage uriLabels outLinks inLinks pageId pageText = do
   logM "parsePost" $ "pageId =" <+> pPrint pageId
   doc <-
     pageText
@@ -45,6 +46,9 @@ parsePage outLinks inLinks pageId pageText = do
 
   pageHref <- toPageHref pageId
   pageTitle <- doc & Pandoc.getMetaValueSuchThat Pandoc.fromMetaString "title"
+  uriLabels . at pageHref %= \case
+    Just existingLabel -> error $ "attempted to add uriLabel for page " ++ show pageTitle ++ "at href " ++ show pageHref ++ " a second time; the existing label is " ++ show existingLabel
+    Nothing -> Just pageTitle
   pageReferencesEnabled <-
     doc
       & Pandoc.getMetaValueMaybeSuchThat Pandoc.fromMetaBool "references"

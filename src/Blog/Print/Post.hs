@@ -22,7 +22,10 @@ import System.FilePath ((</>))
 import qualified Text.Pandoc as Pandoc
 import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
 
-printPost :: (MonadIO m, MonadError Doc m, MonadState env m) => Post -> m ()
+printPost ::
+  (MonadIO m, MonadError Doc m, MonadState env m) =>
+  Post ->
+  m ()
 printPost post = evalIsoStateT (pairIso def) do
   templateText <- TextIO.readFile (Paths.offlineSite.template.here </> ("post" & toHtmlFileName)) & liftIO
 

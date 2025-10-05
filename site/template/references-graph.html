@@ -2,15 +2,18 @@
 <html>
   <head>
     ${common-head-prefix.html()}
-    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <link rel="stylesheet" href="/style/references-graph.css" />
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
   </head>
   <body>
-    ${common-body-prefix.html()}
+    ${common-body-prefix.html()} ${header.html()}
 
-    ${header.html()}
-
-    <main>${body}</main>
+    <main>
+      <h1>References Graph</h1>
+      <div id="references-graph"></div>
+      <script type="text/javascript" src="/script/references-graph.js"></script>
+      <script type="text/javascript">make_references_graph(${nodes}, ${edges})</script>
+    </main>
 
     ${footer.html()}
   </body>

@@ -46,7 +46,7 @@ main' = do
       <&> foldMap ((^? suffixed ".md") >>> maybe [] (return . PageId))
       >>= traverse \pageId -> do
         pageText <- TextIO.readFile (pageId & toPageMarkdownFilePath) & liftIO
-        Parse.Page.parsePage outLinks inLinks pageId pageText
+        Parse.Page.parsePage uriLabels outLinks inLinks pageId pageText
 
   -- parse posts
   posts <-
@@ -55,7 +55,7 @@ main' = do
       <&> foldMap ((^? suffixed ".md") >>> maybe [] (return . PostId))
       >>= traverse \postId -> do
         postText <- TextIO.readFile (postId & toPostMarkdownFilePath) & liftIO
-        Parse.Post.parsePost outLinks inLinks postId postText
+        Parse.Post.parsePost uriLabels outLinks inLinks postId postText
 
   -- process posts
   posts :: [Post] <-
@@ -73,7 +73,7 @@ main' = do
   Print.Index.printIndex posts
 
   -- print references graph
-  Print.ReferencesGraph.printReferencesGraph
+  Print.ReferencesGraph.printReferencesGraph uriLabels outLinks
 
   -- print pages
   pages & traverse_ \page -> do

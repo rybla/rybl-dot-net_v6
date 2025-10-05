@@ -33,12 +33,13 @@ import Text.PrettyPrint.HughesPJClass (Doc, pPrint, (<+>))
 
 parsePost ::
   (MonadIO m, MonadError Doc m, MonadState env m) =>
+  Lens' env (Map URI Text) ->
   Lens' env (Map URI [Link]) ->
   Lens' env (Map URI [Link]) ->
   PostId ->
   Text ->
   m Post
-parsePost outLinks inLinks postId postText = do
+parsePost uriLabels outLinks inLinks postId postText = do
   logM "pasePost" $ "postId =" <+> pPrint postId
   doc <-
     postText
@@ -51,6 +52,9 @@ parsePost outLinks inLinks postId postText = do
   postHref <- toPostHref postId
   postMarkdownHref <- toPostMarkdownHref postId
   postTitle <- doc & Pandoc.getMetaValueSuchThat Pandoc.fromMetaString "title"
+  uriLabels . at postHref %= \case
+    Just existingLabel -> error $ "attempted to add uriLabel for post " ++ show postTitle ++ "at href " ++ show postHref ++ " a second time; the existing label is " ++ show existingLabel
+    Nothing -> Just postTitle
   postPubDate <-
     doc
       & Pandoc.getMetaValueSuchThat

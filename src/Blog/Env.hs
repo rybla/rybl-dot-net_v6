@@ -9,12 +9,14 @@ import Control.Lens
 import Control.Monad.IO.Class (MonadIO, liftIO)
 import Data.Map (Map)
 import qualified Data.Map as Map
+import Data.Text (Text)
 import qualified Network.HTTP.Client as Network
 import qualified Network.HTTP.Client.TLS as Network
 import Network.URI (URI)
 
 data Env = Env
-  { _outLinks :: Map URI [Link],
+  { _uriLabels :: Map URI Text,
+    _outLinks :: Map URI [Link],
     _inLinks :: Map URI [Link],
     _manager :: Network.Manager
   }
@@ -24,7 +26,8 @@ newEnv = do
   manager <- Network.newManager Network.tlsManagerSettings & liftIO
   return
     Env
-      { _outLinks = Map.empty,
+      { _uriLabels = Map.empty,
+        _outLinks = Map.empty,
         _inLinks = Map.empty,
         _manager = manager
       }

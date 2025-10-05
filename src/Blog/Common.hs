@@ -49,7 +49,7 @@ data Link = Link
   { linkLabel :: [Pandoc.Inline],
     linkUri :: URI
   }
-  deriving (Show)
+  deriving (Show, Eq, Ord)
 
 data Post = Post
   { _postId :: PostId,

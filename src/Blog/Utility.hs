@@ -16,8 +16,10 @@ import qualified Data.ByteString as ByteString
 import qualified Data.ByteString.Base16 as B16
 import qualified Data.ByteString.Char8 as C8
 import qualified Data.List as List
+import Data.Map (Map)
 import qualified Data.Map as Map
 import Data.Maybe (fromJust)
+import qualified Data.Set as Set
 import Data.Text (Text)
 import qualified Data.Text as Text
 import qualified Data.Time as Time
@@ -187,3 +189,12 @@ filepathExtension = lastMay . splitBy ('.' ==)
 
 textDoc :: Text -> Doc
 textDoc = text . Text.unpack
+
+zipMapsWithDefault :: (Ord k) => (k -> v2 -> v1) -> (k -> v1 -> v2) -> Map k v1 -> Map k v2 -> Map k (v1, v2)
+zipMapsWithDefault def1 def2 m1 m2 =
+  Map.mergeWithKey
+    (\_ v1 v2 -> Just (v1, v2))
+    (Map.mapWithKey (\k v1 -> (v1, def2 k v1)))
+    (Map.mapWithKey (\k v2 -> (def1 k v2, v2)))
+    m1
+    m2
