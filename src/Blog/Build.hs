@@ -14,6 +14,7 @@ import qualified Blog.Paths as Paths
 import qualified Blog.Print.Index as Print.Index
 import qualified Blog.Print.Page as Print.Page
 import qualified Blog.Print.Post as Print.Post
+import qualified Blog.Print.ReferencesGraph as Print.ReferencesGraph
 import qualified Blog.Process.Page as Process.Page
 import qualified Blog.Process.Post as Process.Post
 import Blog.Utility
@@ -70,6 +71,9 @@ main' = do
 
   -- print index
   Print.Index.printIndex posts
+
+  -- print references graph
+  Print.ReferencesGraph.printReferencesGraph
 
   -- print pages
   pages & traverse_ \page -> do

@@ -39,6 +39,7 @@ library
       Blog.Print.Index
       Blog.Print.Page
       Blog.Print.Post
+      Blog.Print.ReferencesGraph
       Blog.Process.Common
       Blog.Process.Page
       Blog.Process.Post

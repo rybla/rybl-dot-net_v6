@@ -26,12 +26,6 @@ printPost :: (MonadIO m, MonadError Doc m, MonadState env m) => Post -> m ()
 printPost post = evalIsoStateT (pairIso def) do
   templateText <- TextIO.readFile (Paths.offlineSite.template.here </> ("post" & toHtmlFileName)) & liftIO
 
-  contentHtml <-
-    Pandoc.writeHtml5String
-      (commonWriterOptions mempty mempty)
-      post._postDoc
-      & Pandoc.lensPandocM _1
-
   postTemplate <-
     Pandoc.compileTemplate mempty templateText
       & unBlogTemplateMonad
@@ -43,8 +37,7 @@ printPost post = evalIsoStateT (pairIso def) do
         Aeson.parseJSON
         ( Aeson.object
             [ ("title", post._postTitle & Aeson.toJSON),
-              ("tags", post._postTags & Aeson.toJSON),
-              ("content", contentHtml & Aeson.toJSON)
+              ("tags", post._postTags & Aeson.toJSON)
             ]
         )
         & fromEither (("Error when parsing template variables JSON:" <+>) . text)

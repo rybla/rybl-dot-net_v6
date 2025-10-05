@@ -38,12 +38,6 @@ printIndex posts = evalIsoStateT (pairIso def) do
 
   templateText <- TextIO.readFile (Paths.offlineSite.template.here </> ("index" & toHtmlFileName)) & liftIO
 
-  contentHtml <-
-    Pandoc.writeHtml5String
-      (commonWriterOptions mempty mempty)
-      index
-      & Pandoc.lensPandocM _1
-
   indexTemplate <-
     Pandoc.compileTemplate mempty templateText
       & unBlogTemplateMonad
@@ -54,8 +48,7 @@ printIndex posts = evalIsoStateT (pairIso def) do
       Aeson.parseEither
         Aeson.parseJSON
         ( Aeson.object
-            [ ("title", "Index"),
-              ("content", contentHtml & Aeson.toJSON)
+            [ ("title", "Index")
             ]
         )
         & fromEither (("Error when parsing template variables JSON:" <+>) . text)
