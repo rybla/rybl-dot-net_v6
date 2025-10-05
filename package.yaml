@@ -42,6 +42,7 @@ dependencies:
   - cryptonite
   - memory
   - safe
+  - xss-sanitize
 
 ghc-options:
   - -Wall

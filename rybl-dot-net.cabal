@@ -99,6 +99,7 @@ library
     , time
     , transformers
     , uri-encode
+    , xss-sanitize
   default-language: Haskell2010
 
 executable generate-secret-key
@@ -152,6 +153,7 @@ executable generate-secret-key
     , time
     , transformers
     , uri-encode
+    , xss-sanitize
   default-language: Haskell2010
 
 executable generate-website
@@ -205,6 +207,7 @@ executable generate-website
     , time
     , transformers
     , uri-encode
+    , xss-sanitize
   default-language: Haskell2010
 
 test-suite rybl-dot-net-test
@@ -260,4 +263,5 @@ test-suite rybl-dot-net-test
     , time
     , transformers
     , uri-encode
+    , xss-sanitize
   default-language: Haskell2010

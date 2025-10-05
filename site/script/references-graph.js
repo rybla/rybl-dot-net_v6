@@ -105,6 +105,18 @@ function make_references_graph(node_list, edge_list) {
     },
     physics: {
       enabled: true,
+      barnesHut: {
+        avoidOverlap: 0.8,
+        gravitationalConstant: -2000,
+        centralGravity: 0.3,
+        springLength: 95,
+        springConstant: 0.04,
+        damping: 0.09,
+        avoidOverlap: 0,
+      },
+      stabilizations: {
+        enabled: true
+      }
     },
     interaction: {
       hover: true,

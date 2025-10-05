@@ -1,5 +1,4 @@
 #references-graph {
   width: 100%;
-  height: 600px;
-  border: 1px solid black;
+  height: max(90vh, 600px);
 }

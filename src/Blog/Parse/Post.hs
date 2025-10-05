@@ -69,7 +69,7 @@ parsePost uriLabels outLinks inLinks postId postText = do
 
   void $
     doc & Pandoc.walkM \(x :: Pandoc.Inline) -> case x of
-      Pandoc.Link _attr kids (refText, _) -> do
+      Pandoc.Link _attr kids (refText, _) | (refText & Text.take 1) /= "#" -> do
         ref <- refText & Text.unpack & parseUriReferenceM
         let outLink = Link kids ref
         outLinks . at postHref %= maybe (Just [outLink]) (Just . (outLink :))

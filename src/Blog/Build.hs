@@ -73,7 +73,7 @@ main' = do
   Print.Index.printIndex posts
 
   -- print references graph
-  Print.ReferencesGraph.printReferencesGraph uriLabels outLinks
+  Print.ReferencesGraph.printReferencesGraph manager uriLabels outLinks
 
   -- print pages
   pages & traverse_ \page -> do
