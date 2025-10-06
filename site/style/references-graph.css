@@ -1,4 +1,25 @@
 #references-graph {
-  width: 100%;
+  width: calc(100% + 2em);
+  margin: 0 -1em;
   height: max(90vh, 600px);
+}
+
+#references-graph-loading-placeholder {
+  overflow-y: hidden;
+  height: 200px;
+
+  &.collapsed {
+
+    height: 0;
+    transition: height 1.5s ease-in;
+  }
+
+  & > div {
+    /* TODO */
+    font-family: monospace;
+
+    &::before {
+      content: "> ";
+    }
+  }
 }
