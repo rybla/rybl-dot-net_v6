@@ -102,6 +102,7 @@ would literally splice the `x + y` into the result of the macro expansion withou
 And that's exactly what we need: _quoted holes_.
 
 A quoted hole behaves like so:
+
 - When quoted, is assigned an id that corresponds to its source position and to-be-generated metavariable type.
 - The first time the quoted hole is spliced, a metavariable is freshly generated in the context of that splice, and the quoted hole's id is associated with that metavariable.
 - The subsequent times the quoted hole is spliced (identified by the quoted hole's id), the metavariable associated with that quoted hole's type is used as the type of the new splice as well.

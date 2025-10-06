@@ -79,8 +79,11 @@ makeLenses ''Page
 
 -- Secret
 
+secretDirPath :: FilePath
+secretDirPath = "secret/"
+
 secretKeyFilePath :: FilePath
-secretKeyFilePath = "secret/main_ed25519"
+secretKeyFilePath = secretDirPath </> "main_ed25519"
 
 publicKeyFilePath :: FilePath
 publicKeyFilePath = "site/key/main_ed25519.pub.txt"

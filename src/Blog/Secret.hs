@@ -10,12 +10,17 @@ import qualified Crypto.Error as Crypto
 import qualified Crypto.PubKey.Ed25519 as Crypto
 import qualified Data.ByteString as ByteString
 import qualified Language.Haskell.TH.Syntax as Syntax
+import System.Directory (doesFileExist)
 
 secretKey :: Crypto.SecretKey
 secretKey =
-  $( do
-       bs <- liftIO $ ByteString.readFile secretKeyFilePath
-       [|Crypto.throwCryptoError $ Crypto.secretKey $ $(Syntax.lift bs)|]
+  $( liftIO $
+       doesFileExist secretKeyFilePath >>= \case
+         False ->
+           [|error $ "The secret key file does not exist. You must create the directory " ++ show secretDirPath ++ ", then run the `generate-secret-key` executable"|]
+         True -> do
+           bs <- liftIO $ ByteString.readFile secretKeyFilePath
+           [|Crypto.throwCryptoError $ Crypto.secretKey $ $(Syntax.lift bs)|]
    )
 
 publicKey :: Crypto.PublicKey
