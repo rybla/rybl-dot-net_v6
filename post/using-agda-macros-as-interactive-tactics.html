@@ -303,12 +303,12 @@ Macros</a></h2>
 href="https://agda.readthedocs.io/en/latest/index.html"
 title="_blank"><img src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />Agda programming language
-documentation</a></em><br/>ThisThisThisThisThisThisThisThisThisThisThisThi
-is the manual for the Agda programming language, its type checking,
-compilation and editing system and related resources/tools. Agda is a
-dependently typed programming language. It is an extension of
-Martin-Löf’s type theory and is the latest in the tradition of languages
-developed in the programming logic group at Chalmers.</span><a
+documentation</a></em><br/>This is the manual for the Agda programming
+language, its type checking, compilation and editing system and related
+resources/tools. Agda is a dependently typed programming language. It is
+an extension of Martin-Löf’s type theory and is the latest in the
+tradition of languages developed in the programming logic group at
+Chalmers.</span><a
 href="https://agda.readthedocs.io/en/latest/index.html"><img
 src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />Agda</a></span> has an interactive
@@ -317,12 +317,12 @@ particular, <span><span class="sidenote preview">typed holes<br/><em><a
 href="https://agda.readthedocs.io/en/latest/language/lexical-structure.html#holes"
 title="_blank"><img src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />Agda programming language
-documentation</a></em><br/>ThisThisThisThisThisThisThisThisThisThisThisThi
-is the manual for the Agda programming language, its type checking,
-compilation and editing system and related resources/tools. Agda is a
-dependently typed programming language. It is an extension of
-Martin-Löf’s type theory and is the latest in the tradition of languages
-developed in the programming logic group at Chalmers.</span><a
+documentation</a></em><br/>This is the manual for the Agda programming
+language, its type checking, compilation and editing system and related
+resources/tools. Agda is a dependently typed programming language. It is
+an extension of Martin-Löf’s type theory and is the latest in the
+tradition of languages developed in the programming logic group at
+Chalmers.</span><a
 href="https://agda.readthedocs.io/en/latest/language/lexical-structure.html#holes"><img
 src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />typed holes</a></span> let you as a
@@ -335,12 +335,12 @@ system<br/><em><a
 href="https://agda.readthedocs.io/en/stable/language/reflection.html"
 title="_blank"><img src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />Agda programming language
-documentation</a></em><br/>ThisThisThisThisThisThisThisThisThisThisThisThi
-is the manual for the Agda programming language, its type checking,
-compilation and editing system and related resources/tools. Agda is a
-dependently typed programming language. It is an extension of
-Martin-Löf’s type theory and is the latest in the tradition of languages
-developed in the programming logic group at Chalmers.</span><a
+documentation</a></em><br/>This is the manual for the Agda programming
+language, its type checking, compilation and editing system and related
+resources/tools. Agda is a dependently typed programming language. It is
+an extension of Martin-Löf’s type theory and is the latest in the
+tradition of languages developed in the programming logic group at
+Chalmers.</span><a
 href="https://agda.readthedocs.io/en/stable/language/reflection.html"><img
 src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />macro system</a></span>. These
@@ -436,14 +436,17 @@ class="sourceCode agda"><code class="sourceCode agda"><span id="cb7-1"><a href="
 macro expansion without first evaluating the expression. But this
 doesn't work with holes since holes can't be quoted.</p>
 <p>And that's exactly what we need: <em>quoted holes</em>.</p>
-<p>A quoted hole behaves like so: - When quoted, is assigned an id that
-corresponds to its source position and to-be-generated metavariable
-type. - The first time the quoted hole is spliced, a metavariable is
-freshly generated in the context of that splice, and the quoted hole's
-id is associated with that metavariable. - The subsequent times the
-quoted hole is spliced (identified by the quoted hole's id), the
-metavariable associated with that quoted hole's type is used as the type
-of the new splice as well.</p>
+<p>A quoted hole behaves like so:</p>
+<ul>
+<li>When quoted, is assigned an id that corresponds to its source
+position and to-be-generated metavariable type.</li>
+<li>The first time the quoted hole is spliced, a metavariable is freshly
+generated in the context of that splice, and the quoted hole's id is
+associated with that metavariable.</li>
+<li>The subsequent times the quoted hole is spliced (identified by the
+quoted hole's id), the metavariable associated with that quoted hole's
+type is used as the type of the new splice as well.</li>
+</ul>
 <p>Note that quoted holes do not require any new features of Agda's type
 theory -- they are purely a UI phenomenon.</p>
 <h3 id="example-usage">§ <a href="#example-usage"
@@ -472,12 +475,12 @@ class="sidenote preview">desugars<br/><em><a
 href="https://agda.readthedocs.io/en/v2.8.0-rc1/language/reflection.html#macros"
 title="_blank"><img src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />Agda programming language
-documentation</a></em><br/>ThisThisThisThisThisThisThisThisThisThisThisThi
-is the manual for the Agda programming language, its type checking,
-compilation and editing system and related resources/tools. Agda is a
-dependently typed programming language. It is an extension of
-Martin-Löf’s type theory and is the latest in the tradition of languages
-developed in the programming logic group at Chalmers.</span><a
+documentation</a></em><br/>This is the manual for the Agda programming
+language, its type checking, compilation and editing system and related
+resources/tools. Agda is a dependently typed programming language. It is
+an extension of Martin-Löf’s type theory and is the latest in the
+tradition of languages developed in the programming logic group at
+Chalmers.</span><a
 href="https://agda.readthedocs.io/en/v2.8.0-rc1/language/reflection.html#macros"><img
 src="/favicon/readthedocs.io.ico" class="favicon"
 alt="/favicon/readthedocs.io.ico" />desugars</a></span> to</p>
@@ -552,7 +555,7 @@ content</a> encoded in base 64, using my <em>secret key</em> and <a
 href="/key/main_ed25519.pub.txt" title="_blank"><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />public key</a>.</p>
 <div class="sourceCode" id="cb11"><pre
-class="sourceCode txt"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>cf15a419c03f81ff8754b7572a04b94c134f47d846e676927d4f03718f485c0c6212e5980a2f34486509ca1473e9d88a5e9b17afc2dbccbd04dd988e0f3c270a</span></code></pre></div>
+class="sourceCode txt"><code class="sourceCode default"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>d15a86f8c40ec7816587c6eaf095a8f6683e4ec3e84e4a6c12a8727a03bf619a450bff3b12756e85a4b7bb088b5c3f0588f88b3293487e8ccf0dfb55d2d71201</span></code></pre></div>
 <p>See <a href="/page/signature.html"><img src="/favicon.ico"
 class="favicon" alt="/favicon.ico" />Signature</a> for more
 information.</p></main>
