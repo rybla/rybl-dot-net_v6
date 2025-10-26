@@ -1,23 +1,9 @@
+// ${nodes}, ${edges}
 function make_references_graph(node_list, edge_list) {
   if (node_list === undefined) node_list = [];
   if (edge_list === undefined) edge_list = [];
 
-  const loading_placeholder = document.getElementById(
-    "references-graph-loading-placeholder",
-  );
-
-  function log(msg) {
-    console.log(msg);
-    const e = document.createElement("div");
-    e.textContent = msg;
-
-    // loading_placeholder.appendChild(e);
-    loading_placeholder.insertBefore(e, loading_placeholder.firstChild);
-  }
-
-  log("begin generating references graph");
-
-  log("processing nodes");
+  console.log("[script] begin");
   // const nodes = new vis.DataSet([
   //   { id: 1, label: "Google", url: "https://www.google.com", shape: "box" },
   //   { id: 2, label: "GitHub", url: "https://www.github.com", shape: "box" },
@@ -52,7 +38,6 @@ function make_references_graph(node_list, edge_list) {
   // ]);
   const nodes = new vis.DataSet(node_list);
 
-  log("processing edges");
   // const edges = new vis.DataSet([
   //   { from: 1, to: 2 },
   //   { from: 2, to: 3 },
@@ -129,9 +114,9 @@ function make_references_graph(node_list, edge_list) {
         damping: 0.09,
         avoidOverlap: 0,
       },
-      stabilization: {
-        enabled: true,
-      },
+      stabilizations: {
+        enabled: true
+      }
     },
     interaction: {
       hover: true,
@@ -159,24 +144,5 @@ function make_references_graph(node_list, edge_list) {
   network.on("blurNode", function () {
     container.style.cursor = "default";
   });
-
-  network.on("startStabilizing", function (args) {
-    log(`begin stabilization`);
-  });
-
-  network.on("stabilizationProgress", function (args) {
-    log(`stabilization iterations ${args.iterations}/${args.total}`);
-  });
-
-  // network.on("stabilizationIterationsDone", function (args) {
-  //   log(`end stabilization`);
-  // });
-
-  network.on("stabilized", function (args) {
-    log(`stabilized at iteration ${args.iterations}`);
-    log(`end stabilization`);
-    log("end generating references graph");
-    // loading_placeholder.parentElement.removeChild(loading_placeholder);
-    loading_placeholder.classList.add("collapsed");
-  });
+  console.log("[script] end");
 }

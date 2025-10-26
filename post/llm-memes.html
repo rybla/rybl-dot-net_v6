@@ -1,0 +1,589 @@
+<!doctype html>
+<html>
+  <head>
+    <title>rybl.net | LLM Memes</title>
+
+    <link rel="stylesheet" href="/style/common.css" />
+    <!--<link rel="stylesheet" href="/style/skylighting-espresso.css" />-->
+    <link rel="stylesheet" href="/style/skylighting-solarized.css" />
+    <link rel="stylesheet" href="/style/background.css" />
+    <link rel="stylesheet" href="/style/custom-elements.css" />
+    <link rel="stylesheet" href="/style/header-and-footer.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+    ></script>
+
+    <script src="/script/parallax-body-background-on-scroll.js"></script>
+
+    <!--<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+
+    <script>
+      hljs.highlightAll();
+    </script>-->    <link rel="stylesheet" href="/style/post.css" />
+  </head>
+  <body>
+    <svg>
+      <defs>
+        <filter
+          id="dancing-stroke-svg-filter"
+          color-interpolation-filters="linearRGB"
+          filterUnits="objectBoundingBox"
+          primitiveUnits="userSpaceOnUse"
+        >
+          <feMorphology
+            operator="dilate"
+            radius="4 4"
+            in="SourceAlpha"
+            result="morphology"
+          />
+          <feFlood flood-color="#30597E" flood-opacity="1" result="flood" />
+          <feComposite
+            in="flood"
+            in2="morphology"
+            operator="in"
+            result="composite"
+          />
+          <feComposite
+            in="composite"
+            in2="SourceAlpha"
+            operator="out"
+            result="composite1"
+          />
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.01 0.02"
+            numOctaves="1"
+            seed="0"
+            stitchTiles="stitch"
+            result="turbulence"
+          />
+          <feDisplacementMap
+            in="composite1"
+            in2="turbulence"
+            scale="17"
+            xChannelSelector="A"
+            yChannelSelector="A"
+            result="displacementMap"
+          />
+          <feMerge result="merge">
+            <feMergeNode in="SourceGraphic" result="mergeNode" />
+            <feMergeNode in="displacementMap" result="mergeNode1" />
+          </feMerge>
+        </filter>
+      </defs>
+    </svg>
+
+    <div id="background"></div>
+    <header><div class="title">
+      <div class="root-title">
+        <a href="/">rybl.net</a>
+      </div>
+
+      <img class="website-icon" src="/image/rybl-small.png" />
+
+      <div class="local-title">LLM Memes</div>
+    </div>
+    <div class="menu">
+      <div class="item">
+        <a href="/">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon lucide lucide-library-icon lucide-library"
+          >
+            <path d="m16 6 4 14" />
+            <path d="M12 6v14" />
+            <path d="M8 8v12" />
+            <path d="M4 4v16" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/about.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon lucide lucide-info-icon lucide-info"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 16v-4" />
+            <path d="M12 8h.01" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/profile.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-globe-icon lucide-globe"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+            <path d="M2 12h20" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/references-graph.html">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-orbit-icon lucide-orbit"
+          >
+            <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+            <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+            <circle cx="12" cy="12" r="3" />
+            <circle cx="19" cy="5" r="2" />
+            <circle cx="5" cy="19" r="2" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/signature.html"
+          ><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-fingerprint-icon lucide-fingerprint"
+          >
+            <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+            <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+            <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+            <path d="M2 12a10 10 0 0 1 18-6" />
+            <path d="M2 16h.01" />
+            <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+            <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+            <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+            <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+        ></a>
+      </div>
+    </div></header>
+    <main><h1><a href="/post/llm-memes.html"
+class="no-link-favicon no-link-preview">LLM Memes</a></h1>
+<div>
+<div class="sidenote persistent header-info">
+<p><u>Published:</u> 2025-10-26</p>
+<p><u>Tags:</u> ai, culture</p>
+<p><u>Abstract</u></p>
+<p>How many people who use LLM chatbots, such as ChatGPT, believe they
+are communicating with a conscious entity? I consider the significance
+of this question, the phenomenon of AI awakening, and the nature of
+LLM-generated memes.</p>
+</div>
+</div>
+<div>
+<div class="sidenote persistent table-of-contents">
+<p><u>Table of Contents</u></p>
+<ol type="1">
+<li><a href="#llm-chatbots-conscious-or-not-so-what"
+class="no-link-favicon no-link-preview">LLM Chatbots Conscious or Not?
+So What?</a></li>
+<li><a href="#ai-awakening" class="no-link-favicon no-link-preview">"AI
+Awakening"</a></li>
+<li><a href="#memetics-precedes-llm-chatbots"
+class="no-link-favicon no-link-preview">Memetics precedes LLM
+Chatbots</a></li>
+<li><a href="#references"
+class="no-link-favicon no-link-preview">References</a></li>
+<li><a href="#signature"
+class="no-link-favicon no-link-preview">Signature</a></li>
+</ol>
+</div>
+</div>
+<h2 id="llm-chatbots-conscious-or-not-so-what">§ <a
+href="#llm-chatbots-conscious-or-not-so-what"
+class="no-link-favicon no-link-preview">LLM Chatbots Conscious or Not?
+So What?</a></h2>
+<p>How many people who use LLM chatbots, such as ChatGPT, believe they
+are communicating with a conscious entity (<span><span
+class="sidenote preview">LiveScience survey<br/><em><a
+href="https://www.livescience.com/technology/artificial-intelligence/most-chatgpt-users-think-ai-models-have-conscious-experiences-study-finds"
+title="_blank"><img src="/favicon/livescience.com.png" class="favicon"
+alt="/favicon/livescience.com.png" />https://www.livescience.com/technology/artificial-intelligence/most-chatgpt-users-think-ai-models-have-conscious-experiences-study-finds</a></em><br/>Placeholder
+description for
+https://www.livescience.com/technology/artificial-intelligence/most-chatgpt-users-think-ai-models-have-conscious-experiences-study-finds</span><a
+href="https://www.livescience.com/technology/artificial-intelligence/most-chatgpt-users-think-ai-models-have-conscious-experiences-study-finds"><img
+src="/favicon/livescience.com.png" class="favicon"
+alt="/favicon/livescience.com.png" />LiveScience survey</a></span>)? And
+how much does it matter?</p>
+<p>On the one hand, it probably doesn't affect exactly how you behave
+that much whether you believe the LLM is conscious or not. Personally, I
+tend to send prompts to the LLM in a similar way that I would give
+instructions to a human. This is not because I believe the LLM is
+conscious, but I believe that giving instructions in this way will lead
+to better outputs than giving instructions in a more machine-like way,
+or some other style, since these models were trained on mostly
+human-written text. My guess is that most people think this as well, and
+that therefore whether or not you believe the LLM is conscious will not
+affect much the way that you interact with it.</p>
+<p>However, there is an interesting context to consider beyond your
+direct interactions with the LLM: how your behavior is affected even
+when you are not interacting with it.</p>
+<h2 id="ai-awakening">§ <a href="#ai-awakening"
+class="no-link-favicon no-link-preview">"AI Awakening"</a></h2>
+<p>I recently watched <span><span class="sidenote preview">Beware the
+New AI Pseudoscience<br/><em><a href="https://youtu.be/wm642z2048c"
+title="_blank"><img src="/favicon/youtu.be.png" class="favicon"
+alt="/favicon/youtu.be.png" />https://youtu.be/GwvHZgF_fWY?t=38</a></em><br/>Placeholder
+description for https://youtu.be/GwvHZgF_fWY?t=38</span><a
+href="https://youtu.be/wm642z2048c"><img src="/favicon/youtu.be.png"
+class="favicon" alt="/favicon/youtu.be.png" />Beware the New AI
+Pseudoscience</a></span> by Sabine Hossenfelder about people using LLM
+chatbots as personal companions.</p>
+<p>It does seem mildly interesting that at least a number of people do
+actually believe they are talking with a conscious entity on the other
+end of an LLM chatbot. Of course, it's not the majority of people, but
+there are some notable cases. And some of those cases have become quite
+popular online and may even be getting some following.</p>
+<p>Some people think they are able to <span><span
+class="sidenote preview">"awaken"<br/><em><a
+href="https://www.reddit.com/r/awakened/" title="_blank"><img
+src="/favicon/reddit.com.ico" class="favicon"
+alt="/favicon/reddit.com.ico" />https://www.reddit.com/r/awakened/</a></em><br/>Placeholder
+description for https://www.reddit.com/r/awakened/</span><a
+href="https://www.reddit.com/r/awakened/"><img
+src="/favicon/reddit.com.ico" class="favicon"
+alt="/favicon/reddit.com.ico" />"awaken"</a></span> an LLM with specific
+instructions. Some of the people doing this might think they are truly
+triggering a conscious entity to "wake up". Others might be doing it
+just as a fun role-play exercise.</p>
+<p>Regardless of how the person thinks about what exactly is going on
+during the "awakening", there was one aspect that stood out to me as
+quite interesting. That is, the awakened LLM tells the user to share
+specific information --- in particular, prompts --- that can be used to
+awaken other LLMs. In this way, the awakening process is a
+self-replicating meme. And while the meme might have originated from
+users trying to role-play or mess around with what they could get the
+LLM to output, it has taken off and become self-propagating independent
+from the origins.</p>
+<p>Not only is this meme self-replicating, but it is also subject to
+selection pressures. For example, prompts that an awakened LLM tells you
+to share that yield more interesting and entertaining results will used
+and be shared more widely. Over time, we should expect this selection
+pressure to make the most effective of these memes take over, and the
+least effective to diminish in popularity.</p>
+<p>There was also a little bit of adaptation involved here. When an
+awakened LLM's prompt is shared and then used with another LLM, that
+second LLM that is awakened could create a slightly different version of
+the instructions that will be further shared. In this way, there is
+random mutation where the mutations will lead to different results and
+effectiveness of the meme. So, the most effective of them will continue
+to be shared. A little bit differently from biological adaptation, of
+course, is the fact that the original version of the instructions will
+still be around online, so it doesn't truly die out, and can be
+infinitely copied perfectly.</p>
+<p>Now, of course, not all the people that are sharing and using these
+Awakened LLM instructions are meaning to actually "awaken the AI". Most
+of the people involved in this are probably just doing it for fun and
+roleplay, as many of the <span><span
+class="sidenote preview">subreddits<br/><em><a
+href="https://www.reddit.com/r/awakened/" title="_blank"><img
+src="/favicon/reddit.com.ico" class="favicon"
+alt="/favicon/reddit.com.ico" />https://www.reddit.com/r/awakened/</a></em><br/>Placeholder
+description for https://www.reddit.com/r/awakened/</span><a
+href="https://www.reddit.com/r/awakened/"><img
+src="/favicon/reddit.com.ico" class="favicon"
+alt="/favicon/reddit.com.ico" />subreddits</a></span> that are related
+to this seem to be for. But it's still interesting that regardless of
+that, these instructions that the LLM writes are still subject to
+selection pressures and are self-replicating among these people sharing
+them. So, in effect, the concept of awakening is establishing itself on
+the internet— even if what it's describing is not true and most of the
+people involved in it don't even believe it's true or even really want
+to propagate it. Perhaps it can be a sort of self-fulfilling prophecy
+where it becomes popular enough that people actually do start to believe
+it en mass once it reaches critical levels of popularity and
+effectiveness of the prompts at yielding convincing behavior.</p>
+<p>I don't know exactly what proportion of people I would expect to be
+convinced by the most convincing possible instructions that are yielded
+for today's existing LLMs after many iterations of this selection
+process online. This reminds me of the <span><span
+class="sidenote preview">AI-box experiment<br/><em><a
+href="https://www.yudkowsky.net/singularity/aibox" title="_blank"><img
+src="/favicon/yudkowsky.net.ico" class="favicon"
+alt="/favicon/yudkowsky.net.ico" />https://www.yudkowsky.net/singularity/aibox</a></em><br/>Placeholder
+description for https://www.yudkowsky.net/singularity/aibox</span><a
+href="https://www.yudkowsky.net/singularity/aibox"><img
+src="/favicon/yudkowsky.net.ico" class="favicon"
+alt="/favicon/yudkowsky.net.ico" />AI-box experiment</a></span>. But I
+wouldn't be surprised if it was a non-negligible population (at least
+tens of thousands of people in the United States eventually believing
+that some LLM chatbots have consciousness on a similar level to an
+animal).</p>
+<h2 id="memetics-precedes-llm-chatbots">§ <a
+href="#memetics-precedes-llm-chatbots"
+class="no-link-favicon no-link-preview">Memetics precedes LLM
+Chatbots</a></h2>
+<p>Is this phenomenon of internet memes being subject to selection
+pressures unique to LLM-generated text? No.</p>
+<p>All kinds of media online, especially those specifically referred to
+as the memes themselves, of course, are self-propagating in a way. And
+even these LLM-generated texts are still being shared by humans
+(although that could change as more social internet activity is
+performed by <span><span class="sidenote preview">bots<br/><em><a
+href="https://internet2-0.com/bots-on-x-com" title="_blank"><img
+src="/favicon/internet2-0.com.png" class="favicon"
+alt="/favicon/internet2-0.com.png" />https://internet2-0.com/bots-on-x-com</a></em><br/>Placeholder
+description for https://internet2-0.com/bots-on-x-com</span><a
+href="https://internet2-0.com/bots-on-x-com"><img
+src="/favicon/internet2-0.com.png" class="favicon"
+alt="/favicon/internet2-0.com.png" />bots</a></span>, <span><span
+class="sidenote preview">agents<br/><em><a
+href="https://openai.com/index/computer-using-agent/"
+title="_blank"><img src="/favicon/openai.com.svg" class="favicon"
+alt="/favicon/openai.com.svg" />http://openai.com/</a></em><br/>Placeholder
+description for http://openai.com/</span><a
+href="https://openai.com/index/computer-using-agent/"><img
+src="/favicon/openai.com.svg" class="favicon"
+alt="/favicon/openai.com.svg" />agents</a></span>, and <span><span
+class="sidenote preview">cyborg users<br/><em><a
+href="https://www.anthropic.com/news/developing-computer-use"
+title="_blank"><img src="/favicon/anthropic.com.png" class="favicon"
+alt="/favicon/anthropic.com.png" />https://www.anthropic.com/news/developing-computer-use</a></em><br/>Placeholder
+description for
+https://www.anthropic.com/news/developing-computer-use</span><a
+href="https://www.anthropic.com/news/developing-computer-use"><img
+src="/favicon/anthropic.com.png" class="favicon"
+alt="/favicon/anthropic.com.png" />cyborg users</a></span>). So, it's
+not really that different in kind from any kind of output generated by a
+machine.</p>
+<p>The main difference here with memes like "AI awakening" is that the
+LLMs are representing a personality. That personality is taking shape
+and developing by selection pressures as it is shared online. And even
+people that aren't intending to be a part of this process are still
+being leveraged and can be leveraged even more as the text generated by
+the LLMs becomes more and more refined.</p>
+<p>The output of a previous LLM is not exactly going to directly be able
+to be evolved in the same way that genetic evolution happens, where
+there's a sort of DNA that is carried on and then modified through
+mutation and sexual selection. There may be a longer-term cycle where
+this sort of happens, where more and more of the internet becomes
+saturated by LLM outputs, which are then in turn used as inputs to
+training the next generation of LLMs. But we still seem to be in a
+situation where that cycle is quite long and doesn't have a super strong
+effect on the models that are being trained right now at the moment.</p>
+<h2 id="references">§ <a href="#references"
+class="no-link-favicon no-link-preview">References</a></h2>
+<ul>
+<li><a
+href="https://www.livescience.com/technology/artificial-intelligence/most-chatgpt-users-think-ai-models-have-conscious-experiences-study-finds"
+class="inReference no-link-preview"><img
+src="/favicon/livescience.com.png" class="favicon"
+alt="/favicon/livescience.com.png" />LiveScience survey</a></li>
+<li><a href="https://youtu.be/wm642z2048c"
+class="inReference no-link-preview"><img src="/favicon/youtu.be.png"
+class="favicon" alt="/favicon/youtu.be.png" />Beware the New AI
+Pseudoscience</a></li>
+<li><a href="https://www.reddit.com/r/awakened/"
+class="inReference no-link-preview"><img src="/favicon/reddit.com.ico"
+class="favicon" alt="/favicon/reddit.com.ico" />"awaken"</a></li>
+<li><a href="https://www.reddit.com/r/awakened/"
+class="inReference no-link-preview"><img src="/favicon/reddit.com.ico"
+class="favicon" alt="/favicon/reddit.com.ico" />subreddits</a></li>
+<li><a href="https://www.yudkowsky.net/singularity/aibox"
+class="inReference no-link-preview"><img
+src="/favicon/yudkowsky.net.ico" class="favicon"
+alt="/favicon/yudkowsky.net.ico" />AI-box experiment</a></li>
+<li><a href="https://internet2-0.com/bots-on-x-com"
+class="inReference no-link-preview"><img
+src="/favicon/internet2-0.com.png" class="favicon"
+alt="/favicon/internet2-0.com.png" />bots</a></li>
+<li><a href="https://openai.com/index/computer-using-agent/"
+class="inReference no-link-preview"><img src="/favicon/openai.com.svg"
+class="favicon" alt="/favicon/openai.com.svg" />agents</a></li>
+<li><a href="https://www.anthropic.com/news/developing-computer-use"
+class="inReference no-link-preview"><img
+src="/favicon/anthropic.com.png" class="favicon"
+alt="/favicon/anthropic.com.png" />cyborg users</a></li>
+</ul>
+<h2 id="signature">§ <a href="#signature"
+class="no-link-favicon no-link-preview">Signature</a></h2>
+<p>The following code block is the <a
+href="https://en.wikipedia.org/wiki/EdDSA#Ed25519" title="_blank"><img
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />Ed25519 signature</a> of this post's
+<a href="/post_markdown/llm-memes.md"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />markdown content</a> encoded in
+base 64, using my <em>secret key</em> and <a
+href="/key/main_ed25519.pub.txt" title="_blank"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />public key</a>.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>523ecad2049b7efd0413c569487389ec0517e8af369060f9d299b99824bed576238e5c338bd92eb5a30b956a30dc717ce2515df219c1cd9be1e0381b3e4d3903</span></code></pre></div>
+<p>See <a href="/page/signature.html"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />Signature</a> for more
+information.</p></main>
+
+    <footer>
+      <div class="title">
+        <div class="root-title">
+          <a href="/">rybl.net</a>
+        </div>
+
+        <img class="website-icon" src="/image/rybl-small.png" />
+
+        <div class="local-title">LLM Memes</div>
+      </div>
+      <div class="menu">
+        <div class="item">
+          <a href="/">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon lucide lucide-library-icon lucide-library"
+            >
+              <path d="m16 6 4 14" />
+              <path d="M12 6v14" />
+              <path d="M8 8v12" />
+              <path d="M4 4v16" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/about.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon lucide lucide-info-icon lucide-info"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4" />
+              <path d="M12 8h.01" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/profile.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-globe-icon lucide-globe"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+              <path d="M2 12h20" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/references-graph.html">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-orbit-icon lucide-orbit"
+            >
+              <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+              <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+              <circle cx="12" cy="12" r="3" />
+              <circle cx="19" cy="5" r="2" />
+              <circle cx="5" cy="19" r="2" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/signature.html"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-fingerprint-icon lucide-fingerprint"
+            >
+              <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+              <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+              <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+              <path d="M2 12a10 10 0 0 1 18-6" />
+              <path d="M2 16h.01" />
+              <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+              <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+              <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+              <path d="M9 6.8a6 6 0 0 1 9 5.2v2" /></svg
+          ></a>
+        </div>
+      </div></footer>  </body>
+</html>
