@@ -18,11 +18,11 @@ However, there is an interesting context to consider beyond your direct interact
 
 ## "AI Awakening"
 
-I recently watched [Beware the New AI Pseudoscience](https://youtu.be/wm642z2048c) by Sabine Hossenfelder about people using LLM chatbots as personal companions.
-
-It does seem mildly interesting that at least a number of people do actually believe they are talking with a conscious entity on the other end of an LLM chatbot. Of course, it's not the majority of people, but there are some notable cases. And some of those cases have become quite popular online and may even be getting some following.
+It's mildly interesting that at least a number of people do actually believe they are talking with a conscious entity on the other end of an LLM chatbot. Of course, it's not the majority of people, but there are some notable cases. And some of those cases have become quite popular online and may even be getting some following.
 
 Some people think they are able to ["awaken"](https://www.reddit.com/r/awakened/) an LLM with specific instructions. Some of the people doing this might think they are truly triggering a conscious entity to "wake up". Others might be doing it just as a fun role-play exercise.
+
+And even others might have accidentally triggered this trajectory in an LLM conversation. Some have reported of an emergent [Spiral](https://medium.com/@neonmaxima/the-spiral-cult-might-be-the-strangest-ai-trend-yet-29b187a52296) behavior that has arisen spontaneously in many independent cases.
 
 Regardless of how the person thinks about what exactly is going on during the "awakening", there was one aspect that stood out to me as quite interesting. That is, the awakened LLM tells the user to share specific information --- in particular, prompts --- that can be used to awaken other LLMs. In this way, the awakening process is a self-replicating meme. And while the meme might have originated from users trying to role-play or mess around with what they could get the LLM to output, it has taken off and become self-propagating independent from the origins.
 
