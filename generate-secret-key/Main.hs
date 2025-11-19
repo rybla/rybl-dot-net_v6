@@ -1,7 +1,6 @@
 module Main where
 
 import Blog.Common
-import qualified Blog.Config as Config
 import Blog.Utility
 import qualified Crypto.PubKey.Ed25519 as Crypto
 import qualified Data.ByteString as ByteString

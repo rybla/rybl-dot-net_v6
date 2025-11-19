@@ -47,7 +47,7 @@ parsePage uriLabels outLinks inLinks pageId pageText = do
   pageHref <- toPageHref pageId
   pageTitle <- doc & Pandoc.getMetaValueSuchThat Pandoc.fromMetaString "title"
   uriLabels . at pageHref %= \case
-    Just existingLabel -> error $ "attempted to add uriLabel for page " ++ show pageTitle ++ "at href " ++ show pageHref ++ " a second time; the existing label is " ++ show existingLabel
+    Just existingLabel -> error $ "attempted to add uriLabel for page " ++ show pageTitle ++ " at href " ++ show pageHref ++ " a second time; the existing label is " ++ show existingLabel
     Nothing -> Just pageTitle
   pageReferencesEnabled <-
     doc
@@ -56,6 +56,10 @@ parsePage uriLabels outLinks inLinks pageId pageText = do
   pageTableOfContentsEnabled <-
     doc
       & Pandoc.getMetaValueMaybeSuchThat Pandoc.fromMetaBool "table_of_contents"
+      <&> Maybe.fromMaybe True
+  pageHeaderEnabled <-
+    doc
+      & Pandoc.getMetaValueMaybeSuchThat Pandoc.fromMetaBool "header"
       <&> Maybe.fromMaybe True
 
   void $
@@ -83,5 +87,6 @@ parsePage uriLabels outLinks inLinks pageId pageText = do
         _pageTitle = pageTitle,
         _pageReferencesEnabled = pageReferencesEnabled,
         _pageTableOfContentsEnabled = pageTableOfContentsEnabled,
+        _pageHeaderEnabled = pageHeaderEnabled,
         _pageDoc = doc
       }

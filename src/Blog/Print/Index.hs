@@ -8,7 +8,6 @@ import Blog.Common
 import qualified Blog.Pandoc as Pandoc
 import qualified Blog.Paths as Paths
 import Blog.Print.Common
-import Blog.Process.Common (renderPostHeader)
 import Blog.Utility
 import Control.Lens hiding (index)
 import Control.Monad.Except (MonadError)
@@ -18,73 +17,32 @@ import Control.Monad.Writer (MonadIO)
 import qualified Data.Aeson as Aeson
 import qualified Data.Aeson.Types as Aeson
 import Data.Default (def)
-import qualified Data.List as List
-import qualified Data.Text as Text
 import qualified Data.Text.IO as TextIO
 import System.FilePath ((</>))
-import Text.Pandoc (Pandoc)
 import qualified Text.Pandoc as Pandoc
 import Text.PrettyPrint.HughesPJClass (Doc, text, (<+>))
 
-printIndex ::
-  (MonadIO m, MonadError Doc m, MonadState env m) =>
-  [Post] ->
-  m ()
-printIndex posts = evalIsoStateT (pairIso def) do
-  -- sort posts by pubDate
-  posts <- pure $ List.sortBy (\p1 p2 -> p2._postPubDate `compare` p1._postPubDate) posts
-
-  index <- makeIndex posts
-
+printIndex :: (MonadIO m, MonadError Doc m, MonadState env m) => Page -> m ()
+printIndex page = evalIsoStateT (pairIso def) do
   templateText <- TextIO.readFile (Paths.offlineSite.template.here </> ("index" & toHtmlFileName)) & liftIO
 
-  indexTemplate <-
+  pageTemplate <-
     Pandoc.compileTemplate mempty templateText
       & unBlogTemplateMonad
       >>= fromEither (("compileTemplate:" <+>) . text)
 
-  indexHtml <- do
+  pageHtml <- do
     vars <-
       Aeson.parseEither
         Aeson.parseJSON
         ( Aeson.object
-            [ ("title", "Index")
+            [ ("title", page._pageTitle & Aeson.toJSON)
             ]
         )
         & fromEither (("Error when parsing template variables JSON:" <+>) . text)
     Pandoc.writeHtml5String
-      (commonWriterOptions (Just indexTemplate) vars)
-      index
+      (commonWriterOptions (Just pageTemplate) vars)
+      (page ^. pageDoc)
       & Pandoc.lensPandocM _1
 
-  TextIO.writeFile (Paths.offlineSite.here </> ("index" & toHtmlFileName)) indexHtml & liftIO
-
-makeIndex ::
-  (MonadIO m) =>
-  [Post] ->
-  m Pandoc
-makeIndex posts = do
-  postCards <- posts & traverse makePostCard
-  return $
-    Pandoc.Pandoc
-      mempty
-      ( concat
-          [ [ Pandoc.Header
-                1
-                mempty
-                [ Pandoc.Link
-                    mempty
-                    [Pandoc.Str "Index"]
-                    (Paths.onlineSite.here & Text.pack, "")
-                ]
-            ],
-            postCards
-          ]
-      )
-
-makePostCard :: (Monad m) => Post -> m Pandoc.Block
-makePostCard post = do
-  return
-    $ Pandoc.Div
-      (mempty & Pandoc.attrClasses %~ (["post-card"] ++))
-    $ renderPostHeader False post
+  TextIO.writeFile (Paths.offlineSite.here </> ("index" & toHtmlFileName)) pageHtml & liftIO

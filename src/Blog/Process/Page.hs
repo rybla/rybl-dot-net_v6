@@ -54,7 +54,7 @@ processPage manager outLinks inLinks page = do
   whenM (gets (^. page . pageTableOfContentsEnabled)) do
     page . pageDoc %=* addTableOfContents False
 
-  do
+  whenM (gets (^. page . pageHeaderEnabled)) do
     page' <- gets (^. page)
     page . pageDoc %=* addPageHeader page'
 

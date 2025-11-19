@@ -12,6 +12,7 @@ import qualified Blog.Parse.Page as Parse.Page
 import qualified Blog.Parse.Post as Parse.Post
 import qualified Blog.Paths as Paths
 import qualified Blog.Print.Index as Print.Index
+import qualified Blog.Print.Library as Print.Library
 import qualified Blog.Print.Page as Print.Page
 import qualified Blog.Print.Post as Print.Post
 import qualified Blog.Print.ReferencesGraph as Print.ReferencesGraph
@@ -20,10 +21,11 @@ import qualified Blog.Process.Post as Process.Post
 import Blog.Utility
 import Control.Category ((>>>))
 import Control.Lens hiding ((<.>))
-import Control.Monad.Except (MonadError, runExceptT)
+import Control.Monad.Except (MonadError, runExceptT, throwError)
 import Control.Monad.IO.Class (MonadIO, liftIO)
 import Control.Monad.State (MonadState, evalStateT)
 import Data.Foldable (traverse_)
+import qualified Data.List as List
 import qualified Data.Text.IO as TextIO
 import Service.Favicon.Favicone ()
 import Service.Preview.Placeholder ()
@@ -39,6 +41,10 @@ main = do
 
 main' :: forall m. (MonadIO m, MonadError Doc m, MonadState Env m) => m ()
 main' = do
+  --
+  -- parse
+  --
+
   -- parse pages
   pages <-
     listDirectory Paths.offlineSite.page_markdown.here
@@ -47,6 +53,12 @@ main' = do
       >>= traverse \pageId -> do
         pageText <- TextIO.readFile (pageId & toPageMarkdownFilePath) & liftIO
         Parse.Page.parsePage uriLabels outLinks inLinks pageId pageText
+
+  -- extract parsed index page
+  (indexPage, pages) <- case pages & List.partition \page -> page._pageId.unPageId == "index" of
+    ([], _) -> throwError $ "There is no page with pageId \"index\""
+    ([indexPage], pages) -> pure (indexPage, pages)
+    _ -> throwError $ "There are multiple pages with pageId \"index\""
 
   -- parse posts
   posts <-
@@ -57,11 +69,14 @@ main' = do
         postText <- TextIO.readFile (postId & toPostMarkdownFilePath) & liftIO
         Parse.Post.parsePost uriLabels outLinks inLinks postId postText
 
-  -- process posts
-  posts :: [Post] <-
-    posts & traverse \post -> do
-      fmap (^. _1) $ execIsoStateT (pairIso post) do
-        Process.Post.processPost (_2 . manager) (_2 . outLinks) (_2 . inLinks) _1
+  --
+  -- process
+  --
+
+  -- process index page
+  indexPage <- do
+    fmap (^. _1) $ execIsoStateT (pairIso indexPage) do
+      Process.Page.processPage (_2 . manager) (_2 . outLinks) (_2 . inLinks) _1
 
   -- process pages
   pages :: [Page] <-
@@ -69,8 +84,21 @@ main' = do
       fmap (^. _1) $ execIsoStateT (pairIso page) do
         Process.Page.processPage (_2 . manager) (_2 . outLinks) (_2 . inLinks) _1
 
+  -- process posts
+  posts :: [Post] <-
+    posts & traverse \post -> do
+      fmap (^. _1) $ execIsoStateT (pairIso post) do
+        Process.Post.processPost (_2 . manager) (_2 . outLinks) (_2 . inLinks) _1
+
+  --
+  -- print
+  --
+
   -- print index
-  Print.Index.printIndex posts
+  Print.Index.printIndex indexPage
+
+  -- print library
+  Print.Library.printLibrary posts
 
   -- print references graph
   Print.ReferencesGraph.printReferencesGraph manager uriLabels outLinks

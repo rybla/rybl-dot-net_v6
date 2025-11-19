@@ -72,6 +72,7 @@ data Page = Page
     _pageTitle :: Text,
     _pageReferencesEnabled :: Bool,
     _pageTableOfContentsEnabled :: Bool,
+    _pageHeaderEnabled :: Bool,
     _pageDoc :: Pandoc.Pandoc
   }
 

@@ -4,8 +4,8 @@ build:
 test:
   stack test
 
-run: build
+generate: build
   .stack-work/dist/aarch64-osx/ghc-9.10.1/build/generate-website/generate-website
 
-deploy: run
+deploy: generate
   CACHE_DIR=. bunx gh-pages --nojekyll --dist site

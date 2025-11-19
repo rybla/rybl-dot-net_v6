@@ -1,28 +1,9 @@
-main {
-  /*background: color-mix(in srgb, #f6eee3, transparent 10%);*/
-  background: transparent;
-
-  display: flex;
-  flex-direction: column;
-  gap: 3em;
-  padding: 0;
-
-  & > h1 {
-    display: block;
-    background: color-mix(in srgb, #f6eee3, transparent 10%);
-    padding: 0;
-    margin: 0;
-    padding: 0.5em;
-  }
+:root {
+  --main-inner-width: 100%;
 }
 
-.post-card {
-  background: color-mix(in srgb, #f6eee3, transparent 10%);
-  padding: 0 1em;
+main {
+  flex: 1 1 auto;
 
-  & > .title {
-    font-size: 1.5em;
-    padding: 0;
-    margin: 0;
-  }
+  width: var(--main-width);
 }
