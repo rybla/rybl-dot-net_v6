@@ -4,7 +4,9 @@ asset/post_data
 .DS_Store
 node_modules
 .env
-site/page
-site/post
-site/index.html
-secret
+
+/site/page
+/site/post
+/site/index.html
+/secret
+/gh-pages
