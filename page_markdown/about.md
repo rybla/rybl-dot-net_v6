@@ -13,6 +13,9 @@ I am a programmer and researcher focused on:
 - [formal specification and verification](https://en.wikipedia.org/wiki/Formal_verification.)
 - [mathematical modeling and simulation](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 - [user interface design](https://en.wikipedia.org/wiki/User_interface_design)
+
+I am also especially interested in:
+
 - [game design](https://en.wikipedia.org/wiki/Game_design)
 - [economics and game theory](https://en.wikipedia.org/wiki/Game_theory)
 
@@ -57,9 +60,11 @@ My employment has been in software engineering, theoretical computer science res
 
 - [PureScript](https://www.purescript.org/): a general-purpose programming language inspired by Haskell that compiles to Javascript
 - [Haskell](https://www.haskell.org/): a general-purpose programming language with the most advanced type system
+- [Higher Order Company](https://higherorderco.com): a company developing new programming languages for [fast theorem proving](https://github.com/HigherOrderCO/Kind) and [parallel computation](https://github.com/HigherOrderCO/Bend).
 - [Bun](https://bun.sh/): a fast Typescript/Javascript runtime implemented in Zig
 - [Zed](https://zed.dev/): a fast editor implemented in Rust
-- [Zig](https://ziglang.org/): a systems programming language with a minimalist design and advanced metaprogramming capabilities
+- [Zig](https://ziglang.org/): a new systems programming language with a minimalist design and advanced metaprogramming capabilities
+- [Jai](https://www.youtube.com/playlist?list=PLmV5I2fxaiCKfxMBrNsU1kgKJXD3PkyxO): a new (and in-development) systems programming langauge with advanced metaprogramming capabilities, joy of programming, and game development
 - [Marginal Revolution](https://marginalrevolution.com/): an economics blog by [Tyler Cowen](https://x.com/tylercowen) and [Alex Tabarrok](https://x.com/ATabarrok)
 - [Overcast](https://overcast.fm/): a simple podcast player app for iOS
 - [Obsidian](https://obsidian.md/): a markdown-based notetaking app
