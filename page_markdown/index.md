@@ -4,11 +4,13 @@ table_of_contents: false
 header: false
 ---
 
+# rybl.net
+
 ## Introduction
 
 I'm Henry Blanchette, and this is my personal website.
 Currently, I'm a PhD student at the [University of Maryland](https://www.umd.edu).
-See [about](/page/about.html) to see my background in detail ([research](/page/about.html#research), [education and employment](/page/about.html#education-and-employment)).
+Read [about](/page/about.html) my background in more detail ([research](/page/about.html#research), [education and employment](/page/about.html#education-and-employment)).
 I'm a researcher and programmer focused on:
 
 - developer tools for proof development and software engineering using [type theory](https://agda.readthedocs.io/en/latest/tools/emacs-mode.html)
@@ -23,7 +25,7 @@ I am also especially interested in:
 - [game design](https://en.wikipedia.org/wiki/Game_design)
 - [economics and game theory](https://en.wikipedia.org/wiki/Game_theory)
 
-See my [library](/page/library.html) for my public writings on various topics usually related to my interests.
+See my [library](/page/library.html) of public writings on various topics usually related to my interests.
 
 ## Announcements
 
@@ -45,7 +47,7 @@ See my [library](/page/library.html) for my public writings on various topics us
 | 2025/05 | Developed structure editor for constructor expressions: [ce-editor](https://github.com/rybla/ce-editor). |
 | 2025/01 | Published [Pantograph: A Fluid and Typed Structure Editor](https://dl.acm.org/doi/10.1145/3704864). |
 | 2024/10 | Presented [Zypr](https://github.com/rybla/zypr) at [NJPLS 2022 at UMD](https://njpls.org/oct22.html#blanchette). |
-| 2024/09 | Participated in [Eth Global San Francisco 2025], working with [Essential](https://x.com/intentessential). || 2025/02 | Developed [latent-state-machine](https://github.com/rybla/latent-state-machine), a basic state machine-like system for setting up LLM-powered simulations. |
+| 2024/09 | Participated in [Eth Global San Francisco 2025](https://ethglobal.com/events/sanfrancisco2024), working with [Essential](https://x.com/intentessential). || 2025/02 | Developed [latent-state-machine](https://github.com/rybla/latent-state-machine), a basic state machine-like system for setting up LLM-powered simulations. |
 | 2024/09 | Developed [name-guesser](https://rybla.github.io/name-guesser/?q=jgpt01), a webapp that _always_ guesses your name correctly, if you have the right name... |
 | 2024/06 | Contributed to [arc-like](https://github.com/neurallambda/arc-like), which is like ARC, but code to generate visual puzzles (1D puzzles first). |
 | 2024/05 | Presented [Foliage] at [NJPLS 2024 at NYU](https://njpls.org/may2024.html). |
