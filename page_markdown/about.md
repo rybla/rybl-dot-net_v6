@@ -58,13 +58,15 @@ My employment has been in software engineering, theoretical computer science res
 
 ## Cool Stuff
 
-- [PureScript](https://www.purescript.org/): a general-purpose programming language inspired by Haskell that compiles to Javascript
-- [Haskell](https://www.haskell.org/): a general-purpose programming language with the most advanced type system
+A list of stuff I find incredibly cool, in no particular order:
+
+- [Haskell](https://www.haskell.org/): a general-purpose pure lazy functional programming language lead by [Simon Peyton Jones](https://simon.peytonjones.org) with a advanced and extensible type system.
 - [Higher Order Company](https://higherorderco.com): a company developing new programming languages for [fast theorem proving](https://github.com/HigherOrderCO/Kind) and [parallel computation](https://github.com/HigherOrderCO/Bend).
-- [Bun](https://bun.sh/): a fast Typescript/Javascript runtime implemented in Zig
-- [Zed](https://zed.dev/): a fast editor implemented in Rust
-- [Zig](https://ziglang.org/): a new systems programming language with a minimalist design and advanced metaprogramming capabilities
-- [Jai](https://www.youtube.com/playlist?list=PLmV5I2fxaiCKfxMBrNsU1kgKJXD3PkyxO): a new (and in-development) systems programming langauge with advanced metaprogramming capabilities, joy of programming, and game development
-- [Marginal Revolution](https://marginalrevolution.com/): an economics blog by [Tyler Cowen](https://x.com/tylercowen) and [Alex Tabarrok](https://x.com/ATabarrok)
-- [Overcast](https://overcast.fm/): a simple podcast player app for iOS
-- [Obsidian](https://obsidian.md/): a markdown-based notetaking app
+- [Zig](https://ziglang.org/): a new systems programming language with a minimalist design and advanced metaprogramming capabilities.
+- [Jai](https://www.youtube.com/playlist?list=PLmV5I2fxaiCKfxMBrNsU1kgKJXD3PkyxO): a new (and in-development) systems programming langauge by [Jonathan Blow](https://x.com/Jonathan_Blow) with advanced metaprogramming capabilities and designed for the joy of programming and game development.
+- [Marginal Revolution](https://marginalrevolution.com/): an economics blog by [Tyler Cowen](https://x.com/tylercowen) and [Alex Tabarrok](https://x.com/ATabarrok).
+- [PureScript](https://www.purescript.org/): a general-purpose pure functional programming language by [Phil Freeman (paf31)](https://github.com/paf31) inspired by Haskell that compiles to Javascript.
+- [Zed](https://zed.dev/): a new fast editor (implemented in [Rust](https://rust-lang.org)) by [Nathan Sobo](https://x.com/nathansobo), [Antonio Scandurra](https://x.com/as__cii), and [Max Brunsfeld](https://x.com/maxbrunsfeld).
+- [Bun](https://bun.sh/): a new fast Typescript/Javascript runtime by [Jarred Sumner](https://x.com/jarredsumner) (implemented in [Zig](https://ziglang.org/)).
+- [Overcast](https://overcast.fm/): a simple podcast manager app by [Marco Arment](https://marco.org) for iOS.
+- [Obsidian](https://obsidian.md/): a simple markdown-based notetaking app by [Erica Xu](https://ericaxu.com/Start+here), [Shida Li](https://x.com/liscat), and [Steph Ango](https://stephango.com) as a modern take on [Emacs](https://www.gnu.org/software/emacs/)'s [org-mode](https://orgmode.org).
