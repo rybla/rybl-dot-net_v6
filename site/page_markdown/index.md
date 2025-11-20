@@ -54,6 +54,7 @@ See my [library](/page/library.html) of public writings on various topics usuall
 | 2024/05 | Developed a fixpoint-oriented programming system: [Foliage](https://github.com/rybla/foliage-arsenic). |
 | 2024/07 | Developed typed structure editor for a simply-typed functional language: [Pantograph](https://pantographeditor.github.io/Pantograph/). |
 | 2024/01 | Contributed homonyms to [glish](https://github.com/paralogical/glish/pull/22), which is a new verion of English that maps all words to single-syllable version. |
+| 2023/11 | Participated in [Eth Global Istanbul 2023](https://ethglobal.com/events/istanbul), learning how to use [Hardhat](https://hardhat.org). |
 | 2023/07 | Developed [Chatscript](https://github.com/rybla/chatscript), a simple python interface to writing chatscripts for generating sequences of calls to OpenAI's GPT chat API. |
 | 2022/09 | Developed [Zypr](https://github.com/rybla/zypr), a zipper-based structure editor. |
 | 2022/09 | Developed [Shape](https://github.com/rybla/shape-lang-purs), a well-typed structure editor. |
