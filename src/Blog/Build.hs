@@ -76,7 +76,7 @@ main' = do
   --
 
   -- process index page
-  indexPage <- do
+  indexPage <-
     fmap (^. _1) $ execIsoStateT (pairIso indexPage) do
       Process.Page.processPage (_2 . manager) (_2 . outLinks) (_2 . inLinks) _1
 
