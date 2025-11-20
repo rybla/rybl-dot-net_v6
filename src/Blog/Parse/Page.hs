@@ -13,6 +13,7 @@ import Blog.Common
 import Blog.Pandoc (runPandocM)
 import qualified Blog.Pandoc as Pandoc
 import Blog.Parse.Common
+import qualified Blog.Paths as Paths
 import Blog.Utility
 import Control.Lens
 import Control.Monad (void)
@@ -44,7 +45,13 @@ parsePage uriLabels outLinks inLinks pageId pageText = do
         commonReaderOptions
       & runPandocM
 
-  pageHref <- toPageHref pageId
+  pageHref <-
+    if pageId.unPageId == "index"
+      then
+        parseUriReferenceM Paths.onlineSite.here
+      else
+        toPageHref pageId
+
   pageTitle <- doc & Pandoc.getMetaValueSuchThat Pandoc.fromMetaString "title"
   uriLabels . at pageHref %= \case
     Just existingLabel -> error $ "attempted to add uriLabel for page " ++ show pageTitle ++ " at href " ++ show pageHref ++ " a second time; the existing label is " ++ show existingLabel

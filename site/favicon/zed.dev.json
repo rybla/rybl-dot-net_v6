@@ -1,1 +1,6 @@
-{"format":"png","mirrorIconFilePath":"site/favicon/zed.dev.png","mirrorIconRef":"/favicon/zed.dev.png","originalIconRef":"https://icons.favicone.com/i/zed.dev/favicon_white_64.png"}
+{
+    "format": "png",
+    "mirrorIconFilePath": "site/favicon/zed.dev.png",
+    "mirrorIconRef": "/favicon/zed.dev.png",
+    "originalIconRef": "https://zed.dev/_next/static/media/stable-app-logo.9b5f959f.png"
+}

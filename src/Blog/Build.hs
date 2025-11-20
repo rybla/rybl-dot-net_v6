@@ -57,7 +57,9 @@ main' = do
   -- extract parsed index page
   (indexPage, pages) <- case pages & List.partition \page -> page._pageId.unPageId == "index" of
     ([], _) -> throwError $ "There is no page with pageId \"index\""
-    ([indexPage], pages) -> pure (indexPage, pages)
+    ([indexPage], pages) -> do
+      href <- parseUriReferenceM Paths.onlineSite.page.here
+      pure (indexPage {_pageHref = href}, pages)
     _ -> throwError $ "There are multiple pages with pageId \"index\""
 
   -- parse posts
