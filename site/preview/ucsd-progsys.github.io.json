@@ -1,0 +1,4 @@
+{
+    "description": "LiquidHaskell refines Haskell's types with logical predicates that let you enforce important properties at compile time.",
+    "title": "https://ucsd-progsys.github.io/liquidhaskell/"
+}
