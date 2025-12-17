@@ -31,6 +31,7 @@ See my [library](/page/library.html) of public writings on various topics usuall
 
 | Date | Description |
 | -: | ---------------- |
+| _2025-11_ | Participated in [Computer Use: Hack Night at Git](https://hackersquad.io/builders/dashboard/events/cm5vmcvvf000cov0lrdb89ci8) to work on an experimental [branching OpenAGI agent](https://github.com/rybla/openagi-branching-agent). |
 | _2025-11_ | Participated in [Agda Implementors' Meeting XLI](https://wiki.portal.chalmers.se/agda/Main/AIMXLI) to work on [using Agda macros as interactive tactics](https://www.rybl.net/post/using-agda-macros-as-interactive-tactics.html). |
 | _2025-11_ | Participated in [AI Tinkerers x Trilligent: DC Metro Meetup](https://dc.aitinkerers.org/p/ai-tinkerers-x-trilligent-november-meetup) and presented [small language games v2](https://github.com/rybla/small-language-games-v2). |
 | _2025-10_ | Developed [linkstitcher](https://github.com/rybla/linkstitcher), a system for automatically creating custom RSS feeds by processing other RSS feeds, and other utilities. |
