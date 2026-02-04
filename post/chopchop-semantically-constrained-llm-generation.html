@@ -1,0 +1,916 @@
+<!doctype html>
+<html>
+  <head>
+    <title>rybl.net | Advancements in Constrained Decoding with ChopChop</title>
+
+    <link rel="stylesheet" href="/style/common.css" />
+    <!--<link rel="stylesheet" href="/style/skylighting-espresso.css" />-->
+    <link rel="stylesheet" href="/style/skylighting-solarized.css" />
+    <link rel="stylesheet" href="/style/background.css" />
+    <link rel="stylesheet" href="/style/custom-elements.css" />
+    <link rel="stylesheet" href="/style/header-and-footer.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"
+    ></script>
+
+    <script src="/script/parallax-body-background-on-scroll.js"></script>
+
+    <!--<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/tokyo-night-light.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+
+    <script>
+      hljs.highlightAll();
+    </script>-->    <link rel="stylesheet" href="/style/post.css" />
+  </head>
+  <body>
+    <svg>
+      <defs>
+        <filter
+          id="dancing-stroke-svg-filter"
+          color-interpolation-filters="linearRGB"
+          filterUnits="objectBoundingBox"
+          primitiveUnits="userSpaceOnUse"
+        >
+          <feMorphology
+            operator="dilate"
+            radius="4 4"
+            in="SourceAlpha"
+            result="morphology"
+          />
+          <feFlood flood-color="#30597E" flood-opacity="1" result="flood" />
+          <feComposite
+            in="flood"
+            in2="morphology"
+            operator="in"
+            result="composite"
+          />
+          <feComposite
+            in="composite"
+            in2="SourceAlpha"
+            operator="out"
+            result="composite1"
+          />
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.01 0.02"
+            numOctaves="1"
+            seed="0"
+            stitchTiles="stitch"
+            result="turbulence"
+          />
+          <feDisplacementMap
+            in="composite1"
+            in2="turbulence"
+            scale="17"
+            xChannelSelector="A"
+            yChannelSelector="A"
+            result="displacementMap"
+          />
+          <feMerge result="merge">
+            <feMergeNode in="SourceGraphic" result="mergeNode" />
+            <feMergeNode in="displacementMap" result="mergeNode1" />
+          </feMerge>
+        </filter>
+      </defs>
+    </svg>
+
+    <div id="background"></div>
+    <header><div class="title">
+      <div class="root-title">
+        <a href="/">rybl.net</a>
+      </div>
+
+      <img class="website-icon" src="/image/rybl-small.png" />
+
+      <div class="local-title">Advancements in Constrained Decoding with ChopChop</div>
+    </div>
+    <div class="menu">
+      <div class="item">
+        <a href="/">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+            stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-circle-slash-icon lucide-circle-slash">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="9" x2="15" y1="15" y2="9" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/library.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+            stroke-linecap="round" stroke-linejoin="round"
+            class="icon lucide lucide-library-icon lucide-library">
+            <path d="m16 6 4 14" />
+            <path d="M12 6v14" />
+            <path d="M8 8v12" />
+            <path d="M4 4v16" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/about.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+            stroke-linecap="round" stroke-linejoin="round"
+            class="icon lucide lucide-info-icon lucide-info">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 16v-4" />
+            <path d="M12 8h.01" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/profile.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+            stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-globe-icon lucide-globe">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+            <path d="M2 12h20" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/references-graph.html">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+            stroke-linecap="round" stroke-linejoin="round"
+            class="lucide lucide-orbit-icon lucide-orbit">
+            <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+            <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+            <circle cx="12" cy="12" r="3" />
+            <circle cx="19" cy="5" r="2" />
+            <circle cx="5" cy="19" r="2" />
+          </svg>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/page/signature.html"><svg xmlns="http://www.w3.org/2000/svg"
+            width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="1" stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-fingerprint-icon lucide-fingerprint">
+            <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+            <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+            <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+            <path d="M2 12a10 10 0 0 1 18-6" />
+            <path d="M2 16h.01" />
+            <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+            <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+            <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+            <path d="M9 6.8a6 6 0 0 1 9 5.2v2" />
+          </svg></a>
+      </div>
+    </div></header>
+    <main><h1><a
+href="/post/chopchop-semantically-constrained-llm-generation.html"
+class="no-link-favicon no-link-preview">Advancements in Constrained
+Decoding with ChopChop</a></h1>
+<div>
+<div class="sidenote persistent header-info">
+<p><u>Published:</u> 2026-02-03</p>
+<p><u>Tags:</u> paper, research, llm, ai, structured-output</p>
+<p><u>Abstract</u></p>
+<p>Overview and discussion of the new paper ChopChip: A Programmable
+Framework for Semantically Constraining the Output of Language
+Models.</p>
+</div>
+</div>
+<div>
+<div class="sidenote persistent table-of-contents">
+<p><u>Table of Contents</u></p>
+<ol type="1">
+<li><a href="#introduction"
+class="no-link-favicon no-link-preview">Introduction</a></li>
+<li><a href="#constrained-decoding"
+class="no-link-favicon no-link-preview">Constrained Decoding</a></li>
+<li><a href="#beyond-token-level-analysis"
+class="no-link-favicon no-link-preview">Beyond Token-level
+Analysis</a></li>
+<li><a href="#implementation"
+class="no-link-favicon no-link-preview">Implementation</a></li>
+<li><a href="#results"
+class="no-link-favicon no-link-preview">Results</a></li>
+<li><a href="#conclusions"
+class="no-link-favicon no-link-preview">Conclusions</a></li>
+<li><a href="#references"
+class="no-link-favicon no-link-preview">References</a></li>
+<li><a href="#signature"
+class="no-link-favicon no-link-preview">Signature</a></li>
+</ol>
+</div>
+</div>
+<h2 id="introduction">§ <a href="#introduction"
+class="no-link-favicon no-link-preview">Introduction</a></h2>
+<p>Recently I read <span><span class="sidenote preview">ChopChop: A
+Programmable Framework for Semantically Constraining the Output of
+Language Models<br/><em><a
+href="https://dl.acm.org/doi/abs/10.1145/3776708" title="_blank"><img
+src="/favicon/acm.org.ico" class="favicon"
+alt="/favicon/acm.org.ico" />https://dl.acm.org/doi/abs/10.1145/3546189.3549921</a></em><br/>Placeholder
+description for
+https://dl.acm.org/doi/abs/10.1145/3546189.3549921</span><a
+href="https://dl.acm.org/doi/abs/10.1145/3776708"><img
+src="/favicon/acm.org.ico" class="favicon"
+alt="/favicon/acm.org.ico" />ChopChop: A Programmable Framework for
+Semantically Constraining the Output of Language Models</a></span> from
+POPL 2026. I found the paper to be a relatively interesting forwarding
+of the current ideas in structured output via JSON schema to more
+semantic properties such as typing. Here's the abstract:</p>
+<blockquote>
+<p>Language models (LMs) can generate code but cannot guarantee its
+correctness—often producing outputs that violate type safety, program
+invariants, or other semantic properties. Constrained decoding offers a
+solution by restricting generation to only produce programs that satisfy
+user-defined properties. However, existing methods are either limited to
+syntactic constraints or rely on brittle, ad hoc encodings of semantic
+properties over token sequences rather than program structure.</p>
+<p>We present ChopChop, the first programmable framework for
+constraining the output of LMs with respect to semantic properties.
+ChopChop introduces a principled way to construct constrained decoders
+based on analyzing the space of programs a prefix represents. It
+formulates this analysis as a realizability problem which is solved via
+coinduction, connecting token-level generation with structural reasoning
+over programs. We demonstrate ChopChop's generality by using it to
+enforce (1) equivalence to a reference program and (2) type safety.
+Across a range of models and tasks, ChopChop improves success rates
+while maintaining practical decoding latency.</p>
+</blockquote>
+<p>The main interesting aspects of this work are: - ChopChop is
+<em>programmable</em> - ChopChop generalizably connects token-level
+constraints to <em>semantic constraints</em></p>
+<p>The <span><span class="sidenote preview">.grammar<br/><em><a
+href="https://docs.dottxt.ai/dotgrammar/" title="_blank"><img
+src="/favicon/dottxt.ai.png" class="favicon"
+alt="/favicon/dottxt.ai.png" />https://docs.dottxt.ai/</a></em><br/>.txt
+documentation</span><a href="https://docs.dottxt.ai/dotgrammar/"><img
+src="/favicon/dottxt.ai.png" class="favicon"
+alt="/favicon/dottxt.ai.png" />.grammar</a></span> project by
+<span><span class="sidenote preview">.txt<br/><em><a
+href="https://dottxt.ai" title="_blank"><img
+src="/favicon/dottxt.ai.png" class="favicon"
+alt="/favicon/dottxt.ai.png" />https://dottxt.ai</a></em><br/>.txt is an
+AI engineering company focused on structured outputs for LLMs.</span><a
+href="https://dottxt.ai"><img src="/favicon/dottxt.ai.png"
+class="favicon" alt="/favicon/dottxt.ai.png" />.txt</a></span> also
+seems related to this, but it is proprietary.</p>
+<h2 id="constrained-decoding">§ <a href="#constrained-decoding"
+class="no-link-favicon no-link-preview">Constrained Decoding</a></h2>
+<p>At a high level, generative LLMs work like this:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>  input text </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>--( encode )--&gt;</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  input embedding</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>--( extrapolate )--&gt;</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  output embedding</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>--( decode ) --&gt;</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  output text</span></code></pre></div>
+<p>This works surprisingly well for getting sensible natural language
+responses to natural language queries. But, for many applications, a
+structured format for the output is required. For example, the output
+might be used as the input to an automated process which requires input
+of a very specific format.</p>
+<p>Of course, structure comes in many different flavors and levels of
+complexity. One fairly simple framework for constrained generation been
+widely adopted: <span><span class="sidenote preview">structured
+output<br/><em><a
+href="https://ai.google.dev/gemini-api/docs/structured-output"
+title="_blank"><img src="/favicon/google.dev.png" class="favicon"
+alt="/favicon/google.dev.png" />https://ai.google.dev/</a></em><br/>Google
+AI API documentation</span><a
+href="https://ai.google.dev/gemini-api/docs/structured-output"><img
+src="/favicon/google.dev.png" class="favicon"
+alt="/favicon/google.dev.png" />structured output</a></span> via
+<span><span class="sidenote preview">JSON schemas<br/><em><a
+href="https://json-schema.org" title="_blank"><img
+src="/favicon/json-schema.org.ico" class="favicon"
+alt="/favicon/json-schema.org.ico" />https://json-schema.org</a></em><br/>JSON
+Schema enables the confident and reliable use of the JSON data
+format.</span><a href="https://json-schema.org"><img
+src="/favicon/json-schema.org.ico" class="favicon"
+alt="/favicon/json-schema.org.ico" />JSON schemas</a></span>. This
+framework allows the decoding of an LLM to be constrained to fit a
+particular JSON Schema. For example, to represent a record for a person
+that has name, age, and email fields we can use a JSON schema something
+like this:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;object&quot;</span><span class="fu">,</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;properties&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;string&quot;</span> <span class="fu">},</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;age&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;number&quot;</span> <span class="fu">},</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;email&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;string&quot;</span> <span class="fu">}</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;required&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="st">&quot;name&quot;</span><span class="ot">,</span> <span class="st">&quot;age&quot;</span><span class="ot">]</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p>Here, the <code>"name"</code> and <code>"email"</code> fields must be
+strings, the <code>"age"</code> field must be a number, and only
+<code>"name"</code> and <code>"age"</code> are required fields. As per
+the name, JSON schemas are schemas only for JSON values. JSON schemas
+are schemas for standard JSON values, but the schemas themselves have
+several common specification (but <span><span
+class="sidenote preview">Open API 3<br/><em><a
+href="https://spec.openapis.org/oas/3.0/schema/2024-10-18.html"
+title="_blank"><img src="/favicon/openapis.org.png" class="favicon"
+alt="/favicon/openapis.org.png" />https://spec.openapis.org</a></em><br/>This
+site contains the authoritative HTML renderings of the OpenAPI
+Initiative’s specifications and extension registries.</span><a
+href="https://spec.openapis.org/oas/3.0/schema/2024-10-18.html"><img
+src="/favicon/openapis.org.png" class="favicon"
+alt="/favicon/openapis.org.png" />Open API 3</a></span> is probably the
+most common). There are some more advanced features such as <span><span
+class="sidenote preview">oneOf<br/><em><a
+href="https://json-schema.org/understanding-json-schema/reference/combining"
+title="_blank"><img src="/favicon/json-schema.org.ico" class="favicon"
+alt="/favicon/json-schema.org.ico" />https://json-schema.org</a></em><br/>JSON
+Schema enables the confident and reliable use of the JSON data
+format.</span><a
+href="https://json-schema.org/understanding-json-schema/reference/combining"><img
+src="/favicon/json-schema.org.ico" class="favicon"
+alt="/favicon/json-schema.org.ico" /><code>oneOf</code></a></span>. One
+cool thing about JSON schemas is there is a JSON schema that is the
+schema for all JSON schemas.</p>
+<p>Essentially, JSON schemas are a format for specify a grammar over
+JSON-shaped data. This grammar gives rise to a parsing algorithm for
+checking if a string is in the grammar. There are <span><span
+class="sidenote preview">standard techniques for designing such parsing
+algorithms to efficiently work left-to-right<br/><em><a
+href="https://hackernoon.com/high-performance-text-parsing-using-finite-state-machines-fsm-6d3m33j9"
+title="_blank"><img src="/favicon/hackernoon.com.ico" class="favicon"
+alt="/favicon/hackernoon.com.ico" />https://hackernoon.com/</a></em><br/>HackerNoon
+is a community-driven online publishing platform that focuses on
+technology, software development, blockchain, and artificial
+intelligence.</span><a
+href="https://hackernoon.com/high-performance-text-parsing-using-finite-state-machines-fsm-6d3m33j9"><img
+src="/favicon/hackernoon.com.ico" class="favicon"
+alt="/favicon/hackernoon.com.ico" />standard techniques for designing
+such parsing algorithms to efficiently work left-to-right</a></span>, so
+that a string can be considered as a prefix to the entire value, and can
+be queried for "is this string a prefix of a valid value?"</p>
+<p>Now, to connect this all to text generation with LLMs. Once we have
+this prefix-checking algorithm, we can use it to filter which tokens
+that an LLM can decode to. Instead of just choosing from among the most
+highly weighted tokens as the token to generate next in the output
+stream, only tokens that Maintain the output stream as a prefix of a
+valid output are allowed, and we choose from among the highest weight of
+those tokens. This guarantees that the output stream will be valid
+according to the schema that determined the prefix checker.</p>
+<p>You can also do some more fancy stuff here, like if none of the
+possible tokens have a very high weight, then we can try backtracking to
+generate a different trajectory that we might have more luck with.</p>
+<p>This prefix checking based on first-order properties like JSON schema
+validation is great for many applications. I've experimented with a few
+myself:</p>
+<ul>
+<li><span><span class="sidenote preview">Mtgen<br/><em><a
+href="https://mtgen.fly.dev" title="_blank"><img src="/missing.ico"
+class="favicon"
+alt="/missing.ico" />https://mtgen.fly.dev</a></em><br/>Mtgen is a
+platform for generating and sharing AI generated custom Magic: The
+Gathering cards.</span><a href="https://mtgen.fly.dev"><img
+src="/missing.ico" class="favicon" alt="/missing.ico" />Mtgen</a></span>
+is a custom Magic the Gathering card generator, which uses structured
+output to structure each card's details for the sake of controlled image
+generation and structured querying.</li>
+<li><span><span class="sidenote preview">Visual Novel Engine<br/><em><a
+href="https://github.com/rybla/visual-novel-engine-v2"
+title="_blank"><img src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />https://github.com/ucsd-progsys/liquidhaskell</a></em><br/>Placeholder
+description for https://github.com/ucsd-progsys/liquidhaskell</span><a
+href="https://github.com/rybla/visual-novel-engine-v2"><img
+src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />Visual Novel Engine</a></span> is a
+platform for generating and playing interactive visual novels. it
+generates and extracts a structured representation of the story and the
+assets involved using structured output.</li>
+<li><span><span class="sidenote preview">pinion-cyoa<br/><em><a
+href="https://github.com/rybla/pinion-cyoa" title="_blank"><img
+src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />https://github.com/ucsd-progsys/liquidhaskell</a></em><br/>Placeholder
+description for https://github.com/ucsd-progsys/liquidhaskell</span><a
+href="https://github.com/rybla/pinion-cyoa"><img
+src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />pinion-cyoa</a></span>: Pinion CYOA is a
+platform for generating and playing text-based
+choose-your-own-adventure-games. It uses structured output to maintain a
+structured representation of the game state and what options the player
+is presented with.</li>
+<li><span><span class="sidenote preview">OpenAGI Branching
+Agent<br/><em><a href="https://github.com/rybla/openagi-branching-agent"
+title="_blank"><img src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />https://github.com/ucsd-progsys/liquidhaskell</a></em><br/>Placeholder
+description for https://github.com/ucsd-progsys/liquidhaskell</span><a
+href="https://github.com/rybla/openagi-branching-agent"><img
+src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />OpenAGI Branching Agent</a></span> is a
+project I built during <span><span class="sidenote preview">Computer
+Use: Hack Night at Github<br/><em><a
+href="https://hackersquad.io/builders/dashboard/events/cm5vmcvvf000cov0lrdb89ci8"
+title="_blank"><img src="/favicon/hackersquad.io.ico" class="favicon"
+alt="/favicon/hackersquad.io.ico" />https://hackersquad.io/</a></em><br/>A
+platform for hackathon organization.</span><a
+href="https://hackersquad.io/builders/dashboard/events/cm5vmcvvf000cov0lrdb89ci8"><img
+src="/favicon/hackersquad.io.ico" class="favicon"
+alt="/favicon/hackersquad.io.ico" />Computer Use: Hack Night at
+Github</a></span> that allows the agent to navigate a graph the
+corresponds to a flowchart of tasks. It decides how to navigate using
+structured output.</li>
+<li><span><span class="sidenote preview">small-language-games<br/><em><a
+href="https://github.com/rybla/small-language-games/tree/main/src/app"
+title="_blank"><img src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />https://github.com/ucsd-progsys/liquidhaskell</a></em><br/>Placeholder
+description for https://github.com/ucsd-progsys/liquidhaskell</span><a
+href="https://github.com/rybla/small-language-games/tree/main/src/app"><img
+src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />small-language-games</a></span> is a
+collection of LLM-based experiments with a focus on structured output.
+For example, it includes an <span><span
+class="sidenote preview">LLM-powered text adventure game<br/><em><a
+href="https://github.com/rybla/small-language-games/tree/main/src/app/text-adventure-v3"
+title="_blank"><img src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />https://github.com/ucsd-progsys/liquidhaskell</a></em><br/>Placeholder
+description for https://github.com/ucsd-progsys/liquidhaskell</span><a
+href="https://github.com/rybla/small-language-games/tree/main/src/app/text-adventure-v3"><img
+src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />LLM-powered text adventure
+game</a></span> with structured world state, an <span><span
+class="sidenote preview">LLM-powered UI generator<br/><em><a
+href="https://github.com/rybla/small-language-games/tree/main/src/app/text-to-ui"
+title="_blank"><img src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />https://github.com/ucsd-progsys/liquidhaskell</a></em><br/>Placeholder
+description for https://github.com/ucsd-progsys/liquidhaskell</span><a
+href="https://github.com/rybla/small-language-games/tree/main/src/app/text-to-ui"><img
+src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />LLM-powered UI generator</a></span>
+using an AST-like representation of the UI, and a <span><span
+class="sidenote preview">generative filesystem simulator<br/><em><a
+href="https://github.com/rybla/small-language-games/tree/main/src/app/generative-filesystem"
+title="_blank"><img src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />https://github.com/ucsd-progsys/liquidhaskell</a></em><br/>Placeholder
+description for https://github.com/ucsd-progsys/liquidhaskell</span><a
+href="https://github.com/rybla/small-language-games/tree/main/src/app/generative-filesystem"><img
+src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />generative filesystem
+simulator</a></span> where the filesystem has a structured
+representation that the user and the LLM both interact with via
+structured actions.</li>
+<li><span><span class="sidenote preview">FPV Drone Hackathon
+Project<br/><em><a
+href="https://github.com/rybla/fpv_drone_hackathon_project"
+title="_blank"><img src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />https://github.com/ucsd-progsys/liquidhaskell</a></em><br/>Placeholder
+description for https://github.com/ucsd-progsys/liquidhaskell</span><a
+href="https://github.com/rybla/fpv_drone_hackathon_project"><img
+src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />FPV Drone Hackathon Project</a></span>
+is a project I submitted to the the <span><span
+class="sidenote preview">AI+ Expo Hackathon<br/><em><a
+href="https://expo.scsp.ai/hackathon/" title="_blank"><img
+src="/favicon/scsp.ai.png" class="favicon"
+alt="/favicon/scsp.ai.png" />https://expo.scsp.ai/hackathon/</a></em><br/>Placeholder
+description for https://expo.scsp.ai/hackathon/</span><a
+href="https://expo.scsp.ai/hackathon/"><img src="/favicon/scsp.ai.png"
+class="favicon" alt="/favicon/scsp.ai.png" />AI+ Expo
+Hackathon</a></span>, in which my team (I and a friend) won 3rd
+place.</li>
+<li><span><span class="sidenote preview">llm-sim<br/><em><a
+href="https://github.com/rybla/llm-sim" title="_blank"><img
+src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />https://github.com/ucsd-progsys/liquidhaskell</a></em><br/>Placeholder
+description for https://github.com/ucsd-progsys/liquidhaskell</span><a
+href="https://github.com/rybla/llm-sim"><img
+src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />llm-sim</a></span>: LLM-sim is a simple
+state-action framework for using an LLM to interpret vague user
+instructions and structured actions, using structured output.</li>
+<li><span><span class="sidenote preview">latent-state-machine<br/><em><a
+href="https://github.com/rybla/latent-state-machine" title="_blank"><img
+src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />https://github.com/ucsd-progsys/liquidhaskell</a></em><br/>Placeholder
+description for https://github.com/ucsd-progsys/liquidhaskell</span><a
+href="https://github.com/rybla/latent-state-machine"><img
+src="/favicon/github.com.svg" class="favicon"
+alt="/favicon/github.com.svg" />latent-state-machine</a></span>: Latent
+State Machine is a demonstration of encoding the an agent's state as a
+state machine, where the agent navigates the state machine using
+structured output formatted to the transitions.</li>
+</ul>
+<p>However, clearly there is a lot more to be done here because JSON
+schemas are extremely limited compared to the types of constraints that
+we would like to have on LLM outputs.</p>
+<h2 id="beyond-token-level-analysis">§ <a
+href="#beyond-token-level-analysis"
+class="no-link-favicon no-link-preview">Beyond Token-level
+Analysis</a></h2>
+<p><span><span class="sidenote preview">ChopChop<br/><em><a
+href="https://dl.acm.org/doi/abs/10.1145/3776708" title="_blank"><img
+src="/favicon/acm.org.ico" class="favicon"
+alt="/favicon/acm.org.ico" />https://dl.acm.org/doi/abs/10.1145/3546189.3549921</a></em><br/>Placeholder
+description for
+https://dl.acm.org/doi/abs/10.1145/3546189.3549921</span><a
+href="https://dl.acm.org/doi/abs/10.1145/3776708"><img
+src="/favicon/acm.org.ico" class="favicon"
+alt="/favicon/acm.org.ico" />ChopChop</a></span> demonstrates a way to
+extend the same approach to prefix checking to more semantic properties
+desired of the LLM output.</p>
+<p>The extra piece of constrained decoding that ChopChop brings is
+<em>semantic pruning</em>. All together, ChopChop has a prefix checker
+that calculates the space of valid ASTs that the output stream is a
+prefix of, and prunes that space by the semantic pruning predicate. A
+token is only valid if, upon being appended to the output stream, the
+space of semantically valid completions is inhabited.</p>
+<p>This framework is programmable because you can provide your own
+grammar and semantic pruning predicate. The framework connects
+token-level constraints to AST-level constraints by prefix checking for
+valid ASTs, and then semantically considering those ASTs.</p>
+<p>What's so interesting about this approach is that it is a feasible
+way to enforce <em>any</em> semantic predicate over the output, and
+ChopChop's implementation shows this can be done relatively efficiently
+even for complex constraints.</p>
+<p>ChopChop demonstrates two semantic pruning examples: - equivalent to
+a reference program modulo term rewriting - well-typed</p>
+<h2 id="implementation">§ <a href="#implementation"
+class="no-link-favicon no-link-preview">Implementation</a></h2>
+<p>ChopChop uses co-induction to encode the realizability and pruning
+problem for a potentially infinite set of solutions. So instead of
+representing the set of possible ASTs as a literal set (or list, or
+array), it's represented as a coinductive space. For example, for the
+grammar</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode hs"><code class="sourceCode haskell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">Expr</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="ot">=</span> <span class="dt">Lit</span> <span class="dt">String</span>     <span class="co">-- numeric literal</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> <span class="dt">Sum</span> <span class="dt">Expr</span> <span class="dt">Expr</span>  <span class="co">-- numeric sum operator</span></span></code></pre></div>
+<p>the coinductive space of ASTs is encoded as</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode hs"><code class="sourceCode haskell"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> <span class="dt">ExprSpace</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="ot">=</span> <span class="dt">Empty</span>                    <span class="co">-- empty space</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> <span class="dt">Union</span> [<span class="dt">ExprSpace</span>]        <span class="co">-- union of several spaces</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> <span class="dt">Lit</span> <span class="dt">Regex</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">|</span> <span class="dt">Sum</span> <span class="dt">ExprSpace</span> <span class="dt">ExprSpace</span></span></code></pre></div>
+<p>This corresponds to a version space where <code>Union</code> is the
+union node and <code>Sum</code> is the join node. This encoding is able
+to encode an infinite space of expressions with a finite representation.
+It's like an extension of regular expressions to tree-structured data
+(in particular, ASTs defined by context free grammars).</p>
+<p>For example, the space of all integer literal expressions is
+represented by <code>integers</code>:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode hs"><code class="sourceCode haskell"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>integers <span class="ot">=</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> integer <span class="ot">=</span> <span class="dt">Lit</span> <span class="st">&quot;[0-9]+&quot;</span> <span class="kw">in</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">Union</span> [integer, <span class="dt">Sum</span> integers integer]</span></code></pre></div>
+<p>What's very special about these spaces is that we can write
+predicates over their finite representations in order to constrain the
+encoded infinite space. For example, <code>odds</code> is a predicate
+for only the odd-valued expressions of a given space.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode hs"><code class="sourceCode haskell"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>odds <span class="dt">Expr</span>       <span class="ot">=</span> <span class="dt">Expr</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>odds (<span class="dt">Union</span> xs) <span class="ot">=</span> <span class="dt">Union</span> (<span class="fu">map</span> odds xs)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>odds (<span class="dt">Lit</span> re)   <span class="ot">=</span> <span class="dt">Lit</span> (re <span class="ot">`intersect`</span> <span class="st">&quot;[0-9]*[13579]&quot;</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>odds (<span class="dt">Sum</span> l r)  <span class="ot">=</span> <span class="dt">Sum</span> (odds l) (odds r)</span></code></pre></div>
+<p>Here, <code>odds integers</code> is the space of all odd integers,
+finitely represented. However, if we eagerly evaluate
+<code>odds integers</code>, Then the evaluation will proceed infinitely
+because there is a cycle in the definition of <code>integers</code>. So,
+ChopChop uses a specialized solver that tracks previously expanded terms
+and creates an explicit cycle when a subterm is revisited, which escapes
+the infinite evaluation. There is a theorem that spaces of this form
+that can be predicated with finite checking using this memoization
+specialization.</p>
+<p>There are more details in <span><span class="sidenote preview">the
+ChopChop paper<br/><em><a href="https://arxiv.org/pdf/2509.00360"
+title="_blank"><img src="/favicon/arxiv.org.png" class="favicon"
+alt="/favicon/arxiv.org.png" />https://arxiv.org/abs/1706.03762</a></em><br/>Placeholder
+description for https://arxiv.org/abs/1706.03762</span><a
+href="https://arxiv.org/pdf/2509.00360"><img
+src="/favicon/arxiv.org.png" class="favicon"
+alt="/favicon/arxiv.org.png" />the ChopChop paper</a></span> about the
+specifics of the design and implementation of the full ChopChop
+system.</p>
+<h2 id="results">§ <a href="#results"
+class="no-link-favicon no-link-preview">Results</a></h2>
+<p>The ChopChop team found that the semantically constrained generation
+to be equivalent (up to term rewriting) to a reference program
+dramatically improved the success rate of generating behaviorally
+correct programs across a few benchmarks with some open source models
+(DeepSeek-Coder-6.7b, CodeLlama-7B, CodeLlama-13B) in comparison to
+unconstrained generation or even grammar constrained generation. See
+Table 1 in <span><span class="sidenote preview">the ChopChop
+paper<br/><em><a href="https://arxiv.org/pdf/2509.00360"
+title="_blank"><img src="/favicon/arxiv.org.png" class="favicon"
+alt="/favicon/arxiv.org.png" />https://arxiv.org/abs/1706.03762</a></em><br/>Placeholder
+description for https://arxiv.org/abs/1706.03762</span><a
+href="https://arxiv.org/pdf/2509.00360"><img
+src="/favicon/arxiv.org.png" class="favicon"
+alt="/favicon/arxiv.org.png" />the ChopChop paper</a></span> for the
+full results.</p>
+<p>With these improvements, there was an overhead on how many tokens
+need to be churned through to get successful results. For equivalence
+constrained generation, the vast majority of the time, less than 20
+tokens were tried per successful token. For well-typedness constrained
+generation, the vast majority of the time, less than 60 tokens were
+tried per successful token. Each try was a query to the realizability
+solver to decide whether the token was a valid next token or not.</p>
+<h2 id="conclusions">§ <a href="#conclusions"
+class="no-link-favicon no-link-preview">Conclusions</a></h2>
+<p>What other kinds of predicates can be encoded as semantic pruners in
+ChopChop? <span><span class="sidenote preview">The ChopChop
+paper<br/><em><a href="https://arxiv.org/pdf/2509.00360"
+title="_blank"><img src="/favicon/arxiv.org.png" class="favicon"
+alt="/favicon/arxiv.org.png" />https://arxiv.org/abs/1706.03762</a></em><br/>Placeholder
+description for https://arxiv.org/abs/1706.03762</span><a
+href="https://arxiv.org/pdf/2509.00360"><img
+src="/favicon/arxiv.org.png" class="favicon"
+alt="/favicon/arxiv.org.png" />The ChopChop paper</a></span> mentions in
+the Related Work section that <span><span
+class="sidenote preview">abstract interpretation where there are
+finitely many abstract predicates can be encoded as abstract finite tree
+automata (AFTA)<br/><em><a href="https://arxiv.org/abs/1710.07740"
+title="_blank"><img src="/favicon/arxiv.org.png" class="favicon"
+alt="/favicon/arxiv.org.png" />https://arxiv.org/abs/1706.03762</a></em><br/>Placeholder
+description for https://arxiv.org/abs/1706.03762</span><a
+href="https://arxiv.org/abs/1710.07740"><img
+src="/favicon/arxiv.org.png" class="favicon"
+alt="/favicon/arxiv.org.png" />abstract interpretation where there are
+finitely many abstract predicates can be encoded as abstract finite tree
+automata (AFTA)</a></span>, which can be converted to a finitely
+represented coinductive predicates for use as pruners for ChopChop. And
+it turns out this can be also done for infinite abstract domain via
+<span><span class="sidenote preview">grammar-flow analysis<br/><em><a
+href="https://dl.acm.org/doi/10.5555/645843.758268" title="_blank"><img
+src="/favicon/acm.org.ico" class="favicon"
+alt="/favicon/acm.org.ico" />https://dl.acm.org/doi/abs/10.1145/3546189.3549921</a></em><br/>Placeholder
+description for
+https://dl.acm.org/doi/abs/10.1145/3546189.3549921</span><a
+href="https://dl.acm.org/doi/10.5555/645843.758268"><img
+src="/favicon/acm.org.ico" class="favicon"
+alt="/favicon/acm.org.ico" />grammar-flow analysis</a></span>. I'm
+looking forward to seeing that feature work done!</p>
+<p>So if we can encode abstract interpretation in this way, then we can
+essentially encode any interesting semantic property about the generated
+output as we like. This is so much more powerful than the initial JSON
+schema-based generation, because in particular now we can encode
+properties of the output where one part of the output relates to another
+part of the output in a dynamic way. For example, if we request the LLM
+to generate a list of tags and then assign those tags to some items, we
+can require the assigned tags to actually be from the list of tags that
+it originally generated. The only way to accomplish this currently is to
+split the generation into two parts, and dynamically use the result from
+the first generation to construct the schema for the second
+generation.</p>
+<p>For code generation, the ability to restrict output code to only
+well-typed programs is an interesting prospect. Of course, this is
+non-trivial work for supporting each new type system. But the ability to
+implement this for any new type system means that you can give an LLM
+some immediate new support for a new or otherwise low resource
+programming language. This is a promising development towards the
+perspective that LLM-assisted code generation will facilitate the
+development of new programming languages rather than consolidate to only
+a few well-known programming languages that have the most training data
+available.</p>
+<h2 id="references">§ <a href="#references"
+class="no-link-favicon no-link-preview">References</a></h2>
+<ul>
+<li><a href="https://dl.acm.org/doi/abs/10.1145/3776708"
+class="inReference no-link-preview"><img src="/favicon/acm.org.ico"
+class="favicon" alt="/favicon/acm.org.ico" />ChopChop: A Programmable
+Framework for Semantically Constraining the Output of Language
+Models</a></li>
+<li><a href="https://docs.dottxt.ai/dotgrammar/"
+class="inReference no-link-preview"><img src="/favicon/dottxt.ai.png"
+class="favicon" alt="/favicon/dottxt.ai.png" />.grammar</a></li>
+<li><a href="https://dottxt.ai" class="inReference no-link-preview"><img
+src="/favicon/dottxt.ai.png" class="favicon"
+alt="/favicon/dottxt.ai.png" />.txt</a></li>
+<li><a href="https://ai.google.dev/gemini-api/docs/structured-output"
+class="inReference no-link-preview"><img src="/favicon/google.dev.png"
+class="favicon" alt="/favicon/google.dev.png" />structured
+output</a></li>
+<li><a href="https://json-schema.org"
+class="inReference no-link-preview"><img
+src="/favicon/json-schema.org.ico" class="favicon"
+alt="/favicon/json-schema.org.ico" />JSON schemas</a></li>
+<li><a href="https://spec.openapis.org/oas/3.0/schema/2024-10-18.html"
+class="inReference no-link-preview"><img src="/favicon/openapis.org.png"
+class="favicon" alt="/favicon/openapis.org.png" />Open API 3</a></li>
+<li><a
+href="https://json-schema.org/understanding-json-schema/reference/combining"
+class="inReference no-link-preview"><img
+src="/favicon/json-schema.org.ico" class="favicon"
+alt="/favicon/json-schema.org.ico" /><code>oneOf</code></a></li>
+<li><a
+href="https://hackernoon.com/high-performance-text-parsing-using-finite-state-machines-fsm-6d3m33j9"
+class="inReference no-link-preview"><img
+src="/favicon/hackernoon.com.ico" class="favicon"
+alt="/favicon/hackernoon.com.ico" />standard techniques for designing
+such parsing algorithms to efficiently work left-to-right</a></li>
+<li><a href="https://mtgen.fly.dev"
+class="inReference no-link-preview"><img src="/missing.ico"
+class="favicon" alt="/missing.ico" />Mtgen</a></li>
+<li><a href="https://github.com/rybla/visual-novel-engine-v2"
+class="inReference no-link-preview"><img src="/favicon/github.com.svg"
+class="favicon" alt="/favicon/github.com.svg" />Visual Novel
+Engine</a></li>
+<li><a href="https://github.com/rybla/pinion-cyoa"
+class="inReference no-link-preview"><img src="/favicon/github.com.svg"
+class="favicon" alt="/favicon/github.com.svg" />pinion-cyoa</a></li>
+<li><a href="https://github.com/rybla/openagi-branching-agent"
+class="inReference no-link-preview"><img src="/favicon/github.com.svg"
+class="favicon" alt="/favicon/github.com.svg" />OpenAGI Branching
+Agent</a></li>
+<li><a
+href="https://hackersquad.io/builders/dashboard/events/cm5vmcvvf000cov0lrdb89ci8"
+class="inReference no-link-preview"><img
+src="/favicon/hackersquad.io.ico" class="favicon"
+alt="/favicon/hackersquad.io.ico" />Computer Use: Hack Night at
+Github</a></li>
+<li><a
+href="https://github.com/rybla/small-language-games/tree/main/src/app"
+class="inReference no-link-preview"><img src="/favicon/github.com.svg"
+class="favicon"
+alt="/favicon/github.com.svg" />small-language-games</a></li>
+<li><a
+href="https://github.com/rybla/small-language-games/tree/main/src/app/text-adventure-v3"
+class="inReference no-link-preview"><img src="/favicon/github.com.svg"
+class="favicon" alt="/favicon/github.com.svg" />LLM-powered text
+adventure game</a></li>
+<li><a
+href="https://github.com/rybla/small-language-games/tree/main/src/app/text-to-ui"
+class="inReference no-link-preview"><img src="/favicon/github.com.svg"
+class="favicon" alt="/favicon/github.com.svg" />LLM-powered UI
+generator</a></li>
+<li><a
+href="https://github.com/rybla/small-language-games/tree/main/src/app/generative-filesystem"
+class="inReference no-link-preview"><img src="/favicon/github.com.svg"
+class="favicon" alt="/favicon/github.com.svg" />generative filesystem
+simulator</a></li>
+<li><a href="https://github.com/rybla/fpv_drone_hackathon_project"
+class="inReference no-link-preview"><img src="/favicon/github.com.svg"
+class="favicon" alt="/favicon/github.com.svg" />FPV Drone Hackathon
+Project</a></li>
+<li><a href="https://expo.scsp.ai/hackathon/"
+class="inReference no-link-preview"><img src="/favicon/scsp.ai.png"
+class="favicon" alt="/favicon/scsp.ai.png" />AI+ Expo Hackathon</a></li>
+<li><a href="https://github.com/rybla/llm-sim"
+class="inReference no-link-preview"><img src="/favicon/github.com.svg"
+class="favicon" alt="/favicon/github.com.svg" />llm-sim</a></li>
+<li><a href="https://github.com/rybla/latent-state-machine"
+class="inReference no-link-preview"><img src="/favicon/github.com.svg"
+class="favicon"
+alt="/favicon/github.com.svg" />latent-state-machine</a></li>
+<li><a href="https://dl.acm.org/doi/abs/10.1145/3776708"
+class="inReference no-link-preview"><img src="/favicon/acm.org.ico"
+class="favicon" alt="/favicon/acm.org.ico" />ChopChop</a></li>
+<li><a href="https://arxiv.org/pdf/2509.00360"
+class="inReference no-link-preview"><img src="/favicon/arxiv.org.png"
+class="favicon" alt="/favicon/arxiv.org.png" />the ChopChop
+paper</a></li>
+<li><a href="https://arxiv.org/pdf/2509.00360"
+class="inReference no-link-preview"><img src="/favicon/arxiv.org.png"
+class="favicon" alt="/favicon/arxiv.org.png" />the ChopChop
+paper</a></li>
+<li><a href="https://arxiv.org/pdf/2509.00360"
+class="inReference no-link-preview"><img src="/favicon/arxiv.org.png"
+class="favicon" alt="/favicon/arxiv.org.png" />The ChopChop
+paper</a></li>
+<li><a href="https://arxiv.org/abs/1710.07740"
+class="inReference no-link-preview"><img src="/favicon/arxiv.org.png"
+class="favicon" alt="/favicon/arxiv.org.png" />abstract interpretation
+where there are finitely many abstract predicates can be encoded as
+abstract finite tree automata (AFTA)</a></li>
+<li><a href="https://dl.acm.org/doi/10.5555/645843.758268"
+class="inReference no-link-preview"><img src="/favicon/acm.org.ico"
+class="favicon" alt="/favicon/acm.org.ico" />grammar-flow
+analysis</a></li>
+</ul>
+<h2 id="signature">§ <a href="#signature"
+class="no-link-favicon no-link-preview">Signature</a></h2>
+<p>The following code block is the <a
+href="https://en.wikipedia.org/wiki/EdDSA#Ed25519" title="_blank"><img
+src="/favicon/wikipedia.org.ico" class="favicon"
+alt="/favicon/wikipedia.org.ico" />Ed25519 signature</a> of this post's
+<a
+href="/post_markdown/chopchop-semantically-constrained-llm-generation.md"><img
+src="/favicon.ico" class="favicon" alt="/favicon.ico" />markdown
+content</a> encoded in base 64, using my <em>secret key</em> and <a
+href="/key/main_ed25519.pub.txt" title="_blank"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />public key</a>.</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>58465ca27cd03ac95c18d53ddc87155e9fd0bc5288bfe3c3628b4f67f6763fb29faa7b036ef745387ce28d2daaa91076c3e35160b11deb3879d74f9222062102</span></code></pre></div>
+<p>See <a href="/page/signature.html"><img src="/favicon.ico"
+class="favicon" alt="/favicon.ico" />Signature</a> for more
+information.</p></main>
+
+    <footer>
+      <div class="title">
+        <div class="root-title">
+          <a href="/">rybl.net</a>
+        </div>
+
+        <img class="website-icon" src="/image/rybl-small.png" />
+
+        <div class="local-title">Advancements in Constrained Decoding with ChopChop</div>
+      </div>
+      <div class="menu">
+        <div class="item">
+          <a href="/">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-circle-slash-icon lucide-circle-slash">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="9" x2="15" y1="15" y2="9" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/library.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="icon lucide lucide-library-icon lucide-library">
+              <path d="m16 6 4 14" />
+              <path d="M12 6v14" />
+              <path d="M8 8v12" />
+              <path d="M4 4v16" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/about.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="icon lucide lucide-info-icon lucide-info">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 16v-4" />
+              <path d="M12 8h.01" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/profile.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-globe-icon lucide-globe">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20" />
+              <path d="M2 12h20" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/references-graph.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"
+              stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-orbit-icon lucide-orbit">
+              <path d="M20.341 6.484A10 10 0 0 1 10.266 21.85" />
+              <path d="M3.659 17.516A10 10 0 0 1 13.74 2.152" />
+              <circle cx="12" cy="12" r="3" />
+              <circle cx="19" cy="5" r="2" />
+              <circle cx="5" cy="19" r="2" />
+            </svg>
+          </a>
+        </div>
+        <div class="item">
+          <a href="/page/signature.html"><svg xmlns="http://www.w3.org/2000/svg"
+              width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="1" stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-fingerprint-icon lucide-fingerprint">
+              <path d="M12 10a2 2 0 0 0-2 2c0 1.02-.1 2.51-.26 4" />
+              <path d="M14 13.12c0 2.38 0 6.38-1 8.88" />
+              <path d="M17.29 21.02c.12-.6.43-2.3.5-3.02" />
+              <path d="M2 12a10 10 0 0 1 18-6" />
+              <path d="M2 16h.01" />
+              <path d="M21.8 16c.2-2 .131-5.354 0-6" />
+              <path d="M5 19.5C5.5 18 6 15 6 12a6 6 0 0 1 .34-2" />
+              <path d="M8.65 22c.21-.66.45-1.32.57-2" />
+              <path d="M9 6.8a6 6 0 0 1 9 5.2v2" />
+            </svg></a>
+        </div>
+      </div></footer>  </body>
+</html>
