@@ -123,16 +123,20 @@ For example, for the grammar
 
 ```hs
 data Expr
-    = Lit String     -- numeric literal
-    | Sum Expr Expr  -- numeric sum operator
+    = Lit String
+    -- ^ A numeric literal
+    | Sum Expr Expr
+    -- ^ A numeric sum operation
 ```
 
 the coinductive space of ASTs is encoded as
 
 ```hs
 data ExprSpace
-    = Empty                    -- empty space
-    | Union [ExprSpace]        -- union of several spaces
+    = Empty
+    -- ^ An empty space
+    | Union [ExprSpace]
+    -- ^ A union of several spaces
     | Lit Regex
     | Sum ExprSpace ExprSpace
 ```
