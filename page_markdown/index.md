@@ -31,6 +31,8 @@ See my [library](/page/library.html) of public writings on various topics usuall
 
 | Date | Description |
 | -: | ---------------- |
+| _2026-02_ | Participated in [HackWithDC Devnovate Hackathon](https://luma.com/ikhi2o0e) to build [Seneschal](https://rybla.github.io/seneschal/) and win 1st place (solo team). |
+| _2026-02_ | Participated in [AmeriHac](https://haskell.foundation/events/2026-amerihac.html) to work on and talk about various Haskell projects, including [static-ls](https://github.com/josephsumabat/static-ls). |
 | _2026-02_ | Participated in [Cursor Hackathon DC](https://nationallanding.org/do/cursor-hackathon-dc) to use [MiniMax](https://www.minimax.io/) LLMs and the [Cursor CLI](https://cursor.com/cli) to build AI workflows, including an [automated advert generator](https://devpost.com/software/advert-bot). |
 | _2025-11_ | Participated in [Computer Use: Hack Night at Git](https://hackersquad.io/builders/dashboard/events/cm5vmcvvf000cov0lrdb89ci8) to work on an experimental [branching OpenAGI agent](https://github.com/rybla/openagi-branching-agent). |
 | _2025-11_ | Participated in [Agda Implementors' Meeting XLI](https://wiki.portal.chalmers.se/agda/Main/AIMXLI) to work on [using Agda macros as interactive tactics](https://www.rybl.net/post/using-agda-macros-as-interactive-tactics.html). |
