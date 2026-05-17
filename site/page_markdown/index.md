@@ -32,7 +32,7 @@ See my [library](/page/library.html) of public writings on various topics usuall
 | Date | Description |
 | -: | ---------------- |
 | _2026-05_ | Attended [HCSS 2026](https://sos-vo.org/group/hcss_conference/) to learn about how formal methods with AI are being used for high-assurance software. |
-| _2026-05_ | Participated in [SCSP Hackathon](TODO) to build [Digital Hedgemony](TODO) and won 3rd place (team with [Alex Ditzel](https://www.linkedin.com/in/alex-ditzel-14887813a/) and [Chaoqian Huang](https://x.com/Amber_hcq)). |
+| _2026-05_ | Participated in [SCSP Hackathon](https://expo.scsp.ai/hackathon/) to build [Digital Hedgemony](https://github.com/alexditzel/Hedgemony-Sim) and won 3rd place (team with [Alex Ditzel](https://www.linkedin.com/in/alex-ditzel-14887813a/) and [Chaoqian Huang](https://x.com/Amber_hcq)). |
 | _2026-02_ | Participated in [HackWithDC Devnovate Hackathon](https://luma.com/ikhi2o0e) to build [Seneschal](https://rybla.github.io/seneschal/) and won 1st place (solo team). |
 | _2026-02_ | Participated in [AmeriHac](https://haskell.foundation/events/2026-amerihac.html) to work on and talk about various Haskell projects, including [static-ls](https://github.com/josephsumabat/static-ls). |
 | _2026-02_ | Participated in [Cursor Hackathon DC](https://nationallanding.org/do/cursor-hackathon-dc) to use [MiniMax](https://www.minimax.io/) LLMs and the [Cursor CLI](https://cursor.com/cli) to build AI workflows, including an [automated advert generator](https://devpost.com/software/advert-bot). |
